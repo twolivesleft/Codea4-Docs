@@ -1,0 +1,4 @@
+shader
+======
+
+.. lua:class:: shader

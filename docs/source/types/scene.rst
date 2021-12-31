@@ -1,0 +1,4 @@
+scene
+=====
+
+.. lua:class:: scene

@@ -1,0 +1,5 @@
+Codea
+=====
+
+**Codea** is a Lua-based engine and IDE for makes games and simulations on iOS
+and MacOS
