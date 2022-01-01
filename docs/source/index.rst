@@ -34,6 +34,8 @@ Codea 4
    scenes
    types/lua
    types/math_types
+   types/graphics
+   types/style
    types/image
    types/mesh
    types/shader

@@ -10,34 +10,29 @@ drawing both 2D and 3D graphics
 The user-defined global :lua:`draw()` function is called once per frame to
 update the contents of the screen
 
-The :lua:`background(r,g,b,a)` function is used to clear the background to a
-given color. When this isn't called the contents of the background will stay
-the same as the preivous frame
+The :lua:`background(r,g,b,a)` function is used to clear the background to a given color. When this isn't called the contents of the background will stay the same as the preivous frame
 
-Codea uses an hybrid-immediate mode drawing system, where various built-in
-functions can be used to paint objects to the screen when called, such as
-:lua:`line()`, :lua:`sprite()` and :lua:`rect()`
+Codea uses an hybrid-immediate mode drawing system, where various built-in functions can be used to paint objects to the screen when called, such as :lua:`line()`, :lua:`sprite()` and :lua:`rect()`
 
-These functions use the current render state, defined by the current style and
-matrix in use, which effects things like fill color and stroke color / width
+These functions use the current render state, defined by the current style and matrix in use, which effects things like fill color and stroke color / width
 
 Style
 -----
 
 The style module contains functions that set the current drawing state
 
-This module uses a fluent syntax, so any call that does not return a value,
-will instead return the style module itself, allowing multiple style commands
-to be chained together:
+This module uses a fluent syntax, so any call that does not return a value, will instead return the style module itself, allowing multiple style commands to be chained together:
 
 .. code-block:: lua
 
    -- Draw a red ellipse with a 5px white stroke
-   style.fill(color.red).stroke(color.white).strokeWidth(5)
+   style.push().fill(color.red).stroke(color.white).strokeWidth(5)
    ellipse(WIDTH/2, HEIGHT/2, 100, 100)
+   style.pop()
 
-Anywhere ``<color>`` is used as a parameter, the following forms can be
-used:
+See :doc:`types/style` for a complete reference of all functionality
+
+Anywhere ``<color>`` is used as a parameter, the following forms can be used:
 
 .. code-block:: lua
 
@@ -47,93 +42,7 @@ used:
    style.func(grey) -- only grayscale with alph assumed to be 255
    style.func(color) -- a color object
 
-.. lua:module:: style
 
-.. lua:function:: push()
-                  pop()
-                  reset()
-
-   Functions for manipulating the style stack, use these when you want to
-   temporarily change the style and restore it to it's previous state
-
-   Use ``reset()`` to restore the default style
-
-.. lua:function:: fill(<color>)
-                  fill() -> r, g, b, a
-
-   Sets/gets the fill color for use in vector drawing operations
-
-.. lua:function:: stroke(color)
-                  stroke() -> r, g, b, a
-
-   Sets/gets the stroke color for use in vector drawing operations
-
-.. lua:function:: strokeWidth(width)
-                  stroke(): number
-
-   Sets/gets the stroke width for use in vector drawing operations
-
-Constants - Blend Modes
-#######################
-
-.. lua:attribute:: NORMAL: const
-
-   The default blend mode (alpha blended transparency)
-      .. math::
-         RGBA_{final} = RGBA_{src} * A_{src} + RGBA_{dst} * (1-A_{src})
-
-.. lua:attribute:: ADDITIVE: const
-
-   Additive blend mode
-
-.. lua:attribute:: MULTIPLY: const
-
-
-.. lua:attribute:: SCREEN: const
-
-
-.. lua:attribute:: LIGHTEN: const
-
-
-.. lua:attribute:: LINEAR_BURN: const
-
-
-.. lua:attribute:: PREMULTIPLIED: const
-
-
-.. lua:attribute:: DISABLED: const
-
-Constants - Blend Factors
-#########################
-
-.. lua:attribute:: ZERO: const
-
-
-.. lua:attribute:: ONE: const
-
-
-.. lua:attribute:: SRC_COLOR: const
-
-
-.. lua:attribute:: ONE_MINUS_SRC_COLOR: const
-
-
-.. lua:attribute:: SRC_ALPHA: const
-
-
-.. lua:attribute:: ONE_MINUS_SRC_ALPHA: const
-
-
-.. lua:attribute:: DST_ALPHA: const
-
-
-.. lua:attribute:: ONE_MINUS_DST_ALPHA: const
-
-
-.. lua:attribute:: DST_COLOR: const
-
-
-.. lua:attribute:: SRC_ALPHA_SATURATE: const
 
 
 
