@@ -73,12 +73,72 @@ used:
 
    Sets/gets the stroke width for use in vector drawing operations
 
-Constants
-#########
+Constants - Blend Modes
+#######################
 
 .. lua:attribute:: NORMAL: const
 
    The default blend mode (alpha blended transparency)
+      .. math::
+         RGBA_{final} = RGBA_{src} * A_{src} + RGBA_{dst} * (1-A_{src})
+
+.. lua:attribute:: ADDITIVE: const
+
+   Additive blend mode
+
+.. lua:attribute:: MULTIPLY: const
+
+
+.. lua:attribute:: SCREEN: const
+
+
+.. lua:attribute:: LIGHTEN: const
+
+
+.. lua:attribute:: LINEAR_BURN: const
+
+
+.. lua:attribute:: PREMULTIPLIED: const
+
+
+.. lua:attribute:: DISABLED: const
+
+Constants - Blend Factors
+#########################
+
+.. lua:attribute:: ZERO: const
+
+
+.. lua:attribute:: ONE: const
+
+
+.. lua:attribute:: SRC_COLOR: const
+
+
+.. lua:attribute:: ONE_MINUS_SRC_COLOR: const
+
+
+.. lua:attribute:: SRC_ALPHA: const
+
+
+.. lua:attribute:: ONE_MINUS_SRC_ALPHA: const
+
+
+.. lua:attribute:: DST_ALPHA: const
+
+
+.. lua:attribute:: ONE_MINUS_DST_ALPHA: const
+
+
+.. lua:attribute:: DST_COLOR: const
+
+
+.. lua:attribute:: SRC_ALPHA_SATURATE: const
+
+
+
+
+
 
 
 Matrix

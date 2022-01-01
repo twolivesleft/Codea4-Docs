@@ -7,11 +7,14 @@ Codea 4
 =======
 
 .. code-block:: lua
+   :linenos:
 
    function setup()
+      print("Hello Codea!")
    end
 
    function draw()
+      sprite(asset.builtin.Cargo_Bot.Codea_Icon, WIDTH/2, HEIGHT/2)
    end
 
    function touched(touch)

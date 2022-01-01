@@ -270,13 +270,89 @@ temporarily change the style and restore it to it’s previous state</p>
 <span class="sig-name descname"><span class="pre">stroke():</span> <span class="pre">number</span></span></dt>
 <dd><p>Sets/gets the stroke width for use in vector drawing operations</p>
 </dd></dl>
-<section id="constants">
-<h3>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h3>
+<section id="constants-blend-modes">
+<h3>Constants - Blend Modes<a class="headerlink" href="#constants-blend-modes" title="Permalink to this headline">¶</a></h3>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="style.style.NORMAL">
 <span class="sig-name descname"><span class="pre">NORMAL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.NORMAL" title="Permalink to this definition">¶</a></dt>
-<dd><p>The default blend mode (alpha blended transparency)</p>
+<dd><dl>
+<dt>The default blend mode (alpha blended transparency)</dt><dd><div class="math-wrapper"><div class="math notranslate nohighlight">
+\[RGBA_{final} = RGBA_{src} * A_{src} + RGBA_{dst} * (1-A_{src})\]</div></div>
+</dd>
+</dl>
 </dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.ADDITIVE">
+<span class="sig-name descname"><span class="pre">ADDITIVE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ADDITIVE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Additive blend mode</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.MULTIPLY">
+<span class="sig-name descname"><span class="pre">MULTIPLY</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.MULTIPLY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.SCREEN">
+<span class="sig-name descname"><span class="pre">SCREEN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SCREEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.LIGHTEN">
+<span class="sig-name descname"><span class="pre">LIGHTEN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.LIGHTEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.LINEAR_BURN">
+<span class="sig-name descname"><span class="pre">LINEAR_BURN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.LINEAR_BURN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.PREMULTIPLIED">
+<span class="sig-name descname"><span class="pre">PREMULTIPLIED</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.PREMULTIPLIED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.DISABLED">
+<span class="sig-name descname"><span class="pre">DISABLED</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.DISABLED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</section>
+<section id="constants-blend-factors">
+<h3>Constants - Blend Factors<a class="headerlink" href="#constants-blend-factors" title="Permalink to this headline">¶</a></h3>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.ZERO">
+<span class="sig-name descname"><span class="pre">ZERO</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ZERO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.ONE">
+<span class="sig-name descname"><span class="pre">ONE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.SRC_COLOR">
+<span class="sig-name descname"><span class="pre">SRC_COLOR</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SRC_COLOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.ONE_MINUS_SRC_COLOR">
+<span class="sig-name descname"><span class="pre">ONE_MINUS_SRC_COLOR</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ONE_MINUS_SRC_COLOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.SRC_ALPHA">
+<span class="sig-name descname"><span class="pre">SRC_ALPHA</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SRC_ALPHA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.ONE_MINUS_SRC_ALPHA">
+<span class="sig-name descname"><span class="pre">ONE_MINUS_SRC_ALPHA</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ONE_MINUS_SRC_ALPHA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.DST_ALPHA">
+<span class="sig-name descname"><span class="pre">DST_ALPHA</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.DST_ALPHA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.ONE_MINUS_DST_ALPHA">
+<span class="sig-name descname"><span class="pre">ONE_MINUS_DST_ALPHA</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ONE_MINUS_DST_ALPHA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.DST_COLOR">
+<span class="sig-name descname"><span class="pre">DST_COLOR</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.DST_COLOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.SRC_ALPHA_SATURATE">
+<span class="sig-name descname"><span class="pre">SRC_ALPHA_SATURATE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SRC_ALPHA_SATURATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 </section>
 </section>
 <section id="matrix">
@@ -362,7 +438,8 @@ temporarily change the style and restore it to it’s previous state</p>
 <li><a class="reference internal" href="#">Drawing</a><ul>
 <li><a class="reference internal" href="#drawing-in-codea">Drawing in Codea</a></li>
 <li><a class="reference internal" href="#style">Style</a><ul>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#constants-blend-modes">Constants - Blend Modes</a></li>
+<li><a class="reference internal" href="#constants-blend-factors">Constants - Blend Factors</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#matrix">Matrix</a></li>
@@ -390,5 +467,6 @@ temporarily change the style and restore it to it’s previous state</p>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>
