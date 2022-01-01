@@ -319,11 +319,155 @@ quat
 
       :return: a normalized copy of this quaternion
 
+mat2
+####
+
 .. lua:class:: mat2
 
-.. lua:class:: mat3
+   A simple 2x2 matrix
 
-.. lua:class:: mat4
+   Each entry can be accessed via an index as well
+
+   .. code-block:: lua
+
+      m = mat2(1) -- init with diagonals set to 1
+      print(m[1]) -- prints '1.0'
+
+   .. lua:staticmethod:: mat2()
+                         mat2(s)
+                         mat2(v1, v2)
+                         mat2(m11, m12, m21, m22)
+
+      Create a new ``mat2``, default, diagonals, 2 ``vec2`` objects or all 4 entries
+
+   .. lua:method:: inverse()
+
+      :return: the inverse of this matrix
+
+   .. lua:method:: transpose()
+
+      :return: the transpose of this matrix
+
+   .. lua:method:: determinant()
+
+      :return: the determinant of this matrix
+
+   .. lua:method:: row(index)
+
+      :return: the row at a given ``index`` (starting at 1)
+      :rtype: vec2
+
+   .. lua:method:: column(index)
+
+      :return: the column at a given ``index`` (starting at 1)
+      :rtype: vec2
+
+
+mat3
+####
+
+.. lua:class:: mat2
+
+   A simple 3x3 matrix
+
+   Each entry can be accessed via an index as well
+
+   .. code-block:: lua
+
+      m = mat3(1) -- init with diagonals set to 1
+      print(m[1]) -- prints '1.0'
+
+   .. lua:staticmethod:: mat3()
+                         mat3(s)
+                         mat3(v1, v2, v3)
+                         mat3(m11, m12, m31, ..., m33)
+
+      Create a new ``mat3``, default, diagonals, 3 ``vec3`` objects or all 9 entries
+
+   .. lua:method:: inverse()
+
+      :return: the inverse of this matrix
+
+   .. lua:method:: transpose()
+
+      :return: the transpose of this matrix
+
+   .. lua:method:: determinant()
+
+      :return: the determinant of this matrix
+
+   .. lua:method:: row(index)
+
+      :return: the row at a given ``index`` (starting at 1)
+      :rtype: vec3
+
+   .. lua:method:: column(index)
+
+      :return: the column at a given ``index`` (starting at 1)
+      :rtype: vec3
+
+
+mat4
+####
+
+.. lua:class:: mat2
+
+   A simple 4x4 matrix, typically used for 3D homogonous transformations
+
+   Each entry can be accessed via an index as well
+
+   .. code-block:: lua
+
+      m = mat4(1) -- init with diagonals set to 1
+      print(m[1]) -- prints '1.0'
+
+   .. lua:staticmethod:: mat4()
+                         mat4(s)
+                         mat4(v1, v2, v3, v4)
+                         mat4(m11, m12, m31, m41, ..., m44)
+
+      Create a new ``mat4``, default, diagonals, 4 ``vec4`` objects or all 16 entries
+
+   .. lua:staticmethod:: lookAt(eye, center, up)
+
+   .. lua:staticmethod:: lookAt(matrix, eye, center, up)
+
+   .. lua:staticmethod:: orbit(origin, distance, x, y)
+
+   .. lua:staticmethod:: orbit(matrix, origin, distance, x, y)
+
+   .. lua:staticmethod:: ortho(left, right, top, bottom, [near, far])
+
+   .. lua:staticmethod:: perspective(fovy, aspect, near, far)
+
+   .. lua:staticmethod:: rotate(angle, axis)
+
+   .. lua:staticmethod:: rotate(matrix, angle, axis)
+
+   .. lua:method:: inverse()
+
+      :return: the inverse of this matrix
+
+   .. lua:method:: transpose()
+
+      :return: the transpose of this matrix
+
+   .. lua:method:: determinant()
+
+      :return: the determinant of this matrix
+
+   .. lua:method:: row(index)
+
+      :return: the row at a given ``index`` (starting at 1)
+      :rtype: vec3
+
+   .. lua:method:: column(index)
+
+      :return: the column at a given ``index`` (starting at 1)
+      :rtype: vec3
+
+aabb
+####
 
 .. lua:module:: bounds
 

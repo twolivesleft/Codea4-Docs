@@ -2,13 +2,13 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="style" href="style.html" /><link rel="prev" title="math types" href="math_types.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="style" href="style.html" /><link rel="prev" title="math types" href="math_types.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.3.2, furo 2021.11.16"/>
         <title>graphics - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
     
     
@@ -206,10 +206,10 @@
           </label>
         </div>
         <article role="main">
-          <section id="graphics">
+          <div class="section" id="graphics">
 <h1>graphics<a class="headerlink" href="#graphics" title="Permalink to this headline">¶</a></h1>
 <p><em>(global)</em></p>
-<section id="background">
+<div class="section" id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <p>Test!</p>
 <dl class="lua function">
@@ -220,7 +220,7 @@
 <dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cubeImage</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">mipLevel</span> <span class="pre">=</span> <span class="pre">0</span></em><span class="optional">]</span><span class="sig-paren">)</span></dt>
-<dd><p>Clears the current backgrond with the contents of a cube image, using the current camera settings to define eye direction</p>
+<dd><p>Clears the current background with the contents of a cube image, using the current camera settings to define eye direction</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -233,9 +233,90 @@
 <dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shader</span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-</section>
-<section id="vector-graphics">
+<dd><p>Clears the current background using a custom shader</p>
+<details class="summary-example">
+<summary>Example</summary><div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Skybox shader example that uses a cube image (typically loaded from a HDR image)</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+    <span class="c1">-- Create a custom background shader</span>
+    <span class="n">skybox</span> <span class="o">=</span> <span class="n">shader</span><span class="p">{</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">"Skybox"</span><span class="p">,</span>
+
+        <span class="n">properties</span> <span class="o">=</span>
+        <span class="p">{</span>
+            <span class="p">{</span><span class="s2">"environment"</span><span class="p">,</span> <span class="s2">"texture"</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">"mipLevel"</span><span class="p">,</span> <span class="s2">"float"</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="p">},</span>
+
+        <span class="n">pass</span> <span class="o">=</span>
+        <span class="p">{</span>
+            <span class="n">cullFace</span> <span class="o">=</span> <span class="s2">"none"</span><span class="p">,</span> <span class="c1">-- backgrounds don't need culling</span>
+            <span class="n">depthWrite</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">-- no need to write to depth buffer</span>
+            <span class="n">depthFunc</span> <span class="o">=</span> <span class="s2">"always"</span><span class="p">,</span> <span class="c1">-- no need for depth testing</span>
+            <span class="n">blendMode</span> <span class="o">=</span> <span class="s2">"disabled"</span><span class="p">,</span> <span class="c1">-- no need for blending</span>
+            <span class="n">renderQueue</span> <span class="o">=</span> <span class="s2">"background"</span><span class="p">,</span> <span class="c1">-- render behind everything else</span>
+
+            <span class="n">vertex</span> <span class="o">=</span>
+            <span class="s">[[</span>
+<span class="s">            #version 430</span>
+<span class="s">            #include &lt;codea/common.glsl&gt;</span>
+
+<span class="s">            layout (location = POSITION) in vec3 a_position;</span>
+
+<span class="s">            layout (location = 0) out vec3 v_eyeDirection;</span>
+
+<span class="s">            void main()</span>
+<span class="s">            {</span>
+<span class="s">                // vertex layout is a quad between -1 and 1, use this to unproject and calculate eye direction from view/perspective matrix</span>
+<span class="s">                vec3 unprojected = (u_invProj * vec4(a_position, 1)).xyz;</span>
+<span class="s">                v_eyeDirection = mat3(u_invView) * unprojected;</span>
+
+<span class="s">                gl_Position = vec4(a_position.xy, 1, 1);</span>
+<span class="s">            }</span>
+<span class="s">            ]]</span><span class="p">,</span>
+
+            <span class="n">fragment</span> <span class="o">=</span>
+            <span class="s">[[</span>
+<span class="s">                #version 430</span>
+<span class="s">                #include &lt;codea/common.glsl&gt;</span>
+
+<span class="s">                layout (location = 0) in vec3 v_eyeDirection;</span>
+<span class="s">                out vec4 fragColor;</span>
+
+<span class="s">                uniform samplerCube environment;</span>
+<span class="s">                uniform float mipLevel;</span>
+
+<span class="s">                void main()</span>
+<span class="s">                {</span>
+<span class="s">                    vec3 rayDir = normalize(v_eyeDirection);</span>
+<span class="s">                    rayDir = vec3(rayDir.x, rayDir.y, rayDir.z);</span>
+<span class="s">                    vec3 col = texture(environment, rayDir, mipLevel).rgb;</span>
+<span class="s">                    fragColor = vec4(col, 1.0);</span>
+<span class="s">                }</span>
+<span class="s">            ]]</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">local</span> <span class="n">hdr</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">cube</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">hdr</span><span class="p">.</span><span class="n">Norway_Forest</span><span class="p">))</span>
+    <span class="n">skybox</span><span class="p">.</span><span class="n">environment</span> <span class="o">=</span> <span class="n">hdr</span><span class="p">:</span><span class="n">generateIrradiance</span><span class="p">()</span>
+
+    <span class="c1">-- Test mip level adjustment</span>
+    <span class="n">parameter</span><span class="p">.</span><span class="n">number</span><span class="p">(</span><span class="s2">"MipLevel"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">mip</span><span class="p">)</span>
+        <span class="n">skybox</span><span class="p">.</span><span class="n">mipLevel</span> <span class="o">=</span> <span class="n">mip</span>
+    <span class="kr">end</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
+    <span class="n">matrix</span><span class="p">.</span><span class="n">perspective</span><span class="p">()</span>
+    <span class="n">background</span><span class="p">(</span><span class="n">skybox</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</details></dd></dl>
+<p>}</p>
+</div>
+<div class="section" id="vector-graphics">
 <h2>Vector Graphics<a class="headerlink" href="#vector-graphics" title="Permalink to this headline">¶</a></h2>
 <p>A set of graphics functions which are so commonly used they are in the global namespace for convenience</p>
 <dl class="lua function">
@@ -260,11 +341,39 @@
 <dd><p>Draws a closed 2D polygon with an arbitrary number of points</p>
 </dd></dl>
 <dl class="lua function">
+<dt class="sig sig-object lua" id="bezier">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">bezier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x1</span></em>, <em class="sig-param"><span class="pre">y1</span></em>, <em class="sig-param"><span class="pre">cx1</span></em>, <em class="sig-param"><span class="pre">cy1</span></em>, <em class="sig-param"><span class="pre">cx2</span></em>, <em class="sig-param"><span class="pre">cy2</span></em>, <em class="sig-param"><span class="pre">x2</span></em>, <em class="sig-param"><span class="pre">y2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bezier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a quadratic bezier curve using four points</p>
+</dd></dl>
+<dl class="lua function">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">bezier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cx1</span></em>, <em class="sig-param"><span class="pre">cy1</span></em>, <em class="sig-param"><span class="pre">cx2</span></em>, <em class="sig-param"><span class="pre">cy2</span></em>, <em class="sig-param"><span class="pre">x2</span></em>, <em class="sig-param"><span class="pre">y2</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Variation of bezier command used as part of shape drawing</p>
+</dd></dl>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="arc">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">arc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">radius</span></em>, <em class="sig-param"><span class="pre">startAngle</span></em>, <em class="sig-param"><span class="pre">endAngle</span></em>, <em class="sig-param"><span class="pre">dir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a 2D arc with a given origin, radius and start, end angles + direction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – x coordinate of the arc origin</p></li>
+<li><p><strong>y</strong> – y coordinate of the arc origin</p></li>
+<li><p><strong>radius</strong> – the radius arc</p></li>
+<li><p><strong>startAngle</strong> – the start angle of the arc</p></li>
+<li><p><strong>endAngle</strong> – the end angle of the arc</p></li>
+<li><p><strong>dir</strong> – the direction of the arc, 1 or clockwise, -1 for anti-clockwise</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua function">
 <dt class="sig sig-object lua" id="ellipse">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">ellipse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ellipse" title="Permalink to this definition">¶</a></dt>
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">ellipse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">r</span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
+<dd><p>Draw an ellipse with a given origin point and width / height (or radius)</p>
+</dd></dl>
 <dl class="lua function">
 <dt class="sig sig-object lua" id="rect">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rect" title="Permalink to this definition">¶</a></dt>
@@ -275,8 +384,8 @@
 <dd><p>Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on <code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.shapeMode()</span></code></p>
 <p>Additional arguments allow for rounded corners (either all one radius or four separate radii)</p>
 </dd></dl>
-</section>
-<section id="sprites">
+</div>
+<div class="section" id="sprites">
 <h2>Sprites<a class="headerlink" href="#sprites" title="Permalink to this headline">¶</a></h2>
 <dl class="lua function">
 <dt class="sig sig-object lua" id="sprite">
@@ -300,8 +409,8 @@
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shader</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
-</section>
-<section id="gizmos">
+</div>
+<div class="section" id="gizmos">
 <h2>Gizmos<a class="headerlink" href="#gizmos" title="Permalink to this headline">¶</a></h2>
 <p>Gizmos are useful for drawing shapes in 2D/3D space for debugging and editing</p>
 <span class="target" id="module-gizmos"></span><dl class="lua function">
@@ -309,8 +418,8 @@
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">gizmos.</span></span><span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x1</span></em>, <em class="sig-param"><span class="pre">y1</span></em>, <em class="sig-param"><span class="pre">z1</span></em>, <em class="sig-param"><span class="pre">x2</span></em>, <em class="sig-param"><span class="pre">y2</span></em>, <em class="sig-param"><span class="pre">z2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gizmos.line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draws an arbitrary 3D antialiased line</p>
 </dd></dl>
-</section>
-<section id="module-context">
+</div>
+<div class="section" id="module-context">
 <span id="contexts"></span><h2>Contexts<a class="headerlink" href="#module-context" title="Permalink to this headline">¶</a></h2>
 <dl class="lua function">
 <dt class="sig sig-object lua" id="context.push">
@@ -331,8 +440,8 @@
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">context.</span></span><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#context.pop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pops the current image from the context if one exists, subsequent drawing operations are again applied to the main context (i.e. the display)</p>
 </dd></dl>
-</section>
-</section>
+</div>
+</div>
 
         </article>
       </div>
@@ -407,5 +516,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     </body>
 </html>

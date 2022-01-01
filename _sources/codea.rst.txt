@@ -30,18 +30,49 @@ contains some global functions:
       end
    end
 
-Each of these functions are called by Codea for specific reasons, such as
-`setup()` being called when the project begins running, while draw is called
+Each of these functions are called by Codea in response to specific events, such as
+``setup()`` being called when the project begins running, while ``draw()`` is called
 every time the screen is about to be redrawn
 
-The `touched(touch)` callback is called in reponse to the screen being touched
-(on iOS) or a mouse press (on Mac OS)
+The ``touched(touch)`` callback is called in reponse to the screen being touched
+(on iOS) or a mouse press (on MacOS)
 
 setup()
 -------
 
+This function is called exactly once, right before the first frame is about to be drawn and is an ideal spot to put your initialisation code, setting everything up for when ``draw()`` will be called!
+
 draw()
 ------
 
+This is the meat and potatoes of any Codea app, where you will do the majority of your update and drawing logic
+
 touched(touch)
 --------------
+
+This is your primary source of interaction with users
+
+Additional Events
+-----------------
+
+update(dt)
+##########
+
+As an alternative to doing your update logic in ``draw()`` you can also use ``update(dt)``, where ``dt`` is the amount of delta time since last frame (also available in time.delta)
+
+fixedUpdate(dt)
+###############
+
+A special update function that is called a fixed number of times per second regardless of the current framerate, ideal for physics calculations and simulations that require a stable stepping rate. The delta time value passed in is the same as :lua:`time.fixedDelta`
+
+keyPressed(keyPress)
+####################
+
+keyReleased(keyPress)
+#####################
+
+scroll(gesture)
+###############
+
+hover(gesture)
+###############
