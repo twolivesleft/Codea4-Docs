@@ -1,2 +1,2 @@
 furo==2021.11.16
-sphinxcontrib-luadomain=1.1.2
+sphinxcontrib-luadomain==1.1.2
