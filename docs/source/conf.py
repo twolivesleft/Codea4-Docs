@@ -31,7 +31,9 @@ release = '4.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinxcontrib.luadomain'
+    'sphinxcontrib.luadomain',
+    'sphinx_copybutton',
+    'sphinx_toolbox.collapse'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

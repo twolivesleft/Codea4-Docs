@@ -42,6 +42,55 @@ A module for setting the current drawing style used with various graphics functi
    Sets/gets the stroke width for use in vector drawing operations
 
 
+Constants - Style
+#################
+
+.. lua:attribute:: CORNER: const
+
+
+.. lua:attribute:: CORNERS: const
+
+
+.. lua:attribute:: CENTER: const
+
+
+.. lua:attribute:: RADIUS: const
+
+
+.. lua:attribute:: LEFT: const
+
+
+.. lua:attribute:: CENTER: const
+
+
+.. lua:attribute:: RIGHT: const
+
+
+.. lua:attribute:: TOP: const
+
+
+.. lua:attribute:: MIDDLE: const
+
+
+.. lua:attribute:: BOTTOM: const
+
+
+.. lua:attribute:: BASELINE: const
+
+
+.. lua:attribute:: ROUND: const
+
+
+.. lua:attribute:: SQUARE: const
+
+
+.. lua:attribute:: PROJECT: const
+
+
+.. lua:attribute:: MITER: const
+
+
+.. lua:attribute:: BEVEL: const
 
 
 Constants - Blend Modes
@@ -86,29 +135,145 @@ Constants - Blend Factors
 
 .. lua:attribute:: ZERO: const
 
+   Blend factor of (0, 0, 0, 0)
 
 .. lua:attribute:: ONE: const
 
+   Blend factor or (1, 1, 1, 1)
 
 .. lua:attribute:: SRC_COLOR: const
 
+   Blend factor of (Rs, Gs, Bs, As)
 
 .. lua:attribute:: ONE_MINUS_SRC_COLOR: const
+
 
 
 .. lua:attribute:: SRC_ALPHA: const
 
 
+
 .. lua:attribute:: ONE_MINUS_SRC_ALPHA: const
+
 
 
 .. lua:attribute:: DST_ALPHA: const
 
 
+
 .. lua:attribute:: ONE_MINUS_DST_ALPHA: const
+
 
 
 .. lua:attribute:: DST_COLOR: const
 
 
+
 .. lua:attribute:: SRC_ALPHA_SATURATE: const
+
+
+
+Constants - Blend Functions
+###########################
+
+Used with :lua:`style.blendFunc` to set the current blend function (for color, alpha or both)
+
+.. lua:attribute:: EQUATION_ADD: const
+
+
+.. lua:attribute:: EQUATION_SUB: const
+
+
+.. lua:attribute:: EQUATION_REVSUB: const
+
+
+.. lua:attribute:: EQUATION_MIN: const
+
+
+.. lua:attribute:: EQUATION_MAX: const
+
+
+Constants - Render Queues
+#########################
+
+.. lua:attribute:: BACKGROUND: const
+
+
+.. lua:attribute:: OPAQUE: const
+
+
+.. lua:attribute:: TRANSPARENT: const
+
+
+.. lua:attribute:: OVERLAY: const
+
+Constants - Color Mask
+######################
+
+Used by shaders to control which color components are written to color buffers (i.e. images and the main context)
+
+.. lua:attribute:: COLOR_MASK_NONE: const
+
+
+.. lua:attribute:: COLOR_MASK_RED: const
+
+
+.. lua:attribute:: COLOR_MASK_GREEN: const
+
+
+.. lua:attribute:: COLOR_MASK_BLUE: const
+
+
+.. lua:attribute:: COLOR_MASK_ALPHA: const
+
+
+.. lua:attribute:: COLOR_MASK_RGB: const
+
+
+.. lua:attribute:: COLOR_MASK_RGBA: const
+
+
+
+Constants - Culling
+###################
+
+Used by shaders / meshes to control which triangles are culled (based on winding order)
+
+.. lua:attribute:: CULL_FACE_NONE: const
+
+
+.. lua:attribute:: CULL_FACE_FRONT: const
+
+
+.. lua:attribute:: CULL_FACE_BACK: const
+
+Constants - Depth
+#################
+
+Used by shaders to control depth rejection for opaque and translucent fragments
+
+.. lua:attribute:: DEPTH_WRITE_ENABLED: const
+
+
+.. lua:attribute:: DEPTH_WRITE_DISABLED: const
+
+
+.. lua:attribute:: DEPTH_FUNC_NEVER: const
+
+
+.. lua:attribute:: DEPTH_FUNC_LESS: const
+
+
+.. lua:attribute:: DEPTH_FUNC_EQUAL: const
+
+
+.. lua:attribute:: DEPTH_FUNC_LESS_EQUAL: const
+
+
+.. lua:attribute:: DEPTH_FUNC_GREATER: const
+
+
+.. lua:attribute:: DEPTH_FUNC_NOT_EQUAL: const
+
+
+.. lua:attribute:: DEPTH_FUNC_GREATER_EQUAL: const
