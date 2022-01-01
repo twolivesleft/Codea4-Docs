@@ -36,6 +36,14 @@ A set of graphics functions which are so commonly used they are in the global na
 
    Variation of line command used as part of shape drawing
 
+.. lua:function:: polyline(x1, y1, x2, y2, ... xn, yn)
+
+   Draws a 2D line with an arbitrary number of points
+
+.. lua:function:: polygon(x1, y1, x2, y2, ... xn, yn)
+
+   Draws a closed 2D polygon with an arbitrary number of points
+
 .. lua:function:: ellipse(x, y, w, h)
                   ellipse(x, y, r)
 
@@ -60,6 +68,17 @@ Sprites
                   sprite(sprite.slice, x, y, w)
                   sprite(sprite.slice, x, y, w, h)
                   sprite(shader, x, y, w, h)
+
+Gizmos
+######
+
+Gizmos are useful for drawing shapes in 2D/3D space for debugging and editing
+
+.. lua:module:: gizmos
+
+.. lua:function:: line(x1, y1, z1, x2, y2, z2)
+
+   Draws an arbitrary 3D antialiased line
 
 Contexts
 ########
