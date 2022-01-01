@@ -3,6 +3,8 @@ math types
 
 .. lua:class:: vec2
 
+   .. lua:staticmethod:: vec2(x, y)
+
 .. lua:class:: vec3
 
 .. lua:class:: vec4

@@ -166,6 +166,8 @@
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types/graphics.html">graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/image.html">image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/shader.html">shader</a></li>
@@ -209,28 +211,22 @@
 drawing both 2D and 3D graphics</p>
 <p>The user-defined global <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">draw</span></span><span class="punctuation"><span class="pre">()</span></span></code> function is called once per frame to
 update the contents of the screen</p>
-<p>The <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">background</span></span><span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">r</span></span><span class="punctuation"><span class="pre">,</span></span><span class="name"><span class="pre">g</span></span><span class="punctuation"><span class="pre">,</span></span><span class="name"><span class="pre">b</span></span><span class="punctuation"><span class="pre">,</span></span><span class="name"><span class="pre">a</span></span><span class="punctuation"><span class="pre">)</span></span></code> function is used to clear the background to a
-given color. When this isn’t called the contents of the background will stay
-the same as the preivous frame</p>
-<p>Codea uses an hybrid-immediate mode drawing system, where various built-in
-functions can be used to paint objects to the screen when called, such as
-<code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">line</span></span><span class="punctuation"><span class="pre">()</span></span></code>, <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">sprite</span></span><span class="punctuation"><span class="pre">()</span></span></code> and <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">rect</span></span><span class="punctuation"><span class="pre">()</span></span></code></p>
-<p>These functions use the current render state, defined by the current style and
-matrix in use, which effects things like fill color and stroke color / width</p>
+<p>The <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">background</span></span><span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">r</span></span><span class="punctuation"><span class="pre">,</span></span><span class="name"><span class="pre">g</span></span><span class="punctuation"><span class="pre">,</span></span><span class="name"><span class="pre">b</span></span><span class="punctuation"><span class="pre">,</span></span><span class="name"><span class="pre">a</span></span><span class="punctuation"><span class="pre">)</span></span></code> function is used to clear the background to a given color. When this isn’t called the contents of the background will stay the same as the preivous frame</p>
+<p>Codea uses an hybrid-immediate mode drawing system, where various built-in functions can be used to paint objects to the screen when called, such as <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">line</span></span><span class="punctuation"><span class="pre">()</span></span></code>, <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">sprite</span></span><span class="punctuation"><span class="pre">()</span></span></code> and <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">rect</span></span><span class="punctuation"><span class="pre">()</span></span></code></p>
+<p>These functions use the current render state, defined by the current style and matrix in use, which effects things like fill color and stroke color / width</p>
 </section>
 <section id="style">
 <h2>Style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h2>
 <p>The style module contains functions that set the current drawing state</p>
-<p>This module uses a fluent syntax, so any call that does not return a value,
-will instead return the style module itself, allowing multiple style commands
-to be chained together:</p>
+<p>This module uses a fluent syntax, so any call that does not return a value, will instead return the style module itself, allowing multiple style commands to be chained together:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Draw a red ellipse with a 5px white stroke</span>
-<span class="n">style</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">red</span><span class="p">).</span><span class="n">stroke</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">white</span><span class="p">).</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">style</span><span class="p">.</span><span class="n">push</span><span class="p">().</span><span class="n">fill</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">red</span><span class="p">).</span><span class="n">stroke</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">white</span><span class="p">).</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">ellipse</span><span class="p">(</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">style</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Anywhere <code class="docutils literal notranslate"><span class="pre">&lt;color&gt;</span></code> is used as a parameter, the following forms can be
-used:</p>
+<p>See <a class="reference internal" href="types/style.html"><span class="doc">style</span></a> for a complete reference of all functionality</p>
+<p>Anywhere <code class="docutils literal notranslate"><span class="pre">&lt;color&gt;</span></code> is used as a parameter, the following forms can be used:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">style</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="c1">-- separate color components in the range 0-255</span>
 <span class="n">style</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="c1">-- only red, green, blue color components with alpha assumed to be 255</span>
 <span class="n">style</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">grey</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span> <span class="c1">-- only greyscale and alpha</span>
@@ -238,122 +234,6 @@ used:</p>
 <span class="n">style</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="c1">-- a color object</span>
 </pre></div>
 </div>
-<span class="target" id="module-style"></span><dl class="lua function">
-<dt class="sig sig-object lua" id="style.push">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.push" title="Permalink to this definition">¶</a></dt>
-<dt class="sig sig-object lua" id="style.pop">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.pop" title="Permalink to this definition">¶</a></dt>
-<dt class="sig sig-object lua" id="style.reset">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Functions for manipulating the style stack, use these when you want to
-temporarily change the style and restore it to it’s previous state</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">reset()</span></code> to restore the default style</p>
-</dd></dl>
-<dl class="lua function">
-<dt class="sig sig-object lua" id="style.fill">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">&lt;color&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.fill" title="Permalink to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a</span></span></span></dt>
-<dd><p>Sets/gets the fill color for use in vector drawing operations</p>
-</dd></dl>
-<dl class="lua function">
-<dt class="sig sig-object lua" id="style.stroke">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">stroke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.stroke" title="Permalink to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">stroke</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a</span></span></span></dt>
-<dd><p>Sets/gets the stroke color for use in vector drawing operations</p>
-</dd></dl>
-<dl class="lua function">
-<dt class="sig sig-object lua" id="style.strokeWidth">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">strokeWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.strokeWidth" title="Permalink to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<span class="sig-name descname"><span class="pre">stroke():</span> <span class="pre">number</span></span></dt>
-<dd><p>Sets/gets the stroke width for use in vector drawing operations</p>
-</dd></dl>
-<section id="constants-blend-modes">
-<h3>Constants - Blend Modes<a class="headerlink" href="#constants-blend-modes" title="Permalink to this headline">¶</a></h3>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.NORMAL">
-<span class="sig-name descname"><span class="pre">NORMAL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.NORMAL" title="Permalink to this definition">¶</a></dt>
-<dd><dl>
-<dt>The default blend mode (alpha blended transparency)</dt><dd><div class="math-wrapper"><div class="math notranslate nohighlight">
-\[RGBA_{final} = RGBA_{src} * A_{src} + RGBA_{dst} * (1-A_{src})\]</div></div>
-</dd>
-</dl>
-</dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.ADDITIVE">
-<span class="sig-name descname"><span class="pre">ADDITIVE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ADDITIVE" title="Permalink to this definition">¶</a></dt>
-<dd><p>Additive blend mode</p>
-</dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.MULTIPLY">
-<span class="sig-name descname"><span class="pre">MULTIPLY</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.MULTIPLY" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.SCREEN">
-<span class="sig-name descname"><span class="pre">SCREEN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SCREEN" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.LIGHTEN">
-<span class="sig-name descname"><span class="pre">LIGHTEN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.LIGHTEN" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.LINEAR_BURN">
-<span class="sig-name descname"><span class="pre">LINEAR_BURN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.LINEAR_BURN" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.PREMULTIPLIED">
-<span class="sig-name descname"><span class="pre">PREMULTIPLIED</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.PREMULTIPLIED" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.DISABLED">
-<span class="sig-name descname"><span class="pre">DISABLED</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.DISABLED" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</section>
-<section id="constants-blend-factors">
-<h3>Constants - Blend Factors<a class="headerlink" href="#constants-blend-factors" title="Permalink to this headline">¶</a></h3>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.ZERO">
-<span class="sig-name descname"><span class="pre">ZERO</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ZERO" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.ONE">
-<span class="sig-name descname"><span class="pre">ONE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ONE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.SRC_COLOR">
-<span class="sig-name descname"><span class="pre">SRC_COLOR</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SRC_COLOR" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.ONE_MINUS_SRC_COLOR">
-<span class="sig-name descname"><span class="pre">ONE_MINUS_SRC_COLOR</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ONE_MINUS_SRC_COLOR" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.SRC_ALPHA">
-<span class="sig-name descname"><span class="pre">SRC_ALPHA</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SRC_ALPHA" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.ONE_MINUS_SRC_ALPHA">
-<span class="sig-name descname"><span class="pre">ONE_MINUS_SRC_ALPHA</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ONE_MINUS_SRC_ALPHA" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.DST_ALPHA">
-<span class="sig-name descname"><span class="pre">DST_ALPHA</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.DST_ALPHA" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.ONE_MINUS_DST_ALPHA">
-<span class="sig-name descname"><span class="pre">ONE_MINUS_DST_ALPHA</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ONE_MINUS_DST_ALPHA" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.DST_COLOR">
-<span class="sig-name descname"><span class="pre">DST_COLOR</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.DST_COLOR" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.SRC_ALPHA_SATURATE">
-<span class="sig-name descname"><span class="pre">SRC_ALPHA_SATURATE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SRC_ALPHA_SATURATE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</section>
 </section>
 <section id="matrix">
 <h2>Matrix<a class="headerlink" href="#matrix" title="Permalink to this headline">¶</a></h2>
@@ -437,11 +317,7 @@ temporarily change the style and restore it to it’s previous state</p>
             <ul>
 <li><a class="reference internal" href="#">Drawing</a><ul>
 <li><a class="reference internal" href="#drawing-in-codea">Drawing in Codea</a></li>
-<li><a class="reference internal" href="#style">Style</a><ul>
-<li><a class="reference internal" href="#constants-blend-modes">Constants - Blend Modes</a></li>
-<li><a class="reference internal" href="#constants-blend-factors">Constants - Blend Factors</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#style">Style</a></li>
 <li><a class="reference internal" href="#matrix">Matrix</a></li>
 <li><a class="reference internal" href="#context">Context</a></li>
 <li><a class="reference internal" href="#backround">Backround</a></li>
@@ -467,6 +343,5 @@ temporarily change the style and restore it to it’s previous state</p>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

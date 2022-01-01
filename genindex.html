@@ -164,6 +164,8 @@
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types/graphics.html">graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/image.html">image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types/shader.html">shader</a></li>
@@ -202,7 +204,7 @@
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#J"><strong>J</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#J"><strong>J</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
 </section>
 <section id="A" class="genindex-section">
   <h2>A</h2>
@@ -222,6 +224,8 @@
   <h2>B</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="types/graphics.html#background">background() (built-in function)</a>, <a href="types/graphics.html#background">[1]</a>, <a href="types/graphics.html#background">[2]</a>
+</li>
         <li><a href="types/physics3d.html#physics3d.ballSocket">ballSocket (class in physics3d)</a>
 </li>
         <li><a href="types/physics2d.html#physics2d.body">body (class in physics2d)</a>
@@ -264,6 +268,10 @@
 </li>
         <li><a href="types/physics3d.html#physics3d.coneTwist">coneTwist (class in physics3d)</a>
 </li>
+        <li><a href="types/graphics.html#module-context">context (module)</a>
+</li>
+        <li><a href="types/image.html#image.cube">cube() (image static method)</a>, <a href="types/image.html#image.cube">[1]</a>, <a href="types/image.html#image.cube">[2]</a>
+</li>
         <li><a href="types/physics3d.html#physics3d.cylinder">cylinder (class in physics3d)</a>
 </li>
     </ul></td>
@@ -284,6 +292,8 @@
   <h2>E</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="types/graphics.html#ellipse">ellipse() (built-in function)</a>
+</li>
         <li><a href="types/entity.html#entity">entity (built-in class)</a>
 </li>
     </ul></td>
@@ -300,7 +310,7 @@
   <h2>F</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="drawing.html#style.fill">fill() (in module style)</a>
+        <li><a href="types/style.html#style.fill">fill() (in module style)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
@@ -316,11 +326,13 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="types/physics2d.html#physics2d.gear">gear (class in physics2d)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="types/image.html#image.generateIrradiance">generateIrradiance() (image method)</a>, <a href="types/image.html#image.generateIrradiance">[1]</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="types/physics3d.html#physics3d.generic">generic (class in physics3d)</a>
+</li>
+        <li><a href="types/style.html#style.get">get() (in module style)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -346,16 +358,18 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="types/image.html#image">image (built-in class)</a>
 </li>
+        <li><a href="types/image.html#image.image">image() (image static method)</a>
+</li>
         <li><a href="types/image.html#image.cubeMap">image.cubeMap (attribute)</a>
 </li>
         <li><a href="types/image.html#image.depth">image.depth (attribute)</a>
 </li>
         <li><a href="types/image.html#image.hasMips">image.hasMips (attribute)</a>
 </li>
-        <li><a href="types/image.html#image.height">image.height (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="types/image.html#image.height">image.height (attribute)</a>
+</li>
         <li><a href="types/image.html#image.key">image.key (attribute)</a>
 </li>
         <li><a href="types/image.html#image.numLayers">image.numLayers (attribute)</a>
@@ -380,6 +394,16 @@
           <li><a href="types/physics3d.html#physics3d.joint">(class in physics3d)</a>
 </li>
         </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="types/graphics.html#line">line() (built-in function)</a>, <a href="types/graphics.html#line">[1]</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -420,14 +444,22 @@
 </li>
         <li><a href="types/physics2d.html#physics2d.polygon">polygon (class in physics2d)</a>
 </li>
+        <li><a href="types/graphics.html#context.pop">pop() (in module context)</a>
+
+        <ul>
+          <li><a href="types/style.html#style.pop">(in module style)</a>
+</li>
+        </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="drawing.html#style.pop">pop() (in module style)</a>
-</li>
         <li><a href="types/physics2d.html#physics2d.pulley">pulley (class in physics2d)</a>
 </li>
-        <li><a href="drawing.html#style.push">push() (in module style)</a>
+        <li><a href="types/graphics.html#context.push">push() (in module context)</a>
+
+        <ul>
+          <li><a href="types/style.html#style.push">(in module style)</a>
 </li>
+        </ul></li>
     </ul></td>
   </tr></table>
 </section>
@@ -446,10 +478,14 @@
   <h2>R</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="drawing.html#style.reset">reset() (in module style)</a>
+        <li><a href="types/image.html#image.read">read() (image static method)</a>
+</li>
+        <li><a href="types/graphics.html#rect">rect() (built-in function)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="types/style.html#style.reset">reset() (in module style)</a>
+</li>
         <li><a href="types/physics2d.html#physics2d.rope">rope (class in physics2d)</a>
 </li>
     </ul></td>
@@ -474,7 +510,11 @@
 </li>
         <li><a href="types/image.html#samplerState.w">samplerState.w (attribute)</a>
 </li>
+        <li><a href="types/image.html#image.save">save() (image static method)</a>
+</li>
         <li><a href="types/scene.html#scene">scene (built-in class)</a>
+</li>
+        <li><a href="types/style.html#style.set">set() (in module style)</a>
 </li>
         <li><a href="types/shader.html#shader">shader (built-in class)</a>
 </li>
@@ -490,51 +530,53 @@
 </li>
         <li><a href="types/physics3d.html#physics3d.sphere">sphere (class in physics3d)</a>
 </li>
+        <li><a href="types/graphics.html#sprite">sprite() (built-in function)</a>
+</li>
         <li><a href="types/image.html#sprite.slice">sprite.slice (built-in class)</a>
 </li>
-        <li><a href="drawing.html#style.stroke">stroke() (in module style)</a>
-</li>
-        <li><a href="drawing.html#style.strokeWidth">strokeWidth() (in module style)</a>
-</li>
-        <li><a href="drawing.html#module-style">style (module)</a>
+        <li><a href="types/style.html#style.stroke">stroke() (in module style)</a>, <a href="types/style.html#style.stroke">[1]</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="drawing.html#style.style.ADDITIVE">style.style.ADDITIVE (attribute)</a>
+        <li><a href="types/style.html#style.strokeWidth">strokeWidth() (in module style)</a>
 </li>
-        <li><a href="drawing.html#style.style.DISABLED">style.style.DISABLED (attribute)</a>
+        <li><a href="types/style.html#module-style">style (module)</a>
 </li>
-        <li><a href="drawing.html#style.style.DST_ALPHA">style.style.DST_ALPHA (attribute)</a>
+        <li><a href="types/style.html#style.style.ADDITIVE">style.style.ADDITIVE (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.DST_COLOR">style.style.DST_COLOR (attribute)</a>
+        <li><a href="types/style.html#style.style.DISABLED">style.style.DISABLED (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.LIGHTEN">style.style.LIGHTEN (attribute)</a>
+        <li><a href="types/style.html#style.style.DST_ALPHA">style.style.DST_ALPHA (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.LINEAR_BURN">style.style.LINEAR_BURN (attribute)</a>
+        <li><a href="types/style.html#style.style.DST_COLOR">style.style.DST_COLOR (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.MULTIPLY">style.style.MULTIPLY (attribute)</a>
+        <li><a href="types/style.html#style.style.LIGHTEN">style.style.LIGHTEN (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.NORMAL">style.style.NORMAL (attribute)</a>
+        <li><a href="types/style.html#style.style.LINEAR_BURN">style.style.LINEAR_BURN (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.ONE">style.style.ONE (attribute)</a>
+        <li><a href="types/style.html#style.style.MULTIPLY">style.style.MULTIPLY (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.ONE_MINUS_DST_ALPHA">style.style.ONE_MINUS_DST_ALPHA (attribute)</a>
+        <li><a href="types/style.html#style.style.NORMAL">style.style.NORMAL (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.ONE_MINUS_SRC_ALPHA">style.style.ONE_MINUS_SRC_ALPHA (attribute)</a>
+        <li><a href="types/style.html#style.style.ONE">style.style.ONE (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.ONE_MINUS_SRC_COLOR">style.style.ONE_MINUS_SRC_COLOR (attribute)</a>
+        <li><a href="types/style.html#style.style.ONE_MINUS_DST_ALPHA">style.style.ONE_MINUS_DST_ALPHA (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.PREMULTIPLIED">style.style.PREMULTIPLIED (attribute)</a>
+        <li><a href="types/style.html#style.style.ONE_MINUS_SRC_ALPHA">style.style.ONE_MINUS_SRC_ALPHA (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.SCREEN">style.style.SCREEN (attribute)</a>
+        <li><a href="types/style.html#style.style.ONE_MINUS_SRC_COLOR">style.style.ONE_MINUS_SRC_COLOR (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.SRC_ALPHA">style.style.SRC_ALPHA (attribute)</a>
+        <li><a href="types/style.html#style.style.PREMULTIPLIED">style.style.PREMULTIPLIED (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.SRC_ALPHA_SATURATE">style.style.SRC_ALPHA_SATURATE (attribute)</a>
+        <li><a href="types/style.html#style.style.SCREEN">style.style.SCREEN (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.SRC_COLOR">style.style.SRC_COLOR (attribute)</a>
+        <li><a href="types/style.html#style.style.SRC_ALPHA">style.style.SRC_ALPHA (attribute)</a>
 </li>
-        <li><a href="drawing.html#style.style.ZERO">style.style.ZERO (attribute)</a>
+        <li><a href="types/style.html#style.style.SRC_ALPHA_SATURATE">style.style.SRC_ALPHA_SATURATE (attribute)</a>
+</li>
+        <li><a href="types/style.html#style.style.SRC_COLOR">style.style.SRC_COLOR (attribute)</a>
+</li>
+        <li><a href="types/style.html#style.style.ZERO">style.style.ZERO (attribute)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -547,6 +589,10 @@
         <li><a href="types/physics2d.html#physics2d.target">target (class in physics2d)</a>
 </li>
     </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="types/style.html#style.tint">tint() (in module style)</a>
+</li>
+    </ul></td>
   </tr></table>
 </section>
 
@@ -556,11 +602,15 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="types/math_types.html#vec2">vec2 (built-in class)</a>
 </li>
+        <li><a href="types/math_types.html#vec2.vec2">vec2() (vec2 static method)</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="types/math_types.html#vec3">vec3 (built-in class)</a>
 </li>
         <li><a href="types/math_types.html#vec4">vec4 (built-in class)</a>
+</li>
+        <li><a href="types/image.html#image.volume">volume() (image static method)</a>
 </li>
     </ul></td>
   </tr></table>

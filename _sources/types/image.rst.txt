@@ -19,7 +19,7 @@ Represents an image, used by codea for drawing to the screen and texturing meshe
 
 .. lua:class:: image
 
-   .. lua:staticmethod:: image(width, height, hasMips = false, numLayers = 1, format = image.rgba, depthFormat = none): image
+   .. lua:staticmethod:: image(width, height, [hasMips = false, numLayers = 1, format = image.rgba, depthFormat = none])
 
       Create a blank 2D image (default format is `rgba`)
 
@@ -36,25 +36,25 @@ Represents an image, used by codea for drawing to the screen and texturing meshe
       :param depthFormat: The image depth format
       :type depthFormat: depth format
 
-   .. lua:staticmethod:: image.cube(size): image
+   .. lua:staticmethod:: image.cube(size)
 
       Cube a blank cube image (6 faces with equal sized dimensions)
 
       :param size: The size of the image cube
       :type size: integer
 
-   .. lua:staticmethod:: image.cube(equirect): image
+   .. lua:staticmethod:: image.cube(equirect)
 
       Creates a cube image from a single equirect image (i.e. hdr)
 
       :param equirect: The source equirect image
       :type equirect: image
 
-   .. lua:staticmethod:: image.cube(imageNX, imagePX, imageNY, imagePY, imageNZ, imagePZ): image
+   .. lua:staticmethod:: image.cube(imageNX, imagePX, imageNY, imagePY, imageNZ, imagePZ)
 
       Creates a cube image from six source images, one for each cube face
 
-   .. lua:staticmethod:: image.volume(width, height, depth, format): image
+   .. lua:staticmethod:: image.volume(width, height, depth, format)
 
       Creates a blank volume image with the given dimensions
 
@@ -67,11 +67,11 @@ Represents an image, used by codea for drawing to the screen and texturing meshe
       :param format: The format of the volume image
       :type format: image format
 
-   .. lua:staticmethod:: read(key): image
+   .. lua:staticmethod:: read(key)
 
       :param key: The asset key to load
 
-   .. lua:staticmethod:: save(key, image): image
+   .. lua:staticmethod:: save(key, image)
 
       :param key: The asset key to save the image to
       :type key: assetKey
