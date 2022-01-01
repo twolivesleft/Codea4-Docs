@@ -1,0 +1,508 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="mesh" href="mesh.html" /><link rel="prev" title="math types" href="math_types.html" />
+
+    <meta name="generator" content="sphinx-4.3.2, furo 2021.11.16"/>
+        <title>image - Codea 4.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Codea 4.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Codea 4.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../codea.html">How Codea Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets.html">Assets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input.html">Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="image">
+<h1>image<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h1>
+<p>Represents an image, used by codea for drawing to the screen and texturing meshes</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Loading and drawing an image</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+<span class="linenos">2</span>   <span class="c1">-- load an image from a builtin image asset</span>
+<span class="linenos">3</span>   <span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">Cargo_Bot</span><span class="p">.</span><span class="n">Codea_Icon</span><span class="p">)</span>
+<span class="linenos">4</span><span class="kr">end</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
+<span class="linenos">7</span>   <span class="n">background</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+<span class="linenos">8</span>   <span class="n">sprite</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos">9</span><span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<dl class="lua class">
+<dt class="sig sig-object lua">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">image</span></span></dt>
+<dd><dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">image(width,</span> <span class="pre">height,</span> <span class="pre">hasMips</span> <span class="pre">=</span> <span class="pre">false,</span> <span class="pre">numLayers</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">format</span> <span class="pre">=</span> <span class="pre">image.rgba,</span> <span class="pre">depthFormat</span> <span class="pre">=</span> <span class="pre">none):</span> <span class="pre">image</span></span></dt>
+<dd><p>Create a blank 2D image (default format is <cite>rgba</cite>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The width of the image</p></li>
+<li><p><strong>height</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The height of the image</p></li>
+<li><p><strong>hasMips</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">boolean</span></code></span>) – Enables mipmapping for this image</p></li>
+<li><p><strong>numLayers</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The number of layers for this image</p></li>
+<li><p><strong>format</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span> <span class="pre">format</span></code></span>) – The image format</p></li>
+<li><p><strong>depthFormat</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">depth</span> <span class="pre">format</span></code></span>) – The image depth format</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">image.cube(size):</span> <span class="pre">image</span></span></dt>
+<dd><p>Cube a blank cube image (6 faces with equal sized dimensions)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The size of the image cube</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">image.cube(equirect):</span> <span class="pre">image</span></span></dt>
+<dd><p>Creates a cube image from a single equirect image (i.e. hdr)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>equirect</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></span>) – The source equirect image</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">image.cube(imageNX,</span> <span class="pre">imagePX,</span> <span class="pre">imageNY,</span> <span class="pre">imagePY,</span> <span class="pre">imageNZ,</span> <span class="pre">imagePZ):</span> <span class="pre">image</span></span></dt>
+<dd><p>Creates a cube image from six source images, one for each cube face</p>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">image.volume(width,</span> <span class="pre">height,</span> <span class="pre">depth,</span> <span class="pre">format):</span> <span class="pre">image</span></span></dt>
+<dd><p>Creates a blank volume image with the given dimensions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The width of the volume image</p></li>
+<li><p><strong>height</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The height of the volume image</p></li>
+<li><p><strong>depth</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The depth of the volume image</p></li>
+<li><p><strong>format</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span> <span class="pre">format</span></code></span>) – The format of the volume image</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">read(key):</span> <span class="pre">image</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – The asset key to load</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">save(key,</span> <span class="pre">image):</span> <span class="pre">image</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">assetKey</span></code></span>) – The asset key to save the image to</p></li>
+<li><p><strong>image</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></span>) – The image to save</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.width">
+<span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>The width of the image in pixels</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.height">
+<span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>The height of the image in pixels</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.depth">
+<span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>The depth of the image in pixels (for volume images)</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.numLayers">
+<span class="sig-name descname"><span class="pre">numLayers</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.numLayers" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of layers in this image</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.hasMips">
+<span class="sig-name descname"><span class="pre">hasMips</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#image.hasMips" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this image has mip mapping or not</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.cubeMap">
+<span class="sig-name descname"><span class="pre">cubeMap</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#image.cubeMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this image is a cube or not</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.numMips">
+<span class="sig-name descname"><span class="pre">numMips</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.numMips" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of mips this image has</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.sampler">
+<span class="sig-name descname"><span class="pre">sampler</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerState</span><a class="headerlink" href="#image.sampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>The sampler state for this image, which determines how texels are sampled by shaders</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.key">
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">assetKey</span><a class="headerlink" href="#image.key" title="Permalink to this definition">¶</a></dt>
+<dd><p>The asset key for this image (if it has one)</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.generateIrradiance">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">generateIrradiance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">samples</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.generateIrradiance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a guassian pyramid of pre-computed irradiance levels, used for image based lighting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>samples</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The number of samples to use (optional | default = 1024)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new image containing the irradiance data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">generateIrradiance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">target</span></em>, <em class="sig-param"><span class="pre">samples</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Generates a guassian pyramid of pre-computed irradiance levels, used for image based lighting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></span>) – A target image to store the irradiance data</p></li>
+<li><p><strong>samples</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The number of samples to use (optional | default = 1024)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The target image containing the irradiance data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<section id="sampler-state-mipmapping">
+<h2>Sampler State / Mipmapping<a class="headerlink" href="#sampler-state-mipmapping" title="Permalink to this headline">¶</a></h2>
+<p>The sampler state of an image is used to control texel sampling</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mag</span></code> property controls magnification, i.e. when the image texels are larger than 1 pixel in size</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">min</span></code> property controls minification, i.e. when the image texels are smaller than 1 pixel in size</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mip</span></code> property controls how mipmapping is handled, <code class="docutils literal notranslate"><span class="pre">linear</span></code> will blend between mip levels linearly, while <code class="docutils literal notranslate"><span class="pre">point</span></code> will map clamp to the nearest mip level and <code class="docutils literal notranslate"><span class="pre">none</span></code> disables mipmapping entirely</p>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="samplerState">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">samplerState</span></span><a class="headerlink" href="#samplerState" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="lua attribute">
+<dt class="sig sig-object lua" id="samplerState.min">
+<span class="sig-name descname"><span class="pre">min</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">filterMode</span><a class="headerlink" href="#samplerState.min" title="Permalink to this definition">¶</a></dt>
+<dd><p>The minification filter, can be <code class="docutils literal notranslate"><span class="pre">point</span></code>, <code class="docutils literal notranslate"><span class="pre">linear</span></code> or <code class="docutils literal notranslate"><span class="pre">none</span></code></p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="samplerState.mag">
+<span class="sig-name descname"><span class="pre">mag</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">filterMode</span><a class="headerlink" href="#samplerState.mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>The magnification filter, can be <code class="docutils literal notranslate"><span class="pre">point</span></code>, <code class="docutils literal notranslate"><span class="pre">linear</span></code> or <code class="docutils literal notranslate"><span class="pre">none</span></code></p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="samplerState.mip">
+<span class="sig-name descname"><span class="pre">mip</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">filterMode</span><a class="headerlink" href="#samplerState.mip" title="Permalink to this definition">¶</a></dt>
+<dd><p>The mip filter, can be <code class="docutils literal notranslate"><span class="pre">point</span></code>, <code class="docutils literal notranslate"><span class="pre">linear</span></code> or <code class="docutils literal notranslate"><span class="pre">none</span></code></p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="samplerState.u">
+<span class="sig-name descname"><span class="pre">u</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerMode</span><a class="headerlink" href="#samplerState.u" title="Permalink to this definition">¶</a></dt>
+<dd><p>The u sampler mode, can be <code class="docutils literal notranslate"><span class="pre">repeat</span></code>, <code class="docutils literal notranslate"><span class="pre">clamp</span></code> or <code class="docutils literal notranslate"><span class="pre">mirror</span></code></p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="samplerState.v">
+<span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerMode</span><a class="headerlink" href="#samplerState.v" title="Permalink to this definition">¶</a></dt>
+<dd><p>The v sampler mode, can be <code class="docutils literal notranslate"><span class="pre">repeat</span></code>, <code class="docutils literal notranslate"><span class="pre">clamp</span></code> or <code class="docutils literal notranslate"><span class="pre">mirror</span></code></p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="samplerState.w">
+<span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerMode</span><a class="headerlink" href="#samplerState.w" title="Permalink to this definition">¶</a></dt>
+<dd><p>The w sampler mode, can be <code class="docutils literal notranslate"><span class="pre">repeat</span></code>, <code class="docutils literal notranslate"><span class="pre">clamp</span></code> or <code class="docutils literal notranslate"><span class="pre">mirror</span></code></p>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="sprites-and-atlases">
+<h2>Sprites and Atlases<a class="headerlink" href="#sprites-and-atlases" title="Permalink to this headline">¶</a></h2>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="atlas">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">atlas</span></span><a class="headerlink" href="#atlas" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="sprite.slice">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">sprite.slice</span></span><a class="headerlink" href="#sprite.slice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="mesh.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">mesh</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="math_types.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">math types</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, John Millard |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="../_sources/types/image.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">image</a><ul>
+<li><a class="reference internal" href="#sampler-state-mipmapping">Sampler State / Mipmapping</a></li>
+<li><a class="reference internal" href="#sprites-and-atlases">Sprites and Atlases</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

@@ -1,0 +1,4 @@
+material
+========
+
+.. lua:class:: material
