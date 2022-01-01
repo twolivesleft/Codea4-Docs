@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="graphics" href="graphics.html" /><link rel="prev" title="lua" href="lua.html" />
 
-    <meta name="generator" content="sphinx-4.3.2, furo 2021.11.16"/>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.3.2, furo 2021.11.16"/>
         <title>math types - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
@@ -143,8 +143,11 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/icon.png" alt="Logo"/>
+  </div>
   
   <span class="sidebar-brand-text">Codea 4.0 documentation</span>
   
@@ -210,8 +213,81 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><a class="headerlink" href="#vec2" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec2.vec2">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.vec2" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.vec2" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">vec2</span></code> by setting both values at once or each one individually</p>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="vec2.min">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <code class="docutils literal notranslate"><span class="pre">vec2</span></code> containing the component-wise minimum of two vectors</p>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="vec2.max">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <code class="docutils literal notranslate"><span class="pre">vec2</span></code> containing the component-wise maximum two vectors</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.normalize">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec2.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize this vector</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.normalized">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec2.normalized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a normalized copy of this vector</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.dot">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.dot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a scalar dot product with another vector and return the result</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.distance">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the distance (i.e. L1 norm) to another vector</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.distance2">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">distance2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.distance2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the squared distance (i.e. L2 norm) to another vector</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.reflect">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">reflect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.reflect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reflect this vector about another</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.refract">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">refract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em>, <em class="sig-param"><span class="pre">ior</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.refract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refract this vector though another with a given index or refraction</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.lerp">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">lerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em>, <em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.lerp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpolate this vector with another by the a given factor (typically between 0 and 1)</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.abs">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec2.abs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of this vector with component-wise absolute values</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="vec2.unpack">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">x,</span> <span class="pre">y</span></span></span><a class="headerlink" href="#vec2.unpack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpack this vector as multiple number values</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="vec2.length">
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>The length of this vector</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="vec2.length2">
+<span class="sig-name descname"><span class="pre">length2</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.length2" title="Permalink to this definition">¶</a></dt>
+<dd><p>The squared length of this vector</p>
+</dd></dl>
 </dd></dl>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="vec3">
