@@ -117,6 +117,9 @@ A set of graphics functions which are so commonly used they are in the global na
 
    Draws 2D line based on the current style, :lua:func:`style.stroke` and :lua:func:`style.strokeWidth` to determine color and stroke width
 
+   .. image:: /images/example_lines.png
+      :width: 256
+
    Supports dynamic number arguments
 
 .. lua:function:: line(x, y)
