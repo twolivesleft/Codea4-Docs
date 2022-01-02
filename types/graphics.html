@@ -322,9 +322,20 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="line">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x1</span></em>, <em class="sig-param"><span class="pre">y1</span></em>, <em class="sig-param"><span class="pre">x2</span></em>, <em class="sig-param"><span class="pre">y2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draws 2D line based on the current style, <a class="reference internal" href="style.html#style.stroke" title="style.stroke"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.stroke()</span></code></a> and <a class="reference internal" href="style.html#style.strokeWidth" title="style.strokeWidth"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.strokeWidth()</span></code></a> to determine color and stroke width</p>
-<a class="reference internal image-reference" href="../_images/example_lines.png"><img alt="../_images/example_lines.png" src="../_images/example_lines.png" style="width: 256px;"/></a>
-<p>Supports dynamic number arguments</p>
+<dd><p>Draws 2D line from the start point to the end point based on the current style:</p>
+<ul class="simple">
+<li><p><em>Color</em> with <a class="reference internal" href="style.html#style.stroke" title="style.stroke"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.stroke()</span></code></a></p></li>
+<li><p><em>Width</em> with <a class="reference internal" href="style.html#style.strokeWidth" title="style.strokeWidth"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.strokeWidth()</span></code></a></p></li>
+<li><dl class="simple">
+<dt><em>End Caps</em> with <code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.lineCapMode()</span></code></dt><dd><ul>
+<li><p><a class="reference internal" href="../_images/example_lineCap_SQUARE.png"><img alt="square_cap" src="../_images/example_lineCap_SQUARE.png" style="width: 100px;"/></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">SQUARE</span></code></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineCap_PROJECT.png"><img alt="project_cap" src="../_images/example_lineCap_PROJECT.png" style="width: 100px;"/></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">PROJECT</span></code></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineCap_ROUND.png"><img alt="round_cap" src="../_images/example_lineCap_ROUND.png" style="width: 100px;"/></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </dd></dl>
 <dl class="lua function">
 <dt class="sig sig-object lua">
@@ -334,7 +345,21 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="polyline">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">polyline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x1</span></em>, <em class="sig-param"><span class="pre">y1</span></em>, <em class="sig-param"><span class="pre">x2</span></em>, <em class="sig-param"><span class="pre">y2</span></em>, <em class="sig-param"><span class="pre">...</span> <span class="pre">xn</span></em>, <em class="sig-param"><span class="pre">yn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#polyline" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draws a 2D line with an arbitrary number of points</p>
+<dd><p>Draws a continuous 2D line with an arbitrary number of points based on the current style</p>
+<ul class="simple">
+<li><p><em>Color</em> with <a class="reference internal" href="style.html#style.stroke" title="style.stroke"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.stroke()</span></code></a></p></li>
+<li><p><em>Width</em> with <a class="reference internal" href="style.html#style.strokeWidth" title="style.strokeWidth"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.strokeWidth()</span></code></a></p></li>
+<li><p><em>End Caps</em> with <a class="reference internal" href="style.html#style.lineCap" title="style.lineCap"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.lineCap()</span></code></a></p></li>
+<li><dl class="simple">
+<dt><em>Line Joins</em> with <a class="reference internal" href="style.html#style.lineJoin" title="style.lineJoin"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.lineJoin()</span></code></a></dt><dd><ul>
+<li><p><a class="reference internal" href="../_images/example_lineJoin_ROUND.png"><img alt="round_join" src="../_images/example_lineJoin_ROUND.png" style="width: 100px;"/></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineJoin_MITER.png"><img alt="miter_join" src="../_images/example_lineJoin_MITER.png" style="width: 100px;"/></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">MITER</span></code></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineJoin_BEVEL.png"><img alt="bevel_join" src="../_images/example_lineJoin_BEVEL.png" style="width: 100px;"/></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">BEVEL</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </dd></dl>
 <dl class="lua function">
 <dt class="sig sig-object lua" id="polygon">
@@ -382,7 +407,7 @@
 <em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em>, <em class="sig-param"><span class="pre">r</span></em><span class="sig-paren">)</span></dt>
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em>, <em class="sig-param"><span class="pre">r1</span></em>, <em class="sig-param"><span class="pre">r2</span></em>, <em class="sig-param"><span class="pre">r3</span></em>, <em class="sig-param"><span class="pre">r4</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on <code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.shapeMode()</span></code></p>
+<dd><p>Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on <a class="reference internal" href="style.html#style.shapeMode" title="style.shapeMode"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.shapeMode()</span></code></a></p>
 <p>Additional arguments allow for rounded corners (either all one radius or four separate radii)</p>
 </dd></dl>
 </div>

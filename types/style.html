@@ -210,7 +210,9 @@
 <h1>style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h1>
 <p><em>(module)</em></p>
 <p>A module for setting the current drawing style used with various graphics functions in Codea, such as <a class="reference internal" href="graphics.html#line" title="line"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">line()</span></code></a></p>
-<span class="target" id="module-style"></span><dl class="lua function">
+<div class="section" id="module-style">
+<span id="general"></span><h2>General<a class="headerlink" href="#module-style" title="Permalink to this headline">¶</a></h2>
+<dl class="lua function">
 <dt class="sig sig-object lua" id="style.push">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.push" title="Permalink to this definition">¶</a></dt>
 <dt class="sig sig-object lua">
@@ -257,8 +259,45 @@
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">stroke</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">number</span></span></span></dt>
 <dd><p>Sets/gets the stroke width for use in vector drawing operations</p>
 </dd></dl>
-<div class="section" id="constants-style">
-<h2>Constants - Style<a class="headerlink" href="#constants-style" title="Permalink to this headline">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.lineCap">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineCap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.lineCap" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineCap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">enum</span></span></span></dt>
+<dd><p>Sets/gets the current line cap mode, used by <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">line</span></span></code>, <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">polyline</span></span></code> and <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">shape</span></span></code></p>
+<ul class="simple">
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></p></li>
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">SQUARE</span></code></p></li>
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">PROJECT</span></code></p></li>
+</ul>
+</dd></dl>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.lineJoin">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineJoin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.lineJoin" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineJoin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">enum</span></span></span></dt>
+<dd><p>Sets/gets the current line join mode, used by <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">polyline</span></span></code>, <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">polygon</span></span></code> and <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">shape</span></span></code> used when joining multiple line segments</p>
+<ul class="simple">
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></p></li>
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">MITER</span></code></p></li>
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">BEVEL</span></code></p></li>
+</ul>
+</dd></dl>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.shapeMode">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">shapeMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.shapeMode" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">shapeMode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">enum</span></span></span></dt>
+<dd><p>Sets/gets the current shape mode, used by <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">rect</span></span></code>, <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">ellipse</span></span></code> and <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">sprite</span></span></code></p>
+<ul class="simple">
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">CENTER</span></code> - Draw shapes from the center and size using width/height</p></li>
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">CORNERS</span></code> - Draw shapes by specifying the two opposite corners</p></li>
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">CORNER</span></code> - Draw shapes by specifying the bottom left corner and then width/height</p></li>
+<li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">RADIUS</span></code> - Draw shapes by specifying center and radius</p></li>
+</ul>
+</dd></dl>
+<div class="section" id="constants-shape-mode">
+<h3>Constants - Shape Mode<a class="headerlink" href="#constants-shape-mode" title="Permalink to this headline">¶</a></h3>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="style.style.CORNER">
 <span class="sig-name descname"><span class="pre">CORNER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.CORNER" title="Permalink to this definition">¶</a></dt>
@@ -275,57 +314,43 @@
 <dt class="sig sig-object lua" id="style.style.RADIUS">
 <span class="sig-name descname"><span class="pre">RADIUS</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.RADIUS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.LEFT">
-<span class="sig-name descname"><span class="pre">LEFT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.LEFT" title="Permalink to this definition">¶</a></dt>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.sortOrder">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">sortOrder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.sortOrder" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-<dl class="lua attribute">
+</div>
+</div>
+<div class="section" id="blending-style">
+<h2>Blending Style<a class="headerlink" href="#blending-style" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.blend">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.blend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua function">
 <dt class="sig sig-object lua">
-<span class="sig-name descname"><span class="pre">CENTER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">src</span></em>, <em class="sig-param"><span class="pre">dst</span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.RIGHT">
-<span class="sig-name descname"><span class="pre">RIGHT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.RIGHT" title="Permalink to this definition">¶</a></dt>
+<dl class="lua function">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">src</span></em>, <em class="sig-param"><span class="pre">dst</span></em>, <em class="sig-param"><span class="pre">srcAlpha</span></em>, <em class="sig-param"><span class="pre">dstAlpha</span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.TOP">
-<span class="sig-name descname"><span class="pre">TOP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.TOP" title="Permalink to this definition">¶</a></dt>
+<dl class="lua function">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blend</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">src,</span> <span class="pre">dst,</span> <span class="pre">srcAlpha,</span> <span class="pre">dstAlpha</span></span></span></dt>
 <dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.MIDDLE">
-<span class="sig-name descname"><span class="pre">MIDDLE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.MIDDLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.BOTTOM">
-<span class="sig-name descname"><span class="pre">BOTTOM</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.BOTTOM" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.BASELINE">
-<span class="sig-name descname"><span class="pre">BASELINE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.BASELINE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.ROUND">
-<span class="sig-name descname"><span class="pre">ROUND</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ROUND" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.SQUARE">
-<span class="sig-name descname"><span class="pre">SQUARE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SQUARE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.PROJECT">
-<span class="sig-name descname"><span class="pre">PROJECT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.PROJECT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.MITER">
-<span class="sig-name descname"><span class="pre">MITER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.MITER" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.BEVEL">
-<span class="sig-name descname"><span class="pre">BEVEL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.BEVEL" title="Permalink to this definition">¶</a></dt>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.blendFunc">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blendFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.blendFunc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blendFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func</span></em>, <em class="sig-param"><span class="pre">alphaFunc</span></em><span class="sig-paren">)</span></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blendFunc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">func,</span> <span class="pre">alphaFunc</span></span></span></dt>
 <dd></dd></dl>
 </div>
 <div class="section" id="constants-blend-modes">
-<h2>Constants - Blend Modes<a class="headerlink" href="#constants-blend-modes" title="Permalink to this headline">¶</a></h2>
+<h3>Constants - Blend Modes<a class="headerlink" href="#constants-blend-modes" title="Permalink to this headline">¶</a></h3>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="style.style.NORMAL">
 <span class="sig-name descname"><span class="pre">NORMAL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.NORMAL" title="Permalink to this definition">¶</a></dt>
@@ -371,8 +396,31 @@
 <dd><p>Disables blending</p>
 </dd></dl>
 </div>
+<div class="section" id="constants-blend-functions">
+<h3>Constants - Blend Functions<a class="headerlink" href="#constants-blend-functions" title="Permalink to this headline">¶</a></h3>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.EQUATION_ADD">
+<span class="sig-name descname"><span class="pre">EQUATION_ADD</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_ADD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.EQUATION_SUB">
+<span class="sig-name descname"><span class="pre">EQUATION_SUB</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_SUB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.EQUATION_REVSUB">
+<span class="sig-name descname"><span class="pre">EQUATION_REVSUB</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_REVSUB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.EQUATION_MIN">
+<span class="sig-name descname"><span class="pre">EQUATION_MIN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_MIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.EQUATION_MAX">
+<span class="sig-name descname"><span class="pre">EQUATION_MAX</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_MAX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</div>
 <div class="section" id="constants-blend-factors">
-<h2>Constants - Blend Factors<a class="headerlink" href="#constants-blend-factors" title="Permalink to this headline">¶</a></h2>
+<h3>Constants - Blend Factors<a class="headerlink" href="#constants-blend-factors" title="Permalink to this headline">¶</a></h3>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="style.style.ZERO">
 <span class="sig-name descname"><span class="pre">ZERO</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ZERO" title="Permalink to this definition">¶</a></dt>
@@ -417,28 +465,70 @@
 <span class="sig-name descname"><span class="pre">SRC_ALPHA_SATURATE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SRC_ALPHA_SATURATE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </div>
-<div class="section" id="constants-blend-functions">
-<h2>Constants - Blend Functions<a class="headerlink" href="#constants-blend-functions" title="Permalink to this headline">¶</a></h2>
-<p>Used with <code class="code highlight lua docutils literal notranslate"><span class="name"><span class="pre">style</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">blendFunc</span></span></code> to set the current blend function (for color, alpha or both)</p>
+</div>
+<div class="section" id="text-style">
+<h2>Text Style<a class="headerlink" href="#text-style" title="Permalink to this headline">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.fontSize">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">fontSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.fontSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.textAlign">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">textAlign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">align</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.textAlign" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<div class="section" id="constants-text">
+<h3>Constants - Text<a class="headerlink" href="#constants-text" title="Permalink to this headline">¶</a></h3>
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.EQUATION_ADD">
-<span class="sig-name descname"><span class="pre">EQUATION_ADD</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_ADD" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua" id="style.style.LEFT">
+<span class="sig-name descname"><span class="pre">LEFT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.LEFT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.EQUATION_SUB">
-<span class="sig-name descname"><span class="pre">EQUATION_SUB</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_SUB" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">CENTER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span></dt>
 <dd></dd></dl>
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.EQUATION_REVSUB">
-<span class="sig-name descname"><span class="pre">EQUATION_REVSUB</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_REVSUB" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua" id="style.style.RIGHT">
+<span class="sig-name descname"><span class="pre">RIGHT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.RIGHT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.EQUATION_MIN">
-<span class="sig-name descname"><span class="pre">EQUATION_MIN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_MIN" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua" id="style.style.TOP">
+<span class="sig-name descname"><span class="pre">TOP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.TOP" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="style.style.EQUATION_MAX">
-<span class="sig-name descname"><span class="pre">EQUATION_MAX</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.EQUATION_MAX" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua" id="style.style.MIDDLE">
+<span class="sig-name descname"><span class="pre">MIDDLE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.MIDDLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.BOTTOM">
+<span class="sig-name descname"><span class="pre">BOTTOM</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.BOTTOM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.BASELINE">
+<span class="sig-name descname"><span class="pre">BASELINE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.BASELINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</div>
+</div>
+<div class="section" id="constants-style">
+<h2>Constants - Style<a class="headerlink" href="#constants-style" title="Permalink to this headline">¶</a></h2>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.ROUND">
+<span class="sig-name descname"><span class="pre">ROUND</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.ROUND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.SQUARE">
+<span class="sig-name descname"><span class="pre">SQUARE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.SQUARE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.PROJECT">
+<span class="sig-name descname"><span class="pre">PROJECT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.PROJECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.MITER">
+<span class="sig-name descname"><span class="pre">MITER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.MITER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.BEVEL">
+<span class="sig-name descname"><span class="pre">BEVEL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.BEVEL" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </div>
 <div class="section" id="constants-render-queues">
@@ -602,10 +692,22 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">style</a><ul>
-<li><a class="reference internal" href="#constants-style">Constants - Style</a></li>
+<li><a class="reference internal" href="#module-style">General</a><ul>
+<li><a class="reference internal" href="#constants-shape-mode">Constants - Shape Mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#blending-style">Blending Style</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#constants-blend-modes">Constants - Blend Modes</a></li>
-<li><a class="reference internal" href="#constants-blend-factors">Constants - Blend Factors</a></li>
 <li><a class="reference internal" href="#constants-blend-functions">Constants - Blend Functions</a></li>
+<li><a class="reference internal" href="#constants-blend-factors">Constants - Blend Factors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#text-style">Text Style</a><ul>
+<li><a class="reference internal" href="#constants-text">Constants - Text</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants-style">Constants - Style</a></li>
 <li><a class="reference internal" href="#constants-render-queues">Constants - Render Queues</a></li>
 <li><a class="reference internal" href="#constants-color-mask">Constants - Color Mask</a></li>
 <li><a class="reference internal" href="#constants-culling">Constants - Culling</a></li>

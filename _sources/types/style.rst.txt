@@ -5,6 +5,9 @@ style
 
 A module for setting the current drawing style used with various graphics functions in Codea, such as :lua:func:`line`
 
+General
+#######
+
 .. lua:module:: style
 
 .. lua:function:: push()
@@ -41,9 +44,36 @@ A module for setting the current drawing style used with various graphics functi
 
    Sets/gets the stroke width for use in vector drawing operations
 
+.. lua:function:: lineCap(mode)
+                  lineCap() -> enum
 
-Constants - Style
-#################
+   Sets/gets the current line cap mode, used by :lua:`line`, :lua:`polyline` and :lua:`shape`
+
+   - :lua:attr:`ROUND`
+   - :lua:attr:`SQUARE`
+   - :lua:attr:`PROJECT`
+
+.. lua:function:: lineJoin(mode)
+                  lineJoin() -> enum
+
+   Sets/gets the current line join mode, used by :lua:`polyline`, :lua:`polygon` and :lua:`shape` used when joining multiple line segments
+
+   - :lua:attr:`ROUND`
+   - :lua:attr:`MITER`
+   - :lua:attr:`BEVEL`
+
+.. lua:function:: shapeMode(mode)
+                  shapeMode() -> enum
+
+   Sets/gets the current shape mode, used by :lua:`rect`, :lua:`ellipse` and :lua:`sprite`
+
+   - :lua:attr:`CENTER` - Draw shapes from the center and size using width/height
+   - :lua:attr:`CORNERS` - Draw shapes by specifying the two opposite corners
+   - :lua:attr:`CORNER` - Draw shapes by specifying the bottom left corner and then width/height
+   - :lua:attr:`RADIUS` - Draw shapes by specifying center and radius
+
+Constants - Shape Mode
+**********************
 
 .. lua:attribute:: CORNER: const
 
@@ -56,45 +86,28 @@ Constants - Style
 
 .. lua:attribute:: RADIUS: const
 
+.. lua:function:: sortOrder(order)
 
-.. lua:attribute:: LEFT: const
+Blending Style
+##############
 
+Functions
+*********
 
-.. lua:attribute:: CENTER: const
+.. lua:function:: blend(mode)
 
+.. lua:function:: blend(src, dst)
 
-.. lua:attribute:: RIGHT: const
+.. lua:function:: blend(src, dst, srcAlpha, dstAlpha)
 
+.. lua:function:: blend() -> src, dst, srcAlpha, dstAlpha
 
-.. lua:attribute:: TOP: const
-
-
-.. lua:attribute:: MIDDLE: const
-
-
-.. lua:attribute:: BOTTOM: const
-
-
-.. lua:attribute:: BASELINE: const
-
-
-.. lua:attribute:: ROUND: const
-
-
-.. lua:attribute:: SQUARE: const
-
-
-.. lua:attribute:: PROJECT: const
-
-
-.. lua:attribute:: MITER: const
-
-
-.. lua:attribute:: BEVEL: const
-
+.. lua:function:: blendFunc(func)
+                  blendFunc(func, alphaFunc)
+                  blendFunc() -> func, alphaFunc
 
 Constants - Blend Modes
-#######################
+***********************
 
 .. lua:attribute:: NORMAL: const
 
@@ -130,8 +143,25 @@ Constants - Blend Modes
 
    Disables blending
 
+Constants - Blend Functions
+***************************
+
+.. lua:attribute:: EQUATION_ADD: const
+
+
+.. lua:attribute:: EQUATION_SUB: const
+
+
+.. lua:attribute:: EQUATION_REVSUB: const
+
+
+.. lua:attribute:: EQUATION_MIN: const
+
+
+.. lua:attribute:: EQUATION_MAX: const
+
 Constants - Blend Factors
-#########################
+*************************
 
 .. lua:attribute:: ZERO: const
 
@@ -148,13 +178,10 @@ Constants - Blend Factors
 .. lua:attribute:: ONE_MINUS_SRC_COLOR: const
 
 
-
 .. lua:attribute:: SRC_ALPHA: const
 
 
-
 .. lua:attribute:: ONE_MINUS_SRC_ALPHA: const
-
 
 
 .. lua:attribute:: DST_ALPHA: const
@@ -172,25 +199,53 @@ Constants - Blend Factors
 .. lua:attribute:: SRC_ALPHA_SATURATE: const
 
 
+Text Style
+##########
 
-Constants - Blend Functions
-###########################
+.. lua:function:: fontSize(size)
 
-Used with :lua:`style.blendFunc` to set the current blend function (for color, alpha or both)
+.. lua:function:: textAlign(align)
 
-.. lua:attribute:: EQUATION_ADD: const
+Constants - Text
+****************
 
-
-.. lua:attribute:: EQUATION_SUB: const
-
-
-.. lua:attribute:: EQUATION_REVSUB: const
+.. lua:attribute:: LEFT: const
 
 
-.. lua:attribute:: EQUATION_MIN: const
+.. lua:attribute:: CENTER: const
 
 
-.. lua:attribute:: EQUATION_MAX: const
+.. lua:attribute:: RIGHT: const
+
+
+.. lua:attribute:: TOP: const
+
+
+.. lua:attribute:: MIDDLE: const
+
+
+.. lua:attribute:: BOTTOM: const
+
+
+.. lua:attribute:: BASELINE: const
+
+
+Constants - Style
+#################
+
+.. lua:attribute:: ROUND: const
+
+
+.. lua:attribute:: SQUARE: const
+
+
+.. lua:attribute:: PROJECT: const
+
+
+.. lua:attribute:: MITER: const
+
+
+.. lua:attribute:: BEVEL: const
 
 
 Constants - Render Queues
