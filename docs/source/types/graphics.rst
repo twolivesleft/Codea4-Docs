@@ -115,12 +115,23 @@ A set of graphics functions which are so commonly used they are in the global na
 
 .. lua:function:: line(x1, y1, x2, y2)
 
-   Draws 2D line based on the current style, :lua:func:`style.stroke` and :lua:func:`style.strokeWidth` to determine color and stroke width
+   Draws 2D line from the start point to the end point based on the current style:
 
-   .. image:: /images/example_lines.png
-      :width: 256
+   - *Color* with :lua:func:`style.stroke`
+   - *Width* with :lua:func:`style.strokeWidth`
+   - *End Caps* with :lua:func:`style.lineCapMode`
+      - |square_cap| :lua:attr:`SQUARE`
+      - |project_cap| :lua:attr:`PROJECT`
+      - |round_cap| :lua:attr:`ROUND`
 
-   Supports dynamic number arguments
+   .. |square_cap| image:: /images/example_lineCap_SQUARE.png
+      :width: 100
+
+   .. |round_cap| image:: /images/example_lineCap_ROUND.png
+      :width: 100
+
+   .. |project_cap| image:: /images/example_lineCap_PROJECT.png
+      :width: 100
 
 .. lua:function:: line(x, y)
 
@@ -128,7 +139,24 @@ A set of graphics functions which are so commonly used they are in the global na
 
 .. lua:function:: polyline(x1, y1, x2, y2, ... xn, yn)
 
-   Draws a 2D line with an arbitrary number of points
+   Draws a continuous 2D line with an arbitrary number of points based on the current style
+
+   - *Color* with :lua:func:`style.stroke`
+   - *Width* with :lua:func:`style.strokeWidth`
+   - *End Caps* with :lua:func:`style.lineCap`
+   - *Line Joins* with :lua:func:`style.lineJoin`
+      - |round_join| :lua:attr:`ROUND`
+      - |miter_join| :lua:attr:`MITER`
+      - |bevel_join| :lua:attr:`BEVEL`
+
+   .. |round_join| image:: /images/example_lineJoin_ROUND.png
+      :width: 100
+
+   .. |miter_join| image:: /images/example_lineJoin_MITER.png
+      :width: 100
+
+   .. |bevel_join| image:: /images/example_lineJoin_BEVEL.png
+      :width: 100
 
 .. lua:function:: polygon(x1, y1, x2, y2, ... xn, yn)
 
