@@ -211,7 +211,6 @@
 <p><em>(global)</em></p>
 <div class="section" id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
-<p>Test!</p>
 <dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">&lt;color&gt;</span></em><span class="sig-paren">)</span></dt>
@@ -235,19 +234,17 @@
 <em class="property"> </em><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shader</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Clears the current background using a custom shader</p>
 <details class="summary-example">
-<summary>Example</summary><div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Skybox shader example that uses a cube image (typically loaded from a HDR image)</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
     <span class="c1">-- Create a custom background shader</span>
     <span class="n">skybox</span> <span class="o">=</span> <span class="n">shader</span><span class="p">{</span>
         <span class="n">name</span> <span class="o">=</span> <span class="s2">"Skybox"</span><span class="p">,</span>
-
+        
         <span class="n">properties</span> <span class="o">=</span>
         <span class="p">{</span>
             <span class="p">{</span><span class="s2">"environment"</span><span class="p">,</span> <span class="s2">"texture"</span><span class="p">},</span>
             <span class="p">{</span><span class="s2">"mipLevel"</span><span class="p">,</span> <span class="s2">"float"</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
         <span class="p">},</span>
-
+        
         <span class="n">pass</span> <span class="o">=</span>
         <span class="p">{</span>
             <span class="n">cullFace</span> <span class="o">=</span> <span class="s2">"none"</span><span class="p">,</span> <span class="c1">-- backgrounds don't need culling</span>
@@ -255,37 +252,37 @@
             <span class="n">depthFunc</span> <span class="o">=</span> <span class="s2">"always"</span><span class="p">,</span> <span class="c1">-- no need for depth testing</span>
             <span class="n">blendMode</span> <span class="o">=</span> <span class="s2">"disabled"</span><span class="p">,</span> <span class="c1">-- no need for blending</span>
             <span class="n">renderQueue</span> <span class="o">=</span> <span class="s2">"background"</span><span class="p">,</span> <span class="c1">-- render behind everything else</span>
-
+            
             <span class="n">vertex</span> <span class="o">=</span>
             <span class="s">[[</span>
 <span class="s">            #version 430</span>
 <span class="s">            #include &lt;codea/common.glsl&gt;</span>
-
+<span class="s">            </span>
 <span class="s">            layout (location = POSITION) in vec3 a_position;</span>
-
+<span class="s">            </span>
 <span class="s">            layout (location = 0) out vec3 v_eyeDirection;</span>
-
+<span class="s">            </span>
 <span class="s">            void main()</span>
 <span class="s">            {</span>
 <span class="s">                // vertex layout is a quad between -1 and 1, use this to unproject and calculate eye direction from view/perspective matrix</span>
 <span class="s">                vec3 unprojected = (u_invProj * vec4(a_position, 1)).xyz;</span>
 <span class="s">                v_eyeDirection = mat3(u_invView) * unprojected;</span>
-
+<span class="s">                </span>
 <span class="s">                gl_Position = vec4(a_position.xy, 1, 1);</span>
 <span class="s">            }</span>
 <span class="s">            ]]</span><span class="p">,</span>
-
+    
             <span class="n">fragment</span> <span class="o">=</span>
-            <span class="s">[[</span>
+            <span class="s">[[       </span>
 <span class="s">                #version 430</span>
 <span class="s">                #include &lt;codea/common.glsl&gt;</span>
-
+<span class="s">    </span>
 <span class="s">                layout (location = 0) in vec3 v_eyeDirection;</span>
 <span class="s">                out vec4 fragColor;</span>
-
+<span class="s">    </span>
 <span class="s">                uniform samplerCube environment;</span>
 <span class="s">                uniform float mipLevel;</span>
-
+<span class="s">    </span>
 <span class="s">                void main()</span>
 <span class="s">                {</span>
 <span class="s">                    vec3 rayDir = normalize(v_eyeDirection);</span>
@@ -312,9 +309,7 @@
 <span class="kr">end</span>
 </pre></div>
 </div>
-</div>
 </details></dd></dl>
-<p>}</p>
 </div>
 <div class="section" id="vector-graphics">
 <h2>Vector Graphics<a class="headerlink" href="#vector-graphics" title="Permalink to this headline">¶</a></h2>
@@ -415,23 +410,13 @@
 <h2>Sprites<a class="headerlink" href="#sprites" title="Permalink to this headline">¶</a></h2>
 <dl class="lua function">
 <dt class="sig sig-object lua" id="sprite">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">image</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sprite" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">image</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sprite" title="Permalink to this definition">¶</a></dt>
 <dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">image</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em><span class="sig-paren">)</span></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset.key</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="optional">]</span><span class="sig-paren">)</span></dt>
 <dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">image</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset.key</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset.key</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset.key</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">sprite.slice</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">sprite.slice</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">sprite.slice</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">sprite.slice</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+<dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shader</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
