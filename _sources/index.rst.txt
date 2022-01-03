@@ -22,29 +22,36 @@ Codea 4
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Manual:
 
-   codea
-   drawing
-   sound
-   assets
-   input
-   physics2d
-   physics3d
-   scenes
-   types/lua
-   types/math_types
-   types/graphics
-   types/style
-   types/image
-   types/mesh
-   types/shader
-   types/material
-   types/sound
-   types/scene
-   types/entity
-   types/physics2d
-   types/physics3d
+   manual
+   manual/codea
+   manual/drawing
+   manual/sound
+   manual/assets
+   manual/input
+   manual/physics2d
+   manual/physics3d
+   manual/scenes
+
+.. toctree::
+   :maxdepth: 2
+   :caption: API:
+
+   api
+   api/lua
+   api/math_types
+   api/graphics
+   api/style
+   api/image
+   api/mesh
+   api/shader
+   api/material
+   api/sound
+   api/scene
+   api/entity
+   api/physics2d
+   api/physics3d
 
 
 Indices and tables
