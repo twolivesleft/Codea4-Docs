@@ -1,5 +1,5 @@
-graphics
-========
+graphics commands
+=================
 
 *(global)*
 
@@ -33,7 +33,7 @@ A set of graphics functions which are so commonly used they are in the global na
 
 .. lua:function:: line(x1, y1, x2, y2)
 
-   Draws 2D line from the start point to the end point based on the current style:
+   Draws 2D line from the start point (x1, y1) to the end point (x2, y2) based on the current style:
 
    - *Color* with :lua:func:`style.stroke`
    - *Width* with :lua:func:`style.strokeWidth`
@@ -57,7 +57,7 @@ A set of graphics functions which are so commonly used they are in the global na
 
 .. lua:function:: polyline(x1, y1, x2, y2, ... xn, yn)
 
-   Draws a continuous 2D line with an arbitrary number of points based on the current style
+   Draws a continuous 2D line with an arbitrary number of points (x1, y1, etc...) based on the current style
 
    - *Color* with :lua:func:`style.stroke`
    - *Width* with :lua:func:`style.strokeWidth`
@@ -78,11 +78,11 @@ A set of graphics functions which are so commonly used they are in the global na
 
 .. lua:function:: polygon(x1, y1, x2, y2, ... xn, yn)
 
-   Draws a closed 2D polygon with an arbitrary number of points
+   Draws a closed 2D polygon with an arbitrary number of points based on the current style
 
 .. lua:function:: bezier(x1, y1, cx1, cy1, cx2, cy2, x2, y2)
 
-   Draw a quadratic bezier curve using four points
+   Draw a quadratic bezier curve using four points based on the current style
 
 .. lua:function:: bezier(cx1, cy1, cx2, cy2, x2, y2)
 
@@ -95,8 +95,8 @@ A set of graphics functions which are so commonly used they are in the global na
    :param x: x coordinate of the arc origin
    :param y: y coordinate of the arc origin
    :param radius: the radius arc
-   :param startAngle: the start angle of the arc
-   :param endAngle: the end angle of the arc
+   :param startAngle: the start angle of the arc (in degrees)
+   :param endAngle: the end angle of the arc (in degrees)
    :param dir: the direction of the arc, 1 or clockwise, -1 for anti-clockwise
 
 .. lua:function:: ellipse(x, y, w, h)
@@ -118,6 +118,9 @@ Sprites
 .. lua:function:: sprite(image, x, y, [w, h])
                   sprite(asset.key, x, y, [w, h])
                   sprite(sprite.slice, x, y, [w, h])
+
+   Draws a sprite using a an asset - :lua:class:`image`, :lua:class:`asset.key` or :lua:class:`sprite.slice`
+
 
 .. lua:function:: sprite(shader, x, y, w, h)
 

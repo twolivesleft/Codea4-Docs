@@ -96,15 +96,46 @@ Functions
 
 .. lua:function:: blend(mode)
 
+   Sets the current blend mode to one of the available presets. Blending composites pixels onto the current drawing context based on source and destination color and alpha values
+
+   The default mode is :lua:`NORMAL` which applies standard alpha blended transparency with the following equation:
+
+   .. math::
+      RGBA = RGBA_{s} * A_{s} + RGBA_{d} * (1-A_{s})
+
+   :lua:`DISABLED` can be used to disable alpha blending entirely
+
 .. lua:function:: blend(src, dst)
+
+   Sets a custom blend mode for both rgb and alpha components using ``src`` (source) and ``dst`` destination blending factors
 
 .. lua:function:: blend(src, dst, srcAlpha, dstAlpha)
 
+   Sets a custom blend mode with separate blending factors for both rgb and alpha components
+
 .. lua:function:: blend() -> src, dst, srcAlpha, dstAlpha
+
+   Returns the current blend factors for both rgb and alpha components (regardless of how the blend modes were set)
 
 .. lua:function:: blendFunc(func)
                   blendFunc(func, alphaFunc)
-                  blendFunc() -> func, alphaFunc
+
+   Sets the current blend function (the default is :lua:`EQUATION_ADD`) which determines how source and destination parts of the blending equation are combined
+
+   - :lua:`EQUATION_ADD` - Add (default)
+      :math:`R = R_s*k_s+R_d*k_d`
+   - :lua:`EQUATION_SUB` - Subtract
+      :math:`R = R_s*k_s-R_d*k_d`
+   - :lua:`EQUATION_REVSUB` - Reverse subtract
+      :math:`R = R_d*k_d-R_s*k_s`
+   - :lua:`EQUATION_MIN` - Minimum (blend factors are ignored)
+      :math:`R = min(R_s, R_d)`
+   - :lua:`EQUATION_MAX` - Maximum (blend factors are ignored)
+      :math:`R = max(R_s, R_d)`
+
+.. lua:function:: blendFunc() -> func, alphaFunc
+
+   Returns the current blend function for both rgb and alpha components (regardless of how the functions were set)
 
 Constants - Blend Modes
 ***********************
@@ -112,92 +143,124 @@ Constants - Blend Modes
 .. lua:attribute:: NORMAL: const
 
    The default blend mode (alpha blended transparency)
-      .. math::
-         RGBA_{final} = RGBA_{src} * A_{src} + RGBA_{dst} * (1-A_{src})
+
+   .. image:: /images/example_blendMode_NORMAL.png
+      :width: 200
 
 .. lua:attribute:: ADDITIVE: const
 
    Additive blend mode
 
+   .. image:: /images/example_blendMode_ADDITIVE.png
+      :width: 200
+
 .. lua:attribute:: MULTIPLY: const
 
    Multiply blend mode
+
+   .. image:: /images/example_blendMode_MULTIPLY.png
+      :width: 200
 
 .. lua:attribute:: SCREEN: const
 
    Screen blend mode
 
+   .. image:: /images/example_blendMode_SCREEN.png
+      :width: 200
+
 .. lua:attribute:: LIGHTEN: const
 
    Lighten blend mode
+
+   .. image:: /images/example_blendMode_LIGHTEN.png
+      :width: 200
 
 .. lua:attribute:: LINEAR_BURN: const
 
    Linear burn blend mode
 
+   .. image:: /images/example_blendMode_LINEAR_BURN.png
+      :width: 200
+
 .. lua:attribute:: PREMULTIPLIED: const
 
    Premultiplied blend mode
 
+   .. image:: /images/example_blendMode_PREMULTIPLIED.png
+      :width: 200
+
 .. lua:attribute:: DISABLED: const
 
    Disables blending
+
+   .. image:: /images/example_blendMode_DISABLED.png
+      :width: 200
 
 Constants - Blend Functions
 ***************************
 
 .. lua:attribute:: EQUATION_ADD: const
 
+   Combines source and destination pixels using addition
 
 .. lua:attribute:: EQUATION_SUB: const
 
+   Combines source and destination pixels using subtraction
 
 .. lua:attribute:: EQUATION_REVSUB: const
 
+   Combines source and destination pixels using subtraction in reverse order
 
 .. lua:attribute:: EQUATION_MIN: const
 
+   Combines source and destination pixels by taking the minimum of each component (ignores blend factors)
 
 .. lua:attribute:: EQUATION_MAX: const
+
+   Combines source and destination pixels by taking the maximum of each component (ignores blend factors)
 
 Constants - Blend Factors
 *************************
 
 .. lua:attribute:: ZERO: const
 
-   Blend factor of (0, 0, 0, 0)
+   Blend factor of :math:`(0, 0, 0, 0)`
 
 .. lua:attribute:: ONE: const
 
-   Blend factor or (1, 1, 1, 1)
+   Blend factor or :math:`(1, 1, 1, 1)`
 
 .. lua:attribute:: SRC_COLOR: const
 
-   Blend factor of (Rs, Gs, Bs, As)
+   Blend factor of :math:`(R_s, G_s, B_s, A_s)`
 
 .. lua:attribute:: ONE_MINUS_SRC_COLOR: const
 
+   Blend factor of :math:`(1-R_s, 1-G_s, 1-B_s, 1-A_s)`
 
 .. lua:attribute:: SRC_ALPHA: const
 
+   Blend factor of :math:`(A_s, A_s, A_s, A_s)`
 
 .. lua:attribute:: ONE_MINUS_SRC_ALPHA: const
 
+   Blend factor of :math:`(1-A_s, 1-A_s, 1-A_s, 1-A_s)`
 
 .. lua:attribute:: DST_ALPHA: const
 
-
+   Blend factor of :math:`(A_d, A_d, A_d, A_d)`
 
 .. lua:attribute:: ONE_MINUS_DST_ALPHA: const
 
-
+   Blend factor of :math:`(1-A_d, 1-A_d, 1-A_d, 1-A_d)`
 
 .. lua:attribute:: DST_COLOR: const
 
-
+   Blend factor of :math:`(R_d, G_d, B_d, A_d)`
 
 .. lua:attribute:: SRC_ALPHA_SATURATE: const
 
+   Blend factor of :math:`(f, f, f, 1)` where :math:`f = min(A_s, 1 - A_d)`
 
 Text Style
 ##########

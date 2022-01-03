@@ -30,7 +30,7 @@ This module uses a fluent syntax, so any call that does not return a value, will
    ellipse(WIDTH/2, HEIGHT/2, 100, 100)
    style.pop()
 
-See :doc:`types/style` for a complete reference of all functionality
+See :doc:`/api/style` for a complete reference of all functionality
 
 Anywhere ``<color>`` is used as a parameter, the following forms can be used:
 
