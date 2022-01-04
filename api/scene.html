@@ -216,7 +216,97 @@
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">scene</span></span></dt>
+<dd><p>A high level scene structure used that integrates object hierarchy, rendering, input, physics and serialisation to simplify and streamline games and simulations</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="scene.main">
+<span class="sig-name descname"><span class="pre">main</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">scene</span><a class="headerlink" href="#scene.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the main Codea scene, which will be automatically drawn, updated and handle touch events</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+   <span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">default3d</span><span class="p">()</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="scene.world2d">
+<span class="sig-name descname"><span class="pre">world2d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.world</span><a class="headerlink" href="#scene.world2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the scene’s 2D physics world, providing access to various physics functions and properties such as <code class="xref lua lua-meth docutils literal notranslate"><span class="pre">physics2d.world.applyForce()</span></code></p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="scene.world3d">
+<span class="sig-name descname"><span class="pre">world3d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics3d.world</span><a class="headerlink" href="#scene.world3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the scene’s 3D physics world, providing access to various physics functions and properties such as <code class="xref lua lua-meth docutils literal notranslate"><span class="pre">physics3d.world.applyForce()</span></code></p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="scene.sky">
+<span class="sig-name descname"><span class="pre">sky</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">None</span><a class="headerlink" href="#scene.sky" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the sky visuals, which will depend on the type used:</p>
+<ul class="simple">
+<li><p><code class="xref lua lua-class docutils literal notranslate"><span class="pre">asset.key</span></code> - Use an image pointed to by a given asset key</p></li>
+<li><p><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code> - Use an image directly (assumed to be a cube image)</p></li>
+<li><p><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code> - Use a solid color</p></li>
+</ul>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="scene.camera">
+<span class="sig-name descname"><span class="pre">camera</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">entity</span><a class="headerlink" href="#scene.camera" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The scene’s camera entity (if it exists)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><span><a class="reference internal" href="#scene.entity" title="scene.entity"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="scene.sun">
+<span class="sig-name descname"><span class="pre">sun</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">entity</span><a class="headerlink" href="#scene.sun" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The scene’s sun entity (if it exists)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><span><a class="reference internal" href="#scene.entity" title="scene.entity"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="scene.entity">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">entity</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">name</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new blank <a class="reference internal" href="#scene.entity" title="scene.entity"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code></a> with an optional name</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="scene.findEntity">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">findEntity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scene.findEntity" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="scene.entities">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">entities</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">activeOnly</span> <span class="pre">=</span> <span class="pre">true</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.entities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a table containing all root entities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>activeOnly</strong> – When set, returns only active root entities</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">index(name)</span> <span class="pre">[metamethod]</span></span></dt>
+<dd><p>Returns the root entity with the given name (if it exists)</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="scene.draw">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Immediately draws the scene to the current context. When autoUpdate is enabled, <code class="docutils literal notranslate"><span class="pre">update(dt)</span></code> will be called as well</p>
+<p>If set as <code class="docutils literal notranslate"><span class="pre">scene.main</span></code> this will be called automatically right before the global <code class="docutils literal notranslate"><span class="pre">draw()</span></code> function</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="scene.update">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">deltaTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scene.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the scene, called automatically when <code class="docutils literal notranslate"><span class="pre">draw()</span></code> is called but can also be called manutally if needed</p>
+</dd></dl>
+</dd></dl>
 </div>
 
         </article>
