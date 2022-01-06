@@ -13,6 +13,11 @@ entity
 
       The active state of this entity, when inactive an entity will not be rendered, simulate physics or respond to automatic callbacks
 
+      .. collapse:: Example
+
+         .. literalinclude:: /code/Example_entity_active.codea/Main.lua
+            :language: lua
+
    .. lua:attribute:: activeInHierarchy: boolean [readonly]
 
       The computed active in hierarchy state of this entity. Only ``true`` when all parents up to the root are active as well
@@ -29,9 +34,14 @@ entity
 
    *Lifecycle*
 
-   .. lua:method:: destroy()
+   .. lua:method:: destroy([delay])
 
-      Marks this entity for destruction in the next :lua:meth:`scene.update`, further access to this entity after destruction will result in errors
+      Marks this entity for destruction in the next :lua:meth:`scene.update`, or after a ``delay`` (in seconds), further access to this entity after destruction will result in errors
+
+      .. collapse:: Example
+
+         .. literalinclude:: /code/Example_entity_destroy.codea/Main.lua
+            :language: lua
 
    *Components*
 
