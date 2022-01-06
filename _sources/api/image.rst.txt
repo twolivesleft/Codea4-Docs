@@ -1,10 +1,9 @@
 image
 =====
 
-Represents an image, used by codea for drawing to the screen and texturing meshes
+Used by codea for drawing to the screen and texturing meshes
 
 .. code-block:: lua
-   :linenos:
    :caption: Loading and drawing an image
 
    function setup()

@@ -216,14 +216,298 @@
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">entity</span></span></dt>
-<dd><dl class="lua attribute">
+<dd><p>A scene entity, created using <a class="reference internal" href="scene.html#scene.entity" title="scene.entity"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">scene.entity()</span></code></a> that exists as part of the scene hierarchy. Entity behaviour and visuals are customised by addings various types of components or assets, such as <a class="reference internal" href="image.html#sprite.slice" title="sprite.slice"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">sprite.slice</span></code></a>, <code class="xref lua lua-class docutils literal notranslate"><span class="pre">camera</span></code> and <a class="reference internal" href="#entity.mesh" title="entity.mesh"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">mesh</span></code></a></p>
+<p>There are shortcut properties to attach some common components, while others are built-in (such as transforms, names and relationships)</p>
+<p><em>General</em></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.active">
+<span class="sig-name descname"><span class="pre">active</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#entity.active" title="Permalink to this definition">¶</a></dt>
+<dd><p>The active state of this entity, when inactive an entity will not be rendered, simulate physics or respond to automatic callbacks</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.activeInHierarchy">
+<span class="sig-name descname"><span class="pre">activeInHierarchy</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span> <span class="pre">[readonly]</span><a class="headerlink" href="#entity.activeInHierarchy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The computed active in hierarchy state of this entity. Only <code class="docutils literal notranslate"><span class="pre">true</span></code> when all parents up to the root are active as well</p>
+</dd></dl>
+<dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#entity.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The name of the entity, useful when referring to the entity later using the <code class="xref lua lua-class docutils literal notranslate"><span class="pre">scene</span></code> and <code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code> indexers</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
+<span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">:</span><span class="n">entity</span><span class="p">(</span><span class="s2">"ball"</span><span class="p">)</span> <span class="c1">-- create a new entity named 'ball'</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">ball</span><span class="p">)</span> <span class="c1">-- retrieve the entity named 'ball'</span>
+</pre></div>
+</div>
+</dd></dl>
+<p><em>Lifecycle</em></p>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.destroy">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#entity.destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Marks this entity for destruction in the next <a class="reference internal" href="scene.html#scene.update" title="scene.update"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">scene.update()</span></code></a>, further access to this entity after destruction will result in errors</p>
+</dd></dl>
+<p><em>Components</em></p>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.add">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">component</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a component to this entity, there are several types of objects that can act as entities</p>
+<ul class="simple">
+<li><p>built-in classes:</p></li>
+<li><p>user-defined classes:</p></li>
+<li><p>assets:</p></li>
+</ul>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.remove">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">component</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a given component type from this entity</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.has">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">has</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">component</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.has" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a component type is attached to this entity</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.get">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">component</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a component type attached to this etntity</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.components">
+<span class="sig-name descname"><span class="pre">components</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;component&gt;</span><a class="headerlink" href="#entity.components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a list of all components attached to this entity</p>
+</dd></dl>
+<p><em>Relationships</em></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.parent">
+<span class="sig-name descname"><span class="pre">parent</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">entity</span><a class="headerlink" href="#entity.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The parent of this entity or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if it is a root entity</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.root">
+<span class="sig-name descname"><span class="pre">root</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">entity</span><a class="headerlink" href="#entity.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>The root parent entity in the scene heirarchy (or self if this entity has no parent)</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.children">
+<span class="sig-name descname"><span class="pre">children</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;entity&gt;</span><a class="headerlink" href="#entity.children" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of all immediate children of this entity</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.childCount">
+<span class="sig-name descname"><span class="pre">childCount</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#entity.childCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of children that this entity possesses</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.index">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves children with the supplied name using the property syntax (i.e. <code class="docutils literal notranslate"><span class="pre">myEntity.theChildName</span></code>)</p>
+<p><em>Note that this will not work if the child name is an existing property or method name in the entity class</em></p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.child">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.child" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new child entity of this entity</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.findChild">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">findChild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.findChild" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Finds the child named <code class="docutils literal notranslate"><span class="pre">name</span></code> or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if it does not exist</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.childAt">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">childAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.childAt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The child entity at a given index (between 1..childCount) or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if an invalid index is supplied</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.moveBefore">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">moveBefore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.moveBefore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearranges this entity to appear before the supplied <code class="docutils literal notranslate"><span class="pre">entity</span></code> in the transform hierarchy</p>
+<p><em>Note this may result in an entity’s parent changing to make it the sibling or another entity</em></p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="entity.moveAfter">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">moveAfter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.moveAfter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearranges this entity to appear after the supplied <code class="docutils literal notranslate"><span class="pre">entity</span></code> in the transform hierarchy</p>
+<p><em>Note this may result in an entity’s parent changing to make it the sibling or another entity</em></p>
+</dd></dl>
+<p><em>Transform</em></p>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.position">
 <span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#entity.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.worldPosition">
+<span class="sig-name descname"><span class="pre">worldPosition</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#entity.worldPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position of the entity in global 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#entity.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>The scale of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.uniformScale">
+<span class="sig-name descname"><span class="pre">uniformScale</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.uniformScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>The uniform scale of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.rotation">
+<span class="sig-name descname"><span class="pre">rotation</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">quat</span><a class="headerlink" href="#entity.rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The rotation of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.worldRotation">
+<span class="sig-name descname"><span class="pre">worldRotation</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">quat</span><a class="headerlink" href="#entity.worldRotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The rotation of the entity in world 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.eulerRotation">
+<span class="sig-name descname"><span class="pre">eulerRotation</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#entity.eulerRotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The euler rotation of the entity in local 3D space (in degrees)</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>The x position of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>The y position of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.z">
+<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>The z position of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.sx">
+<span class="sig-name descname"><span class="pre">sx</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.sx" title="Permalink to this definition">¶</a></dt>
+<dd><p>The x scale of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.sy">
+<span class="sig-name descname"><span class="pre">sy</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.sy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The y scale of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.sz">
+<span class="sig-name descname"><span class="pre">sz</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.sz" title="Permalink to this definition">¶</a></dt>
+<dd><p>The z scale of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The positive z axis of this entity’s coordinate space transformed into world space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.right">
+<span class="sig-name descname"><span class="pre">right</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.right" title="Permalink to this definition">¶</a></dt>
+<dd><p>The positive x axis of this entity’s coordinate space transformed into world space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.up">
+<span class="sig-name descname"><span class="pre">up</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.up" title="Permalink to this definition">¶</a></dt>
+<dd><p>The positive y axis of this entity’s coordinate space transformed into world space</p>
+</dd></dl>
+<p><em>Sprite Properties</em></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.sprite">
+<span class="sig-name descname"><span class="pre">sprite</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">sprite.slice</span><a class="headerlink" href="#entity.sprite" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.color">
+<span class="sig-name descname"><span class="pre">color</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">color</span><a class="headerlink" href="#entity.color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.flipX">
+<span class="sig-name descname"><span class="pre">flipX</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#entity.flipX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.flipY">
+<span class="sig-name descname"><span class="pre">flipY</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#entity.flipY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<p><em>Mesh Properties</em></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.mesh">
+<span class="sig-name descname"><span class="pre">mesh</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mesh</span><a class="headerlink" href="#entity.mesh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.material">
+<span class="sig-name descname"><span class="pre">material</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">material</span><a class="headerlink" href="#entity.material" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<p><em>Physics2D Properties</em></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.body2d">
+<span class="sig-name descname"><span class="pre">body2d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.body</span><a class="headerlink" href="#entity.body2d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.collider2d">
+<span class="sig-name descname"><span class="pre">collider2d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.collider</span><a class="headerlink" href="#entity.collider2d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.colliders2d">
+<span class="sig-name descname"><span class="pre">colliders2d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;physics2d.collider&gt;</span><a class="headerlink" href="#entity.colliders2d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.joints2d">
+<span class="sig-name descname"><span class="pre">joints2d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;physics2d.joint&gt;</span><a class="headerlink" href="#entity.joints2d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<p><em>Physics3D Properties</em></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.body3d">
+<span class="sig-name descname"><span class="pre">body3d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics3d.body</span><a class="headerlink" href="#entity.body3d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.collider3d">
+<span class="sig-name descname"><span class="pre">collider3d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics3d.collider</span><a class="headerlink" href="#entity.collider3d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.colliders3d">
+<span class="sig-name descname"><span class="pre">colliders3d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;physics3d.collider&gt;</span><a class="headerlink" href="#entity.colliders3d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.joints3d">
+<span class="sig-name descname"><span class="pre">joints3d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;physics3d.joint&gt;</span><a class="headerlink" href="#entity.joints3d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<p><em>Callbacks</em></p>
+<p>A series of handy callbacks that can be set which will be invoked automatically by the scene systems</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.update">
+<span class="sig-name descname"><span class="pre">update</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback for the <code class="docutils literal notranslate"><span class="pre">update(dt)</span></code> event, which is called on all active entities once per frame. The <code class="docutils literal notranslate"><span class="pre">dt</span></code> parameter passes the delta time of the enclosing scene for this frame</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.fixedUpdate">
+<span class="sig-name descname"><span class="pre">fixedUpdate</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.fixedUpdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback for the <code class="docutils literal notranslate"><span class="pre">fixedUpdate(dt)</span></code> event, which is called on all active entities once per fixed update (called a fixed number of times per second). The <code class="docutils literal notranslate"><span class="pre">dt</span></code> parameter passes the fixed delta time of the enclosing scene</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.touched">
+<span class="sig-name descname"><span class="pre">touched</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.touched" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback for the <code class="docutils literal notranslate"><span class="pre">touched(touch)</span></code> event, which is called whenever a touch occurs (in response to user interaction)</p>
+<p>During the <code class="docutils literal notranslate"><span class="pre">BEGAN</span></code> phase of an incomming touch, returning true from this function will capture the touch for all subsequent events, otherwise the touch will be <cite>lost</cite></p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.destroyed">
+<span class="sig-name descname"><span class="pre">destroyed</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.destroyed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback for the <cite>destroyed()</cite> event, which is called right before the entity is destroyed</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.hitTest">
+<span class="sig-name descname"><span class="pre">hitTest</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span> <span class="pre">[default</span> <span class="pre">=</span> <span class="pre">false]</span><a class="headerlink" href="#entity.hitTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables hit testing for the <code class="docutils literal notranslate"><span class="pre">touched(touch)</span></code> event, which will filter touches based on collision checks using attached physics components on the main camera</p>
+<p>Use this to use colliders to filter interactions automatically</p>
+</dd></dl>
 </dd></dl>
 </div>
 

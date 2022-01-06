@@ -213,18 +213,18 @@
         <article role="main">
           <div class="section" id="image">
 <h1>image<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h1>
-<p>Represents an image, used by codea for drawing to the screen and texturing meshes</p>
+<p>Used by codea for drawing to the screen and texturing meshes</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Loading and drawing an image</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-<span class="linenos">2</span>   <span class="c1">-- load an image from a builtin image asset</span>
-<span class="linenos">3</span>   <span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">Cargo_Bot</span><span class="p">.</span><span class="n">Codea_Icon</span><span class="p">)</span>
-<span class="linenos">4</span><span class="kr">end</span>
-<span class="linenos">5</span>
-<span class="linenos">6</span><span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
-<span class="linenos">7</span>   <span class="n">background</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
-<span class="linenos">8</span>   <span class="n">sprite</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-<span class="linenos">9</span><span class="kr">end</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+   <span class="c1">-- load an image from a builtin image asset</span>
+   <span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">Cargo_Bot</span><span class="p">.</span><span class="n">Codea_Icon</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
+   <span class="n">background</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+   <span class="n">sprite</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="kr">end</span>
 </pre></div>
 </div>
 </div>
