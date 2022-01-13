@@ -7,7 +7,7 @@ entity
 
    There are shortcut properties to attach some common components, while others are built-in (such as transforms, names and relationships)
 
-   *General*
+   **General**
 
    .. lua:attribute:: active: boolean
 
@@ -32,7 +32,7 @@ entity
          scene.main:entity("ball") -- create a new entity named 'ball'
          print(scene.main.ball) -- retrieve the entity named 'ball'
 
-   *Lifecycle*
+   **Lifecycle**
 
    .. lua:method:: destroy([delay])
 
@@ -43,7 +43,7 @@ entity
          .. literalinclude:: /code/Example_entity_destroy.codea/Main.lua
             :language: lua
 
-   *Components*
+   **Components**
 
    .. lua:method:: add(component, ...)
 
@@ -69,7 +69,7 @@ entity
 
       Retrieves a list of all components attached to this entity
 
-   *Relationships*
+   **Relationships**
 
    .. lua:attribute:: parent: entity
 
@@ -117,7 +117,7 @@ entity
 
       *Note this may result in an entity's parent changing to make it the sibling or another entity*
 
-   *Transform*
+   **Transform**
 
    .. lua:attribute:: position: vec3
 
@@ -183,7 +183,7 @@ entity
 
       The positive y axis of this entity's coordinate space transformed into world space
 
-   *Sprite Properties*
+   **Sprite Properties**
 
    .. lua:attribute:: sprite: sprite.slice
 
@@ -193,13 +193,13 @@ entity
 
    .. lua:attribute:: flipY: boolean
 
-   *Mesh Properties*
+   **Mesh Properties**
 
    .. lua:attribute:: mesh: mesh
 
    .. lua:attribute:: material: material
 
-   *Physics2D Properties*
+   **Physics2D Properties**
 
    .. lua:attribute:: body2d: physics2d.body
 
@@ -209,7 +209,7 @@ entity
 
    .. lua:attribute:: joints2d: table<physics2d.joint>
 
-   *Physics3D Properties*
+   **Physics3D Properties**
 
    .. lua:attribute:: body3d: physics3d.body
 
@@ -219,7 +219,7 @@ entity
 
    .. lua:attribute:: joints3d: table<physics3d.joint>
 
-   *Callbacks*
+   **Callbacks**
 
    A series of handy callbacks that can be set which will be invoked automatically by the scene systems
 

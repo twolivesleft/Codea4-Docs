@@ -125,6 +125,58 @@ Sprites
 .. lua:function:: sprite(shader, x, y, w, h)
 
 
+Text
+####
+
+.. lua:function:: text(str, x, y, [w, h, callback(string, integer, mod)])
+
+   Draws one or more lines of text based on the current style. Use the optional width and height parameters to draw a fixed size text box with line wrapping enabled
+
+   - *Text Color* with :lua:func:`style.fill`
+   - *Text Outline* with :lua:func:`style.stroke`
+   - *Text Outline Thickness* with :lua:func:`style.strokeWidth`
+   - *Text Alignment* with :lua:func:`style.textAlign`
+      - ``LEFT``
+      - ``CENTER``
+      - ``RIGHT``
+      - ``TOP``
+      - ``MIDDLE``
+      - ``BOTTOM``
+   - *Text Style* with :lua:func:`style.textStyle`
+      - ``TEXT_NORMAL``
+      - ``TEXT_BACKGROUND``
+      - ``TEXT_UNDERLINE``
+      - ``TEXT_OVERLINE``
+      - ``TEXT_STRIKE_THROUGH``
+      - ``TEXT_BOLD``
+      - ``TEXT_ITALIC``
+
+   The additional parameter ``callback`` is a special function used to modify individual glyphs (characters) when the text is rendered. The callback function has the following parameters:
+
+   - ``str`` - the string being drawn
+   - ``index`` - the index of the current glyph in the string
+   - ``mod`` - a reference to a glyphModifier object, used to modify the current glyph
+
+   A ``glyphModifier`` has the follwing properties:
+
+   - offsetX - the amount to offset the glyphs x position in pixels
+   - offsetY - the amount to offset the glyphs y position in pixels
+   - alpha - the alpha of the current glyph (0-255)
+   - color - the color the of the current glyph
+
+   More modification options may be added in future
+
+   .. collapse:: Example
+
+      .. literalinclude:: /code/Example_text_glyph_callback.codea/Main.lua
+         :language: lua
+
+   :param x: the x coordinate of the text
+   :param y: the x coordinate of the text
+   :param w: optional width of the text box
+   :param h: optional height of the text box
+   :param callback: a special glyph modifier callback
+
 Gizmos
 ######
 
@@ -134,7 +186,7 @@ Gizmos are useful for drawing shapes in 2D/3D space for debugging and editing
 
 .. lua:function:: line(x1, y1, z1, x2, y2, z2)
 
-   Draws an arbitrary 3D antialiased line
+   Draws a 3D antialiased line
 
 Contexts
 ########

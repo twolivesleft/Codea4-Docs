@@ -1,7 +1,7 @@
 image
 =====
 
-Used by codea for drawing to the screen and texturing meshes
+Made of pixels and used by codea for drawing to the screen and texturing meshes
 
 .. code-block:: lua
    :caption: Loading and drawing an image
