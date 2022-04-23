@@ -160,6 +160,7 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/codea_3x.html">Migration from Codea 3.x</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/sound.html">Sound</a></li>
@@ -174,6 +175,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/image.html">image</a></li>
@@ -183,6 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/sound.html">sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/ui.html">ui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics3d.html">physics3d</a></li>
 </ul>
@@ -229,6 +232,19 @@
 <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/codea_3x.html">Migration from Codea 3.x</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#opengl-es-3-metal">OpenGL ES 3 -&gt; Metal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#drawing-commands">Drawing Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#asset-loading-saving">Asset Loading/Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#craft">Craft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#scenes-and-entities">Scenes and Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#entities">Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#physics">Physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#fluent-api-style-matrix-etc">Fluent API (style, matrix, etc…)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#time">Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#matrix-and-vector-types">Matrix and Vector Types</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="manual/codea.html">How Codea Works</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual/codea.html#setup">setup()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/codea.html#draw">draw()</a></li>
@@ -240,11 +256,11 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#drawing-in-codea">Drawing in Codea</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#style">Style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#matrix">Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#context">Context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#backround">Backround</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#vector-drawing">Vector Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#text">Text</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#images-and-sprites">Images and Sprites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#context">Context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#meshes">Meshes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#shaders-and-materials">Shaders and Materials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#lighting">Lighting</a></li>
@@ -301,10 +317,18 @@
 <li class="toctree-l2"><a class="reference internal" href="api/math_types.html#module-bounds">aabb</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="api/input.html">input</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/input.html#touches">Touches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/input.html#gestures">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/input.html#module-key">Keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/input.html#module-nil">Gamepad</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#background">Background</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#vector-graphics">Vector Graphics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#sprites">Sprites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/graphics.html#text">Text</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#gizmos">Gizmos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#module-context">Contexts</a></li>
 </ul>
@@ -331,6 +355,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/sound.html">sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/ui.html">ui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics3d.html">physics3d</a></li>
 </ul>

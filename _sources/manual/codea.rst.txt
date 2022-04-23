@@ -1,8 +1,7 @@
 How Codea Works
 ===============
 
-Codea is primarily designed as a graphical engine that updates in realtime
-typically as fast as the screen can be updated on any given device
+Codea is primarily designed as a realtime graphical engine that uses callbacks to draw and update the screen
 
 When you create a project you are given a basic template in ``Main.lua`` that
 contains some global functions:

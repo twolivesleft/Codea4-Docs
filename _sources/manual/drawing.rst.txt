@@ -4,13 +4,13 @@ Drawing
 Drawing in Codea
 ----------------
 
-Codea comes with several immediate mode drawing APIs that form the basis of
-drawing both 2D and 3D graphics
+Codea comes with an immediate mode drawing API that forms the basis of
+rendering both 2D and 3D graphics
 
 The user-defined global :lua:`draw()` function is called once per frame to
 update the contents of the screen
 
-The :lua:`background(r,g,b,a)` function is used to clear the background to a given color. When this isn't called the contents of the background will stay the same as the preivous frame
+The :lua:`background(r,g,b,a)` function is used to clear the background with a given color. When this isn't called the contents of the background will stay the same as the preivous frame
 
 Codea uses an hybrid-immediate mode drawing system, where various built-in functions can be used to paint objects to the screen when called, such as :lua:`line()`, :lua:`sprite()` and :lua:`rect()`
 
@@ -42,31 +42,29 @@ Anywhere ``<color>`` is used as a parameter, the following forms can be used:
    style.func(grey) -- only grayscale with alph assumed to be 255
    style.func(color) -- a color object
 
-
-
-
-
-
-
-
-
 Matrix
 ------
 
-Context
--------
+The matrix module is used to manipulate the current immediate mode transform, view and projection matrices, which can be thought of as object pose, camera pose and perspective
+
+By combining different matrix commands, any 2D or 3D drawing setup can be achieved, and there is also the :lua:class:`camera` class which can be used on its own or part of a :lua:class:`scene` for a higher level abstraction
 
 Backround
 ---------
 
+
 Vector Drawing
 --------------
+
 
 Text
 ----
 
 Images and Sprites
 ------------------
+
+Context
+-------
 
 Meshes
 ------

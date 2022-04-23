@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="style" href="style.html" /><link rel="prev" title="math types" href="math_types.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="style" href="style.html" /><link rel="prev" title="input" href="input.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.3.2, furo 2021.11.16"/>
         <title>graphics commands - Codea 4.0 documentation</title>
@@ -160,6 +160,7 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/codea_3x.html">Migration from Codea 3.x</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
@@ -174,6 +175,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
@@ -183,6 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
 </ul>
@@ -305,11 +308,15 @@
     <span class="c1">-- Test mip level adjustment</span>
     <span class="n">parameter</span><span class="p">.</span><span class="n">number</span><span class="p">(</span><span class="s2">"MipLevel"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">mip</span><span class="p">)</span>
         <span class="n">skybox</span><span class="p">.</span><span class="n">mipLevel</span> <span class="o">=</span> <span class="n">mip</span>
-    <span class="kr">end</span><span class="p">)</span>
+    <span class="kr">end</span><span class="p">)</span>  
+
+    <span class="n">parameter</span><span class="p">.</span><span class="n">vec2</span><span class="p">(</span><span class="s2">"Rotation"</span><span class="p">,</span> <span class="n">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="kr">end</span>
 
 <span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
-    <span class="n">matrix</span><span class="p">.</span><span class="n">perspective</span><span class="p">()</span>
+    <span class="n">matrix</span><span class="p">.</span><span class="n">perspective</span><span class="p">()</span> 
+    <span class="kd">local</span> <span class="n">v</span> <span class="o">=</span> <span class="n">mat4</span><span class="p">.</span><span class="n">orbit</span><span class="p">(</span><span class="n">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Rotation</span><span class="p">:</span><span class="n">unpack</span><span class="p">())</span>    
+    <span class="n">matrix</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
     <span class="n">background</span><span class="p">(</span><span class="n">skybox</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
@@ -427,13 +434,200 @@
 <em class="property"> </em><span class="sig-name descname"><span class="pre">sprite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shader</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 </div>
+<div class="section" id="text">
+<h2>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">str</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Draws one or more lines of text based on the current style. Use the optional width and height parameters to draw a fixed size text box with line wrapping enabled</p>
+<ul class="simple">
+<li><p><em>Text Color</em> with <a class="reference internal" href="style.html#style.fill" title="style.fill"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.fill()</span></code></a></p></li>
+<li><p><em>Text Outline</em> with <a class="reference internal" href="style.html#style.stroke" title="style.stroke"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.stroke()</span></code></a></p></li>
+<li><p><em>Text Outline Thickness</em> with <a class="reference internal" href="style.html#style.strokeWidth" title="style.strokeWidth"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.strokeWidth()</span></code></a></p></li>
+<li><dl class="simple">
+<dt><em>Text Alignment</em> with <a class="reference internal" href="style.html#style.textAlign" title="style.textAlign"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.textAlign()</span></code></a></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LEFT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CENTER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RIGHT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOP</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MIDDLE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BOTTOM</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><em>Text Style</em> with <code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.textStyle()</span></code></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_NORMAL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_BACKGROUND</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_UNDERLINE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_OVERLINE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_STRIKE_THROUGH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_BOLD</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_ITALIC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_RICH</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">TEXT_RICH</span></code> style option enables rich text, which parses xml tags within the supplied string to format individual characters</p>
+<p><strong>Built-In Tags</strong></p>
+<p><em>Bold and Italic</em></p>
+<blockquote class="epigraph">
+<div><p>The &lt;i&gt;quick brown fox&lt;/i&gt; jumps over the &lt;b&gt;lazy dog&lt;/b&gt;.</p>
+<p><a class="reference internal" href="../_images/example_richText_bold_italic.png"><img alt="bold_italic" src="../_images/example_richText_bold_italic.png" style="width: 512px;"/></a></p>
+</div></blockquote>
+<p><em>Custom Tags</em></p>
+<p>Custom tags can assigned using a callback function - <code class="docutils literal notranslate"><span class="pre">text.style.myCustomTag</span> <span class="pre">=</span> <span class="pre">function(tag,</span> <span class="pre">format)</span> <span class="pre">...</span> <span class="pre">end</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tag</span></code> parameter gives access to custom xml tag attributes</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">format</span></code> parameter gives access to text formatting options that can be adjusted per tag, derived from text styles in the <code class="docutils literal notranslate"><span class="pre">style</span></code> module</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">textAlign</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">textStyle</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fontSize</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fontName</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fillColor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strokeColor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strokeWidth</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">textShadow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">textShadowOffset</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">textShadowSoftner</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callback</span></code></p></li>
+</ul>
+<p>The additional parameter <code class="docutils literal notranslate"><span class="pre">callback</span></code> is a special function used to modify individual glyphs (characters) when the text is rendered. The callback function has the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> - the string being drawn</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> - the index of the current glyph in the string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mod</span></code> - a reference to a glyphModifier object, used to modify the current glyph</p></li>
+</ul>
+<p>A <code class="docutils literal notranslate"><span class="pre">glyphModifier</span></code> has the follwing properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">offsetX</span></code> - the amount to offset the glyphs x position in pixels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">offsetY</span></code> - the amount to offset the glyphs y position in pixels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> - the alpha of the current glyph (0-255)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> - the color the of the current glyph</p></li>
+</ul>
+<details class="summary-example">
+<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+    <span class="n">text</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">format</span><span class="p">)</span>
+        <span class="kd">local</span> <span class="n">height</span> <span class="o">=</span> <span class="n">tag</span><span class="p">:</span><span class="n">number</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                   
+        <span class="n">format</span><span class="p">.</span><span class="n">fillColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">red</span>
+        <span class="n">format</span><span class="p">.</span><span class="n">textStyle</span> <span class="o">=</span> <span class="n">format</span><span class="p">.</span><span class="n">textStyle</span> <span class="o">|</span> <span class="n">TEXT_ITALICS</span> <span class="o">|</span> <span class="n">TEXT_BOLD</span>
+        <span class="n">format</span><span class="p">.</span><span class="n">callback</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mod</span><span class="p">)</span>
+            <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">=</span> <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">+</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="n">elapsed</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">height</span>
+        <span class="kr">end</span>
+    <span class="kr">end</span>
+    
+    <span class="n">text</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">shake</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">format</span><span class="p">)</span>
+        <span class="kd">local</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">tag</span><span class="p">:</span><span class="n">number</span><span class="p">(</span><span class="s2">"intensity"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                   
+        
+        <span class="n">format</span><span class="p">.</span><span class="n">callback</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mod</span><span class="p">)</span>
+            <span class="kd">local</span> <span class="n">r1</span> <span class="o">=</span> <span class="p">(</span><span class="nb">math.random</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">intensity</span>
+            <span class="kd">local</span> <span class="n">r2</span> <span class="o">=</span> <span class="p">(</span><span class="nb">math.random</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">intensity</span>
+            
+            <span class="n">mod</span><span class="p">.</span><span class="n">offsetX</span> <span class="o">=</span> <span class="n">mod</span><span class="p">.</span><span class="n">offsetX</span> <span class="o">+</span> <span class="n">r1</span>
+            <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">=</span> <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">+</span> <span class="n">r2</span>
+        <span class="kr">end</span>
+    <span class="kr">end</span>
+    
+    <span class="n">text</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">appear</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">format</span><span class="p">)</span>
+        <span class="kd">local</span> <span class="n">t</span> <span class="o">=</span> <span class="n">timer</span> <span class="o">*</span> <span class="n">tag</span><span class="p">:</span><span class="n">number</span><span class="p">(</span><span class="s2">"speed"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>                   
+                
+        <span class="n">format</span><span class="p">.</span><span class="n">callback</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mod</span><span class="p">)</span>
+            <span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">math.min</span><span class="p">(</span><span class="nb">math.max</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">i</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)</span>
+            <span class="kd">local</span> <span class="n">len</span> <span class="o">=</span> <span class="n">str</span><span class="p">:</span><span class="n">len</span><span class="p">()</span>
+            <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="nb">math.pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">mod</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">255</span>        
+        <span class="kr">end</span>
+    <span class="kr">end</span>
+    
+    <span class="n">parameter</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"str"</span><span class="p">,</span> <span class="s2">"&lt;appear speed='15'&gt;&lt;b&gt;This&lt;/b&gt; line will appear and &lt;shake intensity = '2'&gt;shake&lt;/shake&gt; and &lt;wave height='5'&gt;wave&lt;/wave&gt; and might wrap at some point...&lt;/appear&gt;"</span><span class="p">)</span>
+    <span class="c1">--parameter.text("str", "Here is a line of text that might wrap at some point...")</span>
+    <span class="n">parameter</span><span class="p">.</span><span class="n">integer</span><span class="p">(</span><span class="s2">"fontSize"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>    
+    <span class="n">parameter</span><span class="p">.</span><span class="n">number</span><span class="p">(</span><span class="s2">"WaveHeight"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">parameter</span><span class="p">.</span><span class="n">enumerated</span><span class="p">(</span><span class="s2">"TextAlignH"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"LEFT"</span><span class="p">,</span> <span class="s2">"CENTER"</span><span class="p">,</span> <span class="s2">"RIGHT"</span><span class="p">},</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">parameter</span><span class="p">.</span><span class="n">enumerated</span><span class="p">(</span><span class="s2">"TextAlignV"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"BOTTOM"</span><span class="p">,</span> <span class="s2">"MIDDLE"</span><span class="p">,</span> <span class="s2">"TOP"</span><span class="p">},</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">parameter</span><span class="p">.</span><span class="n">action</span><span class="p">(</span><span class="s2">"Reset"</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span> <span class="n">timer</span> <span class="o">=</span> <span class="mi">0</span> <span class="kr">end</span><span class="p">)</span>
+    
+    <span class="n">alignH</span> <span class="o">=</span> <span class="p">{</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">CENTER</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">}</span>
+    <span class="n">alignV</span> <span class="o">=</span> <span class="p">{</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">MIDDLE</span><span class="p">,</span> <span class="n">TOP</span><span class="p">}</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="cm">--[[</span>
+<span class="cm">    scn = scene.default3d()</span>
+<span class="cm">    local rig = scn.camera:add(camera.rigs.orbit)</span>
+<span class="cm">    rig.distance = 50</span>
+<span class="cm">    rig.angles.y = -45    </span>
+<span class="cm">    rig.angles.y = -75</span>
+<span class="cm">    scene.main = scn--]]</span>
+    
+    
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
+
+    <span class="kd">local</span> <span class="n">boxWidth</span> <span class="o">=</span> <span class="mi">400</span>
+    <span class="kd">local</span> <span class="n">boxHeight</span> <span class="o">=</span> <span class="mi">200</span>
+    
+    <span class="n">background</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+    
+    <span class="c1">--matrix.ortho()</span>
+    
+    <span class="c1">-- Setup the text drawing style</span>
+    <span class="n">style</span><span class="p">.</span><span class="n">font</span><span class="p">(</span><span class="s2">"Arial"</span><span class="p">)</span>
+    <span class="n">style</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">cyan</span><span class="p">).</span><span class="n">fontSize</span><span class="p">(</span><span class="n">fontSize</span><span class="p">)</span>
+    
+    <span class="n">matrix</span><span class="p">.</span><span class="n">transform3d</span><span class="p">(</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">50</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">boxHeight</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1">--matrix.transform3d(0, 0, 0, 0.1, 0.1, 0.1, 0, 0, 0)</span>
+        
+    <span class="n">style</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">style</span><span class="p">.</span><span class="n">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="n">textStyle</span><span class="p">(</span><span class="n">TEXT_RICH</span><span class="p">)</span>
+    <span class="c1">--style.noStroke()</span>
+    <span class="n">style</span><span class="p">.</span><span class="n">textAlign</span><span class="p">(</span><span class="n">alignH</span><span class="p">[</span><span class="n">TextAlignH</span><span class="p">]</span> <span class="o">|</span> <span class="n">alignV</span><span class="p">[</span><span class="n">TextAlignV</span><span class="p">])</span>
+    
+    <span class="kd">local</span> <span class="n">so</span> <span class="o">=</span> <span class="p">(</span><span class="n">CurrentTouch</span><span class="p">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">vec2</span><span class="p">(</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="mf">0.1</span>
+    
+    <span class="n">style</span><span class="p">.</span><span class="n">textShadow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">).</span><span class="n">textShadowSoftner</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">textShadowOffset</span><span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">so</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+        
+    <span class="c1">-- Cache some locals for performance</span>
+    <span class="kd">local</span> <span class="n">len</span> <span class="o">=</span> <span class="n">str</span><span class="p">:</span><span class="n">len</span><span class="p">()</span>
+    <span class="kd">local</span> <span class="n">cps</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="kd">local</span> <span class="n">t</span> <span class="o">=</span> <span class="n">timer</span> <span class="o">*</span> <span class="mi">5</span>
+    <span class="kd">local</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="nb">string.find</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="s2">"text"</span><span class="p">)</span>
+    
+    <span class="n">text</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">boxWidth</span><span class="p">,</span> <span class="n">boxHeight</span><span class="p">)</span>
+    
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">timer</span> <span class="o">+</span> <span class="n">time</span><span class="p">.</span><span class="n">delta</span>
+    
+    <span class="c1">-- Draw the text's bounding box and origin</span>
+    <span class="n">style</span><span class="p">.</span><span class="n">noFill</span><span class="p">().</span><span class="n">stroke</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">yellow</span><span class="p">).</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">boxWidth</span><span class="p">,</span> <span class="n">boxHeight</span><span class="p">)</span>
+    <span class="n">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</details><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – the x coordinate of the text</p></li>
+<li><p><strong>y</strong> – the x coordinate of the text</p></li>
+<li><p><strong>w</strong> – optional width of the text box</p></li>
+<li><p><strong>h</strong> – optional height of the text box</p></li>
+<li><p><strong>callback</strong> – a special glyph modifier callback</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</div>
 <div class="section" id="gizmos">
 <h2>Gizmos<a class="headerlink" href="#gizmos" title="Permalink to this headline">¶</a></h2>
 <p>Gizmos are useful for drawing shapes in 2D/3D space for debugging and editing</p>
 <span class="target" id="module-gizmos"></span><dl class="lua function">
 <dt class="sig sig-object lua" id="gizmos.line">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">gizmos.</span></span><span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x1</span></em>, <em class="sig-param"><span class="pre">y1</span></em>, <em class="sig-param"><span class="pre">z1</span></em>, <em class="sig-param"><span class="pre">x2</span></em>, <em class="sig-param"><span class="pre">y2</span></em>, <em class="sig-param"><span class="pre">z2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gizmos.line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draws an arbitrary 3D antialiased line</p>
+<dd><p>Draws a 3D antialiased line</p>
 </dd></dl>
 </div>
 <div class="section" id="module-context">
@@ -474,14 +668,14 @@
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="math_types.html">
+          <a class="prev-page" href="input.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">math types</div>
+                <div class="title">input</div>
                 
               </div>
             </a>
@@ -515,6 +709,7 @@
 <li><a class="reference internal" href="#background">Background</a></li>
 <li><a class="reference internal" href="#vector-graphics">Vector Graphics</a></li>
 <li><a class="reference internal" href="#sprites">Sprites</a></li>
+<li><a class="reference internal" href="#text">Text</a></li>
 <li><a class="reference internal" href="#gizmos">Gizmos</a></li>
 <li><a class="reference internal" href="#module-context">Contexts</a></li>
 </ul>
