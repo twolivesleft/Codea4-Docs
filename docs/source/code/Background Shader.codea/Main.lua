@@ -64,10 +64,14 @@ function setup()
     -- Test mip level adjustment
     parameter.number("MipLevel", 0, 10, 0, function(mip)
         skybox.mipLevel = mip
-    end)
+    end)  
+
+    parameter.vec2("Rotation", vec2(0,0))
 end
 
 function draw()
-    matrix.perspective()
+    matrix.perspective() 
+    local v = mat4.orbit(vec3(0, 0, 0), 1, Rotation:unpack())    
+    matrix.view(v)
     background(skybox)
 end

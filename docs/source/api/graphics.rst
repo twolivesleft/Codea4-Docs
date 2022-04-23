@@ -128,7 +128,7 @@ Sprites
 Text
 ####
 
-.. lua:function:: text(str, x, y, [w, h, callback(string, integer, mod)])
+.. lua:function:: text(str, x, y, [w, h])
 
    Draws one or more lines of text based on the current style. Use the optional width and height parameters to draw a fixed size text box with line wrapping enabled
 
@@ -150,6 +150,43 @@ Text
       - ``TEXT_STRIKE_THROUGH``
       - ``TEXT_BOLD``
       - ``TEXT_ITALIC``
+      - ``TEXT_RICH``
+
+   The ``TEXT_RICH`` style option enables rich text, which parses xml tags within the supplied string to format individual characters
+
+   **Built-In Tags**
+
+   *Bold and Italic*
+
+   .. epigraph::
+
+      The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.
+
+      |bold_italic|
+
+   .. |bold_italic| image:: /images/example_richText_bold_italic.png
+      :width: 512
+
+
+   *Custom Tags*
+
+   Custom tags can assigned using a callback function - ``text.style.myCustomTag = function(tag, format) ... end``
+
+   The ``tag`` parameter gives access to custom xml tag attributes
+
+   The ``format`` parameter gives access to text formatting options that can be adjusted per tag, derived from text styles in the ``style`` module
+
+   - ``textAlign``
+   - ``textStyle``
+   - ``fontSize``
+   - ``fontName``
+   - ``fillColor``
+   - ``strokeColor``
+   - ``strokeWidth``
+   - ``textShadow``
+   - ``textShadowOffset``
+   - ``textShadowSoftner``
+   - ``callback``
 
    The additional parameter ``callback`` is a special function used to modify individual glyphs (characters) when the text is rendered. The callback function has the following parameters:
 
@@ -159,12 +196,10 @@ Text
 
    A ``glyphModifier`` has the follwing properties:
 
-   - offsetX - the amount to offset the glyphs x position in pixels
-   - offsetY - the amount to offset the glyphs y position in pixels
-   - alpha - the alpha of the current glyph (0-255)
-   - color - the color the of the current glyph
-
-   More modification options may be added in future
+   - ``offsetX`` - the amount to offset the glyphs x position in pixels
+   - ``offsetY`` - the amount to offset the glyphs y position in pixels
+   - ``alpha`` - the alpha of the current glyph (0-255)
+   - ``color`` - the color the of the current glyph
 
    .. collapse:: Example
 
