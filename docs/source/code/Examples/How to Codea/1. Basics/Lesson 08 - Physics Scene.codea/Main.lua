@@ -10,8 +10,9 @@ function eye(x, y, parent)
     eye.parent = parent
     eye.x = x
     eye.y = y
-    eye:add(physics2d.body, DYNAMIC):circle(0.25)
-
+    local c = eye:add(physics2d.body, DYNAMIC):circle(0.25)
+    c.sensor = true
+    
     -- Draw an eye shape on top of this rigidbody
     function eye:draw()
         matrix.reset().translate(self.position)
@@ -21,7 +22,7 @@ function eye(x, y, parent)
         style.fill(0)
         ellipse(0, 0, 0.45)
         style.fill(255)
-        matrix.push().scale(math.sin(time.elapsed * 20) * 0.05 + 1.0)
+        matrix.push().scale(math.sin(time.elapsed * 30) * 0.1 + 1.0)
         ellipse(-.1, .1, .3)
         ellipse(.1, .1, .08)
         ellipse(.1, -.1, .1)
@@ -35,14 +36,14 @@ function eye(x, y, parent)
     j.maxLength = 0.125
 end
 
-function leg(x, y, parent)
-    local leg = scn:entity()
+function leg(name, x, y, parent)
+    local leg = scn:entity(name)
     leg.parent = parent
     
     function leg:draw()
         style.push().sortOrder(-1).rectMode(CENTER)
         style.stroke(255).strokeWidth(0.05).fill(221, 85, 142)
-        rect(0, 0, 0.6, 0.8, 0.1)        
+        rect(0, 0, 0.6, 0.8, 0.3)        
         style.pop()
     end
     
@@ -52,8 +53,8 @@ function leg(x, y, parent)
     local p = leg.worldPosition
     local j = leg.body2d:hinge(parent.body2d, p.x, p.y + 0.2)
     j.useMotor = true
-    j.motorSpeed = 0
-    j.maxTorque = 5
+    j.motorSpeed = 5
+    j.maxTorque = 20
 end
 
 
@@ -67,7 +68,6 @@ function setup()
     scn.camera:add(physics2d.grabber)
     
     function scn.camera:touched(touch)
-        
     end
     
     floor = scn:entity("floor")
@@ -85,10 +85,11 @@ function setup()
         self.x = self.x + (dx - px)
         self.y = self.y + (dy - py)
         return true -- capture touch here
-    end]]--
-    
+    end--]]
+        
     ball = scn:entity()
     ball:add(physics2d.body, DYNAMIC):circle(1.0)
+    ball.body2d.fixedRotation = true
     ball.y = 8
     ball.ouch = 0
     --print(ball.colliders2d[1]:destroy())
@@ -98,7 +99,7 @@ function setup()
         style.stroke(255).strokeWidth(0.05).fill(221, 85, 142)
         ellipse(0, 0, 2.0)
         
-        if math.abs(time.elapsed - ball.ouch) < 0.5 then 
+        if math.abs(time.elapsed - self.ouch) < 0.5 then 
             style.noStroke().fill(0)
             ellipse(0, -0.2, 0.2)
         else
@@ -115,10 +116,14 @@ function setup()
         self.ouch = time.elapsed
     end
 
+
+
     eye(-0.5, 0, ball)    
     eye(0.5, 0, ball)
-    leg(-0.8, -0.8, ball)
-    leg(0.8, -0.8, ball)
+    leg("leftLeg", -0.8, -0.8, ball)
+    leg("rightLeg", 0.8, -0.8, ball)
+    
+    print(ball.leftLeg)
     
     -- Create a concave 2D polygon (which is automatically decomposed into convex shapes)
     local points = 
