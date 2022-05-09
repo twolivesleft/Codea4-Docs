@@ -31,8 +31,10 @@ With the exception that you can now pass in ``vecx`` types as long as you pass i
 * :lua:func:`polygon` - draw am arbitrary polygon from an set of points
 * :lua:func:`polyline` - draw arbitrary line from a set of points
 * :lua:func:`shape` - draw an arbitrary shape using various drawing commands
+* :lua:func:`arc` - draw arc shape
 
 *New Types*
+
 There is a new type called :lua:class:`image.slice` which can be used with :lua:func:`sprite` for more sophisticaed sprite drawing. This lets you take a slice of an image, rotate, flip, pad and stetch using 9-patch style borders
 
 The :lua:class:`image.slice` type can be used with the new :lua:class:`atlas` type to quickly create and load spritesheets from a single image
