@@ -2,7 +2,7 @@ local icon
 local spr = sprite
 
 function setup() 
-    icon = asset.builtin.Cargo_Bot.Codea_Icon
+    icon = image.read(asset.builtin.Cargo_Bot.Codea_Icon).slice
 end
 
 function draw()
@@ -16,10 +16,13 @@ function draw()
     
     -- The basic command is: sprite(x, y, w, h) where you specify the x and y position and optional width and height
     -- Specifying only the width will scale the sprite's height correctly to match aspect ratio
-    style.blend(DISABLED)
+    --style.tint(255, 255, 255, 32)
+    --style.blend(DISABLED)
     local t = time.elapsed
-    for i = 0, 1000 do 
-        spr(icon, WIDTH/2 + math.sin(t + i) * 50, HEIGHT/2 + math.cos(t + i) * 50)
+    for i = 0, 3000 do 
+        spr(icon, 
+            WIDTH/2 + math.sin(t + i) * i * 0.25, 
+            HEIGHT/2 + math.cos(t + i) * i * 0.25, 100)
     end
 end
 

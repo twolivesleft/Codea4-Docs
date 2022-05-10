@@ -5,6 +5,8 @@
 -- physics features, including hit tests (for touches) and
 -- collisions (to react to physical events)
     
+viewer.fullscreen()
+
 function eye(x, y, parent)
     local eye = scn:entity()
     eye.parent = parent
@@ -22,7 +24,7 @@ function eye(x, y, parent)
         style.fill(0)
         ellipse(0, 0, 0.45)
         style.fill(255)
-        matrix.push().scale(math.sin(time.elapsed * 30) * 0.1 + 1.0)
+        matrix.push().scale(math.sin(time.elapsed * 30) * 0.15 + 1.0)
         ellipse(-.1, .1, .3)
         ellipse(.1, .1, .08)
         ellipse(.1, -.1, .1)
@@ -87,22 +89,27 @@ function setup()
         return true -- capture touch here
     end--]]
         
-    ball = scn:entity()
+    -- New entity
+    ball = scn:entity('ball')
+    -- Add a physics body and attach a circle collider to it
     ball:add(physics2d.body, DYNAMIC):circle(1.0)
     ball.body2d.fixedRotation = true
     ball.y = 8
+    -- Custom entity property
     ball.ouch = 0
-    --print(ball.colliders2d[1]:destroy())
     
     function ball:draw()
-        style.push().sortOrder(-2)
+        style.push().sortOrder(-2) -- draw in front of physics objects
         style.stroke(255).strokeWidth(0.05).fill(221, 85, 142)
         ellipse(0, 0, 2.0)
         
+        -- Draw a different expression if recently hit something
         if math.abs(time.elapsed - self.ouch) < 0.5 then 
+            -- :O
             style.noStroke().fill(0)
             ellipse(0, -0.2, 0.2)
         else
+            -- :)
             style.noFill().stroke(0).strokeWidth(0.1)
             line(-0.1, -0.1, 0.1, -0.1)
         end
@@ -110,8 +117,9 @@ function setup()
         style.pop()
     end
 
-    -- Respond to collisions for this entity by implementing the collision callback
+    -- Respond to collision events
     function ball:collisionBegan2d(hit)        
+        -- Play a sound and record when the hit happened
         sound.play(SOUND_HURT)
         self.ouch = time.elapsed
     end
