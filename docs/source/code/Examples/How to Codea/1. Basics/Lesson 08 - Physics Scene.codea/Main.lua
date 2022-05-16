@@ -7,6 +7,7 @@
     
 viewer.fullscreen()
 
+-- Create and attach an eyeball to something
 function eye(x, y, parent)
     local eye = scn:entity()
     eye.parent = parent
@@ -38,6 +39,7 @@ function eye(x, y, parent)
     j.maxLength = 0.125
 end
 
+-- Create and attach a leg to something
 function leg(name, x, y, parent)
     local leg = scn:entity(name)
     leg.parent = parent
@@ -58,7 +60,6 @@ function leg(name, x, y, parent)
     j.motorSpeed = 5
     j.maxTorque = 20
 end
-
 
 function setup()
     -- Create a default 2d scene
@@ -124,15 +125,12 @@ function setup()
         self.ouch = time.elapsed
     end
 
-
-
+    -- Attach all the body parts
     eye(-0.5, 0, ball)    
     eye(0.5, 0, ball)
     leg("leftLeg", -0.8, -0.8, ball)
     leg("rightLeg", 0.8, -0.8, ball)
-    
-    print(ball.leftLeg)
-    
+        
     -- Create a concave 2D polygon (which is automatically decomposed into convex shapes)
     local points = 
     {

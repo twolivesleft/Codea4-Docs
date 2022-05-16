@@ -21,8 +21,8 @@ function draw()
     local t = time.elapsed
     for i = 0, 3000 do 
         spr(icon, 
-            WIDTH/2 + math.sin(t + i) * i * 0.25, 
-            HEIGHT/2 + math.cos(t + i) * i * 0.25, 100)
+            WIDTH/2 + math.sin(t + i) * i * 0.1, 
+            HEIGHT/2 + math.cos(t + i) * i * 0.1, 100)
     end
 end
 
