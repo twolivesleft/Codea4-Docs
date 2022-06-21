@@ -26,7 +26,7 @@ function draw()
     -- line(x1, y1, x2, y2)
     -- polygon(p1, p2, p3, p4...)
     -- shape(x, y, closed, func)
-    
+        
     -- ellipse() draws an ellipse (no kidding?) at the specified x, y location
     -- The x, y values are euclidian coordinates (i.e. horizontal and vertical) with the 
     -- origin starting at 0, 0 (bottom left of the screen)
@@ -78,7 +78,6 @@ function draw()
     -- Extra 4 parameters to vary how much each corner is rounded
     style.stroke(255).strokeWidth(5)
     rect(WIDTH/2 + 120, HEIGHT/2 - 120, 100, 100, 5, 10, 5, 15)
-
     
     --[[
     background(25, 25, 25)

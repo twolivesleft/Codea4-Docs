@@ -16,7 +16,7 @@ function draw()
     
     -- The basic command is: sprite(x, y, w, h) where you specify the x and y position and optional width and height
     -- Specifying only the width will scale the sprite's height correctly to match aspect ratio
-    style.blend(DISABLED)
+    --style.blend(DISABLED)
     local t = time.elapsed
     for i = 0, 1000 do 
         spr(icon, WIDTH/2 + math.sin(t + i) * 50, HEIGHT/2 + math.cos(t + i) * 50)

@@ -34,7 +34,7 @@ function draw()
     
     matrix.translate(0, -300)
 
-    style.reset().blendEquation(EQUATION_MAX)
+    style.reset().blendFunc(EQUATION_MAX)
     sprite(alpha1, -100, 0, 300)
     sprite(alpha2, 100, 0, 300)        
         
