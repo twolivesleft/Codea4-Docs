@@ -232,11 +232,19 @@
           <li><a href="api/math_types.html#vec4.abs">(vec4 method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/entity.html#entity.add">add() (entity method)</a>
 </li>
         <li><a href="api/math_types.html#quat.angleAxis">angleAxis() (quat static method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/physics2d.html#physics2d.body.applyAngularImpulse">applyAngularImpulse() (physics2d.body method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.body.applyForce">applyForce() (physics2d.body method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.body.applyLinearImpulse">applyLinearImpulse() (physics2d.body method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.body.applyTorque">applyTorque() (physics2d.body method)</a>
 </li>
         <li><a href="api/graphics.html#arc">arc() (built-in function)</a>
 </li>
@@ -260,14 +268,16 @@
 </li>
         <li><a href="api/style.html#style.blendFunc">blendFunc() (in module style)</a>, <a href="api/style.html#style.blendFunc">[1]</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.body">body (class in physics2d)</a>
 
         <ul>
           <li><a href="api/physics3d.html#physics3d.body">(class in physics3d)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/physics2d.html#physics2d.world.body">body() (physics2d.world method)</a>
+</li>
         <li><a href="api/math_types.html#module-bounds">bounds (module)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.box">box (class in physics2d)</a>
@@ -276,6 +286,8 @@
           <li><a href="api/physics3d.html#physics3d.box">(class in physics3d)</a>
 </li>
         </ul></li>
+        <li><a href="api/physics2d.html#physics2d.body.box">box() (physics2d.body method)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -292,6 +304,8 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.circle">circle (class in physics2d)</a>
 </li>
+        <li><a href="api/physics2d.html#physics2d.body.circle">circle() (physics2d.body method)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.collider">collider (class in physics2d)</a>
 
         <ul>
@@ -307,6 +321,8 @@
         <li><a href="api/physics3d.html#physics3d.coneTwist">coneTwist (class in physics3d)</a>
 </li>
         <li><a href="api/math_types.html#quat.conjugate">conjugate() (quat method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.contact">contact (class in physics2d)</a>
 </li>
         <li><a href="api/graphics.html#module-context">context (module)</a>
 </li>
@@ -338,8 +354,6 @@
           <li><a href="api/math_types.html#vec4.distance">(vec4 method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec2.distance2">distance2() (vec2 method)</a>
 
         <ul>
@@ -348,6 +362,8 @@
           <li><a href="api/math_types.html#vec4.distance2">(vec4 method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec2.dot">dot() (vec2 method)</a>
 
         <ul>
@@ -356,8 +372,12 @@
           <li><a href="api/math_types.html#vec4.dot">(vec4 method)</a>
 </li>
         </ul></li>
-        <li><a href="api/scene.html#scene.draw">draw() (scene method)</a>
+        <li><a href="api/physics2d.html#physics2d.world.draw">draw() (physics2d.world method)</a>
+
+        <ul>
+          <li><a href="api/scene.html#scene.draw">(scene method)</a>
 </li>
+        </ul></li>
     </ul></td>
   </tr></table>
 </section>
@@ -414,12 +434,12 @@
 </li>
         <li><a href="api/entity.html#entity.joints2d">entity.joints2d (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/entity.html#entity.joints3d">entity.joints3d (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.material">entity.material (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/entity.html#entity.mesh">entity.mesh (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.name">entity.name (attribute)</a>
@@ -433,6 +453,12 @@
         <li><a href="api/entity.html#entity.root">entity.root (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.rotation">entity.rotation (attribute)</a>
+</li>
+        <li><a href="api/entity.html#entity.rx">entity.rx (attribute)</a>
+</li>
+        <li><a href="api/entity.html#entity.ry">entity.ry (attribute)</a>
+</li>
+        <li><a href="api/entity.html#entity.rz">entity.rz (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.scale">entity.scale (attribute)</a>
 </li>
@@ -451,6 +477,8 @@
         <li><a href="api/entity.html#entity.up">entity.up (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.update">entity.update (attribute)</a>
+</li>
+        <li><a href="api/entity.html#entity.valid">entity.valid (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.worldPosition">entity.worldPosition (attribute)</a>
 </li>
@@ -526,14 +554,16 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/entity.html#entity.has">has() (entity method)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.hinge">hinge (class in physics2d)</a>
 
         <ul>
           <li><a href="api/physics3d.html#physics3d.hinge">(class in physics3d)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/physics2d.html#physics2d.body.hinge">hinge() (physics2d.body method)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -812,6 +842,10 @@
 </li>
         <li><a href="api/style.html#style.lineJoin">lineJoin() (in module style)</a>
 </li>
+        <li><a href="api/physics2d.html#physics2d.body.localPoint">localPoint() (physics2d.body method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.body.localVector">localVector() (physics2d.body method)</a>
+</li>
         <li><a href="api/math_types.html#mat2.lookAt">lookAt() (mat2 static method)</a>, <a href="api/math_types.html#mat2.lookAt">[1]</a>
 </li>
         <li><a href="api/math_types.html#quat.lookRotation">lookRotation() (quat static method)</a>
@@ -990,6 +1024,8 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#mat2.ortho">ortho() (mat2 static method)</a>
 </li>
+        <li><a href="api/physics2d.html#physics2d.world.overlapBox">overlapBox() (physics2d.world method)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -1002,16 +1038,76 @@
 </li>
         <li><a href="api/physics2d.html#module-physics2d">physics2d (module)</a>
 </li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.angularDamping">physics2d.physics2d.body.angularDamping (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.awake">physics2d.physics2d.body.awake (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.bullet">physics2d.physics2d.body.bullet (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.enabled">physics2d.physics2d.body.enabled (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.fixedRotation">physics2d.physics2d.body.fixedRotation (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.gravityScale">physics2d.physics2d.body.gravityScale (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.inertia">physics2d.physics2d.body.inertia (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.linearDamping">physics2d.physics2d.body.linearDamping (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.mass">physics2d.physics2d.body.mass (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.position">physics2d.physics2d.body.position (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.sleepingAllowed">physics2d.physics2d.body.sleepingAllowed (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.body">physics2d.physics2d.contact.body (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.collider">physics2d.physics2d.contact.collider (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.enabled">physics2d.physics2d.contact.enabled (attribute)</a>, <a href="api/physics2d.html#physics2d.physics2d.contact.enabled">[1]</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.friction">physics2d.physics2d.contact.friction (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.localNormal">physics2d.physics2d.contact.localNormal (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.localPoint">physics2d.physics2d.contact.localPoint (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.otherBody">physics2d.physics2d.contact.otherBody (attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.otherCollider">physics2d.physics2d.contact.otherCollider (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.restitution">physics2d.physics2d.contact.restitution (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.tangentSpeed">physics2d.physics2d.contact.tangentSpeed (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.worldNormal">physics2d.physics2d.contact.worldNormal (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.worldPoint">physics2d.physics2d.contact.worldPoint (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.rayHit.collider">physics2d.physics2d.rayHit.collider (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.rayHit.fraction">physics2d.physics2d.rayHit.fraction (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.rayHit.normal">physics2d.physics2d.rayHit.normal (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.rayHit.point">physics2d.physics2d.rayHit.point (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.world.gravity">physics2d.physics2d.world.gravity (attribute)</a>
+</li>
         <li><a href="api/physics3d.html#module-physics3d">physics3d (module)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.polygon">polygon (class in physics2d)</a>
 </li>
         <li><a href="api/graphics.html#polygon">polygon() (built-in function)</a>
+
+        <ul>
+          <li><a href="api/physics2d.html#physics2d.body.polygon">(physics2d.body method)</a>
 </li>
+        </ul></li>
         <li><a href="api/graphics.html#polyline">polyline() (built-in function)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/graphics.html#context.pop">pop() (in module context)</a>
 
         <ul>
@@ -1042,15 +1138,19 @@
 </li>
         <li><a href="api/math_types.html#quat.angles">quat.angles (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#quat.w">quat.w (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#quat.x">quat.x (attribute)</a>
 </li>
         <li><a href="api/math_types.html#quat.y">quat.y (attribute)</a>
 </li>
         <li><a href="api/math_types.html#quat.z">quat.z (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.world.queryBox">queryBox() (physics2d.world method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.world.queryBoxAll">queryBoxAll() (physics2d.world method)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -1060,6 +1160,10 @@
   <h2>R</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/physics2d.html#physics2d.world.raycast">raycast() (physics2d.world method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.rayHit">rayHit (class in physics2d)</a>
+</li>
         <li><a href="api/image.html#image.read">read() (image static method)</a>
 </li>
         <li><a href="api/graphics.html#rect">rect() (built-in function)</a>
@@ -1072,6 +1176,8 @@
           <li><a href="api/math_types.html#vec4.reflect">(vec4 method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec2.refract">refract() (vec2 method)</a>
 
         <ul>
@@ -1080,8 +1186,6 @@
           <li><a href="api/math_types.html#vec4.refract">(vec4 method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/entity.html#entity.remove">remove() (entity method)</a>
 </li>
         <li><a href="api/style.html#style.reset">reset() (in module style)</a>
@@ -1144,6 +1248,8 @@
           <li><a href="api/physics3d.html#physics3d.slider">(class in physics3d)</a>
 </li>
         </ul></li>
+        <li><a href="api/physics2d.html#physics2d.body.slider">slider() (physics2d.body method)</a>
+</li>
         <li><a href="api/style.html#style.sortOrder">sortOrder() (in module style)</a>
 </li>
         <li><a href="api/sound.html#module-sound">sound (module)</a>
@@ -1155,6 +1261,8 @@
         <li><a href="api/graphics.html#sprite">sprite() (built-in function)</a>, <a href="api/graphics.html#sprite">[1]</a>
 </li>
         <li><a href="api/image.html#sprite.slice">sprite.slice (built-in class)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.world.step">step() (physics2d.world method)</a>
 </li>
         <li><a href="api/style.html#style.stroke">stroke() (in module style)</a>, <a href="api/style.html#style.stroke">[1]</a>
 </li>
@@ -1190,10 +1298,10 @@
 </li>
         <li><a href="api/style.html#style.style.CORNER">style.style.CORNER (attribute)</a>
 </li>
-        <li><a href="api/style.html#style.style.CORNERS">style.style.CORNERS (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/style.html#style.style.CORNERS">style.style.CORNERS (attribute)</a>
+</li>
         <li><a href="api/style.html#style.style.CULL_FACE_BACK">style.style.CULL_FACE_BACK (attribute)</a>
 </li>
         <li><a href="api/style.html#style.style.CULL_FACE_FRONT">style.style.CULL_FACE_FRONT (attribute)</a>
@@ -1356,10 +1464,10 @@
 </li>
         <li><a href="api/math_types.html#vec3.x">vec3.x (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec3.y">vec3.y (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec3.z">vec3.z (attribute)</a>
 </li>
         <li><a href="api/math_types.html#vec4">vec4 (built-in class)</a>
@@ -1377,6 +1485,10 @@
         <li><a href="api/math_types.html#vec4.y">vec4.y (attribute)</a>
 </li>
         <li><a href="api/math_types.html#vec4.z">vec4.z (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.body.velocityAtLocalPoint">velocityAtLocalPoint() (physics2d.body method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.body.velocityAtWorldPoint">velocityAtWorldPoint() (physics2d.body method)</a>
 </li>
         <li><a href="api/image.html#image.volume">volume() (image static method)</a>
 </li>
@@ -1406,6 +1518,12 @@
           <li><a href="api/physics3d.html#physics3d.world">(class in physics3d)</a>
 </li>
         </ul></li>
+        <li><a href="api/physics2d.html#physics2d.world.world">world() (physics2d.world static method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.body.worldPoint">worldPoint() (physics2d.body method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.body.worldVector">worldVector() (physics2d.body method)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>

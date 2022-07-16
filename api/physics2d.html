@@ -219,11 +219,173 @@
 <dl class="lua class">
 <dt class="sig sig-object lua" id="physics2d.world">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">physics2d.</span></span><span class="sig-name descname"><span class="pre">world</span></span><a class="headerlink" href="#physics2d.world" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="physics2d.world.world">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">world</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.world.world" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new physics world</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.world.body">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.world.body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new rigidbody in this world</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">enum</span></code></span>) – The type of body, <cite>STATIC</cite>, <cite>DYNAMIC</cite> or <cite>KINEMATIC</cite></p></li>
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The initial x position of the new body</p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The initial y position of the new body</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.world.step">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">deltaTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.world.step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.world.draw">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.world.draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.world.raycast">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">raycast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">direction</span></em>, <em class="sig-param"><span class="pre">distance</span></em>, <em class="sig-param"><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.world.raycast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.world.overlapBox">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">overlapBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">size</span></em>, <em class="sig-param"><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.world.overlapBox" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.world.queryBox">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">queryBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">size</span></em>, <em class="sig-param"><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.world.queryBox" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.world.queryBoxAll">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">queryBoxAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">size</span></em>, <em class="sig-param"><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.world.queryBoxAll" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.world.gravity">
+<span class="sig-name descname"><span class="pre">gravity</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#physics2d.physics2d.world.gravity" title="Permalink to this definition">¶</a></dt>
+<dd><p>The current gravity vector for this world</p>
+</dd></dl>
+</dd></dl>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="physics2d.body">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">physics2d.</span></span><span class="sig-name descname"><span class="pre">body</span></span><a class="headerlink" href="#physics2d.body" title="Permalink to this definition">¶</a></dt>
+<dd><p>A two dimensional rigidbody that belongs to a given physics world. Used to simulate both dynamic and static objects, responding to collisions and various queries</p>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.circle">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">radius</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">offsetX</span></em>, <em class="sig-param"><span class="pre">offsetY</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.circle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.box">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">halfWidth</span></em>, <em class="sig-param"><span class="pre">halfHeight</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">offsetX</span></em>, <em class="sig-param"><span class="pre">offsetY</span></em>, <em class="sig-param"><span class="pre">rotation</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.box" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.polygon">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">points</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.polygon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.hinge">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">hinge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">worldSpaceAnchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.hinge" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">hinge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">otherBody</span></em>, <em class="sig-param"><span class="pre">worldSpaceAnchor</span></em><span class="sig-paren">)</span></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">hinge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">otherBody</span></em>, <em class="sig-param"><span class="pre">localAnchor</span></em>, <em class="sig-param"><span class="pre">otherLocalAnchor</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates and attaches a hinge joint to this body. When no other body is provided the higne joint attaches to the world itself.</p>
+<p>For two body joints when one anchor is provided, it will be interpreted as a world space location, which will attach to the relative locations of both bodies. When two anchors are provided, they will be interpreted in local space and attach to those locations directly</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.slider">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">slider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">otherBody</span></em>, <em class="sig-param"><span class="pre">worldSpaceAnchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.slider" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">slider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">otherBody</span></em>, <em class="sig-param"><span class="pre">localAnchor</span></em>, <em class="sig-param"><span class="pre">otherLocalAnchor</span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.applyForce">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">applyForce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">impulse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.applyForce" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.applyTorque">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">applyTorque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">torque</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.applyTorque" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.applyLinearImpulse">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">applyLinearImpulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">impulse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.applyLinearImpulse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.applyAngularImpulse">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">applyAngularImpulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">impulse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.applyAngularImpulse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.worldPoint">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">worldPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">localPoint</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.worldPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.worldVector">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">worldVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">localVector</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.worldVector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.localPoint">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">localPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">worldPoint</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.localPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.localVector">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">localVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">worldVector</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.localVector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.velocityAtLocalPoint">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">velocityAtLocalPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">localPoint</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.velocityAtLocalPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="physics2d.body.velocityAtWorldPoint">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">velocityAtWorldPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">worldPoint</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics2d.body.velocityAtWorldPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.position">
+<span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#physics2d.physics2d.body.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position of this body in the simulated world</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.mass">
+<span class="sig-name descname"><span class="pre">mass</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#physics2d.physics2d.body.mass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.inertia">
+<span class="sig-name descname"><span class="pre">inertia</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#physics2d.physics2d.body.inertia" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.linearDamping">
+<span class="sig-name descname"><span class="pre">linearDamping</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#physics2d.physics2d.body.linearDamping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.angularDamping">
+<span class="sig-name descname"><span class="pre">angularDamping</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#physics2d.physics2d.body.angularDamping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.gravityScale">
+<span class="sig-name descname"><span class="pre">gravityScale</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#physics2d.physics2d.body.gravityScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.bullet">
+<span class="sig-name descname"><span class="pre">bullet</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#physics2d.physics2d.body.bullet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.sleepingAllowed">
+<span class="sig-name descname"><span class="pre">sleepingAllowed</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#physics2d.physics2d.body.sleepingAllowed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.awake">
+<span class="sig-name descname"><span class="pre">awake</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#physics2d.physics2d.body.awake" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.enabled">
+<span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#physics2d.physics2d.body.enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.body.fixedRotation">
+<span class="sig-name descname"><span class="pre">fixedRotation</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#physics2d.physics2d.body.fixedRotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="physics2d.collider">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">physics2d.</span></span><span class="sig-name descname"><span class="pre">collider</span></span><a class="headerlink" href="#physics2d.collider" title="Permalink to this definition">¶</a></dt>
@@ -284,6 +446,82 @@
 <dt class="sig sig-object lua" id="physics2d.motor">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">physics2d.</span></span><span class="sig-name descname"><span class="pre">motor</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">joint</span><a class="headerlink" href="#physics2d.motor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="physics2d.rayHit">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">physics2d.</span></span><span class="sig-name descname"><span class="pre">rayHit</span></span><a class="headerlink" href="#physics2d.rayHit" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.rayHit.point">
+<span class="sig-name descname"><span class="pre">point</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#physics2d.physics2d.rayHit.point" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.rayHit.normal">
+<span class="sig-name descname"><span class="pre">normal</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#physics2d.physics2d.rayHit.normal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.rayHit.fraction">
+<span class="sig-name descname"><span class="pre">fraction</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#physics2d.physics2d.rayHit.fraction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.rayHit.collider">
+<span class="sig-name descname"><span class="pre">collider</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.collider</span><a class="headerlink" href="#physics2d.physics2d.rayHit.collider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="physics2d.contact">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">physics2d.</span></span><span class="sig-name descname"><span class="pre">contact</span></span><a class="headerlink" href="#physics2d.contact" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.enabled">
+<span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#physics2d.physics2d.contact.enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">touching</span></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.friction">
+<span class="sig-name descname"><span class="pre">friction</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#physics2d.physics2d.contact.friction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.restitution">
+<span class="sig-name descname"><span class="pre">restitution</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#physics2d.physics2d.contact.restitution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.tangentSpeed">
+<span class="sig-name descname"><span class="pre">tangentSpeed</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#physics2d.physics2d.contact.tangentSpeed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.localPoint">
+<span class="sig-name descname"><span class="pre">localPoint</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#physics2d.physics2d.contact.localPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.worldPoint">
+<span class="sig-name descname"><span class="pre">worldPoint</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#physics2d.physics2d.contact.worldPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.localNormal">
+<span class="sig-name descname"><span class="pre">localNormal</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#physics2d.physics2d.contact.localNormal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.worldNormal">
+<span class="sig-name descname"><span class="pre">worldNormal</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#physics2d.physics2d.contact.worldNormal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.body">
+<span class="sig-name descname"><span class="pre">body</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.body</span><a class="headerlink" href="#physics2d.physics2d.contact.body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.otherBody">
+<span class="sig-name descname"><span class="pre">otherBody</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.body</span><a class="headerlink" href="#physics2d.physics2d.contact.otherBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.collider">
+<span class="sig-name descname"><span class="pre">collider</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.collider</span><a class="headerlink" href="#physics2d.physics2d.contact.collider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics2d.physics2d.contact.otherCollider">
+<span class="sig-name descname"><span class="pre">otherCollider</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.collider</span><a class="headerlink" href="#physics2d.physics2d.contact.otherCollider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
 </div>
 
         </article>

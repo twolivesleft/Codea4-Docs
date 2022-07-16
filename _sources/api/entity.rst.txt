@@ -22,6 +22,10 @@ entity
 
       The computed active in hierarchy state of this entity. Only ``true`` when all parents up to the root are active as well
 
+   .. lua:attribute:: valid: boolean
+
+      Checks the validity of this entity. When an entity is destroyed it is invalid and no longer be used. non-valid entities will raise errors when calling functions or accessing properties
+
    .. lua:attribute:: name: string
 
       The name of the entity, useful when referring to the entity later using the :lua:class:`scene` and :lua:class:`entity` indexers
@@ -170,6 +174,18 @@ entity
    .. lua:attribute:: sz: number
 
       The z scale of the entity in local 3D space
+
+   .. lua:attribute:: rx: number
+
+      The euler rotation around the local x axis of the entity in degrees
+
+   .. lua:attribute:: ry: number
+
+      The euler rotation around the local y axis of the entity in degrees
+
+   .. lua:attribute:: rz: number
+
+      The euler rotation around the local z axis of the entity in degrees
 
    .. lua:attribute:: forward: number
 

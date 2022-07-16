@@ -290,6 +290,11 @@
 <dd><p>The computed active in hierarchy state of this entity. Only <code class="docutils literal notranslate"><span class="pre">true</span></code> when all parents up to the root are active as well</p>
 </dd></dl>
 <dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.valid">
+<span class="sig-name descname"><span class="pre">valid</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#entity.valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the validity of this entity. When an entity is destroyed it is invalid and no longer be used. non-valid entities will raise errors when calling functions or accessing properties</p>
+</dd></dl>
+<dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#entity.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of the entity, useful when referring to the entity later using the <code class="xref lua lua-class docutils literal notranslate"><span class="pre">scene</span></code> and <code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code> indexers</p>
@@ -484,6 +489,21 @@
 <dt class="sig sig-object lua" id="entity.sz">
 <span class="sig-name descname"><span class="pre">sz</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.sz" title="Permalink to this definition">¶</a></dt>
 <dd><p>The z scale of the entity in local 3D space</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.rx">
+<span class="sig-name descname"><span class="pre">rx</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.rx" title="Permalink to this definition">¶</a></dt>
+<dd><p>The euler rotation around the local x axis of the entity in degrees</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.ry">
+<span class="sig-name descname"><span class="pre">ry</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.ry" title="Permalink to this definition">¶</a></dt>
+<dd><p>The euler rotation around the local y axis of the entity in degrees</p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.rz">
+<span class="sig-name descname"><span class="pre">rz</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#entity.rz" title="Permalink to this definition">¶</a></dt>
+<dd><p>The euler rotation around the local z axis of the entity in degrees</p>
 </dd></dl>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.forward">
