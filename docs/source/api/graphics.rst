@@ -149,7 +149,7 @@ Text
       - ``TEXT_OVERLINE``
       - ``TEXT_STRIKE_THROUGH``
       - ``TEXT_BOLD``
-      - ``TEXT_ITALIC``
+      - ``TEXT_ITALICS``
       - ``TEXT_RICH``
 
    The ``TEXT_RICH`` style option enables rich text, which parses xml tags within the supplied string to format individual characters
