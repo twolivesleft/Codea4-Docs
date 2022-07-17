@@ -341,19 +341,31 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/entity.html#entity.destroy">destroy() (entity method)</a>
+
+        <ul>
+          <li><a href="api/physics2d.html#physics2d.body.destroy">(physics2d.body method)</a>
 </li>
+          <li><a href="api/physics2d.html#physics2d.collider.destroy">(physics2d.collider method)</a>
+</li>
+          <li><a href="api/physics2d.html#physics2d.joint.destroy">(physics2d.joint method)</a>
+</li>
+        </ul></li>
         <li><a href="api/math_types.html#mat2.determinant">determinant() (mat2 method)</a>, <a href="api/math_types.html#mat2.determinant">[1]</a>, <a href="api/math_types.html#mat2.determinant">[2]</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.distance">distance (class in physics2d)</a>
 </li>
-        <li><a href="api/math_types.html#vec2.distance">distance() (vec2 method)</a>
+        <li><a href="api/physics2d.html#physics2d.body.distance">distance() (physics2d.body method)</a>
 
         <ul>
+          <li><a href="api/math_types.html#vec2.distance">(vec2 method)</a>
+</li>
           <li><a href="api/math_types.html#vec3.distance">(vec3 method)</a>
 </li>
           <li><a href="api/math_types.html#vec4.distance">(vec4 method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec2.distance2">distance2() (vec2 method)</a>
 
         <ul>
@@ -362,8 +374,6 @@
           <li><a href="api/math_types.html#vec4.distance2">(vec4 method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec2.dot">dot() (vec2 method)</a>
 
         <ul>
@@ -530,10 +540,10 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.gear">gear (class in physics2d)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.generateIrradiance">generateIrradiance() (image method)</a>, <a href="api/image.html#image.generateIrradiance">[1]</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics3d.html#physics3d.generic">generic (class in physics3d)</a>
 </li>
         <li><a href="api/entity.html#entity.get">get() (entity method)</a>
@@ -542,6 +552,10 @@
           <li><a href="api/style.html#style.get">(in module style)</a>
 </li>
         </ul></li>
+        <li><a href="api/physics2d.html#physics2d.joint.getReactionForce">getReactionForce() (physics2d.joint method)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.joint.getReactionTorque">getReactionTorque() (physics2d.joint method)</a>
+</li>
         <li><a href="api/graphics.html#module-gizmos">gizmos (module)</a>
 </li>
     </ul></td>
@@ -1044,6 +1058,8 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.body.bullet">physics2d.physics2d.body.bullet (attribute)</a>
 </li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.destroyed">physics2d.physics2d.body.destroyed (attribute)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.physics2d.body.enabled">physics2d.physics2d.body.enabled (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.body.fixedRotation">physics2d.physics2d.body.fixedRotation (attribute)</a>
@@ -1056,15 +1072,51 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.body.mass">physics2d.physics2d.body.mass (attribute)</a>
 </li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.onCollisionBegan">physics2d.physics2d.body.onCollisionBegan (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.onCollisionEnded">physics2d.physics2d.body.onCollisionEnded (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.onPostSolve">physics2d.physics2d.body.onPostSolve (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.body.onPreSolve">physics2d.physics2d.body.onPreSolve (attribute)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.physics2d.body.position">physics2d.physics2d.body.position (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.body.sleepingAllowed">physics2d.physics2d.body.sleepingAllowed (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.box.angle">physics2d.physics2d.box.angle (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.box.center">physics2d.physics2d.box.center (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.box.size">physics2d.physics2d.box.size (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.circle.center">physics2d.physics2d.circle.center (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.circle.radius">physics2d.physics2d.circle.radius (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.collider.body">physics2d.physics2d.collider.body (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.collider.catgeory">physics2d.physics2d.collider.catgeory (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.collider.density">physics2d.physics2d.collider.density (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.collider.destroyed">physics2d.physics2d.collider.destroyed (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.collider.friction">physics2d.physics2d.collider.friction (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.collider.group">physics2d.physics2d.collider.group (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.collider.mask">physics2d.physics2d.collider.mask (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.collider.restitution">physics2d.physics2d.collider.restitution (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.collider.sensor">physics2d.physics2d.collider.sensor (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.contact.body">physics2d.physics2d.contact.body (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.contact.collider">physics2d.physics2d.contact.collider (attribute)</a>
 </li>
-        <li><a href="api/physics2d.html#physics2d.physics2d.contact.enabled">physics2d.physics2d.contact.enabled (attribute)</a>, <a href="api/physics2d.html#physics2d.physics2d.contact.enabled">[1]</a>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.enabled">physics2d.physics2d.contact.enabled (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.contact.friction">physics2d.physics2d.contact.friction (attribute)</a>
 </li>
@@ -1074,17 +1126,67 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.contact.otherBody">physics2d.physics2d.contact.otherBody (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.contact.otherCollider">physics2d.physics2d.contact.otherCollider (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.contact.restitution">physics2d.physics2d.contact.restitution (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.contact.tangentSpeed">physics2d.physics2d.contact.tangentSpeed (attribute)</a>
 </li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.contact.touching">physics2d.physics2d.contact.touching (attribute)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.physics2d.contact.worldNormal">physics2d.physics2d.contact.worldNormal (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.contact.worldPoint">physics2d.physics2d.contact.worldPoint (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.distance.currentLength">physics2d.physics2d.distance.currentLength (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.distance.damping">physics2d.physics2d.distance.damping (attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/physics2d.html#physics2d.physics2d.distance.length">physics2d.physics2d.distance.length (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.distance.maxLength">physics2d.physics2d.distance.maxLength (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.distance.minLength">physics2d.physics2d.distance.minLength (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.distance.stiffness">physics2d.physics2d.distance.stiffness (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.hinge.angle">physics2d.physics2d.hinge.angle (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.hinge.lowerLimit">physics2d.physics2d.hinge.lowerLimit (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.hinge.maxTorque">physics2d.physics2d.hinge.maxTorque (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.hinge.motorSpeed">physics2d.physics2d.hinge.motorSpeed (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.hinge.referenceAngle">physics2d.physics2d.hinge.referenceAngle (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.hinge.speed">physics2d.physics2d.hinge.speed (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.hinge.upperLimit">physics2d.physics2d.hinge.upperLimit (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.hinge.useLimit">physics2d.physics2d.hinge.useLimit (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.hinge.useMotor">physics2d.physics2d.hinge.useMotor (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorA">physics2d.physics2d.joint.anchorA (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorB">physics2d.physics2d.joint.anchorB (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.joint.collideConnected">physics2d.physics2d.joint.collideConnected (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.joint.destroyed">physics2d.physics2d.joint.destroyed (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.joint.enabled">physics2d.physics2d.joint.enabled (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.joint.localAnchorA">physics2d.physics2d.joint.localAnchorA (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.joint.localAnchorB">physics2d.physics2d.joint.localAnchorB (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.joint.other">physics2d.physics2d.joint.other (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.polygon.points">physics2d.physics2d.polygon.points (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.rayHit.collider">physics2d.physics2d.rayHit.collider (attribute)</a>
 </li>
@@ -1093,6 +1195,24 @@
         <li><a href="api/physics2d.html#physics2d.physics2d.rayHit.normal">physics2d.physics2d.rayHit.normal (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.rayHit.point">physics2d.physics2d.rayHit.point (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.slider.lowerLimit">physics2d.physics2d.slider.lowerLimit (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.slider.maxForce">physics2d.physics2d.slider.maxForce (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.slider.motorSpeed">physics2d.physics2d.slider.motorSpeed (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.slider.referenceAngle">physics2d.physics2d.slider.referenceAngle (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.slider.speed">physics2d.physics2d.slider.speed (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.slider.translation">physics2d.physics2d.slider.translation (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.slider.upperLimit">physics2d.physics2d.slider.upperLimit (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.slider.useLimit">physics2d.physics2d.slider.useLimit (attribute)</a>
+</li>
+        <li><a href="api/physics2d.html#physics2d.physics2d.slider.useMotor">physics2d.physics2d.slider.useMotor (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.world.gravity">physics2d.physics2d.world.gravity (attribute)</a>
 </li>
