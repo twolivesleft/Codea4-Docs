@@ -143,17 +143,108 @@ The same goes for matrix, camera and context
    context.push(img)
    context.pop()
 
-If you prefer the old syntax you can use the following in ``main.lua``:
+If you prefer the old syntax you can use the following in ``Main.lua`` for limited* compatibility:
 
 .. code-block:: lua
    :linenos:
 
-   require 'legacy':export()
+   require 'codea.legacy':export()
+
+Feature Set Compatibility Table
+-------------------------------
+
+.. list-table:: Feature Compatibility Set
+   :widths: 25 25 25 25
+   :header-rows: 1
+
+   * - Old Syntax
+     - New Syntax
+     - codea.legacy support
+     - Notes
+   * - ``ElapsedTime`` / ``DeltaTime``
+     - ``time.elapsed`` / ``time.delta``
+     - No
+     - Time related functionality moved into the ``time`` module
+   * - ``pushStyle()`` / ``popStyle()`` / ``resetStyle()``
+     - ``style.push()`` / ``style.pop()`` / ``style.reset()``
+     - Yes
+     -
+   * - ``fill()``
+     - ``style.fill()``
+     - Yes
+     -
+   * - ``stroke()``
+     - ``style.stroke()``
+     - Yes
+     -
+   * - ``stroke()``
+     - ``style.stroke()``
+     - Yes
+     -
+   * - ``pushMatrix()`` / ``pushMatrix()``
+     - ``matrix.push()`` / ``matrix.pop()``
+     - Yes
+     -
+   * - ``matrix()``
+     - ``mat2()``, ``mat3()``, ``mat4()``
+     - No
+     - The ``matrix`` class (4x4 matrix) is now called ``mat4`` in line with the vector class names. The original class name is now used for the ``matrix`` namespace 
+   * - ``setContext()``
+     - ``context.push()`` / ``context.pop()``
+     - Yes
+     - Contexts now use a stack style interface in line with other systems
+   * - ``craft.*()``
+     - N/A
+     - No
+     - craft namespace removed, functionality merged with standard object types
+   * - ``mesh()``
+     - ``mesh()``
+     - Yes*
+     - ``mesh()`` class already supported with minor differences, craft.model now redundant
+   * - ``model(asset)``
+     - ``mesh.read(asset)``
+     - N/A
+     - Model loading and scene functionality folded into the ``mesh()`` class
+   * - ``craft.scene()``
+     - ``scene()``
+     - No*
+     - ``scene()`` class moved into global namespace, syntax and feature set is now somewhat different, refer to manual and API docs
+   * - ``scene.voxels``
+     - N/A
+     - No
+     - Voxel support is currently unavailable in 4.x and is in the process of being redesigned and streamlined for a future release
+   * - ``scene.ar``
+     - N/A
+     - No
+     - AR support is currently unavailable in 4.x and is in the process of being redesigned and streamlined for a future release
+
 
 Time
 ----
 
-Intead of ElapsedTime, there is now the time module, which contains...
+Intead of ``ElapsedTime`` and ``DeltaTime``, there is now the ``time`` module, which contains:
+
+.. code-block:: lua
+   :linenos:
+
+   -- Time difference since last frame
+   time.delta
+
+   -- Time elapsed since the start of play
+   time.elapsed
+
+   -- Fixed time difference since last simulation step (for physics calculations)
+   time.fixedDelta
+
+   -- Unscaled delta time (uneffected by time.scale)
+   time.unscaledDelta
+
+   -- Unscaled elapsed time (uneffected by time.scale)
+   time.unscapedElapsed
+
+   -- Time scale for speeding and slowing passage of time (default = 1)
+   time.scale
+
 
 Matrix and Vector Types
 -----------------------
