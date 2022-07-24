@@ -216,10 +216,122 @@
         <article role="main">
           <div class="section" id="shader">
 <h1>shader<a class="headerlink" href="#shader" title="Permalink to this headline">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Checkers Shader :3</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+   <span class="n">solid</span> <span class="o">=</span> <span class="n">shader</span><span class="p">(</span><span class="s">[[</span>
+<span class="s">      #version 430</span>
+<span class="s">      #include &lt;codea/common.glsl&gt;</span>
+
+<span class="s">      layout (location = POSITION) in vec3 a_position;</span>
+<span class="s">      layout (location = TEXCOORD0) in vec2 a_texcoord0;</span>
+
+<span class="s">      out vec2 uv;</span>
+
+<span class="s">      void main()</span>
+<span class="s">      {</span>
+<span class="s">         gl_Position = u_modelViewProj * vec4(a_position, 1.0);</span>
+<span class="s">         uv = a_texcoord0;</span>
+<span class="s">      }</span>
+<span class="s">   ]]</span><span class="p">,</span>
+
+   <span class="s">[[</span>
+<span class="s">      #version 430</span>
+<span class="s">      #include &lt;codea/common.glsl&gt;</span>
+
+<span class="s">      in vec2 uv;</span>
+<span class="s">      out vec4 FragColor;</span>
+
+<span class="s">      void main()</span>
+<span class="s">      {</span>
+<span class="s">         vec2 c = floor(uv * 10);</span>
+<span class="s">         float d = mod(c.x + c.y, 2);</span>
+<span class="s">         FragColor = vec4(vec3(d), 1);</span>
+<span class="s">      }</span>
+<span class="s">   ]]</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
+   <span class="n">background</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+   <span class="n">sprite</span><span class="p">(</span><span class="n">solid</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">shader</span></span></dt>
-<dd></dd></dl>
+<dd><p>A special program that runs per vertex/pixel for drawing and compute operations on the GPU</p>
+<p>In Codea shaders can be used in various places to customise rendering including meshes, entities, sprites, backgrounds and post processing effects</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">myShader</span> <span class="o">=</span> <span class="n">shader</span><span class="p">(</span><span class="n">vsh</span><span class="p">,</span> <span class="n">fsh</span><span class="p">)</span>
+
+<span class="n">myMesh</span><span class="p">.</span><span class="n">shader</span> <span class="o">=</span> <span class="n">myShader</span>
+
+<span class="n">myMaterial</span> <span class="o">=</span> <span class="n">material</span><span class="p">(</span><span class="n">shader</span><span class="p">)</span>
+
+<span class="n">sprite</span><span class="p">(</span><span class="n">myShader</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="n">background</span><span class="p">(</span><span class="n">myShader</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>WARNING: Shaders live very close to the hardware and are much more likely to cause crashes or graphical corruption when things go wrong, you have been warned ;)</em></p>
+<p><strong>Graphics Pipeline</strong></p>
+<p><strong>Vertex Shaders</strong></p>
+<p><strong>Fragment Shaders</strong></p>
+<p><strong>Compute Shaders</strong></p>
+<p><strong>Shader Definitions</strong></p>
+<p><strong>Materials</strong></p>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="shader.shader">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">vertexSource</span></em>, <em class="sig-param"><span class="pre">fragmentSource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.shader" title="Permalink to this definition">¶</a></dt>
+<dd><p>The simplist form of shader creation, both the vertex and fragment sources are provided directly without any additional settings</p>
+<p>This is useful for fairly basic shaders</p>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shaderDefinition</span></em><span class="sig-paren">)</span></dt>
+<dd><p>A more advanced form of shader creation, with many more options that can be tailored for specific use-cases</p>
+<p><strong>Basic Shader Definition</strong></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">shdr</span> <span class="o">=</span> <span class="n">shader</span>
+<span class="p">{</span>
+   <span class="n">properties</span> <span class="o">=</span>
+   <span class="p">{</span>
+      <span class="p">{</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="p">...}</span>
+   <span class="p">},</span>
+
+   <span class="n">options</span> <span class="o">=</span>
+   <span class="p">{</span>
+      <span class="n">NAME</span> <span class="o">=</span> <span class="p">{</span><span class="n">default</span><span class="p">,</span> <span class="n">options</span><span class="p">}</span>
+   <span class="p">},</span>
+
+   <span class="n">passes</span> <span class="o">=</span>
+   <span class="p">{</span>
+      <span class="n">pass</span> <span class="o">=</span>
+      <span class="p">{</span>
+         <span class="n">vertex</span> <span class="o">=</span>
+         <span class="s">[[</span>
+<span class="s">            ...</span>
+<span class="s">         ]]</span><span class="p">,</span>
+
+         <span class="n">fragment</span> <span class="o">=</span>
+         <span class="s">[[</span>
+<span class="s">            ...</span>
+<span class="s">         ]]</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Surface Shaders</strong></p>
+<p>Surface shaders provide support for advanced shading models, where only the surface attributes need to be specified</p>
+<p><em>Shading Models</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unlit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">custom</span></code></p></li>
+</ul>
+</dd></dl>
+</dd></dl>
 </div>
 
         </article>

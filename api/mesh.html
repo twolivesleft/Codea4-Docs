@@ -216,7 +216,6 @@
         <article role="main">
           <div class="section" id="mesh">
 <h1>mesh<a class="headerlink" href="#mesh" title="Permalink to this headline">¶</a></h1>
-<p>Made of vertices and triangles, used by codea for drawing 2D and 3D models and shapes</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Creating and drawing a basic mesh</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
@@ -355,6 +354,18 @@
 <dd><p>Gets/sets the indices of the mesh</p>
 </dd></dl>
 <dl class="lua attribute">
+<dt class="sig sig-object lua" id="mesh.vertices">
+<span class="sig-name descname"><span class="pre">vertices</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;vec2|vec3&gt;</span><a class="headerlink" href="#mesh.vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices</p>
+<p><em>3.x compatiblity note: works the same as the original vertices property</em></p>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mesh.texCoords">
+<span class="sig-name descname"><span class="pre">texCoords</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;vec2&gt;</span><a class="headerlink" href="#mesh.texCoords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets/sets the uvs of the mesh vertices</p>
+<p><em>3.x compatiblity note: works the same as the uvs property for the sake of backwards compatiblity</em></p>
+</dd></dl>
+<dl class="lua attribute">
 <dt class="sig sig-object lua" id="mesh.root">
 <span class="sig-name descname"><span class="pre">root</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">entity</span><a class="headerlink" href="#mesh.root" title="Permalink to this definition">¶</a></dt>
 <dd><p>Meshes loaded via <code class="docutils literal notranslate"><span class="pre">mesh.read()</span></code> may contain sub-objects and bones used for animations, these can be accessed as entities in a simple scene-like hierarchy</p>
@@ -365,6 +376,7 @@
 <span class="sig-name descname"><span class="pre">animations</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;animation&gt;</span><a class="headerlink" href="#mesh.animations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contains the list of all animations for this mesh</p>
 </dd></dl>
+<p><strong>Mesh Drawing</strong></p>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.draw">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">instances</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.draw" title="Permalink to this definition">¶</a></dt>
@@ -374,6 +386,7 @@
 <dt class="sig sig-object lua" id="mesh.drawIndirect">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">drawIndirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">indirectBuffer</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">num</span>  <span class="pre">=</span> <span class="pre">1</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.drawIndirect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draws the mesh indirectly using <code class="docutils literal notranslate"><span class="pre">indirectBuffer</span></code></p>
+<p>Used in combination with compute shaders for indirect drawing operations</p>
 </dd></dl>
 <p><strong>Mesh Manipulation</strong></p>
 <dl class="lua method">
@@ -408,19 +421,23 @@
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.resizeVertices">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">resizeVertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mesh.resizeVertices" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the number of vertices in the mesh (must be positive)</p>
+</dd></dl>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.resizeIndices">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">resizeIndices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mesh.resizeIndices" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the number of indices in the mesh (must be positive)</p>
+</dd></dl>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.addElement">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">addElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">p1</span></em>, <em class="sig-param"><span class="pre">p2</span></em>, <em class="sig-param"><span class="pre">p3</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">...</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.addElement" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adds a new element to the mesh consisting of <code class="docutils literal notranslate"><span class="pre">N</span></code> indices (i.e. add three indices for a new triangle)</p>
+</dd></dl>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.clear">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.clear" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Clears the mesh, reducing vertices and indices to zero</p>
+</dd></dl>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.position">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mesh.position" title="Permalink to this definition">¶</a></dt>
@@ -428,7 +445,8 @@
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em>, <em class="sig-param"><span class="pre">position</span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
+<dd><p>Gets/sets the position of the vertex at <code class="docutils literal notranslate"><span class="pre">index</span></code></p>
+</dd></dl>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.normal">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mesh.normal" title="Permalink to this definition">¶</a></dt>
@@ -436,7 +454,8 @@
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em>, <em class="sig-param"><span class="pre">normal</span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
+<dd><p>Gets/sets the normal of the vertex at <code class="docutils literal notranslate"><span class="pre">index</span></code></p>
+</dd></dl>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.color">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mesh.color" title="Permalink to this definition">¶</a></dt>
@@ -444,7 +463,8 @@
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em>, <em class="sig-param"><span class="pre">color</span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
+<dd><p>Gets/sets the color of the vertex at <code class="docutils literal notranslate"><span class="pre">index</span></code></p>
+</dd></dl>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.uv">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">uv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mesh.uv" title="Permalink to this definition">¶</a></dt>
@@ -452,7 +472,8 @@
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">uv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em>, <em class="sig-param"><span class="pre">uv</span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
+<dd><p>Gets/sets the uv of the vertex at <code class="docutils literal notranslate"><span class="pre">index</span></code></p>
+</dd></dl>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mesh.index">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mesh.index" title="Permalink to this definition">¶</a></dt>
@@ -460,7 +481,8 @@
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em>, <em class="sig-param"><span class="pre">i</span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
+<dd><p>Gets/sets the index at <code class="docutils literal notranslate"><span class="pre">index</span></code></p>
+</dd></dl>
 <p><strong>Mesh Generation</strong></p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mesh.sphere">

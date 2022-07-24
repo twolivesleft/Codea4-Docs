@@ -1,8 +1,6 @@
 mesh
 ====
 
-Made of vertices and triangles, used by codea for drawing 2D and 3D models and shapes
-
 .. code-block:: lua
    :caption: Creating and drawing a basic mesh
 
@@ -135,6 +133,18 @@ Made of vertices and triangles, used by codea for drawing 2D and 3D models and s
 
       Gets/sets the indices of the mesh
 
+   .. lua:attribute:: vertices: table<vec2|vec3>
+
+      Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices
+
+      *3.x compatiblity note: works the same as the original vertices property*
+
+   .. lua:attribute:: texCoords: table<vec2>                  
+
+      Gets/sets the uvs of the mesh vertices
+
+      *3.x compatiblity note: works the same as the uvs property for the sake of backwards compatiblity*
+
    .. lua:attribute:: root: entity
 
       Meshes loaded via ``mesh.read()`` may contain sub-objects and bones used for animations, these can be accessed as entities in a simple scene-like hierarchy
@@ -145,6 +155,8 @@ Made of vertices and triangles, used by codea for drawing 2D and 3D models and s
 
       Contains the list of all animations for this mesh
 
+   **Mesh Drawing**
+
    .. lua:method:: draw([instances])
 
       Draws the mesh to the screen with the current camera, matrix and context settings
@@ -152,6 +164,8 @@ Made of vertices and triangles, used by codea for drawing 2D and 3D models and s
    .. lua:method:: drawIndirect(indirectBuffer[, start = 0, num  = 1])
 
       Draws the mesh indirectly using ``indirectBuffer``
+
+      Used in combination with compute shaders for indirect drawing operations
 
    **Mesh Manipulation**
 
@@ -178,26 +192,44 @@ Made of vertices and triangles, used by codea for drawing 2D and 3D models and s
 
    .. lua:method:: resizeVertices(size)
 
+      Sets the number of vertices in the mesh (must be positive)
+
    .. lua:method:: resizeIndices(size)
+
+      Sets the number of indices in the mesh (must be positive)
 
    .. lua:method:: addElement(p1, p2, p3[, ...])
 
+      Adds a new element to the mesh consisting of ``N`` indices (i.e. add three indices for a new triangle)
+
    .. lua:method:: clear()
+
+      Clears the mesh, reducing vertices and indices to zero
 
    .. lua:method:: position(index)
    .. lua:method:: position(index, position)
    
+      Gets/sets the position of the vertex at ``index``
+
    .. lua:method:: normal(index)      
    .. lua:method:: normal(index, normal)
+
+      Gets/sets the normal of the vertex at ``index``
 
    .. lua:method:: color(index)      
    .. lua:method:: color(index, color)
    
+      Gets/sets the color of the vertex at ``index``
+
    .. lua:method:: uv(index)      
    .. lua:method:: uv(index, uv)            
 
+      Gets/sets the uv of the vertex at ``index``
+
    .. lua:method:: index(index)
-   .. lua:method:: index(index, i)      
+   .. lua:method:: index(index, i)
+
+      Gets/sets the index at ``index``   
 
    **Mesh Generation**
 
