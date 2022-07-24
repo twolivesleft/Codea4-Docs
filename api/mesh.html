@@ -220,7 +220,8 @@
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Creating and drawing a basic mesh</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-   <span class="n">msh</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">()</span>
+   <span class="c1">-- create a sphere mesh</span>
+   <span class="n">msh</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">.</span><span class="n">sphere</span><span class="p">()</span>
 <span class="kr">end</span>
 
 <span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
@@ -235,7 +236,28 @@
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mesh</span></span></dt>
 <dd><p>Represents a drawable shape made of vertices and primitives (typically triangles)</p>
+<p><em>Vertices</em></p>
+<p>Each vertex contains a number of attributes:</p>
+<ul class="simple">
+<li><p>position (vec3) - the position</p></li>
+<li><p>normal (vec3) - the surface normal orientation</p></li>
+<li><p>tangent (vec4) - the tangent to the surface normal (automatically calculated)</p></li>
+<li><p>uv (vec2) - the texture coordinate (uv) of the vertex</p></li>
+<li><p>color - the color</p></li>
+<li><p>boneWeights - the weight of each bone’s influence on this vertex (used for skinning)</p></li>
+<li><p>boneIndices - the index of each bone that can influence this vertex (used for skinning)</p></li>
+</ul>
+<p>These attributes can be get/set directly by setting all of them at once via tables (i.e. <code class="docutils literal notranslate"><span class="pre">msh.positions</span> <span class="pre">=</span> <span class="pre">{...}</span></code>) or by using methods that set attributes one vertex at a time (i.e. <code class="docutils literal notranslate"><span class="pre">msh:position(i,</span> <span class="pre">p)</span></code>)</p>
+<p><em>Triangle Meshes</em></p>
+<p>A triangle mesh is drawn using its vertices which are connected using triangles primitives. Every group of consecutive three indices make up an individual triangle</p>
+<p>There are plans to add more primitive types such as <code class="docutils literal notranslate"><span class="pre">points</span></code>, <code class="docutils literal notranslate"><span class="pre">lines</span></code>, <code class="docutils literal notranslate"><span class="pre">triangle</span> <span class="pre">fans</span></code> and <code class="docutils literal notranslate"><span class="pre">triangle</span> <span class="pre">strips</span></code></p>
+<p><em>Shaders and Materials</em></p>
+<p>Both shaders and materials can be applied to a mesh. Setting a shader/material will override any previous shaders/materials on the mesh</p>
+<p>When no shader/material is set, the default unlit mesh material will be used instead</p>
+<p><em>Sub-Meshes</em></p>
 <p>A mesh consists of one or more sub-meshes, each of which can have a distinct shader/material. The <code class="docutils literal notranslate"><span class="pre">submeshIndex</span></code> property can be used to switch between the current active submeshes for mesh editing purposes</p>
+<p><em>Bones</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mesh.mesh">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mesh</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">submeshCount</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.mesh" title="Permalink to this definition">¶</a></dt>
@@ -257,7 +279,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">OBJ</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">STL</span></code></p></li>
 </ul>
-<p>Skinned animations are supported but morph targets are not</p>
+<p>Skinned animations are supported but morph targets are currently not</p>
 <p>Saving meshes is not currently supported</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

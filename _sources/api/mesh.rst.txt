@@ -7,7 +7,8 @@ Made of vertices and triangles, used by codea for drawing 2D and 3D models and s
    :caption: Creating and drawing a basic mesh
 
    function setup()
-      msh = mesh()
+      -- create a sphere mesh
+      msh = mesh.sphere()
    end
 
    function draw()
@@ -20,7 +21,39 @@ Made of vertices and triangles, used by codea for drawing 2D and 3D models and s
 
    Represents a drawable shape made of vertices and primitives (typically triangles)
 
+   *Vertices*
+
+   Each vertex contains a number of attributes:
+
+   - position (vec3) - the position
+   - normal (vec3) - the surface normal orientation
+   - tangent (vec4) - the tangent to the surface normal (automatically calculated)
+   - uv (vec2) - the texture coordinate (uv) of the vertex
+   - color - the color
+   - boneWeights - the weight of each bone's influence on this vertex (used for skinning)
+   - boneIndices - the index of each bone that can influence this vertex (used for skinning)
+
+   These attributes can be get/set directly by setting all of them at once via tables (i.e. ``msh.positions = {...}``) or by using methods that set attributes one vertex at a time (i.e. ``msh:position(i, p)``)
+
+   *Triangle Meshes*
+
+   A triangle mesh is drawn using its vertices which are connected using triangles primitives. Every group of consecutive three indices make up an individual triangle
+
+   There are plans to add more primitive types such as ``points``, ``lines``, ``triangle fans`` and ``triangle strips``
+
+   *Shaders and Materials*
+   
+   Both shaders and materials can be applied to a mesh. Setting a shader/material will override any previous shaders/materials on the mesh
+
+   When no shader/material is set, the default unlit mesh material will be used instead
+
+   *Sub-Meshes*
+
    A mesh consists of one or more sub-meshes, each of which can have a distinct shader/material. The ``submeshIndex`` property can be used to switch between the current active submeshes for mesh editing purposes
+
+   *Bones*
+   
+   ``TODO``
 
    .. lua:staticmethod:: mesh([submeshCount])
 
@@ -40,7 +73,7 @@ Made of vertices and triangles, used by codea for drawing 2D and 3D models and s
       - ``OBJ``
       - ``STL``
 
-      Skinned animations are supported but morph targets are not
+      Skinned animations are supported but morph targets are currently not
 
       Saving meshes is not currently supported
       
