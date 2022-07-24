@@ -37,7 +37,7 @@ Made of pixels and used by codea for drawing to the screen and texturing meshes
 
    .. lua:staticmethod:: image.cube(size)
 
-      Cube a blank cube image (6 faces with equal sized dimensions)
+      Create a blank cube image (6 faces with equal sized dimensions)
 
       :param size: The size of the image cube
       :type size: integer
@@ -66,11 +66,11 @@ Made of pixels and used by codea for drawing to the screen and texturing meshes
       :param format: The format of the volume image
       :type format: image format
 
-   .. lua:staticmethod:: read(key)
+   .. lua:staticmethod:: image.read(key)
 
       :param key: The asset key to load
 
-   .. lua:staticmethod:: save(key, image)
+   .. lua:staticmethod:: image.save(key, image)
 
       :param key: The asset key to save the image to
       :type key: assetKey
