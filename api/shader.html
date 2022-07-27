@@ -276,11 +276,22 @@
 </div>
 <p><em>WARNING: Shaders live very close to the hardware and are much more likely to cause crashes or graphical corruption when things go wrong, you have been warned ;)</em></p>
 <p><strong>Graphics Pipeline</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 <p><strong>Vertex Shaders</strong></p>
+<p>Each vertex within a mesh is passed to the GPU via the vertex processing stage, where various calculations can be performed to control the final appearance</p>
 <p><strong>Fragment Shaders</strong></p>
+<p>After the vertex processing stage, the fragment processing stage begins. Primtives assembled from vertices, such as triangles, are drawn on to the framebuffer in a process known as rasterization.</p>
+<p>The fragment shader is able to calculate the final output of this stage (typically the color and/or depth of the fragment)</p>
 <p><strong>Compute Shaders</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 <p><strong>Shader Definitions</strong></p>
+<p>Shader definitions are Lua tables that define all the settings of a shader. These can be used for fine-grained control over shader behaviour</p>
 <p><strong>Materials</strong></p>
+<p>Shaders can be re-used in multiple meshes/entities but will retain their current state globally. Setting properties on a shader in one place will effect rendering on all objects they are attached to</p>
+<p>This is where materials come in. Placing a shader within a material isntance and passing that to various objects will allow for the same shader to be used with different state (properties) as many times are needed</p>
+<p><strong>The Standard Shader</strong></p>
+<p>For convenience there is a built-in uber-shader, called the standard shader which contains a large number of shading options</p>
+<p>For more details see: <a class="reference internal" href="material.html#material.unlit" title="material.unlit"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">material.unlit()</span></code></a> and <a class="reference internal" href="material.html#material.lit" title="material.lit"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">material.lit()</span></code></a></p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="shader.shader">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">vertexSource</span></em>, <em class="sig-param"><span class="pre">fragmentSource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.shader" title="Permalink to this definition">¶</a></dt>
@@ -324,12 +335,168 @@
 </div>
 <p><strong>Surface Shaders</strong></p>
 <p>Surface shaders provide support for advanced shading models, where only the surface attributes need to be specified</p>
+<p>Our shading models are derived from Google’s amazing Filament: <a class="reference external" href="https://google.github.io/filament/Materials.html">https://google.github.io/filament/Materials.html</a></p>
+<p>Surface shaders are created using a shader definition with a <code class="docutils literal notranslate"><span class="pre">shadingModel</span></code> set. A vertex and material function can then be spefified to customise the surface appearance</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">surface</span> <span class="o">=</span> <span class="n">shader</span>
+<span class="p">{</span>
+   <span class="n">pass</span> <span class="o">=</span>
+   <span class="p">{</span>
+      <span class="n">shadingModel</span> <span class="o">=</span> <span class="s2">"lit"</span><span class="p">,</span>
+
+      <span class="n">vertex</span> <span class="o">=</span>
+      <span class="s">[[</span>
+<span class="s">         void materialVertex(inout MaterialVertexInputs material)</span>
+<span class="s">         {</span>
+<span class="s">         }</span>
+<span class="s">      ]]</span><span class="p">,</span>
+
+      <span class="n">material</span> <span class="o">=</span>
+      <span class="s">[[</span>
+<span class="s">         void material(inout MaterialInputs material)</span>
+<span class="s">         {</span>
+<span class="s">            prepareMaterial(material);</span>
+
+<span class="s">            vec2 uv = getUV0();</span>
+<span class="s">            material.metallic = 1.0;</span>
+<span class="s">            material.roughness =</span>
+<span class="s">               mod(floor(uv.x * 20) + floor(uv.y * 10), 2)</span>
+<span class="s">               * 0.5;</span>
+<span class="s">            material.baseColor = baseColor;</span>
+<span class="s">         }</span>
+<span class="s">      ]]</span>
+   <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
 <p><em>Shading Models</em></p>
+<p>The following shading models are supported:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">unlit</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lit</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">custom</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unlit</span></code> Basic unlit shading</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lit</span></code> Physically based lit shading model</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">custom</span></code> Custom shading model</p></li>
 </ul>
+<p><em>MaterialInputs Struct</em></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">material</span></code> function can set the various fields within the <code class="docutils literal notranslate"><span class="pre">MaterialInputs</span></code> struct to control the shading of the surface</p>
+<p>This ranges from diffuse surface color, metal/roughness to normal mapping, ambient occlusion and more</p>
+<p>Some are only available in specific lighting models and expect values to be within certain ranges</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Material Inputs</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 20%"/>
+<col style="width: 10%"/>
+<col style="width: 45%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Models</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">baseColor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code></p></td>
+<td><p>All</p></td>
+<td><p>Diffuse albedo color</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">metallic</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td><p>The metalness of the surface (zero or one)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">roughness</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td><p>Perceived smoothness (1.0) or roughness (0.0) of a surface</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reflectance</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clearCoat</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clearCoatRoughness</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">anisotropy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [-1..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">anisotropyDirection</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec3</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ambientOcclusion</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">normal</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec3</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bentNormal</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec3</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clearCoatNormal</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec3</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">emissive</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code> [0..n]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">postLightingColor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ior</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">transmission</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">absorption</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..n]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">microThickness</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..n]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thickness</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> [0..n]</p></td>
+<td><p>Lit</p></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shader Builder</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
+<p><strong>ShadePro (App)</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 </dd></dl>
 </dd></dl>
 </div>

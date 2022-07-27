@@ -219,7 +219,184 @@
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">material</span></span></dt>
-<dd></dd></dl>
+<dd><p>Materials apply shaders to renderable objects (meshes, sprites, entities, etc), maintaining separate property values per instance. This allows the same shader to be used many times in different places without incurring additional overhead from copying or compiling shader code again</p>
+<p>Materials can also be saved/loaded, although they will need to access to the original shader asset</p>
+<p><strong>The Standard Material</strong></p>
+<p>The standard material is built on the standard uber-shader, providing a convenient all purpose material</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Standard Material Properties</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 20%"/>
+<col style="width: 10%"/>
+<col style="width: 45%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Models</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">shadingModel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enum</span></code></p></td>
+<td><p>N/A</p></td>
+<td><p>Current shading model: <code class="docutils literal notranslate"><span class="pre">LIT</span></code>, <code class="docutils literal notranslate"><span class="pre">UNLIT</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">blend</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enum</span></code></p></td>
+<td><p>All</p></td>
+<td><p>Current blending mode: <code class="docutils literal notranslate"><span class="pre">BLEND_OPAQUE</span></code>, <code class="docutils literal notranslate"><span class="pre">BLEND_TRANSPARENT</span></code>, <code class="docutils literal notranslate"><span class="pre">BLEND_ADD</span></code>, <code class="docutils literal notranslate"><span class="pre">BLEND_MASKED</span></code>, <code class="docutils literal notranslate"><span class="pre">BLEND_MULTIPLY</span></code>, <code class="docutils literal notranslate"><span class="pre">BLEND_SCREEN</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tintBlend</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enum</span></code></p></td>
+<td><p>All</p></td>
+<td><p>Current tint mode: <code class="docutils literal notranslate"><span class="pre">TINT_NONE</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_OPAQUE</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_TRANSPARENT</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_ADD</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_MULTIPLY</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_SCREEN</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tintColor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code> (linear color)</p></td>
+<td><p>All</p></td>
+<td><p>Tint color overlay blended using <code class="docutils literal notranslate"><span class="pre">tintBlend</span></code> mode</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code> (srgb color)</p></td>
+<td><p>All</p></td>
+<td><p>Diffuse albedo color of the surface</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">map</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">texture</span></code> (rgba)</p></td>
+<td><p>All</p></td>
+<td><p>Diffuse albedo color texture map</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">emissive</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code> (srgb hdr color)</p></td>
+<td><p>All</p></td>
+<td><p>Emissive color of the surface (can be more than 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">emissiveMap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">texture</span></code> (rgba)</p></td>
+<td><p>All</p></td>
+<td><p>Emissive color texture map</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scaleOffset</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec2</span></code></p></td>
+<td><p>All</p></td>
+<td><p>Scale (<code class="docutils literal notranslate"><span class="pre">.xy</span></code>) and offset (<code class="docutils literal notranslate"><span class="pre">.zw</span></code>) for texture uvs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">roughness</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">number</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td><p>Perceptual roughness of the surface</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">roughnessMap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">texture</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Perceptual roughness texture map</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">metallic</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">number</span></code> [0..1]</p></td>
+<td><p>Lit</p></td>
+<td><p>Metalness of the surface</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metallicMap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">texture</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Metallic texture map</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">normalMap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">texture</span></code> (linear encoded rgb)</p></td>
+<td><p>Lit</p></td>
+<td><p>Normal texture map in tangent space</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">occlusionMap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">texture</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Ambient occlusion texture map</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reflectance</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Reflectance of the surface</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enableClearCoat</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Switch to enable/disable clearcoat</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clearCoat</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec2</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Clearcoat strength (<code class="docutils literal notranslate"><span class="pre">.x</span></code>) and roughness (<code class="docutils literal notranslate"><span class="pre">.y</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enableAnisotropy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Switch to enable/disable anisotrophic shading</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">anisotropyDirection</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec3</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Direction of anisotrophic shading in tangent space</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">anisotropyDirectionMap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">texture</span></code> (linear encoded rgb)</p></td>
+<td><p>Lit</p></td>
+<td><p>Anisotrophic direction texture map</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enableRefraction</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Switch to enable/disable refraction</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ior</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Index of refraction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">refractionType</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enum</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Refraction type: <code class="docutils literal notranslate"><span class="pre">REFRACT_SOLID</span></code>, <code class="docutils literal notranslate"><span class="pre">REFRACT_THIN</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">refractionMode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enum</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Refraction mode: <code class="docutils literal notranslate"><span class="pre">REFRACT_ENVIRONMENT</span></code>, <code class="docutils literal notranslate"><span class="pre">REFRACT_SCENE</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enableTransmission</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Switch to enable/disable transmission</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">absorption</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Switch to enable/disable transmission</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hasCombinedMaps</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p>Lit</p></td>
+<td><p>Switch to enable/disable combined occlusion (<code class="docutils literal notranslate"><span class="pre">r</span></code> channel), metallic (<code class="docutils literal notranslate"><span class="pre">g</span></code> channel) and roughness (<code class="docutils literal notranslate"><span class="pre">b</span></code> channel) maps</p></td>
+</tr>
+</tbody>
+</table></div>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="material.material">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shader</span></em><span class="sig-paren">)</span><a class="headerlink" href="#material.material" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new material using the supplied <code class="xref lua lua-class docutils literal notranslate"><span class="pre">shader</span></code></p>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="material.lit">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">lit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#material.lit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a default lit material using the standard shader</p>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="material.unlit">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">unlit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#material.unlit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a default unlit material using the standard shader</p>
+</dd></dl>
+</dd></dl>
 </div>
 
         </article>
