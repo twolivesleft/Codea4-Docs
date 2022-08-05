@@ -68,9 +68,13 @@ Made of pixels and used by codea for drawing to the screen and texturing meshes
 
    .. lua:staticmethod:: image.read(key)
 
+      Read an image asset from the filesystem
+
       :param key: The asset key to load
 
    .. lua:staticmethod:: image.save(key, image)
+
+      Save an image asset to the filesystem
 
       :param key: The asset key to save the image to
       :type key: assetKey
