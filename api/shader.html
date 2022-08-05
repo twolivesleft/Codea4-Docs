@@ -275,9 +275,31 @@
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shaderDefinition</span></em><span class="sig-paren">)</span></dt>
 <dd><p>A more advanced form of shader creation, with many more options that can be tailored for specific use-cases</p>
 </dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="shader.compute">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a compute shader without any extra settings</p>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="shader.read">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a shader asset from the filesystem</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="shader.setOption">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">on</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.setOption" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="shader.dispatch">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">wx</span></em>, <em class="sig-param"><span class="pre">wy</span></em>, <em class="sig-param"><span class="pre">wz</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="shader.dispatchIndirect">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">dispatchIndirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">indirectBuffer</span></em>, <em class="sig-param"><span class="pre">start</span></em>, <em class="sig-param"><span class="pre">num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.dispatchIndirect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 <dl class="lua class">
-<dt class="sig sig-object lua" id="shader.builder">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">shader.builder</span></span><a class="headerlink" href="#shader.builder" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object lua" id="builder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">builder</span></span><a class="headerlink" href="#builder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shader Builder is a fluent syntax built on top of the surface shaders system for quick and convenient shader experimentation</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">checkers</span> <span class="o">=</span> <span class="n">shader</span><span class="p">.</span><span class="n">builder</span><span class="p">()</span>
    <span class="p">:</span><span class="n">lit</span><span class="p">()</span>
@@ -294,6 +316,107 @@
    <span class="p">:</span><span class="n">build</span><span class="p">()</span>
 </pre></div>
 </div>
+</dd></dl>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="buffer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">buffer</span></span><a class="headerlink" href="#buffer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="buffer.buffer">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">layout</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">size</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.buffer" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">shader</span><span class="p">.</span><span class="n">buffer</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+</dd></dl>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="bufferLayout">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">bufferLayout</span></span><a class="headerlink" href="#bufferLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents the layout of a shader buffer, used to store arrays of structured data within a shader</p>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="bufferLayout.bufferLayout">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">bufferLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">definition</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bufferLayout.bufferLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new buffer layout using a definition table</p>
+<p>The buffer layout will need to match the target shader struct layout exactly in order to work with calls to <code class="docutils literal notranslate"><span class="pre">shader:setBuffer()</span></code></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">updatePosVel</span> <span class="o">=</span> <span class="n">shader</span><span class="p">.</span><span class="n">compute</span>
+<span class="s">[[</span>
+<span class="s">   #version 430</span>
+<span class="s">   #include &lt;codea/common.glsl&gt;</span>
+
+<span class="s">   struct Instance</span>
+<span class="s">   {</span>
+<span class="s">      vec4 position;</span>
+<span class="s">   };</span>
+
+<span class="s">   BUFFER_RW(instances, Instance, BUFFER0);</span>
+
+<span class="s">   uniform uint instanceCount;</span>
+
+<span class="s">   float rand(vec2 co)</span>
+<span class="s">   {</span>
+<span class="s">      return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);</span>
+<span class="s">   }</span>
+
+<span class="s">   NUM_THREADS(64, 1, 1)</span>
+<span class="s">   void main()</span>
+<span class="s">   {</span>
+<span class="s">   }</span>
+<span class="s">]]</span>
+
+<span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+   <span class="n">layout</span> <span class="o">=</span> <span class="n">shader</span><span class="p">.</span><span class="n">bufferLayout</span><span class="p">{</span> <span class="p">{</span><span class="n">shader</span><span class="p">.</span><span class="n">position</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">shader</span><span class="p">.</span><span class="n">float</span><span class="p">}</span> <span class="p">}</span>
+
+   <span class="n">buffer</span> <span class="o">=</span> <span class="n">shader</span><span class="p">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+   <span class="kr">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span> <span class="kr">do</span>
+      <span class="kd">local</span> <span class="n">posVel</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">()</span>
+      <span class="n">posVel</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">math.random</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">)</span>
+      <span class="n">posVel</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">math.random</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">)</span>
+      <span class="n">posVel</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="nb">math.random</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span>
+      <span class="n">posVel</span><span class="p">.</span><span class="n">w</span> <span class="o">=</span> <span class="nb">math.random</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span>
+      <span class="n">buffer</span><span class="p">:</span><span class="n">append</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">position</span><span class="p">,</span> <span class="n">posVel</span><span class="p">)</span>
+   <span class="kr">end</span>
+   <span class="n">updatePosVel</span><span class="p">:</span><span class="n">setBuffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">"instances"</span><span class="p">,</span> <span class="n">shader</span><span class="p">.</span><span class="n">readwrite</span><span class="p">)</span>
+   <span class="n">updatePosVel</span><span class="p">.</span><span class="n">instanceCount</span> <span class="o">=</span> <span class="n">posVel</span><span class="p">.</span><span class="n">size</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>The buffer definition table contains is an array of tables, each one containing the following format:</p>
+<p><code class="docutils literal notranslate"><span class="pre">{attribute,</span> <span class="pre">count,</span> <span class="pre">type[,</span> <span class="pre">normalized]}</span></code></p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">attribute</span></code> maps to a field in the buffer struct to a specific <code class="docutils literal notranslate"><span class="pre">type</span></code>, where <code class="docutils literal notranslate"><span class="pre">count</span></code> maps to scalar and vector types respectively</p>
+<p>Attributes</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">normal</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tangent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bitangent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color0..3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">indices</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weight</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">texcoord0..9</span></code></p></li>
+</ul>
+<p>Types</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uint10</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int16</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">half</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+</ul>
+</dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="bufferLayout.size">
+<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#bufferLayout.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The current size of the buffer</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="bufferLayout.resize">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bufferLayout.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize the buffer to a given <code class="docutils literal notranslate"><span class="pre">size</span></code></p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="bufferLayout.clear">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bufferLayout.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the buffer</p>
+</dd></dl>
 </dd></dl>
 </dd></dl>
 </div>
