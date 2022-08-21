@@ -397,6 +397,294 @@
 </dl>
 </dd></dl>
 </dd></dl>
+<div class="section" id="image-formats">
+<h2>Image Formats<a class="headerlink" href="#image-formats" title="Permalink to this headline">¶</a></h2>
+<p>Here is a list of all currently available image formats</p>
+<div class="table-wrapper"><table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Available Image Formats</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 38%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 13%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Channels</p></th>
+<th class="head"><p>SRGB</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.a8</span></code></p></td>
+<td><p>unorm</p></td>
+<td><p>[8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.r8</span></code></p></td>
+<td><p>unorm</p></td>
+<td><p>[8]</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.r8i</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.r8u</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.r8s</span></code></p></td>
+<td><p>snorm</p></td>
+<td><p>[8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.r16</span></code></p></td>
+<td><p>unorm</p></td>
+<td><p>[16]</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.r16i</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.r16u</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.r16f</span></code></p></td>
+<td><p>float</p></td>
+<td><p>[16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.r16s</span></code></p></td>
+<td><p>snorm</p></td>
+<td><p>[16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.r32i</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.r32u</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.r32f</span></code></p></td>
+<td><p>float</p></td>
+<td><p>[32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgb8</span></code></p></td>
+<td><p>unorm</p></td>
+<td><p>[8,8,8]</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgb8i</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[8,8,8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgb8u</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[8,8,8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgb8s</span></code></p></td>
+<td><p>snorm</p></td>
+<td><p>[8,8,8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rg16</span></code></p></td>
+<td><p>unorm</p></td>
+<td><p>[16,16,16]</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rg16i</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[16,16,16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rg16u</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[16,16,16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rg16f</span></code></p></td>
+<td><p>float</p></td>
+<td><p>[16,16,16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rg16s</span></code></p></td>
+<td><p>snorm</p></td>
+<td><p>[16,16,16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rg32i</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[32,32,32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rg32u</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[32,32,32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rg32f</span></code></p></td>
+<td><p>float</p></td>
+<td><p>[32,32,32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgb9e5f</span></code></p></td>
+<td><p>float</p></td>
+<td><p>[9,9,9,+5]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.bgra8</span></code></p></td>
+<td><p>unorm</p></td>
+<td><p>[8,8,8,8]</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba8</span></code></p></td>
+<td><p>unorm</p></td>
+<td><p>[8,8,8,8]</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba8i</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[8,8,8,8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba8u</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[8,8,8,8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba8u</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[8,8,8,8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba8s</span></code></p></td>
+<td><p>snorm</p></td>
+<td><p>[8,8,8,8]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba16</span></code></p></td>
+<td><p>unorm</p></td>
+<td><p>[16,16,16,16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba16i</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[16,16,16,16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba16u</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[16,16,16,16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba16f</span></code></p></td>
+<td><p>float</p></td>
+<td><p>[16,16,16,16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba16s</span></code></p></td>
+<td><p>snorm</p></td>
+<td><p>[16,16,16,16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba32i</span></code></p></td>
+<td><p>sint</p></td>
+<td><p>[32,32,32,32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba32u</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[32,32,32,32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba32f</span></code></p></td>
+<td><p>float</p></td>
+<td><p>[32,32,32,32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.r5g6b5</span></code></p></td>
+<td><p>n/a</p></td>
+<td><p>[5,6,5]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgba4</span></code></p></td>
+<td><p>n/a</p></td>
+<td><p>[4,4,4,4]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgb5a1</span></code></p></td>
+<td><p>n/a</p></td>
+<td><p>[5,5,5,1]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.rgb10a2</span></code></p></td>
+<td><p>n/a</p></td>
+<td><p>[10,10,10,2]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.rg11b10f</span></code></p></td>
+<td><p>float</p></td>
+<td><p>[32,32,32,32]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.d16</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[16]</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.d24</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[24]</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.d24s8</span></code></p></td>
+<td><p>depth/stencil</p></td>
+<td><p>[24,8]</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.d32</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[32]</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.d16f</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[16]</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.d24f</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>[24]</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">image.d32f</span></code></p></td>
+<td><p>float</p></td>
+<td><p>[32]</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image.d0s8</span></code></p></td>
+<td><p>stencil</p></td>
+<td><p>[8]</p></td>
+<td><p>n/a</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>rgb9e5f</p>
+</div>
 <div class="section" id="sampler-state-mipmapping">
 <h2>Sampler State / Mipmapping<a class="headerlink" href="#sampler-state-mipmapping" title="Permalink to this headline">¶</a></h2>
 <p>The sampler state of an image is used to control texel sampling</p>
@@ -503,6 +791,7 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">image</a><ul>
+<li><a class="reference internal" href="#image-formats">Image Formats</a></li>
 <li><a class="reference internal" href="#sampler-state-mipmapping">Sampler State / Mipmapping</a></li>
 <li><a class="reference internal" href="#sprites-and-atlases">Sprites and Atlases</a></li>
 </ul>
