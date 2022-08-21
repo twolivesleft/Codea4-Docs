@@ -137,6 +137,249 @@ Made of pixels and used by codea for drawing to the screen and texturing meshes
       :return: The target image containing the irradiance data
       :rtype: image
 
+Image Formats
+-------------
+
+Here is a list of all currently available image formats
+
+.. list-table:: Available Image Formats
+   :widths: 30 20 20 10
+   :header-rows: 1
+
+   * - Name
+     - Type
+     - Channels
+     - SRGB
+   * - ``image.a8``
+     - unorm
+     - [8]
+     - No
+   * - ``image.r8``
+     - unorm
+     - [8]
+     - Yes
+   * - ``image.r8i``
+     - sint
+     - [8]
+     - No
+   * - ``image.r8u``
+     - uint
+     - [8]
+     - No
+   * - ``image.r8s``
+     - snorm
+     - [8]
+     - No
+   * - ``image.r16``
+     - unorm
+     - [16]
+     - Yes
+   * - ``image.r16i``
+     - sint
+     - [16]
+     - No
+   * - ``image.r16u``
+     - uint
+     - [16]
+     - No
+   * - ``image.r16f``
+     - float
+     - [16]
+     - No
+   * - ``image.r16s``
+     - snorm
+     - [16]
+     - No
+   * - ``image.r32i``
+     - sint
+     - [32]
+     - No
+   * - ``image.r32u``
+     - uint
+     - [32]
+     - No
+   * - ``image.r32f``
+     - float
+     - [32]
+     - No
+   * - ``image.rgb8``
+     - unorm
+     - [8,8,8]
+     - Yes
+   * - ``image.rgb8i``
+     - sint
+     - [8,8,8]
+     - No
+   * - ``image.rgb8u``
+     - uint
+     - [8,8,8]
+     - No
+   * - ``image.rgb8s``
+     - snorm
+     - [8,8,8]
+     - No
+   * - ``image.rg16``
+     - unorm
+     - [16,16,16]
+     - Yes
+   * - ``image.rg16i``
+     - sint
+     - [16,16,16]
+     - No
+   * - ``image.rg16u``
+     - uint
+     - [16,16,16]
+     - No
+   * - ``image.rg16f``
+     - float
+     - [16,16,16]
+     - No     
+   * - ``image.rg16s``
+     - snorm
+     - [16,16,16]
+     - No
+   * - ``image.rg32i``
+     - sint
+     - [32,32,32]
+     - No
+   * - ``image.rg32u``
+     - uint
+     - [32,32,32]
+     - No     
+   * - ``image.rg32f``
+     - float
+     - [32,32,32]
+     - No
+   * - ``image.rgb9e5f``
+     - float
+     - [9,9,9,+5]
+     - No
+   * - ``image.bgra8``
+     - unorm
+     - [8,8,8,8]
+     - Yes
+   * - ``image.rgba8``
+     - unorm
+     - [8,8,8,8]
+     - Yes
+   * - ``image.rgba8i``
+     - sint
+     - [8,8,8,8]
+     - No
+   * - ``image.rgba8u``
+     - uint
+     - [8,8,8,8]
+     - No
+   * - ``image.rgba8u``
+     - sint
+     - [8,8,8,8]
+     - No
+   * - ``image.rgba8s``
+     - snorm
+     - [8,8,8,8]
+     - No
+   * - ``image.rgba16``
+     - unorm
+     - [16,16,16,16]
+     - No
+   * - ``image.rgba16i``
+     - sint
+     - [16,16,16,16]
+     - No
+   * - ``image.rgba16u``
+     - uint
+     - [16,16,16,16]
+     - No
+   * - ``image.rgba16f``
+     - float
+     - [16,16,16,16]
+     - No
+   * - ``image.rgba16s``
+     - snorm
+     - [16,16,16,16]
+     - No
+   * - ``image.rgba32i``
+     - sint
+     - [32,32,32,32]
+     - No
+   * - ``image.rgba32u``
+     - uint
+     - [32,32,32,32]
+     - No
+   * - ``image.rgba32f``
+     - float
+     - [32,32,32,32]
+     - No
+   * - ``image.r5g6b5``
+     - n/a
+     - [5,6,5]
+     - No
+   * - ``image.rgba4``
+     - n/a
+     - [4,4,4,4]
+     - No
+   * - ``image.rgb5a1``
+     - n/a
+     - [5,5,5,1]
+     - No
+   * - ``image.rgb10a2``
+     - n/a
+     - [10,10,10,2]
+     - No
+   * - ``image.rg11b10f``
+     - float
+     - [32,32,32,32]
+     - No
+   * - ``image.d16``
+     - uint
+     - [16]
+     - No
+   * - ``image.d24``
+     - uint
+     - [24]
+     - n/a
+   * - ``image.d24s8``
+     - depth/stencil
+     - [24,8]
+     - n/a
+   * - ``image.d32``
+     - uint
+     - [32]
+     - n/a
+   * - ``image.d16f``
+     - uint
+     - [16]
+     - n/a
+   * - ``image.d24f``
+     - uint
+     - [24]
+     - n/a
+   * - ``image.d32f``
+     - float
+     - [32]
+     - n/a
+   * - ``image.d0s8``
+     - stencil
+     - [8]
+     - n/a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rgb9e5f
 
 Sampler State / Mipmapping
 --------------------------
