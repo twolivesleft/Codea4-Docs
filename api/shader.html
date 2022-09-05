@@ -324,9 +324,49 @@
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="buffer.buffer">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">layout</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">size</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.buffer" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">shader</span><span class="p">.</span><span class="n">buffer</span><span class="p">()</span>
-</pre></div>
-</div>
+<dd><p>Create a GPU buffer based on a <code class="docutils literal notranslate"><span class="pre">layout</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">myBuffer</span> <span class="pre">=</span> <span class="pre">shader.buffer(layout)</span></code></p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="buffer.resize">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#buffer.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize the buffer</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="buffer.clear">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the buffer</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="buffer.append">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">attribute1</span></em>, <em class="sig-param"><span class="pre">value1</span></em>, <em class="sig-param"><span class="pre">attribute2</span></em>, <em class="sig-param"><span class="pre">value2</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">...</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append a new element to the buffer using pairs of attributes and values</p>
+</dd></dl>
+</dd></dl>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="indexBuffer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">indexBuffer</span></span><a class="headerlink" href="#indexBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="indexBuffer.indexBuffer">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">indexBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">size</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.indexBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a GPU index buffer (array of unsigned integers). Usually used for mesh primitive indices</p>
+<p><code class="docutils literal notranslate"><span class="pre">myBuffer</span> <span class="pre">=</span> <span class="pre">shader.indexBuffer(shader.indexBuffer.i32|i16)</span></code></p>
+<p>Buffer type can be 32 bit (<code class="docutils literal notranslate"><span class="pre">shader.indexBuffer.i32</span></code>) or 16 bit (<code class="docutils literal notranslate"><span class="pre">shader.indexBuffer.i16</span></code>)</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="indexBuffer.resize">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize the buffer</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="indexBuffer.clear">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the buffer</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="indexBuffer.append">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">i1</span></em>, <em class="sig-param"><span class="pre">i2</span></em>, <em class="sig-param"><span class="pre">i3</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends multiple elements to the buffer</p>
 </dd></dl>
 </dd></dl>
 <dl class="lua class">
@@ -352,14 +392,14 @@
 
 <span class="s">   uniform uint instanceCount;</span>
 
-<span class="s">   float rand(vec2 co)</span>
-<span class="s">   {</span>
-<span class="s">      return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);</span>
-<span class="s">   }</span>
-
 <span class="s">   NUM_THREADS(64, 1, 1)</span>
 <span class="s">   void main()</span>
 <span class="s">   {</span>
+<span class="s">      uint id = gl_GlobalInvocationID.x;</span>
+<span class="s">      if (id &lt; instancesCount)</span>
+<span class="s">      {</span>
+<span class="s">         instances[id].position = vec4(0,1,2,3);</span>
+<span class="s">      }</span>
 <span class="s">   }</span>
 <span class="s">]]</span>
 
@@ -375,7 +415,7 @@
       <span class="n">posVel</span><span class="p">.</span><span class="n">w</span> <span class="o">=</span> <span class="nb">math.random</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span>
       <span class="n">buffer</span><span class="p">:</span><span class="n">append</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">position</span><span class="p">,</span> <span class="n">posVel</span><span class="p">)</span>
    <span class="kr">end</span>
-   <span class="n">updatePosVel</span><span class="p">:</span><span class="n">setBuffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">"instances"</span><span class="p">,</span> <span class="n">shader</span><span class="p">.</span><span class="n">readwrite</span><span class="p">)</span>
+   <span class="n">updatePosVel</span><span class="p">:</span><span class="n">setBuffer</span><span class="p">(</span><span class="s2">"instancesBuffer"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
    <span class="n">updatePosVel</span><span class="p">.</span><span class="n">instanceCount</span> <span class="o">=</span> <span class="n">posVel</span><span class="p">.</span><span class="n">size</span>
 <span class="kr">end</span>
 </pre></div>

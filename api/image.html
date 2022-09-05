@@ -683,7 +683,6 @@
 </tr>
 </tbody>
 </table></div>
-<p>rgb9e5f</p>
 </div>
 <div class="section" id="sampler-state-mipmapping">
 <h2>Sampler State / Mipmapping<a class="headerlink" href="#sampler-state-mipmapping" title="Permalink to this headline">¶</a></h2>
@@ -726,16 +725,132 @@
 </dd></dl>
 </dd></dl>
 </div>
-<div class="section" id="sprites-and-atlases">
-<h2>Sprites and Atlases<a class="headerlink" href="#sprites-and-atlases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="slices-and-atlases">
+<h2>Slices and Atlases<a class="headerlink" href="#slices-and-atlases" title="Permalink to this headline">¶</a></h2>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="image.slice">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">image.slice</span></span><a class="headerlink" href="#image.slice" title="Permalink to this definition">¶</a></dt>
+<dd><p>A configurable slice of an image. Use with <code class="docutils literal notranslate"><span class="pre">sprite()</span></code> for drawing a portion of an sprite sheet image for more efficient 2D rendering (as opposed to a large number of independ images)</p>
+<p>Create slices using an existing image via the <code class="docutils literal notranslate"><span class="pre">image.slice</span></code> property. Slices can be configured using a fluent syntax, allowing for rotation, flipping and 9-patch stretching among other things</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Creating slices</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+   <span class="n">button</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Grey_Button_10</span><span class="p">)</span>
+
+   <span class="c1">-- create a stretchable 9-patch of the original image</span>
+   <span class="n">buttonSlice</span> <span class="o">=</span> <span class="n">btn</span><span class="p">.</span><span class="n">slice</span><span class="p">:</span><span class="n">patch</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
+   <span class="n">sprite</span><span class="p">(</span><span class="n">buttonSlice</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.slice.name">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Gets/sets the slice name (for retrieval in the <code class="docutils literal notranslate"><span class="pre">atlas</span></code> class)</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.slice.normal">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the slice to the normal drawing mode (from patch or polygon mode)</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.slice.rect">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.rect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Set/gets the sub-rectangle for the slice (in pixels). Use this to draw a portion of the sliced image</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.slice.patch">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">left</span></em>, <em class="sig-param"><span class="pre">right</span></em>, <em class="sig-param"><span class="pre">top</span></em>, <em class="sig-param"><span class="pre">bottom</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.patch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">margin</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the slice to draw as a 9-patch using the supplied margins. This allows the slice to be stretched to an arbitrary size while maintaining fixed-sized borders</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.slice.padding">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">padding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">left</span></em>, <em class="sig-param"><span class="pre">right</span></em>, <em class="sig-param"><span class="pre">top</span></em>, <em class="sig-param"><span class="pre">bottom</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.padding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">padding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">amount</span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">padding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Sets/gets the slice padding. This allows for a larger slice to be drawn but discards empty space at the edges (useful sprites packed into an atlas that trims empty space)</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.slice.anchor">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">anchor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.anchor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">anchor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Sets/gets the slice anchor (also known as a pivot). The anchor is the geometric center of the slice for transformations such as rotation/scale and flipping</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.slice.rotate">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.rotate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Sets/gets the sice rotation (in discrete 90 degree turns). Useful for atlas packed sprites that might be rotated to fit, or when reusing a slice at a different 90 degee angle</p>
+</dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.slice.flip">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.flip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">flip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Sets/gets the horizontal and vertical flip for the slice</p>
+</dd></dl>
+</dd></dl>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="atlas">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">atlas</span></span><a class="headerlink" href="#atlas" title="Permalink to this definition">¶</a></dt>
+<dd><p>A collection of <code class="docutils literal notranslate"><span class="pre">image.slice</span></code> objects generated from an image</p>
+<p>Often 2D game assets will be compiled into a single image (known as an atlas or sprite sheet) for convienience and efficiency. These can be loaded from an external text file or generated using some simple settings</p>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="atlas.atlas">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">atlas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">image</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atlas.atlas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new blank atlas using an existing image</p>
+</dd></dl>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="atlas.read">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atlas.read" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-<dl class="lua class">
-<dt class="sig sig-object lua" id="sprite.slice">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">sprite.slice</span></span><a class="headerlink" href="#sprite.slice" title="Permalink to this definition">¶</a></dt>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="atlas.save">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em>, <em class="sig-param"><span class="pre">atlas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atlas.save" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="atlas.clear">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#atlas.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="atlas.setWithCellSize">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setWithCellSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cellWidth</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">cellHeight</span></em>, <em class="sig-param"><span class="pre">padding</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#atlas.setWithCellSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="atlas.setWithCellCount">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setWithCellCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cellColumns</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">cellRows</span></em>, <em class="sig-param"><span class="pre">padding</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#atlas.setWithCellCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
 </div>
 </div>
 
@@ -793,7 +908,7 @@
 <li><a class="reference internal" href="#">image</a><ul>
 <li><a class="reference internal" href="#image-formats">Image Formats</a></li>
 <li><a class="reference internal" href="#sampler-state-mipmapping">Sampler State / Mipmapping</a></li>
-<li><a class="reference internal" href="#sprites-and-atlases">Sprites and Atlases</a></li>
+<li><a class="reference internal" href="#slices-and-atlases">Slices and Atlases</a></li>
 </ul>
 </li>
 </ul>

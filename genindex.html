@@ -240,10 +240,18 @@
 </li>
         <li><a href="api/mesh.html#mesh.addRect">addRect() (mesh method)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/image.html#image.slice.anchor">anchor() (image.slice method)</a>, <a href="api/image.html#image.slice.anchor">[1]</a>
+</li>
         <li><a href="api/math_types.html#quat.angleAxis">angleAxis() (quat static method)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/shader.html#buffer.append">append() (buffer method)</a>
+
+        <ul>
+          <li><a href="api/shader.html#indexBuffer.append">(indexBuffer method)</a>
+</li>
+        </ul></li>
         <li><a href="api/physics2d.html#physics2d.body.applyAngularImpulse">applyAngularImpulse() (physics2d.body method)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.body.applyForce">applyForce() (physics2d.body method)</a>
@@ -255,6 +263,8 @@
         <li><a href="api/graphics.html#arc">arc() (built-in function)</a>
 </li>
         <li><a href="api/image.html#atlas">atlas (built-in class)</a>
+</li>
+        <li><a href="api/image.html#atlas.atlas">atlas() (atlas static method)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -330,9 +340,15 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.body.circle">circle() (physics2d.body method)</a>
 </li>
-        <li><a href="api/shader.html#bufferLayout.clear">clear() (bufferLayout method)</a>
+        <li><a href="api/image.html#atlas.clear">clear() (atlas method)</a>
 
         <ul>
+          <li><a href="api/shader.html#buffer.clear">(buffer method)</a>
+</li>
+          <li><a href="api/shader.html#bufferLayout.clear">(bufferLayout method)</a>
+</li>
+          <li><a href="api/shader.html#indexBuffer.clear">(indexBuffer method)</a>
+</li>
           <li><a href="api/mesh.html#mesh.clear">(mesh method)</a>
 </li>
         </ul></li>
@@ -342,10 +358,10 @@
           <li><a href="api/physics3d.html#physics3d.collider">(class in physics3d)</a>
 </li>
         </ul></li>
-        <li><a href="api/mesh.html#mesh.color">color() (mesh method)</a>, <a href="api/mesh.html#mesh.color">[1]</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/mesh.html#mesh.color">color() (mesh method)</a>, <a href="api/mesh.html#mesh.color">[1]</a>
+</li>
         <li><a href="api/math_types.html#mat2.column">column() (mat2 method)</a>, <a href="api/math_types.html#mat2.column">[1]</a>, <a href="api/math_types.html#mat2.column">[2]</a>
 </li>
         <li><a href="api/shader.html#shader.compute">compute() (shader static method)</a>
@@ -566,6 +582,8 @@
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/image.html#image.slice.flip">flip() (image.slice method)</a>, <a href="api/image.html#image.slice.flip">[1]</a>
+</li>
         <li><a href="api/style.html#style.fontSize">fontSize() (in module style)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.friction">friction (class in physics2d)</a>
@@ -648,15 +666,17 @@
 </li>
         <li><a href="api/image.html#image.height">image.height (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.key">image.key (attribute)</a>
 </li>
         <li><a href="api/image.html#image.numLayers">image.numLayers (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.numMips">image.numMips (attribute)</a>
 </li>
         <li><a href="api/image.html#image.sampler">image.sampler (attribute)</a>
+</li>
+        <li><a href="api/image.html#image.slice">image.slice (built-in class)</a>
 </li>
         <li><a href="api/image.html#image.width">image.width (attribute)</a>
 </li>
@@ -666,6 +686,10 @@
           <li><a href="api/mesh.html#mesh.index">(mesh method)</a>, <a href="api/mesh.html#mesh.index">[1]</a>
 </li>
         </ul></li>
+        <li><a href="api/shader.html#indexBuffer">indexBuffer (built-in class)</a>
+</li>
+        <li><a href="api/shader.html#indexBuffer.indexBuffer">indexBuffer() (indexBuffer static method)</a>
+</li>
         <li><a href="api/math_types.html#mat2.inverse">inverse() (mat2 method)</a>, <a href="api/math_types.html#mat2.inverse">[1]</a>, <a href="api/math_types.html#mat2.inverse">[2]</a>
 </li>
     </ul></td>
@@ -1016,6 +1040,8 @@
   <h2>N</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/image.html#image.slice.name">name() (image.slice method)</a>, <a href="api/image.html#image.slice.name">[1]</a>
+</li>
         <li><a href="api/input.html#module-nil">nil (module)</a>
 </li>
         <li><a href="api/input.html#nil.nil.gamepad.all">nil.nil.gamepad.all (attribute)</a>
@@ -1098,8 +1124,12 @@
 </li>
         <li><a href="api/input.html#nil.nil.gamepad.virtual">nil.nil.gamepad.virtual (attribute)</a>
 </li>
-        <li><a href="api/mesh.html#mesh.normal">normal() (mesh method)</a>, <a href="api/mesh.html#mesh.normal">[1]</a>
+        <li><a href="api/image.html#image.slice.normal">normal() (image.slice method)</a>
+
+        <ul>
+          <li><a href="api/mesh.html#mesh.normal">(mesh method)</a>, <a href="api/mesh.html#mesh.normal">[1]</a>
 </li>
+        </ul></li>
         <li><a href="api/math_types.html#quat.normalize">normalize() (quat method)</a>
 
         <ul>
@@ -1144,6 +1174,10 @@
   <h2>P</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/image.html#image.slice.padding">padding() (image.slice method)</a>, <a href="api/image.html#image.slice.padding">[1]</a>, <a href="api/image.html#image.slice.padding">[2]</a>
+</li>
+        <li><a href="api/image.html#image.slice.patch">patch() (image.slice method)</a>, <a href="api/image.html#image.slice.patch">[1]</a>
+</li>
         <li><a href="api/math_types.html#mat2.perspective">perspective() (mat2 static method)</a>
 </li>
         <li><a href="api/physics2d.html#module-physics2d">physics2d (module)</a>
@@ -1238,10 +1272,10 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.distance.damping">physics2d.physics2d.distance.damping (attribute)</a>
 </li>
-        <li><a href="api/physics2d.html#physics2d.physics2d.distance.length">physics2d.physics2d.distance.length (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/physics2d.html#physics2d.physics2d.distance.length">physics2d.physics2d.distance.length (attribute)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.physics2d.distance.maxLength">physics2d.physics2d.distance.maxLength (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.distance.minLength">physics2d.physics2d.distance.minLength (attribute)</a>
@@ -1384,16 +1418,22 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.rayHit">rayHit (class in physics2d)</a>
 </li>
-        <li><a href="api/image.html#image.read">read() (image static method)</a>
+        <li><a href="api/image.html#atlas.read">read() (atlas static method)</a>
 
         <ul>
+          <li><a href="api/image.html#image.read">(image static method)</a>
+</li>
           <li><a href="api/mesh.html#mesh.read">(mesh static method)</a>
 </li>
           <li><a href="api/shader.html#shader.read">(shader static method)</a>
 </li>
         </ul></li>
         <li><a href="api/graphics.html#rect">rect() (built-in function)</a>
+
+        <ul>
+          <li><a href="api/image.html#image.slice.rect">(image.slice method)</a>, <a href="api/image.html#image.slice.rect">[1]</a>
 </li>
+        </ul></li>
         <li><a href="api/math_types.html#vec2.reflect">reflect() (vec2 method)</a>
 
         <ul>
@@ -1416,16 +1456,26 @@
 </li>
         <li><a href="api/style.html#style.reset">reset() (in module style)</a>
 </li>
-        <li><a href="api/shader.html#bufferLayout.resize">resize() (bufferLayout method)</a>
+        <li><a href="api/shader.html#buffer.resize">resize() (buffer method)</a>
+
+        <ul>
+          <li><a href="api/shader.html#bufferLayout.resize">(bufferLayout method)</a>
 </li>
+          <li><a href="api/shader.html#indexBuffer.resize">(indexBuffer method)</a>
+</li>
+        </ul></li>
         <li><a href="api/mesh.html#mesh.resizeIndices">resizeIndices() (mesh method)</a>
 </li>
         <li><a href="api/mesh.html#mesh.resizeVertices">resizeVertices() (mesh method)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.rope">rope (class in physics2d)</a>
 </li>
-        <li><a href="api/math_types.html#mat2.rotate">rotate() (mat2 static method)</a>, <a href="api/math_types.html#mat2.rotate">[1]</a>
+        <li><a href="api/image.html#image.slice.rotate">rotate() (image.slice method)</a>, <a href="api/image.html#image.slice.rotate">[1]</a>
+
+        <ul>
+          <li><a href="api/math_types.html#mat2.rotate">(mat2 static method)</a>, <a href="api/math_types.html#mat2.rotate">[1]</a>
 </li>
+        </ul></li>
         <li><a href="api/mesh.html#mesh.roundedBox">roundedBox() (mesh static method)</a>
 </li>
         <li><a href="api/math_types.html#mat2.row">row() (mat2 method)</a>, <a href="api/math_types.html#mat2.row">[1]</a>, <a href="api/math_types.html#mat2.row">[2]</a>
@@ -1452,8 +1502,12 @@
 </li>
         <li><a href="api/image.html#samplerState.w">samplerState.w (attribute)</a>
 </li>
-        <li><a href="api/image.html#image.save">save() (image static method)</a>
+        <li><a href="api/image.html#atlas.save">save() (atlas static method)</a>
+
+        <ul>
+          <li><a href="api/image.html#image.save">(image static method)</a>
 </li>
+        </ul></li>
         <li><a href="api/scene.html#scene">scene (built-in class)</a>
 </li>
         <li><a href="api/scene.html#scene.camera">scene.camera (attribute)</a>
@@ -1477,6 +1531,10 @@
         <li><a href="api/mesh.html#mesh.setRectColor">setRectColor() (mesh method)</a>
 </li>
         <li><a href="api/mesh.html#mesh.setRectTex">setRectTex() (mesh method)</a>
+</li>
+        <li><a href="api/image.html#atlas.setWithCellCount">setWithCellCount() (atlas method)</a>
+</li>
+        <li><a href="api/image.html#atlas.setWithCellSize">setWithCellSize() (atlas method)</a>
 </li>
         <li><a href="api/shader.html#shader">shader (built-in class)</a>
 </li>
@@ -1506,8 +1564,6 @@
 </li>
         <li><a href="api/graphics.html#sprite">sprite() (built-in function)</a>, <a href="api/graphics.html#sprite">[1]</a>
 </li>
-        <li><a href="api/image.html#sprite.slice">sprite.slice (built-in class)</a>
-</li>
         <li><a href="api/physics2d.html#physics2d.world.step">step() (physics2d.world method)</a>
 </li>
         <li><a href="api/style.html#style.stroke">stroke() (in module style)</a>, <a href="api/style.html#style.stroke">[1]</a>
@@ -1536,10 +1592,10 @@
 </li>
         <li><a href="api/style.html#style.style.COLOR_MASK_NONE">style.style.COLOR_MASK_NONE (attribute)</a>
 </li>
-        <li><a href="api/style.html#style.style.COLOR_MASK_RED">style.style.COLOR_MASK_RED (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/style.html#style.style.COLOR_MASK_RED">style.style.COLOR_MASK_RED (attribute)</a>
+</li>
         <li><a href="api/style.html#style.style.COLOR_MASK_RGB">style.style.COLOR_MASK_RGB (attribute)</a>
 </li>
         <li><a href="api/style.html#style.style.COLOR_MASK_RGBA">style.style.COLOR_MASK_RGBA (attribute)</a>
