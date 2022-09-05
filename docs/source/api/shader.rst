@@ -96,9 +96,43 @@ shader
 
       .. lua:staticmethod:: buffer(layout[, size])
 
-         .. code-block:: lua
+         Create a GPU buffer based on a ``layout``
 
-            shader.buffer()
+         ``myBuffer = shader.buffer(layout)``
+
+      .. lua:method:: resize(size)
+
+         Resize the buffer
+
+      .. lua:method:: clear()  
+
+         Clear the buffer
+
+      .. lua:method:: append(attribute1, value1, attribute2, value2[, ...])
+
+         Append a new element to the buffer using pairs of attributes and values
+
+   .. lua:class:: indexBuffer
+
+      .. lua:staticmethod:: indexBuffer(type[, size])
+
+         Create a GPU index buffer (array of unsigned integers). Usually used for mesh primitive indices
+
+         ``myBuffer = shader.indexBuffer(shader.indexBuffer.i32|i16)``
+    
+         Buffer type can be 32 bit (``shader.indexBuffer.i32``) or 16 bit (``shader.indexBuffer.i16``)          
+
+      .. lua:method:: resize(size)
+
+         Resize the buffer
+
+      .. lua:method:: clear()  
+
+         Clear the buffer
+
+      .. lua:method:: append(i1, i2, i3, ...)
+
+         Appends multiple elements to the buffer
 
    .. lua:class:: bufferLayout
 
@@ -126,14 +160,14 @@ shader
 
                uniform uint instanceCount;
 
-               float rand(vec2 co)
-               {
-                  return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
-               }
-
                NUM_THREADS(64, 1, 1)
                void main()
                {
+                  uint id = gl_GlobalInvocationID.x;
+                  if (id < instancesCount)
+                  {
+                     instances[id].position = vec4(0,1,2,3);
+                  }
                }
             ]]
 
@@ -149,7 +183,7 @@ shader
                   posVel.w = math.random() * 0.5 - 0.5
                   buffer:append(shader.position, posVel)
                end
-               updatePosVel:setBuffer(buffer, "instances", shader.readwrite)
+               updatePosVel:setBuffer("instancesBuffer", buffer)
                updatePosVel.instanceCount = posVel.size            
             end
             

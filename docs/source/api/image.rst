@@ -363,24 +363,6 @@ Here is a list of all currently available image formats
      - [8]
      - n/a
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-rgb9e5f
-
 Sampler State / Mipmapping
 --------------------------
 
@@ -418,10 +400,87 @@ The ``mip`` property controls how mipmapping is handled, ``linear`` will blend b
 
       The w sampler mode, can be ``repeat``, ``clamp`` or ``mirror``
 
-Sprites and Atlases
+Slices and Atlases
 -------------------
+
+.. lua:class:: image.slice
+
+   A configurable slice of an image. Use with ``sprite()`` for drawing a portion of an sprite sheet image for more efficient 2D rendering (as opposed to a large number of independ images)
+
+   Create slices using an existing image via the ``image.slice`` property. Slices can be configured using a fluent syntax, allowing for rotation, flipping and 9-patch stretching among other things
+
+   .. code-block:: lua
+      :caption: Creating slices
+
+      function setup()
+         button = image.read(asset.builtin.UI.Grey_Button_10)
+
+         -- create a stretchable 9-patch of the original image
+         buttonSlice = btn.slice:patch(10)
+      end
+
+      function draw()
+         sprite(buttonSlice, WIDTH/2, HEIGHT/2, 100, 50)
+      end
+
+   .. lua:method:: name(name)
+   .. lua:method:: name()      
+
+      Gets/sets the slice name (for retrieval in the ``atlas`` class)
+
+   .. lua:method:: normal()
+
+      Reset the slice to the normal drawing mode (from patch or polygon mode)
+
+   .. lua:method:: rect(x, y, w, h)
+   .. lua:method:: rect()      
+
+      Set/gets the sub-rectangle for the slice (in pixels). Use this to draw a portion of the sliced image
+
+   .. lua:method:: patch(left, right, top, bottom)      
+   .. lua:method:: patch(margin)            
+
+      Sets the slice to draw as a 9-patch using the supplied margins. This allows the slice to be stretched to an arbitrary size while maintaining fixed-sized borders
+
+   .. lua:method:: padding(left, right, top, bottom)      
+   .. lua:method:: padding(amount)              
+   .. lua:method:: padding()            
+
+      Sets/gets the slice padding. This allows for a larger slice to be drawn but discards empty space at the edges (useful sprites packed into an atlas that trims empty space)
+
+   .. lua:method:: anchor(x, y)      
+   .. lua:method:: anchor()      
+
+      Sets/gets the slice anchor (also known as a pivot). The anchor is the geometric center of the slice for transformations such as rotation/scale and flipping
+
+   .. lua:method:: rotate(angle)      
+   .. lua:method:: rotate()     
+
+      Sets/gets the sice rotation (in discrete 90 degree turns). Useful for atlas packed sprites that might be rotated to fit, or when reusing a slice at a different 90 degee angle
+
+   .. lua:method:: flip(x, y)      
+   .. lua:method:: flip()            
+
+      Sets/gets the horizontal and vertical flip for the slice
 
 .. lua:class:: atlas
 
+   A collection of ``image.slice`` objects generated from an image
 
-.. lua:class:: sprite.slice
+   Often 2D game assets will be compiled into a single image (known as an atlas or sprite sheet) for convienience and efficiency. These can be loaded from an external text file or generated using some simple settings
+
+   .. lua:staticmethod:: atlas(image)
+
+      Create a new blank atlas using an existing image
+
+   .. lua:staticmethod:: read(assetKey)
+
+   .. lua:staticmethod:: save(assetKey, atlas)
+
+   .. lua:method:: clear()
+
+   .. lua:method:: setWithCellSize(cellWidth[, cellHeight, padding])
+
+   .. lua:method:: setWithCellCount(cellColumns[, cellRows, padding])      
+   
+
