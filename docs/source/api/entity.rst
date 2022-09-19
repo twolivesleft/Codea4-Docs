@@ -24,11 +24,11 @@ entity
 
    .. lua:attribute:: valid: boolean
 
-      Checks the validity of this entity. When an entity is destroyed it is invalid and no longer be used. non-valid entities will raise errors when calling functions or accessing properties
+      Checks the validity of this entity. When an entity is destroyed it is invalid and can no longer be used. non-valid entities will raise errors when calling functions or accessing properties
 
    .. lua:attribute:: name: string
 
-      The name of the entity, useful when referring to the entity later using the :lua:class:`scene` and :lua:class:`entity` indexers
+      The name of the entity, useful wehen referring to the entity later using the :lua:class:`scene` and :lua:class:`entity` indexers
 
       .. code-block:: lua
 
@@ -53,21 +53,66 @@ entity
 
       Adds a component to this entity, there are several types of objects that can act as entities
 
-      - built-in classes:
-      - user-defined classes:
-      - assets:
+      - Lua classes/components
+         - Anything you can dream of...
+      - built-in classes
+         - ``camera.rigs.orbit``
+         - ``camera.rigs.canvas``
+         - ``physics3d.grabber``
+      - assets
+         - ``mesh``
+         - ``image`` / ``image.slice``
+
+      .. code-block:: lua
+
+         scene.main = scene()
+         local sphere = scene.main:entity()
+         sphere:add(mesh.sphere(1)) -- Add a sphere mesh to the entity         
+
+         -- Add an orbit rig to the camera (supersedes OrbitViewer from Craft)
+         scene.camera:add(camera.rigs.orbit)
+
+         -- Hypothetical day-night cycle Lua component for making the same orbit the planet
+         scene.sun:add(DayNightCycle, 60)
+
+      *Note on Lua classes/components*
+
+         When calling ``entity:add(component, ...)`` with a Lua class, all parameters will be forwarded to the ``created(...)`` event after the component's construction, allowing for customised initialisation
 
    .. lua:method:: remove(component)
 
       Removes a given component type from this entity
 
+      .. code-block:: lua
+
+         scene.main = scene()
+         local sphere = scene.main:entity()
+         sphere:add(mesh.sphere(1)) -- add a sphere mesh to the entity         
+         sphere:remove(mesh) -- remove the sphere mesh
+
+
    .. lua:method:: has(component)
 
       Checks if a component type is attached to this entity
 
+      .. code-block:: lua
+
+         scene.main = scene()
+         local sphere = scene.main:entity()
+         sphere:add(mesh.sphere(1)) -- add a sphere mesh to the entity         
+         print(sphere:has(mesh)) -- prints 'true'
+
+
    .. lua:method:: get(component)
 
-      Retrieves a component type attached to this etntity
+      Retrieves a component type attached to this entity
+
+      .. code-block:: lua
+         
+         scene.main = scene()
+         local sphere = scene.main:entity()
+         sphere:add(mesh.sphere(1)) -- add a sphere mesh to the entity         
+         print(sphere:get(mesh)) -- prints the mesh description
 
    .. lua:attribute:: components: table<component>
 
@@ -91,7 +136,7 @@ entity
 
       The number of children that this entity possesses
 
-   .. lua:method:: index(name)
+   .. lua:method:: index(name) [metamethod]
 
       Retrieves children with the supplied name using the property syntax (i.e. ``myEntity.theChildName``)
 
@@ -199,45 +244,136 @@ entity
 
       The positive y axis of this entity's coordinate space transformed into world space
 
+   .. lua:method:: transformPoint(localPoint)
+
+      Transform a point from local to world space
+
+      :param localPoint: The point to transform
+      :type localPoint: vec3
+
+   .. lua:method:: inverseTransformPoint(worldPoint)
+
+      Transform a point from world to local space
+
+      :param worldPoint: The point to transform
+      :type worldPoint: vec3
+
+   .. lua:method:: transformDirection(localDir)
+
+      Transform a vector from local to world space
+
+      :param localDir: The vector to transform
+      :type localDir: vec3
+
+   .. lua:method:: inverseTransformDirection(worldDir)
+
+      Transform a vector from world to local space
+
+      :param worldDir: The vector to transform
+      :type worldDir: vec3
+
+   .. lua:method:: translate(x, y[, z])
+
+      Moves the entity by the provided translation vector in local space
+
+      Also supports ``vec2`` and ``vec3`` parameters
+
    **Sprite Properties**
 
-   .. lua:attribute:: sprite: sprite.slice
+   .. lua:attribute:: sprite: image.slice
+
+      The sprite (``image.slice``) attached to this entity. This will be drawn at the entities' transform within the scene
 
    .. lua:attribute:: color: color
 
+      The tint color to use
+
    .. lua:attribute:: flipX: boolean
 
+      Flips the sprite on the x-axis
+
    .. lua:attribute:: flipY: boolean
+
+      Flips the sprite on the y-axis
 
    **Mesh Properties**
 
    .. lua:attribute:: mesh: mesh
 
+      The mesh attached to this entity. This will be drawn the entities' transform within the scene
+
    .. lua:attribute:: material: material
+
+      The material attached to this entity (used in conjunction with meshes/sprites)
 
    **Physics2D Properties**
 
    .. lua:attribute:: body2d: physics2d.body
 
+      The attached 2D physics body (if there is one)
+
    .. lua:attribute:: collider2d: physics2d.collider
+
+      The first attached 2D physics collider (if there is one)
 
    .. lua:attribute:: colliders2d: table<physics2d.collider>
 
+      All attached 2D physics colliders
+
    .. lua:attribute:: joints2d: table<physics2d.joint>
+
+      All attached 2D physics joints
 
    **Physics3D Properties**
 
    .. lua:attribute:: body3d: physics3d.body
 
+      The attached 3D physics body (if there is one)
+
    .. lua:attribute:: collider3d: physics3d.collider
+
+      The first attached 3D physics collider (if there is one)
 
    .. lua:attribute:: colliders3d: table<physics3d.collider>
 
+      All attached 3D physics colliders
+
    .. lua:attribute:: joints3d: table<physics3d.joint>
 
-   **Callbacks**
+      All attached 3D physics joints
 
-   A series of handy callbacks that can be set which will be invoked automatically by the scene systems
+   **Lifecycle Callbacks**
+
+   A series of handy callbacks that can be set which will be invoked automatically by scene systems
+
+   .. lua:attribute:: created: function
+
+      Callback for the `created(...)` event, which is called right after a Lua component is created, and forwards all parameters passed from the ``entity:add(component, ...)`` function
+
+      .. code-block:: lua
+
+         SelfDestructor = class('SelfDestructor')
+
+         -- Called when created but no parameters are forwarded here
+         function SelfDestructor:init()
+         end
+         
+         -- Use for custom component initialization, all parameters forwarded to here
+         function SelfDestructor:created(delay)            
+            print("I will self destruct in ", delay, " seconds")
+            self.entity:destroy(delay)
+         end
+
+         ...
+
+         local ent = main.scene:entity()
+         ent:add(SelfDestructor, 3) -- prints "I will self destruct in 3 seconds"
+
+   .. lua:attribute:: destroyed: function
+
+      Callback for the `destroyed()` event, which is called right before the entity is destroyed
+
+   **Simulation Callbacks**
 
    .. lua:attribute:: update: function
 
@@ -247,18 +383,15 @@ entity
 
       Callback for the ``fixedUpdate(dt)`` event, which is called on all active entities once per fixed update (called a fixed number of times per second). The ``dt`` parameter passes the fixed delta time of the enclosing scene
 
+   **Interaction Callbacks**
+
    .. lua:attribute:: touched: function
 
       Callback for the ``touched(touch)`` event, which is called whenever a touch occurs (in response to user interaction)
 
       During the ``BEGAN`` phase of an incomming touch, returning true from this function will capture the touch for all subsequent events, otherwise the touch will be `lost`
 
-   .. lua:attribute:: destroyed: function
-
-      Callback for the `destroyed()` event, which is called right before the entity is destroyed
-
    .. lua:attribute:: hitTest: boolean [default = false]
 
       Enables hit testing for the ``touched(touch)`` event, which will filter touches based on collision checks using attached physics components on the main camera
 
-      Use this to use colliders to filter interactions automatically
