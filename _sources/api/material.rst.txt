@@ -134,7 +134,7 @@ material
 
    .. lua:staticmethod:: material(shader)
 
-      Create a new material using the supplied :lua:class:`shader`
+      Create a new material using the supplied :lua:class:`shader` 
 
    .. lua:staticmethod:: lit()
 

@@ -72,10 +72,10 @@ physics2d
       :param radius: The radius of the circle
       :type radius: number
 
-      :param radius: The local x offset of the circle
+      :param offsetX: The local x offset of the circle
       :type radius: number
 
-      :param radius: The local y offset of the circle
+      :param offsetY: The local y offset of the circle
       :type radius: number
 
       :return: The new circle collider
@@ -409,6 +409,10 @@ physics2d
    .. lua:attribute:: collider: physics2d.collider
 
       The collider that was hit by the ray
+
+   .. lua:attribute:: body: physics2d.body
+
+      The body of the collider that was hit by the ray            
 
 .. lua:class:: contact
 

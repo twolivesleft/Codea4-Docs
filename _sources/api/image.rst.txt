@@ -426,7 +426,7 @@ Slices and Atlases
    .. lua:method:: name(name)
    .. lua:method:: name()      
 
-      Gets/sets the slice name (for retrieval in the ``atlas`` class)
+      Gets/sets the slice name (for retrieval  in the ``atlas`` class)
 
    .. lua:method:: normal()
 

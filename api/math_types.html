@@ -1,15 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="input" href="input.html" /><link rel="prev" title="lua" href="lua.html" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="input" href="input.html" /><link rel="prev" title="lua" href="lua.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.3.2, furo 2021.11.16"/>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>math types - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     
     
 
@@ -20,38 +21,38 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" />
-      <line x1="4" y1="6" x2="20" y2="6" />
-      <line x1="10" y1="12" x2="20" y2="12" />
-      <line x1="6" y1="18" x2="20" y2="18" />
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
     </svg>
   </symbol>
   <symbol id="svg-menu" viewBox="0 0 24 24">
     <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -60,14 +61,14 @@
   </symbol>
   <symbol id="svg-arrow-right" viewBox="0 0 24 24">
     <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
   </symbol>
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -82,7 +83,7 @@
   </symbol>
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
@@ -90,7 +91,7 @@
   </symbol>
   <symbol id="svg-sun-half" viewBox="0 0 24 24">
     <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <circle cx="12" cy="12" r="9" />
@@ -143,7 +144,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/icon.png" alt="Logo"/>
@@ -152,7 +153,7 @@
   <span class="sidebar-brand-text">Codea 4.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -187,6 +188,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
@@ -194,6 +196,7 @@
 
 </div>
 </div>
+
       </div>
       
     </div>
@@ -201,8 +204,15 @@
   <div class="main">
     <div class="content">
       <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -216,457 +226,530 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="math-types">
-<h1>math types<a class="headerlink" href="#math-types" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="vec2">
-<h2>vec2<a class="headerlink" href="#vec2" title="Permalink to this headline">¶</a></h2>
+          <section id="math-types">
+<h1>math types<a class="headerlink" href="#math-types" title="Link to this heading">#</a></h1>
+<section id="vec2">
+<h2>vec2<a class="headerlink" href="#vec2" title="Link to this heading">#</a></h2>
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec2.vec2">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.vec2" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.vec2" title="Link to this definition">#</a></dt>
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">vec2</span></code> by setting both values at once or each one individually</p>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec2.min">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.min" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.min" title="Link to this definition">#</a></dt>
 <dd><p>Return a <code class="docutils literal notranslate"><span class="pre">vec2</span></code> containing the component-wise minimum of two vectors</p>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec2.max">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.max" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.max" title="Link to this definition">#</a></dt>
 <dd><p>Return a <code class="docutils literal notranslate"><span class="pre">vec2</span></code> containing the component-wise maximum two vectors</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec2.x">
-<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.x" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.x" title="Link to this definition">#</a></dt>
 <dd><p>The x component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec2.y">
-<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.y" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.y" title="Link to this definition">#</a></dt>
 <dd><p>The y component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec2.length">
-<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.length" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.length" title="Link to this definition">#</a></dt>
 <dd><p>The length of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec2.length2">
-<span class="sig-name descname"><span class="pre">length2</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.length2" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">length2</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.length2" title="Link to this definition">#</a></dt>
 <dd><p>The squared length of this vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.normalize">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec2.normalize" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec2.normalize" title="Link to this definition">#</a></dt>
 <dd><p>Normalize this vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.normalized">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec2.normalized" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec2.normalized" title="Link to this definition">#</a></dt>
 <dd><p>Return a normalized copy of this vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.dot">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.dot" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.dot" title="Link to this definition">#</a></dt>
 <dd><p>Perform a scalar dot product with another vector and return the result</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.distance">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.distance" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.distance" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the distance (i.e. L1 norm) to another vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.distance2">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">distance2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.distance2" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">distance2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.distance2" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the squared distance (i.e. L2 norm) to another vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.reflect">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">reflect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.reflect" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">reflect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.reflect" title="Link to this definition">#</a></dt>
 <dd><p>Reflect this vector about another</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.refract">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">refract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em>, <em class="sig-param"><span class="pre">ior</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.refract" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">refract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em>, <em class="sig-param"><span class="pre">ior</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.refract" title="Link to this definition">#</a></dt>
 <dd><p>Refract this vector though another with a given index or refraction</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.lerp">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">lerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em>, <em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.lerp" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">lerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em>, <em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.lerp" title="Link to this definition">#</a></dt>
 <dd><p>Interpolate this vector with another by the a given factor (typically between 0 and 1)</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.abs">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec2.abs" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec2.abs" title="Link to this definition">#</a></dt>
 <dd><p>Return a copy of this vector with component-wise absolute values</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec2.unpack">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">x,</span> <span class="pre">y</span></span></span><a class="headerlink" href="#vec2.unpack" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">x,</span> <span class="pre">y</span></span></span><a class="headerlink" href="#vec2.unpack" title="Link to this definition">#</a></dt>
 <dd><p>Unpack this vector as multiple number values</p>
 </dd></dl>
+
 </dd></dl>
-</div>
-<div class="section" id="vec3">
-<h2>vec3<a class="headerlink" href="#vec3" title="Permalink to this headline">¶</a></h2>
+
+</section>
+<section id="vec3">
+<h2>vec3<a class="headerlink" href="#vec3" title="Link to this heading">#</a></h2>
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec3</span></span></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec3.vec3">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.vec3" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.vec3" title="Link to this definition">#</a></dt>
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">vec3</span></code> by setting all values at once or each one individually</p>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec3.min">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.min" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.min" title="Link to this definition">#</a></dt>
 <dd><p>Return a <code class="docutils literal notranslate"><span class="pre">vec3</span></code> containing the component-wise minimum of two vectors</p>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec3.max">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.max" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.max" title="Link to this definition">#</a></dt>
 <dd><p>Return a <code class="docutils literal notranslate"><span class="pre">vec3</span></code> containing the component-wise maximum two vectors</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec3.x">
-<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.x" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.x" title="Link to this definition">#</a></dt>
 <dd><p>The x component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec3.y">
-<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.y" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.y" title="Link to this definition">#</a></dt>
 <dd><p>The y component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec3.z">
-<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.z" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.z" title="Link to this definition">#</a></dt>
 <dd><p>The z component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec3.length">
-<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.length" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.length" title="Link to this definition">#</a></dt>
 <dd><p>The length of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec3.length2">
-<span class="sig-name descname"><span class="pre">length2</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.length2" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">length2</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec3.length2" title="Link to this definition">#</a></dt>
 <dd><p>The squared length of this vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.normalize">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec3.normalize" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec3.normalize" title="Link to this definition">#</a></dt>
 <dd><p>Normalize this vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.normalized">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec3.normalized" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec3.normalized" title="Link to this definition">#</a></dt>
 <dd><p>Return a normalized copy of this vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.dot">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.dot" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.dot" title="Link to this definition">#</a></dt>
 <dd><p>Perform a scalar dot product with another vector and return the result</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.cross">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">cross</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.cross" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">cross</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.cross" title="Link to this definition">#</a></dt>
 <dd><p>Perform a cross product with another vec3 and return the result</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.distance">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.distance" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.distance" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the distance (i.e. L1 norm) to another vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.distance2">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">distance2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.distance2" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">distance2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.distance2" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the squared distance (i.e. L2 norm) to another vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.reflect">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">reflect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.reflect" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">reflect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.reflect" title="Link to this definition">#</a></dt>
 <dd><p>Reflect this vector about another</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.refract">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">refract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em>, <em class="sig-param"><span class="pre">ior</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.refract" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">refract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em>, <em class="sig-param"><span class="pre">ior</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.refract" title="Link to this definition">#</a></dt>
 <dd><p>Refract this vector though another with a given index or refraction</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.lerp">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">lerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em>, <em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.lerp" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">lerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em>, <em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.lerp" title="Link to this definition">#</a></dt>
 <dd><p>Interpolate this vector with another by the a given factor (typically between 0 and 1)</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.abs">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec3.abs" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec3.abs" title="Link to this definition">#</a></dt>
 <dd><p>Return a copy of this vector with component-wise absolute values</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec3.unpack">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></span></span><a class="headerlink" href="#vec3.unpack" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></span></span><a class="headerlink" href="#vec3.unpack" title="Link to this definition">#</a></dt>
 <dd><p>Unpack this vector as multiple number values</p>
 </dd></dl>
+
 </dd></dl>
-</div>
-<div class="section" id="vec4">
-<h2>vec4<a class="headerlink" href="#vec4" title="Permalink to this headline">¶</a></h2>
+
+</section>
+<section id="vec4">
+<h2>vec4<a class="headerlink" href="#vec4" title="Link to this heading">#</a></h2>
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec4</span></span></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec4.vec4">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.vec4" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.vec4" title="Link to this definition">#</a></dt>
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em>, <em class="sig-param"><span class="pre">w</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">vec4</span></code> by setting all values at once or each one individually</p>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec4.min">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.min" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.min" title="Link to this definition">#</a></dt>
 <dd><p>Return a <code class="docutils literal notranslate"><span class="pre">vec4</span></code> containing the component-wise minimum of two vectors</p>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec4.max">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.max" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.max" title="Link to this definition">#</a></dt>
 <dd><p>Return a <code class="docutils literal notranslate"><span class="pre">vec4</span></code> containing the component-wise maximum two vectors</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec4.x">
-<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.x" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.x" title="Link to this definition">#</a></dt>
 <dd><p>The x component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec4.y">
-<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.y" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.y" title="Link to this definition">#</a></dt>
 <dd><p>The y component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec4.z">
-<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.z" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.z" title="Link to this definition">#</a></dt>
 <dd><p>The z component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec4.w">
-<span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.w" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.w" title="Link to this definition">#</a></dt>
 <dd><p>The w component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec4.length">
-<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.length" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.length" title="Link to this definition">#</a></dt>
 <dd><p>The length of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="vec4.length2">
-<span class="sig-name descname"><span class="pre">length2</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.length2" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">length2</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec4.length2" title="Link to this definition">#</a></dt>
 <dd><p>The squared length of this vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.normalize">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec4.normalize" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec4.normalize" title="Link to this definition">#</a></dt>
 <dd><p>Normalize this vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.normalized">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec4.normalized" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec4.normalized" title="Link to this definition">#</a></dt>
 <dd><p>Return a normalized copy of this vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.dot">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.dot" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.dot" title="Link to this definition">#</a></dt>
 <dd><p>Perform a scalar dot product with another vector and return the result</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.distance">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.distance" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.distance" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the distance (i.e. L1 norm) to another vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.distance2">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">distance2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.distance2" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">distance2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.distance2" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the squared distance (i.e. L2 norm) to another vector</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.reflect">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">reflect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.reflect" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">reflect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.reflect" title="Link to this definition">#</a></dt>
 <dd><p>Reflect this vector about another</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.refract">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">refract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em>, <em class="sig-param"><span class="pre">ior</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.refract" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">refract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">normal</span></em>, <em class="sig-param"><span class="pre">ior</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.refract" title="Link to this definition">#</a></dt>
 <dd><p>Refract this vector though another with a given index or refraction</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.lerp">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">lerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em>, <em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.lerp" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">lerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em>, <em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.lerp" title="Link to this definition">#</a></dt>
 <dd><p>Interpolate this vector with another by the a given factor (typically between 0 and 1)</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.abs">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec4.abs" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vec4.abs" title="Link to this definition">#</a></dt>
 <dd><p>Return a copy of this vector with component-wise absolute values</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="vec4.unpack">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">w</span></span></span><a class="headerlink" href="#vec4.unpack" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">w</span></span></span><a class="headerlink" href="#vec4.unpack" title="Link to this definition">#</a></dt>
 <dd><p>Unpack this vector as multiple number values</p>
 </dd></dl>
+
 </dd></dl>
-</div>
-<div class="section" id="quat">
-<h2>quat<a class="headerlink" href="#quat" title="Permalink to this headline">¶</a></h2>
+
+</section>
+<section id="quat">
+<h2>quat<a class="headerlink" href="#quat" title="Link to this heading">#</a></h2>
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">quat</span></span></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="quat.quat">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">quat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quat.quat" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">quat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quat.quat" title="Link to this definition">#</a></dt>
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">quat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em>, <em class="sig-param"><span class="pre">w</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">quat</span></code></p>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="quat.lookRotation">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">lookRotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">forward</span></em>, <em class="sig-param"><span class="pre">up</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.lookRotation" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">lookRotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">forward</span></em>, <em class="sig-param"><span class="pre">up</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.lookRotation" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A <code class="docutils literal notranslate"><span class="pre">quat</span></code> that points in the <code class="docutils literal notranslate"><span class="pre">forward</span></code> direction using <code class="docutils literal notranslate"><span class="pre">up</span></code> to orient it correctly</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="quat.fromToRotate">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">fromToRotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">from</span></em>, <em class="sig-param"><span class="pre">to</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.fromToRotate" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">fromToRotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">from</span></em>, <em class="sig-param"><span class="pre">to</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.fromToRotate" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>from</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The direction to rotate from</p></li>
 <li><p><strong>to</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The direction to rotate to</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <code class="docutils literal notranslate"><span class="pre">quat</span></code> containing a relative rotation between the <code class="docutils literal notranslate"><span class="pre">from</span></code> and <code class="docutils literal notranslate"><span class="pre">to</span></code> vectors</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="quat.angleAxis">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">angleAxis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">angle</span></em>, <em class="sig-param"><span class="pre">axis</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.angleAxis" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">angleAxis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">angle</span></em>, <em class="sig-param"><span class="pre">axis</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.angleAxis" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>angle</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The amount of rotation in degrees</p></li>
 <li><p><strong>axis</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The axis of rotation</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a new <code class="docutils literal notranslate"><span class="pre">quat</span></code> containing a rotation defined by <code class="docutils literal notranslate"><span class="pre">angle</span></code> (in degrees) rotated about the <code class="docutils literal notranslate"><span class="pre">axis</span></code> vector</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="quat.eulerAngles">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">eulerAngles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.eulerAngles" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">eulerAngles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.eulerAngles" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The amount of rotation about the x axis (yaw) in degrees</p></li>
 <li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The amount of rotation about the y axis (pitch) in degrees</p></li>
 <li><p><strong>z</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The amount of rotation about the z axis (roll) in degrees</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a new <code class="docutils literal notranslate"><span class="pre">quat</span></code> containing a rotation defined by 3 euler angles (i.e. yaw, pitch roll) in radians</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="quat.x">
-<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#quat.x" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#quat.x" title="Link to this definition">#</a></dt>
 <dd><p>The x component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="quat.y">
-<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#quat.y" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#quat.y" title="Link to this definition">#</a></dt>
 <dd><p>The y component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="quat.z">
-<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#quat.z" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#quat.z" title="Link to this definition">#</a></dt>
 <dd><p>The z component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="quat.w">
-<span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#quat.w" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#quat.w" title="Link to this definition">#</a></dt>
 <dd><p>The w component of this vector</p>
 </dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="quat.angles">
-<span class="sig-name descname"><span class="pre">angles</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#quat.angles" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">angles</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#quat.angles" title="Link to this definition">#</a></dt>
 <dd><p>A set of euler angles (in degrees) that generates the same rotation as this quaternion</p>
 <p><em>Please note that the potential euler angles from any given quaternion are ambiguous and should not be relied upon for smooth or consistent rotations especially when interpolating them</em></p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="quat.slerp">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">slerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">q</span></em>, <em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.slerp" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">slerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">q</span></em>, <em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#quat.slerp" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>q</strong> – The other quaternion to slerp to</p></li>
 <li><p><strong>t</strong> – The amount of interpolation (from 0 to 1)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a new <code class="docutils literal notranslate"><span class="pre">quat</span></code> that is spherically interpolated from this quaternion to <code class="docutils literal notranslate"><span class="pre">q</span></code> via <code class="docutils literal notranslate"><span class="pre">t</span></code> (between 0 and 1)</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="quat.conjugate">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">conjugate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quat.conjugate" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">conjugate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quat.conjugate" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>a new <code class="docutils literal notranslate"><span class="pre">quat</span></code> containing the conjugate of this quaternion</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="quat.normalize">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quat.normalize" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quat.normalize" title="Link to this definition">#</a></dt>
 <dd><p>Normalizes this quaternion</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="quat.normalized">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quat.normalized" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quat.normalized" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>a normalized copy of this quaternion</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
-</div>
-<div class="section" id="mat2">
-<h2>mat2<a class="headerlink" href="#mat2" title="Permalink to this headline">¶</a></h2>
+
+</section>
+<section id="mat2">
+<h2>mat2<a class="headerlink" href="#mat2" title="Link to this heading">#</a></h2>
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mat2</span></span></dt>
 <dd><p>A simple 2x2 matrix</p>
 <p>Each entry can be accessed via an index as well</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">mat2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">-- init with diagonals set to 1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">-- prints '1.0'</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">-- prints &#39;1.0&#39;</span>
 </pre></div>
 </div>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mat2.mat2">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.mat2" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.mat2" title="Link to this definition">#</a></dt>
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em><span class="sig-paren">)</span></dt>
 <dt class="sig sig-object lua">
@@ -675,73 +758,80 @@
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">m11</span></em>, <em class="sig-param"><span class="pre">m12</span></em>, <em class="sig-param"><span class="pre">m21</span></em>, <em class="sig-param"><span class="pre">m22</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">mat2</span></code>, default, diagonals, 2 <code class="docutils literal notranslate"><span class="pre">vec2</span></code> objects or all 4 entries</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mat2.inverse">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.inverse" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.inverse" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the inverse of this matrix</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mat2.transpose">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.transpose" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.transpose" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the transpose of this matrix</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mat2.determinant">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">determinant</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.determinant" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">determinant</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.determinant" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the determinant of this matrix</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mat2.row">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.row" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.row" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the row at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="mat2.column">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.column" title="Permalink to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.column" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the column at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
-</div>
-<div class="section" id="mat3">
-<h2>mat3<a class="headerlink" href="#mat3" title="Permalink to this headline">¶</a></h2>
+
+</section>
+<section id="mat3">
+<h2>mat3<a class="headerlink" href="#mat3" title="Link to this heading">#</a></h2>
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mat2</span></span></dt>
 <dd><p>A simple 3x3 matrix</p>
 <p>Each entry can be accessed via an index as well</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">mat3</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">-- init with diagonals set to 1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">-- prints '1.0'</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">-- prints &#39;1.0&#39;</span>
 </pre></div>
 </div>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mat2.mat3">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.mat3" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.mat3" title="Link to this definition">#</a></dt>
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em><span class="sig-paren">)</span></dt>
 <dt class="sig sig-object lua">
@@ -750,73 +840,80 @@
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">m11</span></em>, <em class="sig-param"><span class="pre">m12</span></em>, <em class="sig-param"><span class="pre">m31</span></em>, <em class="sig-param"><span class="pre">...</span></em>, <em class="sig-param"><span class="pre">m33</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">mat3</span></code>, default, diagonals, 3 <code class="docutils literal notranslate"><span class="pre">vec3</span></code> objects or all 9 entries</p>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the inverse of this matrix</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the transpose of this matrix</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">determinant</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the determinant of this matrix</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the row at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the column at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
-</div>
-<div class="section" id="mat4">
-<h2>mat4<a class="headerlink" href="#mat4" title="Permalink to this headline">¶</a></h2>
+
+</section>
+<section id="mat4">
+<h2>mat4<a class="headerlink" href="#mat4" title="Link to this heading">#</a></h2>
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mat2</span></span></dt>
 <dd><p>A simple 4x4 matrix, typically used for 3D homogonous transformations</p>
 <p>Each entry can be accessed via an index as well</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">mat4</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">-- init with diagonals set to 1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">-- prints '1.0'</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">-- prints &#39;1.0&#39;</span>
 </pre></div>
 </div>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mat2.mat4">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.mat4" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.mat4" title="Link to this definition">#</a></dt>
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em><span class="sig-paren">)</span></dt>
 <dt class="sig sig-object lua">
@@ -825,99 +922,115 @@
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">mat4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">m11</span></em>, <em class="sig-param"><span class="pre">m12</span></em>, <em class="sig-param"><span class="pre">m31</span></em>, <em class="sig-param"><span class="pre">m41</span></em>, <em class="sig-param"><span class="pre">...</span></em>, <em class="sig-param"><span class="pre">m44</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">mat4</span></code>, default, diagonals, 4 <code class="docutils literal notranslate"><span class="pre">vec4</span></code> objects or all 16 entries</p>
 </dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mat2.lookAt">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">lookAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">eye</span></em>, <em class="sig-param"><span class="pre">center</span></em>, <em class="sig-param"><span class="pre">up</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.lookAt" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">lookAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">eye</span></em>, <em class="sig-param"><span class="pre">center</span></em>, <em class="sig-param"><span class="pre">up</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.lookAt" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">lookAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">matrix</span></em>, <em class="sig-param"><span class="pre">eye</span></em>, <em class="sig-param"><span class="pre">center</span></em>, <em class="sig-param"><span class="pre">up</span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mat2.orbit">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">orbit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">distance</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.orbit" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">orbit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">distance</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.orbit" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">orbit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">matrix</span></em>, <em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">distance</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mat2.ortho">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">ortho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">left</span></em>, <em class="sig-param"><span class="pre">right</span></em>, <em class="sig-param"><span class="pre">top</span></em>, <em class="sig-param"><span class="pre">bottom</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">near</span></em>, <em class="sig-param"><span class="pre">far</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.ortho" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">ortho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">left</span></em>, <em class="sig-param"><span class="pre">right</span></em>, <em class="sig-param"><span class="pre">top</span></em>, <em class="sig-param"><span class="pre">bottom</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">near</span></em>, <em class="sig-param"><span class="pre">far</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mat2.ortho" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mat2.perspective">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fovy</span></em>, <em class="sig-param"><span class="pre">aspect</span></em>, <em class="sig-param"><span class="pre">near</span></em>, <em class="sig-param"><span class="pre">far</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.perspective" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fovy</span></em>, <em class="sig-param"><span class="pre">aspect</span></em>, <em class="sig-param"><span class="pre">near</span></em>, <em class="sig-param"><span class="pre">far</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.perspective" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mat2.rotate">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">angle</span></em>, <em class="sig-param"><span class="pre">axis</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.rotate" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">angle</span></em>, <em class="sig-param"><span class="pre">axis</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat2.rotate" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">matrix</span></em>, <em class="sig-param"><span class="pre">angle</span></em>, <em class="sig-param"><span class="pre">axis</span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the inverse of this matrix</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the transpose of this matrix</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">determinant</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the determinant of this matrix</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the row at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">index</span></em><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the column at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
-</div>
-<div class="section" id="module-bounds">
-<span id="aabb"></span><h2>aabb<a class="headerlink" href="#module-bounds" title="Permalink to this headline">¶</a></h2>
-<dl class="lua class">
+
+</section>
+<section id="aabb">
+<h2>aabb<a class="headerlink" href="#aabb" title="Link to this heading">#</a></h2>
+<dl class="lua class" id="module-bounds">
 <dt class="sig sig-object lua" id="bounds.aabb">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bounds.</span></span><span class="sig-name descname"><span class="pre">aabb</span></span><a class="headerlink" href="#bounds.aabb" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bounds.</span></span><span class="sig-name descname"><span class="pre">aabb</span></span><a class="headerlink" href="#bounds.aabb" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
-</div>
-</div>
+
+</section>
+</section>
 
         </article>
       </div>
@@ -931,10 +1044,10 @@
                 </div>
                 <div class="title">input</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="lua.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -945,15 +1058,19 @@
               </div>
             </a>
         </div>
-
-        <div class="related-information">
-              Copyright &#169; 2021, John Millard |
-          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
-            | <a class="muted-link" href="../_sources/api/math_types.rst.txt"
-               rel="nofollow">
-              Show Source
-            </a>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021, John Millard
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
         </div>
         
       </footer>
@@ -964,7 +1081,7 @@
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -978,7 +1095,7 @@
 <li><a class="reference internal" href="#mat2">mat2</a></li>
 <li><a class="reference internal" href="#mat3">mat3</a></li>
 <li><a class="reference internal" href="#mat4">mat4</a></li>
-<li><a class="reference internal" href="#module-bounds">aabb</a></li>
+<li><a class="reference internal" href="#aabb">aabb</a></li>
 </ul>
 </li>
 </ul>
@@ -990,12 +1107,11 @@
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/furo.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+</div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
     </body>
 </html>

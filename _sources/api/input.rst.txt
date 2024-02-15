@@ -163,7 +163,7 @@ Constants - Key Codes
 Gamepad
 #######
 
-.. lua:module:: nil
+.. lua:currentmodule:: None
 
 .. lua:class:: gamepad
 
