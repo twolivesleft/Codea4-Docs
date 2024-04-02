@@ -87,7 +87,7 @@ shader
             [[
                vec2 uv = getUV0();
                uv = floor(uv * size);
-               float c = mod(uv.x + ux.y, 2);
+               float c = mod(uv.x + uv.y, 2);
                material.baseColor = mix(colorA, colorB, c);
             ]]
             :build()
