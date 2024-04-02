@@ -329,7 +329,7 @@
    <span class="s">[[</span>
 <span class="s">      vec2 uv = getUV0();</span>
 <span class="s">      uv = floor(uv * size);</span>
-<span class="s">      float c = mod(uv.x + ux.y, 2);</span>
+<span class="s">      float c = mod(uv.x + uv.y, 2);</span>
 <span class="s">      material.baseColor = mix(colorA, colorB, c);</span>
 <span class="s">   ]]</span>
    <span class="p">:</span><span class="n">build</span><span class="p">()</span>
