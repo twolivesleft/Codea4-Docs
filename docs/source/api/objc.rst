@@ -595,6 +595,36 @@ Some Codea types will be converted to corresponding Objective types automaticall
     
             vector = objc.vector(1, 0)
 
+.. lua:function:: affineTransform
+    
+        Create a `CGAffineTransform <https://developer.apple.com/documentation/coregraphics/cgaffinetransform?language=objc>`_.
+        
+        :param a: a value of the CGAffineTransform
+        :type a: number
+        :param b: b value of the CGAffineTransform
+        :type b: number
+        :param c: c value of the CGAffineTransform
+        :type c: number
+        :param d: d value of the CGAffineTransform
+        :type d: number
+        :param tx: tx value of the CGAffineTransform
+        :type tx: number
+        :param ty: ty value of the CGAffineTransform
+        :type ty: number
+        :returns: The CGAffineTransform struct.
+        :rtype: table
+        :syntax:
+        
+            .. code-block:: lua
+        
+                objc.affineTransform(a, b, c, d, tx, ty)
+        
+        ..  collapse:: Create a CGAffineTransform
+
+            .. code-block:: lua
+        
+                affineTransform = objc.affineTransform(1, 0, 0, 1, 100, 200)
+
 **Frameworks**
 
 Here are some of the frameworks included with the Codea runtime.
