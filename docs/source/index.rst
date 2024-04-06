@@ -57,6 +57,7 @@ Codea 4
    api/light
    api/tween
    api/ui
+   api/objc
    api/physics2d
    api/physics3d
 
