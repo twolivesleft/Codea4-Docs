@@ -54,6 +54,7 @@ Codea 4
    api/sound
    api/scene
    api/entity
+   api/light
    api/tween
    api/ui
    api/physics2d
