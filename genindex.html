@@ -186,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/sound.html">sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/ui.html">ui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/objc.html">objc</a></li>
@@ -392,17 +393,19 @@
 </li>
           <li><a href="api/shader.html#indexBuffer.clear">(indexBuffer method)</a>
 </li>
+          <li><a href="api/light.html#light.clear">(light static method)</a>
+</li>
           <li><a href="api/mesh.html#mesh.clear">(mesh method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.collider">collider (class in physics2d)</a>
 
         <ul>
           <li><a href="api/physics3d.html#physics3d.collider">(class in physics3d)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/objc.html#objc.color">color() (in module objc)</a>
 
         <ul>
@@ -456,6 +459,8 @@
 </li>
         </ul></li>
         <li><a href="api/math_types.html#mat2.determinant">determinant() (mat2 method)</a>, <a href="api/math_types.html#mat2.determinant">[1]</a>, <a href="api/math_types.html#mat2.determinant">[2]</a>
+</li>
+        <li><a href="api/light.html#light.directional">directional() (light static method)</a>
 </li>
         <li><a href="api/mesh.html#mesh.disk">disk() (mesh static method)</a>
 </li>
@@ -1065,20 +1070,32 @@
           <li><a href="api/math_types.html#vec4.lerp">(vec4 method)</a>
 </li>
         </ul></li>
+        <li><a href="api/light.html#light">light (built-in class)</a>
+</li>
+        <li><a href="api/light.html#light.castShadows">light.castShadows (attribute)</a>
+</li>
+        <li><a href="api/light.html#light.color">light.color (attribute)</a>
+</li>
+        <li><a href="api/light.html#light.intensity">light.intensity (attribute)</a>
+</li>
+        <li><a href="api/light.html#light.shadowOptions">light.shadowOptions (attribute)</a>
+</li>
+        <li><a href="api/light.html#light.type">light.type (attribute)</a>
+</li>
         <li><a href="api/graphics.html#line">line() (built-in function)</a>, <a href="api/graphics.html#line">[1]</a>
 
         <ul>
           <li><a href="api/graphics.html#gizmos.line">(in module gizmos)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/style.html#style.lineCap">lineCap() (in module style)</a>
 </li>
         <li><a href="api/style.html#style.lineJoin">lineJoin() (in module style)</a>
 </li>
         <li><a href="api/material.html#material.lit">lit() (material static method)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.body.localPoint">localPoint() (physics2d.body method)</a>
 
         <ul>
@@ -1393,12 +1410,12 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.upperLimit">physics2d.physics2d.hinge.upperLimit (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.useLimit">physics2d.physics2d.hinge.useLimit (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.useMotor">physics2d.physics2d.hinge.useMotor (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorA">physics2d.physics2d.joint.anchorA (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorB">physics2d.physics2d.joint.anchorB (attribute)</a>
@@ -1496,7 +1513,11 @@
         <li><a href="api/tween.html#tween.play">play() (tween method)</a>
 </li>
         <li><a href="api/objc.html#objc.point">point() (in module objc)</a>
+
+        <ul>
+          <li><a href="api/light.html#light.point">(light static method)</a>
 </li>
+        </ul></li>
         <li><a href="api/physics2d.html#physics2d.polygon">polygon (class in physics2d)</a>
 </li>
         <li><a href="api/graphics.html#polygon">polygon() (built-in function)</a>
@@ -1512,6 +1533,8 @@
         <ul>
           <li><a href="api/style.html#style.pop">(in module style)</a>
 </li>
+          <li><a href="api/light.html#light.pop">(light static method)</a>
+</li>
         </ul></li>
         <li><a href="api/mesh.html#mesh.position">position() (mesh method)</a>, <a href="api/mesh.html#mesh.position">[1]</a>
 </li>
@@ -1523,6 +1546,8 @@
 
         <ul>
           <li><a href="api/style.html#style.push">(in module style)</a>
+</li>
+          <li><a href="api/light.html#light.push">(light static method)</a>
 </li>
         </ul></li>
     </ul></td>
@@ -1711,6 +1736,26 @@
 </li>
         <li><a href="api/shader.html#shader.shader">shader() (shader static method)</a>, <a href="api/shader.html#shader.shader">[1]</a>
 </li>
+        <li><a href="api/light.html#shadowOptions">shadowOptions (built-in class)</a>
+</li>
+        <li><a href="api/light.html#shadowOptions.cascades">shadowOptions.cascades (attribute)</a>
+</li>
+        <li><a href="api/light.html#shadowOptions.constantBias">shadowOptions.constantBias (attribute)</a>
+</li>
+        <li><a href="api/light.html#shadowOptions.far">shadowOptions.far (attribute)</a>
+</li>
+        <li><a href="api/light.html#shadowOptions.farHint">shadowOptions.farHint (attribute)</a>
+</li>
+        <li><a href="api/light.html#shadowOptions.nearHint">shadowOptions.nearHint (attribute)</a>
+</li>
+        <li><a href="api/light.html#shadowOptions.normalBias">shadowOptions.normalBias (attribute)</a>
+</li>
+        <li><a href="api/light.html#shadowOptions.polygonOffsetConstant">shadowOptions.polygonOffsetConstant (attribute)</a>
+</li>
+        <li><a href="api/light.html#shadowOptions.polygonOffsetSlope">shadowOptions.polygonOffsetSlope (attribute)</a>
+</li>
+        <li><a href="api/light.html#shadowOptions.size">shadowOptions.size (attribute)</a>
+</li>
         <li><a href="api/style.html#style.shapeMode">shapeMode() (in module style)</a>
 </li>
         <li><a href="api/objc.html#objc.size">size() (in module objc)</a>
@@ -1741,6 +1786,8 @@
         </ul></li>
         <li><a href="api/physics3d.html#physics3d.world.sphereCast">sphereCast() (physics3d.world method)</a>
 </li>
+        <li><a href="api/light.html#light.spot">spot() (light static method)</a>
+</li>
         <li><a href="api/graphics.html#sprite">sprite() (built-in function)</a>, <a href="api/graphics.html#sprite">[1]</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.world.step">step() (physics2d.world method)</a>
@@ -1759,6 +1806,8 @@
 </li>
         <li><a href="api/style.html#style.style.ADDITIVE">style.style.ADDITIVE (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/style.html#style.style.BACKGROUND">style.style.BACKGROUND (attribute)</a>
 </li>
         <li><a href="api/style.html#style.style.BASELINE">style.style.BASELINE (attribute)</a>
@@ -1769,8 +1818,6 @@
 </li>
         <li><a href="api/style.html#style.style.CENTER">style.style.CENTER (attribute)</a>, <a href="api/style.html#style.style.CENTER">[1]</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/style.html#style.style.COLOR_MASK_ALPHA">style.style.COLOR_MASK_ALPHA (attribute)</a>
 </li>
         <li><a href="api/style.html#style.style.COLOR_MASK_BLUE">style.style.COLOR_MASK_BLUE (attribute)</a>
