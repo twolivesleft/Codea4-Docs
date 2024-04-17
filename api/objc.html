@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="physics2d" href="physics2d.html" /><link rel="prev" title="ui" href="ui.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
         <title>objc - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -229,7 +229,7 @@
         </div>
         <article role="main">
           <section id="objc">
-<h1>objc<a class="headerlink" href="#objc" title="Link to this heading">#</a></h1>
+<h1>objc<a class="headerlink" href="#objc" title="Link to this heading">¶</a></h1>
 <p>Exposes native Objective-C classes.</p>
 <p><strong>Native Classes</strong></p>
 <p>To access a native Objective-C class, append its name to <code class="docutils literal notranslate"><span class="pre">objc</span></code>.</p>
@@ -341,7 +341,7 @@
 </div>
 </details><dl class="lua function" id="module-objc">
 <dt class="sig sig-object lua" id="objc.delegate">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">delegate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.delegate" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">delegate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.delegate" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a type which can be instantiated and used as an Objective-C delegate for the specified type.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -397,7 +397,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.class">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.class" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.class" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a type which can be instantiated and used as an Objective-C class, for example combined with a selector when registering for notifications through the NSNotificationCenter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -436,7 +436,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.selector">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.selector" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.selector" title="Link to this definition">¶</a></dt>
 <dd><p>Returns an Objective-C selector with the specified name which can be used in combination with an objc.class, for example to register for notifications through the NSNotificationCenter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -475,7 +475,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.set">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">table</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.set" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">table</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.set" title="Link to this definition">¶</a></dt>
 <dd><p>Returns an Objective-C NSSet initialized from a Lua table.</p>
 <p>By default, NSSet returned from calls to Objective-C (or reading properties) are automatically converted to Lua tables. If you need to use the NSSet, you can convert the table to NSSet using <code class="docutils literal notranslate"><span class="pre">objc.set</span></code>.</p>
 <dl class="field-list">
@@ -498,7 +498,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.string">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.string" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.string" title="Link to this definition">¶</a></dt>
 <dd><p>Returns an Objective-C NSString initialized from a Lua string.</p>
 <p>By default, strings returned from calls to Objective-C (or reading properties) are automatically converted to Lua strings and vice versa. If you need to access NSString methods, you can convert the strings to NSString using <code class="docutils literal notranslate"><span class="pre">objc.string</span></code>.</p>
 <dl class="field-list">
@@ -521,7 +521,7 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="objc.objc.enum">
-<span class="sig-name descname"><span class="pre">enum</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.enum" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">enum</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.enum" title="Link to this definition">¶</a></dt>
 <dd><p>Exposes native Objective-C enumerations.</p>
 <p>When value names are prefixed with their enumeration’s name, the prefix is removed to simplify their usage.</p>
 <p>For example, <code class="docutils literal notranslate"><span class="pre">objc.enum.NLTokenUnit.paragraph</span></code> is the integer value for <code class="docutils literal notranslate"><span class="pre">NLTokenUnitParagraph</span></code> (<code class="docutils literal notranslate"><span class="pre">2</span></code>).</p>
@@ -550,7 +550,7 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="objc.objc.app">
-<span class="sig-name descname"><span class="pre">app</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.app" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">app</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.app" title="Link to this definition">¶</a></dt>
 <dd><p>The UIApplication’s <code class="docutils literal notranslate"><span class="pre">sharedApplication</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -564,7 +564,7 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="objc.objc.viewer">
-<span class="sig-name descname"><span class="pre">viewer</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.viewer" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">viewer</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.viewer" title="Link to this definition">¶</a></dt>
 <dd><p>The runtime <code class="docutils literal notranslate"><span class="pre">UIViewController</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -578,7 +578,7 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="objc.objc.info">
-<span class="sig-name descname"><span class="pre">info</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.info" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">info</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.info" title="Link to this definition">¶</a></dt>
 <dd><p>Exposes the info dictionary keys and values.</p>
 <p>For better readability, all keys have their Apple prefix removed.</p>
 <p>For example, to get the value of <code class="docutils literal notranslate"><span class="pre">NSBundleIdentifier</span></code>, use <code class="docutils literal notranslate"><span class="pre">objc.info.bundleIdentifier</span></code>.</p>
@@ -598,7 +598,7 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="objc.objc.insets">
-<span class="sig-name descname"><span class="pre">insets</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.insets" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">insets</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#objc.objc.insets" title="Link to this definition">¶</a></dt>
 <dd><p>Create a UIEdgeInsets.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -625,7 +625,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.log">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.log" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.log" title="Link to this definition">¶</a></dt>
 <dd><p>Log a message using NSLog instead of the Codea console.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -641,7 +641,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.inspect">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">inspect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">class</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.inspect" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">inspect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">class</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.inspect" title="Link to this definition">¶</a></dt>
 <dd><p>Inspect an Objective-C class, listing its variables, properties, methods and protocols.</p>
 <p>Returns a table with the following information:</p>
 <ul class="simple">
@@ -705,7 +705,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.async">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">function</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.async" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">function</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.async" title="Link to this definition">¶</a></dt>
 <dd><p>Calls the function parameter on the main thread asynchronously.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -727,7 +727,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.point">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.point" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.point" title="Link to this definition">¶</a></dt>
 <dd><p>Create a CGPoint.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -756,7 +756,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.rect">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.rect" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.rect" title="Link to this definition">¶</a></dt>
 <dd><p>Create a CGRect.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -787,7 +787,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.size">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.size" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.size" title="Link to this definition">¶</a></dt>
 <dd><p>Create a CGSize.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -816,7 +816,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.range">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">loc</span></em>, <em class="sig-param"><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.range" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">loc</span></em>, <em class="sig-param"><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.range" title="Link to this definition">¶</a></dt>
 <dd><p>Create a NSRange.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -845,7 +845,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.color">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">r</span></em>, <em class="sig-param"><span class="pre">g</span></em>, <em class="sig-param"><span class="pre">b</span></em>, <em class="sig-param"><span class="pre">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.color" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">r</span></em>, <em class="sig-param"><span class="pre">g</span></em>, <em class="sig-param"><span class="pre">b</span></em>, <em class="sig-param"><span class="pre">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.color" title="Link to this definition">¶</a></dt>
 <dd><p>Create a CGColor. For UIColor, use the Codea Color type instead.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -876,7 +876,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.vector">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dx</span></em>, <em class="sig-param"><span class="pre">dy</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.vector" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dx</span></em>, <em class="sig-param"><span class="pre">dy</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.vector" title="Link to this definition">¶</a></dt>
 <dd><p>Create a CGVector.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -905,7 +905,7 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.affineTransform">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">affineTransform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#objc.affineTransform" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">affineTransform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#objc.affineTransform" title="Link to this definition">¶</a></dt>
 <dd><p>Create a <a class="reference external" href="https://developer.apple.com/documentation/coregraphics/cgaffinetransform?language=objc">CGAffineTransform</a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1049,7 +1049,7 @@
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

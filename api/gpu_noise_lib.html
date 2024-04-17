@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="material" href="material.html" /><link rel="prev" title="shader" href="shader.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
         <title>GPU Noise Library - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -229,7 +229,7 @@
         </div>
         <article role="main">
           <section id="gpu-noise-library">
-<h1>GPU Noise Library<a class="headerlink" href="#gpu-noise-library" title="Link to this heading">#</a></h1>
+<h1>GPU Noise Library<a class="headerlink" href="#gpu-noise-library" title="Link to this heading">¶</a></h1>
 <p>Codea includes the GPU noise library written by Brian Sharpe (<a class="reference external" href="http://briansharpe.wordpress.com">http://briansharpe.wordpress.com</a>), all credit goes to the original author</p>
 <p>The library can be inclued via <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;codea/noise/noise.glsl&gt;</span></code> within any GLSL source</p>
 <p>An example using this library can be found <a class="reference external" href="https://talk.codea.io/t/compute-builder-particles-200k-sprite-rendering-example-compute-shaders">here</a></p>
@@ -251,8 +251,9 @@
 </pre></div>
 </div>
 <section id="value-noises">
-<h2>Value Noises<a class="headerlink" href="#value-noises" title="Link to this heading">#</a></h2>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg" src="http://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg" style="width: 200px;" /></a>
+<h2>Value Noises<a class="headerlink" href="#value-noises" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg" src="http://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  Value Noise 2D</span>
 <span class="c1">//  Return value range of 0.0-&gt;1.0</span>
 <span class="c1">//  http://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg</span>
@@ -273,7 +274,8 @@
 <span class="kt">float</span><span class="w"> </span><span class="n">Value4D</span><span class="p">(</span><span class="w"> </span><span class="kt">vec4</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/11/perlinsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/11/perlinsample.jpg" src="http://briansharpe.files.wordpress.com/2011/11/perlinsample.jpg" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/11/perlinsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/11/perlinsample.jpg" src="http://briansharpe.files.wordpress.com/2011/11/perlinsample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  Perlin Noise 2D  ( gradient noise )</span>
 <span class="c1">//  Return value range of -1.0-&gt;1.0</span>
 <span class="c1">//  http://briansharpe.files.wordpress.com/2011/11/perlinsample.jpg</span>
@@ -294,7 +296,8 @@
 <span class="kt">float</span><span class="w"> </span><span class="n">Perlin4D</span><span class="p">(</span><span class="w"> </span><span class="kt">vec4</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/11/valueperlinsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/11/valueperlinsample.jpg" src="http://briansharpe.files.wordpress.com/2011/11/valueperlinsample.jpg" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/11/valueperlinsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/11/valueperlinsample.jpg" src="http://briansharpe.files.wordpress.com/2011/11/valueperlinsample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  ValuePerlin Noise 2D    ( value gradient noise )</span>
 <span class="c1">//  A uniform blend between value and perlin noise</span>
 <span class="c1">//  Return value range of -1.0-&gt;1.0</span>
@@ -311,7 +314,8 @@
 <span class="kt">float</span><span class="w"> </span><span class="n">ValuePerlin3D</span><span class="p">(</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">blend_val</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/12/cubistsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/12/cubistsample.jpg" src="http://briansharpe.files.wordpress.com/2011/12/cubistsample.jpg" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/12/cubistsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/12/cubistsample.jpg" src="http://briansharpe.files.wordpress.com/2011/12/cubistsample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  Cubist Noise 2D</span>
 <span class="c1">//  http://briansharpe.files.wordpress.com/2011/12/cubistsample.jpg</span>
 <span class="c1">//</span>
@@ -334,8 +338,9 @@
 </div>
 </section>
 <section id="cellular-noises">
-<h2>Cellular Noises<a class="headerlink" href="#cellular-noises" title="Link to this heading">#</a></h2>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg" src="http://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg" style="width: 200px;" /></a>
+<h2>Cellular Noises<a class="headerlink" href="#cellular-noises" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg" src="http://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  Cellular Noise 2D</span>
 <span class="c1">//  Based off Stefan Gustavson&#39;s work at http://www.itn.liu.se/~stegu/GLSL-cellular</span>
 <span class="c1">//  http://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg</span>
@@ -356,8 +361,10 @@
 <span class="kt">float</span><span class="w"> </span><span class="n">Cellular3D</span><span class="p">(</span><span class="kt">vec3</span><span class="w"> </span><span class="n">P</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/12/polkadotsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/12/polkadotsample.jpg" src="http://briansharpe.files.wordpress.com/2011/12/polkadotsample.jpg" style="width: 200px;" /></a>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/polkaboxsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/polkaboxsample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/polkaboxsample.jpg" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/12/polkadotsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/12/polkadotsample.jpg" src="http://briansharpe.files.wordpress.com/2011/12/polkadotsample.jpg" style="width: 200px;" />
+</a>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/polkaboxsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/polkaboxsample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/polkaboxsample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  PolkaDot Noise 2D</span>
 <span class="c1">//  http://briansharpe.files.wordpress.com/2011/12/polkadotsample.jpg</span>
 <span class="c1">//  http://briansharpe.files.wordpress.com/2012/01/polkaboxsample.jpg</span>
@@ -386,7 +393,8 @@
 <span class="w">                    </span><span class="kt">float</span><span class="w"> </span><span class="n">radius_high</span><span class="w">       </span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/12/starssample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/12/starssample.jpg" src="http://briansharpe.files.wordpress.com/2011/12/starssample.jpg" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2011/12/starssample.jpg"><img alt="http://briansharpe.files.wordpress.com/2011/12/starssample.jpg" src="http://briansharpe.files.wordpress.com/2011/12/starssample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  Stars2D</span>
 <span class="c1">//  http://briansharpe.files.wordpress.com/2011/12/starssample.jpg</span>
 <span class="c1">//</span>
@@ -403,8 +411,9 @@
 </div>
 </section>
 <section id="simplex-noises">
-<h2>Simplex Noises<a class="headerlink" href="#simplex-noises" title="Link to this heading">#</a></h2>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/simplexperlinsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/simplexperlinsample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/simplexperlinsample.jpg" style="width: 200px;" /></a>
+<h2>Simplex Noises<a class="headerlink" href="#simplex-noises" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/simplexperlinsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/simplexperlinsample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/simplexperlinsample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  SimplexPerlin2D  ( simplex gradient noise )</span>
 <span class="c1">//  Perlin noise over a simplex (triangular) grid</span>
 <span class="c1">//  Return value range of -1.0-&gt;1.0</span>
@@ -416,7 +425,8 @@
 <span class="kt">float</span><span class="w"> </span><span class="n">SimplexPerlin2D</span><span class="p">(</span><span class="w"> </span><span class="kt">vec2</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/simplexpolkadotsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/simplexpolkadotsample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/simplexpolkadotsample.jpg" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/simplexpolkadotsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/simplexpolkadotsample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/simplexpolkadotsample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  SimplexPolkaDot2D</span>
 <span class="c1">//  polkadots over a simplex (triangular) grid</span>
 <span class="c1">//  Return value range of 0.0-&gt;1.0</span>
@@ -427,7 +437,8 @@
 <span class="w">                            </span><span class="kt">float</span><span class="w"> </span><span class="n">max_dimness</span><span class="w"> </span><span class="p">)</span><span class="w">     </span><span class="c1">//      the maximal dimness of a dot ( 0.0-&gt;1.0   0.0 = all dots bright,  1.0 = maximum variation )</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/simplexcellularsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/simplexcellularsample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/simplexcellularsample.jpg" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/simplexcellularsample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/simplexcellularsample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/simplexcellularsample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  SimplexCellular2D</span>
 <span class="c1">//  cellular noise over a simplex (triangular) grid</span>
 <span class="c1">//  Return value range of 0.0-&gt;~1.0</span>
@@ -471,8 +482,9 @@
 </div>
 </section>
 <section id="hermite-noises">
-<h2>Hermite Noises<a class="headerlink" href="#hermite-noises" title="Link to this heading">#</a></h2>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg" style="width: 200px;" /></a>
+<h2>Hermite Noises<a class="headerlink" href="#hermite-noises" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  Hermite2D</span>
 <span class="c1">//  Return value range of -1.0-&gt;1.0</span>
 <span class="c1">//  http://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg</span>
@@ -487,7 +499,8 @@
 <span class="kt">float</span><span class="w"> </span><span class="n">Hermite3D</span><span class="p">(</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/valuehermitesample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/valuehermitesample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/valuehermitesample.jpg" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="http://briansharpe.files.wordpress.com/2012/01/valuehermitesample.jpg"><img alt="http://briansharpe.files.wordpress.com/2012/01/valuehermitesample.jpg" src="http://briansharpe.files.wordpress.com/2012/01/valuehermitesample.jpg" style="width: 200px;" />
+</a>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//  ValueHermite2D</span>
 <span class="c1">//  Return value range of -1.0-&gt;1.0</span>
 <span class="c1">//  ( allows for a blend between value and hermite noise )</span>
@@ -512,7 +525,7 @@
 </div>
 </section>
 <section id="derivative-noises">
-<h2>Derivative Noises<a class="headerlink" href="#derivative-noises" title="Link to this heading">#</a></h2>
+<h2>Derivative Noises<a class="headerlink" href="#derivative-noises" title="Link to this heading">¶</a></h2>
 <div class="highlight-glsl notranslate"><div class="highlight"><pre><span></span><span class="c1">//</span>
 <span class="c1">//  Value2D_Deriv</span>
 <span class="c1">//  Value2D noise with derivatives</span>
@@ -674,7 +687,7 @@
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

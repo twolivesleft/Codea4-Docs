@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="tween" href="tween.html" /><link rel="prev" title="entity" href="entity.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
         <title>light - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -229,10 +229,10 @@
         </div>
         <article role="main">
           <section id="light">
-<h1>light<a class="headerlink" href="#light" title="Link to this heading">#</a></h1>
+<h1>light<a class="headerlink" href="#light" title="Link to this heading">¶</a></h1>
 <p>Casts a light source onto the 3D environment. Can be used with basic immediate mode rendering or as an entity component in scenes</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Using a light as a component in a scene</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-text">Using a light as a component in a scene</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
    <span class="c1">-- Create a basic scene with a single directional light source</span>
    <span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
@@ -274,46 +274,46 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">light</span></span></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.directional">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">directional</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">direction</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#light.directional" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">directional</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">direction</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#light.directional" title="Link to this definition">¶</a></dt>
 <dd><p>Create a new directional light</p>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.point">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">point</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">position</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#light.point" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">point</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">position</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#light.point" title="Link to this definition">¶</a></dt>
 <dd><p>Create a new positional light</p>
 <p><em>note: currently not supported by the renderer</em></p>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.spot">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">spot</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">position</span></em>, <em class="sig-param"><span class="pre">direction</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#light.spot" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">spot</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">position</span></em>, <em class="sig-param"><span class="pre">direction</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#light.spot" title="Link to this definition">¶</a></dt>
 <dd><p>Create a new positional light</p>
 <p><em>note: currently not supported by the renderer</em></p>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.push">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">light</span></em><span class="sig-paren">)</span><a class="headerlink" href="#light.push" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">light</span></em><span class="sig-paren">)</span><a class="headerlink" href="#light.push" title="Link to this definition">¶</a></dt>
 <dd><p>Pushes a light source onto the rendering stack</p>
 <p>This will apply basic lighting to 3D objects with lit materials after the light has been pushed but will not support advanced features such as shadows</p>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.pop">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#light.pop" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#light.pop" title="Link to this definition">¶</a></dt>
 <dd><p>Pops a light source from the rendering stack</p>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.clear">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#light.clear" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#light.clear" title="Link to this definition">¶</a></dt>
 <dd><p>Clears all lights from the rendering stack</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="light.type">
-<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#light.type" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#light.type" title="Link to this definition">¶</a></dt>
 <dd><p>Get/set the type of light. Possible values are:</p>
 <ul class="simple">
 <li><p><cite>DIRECTIONAL</cite></p></li>
@@ -325,84 +325,84 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="light.intensity">
-<span class="sig-name descname"><span class="pre">intensity</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#light.intensity" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">intensity</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#light.intensity" title="Link to this definition">¶</a></dt>
 <dd><p>The intensity of the light source</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="light.color">
-<span class="sig-name descname"><span class="pre">color</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">color</span><a class="headerlink" href="#light.color" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">color</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">color</span><a class="headerlink" href="#light.color" title="Link to this definition">¶</a></dt>
 <dd><p>The color of the light source</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="light.castShadows">
-<span class="sig-name descname"><span class="pre">castShadows</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#light.castShadows" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">castShadows</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#light.castShadows" title="Link to this definition">¶</a></dt>
 <dd><p>Enables/disables shadow casting. Cascaded shadow mapping works for a single directional light source</p>
 <p><em>note: shadows currently only work with directional lights</em></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="light.shadowOptions">
-<span class="sig-name descname"><span class="pre">shadowOptions</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">light.shadowOptions</span> <span class="pre">[readonly]</span><a class="headerlink" href="#light.shadowOptions" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">shadowOptions</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">light.shadowOptions</span> <span class="pre">[readonly]</span><a class="headerlink" href="#light.shadowOptions" title="Link to this definition">¶</a></dt>
 <dd><p>Get the shadow options for this light</p>
 <p><em>note: shadows currently only work with directional lights</em></p>
 </dd></dl>
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="shadowOptions">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">shadowOptions</span></span><a class="headerlink" href="#shadowOptions" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">shadowOptions</span></span><a class="headerlink" href="#shadowOptions" title="Link to this definition">¶</a></dt>
 <dd><dl class="lua attribute">
 <dt class="sig sig-object lua" id="shadowOptions.cascades">
-<span class="sig-name descname"><span class="pre">cascades</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#shadowOptions.cascades" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">cascades</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#shadowOptions.cascades" title="Link to this definition">¶</a></dt>
 <dd><p>The number of shadow cascades to used in rendering. The maximum number of cascades is 5</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="shadowOptions.size">
-<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#shadowOptions.size" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#shadowOptions.size" title="Link to this definition">¶</a></dt>
 <dd><p>The size of the cascade textures to use when rendering. High values result in more detailed shadows at the cost of memory and rendering performance</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="shadowOptions.constantBias">
-<span class="sig-name descname"><span class="pre">constantBias</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.constantBias" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">constantBias</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.constantBias" title="Link to this definition">¶</a></dt>
 <dd><p>This attribute represents the constant bias applied to the depth values during shadow map comparisons. It helps in reducing self-shadowing artifacts by offsetting the comparison depth slightly. The default value is set to 0.001</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="shadowOptions.normalBias">
-<span class="sig-name descname"><span class="pre">normalBias</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.normalBias" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalBias</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.normalBias" title="Link to this definition">¶</a></dt>
 <dd><p>This attribute denotes the normal bias applied during shadow map comparisons. Normal bias helps in mitigating surface acne by adjusting the depth comparison based on surface normals. The default value is set to 0.1</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="shadowOptions.far">
-<span class="sig-name descname"><span class="pre">far</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.far" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">far</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.far" title="Link to this definition">¶</a></dt>
 <dd><p>The far clipping plane distance for the shadow map rendering. It defines the maximum distance up to which shadows will be calculated. The default value is set to 0.0, implying no limit by default</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="shadowOptions.nearHint">
-<span class="sig-name descname"><span class="pre">nearHint</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.nearHint" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">nearHint</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.nearHint" title="Link to this definition">¶</a></dt>
 <dd><p>A hint for the near clipping plane distance for shadow map rendering. It suggests the minimum distance from the camera to start shadow map calculations efficiently. The default value is set to 1</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="shadowOptions.farHint">
-<span class="sig-name descname"><span class="pre">farHint</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.farHint" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">farHint</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#shadowOptions.farHint" title="Link to this definition">¶</a></dt>
 <dd><p>Similar to ‘nearHint’, this provides a hint for the far clipping plane distance for shadow map rendering. It suggests the maximum distance from the camera for efficient shadow map calculations. The default value is set to 100</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="shadowOptions.polygonOffsetConstant">
-<span class="sig-name descname"><span class="pre">polygonOffsetConstant</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span> <span class="pre">[default</span> <span class="pre">=</span> <span class="pre">0.5]</span><a class="headerlink" href="#shadowOptions.polygonOffsetConstant" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">polygonOffsetConstant</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span> <span class="pre">[default</span> <span class="pre">=</span> <span class="pre">0.5]</span><a class="headerlink" href="#shadowOptions.polygonOffsetConstant" title="Link to this definition">¶</a></dt>
 <dd><p>This represents the constant factor used in polygon offset calculations. It adjusts the depth values of rendered polygons to resolve depth fighting issues. The default value is set to 0.5</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="shadowOptions.polygonOffsetSlope">
-<span class="sig-name descname"><span class="pre">polygonOffsetSlope</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span> <span class="pre">[default</span> <span class="pre">=</span> <span class="pre">2.0]</span><a class="headerlink" href="#shadowOptions.polygonOffsetSlope" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">polygonOffsetSlope</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span> <span class="pre">[default</span> <span class="pre">=</span> <span class="pre">2.0]</span><a class="headerlink" href="#shadowOptions.polygonOffsetSlope" title="Link to this definition">¶</a></dt>
 <dd><p>Denotes the slope factor used in polygon offset calculations. It works in conjunction with the constant factor to provide precise depth adjustments for polygons. The default value is set to 2.0</p>
 </dd></dl>
 
@@ -462,7 +462,7 @@
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

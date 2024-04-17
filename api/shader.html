@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="GPU Noise Library" href="gpu_noise_lib.html" /><link rel="prev" title="mesh" href="mesh.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
         <title>shader - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -229,9 +229,9 @@
         </div>
         <article role="main">
           <section id="shader">
-<h1>shader<a class="headerlink" href="#shader" title="Link to this heading">#</a></h1>
+<h1>shader<a class="headerlink" href="#shader" title="Link to this heading">¶</a></h1>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Checkers Shader :3</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-text">Checkers Shader :3</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
    <span class="n">solid</span> <span class="o">=</span> <span class="n">shader</span><span class="p">(</span><span class="s">[[</span>
 <span class="s">      #version 430</span>
@@ -279,7 +279,7 @@
 <p>In Codea shaders can be used in various places to customise rendering including meshes, entities, sprites, backgrounds and post processing effects</p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="shader.shader">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">vertexSource</span></em>, <em class="sig-param"><span class="pre">fragmentSource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.shader" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">vertexSource</span></em>, <em class="sig-param"><span class="pre">fragmentSource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.shader" title="Link to this definition">¶</a></dt>
 <dd><p>The simplist form of shader creation, both the vertex and fragment sources are provided directly without any additional settings</p>
 <p>This is useful for fairly basic shaders</p>
 </dd></dl>
@@ -292,34 +292,34 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="shader.compute">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.compute" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.compute" title="Link to this definition">¶</a></dt>
 <dd><p>Create a compute shader without any extra settings</p>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="shader.read">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.read" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.read" title="Link to this definition">¶</a></dt>
 <dd><p>Read a shader asset from the filesystem</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="shader.setOption">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">setOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">on</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.setOption" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">on</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.setOption" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="shader.dispatch">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">wx</span></em>, <em class="sig-param"><span class="pre">wy</span></em>, <em class="sig-param"><span class="pre">wz</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.dispatch" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">wx</span></em>, <em class="sig-param"><span class="pre">wy</span></em>, <em class="sig-param"><span class="pre">wz</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.dispatch" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="shader.dispatchIndirect">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">dispatchIndirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">indirectBuffer</span></em>, <em class="sig-param"><span class="pre">start</span></em>, <em class="sig-param"><span class="pre">num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.dispatchIndirect" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">dispatchIndirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">indirectBuffer</span></em>, <em class="sig-param"><span class="pre">start</span></em>, <em class="sig-param"><span class="pre">num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.dispatchIndirect" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="builder">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">builder</span></span><a class="headerlink" href="#builder" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">builder</span></span><a class="headerlink" href="#builder" title="Link to this definition">¶</a></dt>
 <dd><p>Shader Builder is a fluent syntax built on top of the surface shaders system for quick and convenient shader experimentation</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">checkers</span> <span class="o">=</span> <span class="n">shader</span><span class="p">.</span><span class="n">builder</span><span class="p">()</span>
    <span class="p">:</span><span class="n">lit</span><span class="p">()</span>
@@ -340,29 +340,29 @@
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="buffer">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">buffer</span></span><a class="headerlink" href="#buffer" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">buffer</span></span><a class="headerlink" href="#buffer" title="Link to this definition">¶</a></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="buffer.buffer">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">layout</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">size</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.buffer" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">layout</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">size</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.buffer" title="Link to this definition">¶</a></dt>
 <dd><p>Create a GPU buffer based on a <code class="docutils literal notranslate"><span class="pre">layout</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">myBuffer</span> <span class="pre">=</span> <span class="pre">shader.buffer(layout)</span></code></p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="buffer.resize">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#buffer.resize" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#buffer.resize" title="Link to this definition">¶</a></dt>
 <dd><p>Resize the buffer</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="buffer.clear">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.clear" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.clear" title="Link to this definition">¶</a></dt>
 <dd><p>Clear the buffer</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="buffer.append">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">attribute1</span></em>, <em class="sig-param"><span class="pre">value1</span></em>, <em class="sig-param"><span class="pre">attribute2</span></em>, <em class="sig-param"><span class="pre">value2</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">...</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.append" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">attribute1</span></em>, <em class="sig-param"><span class="pre">value1</span></em>, <em class="sig-param"><span class="pre">attribute2</span></em>, <em class="sig-param"><span class="pre">value2</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">...</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#buffer.append" title="Link to this definition">¶</a></dt>
 <dd><p>Append a new element to the buffer using pairs of attributes and values</p>
 </dd></dl>
 
@@ -370,10 +370,10 @@
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="indexBuffer">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">indexBuffer</span></span><a class="headerlink" href="#indexBuffer" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">indexBuffer</span></span><a class="headerlink" href="#indexBuffer" title="Link to this definition">¶</a></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="indexBuffer.indexBuffer">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">indexBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">size</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.indexBuffer" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">indexBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">size</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.indexBuffer" title="Link to this definition">¶</a></dt>
 <dd><p>Create a GPU index buffer (array of unsigned integers). Usually used for mesh primitive indices</p>
 <p><code class="docutils literal notranslate"><span class="pre">myBuffer</span> <span class="pre">=</span> <span class="pre">shader.indexBuffer(shader.indexBuffer.i32|i16)</span></code></p>
 <p>Buffer type can be 32 bit (<code class="docutils literal notranslate"><span class="pre">shader.indexBuffer.i32</span></code>) or 16 bit (<code class="docutils literal notranslate"><span class="pre">shader.indexBuffer.i16</span></code>)</p>
@@ -381,19 +381,19 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="indexBuffer.resize">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.resize" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.resize" title="Link to this definition">¶</a></dt>
 <dd><p>Resize the buffer</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="indexBuffer.clear">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.clear" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.clear" title="Link to this definition">¶</a></dt>
 <dd><p>Clear the buffer</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="indexBuffer.append">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">i1</span></em>, <em class="sig-param"><span class="pre">i2</span></em>, <em class="sig-param"><span class="pre">i3</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.append" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">i1</span></em>, <em class="sig-param"><span class="pre">i2</span></em>, <em class="sig-param"><span class="pre">i3</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#indexBuffer.append" title="Link to this definition">¶</a></dt>
 <dd><p>Appends multiple elements to the buffer</p>
 </dd></dl>
 
@@ -401,11 +401,11 @@
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="bufferLayout">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">bufferLayout</span></span><a class="headerlink" href="#bufferLayout" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">bufferLayout</span></span><a class="headerlink" href="#bufferLayout" title="Link to this definition">¶</a></dt>
 <dd><p>Represents the layout of a shader buffer, used to store arrays of structured data within a shader</p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="bufferLayout.bufferLayout">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">bufferLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">definition</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bufferLayout.bufferLayout" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">bufferLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">definition</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bufferLayout.bufferLayout" title="Link to this definition">¶</a></dt>
 <dd><p>Create a new buffer layout using a definition table</p>
 <p>The buffer layout will need to match the target shader struct layout exactly in order to work with calls to <code class="docutils literal notranslate"><span class="pre">shader:setBuffer()</span></code></p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">updatePosVel</span> <span class="o">=</span> <span class="n">shader</span><span class="p">.</span><span class="n">compute</span>
@@ -476,19 +476,19 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="bufferLayout.size">
-<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#bufferLayout.size" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#bufferLayout.size" title="Link to this definition">¶</a></dt>
 <dd><p>The current size of the buffer</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="bufferLayout.resize">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bufferLayout.resize" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bufferLayout.resize" title="Link to this definition">¶</a></dt>
 <dd><p>Resize the buffer to a given <code class="docutils literal notranslate"><span class="pre">size</span></code></p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="bufferLayout.clear">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bufferLayout.clear" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bufferLayout.clear" title="Link to this definition">¶</a></dt>
 <dd><p>Clear the buffer</p>
 </dd></dl>
 
@@ -548,7 +548,7 @@
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

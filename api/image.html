@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="mesh" href="mesh.html" /><link rel="prev" title="style" href="style.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
         <title>image - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -229,10 +229,10 @@
         </div>
         <article role="main">
           <section id="image">
-<h1>image<a class="headerlink" href="#image" title="Link to this heading">#</a></h1>
+<h1>image<a class="headerlink" href="#image" title="Link to this heading">¶</a></h1>
 <p>Made of pixels and used by codea for drawing to the screen and texturing meshes</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Loading and drawing an image</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-text">Loading and drawing an image</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
    <span class="c1">-- load an image from a builtin image asset</span>
    <span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">Cargo_Bot</span><span class="p">.</span><span class="n">Codea_Icon</span><span class="p">)</span>
@@ -250,7 +250,7 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">image</span></span></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="image.image">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">hasMips</span> <span class="pre">=</span> <span class="pre">false</span></em>, <em class="sig-param"><span class="pre">numLayers</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">format</span> <span class="pre">=</span> <span class="pre">image.rgba</span></em>, <em class="sig-param"><span class="pre">depthFormat</span> <span class="pre">=</span> <span class="pre">none</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#image.image" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">hasMips</span> <span class="pre">=</span> <span class="pre">false</span></em>, <em class="sig-param"><span class="pre">numLayers</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">format</span> <span class="pre">=</span> <span class="pre">image.rgba</span></em>, <em class="sig-param"><span class="pre">depthFormat</span> <span class="pre">=</span> <span class="pre">none</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#image.image" title="Link to this definition">¶</a></dt>
 <dd><p>Create a blank 2D image (default format is <cite>rgba</cite>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -268,7 +268,7 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="image.cube">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">cube</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.cube" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">cube</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.cube" title="Link to this definition">¶</a></dt>
 <dd><p>Create a blank cube image (6 faces with equal sized dimensions)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -296,7 +296,7 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="image.volume">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em>, <em class="sig-param"><span class="pre">depth</span></em>, <em class="sig-param"><span class="pre">format</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.volume" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em>, <em class="sig-param"><span class="pre">depth</span></em>, <em class="sig-param"><span class="pre">format</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.volume" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a blank volume image with the given dimensions</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -312,7 +312,7 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="image.read">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.read" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.read" title="Link to this definition">¶</a></dt>
 <dd><p>Read an image asset from the filesystem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -323,7 +323,7 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="image.save">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">image</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.save" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">image</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.save" title="Link to this definition">¶</a></dt>
 <dd><p>Save an image asset to the filesystem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -337,61 +337,61 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.width">
-<span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.width" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.width" title="Link to this definition">¶</a></dt>
 <dd><p>The width of the image in pixels</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.height">
-<span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.height" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.height" title="Link to this definition">¶</a></dt>
 <dd><p>The height of the image in pixels</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.depth">
-<span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.depth" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.depth" title="Link to this definition">¶</a></dt>
 <dd><p>The depth of the image in pixels (for volume images)</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.numLayers">
-<span class="sig-name descname"><span class="pre">numLayers</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.numLayers" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">numLayers</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.numLayers" title="Link to this definition">¶</a></dt>
 <dd><p>The number of layers in this image</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.hasMips">
-<span class="sig-name descname"><span class="pre">hasMips</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#image.hasMips" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hasMips</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#image.hasMips" title="Link to this definition">¶</a></dt>
 <dd><p>Whether this image has mip mapping or not</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.cubeMap">
-<span class="sig-name descname"><span class="pre">cubeMap</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#image.cubeMap" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">cubeMap</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#image.cubeMap" title="Link to this definition">¶</a></dt>
 <dd><p>Whether this image is a cube or not</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.numMips">
-<span class="sig-name descname"><span class="pre">numMips</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.numMips" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">numMips</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.numMips" title="Link to this definition">¶</a></dt>
 <dd><p>The number of mips this image has</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.sampler">
-<span class="sig-name descname"><span class="pre">sampler</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerState</span><a class="headerlink" href="#image.sampler" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">sampler</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerState</span><a class="headerlink" href="#image.sampler" title="Link to this definition">¶</a></dt>
 <dd><p>The sampler state for this image, which determines how texels are sampled by shaders</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.key">
-<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">assetKey</span><a class="headerlink" href="#image.key" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">assetKey</span><a class="headerlink" href="#image.key" title="Link to this definition">¶</a></dt>
 <dd><p>The asset key for this image (if it has one)</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="image.generateIrradiance">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">generateIrradiance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">samples</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.generateIrradiance" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">generateIrradiance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">samples</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.generateIrradiance" title="Link to this definition">¶</a></dt>
 <dd><p>Generates a guassian pyramid of pre-computed irradiance levels, used for image based lighting</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -429,11 +429,11 @@
 </dd></dl>
 
 <section id="image-formats">
-<h2>Image Formats<a class="headerlink" href="#image-formats" title="Link to this heading">#</a></h2>
+<h2>Image Formats<a class="headerlink" href="#image-formats" title="Link to this heading">¶</a></h2>
 <p>Here is a list of all currently available image formats</p>
 <div class="table-wrapper colwidths-given docutils container" id="id2">
 <table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Available Image Formats</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-text">Available Image Formats</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 37.5%" />
 <col style="width: 25.0%" />
@@ -718,47 +718,47 @@
 </div>
 </section>
 <section id="sampler-state-mipmapping">
-<h2>Sampler State / Mipmapping<a class="headerlink" href="#sampler-state-mipmapping" title="Link to this heading">#</a></h2>
+<h2>Sampler State / Mipmapping<a class="headerlink" href="#sampler-state-mipmapping" title="Link to this heading">¶</a></h2>
 <p>The sampler state of an image is used to control texel sampling</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">mag</span></code> property controls magnification, i.e. when the image texels are larger than 1 pixel in size</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">min</span></code> property controls minification, i.e. when the image texels are smaller than 1 pixel in size</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">mip</span></code> property controls how mipmapping is handled, <code class="docutils literal notranslate"><span class="pre">linear</span></code> will blend between mip levels linearly, while <code class="docutils literal notranslate"><span class="pre">point</span></code> will map clamp to the nearest mip level and <code class="docutils literal notranslate"><span class="pre">none</span></code> disables mipmapping entirely</p>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="samplerState">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">samplerState</span></span><a class="headerlink" href="#samplerState" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">samplerState</span></span><a class="headerlink" href="#samplerState" title="Link to this definition">¶</a></dt>
 <dd><dl class="lua attribute">
 <dt class="sig sig-object lua" id="samplerState.min">
-<span class="sig-name descname"><span class="pre">min</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">filterMode</span><a class="headerlink" href="#samplerState.min" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">min</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">filterMode</span><a class="headerlink" href="#samplerState.min" title="Link to this definition">¶</a></dt>
 <dd><p>The minification filter, can be <code class="docutils literal notranslate"><span class="pre">point</span></code>, <code class="docutils literal notranslate"><span class="pre">linear</span></code> or <code class="docutils literal notranslate"><span class="pre">none</span></code></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="samplerState.mag">
-<span class="sig-name descname"><span class="pre">mag</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">filterMode</span><a class="headerlink" href="#samplerState.mag" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mag</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">filterMode</span><a class="headerlink" href="#samplerState.mag" title="Link to this definition">¶</a></dt>
 <dd><p>The magnification filter, can be <code class="docutils literal notranslate"><span class="pre">point</span></code>, <code class="docutils literal notranslate"><span class="pre">linear</span></code> or <code class="docutils literal notranslate"><span class="pre">none</span></code></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="samplerState.mip">
-<span class="sig-name descname"><span class="pre">mip</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">filterMode</span><a class="headerlink" href="#samplerState.mip" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mip</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">filterMode</span><a class="headerlink" href="#samplerState.mip" title="Link to this definition">¶</a></dt>
 <dd><p>The mip filter, can be <code class="docutils literal notranslate"><span class="pre">point</span></code>, <code class="docutils literal notranslate"><span class="pre">linear</span></code> or <code class="docutils literal notranslate"><span class="pre">none</span></code></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="samplerState.u">
-<span class="sig-name descname"><span class="pre">u</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerMode</span><a class="headerlink" href="#samplerState.u" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">u</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerMode</span><a class="headerlink" href="#samplerState.u" title="Link to this definition">¶</a></dt>
 <dd><p>The u sampler mode, can be <code class="docutils literal notranslate"><span class="pre">repeat</span></code>, <code class="docutils literal notranslate"><span class="pre">clamp</span></code> or <code class="docutils literal notranslate"><span class="pre">mirror</span></code></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="samplerState.v">
-<span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerMode</span><a class="headerlink" href="#samplerState.v" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerMode</span><a class="headerlink" href="#samplerState.v" title="Link to this definition">¶</a></dt>
 <dd><p>The v sampler mode, can be <code class="docutils literal notranslate"><span class="pre">repeat</span></code>, <code class="docutils literal notranslate"><span class="pre">clamp</span></code> or <code class="docutils literal notranslate"><span class="pre">mirror</span></code></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="samplerState.w">
-<span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerMode</span><a class="headerlink" href="#samplerState.w" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">samplerMode</span><a class="headerlink" href="#samplerState.w" title="Link to this definition">¶</a></dt>
 <dd><p>The w sampler mode, can be <code class="docutils literal notranslate"><span class="pre">repeat</span></code>, <code class="docutils literal notranslate"><span class="pre">clamp</span></code> or <code class="docutils literal notranslate"><span class="pre">mirror</span></code></p>
 </dd></dl>
 
@@ -766,14 +766,14 @@
 
 </section>
 <section id="slices-and-atlases">
-<h2>Slices and Atlases<a class="headerlink" href="#slices-and-atlases" title="Link to this heading">#</a></h2>
+<h2>Slices and Atlases<a class="headerlink" href="#slices-and-atlases" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="image.slice">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">image.slice</span></span><a class="headerlink" href="#image.slice" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">image.slice</span></span><a class="headerlink" href="#image.slice" title="Link to this definition">¶</a></dt>
 <dd><p>A configurable slice of an image. Use with <code class="docutils literal notranslate"><span class="pre">sprite()</span></code> for drawing a portion of an sprite sheet image for more efficient 2D rendering (as opposed to a large number of independ images)</p>
 <p>Create slices using an existing image via the <code class="docutils literal notranslate"><span class="pre">image.slice</span></code> property. Slices can be configured using a fluent syntax, allowing for rotation, flipping and 9-patch stretching among other things</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">Creating slices</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-text">Creating slices</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
    <span class="n">button</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Grey_Button_10</span><span class="p">)</span>
 
@@ -789,7 +789,7 @@
 </div>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="image.slice.name">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.name" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
@@ -800,13 +800,13 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="image.slice.normal">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">normal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.normal" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">normal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.normal" title="Link to this definition">¶</a></dt>
 <dd><p>Reset the slice to the normal drawing mode (from patch or polygon mode)</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="image.slice.rect">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.rect" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.rect" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
@@ -817,7 +817,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="image.slice.patch">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">left</span></em>, <em class="sig-param"><span class="pre">right</span></em>, <em class="sig-param"><span class="pre">top</span></em>, <em class="sig-param"><span class="pre">bottom</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.patch" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">left</span></em>, <em class="sig-param"><span class="pre">right</span></em>, <em class="sig-param"><span class="pre">top</span></em>, <em class="sig-param"><span class="pre">bottom</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.patch" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
@@ -828,7 +828,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="image.slice.padding">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">padding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">left</span></em>, <em class="sig-param"><span class="pre">right</span></em>, <em class="sig-param"><span class="pre">top</span></em>, <em class="sig-param"><span class="pre">bottom</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.padding" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">padding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">left</span></em>, <em class="sig-param"><span class="pre">right</span></em>, <em class="sig-param"><span class="pre">top</span></em>, <em class="sig-param"><span class="pre">bottom</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.padding" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
@@ -844,7 +844,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="image.slice.anchor">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">anchor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.anchor" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">anchor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.anchor" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
@@ -855,7 +855,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="image.slice.rotate">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.rotate" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">angle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.rotate" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
@@ -866,7 +866,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="image.slice.flip">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.flip" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.slice.flip" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
@@ -879,38 +879,38 @@
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="atlas">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">atlas</span></span><a class="headerlink" href="#atlas" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">atlas</span></span><a class="headerlink" href="#atlas" title="Link to this definition">¶</a></dt>
 <dd><p>A collection of <code class="docutils literal notranslate"><span class="pre">image.slice</span></code> objects generated from an image</p>
 <p>Often 2D game assets will be compiled into a single image (known as an atlas or sprite sheet) for convienience and efficiency. These can be loaded from an external text file or generated using some simple settings</p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="atlas.atlas">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">atlas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">image</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atlas.atlas" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">atlas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">image</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atlas.atlas" title="Link to this definition">¶</a></dt>
 <dd><p>Create a new blank atlas using an existing image</p>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="atlas.read">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atlas.read" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atlas.read" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="atlas.save">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em>, <em class="sig-param"><span class="pre">atlas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atlas.save" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em>, <em class="sig-param"><span class="pre">atlas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atlas.save" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="atlas.clear">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#atlas.clear" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#atlas.clear" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="atlas.setWithCellSize">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">setWithCellSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cellWidth</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">cellHeight</span></em>, <em class="sig-param"><span class="pre">padding</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#atlas.setWithCellSize" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setWithCellSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cellWidth</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">cellHeight</span></em>, <em class="sig-param"><span class="pre">padding</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#atlas.setWithCellSize" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="atlas.setWithCellCount">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">setWithCellCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cellColumns</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">cellRows</span></em>, <em class="sig-param"><span class="pre">padding</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#atlas.setWithCellCount" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setWithCellCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cellColumns</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">cellRows</span></em>, <em class="sig-param"><span class="pre">padding</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#atlas.setWithCellCount" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -989,7 +989,7 @@
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

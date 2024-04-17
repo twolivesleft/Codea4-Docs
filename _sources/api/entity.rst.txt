@@ -306,6 +306,42 @@ entity
 
       The material attached to this entity (used in conjunction with meshes/sprites)
 
+   **UI Properties / Methods**
+
+   .. lua:attribute:: size: vec2
+
+      The size of the UI element
+
+   .. lua:attribute:: anchorX: enum
+
+      The horizontal anchoring of this UI element within its parent coordinate system
+
+      Values:
+
+      * ``LEFT``
+      * ``CENTER``
+      * ``RIGHT``
+      * ``STRETCH``
+
+   .. lua:attribute:: anchorY: enum
+
+      The vertical anchoring of this UI element within its parent coordinate system
+
+      Values:
+      
+      * ``TOP``
+      * ``MIDDLE``
+      * ``BOTTOM``
+      * ``STRETCH``      
+
+   .. lua:attribute:: pivot: vec2
+
+      The pivot point, representing the center of the UI element (in normalized coordinates)
+
+   .. lua:attribute:: clip: boolean
+
+      When enabled, clips drawing to within the bounds of the UI element
+
    **Physics2D Properties**
 
    .. lua:attribute:: body2d: physics2d.body

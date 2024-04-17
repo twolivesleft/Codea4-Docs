@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="ui" href="ui.html" /><link rel="prev" title="light" href="light.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
         <title>tween - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -229,10 +229,10 @@
         </div>
         <article role="main">
           <section id="tween">
-<h1>tween<a class="headerlink" href="#tween" title="Link to this heading">#</a></h1>
+<h1>tween<a class="headerlink" href="#tween" title="Link to this heading">¶</a></h1>
 <p>Procedurally animate values over time, otherwise known as tweening</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Tweening a value</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-text">Tweening a value</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
    <span class="n">p</span> <span class="o">=</span> <span class="n">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
    <span class="n">tween</span><span class="p">(</span><span class="n">p</span><span class="p">):</span><span class="n">to</span><span class="p">{</span><span class="n">x</span> <span class="o">=</span> <span class="n">WIDTH</span><span class="p">}:</span><span class="n">time</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -252,7 +252,7 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">tween</span></span></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="tween.tween">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">tween</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">target</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.tween" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">tween</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">target</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.tween" title="Link to this definition">¶</a></dt>
 <dd><p>Create a new tween for a given target</p>
 <p>Tweens are constructed using a fluent syntax via the <code class="docutils literal notranslate"><span class="pre">to{}</span></code> method</p>
 <p>Each call to <code class="docutils literal notranslate"><span class="pre">to{}</span></code> will construct a tween segment, which can be customised (duration, easing function, callbacks, looping, etc…)</p>
@@ -266,19 +266,19 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="tween.duration">
-<span class="sig-name descname"><span class="pre">duration</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#tween.duration" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">duration</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#tween.duration" title="Link to this definition">¶</a></dt>
 <dd><p>The total duration of the tween in seconds</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="tween.progress">
-<span class="sig-name descname"><span class="pre">progress</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#tween.progress" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">progress</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#tween.progress" title="Link to this definition">¶</a></dt>
 <dd><p>The current progress of the tween in seconds</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.to">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">keyValuePairs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.to" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">keyValuePairs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.to" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a new tweening segement, each key is animated to the corresponding value</p>
 <p>Multiple tweening segments can be created one after another, but the same set of keys and values should be used for all of them</p>
 <dl class="field-list simple">
@@ -290,7 +290,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.time">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">duration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.time" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">duration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.time" title="Link to this definition">¶</a></dt>
 <dd><p>Sets The duration of the current tweening segment (created via <code class="docutils literal notranslate"><span class="pre">to{}</span></code>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -301,7 +301,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.ease">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">ease</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">easeType</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.ease" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">ease</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">easeType</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.ease" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the easing type for the current tweening segment (created via <code class="docutils literal notranslate"><span class="pre">to{}</span></code>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -312,7 +312,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.loop">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.loop" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.loop" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the loop count for the current tweening segment (created via <code class="docutils literal notranslate"><span class="pre">to{}</span></code>). Using <cite>nil</cite> for the count will result in an infinite number of loops</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -323,7 +323,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.pingpong">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">pingpong</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.pingpong" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">pingpong</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.pingpong" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the current tweening segment (created via <code class="docutils literal notranslate"><span class="pre">to{}</span></code>) to ping-pong. Using <cite>nil</cite> for the count will result in an infinite number of ping-pongs</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -334,21 +334,21 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.relative">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">relative</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.relative" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">relative</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.relative" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the current tweening segment (created via <code class="docutils literal notranslate"><span class="pre">to{}</span></code>) to be relative</p>
 <p>Relative tweens will apply values additively from their initial state</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.unscaled">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">unscaled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.unscaled" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">unscaled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.unscaled" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the current tweening segment (created via <code class="docutils literal notranslate"><span class="pre">to{}</span></code>) to used unscaled time</p>
 <p>Unscaled tweens will not be effected by <code class="docutils literal notranslate"><span class="pre">time.scale</span></code></p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.onStep">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">onStep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.onStep" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">onStep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.onStep" title="Link to this definition">¶</a></dt>
 <dd><p>Sets a callback for each time the tween is stepped (advanced once per frame)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -370,7 +370,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.onSeek">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">onSeek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.onSeek" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">onSeek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.onSeek" title="Link to this definition">¶</a></dt>
 <dd><p>Sets a callback for each time the tween seeks</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -381,7 +381,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.onComplete">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">onComplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.onComplete" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">onComplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.onComplete" title="Link to this definition">¶</a></dt>
 <dd><p>Sets a callback for each time the tween completes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -392,7 +392,7 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.seek">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">seek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">percent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.seek" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">seek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">percent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tween.seek" title="Link to this definition">¶</a></dt>
 <dd><p>Seeks the tween to a specific normalized time (percentage of duration)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -403,31 +403,31 @@
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.pause">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.pause" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.pause" title="Link to this definition">¶</a></dt>
 <dd><p>Pauses the tween</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.play">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.play" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.play" title="Link to this definition">¶</a></dt>
 <dd><p>Plays/resumes the tween</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.restart">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">restart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.restart" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">restart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.restart" title="Link to this definition">¶</a></dt>
 <dd><p>Restarts the tween from the beginning</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.cancel">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.cancel" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.cancel" title="Link to this definition">¶</a></dt>
 <dd><p>Cancels and destroys the tween (this still counts as the tween completing)</p>
 </dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="tween.dontDestroy">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">dontDestroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.dontDestroy" title="Link to this definition">#</a></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">dontDestroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tween.dontDestroy" title="Link to this definition">¶</a></dt>
 <dd><p>Prevent the tween from being automatically destroyed when complete</p>
 <p>This is useful if you plan to reuse the tween using <code class="docutils literal notranslate"><span class="pre">restart()</span></code></p>
 </dd></dl>
@@ -435,11 +435,11 @@
 </dd></dl>
 
 <section id="easing-functions">
-<h2>Easing Functions<a class="headerlink" href="#easing-functions" title="Link to this heading">#</a></h2>
+<h2>Easing Functions<a class="headerlink" href="#easing-functions" title="Link to this heading">¶</a></h2>
 <p>Here is a list of all easing functions</p>
 <div class="table-wrapper colwidths-given docutils container" id="id2">
 <table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Easing Functions</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-text">Easing Functions</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 100.0%" />
 </colgroup>
@@ -573,7 +573,7 @@
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

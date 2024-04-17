@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="How Codea Works" href="codea.html" /><link rel="prev" title="Introduction" href="../manual.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
         <title>Migration from Codea 3.x - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -229,14 +229,14 @@
         </div>
         <article role="main">
           <section id="migration-from-codea-3-x">
-<h1>Migration from Codea 3.x<a class="headerlink" href="#migration-from-codea-3-x" title="Link to this heading">#</a></h1>
+<h1>Migration from Codea 3.x<a class="headerlink" href="#migration-from-codea-3-x" title="Link to this heading">¶</a></h1>
 <p>Codea 4.x represents a significant change from all previous major versions, introducing powerful new features but also some API changes/improvements that break some backwards compatibility. I’ll attempt to list them all here but no doubt there will be a few things that we’ve missed. Let us know via <a class="reference external" href="https://codea.io/talk">https://codea.io/talk</a> or Discord if you spot something!</p>
 <section id="opengl-es-3-metal">
-<h2>OpenGL ES 3 -&gt; Metal<a class="headerlink" href="#opengl-es-3-metal" title="Link to this heading">#</a></h2>
+<h2>OpenGL ES 3 -&gt; Metal<a class="headerlink" href="#opengl-es-3-metal" title="Link to this heading">¶</a></h2>
 <p>No doubt you may have heard that Apple has deprecated OpenGL ES on iOS. What this means for us is that eventually Apple may (however unlikely) drop support for it all together. This would be bad for Codea to say the least, so several years ago we began working on a new runtime to solve this. Because of the nature of the old runtime, it’s not as easy as just replace all OpenGL calls with equivalent Metal ones. This was a huge change and touches almost every part of the engine. Which is why we decided to start from scratch with 4 (code-named Carbide). This, understandably, has taken some time…</p>
 </section>
 <section id="drawing-commands">
-<h2>Drawing Commands<a class="headerlink" href="#drawing-commands" title="Link to this heading">#</a></h2>
+<h2>Drawing Commands<a class="headerlink" href="#drawing-commands" title="Link to this heading">¶</a></h2>
 <p>The original drawing commands all work the same way as they did before:</p>
 <p>i.e. <code class="docutils literal notranslate"><span class="pre">line(x1,</span> <span class="pre">y1,</span> <span class="pre">x2,</span> <span class="pre">y2)</span></code> or <code class="docutils literal notranslate"><span class="pre">sprite(assetKey,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">w,</span> <span class="pre">h)</span></code></p>
 <p>With the exception that you can now pass in <code class="docutils literal notranslate"><span class="pre">vecx</span></code> types as long as you pass in the correct number of arguments:</p>
@@ -260,19 +260,19 @@
 <p>The <a class="reference internal" href="../api/image.html#image.slice" title="image.slice"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image.slice</span></code></a> type can be used with the new <a class="reference internal" href="../api/image.html#atlas" title="atlas"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">atlas</span></code></a> type to quickly create and load spritesheets from a single image</p>
 </section>
 <section id="asset-loading-saving">
-<h2>Asset Loading/Saving<a class="headerlink" href="#asset-loading-saving" title="Link to this heading">#</a></h2>
+<h2>Asset Loading/Saving<a class="headerlink" href="#asset-loading-saving" title="Link to this heading">¶</a></h2>
 <p>The calling conventions for asset loading have been changed slightly. Intead of calling <code class="docutils literal notranslate"><span class="pre">typeRead/Write()</span></code>, you now call <code class="docutils literal notranslate"><span class="pre">type.read/write()</span></code>. This means that <code class="docutils literal notranslate"><span class="pre">readImage()</span></code> becomes <code class="docutils literal notranslate"><span class="pre">image.read()</span></code>. This is more consistent across the board, introducting <code class="docutils literal notranslate"><span class="pre">mesh.read()</span></code> for instance</p>
 <p>Scenes can also be saved and loaded with to files with <code class="xref lua lua-meth docutils literal notranslate"><span class="pre">scene.read()</span></code> and <code class="xref lua lua-meth docutils literal notranslate"><span class="pre">scene.save()</span></code></p>
 </section>
 <section id="craft">
-<h2>Craft<a class="headerlink" href="#craft" title="Link to this heading">#</a></h2>
+<h2>Craft<a class="headerlink" href="#craft" title="Link to this heading">¶</a></h2>
 <p>One of the major changes in 4.x is the removal of the craft namespace and merging of craft and standard codea types, removing redundant types</p>
 <p>This means that there is no longer a <code class="docutils literal notranslate"><span class="pre">craft.model</span></code> type, but instead all functionality of <code class="docutils literal notranslate"><span class="pre">craft.model</span></code> has been merged into the <code class="xref lua lua-class docutils literal notranslate"><span class="pre">mesh</span></code> type. The same goes <code class="docutils literal notranslate"><span class="pre">texture</span></code> and <code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code> as well as <code class="docutils literal notranslate"><span class="pre">craft.shader</span></code> and <code class="xref lua lua-class docutils literal notranslate"><span class="pre">shader</span></code></p>
 <p>The practical upshot of this, is that you can use load meshes directly from a file and draw them to the screen using <a class="reference internal" href="../api/mesh.html#mesh.draw" title="mesh.draw"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">mesh.draw()</span></code></a></p>
 <p>Part of the new streamlined API design is that almost all features that were restricted to craft scenes can be used directly in the immediate mode drawing API. We now have lighting which can be used with <a class="reference internal" href="../api/mesh.html#mesh.draw" title="mesh.draw"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">mesh.draw()</span></code></a> and materials can be used directly with meshes as well</p>
 </section>
 <section id="scenes-and-entities">
-<h2>Scenes and Entities<a class="headerlink" href="#scenes-and-entities" title="Link to this heading">#</a></h2>
+<h2>Scenes and Entities<a class="headerlink" href="#scenes-and-entities" title="Link to this heading">¶</a></h2>
 <p>Scenes and the associated entity and component types have recieved some polish and changes too</p>
 <ul class="simple">
 <li><p>Scenes can be saved and loaded to a file (json format)</p></li>
@@ -286,7 +286,7 @@
 </ul>
 </section>
 <section id="entities">
-<h2>Entities<a class="headerlink" href="#entities" title="Link to this heading">#</a></h2>
+<h2>Entities<a class="headerlink" href="#entities" title="Link to this heading">¶</a></h2>
 <p>While entities work much the same, they have some new features and some changes compared to craft entities</p>
 <ul class="simple">
 <li><p>Meshes can be attached directly to an entity with <code class="docutils literal notranslate"><span class="pre">myEntity.mesh</span> <span class="pre">=</span> <span class="pre">msh</span></code> or <code class="docutils literal notranslate"><span class="pre">myEntity:add(msh)</span></code></p></li>
@@ -307,7 +307,7 @@
 <p>You can also create a lua class and attach that to an entity to recieve the callbacks</p>
 </section>
 <section id="physics">
-<h2>Physics<a class="headerlink" href="#physics" title="Link to this heading">#</a></h2>
+<h2>Physics<a class="headerlink" href="#physics" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Physics worlds can now be created and destroyed</p></li>
 <li><p>2D and 3D physics have the same API design</p></li>
@@ -317,7 +317,7 @@
 </ul>
 </section>
 <section id="fluent-api-style-matrix-etc">
-<h2>Fluent API (style, matrix, etc…)<a class="headerlink" href="#fluent-api-style-matrix-etc" title="Link to this heading">#</a></h2>
+<h2>Fluent API (style, matrix, etc…)<a class="headerlink" href="#fluent-api-style-matrix-etc" title="Link to this heading">¶</a></h2>
 <p>In 4.x we’ve changed style calls to a fluent/chaining syntax, where the namespace <code class="docutils literal notranslate"><span class="pre">style</span></code> is used to access all style related commands, where each one returns a reference to the style table so they can be chained one after the other</p>
 <p>So the following code:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">pushStyle</span><span class="p">()</span>
@@ -350,10 +350,10 @@
 </div>
 </section>
 <section id="feature-set-compatibility-table">
-<h2>Feature Set Compatibility Table<a class="headerlink" href="#feature-set-compatibility-table" title="Link to this heading">#</a></h2>
+<h2>Feature Set Compatibility Table<a class="headerlink" href="#feature-set-compatibility-table" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper colwidths-given docutils container" id="id1">
 <table class="docutils align-default" id="id1">
-<caption><span class="caption-text">Feature Compatibility Set</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-text">Feature Compatibility Set</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 25.0%" />
@@ -443,7 +443,7 @@
 </div>
 </section>
 <section id="time">
-<h2>Time<a class="headerlink" href="#time" title="Link to this heading">#</a></h2>
+<h2>Time<a class="headerlink" href="#time" title="Link to this heading">¶</a></h2>
 <p>Intead of <code class="docutils literal notranslate"><span class="pre">ElapsedTime</span></code> and <code class="docutils literal notranslate"><span class="pre">DeltaTime</span></code>, there is now the <code class="docutils literal notranslate"><span class="pre">time</span></code> module, which contains:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">-- Time difference since last frame</span>
 <span class="linenos"> 2</span><span class="n">time</span><span class="p">.</span><span class="n">delta</span>
@@ -466,7 +466,7 @@
 </div>
 </section>
 <section id="matrix-and-vector-types">
-<h2>Matrix and Vector Types<a class="headerlink" href="#matrix-and-vector-types" title="Link to this heading">#</a></h2>
+<h2>Matrix and Vector Types<a class="headerlink" href="#matrix-and-vector-types" title="Link to this heading">¶</a></h2>
 <p>The matrix type has now been split into mat2, mat3, mat4</p>
 </section>
 </section>
@@ -550,7 +550,7 @@
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Introduction" href="../api.html" /><link rel="prev" title="Scenes" href="scenes.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
         <title>Shaders and Materials - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -229,7 +229,7 @@
         </div>
         <article role="main">
           <section id="shaders-and-materials">
-<h1>Shaders and Materials<a class="headerlink" href="#shaders-and-materials" title="Link to this heading">#</a></h1>
+<h1>Shaders and Materials<a class="headerlink" href="#shaders-and-materials" title="Link to this heading">¶</a></h1>
 <p>A special program that runs per vertex/pixel for drawing and compute operations on the GPU</p>
 <p>Codea shaders are written in GLSL (GL shading language)</p>
 <p>In Codea shaders can be used in various places to customise rendering including meshes, entities, sprites, backgrounds and post processing effects</p>
@@ -251,20 +251,20 @@
 <div><p>WARNING: Shaders live very close to the hardware and are much more likely to cause crashes or graphical corruption when things go wrong, you have been warned ;)</p>
 </div></blockquote>
 <section id="graphics-pipeline">
-<h2>Graphics Pipeline<a class="headerlink" href="#graphics-pipeline" title="Link to this heading">#</a></h2>
+<h2>Graphics Pipeline<a class="headerlink" href="#graphics-pipeline" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 </section>
 <section id="vertex-shaders">
-<h2>Vertex Shaders<a class="headerlink" href="#vertex-shaders" title="Link to this heading">#</a></h2>
+<h2>Vertex Shaders<a class="headerlink" href="#vertex-shaders" title="Link to this heading">¶</a></h2>
 <p>Each vertex within a mesh is passed to the GPU via the vertex processing stage, where various calculations can be performed to control the final appearance</p>
 </section>
 <section id="fragment-shaders">
-<h2>Fragment Shaders<a class="headerlink" href="#fragment-shaders" title="Link to this heading">#</a></h2>
+<h2>Fragment Shaders<a class="headerlink" href="#fragment-shaders" title="Link to this heading">¶</a></h2>
 <p>After the vertex processing stage, the fragment processing stage begins. Primtives assembled from vertices, such as triangles, are drawn on to the framebuffer in a process known as rasterization.</p>
 <p>The fragment shader is able to calculate the final output of this stage (typically the color and/or depth of the fragment)</p>
 </section>
 <section id="compute-shaders">
-<h2>Compute Shaders<a class="headerlink" href="#compute-shaders" title="Link to this heading">#</a></h2>
+<h2>Compute Shaders<a class="headerlink" href="#compute-shaders" title="Link to this heading">¶</a></h2>
 <p>Compute shaders bypass the normal rasterisation stage, useful for more general purpose computations</p>
 <p>More info: <a class="reference external" href="https://www.khronos.org/opengl/wiki/Compute_Shader">https://www.khronos.org/opengl/wiki/Compute_Shader</a></p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">myComputeShader</span> <span class="o">=</span> <span class="n">shader</span><span class="p">.</span><span class="n">compute</span>
@@ -280,32 +280,32 @@
 </pre></div>
 </div>
 <section id="threading-model">
-<h3>Threading Model<a class="headerlink" href="#threading-model" title="Link to this heading">#</a></h3>
+<h3>Threading Model<a class="headerlink" href="#threading-model" title="Link to this heading">¶</a></h3>
 <section id="workgroups">
-<h4>Workgroups<a class="headerlink" href="#workgroups" title="Link to this heading">#</a></h4>
+<h4>Workgroups<a class="headerlink" href="#workgroups" title="Link to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">NUM_THREADS(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">gl_GlobalInvocationID</span></code></p>
 </section>
 <section id="dispatch">
-<h4>Dispatch<a class="headerlink" href="#dispatch" title="Link to this heading">#</a></h4>
+<h4>Dispatch<a class="headerlink" href="#dispatch" title="Link to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 </section>
 </section>
 <section id="image-properties">
-<h3>Image Properties<a class="headerlink" href="#image-properties" title="Link to this heading">#</a></h3>
+<h3>Image Properties<a class="headerlink" href="#image-properties" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 </section>
 <section id="buffers">
-<h3>Buffers<a class="headerlink" href="#buffers" title="Link to this heading">#</a></h3>
+<h3>Buffers<a class="headerlink" href="#buffers" title="Link to this heading">¶</a></h3>
 <p>Also known as SSBOs (Shader Storage Buffer Objects)</p>
 <p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 </section>
 </section>
 <section id="shader-definitions">
-<h2>Shader Definitions<a class="headerlink" href="#shader-definitions" title="Link to this heading">#</a></h2>
+<h2>Shader Definitions<a class="headerlink" href="#shader-definitions" title="Link to this heading">¶</a></h2>
 <p>Shader definitions are Lua tables that define all the settings of a shader. These can be used for fine-grained control over shader behaviour</p>
 <section id="anatomy-of-a-shader-definition">
-<h3>Anatomy of a Shader Definition<a class="headerlink" href="#anatomy-of-a-shader-definition" title="Link to this heading">#</a></h3>
+<h3>Anatomy of a Shader Definition<a class="headerlink" href="#anatomy-of-a-shader-definition" title="Link to this heading">¶</a></h3>
 <p>A shader definition is broken into several parts:</p>
 <ul>
 <li><p>options - enable and disable specific parts of a shader</p></li>
@@ -346,7 +346,7 @@
 </pre></div>
 </div>
 <section id="properties">
-<h4>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h4>
+<h4>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h4>
 <p>Each property is a Lua table with the following form:</p>
 <p><code class="docutils literal notranslate"><span class="pre">{&lt;name&gt;,</span> <span class="pre">&lt;type&gt;,</span> <span class="pre">&lt;value&gt;,</span> <span class="pre">...}</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> a string identifier for the property, this should be treated like a lua identifier (starts with an underscore or letter, followed by a sequence of alphanumeric characters and underscores and no spaces or funny symbols)</p>
@@ -354,7 +354,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">&lt;type&gt;</span></code> is a string containing the type of property, corresponding to a GLSL uniform type</p>
 <div class="table-wrapper colwidths-given docutils container" id="id1">
 <table class="docutils align-default" id="id1">
-<caption><span class="caption-text">Property Types</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-text">Property Types</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50.0%" />
 <col style="width: 50.0%" />
@@ -395,29 +395,29 @@
 </ul>
 </section>
 <section id="options">
-<h4>Options<a class="headerlink" href="#options" title="Link to this heading">#</a></h4>
+<h4>Options<a class="headerlink" href="#options" title="Link to this heading">¶</a></h4>
 <p>Options let you conditionally enable/disable chunks of shader code via the shader macro preprocessor (i.e. <code class="docutils literal notranslate"><span class="pre">#if</span></code> and <code class="docutils literal notranslate"><span class="pre">#ifdef</span></code>). This is useful when creating optional features and uber shaders where expensive operations can be skipped if not currently in use</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span> <span class="pre">=</span> <span class="pre">{&lt;default&gt;,</span> <span class="pre">...}</span></code></p>
 <p>Options can be linked to specific properties or based complex conditions</p>
 <p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 </section>
 <section id="passes">
-<h4>Passes<a class="headerlink" href="#passes" title="Link to this heading">#</a></h4>
+<h4>Passes<a class="headerlink" href="#passes" title="Link to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 </section>
 </section>
 </section>
 <section id="materials">
-<h2>Materials<a class="headerlink" href="#materials" title="Link to this heading">#</a></h2>
+<h2>Materials<a class="headerlink" href="#materials" title="Link to this heading">¶</a></h2>
 <p>Shaders can be re-used in multiple meshes/entities but will retain their current state globally. Setting properties on a shader in one place will effect rendering on all objects they are attached to</p>
 <p>This is where materials come in. Placing a shader within a material isntance and passing that to various objects will allow for the same shader to be used with different state (properties) as many times are needed</p>
 </section>
 <section id="the-standard-shader">
-<h2>The Standard Shader<a class="headerlink" href="#the-standard-shader" title="Link to this heading">#</a></h2>
+<h2>The Standard Shader<a class="headerlink" href="#the-standard-shader" title="Link to this heading">¶</a></h2>
 <p>For convenience there is a built-in uber-shader, called the standard shader which contains a large number of shading options</p>
 <p>For more details see: <a class="reference internal" href="../api/material.html#material.unlit" title="material.unlit"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">material.unlit()</span></code></a> and <a class="reference internal" href="../api/material.html#material.lit" title="material.lit"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">material.lit()</span></code></a></p>
 <section id="surface-shaders">
-<h3>Surface Shaders<a class="headerlink" href="#surface-shaders" title="Link to this heading">#</a></h3>
+<h3>Surface Shaders<a class="headerlink" href="#surface-shaders" title="Link to this heading">¶</a></h3>
 <p>Surface shaders provide support for advanced shading models, where only the surface attributes need to be specified</p>
 <p>Our shading models are derived from Google’s amazing Filament: <a class="reference external" href="https://google.github.io/filament/Materials.html">https://google.github.io/filament/Materials.html</a></p>
 <p>Surface shaders are created using a shader definition with a <code class="docutils literal notranslate"><span class="pre">shadingModel</span></code> set. A vertex and material function can then be spefified to customise the surface appearance</p>
@@ -454,7 +454,7 @@
 </pre></div>
 </div>
 <section id="shading-models">
-<h4>Shading Models<a class="headerlink" href="#shading-models" title="Link to this heading">#</a></h4>
+<h4>Shading Models<a class="headerlink" href="#shading-models" title="Link to this heading">¶</a></h4>
 <p>The following shading models are supported:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">unlit</span></code> Basic unlit shading</p></li>
@@ -467,7 +467,7 @@
 <p>Some are only available in specific lighting models and expect values to be within certain ranges</p>
 <div class="table-wrapper colwidths-given docutils container" id="id2">
 <table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Material Inputs</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-text">Material Inputs</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 20.0%" />
@@ -583,11 +583,11 @@
 </section>
 </section>
 <section id="shade-pro-integration">
-<h3>Shade Pro Integration<a class="headerlink" href="#shade-pro-integration" title="Link to this heading">#</a></h3>
+<h3>Shade Pro Integration<a class="headerlink" href="#shade-pro-integration" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
 </section>
 <section id="shader-builder">
-<h3>Shader Builder<a class="headerlink" href="#shader-builder" title="Link to this heading">#</a></h3>
+<h3>Shader Builder<a class="headerlink" href="#shader-builder" title="Link to this heading">¶</a></h3>
 </section>
 </section>
 </section>
@@ -692,7 +692,7 @@
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Drawing" href="drawing.html" /><link rel="prev" title="Migration from Codea 3.x" href="codea_3x.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
         <title>How Codea Works - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -229,7 +229,7 @@
         </div>
         <article role="main">
           <section id="how-codea-works">
-<h1>How Codea Works<a class="headerlink" href="#how-codea-works" title="Link to this heading">#</a></h1>
+<h1>How Codea Works<a class="headerlink" href="#how-codea-works" title="Link to this heading">¶</a></h1>
 <p>Codea is primarily designed as a realtime graphical engine that uses callbacks to draw and update the screen</p>
 <p>When you create a project you are given a basic template in <code class="docutils literal notranslate"><span class="pre">Main.lua</span></code> that
 contains some global functions:</p>
@@ -261,38 +261,38 @@ every time the screen is about to be redrawn</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">touched(touch)</span></code> callback is called in reponse to the screen being touched
 (on iOS) or a mouse press (on MacOS)</p>
 <section id="setup">
-<h2>setup()<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2>setup()<a class="headerlink" href="#setup" title="Link to this heading">¶</a></h2>
 <p>This function is called exactly once, right before the first frame is about to be drawn and is an ideal spot to put your initialisation code, setting everything up for when <code class="docutils literal notranslate"><span class="pre">draw()</span></code> will be called!</p>
 </section>
 <section id="draw">
-<h2>draw()<a class="headerlink" href="#draw" title="Link to this heading">#</a></h2>
+<h2>draw()<a class="headerlink" href="#draw" title="Link to this heading">¶</a></h2>
 <p>This is the meat and potatoes of any Codea app, where you will do the majority of your update and drawing logic</p>
 </section>
 <section id="touched-touch">
-<h2>touched(touch)<a class="headerlink" href="#touched-touch" title="Link to this heading">#</a></h2>
+<h2>touched(touch)<a class="headerlink" href="#touched-touch" title="Link to this heading">¶</a></h2>
 <p>This is your primary source of interaction with users</p>
 </section>
 <section id="additional-events">
-<h2>Additional Events<a class="headerlink" href="#additional-events" title="Link to this heading">#</a></h2>
+<h2>Additional Events<a class="headerlink" href="#additional-events" title="Link to this heading">¶</a></h2>
 <section id="update-dt">
-<h3>update(dt)<a class="headerlink" href="#update-dt" title="Link to this heading">#</a></h3>
+<h3>update(dt)<a class="headerlink" href="#update-dt" title="Link to this heading">¶</a></h3>
 <p>As an alternative to doing your update logic in <code class="docutils literal notranslate"><span class="pre">draw()</span></code> you can also use <code class="docutils literal notranslate"><span class="pre">update(dt)</span></code>, where <code class="docutils literal notranslate"><span class="pre">dt</span></code> is the amount of delta time since last frame (also available in time.delta)</p>
 </section>
 <section id="fixedupdate-dt">
-<h3>fixedUpdate(dt)<a class="headerlink" href="#fixedupdate-dt" title="Link to this heading">#</a></h3>
+<h3>fixedUpdate(dt)<a class="headerlink" href="#fixedupdate-dt" title="Link to this heading">¶</a></h3>
 <p>A special update function that is called a fixed number of times per second regardless of the current framerate, ideal for physics calculations and simulations that require a stable stepping rate. The delta time value passed in is the same as <code class="code highlight lua docutils literal highlight-lua"><span class="n">time</span><span class="p">.</span><span class="n">fixedDelta</span></code></p>
 </section>
 <section id="keypressed-keypress">
-<h3>keyPressed(keyPress)<a class="headerlink" href="#keypressed-keypress" title="Link to this heading">#</a></h3>
+<h3>keyPressed(keyPress)<a class="headerlink" href="#keypressed-keypress" title="Link to this heading">¶</a></h3>
 </section>
 <section id="keyreleased-keypress">
-<h3>keyReleased(keyPress)<a class="headerlink" href="#keyreleased-keypress" title="Link to this heading">#</a></h3>
+<h3>keyReleased(keyPress)<a class="headerlink" href="#keyreleased-keypress" title="Link to this heading">¶</a></h3>
 </section>
 <section id="scroll-gesture">
-<h3>scroll(gesture)<a class="headerlink" href="#scroll-gesture" title="Link to this heading">#</a></h3>
+<h3>scroll(gesture)<a class="headerlink" href="#scroll-gesture" title="Link to this heading">¶</a></h3>
 </section>
 <section id="hover-gesture">
-<h3>hover(gesture)<a class="headerlink" href="#hover-gesture" title="Link to this heading">#</a></h3>
+<h3>hover(gesture)<a class="headerlink" href="#hover-gesture" title="Link to this heading">¶</a></h3>
 </section>
 </section>
 </section>
@@ -377,7 +377,7 @@ every time the screen is about to be redrawn</p>
     </aside>
   </div>
 </div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
