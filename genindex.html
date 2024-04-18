@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 --><title>Index - Codea 4.0 documentation</title>
+    <link rel="shortcut icon" href="_static/favicon.ico"/><!-- Generated with Sphinx 7.3.6 and Furo 2024.01.29 --><title>Index - Codea 4.0 documentation</title>
 <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -766,6 +766,8 @@
 </li>
         <li><a href="api/image.html#image.generateIrradiance">generateIrradiance() (image method)</a>, <a href="api/image.html#image.generateIrradiance">[1]</a>
 </li>
+        <li><a href="api/sound.html#sound.generator">generator() (in module sound)</a>
+</li>
         <li><a href="api/physics3d.html#physics3d.generic">generic (class in physics3d)</a>
 </li>
         <li><a href="api/entity.html#entity.get">get() (entity method)</a>
@@ -836,10 +838,10 @@
 </li>
         <li><a href="api/image.html#image.numLayers">image.numLayers (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.numMips">image.numMips (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.sampler">image.sampler (attribute)</a>
 </li>
         <li><a href="api/image.html#image.slice">image.slice (built-in class)</a>
@@ -853,6 +855,8 @@
         <li><a href="api/shader.html#indexBuffer.indexBuffer">indexBuffer() (indexBuffer static method)</a>
 </li>
         <li><a href="api/objc.html#objc.inspect">inspect() (in module objc)</a>
+</li>
+        <li><a href="api/sound.html#sound.instance">instance (class in sound)</a>
 </li>
         <li><a href="api/math_types.html#mat2.inverse">inverse() (mat2 method)</a>, <a href="api/math_types.html#mat2.inverse">[1]</a>, <a href="api/math_types.html#mat2.inverse">[2]</a>
 </li>
@@ -1436,10 +1440,10 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.useMotor">physics2d.physics2d.hinge.useMotor (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorA">physics2d.physics2d.joint.anchorA (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorB">physics2d.physics2d.joint.anchorB (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.collideConnected">physics2d.physics2d.joint.collideConnected (attribute)</a>
@@ -1532,7 +1536,15 @@
 </li>
         <li><a href="api/mesh.html#mesh.plane">plane() (mesh static method)</a>
 </li>
-        <li><a href="api/tween.html#tween.play">play() (tween method)</a>
+        <li><a href="api/sound.html#sound.play">play() (in module sound)</a>, <a href="api/sound.html#sound.play">[1]</a>, <a href="api/sound.html#sound.play">[2]</a>
+
+        <ul>
+          <li><a href="api/tween.html#tween.play">(tween method)</a>
+</li>
+        </ul></li>
+        <li><a href="api/sound.html#sound.play3d">play3d() (in module sound)</a>, <a href="api/sound.html#sound.play3d">[1]</a>
+</li>
+        <li><a href="api/sound.html#sound.playBackground">playBackground() (in module sound)</a>, <a href="api/sound.html#sound.playBackground">[1]</a>
 </li>
         <li><a href="api/objc.html#objc.point">point() (in module objc)</a>
 
@@ -1627,6 +1639,8 @@
         <ul>
           <li><a href="api/image.html#image.read">(image static method)</a>
 </li>
+          <li><a href="api/sound.html#sound.read">(in module sound)</a>
+</li>
           <li><a href="api/mesh.html#mesh.read">(mesh static method)</a>
 </li>
           <li><a href="api/shader.html#shader.read">(shader static method)</a>
@@ -1648,6 +1662,8 @@
           <li><a href="api/math_types.html#vec4.reflect">(vec4 method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec2.refract">refract() (vec2 method)</a>
 
         <ul>
@@ -1656,8 +1672,6 @@
           <li><a href="api/math_types.html#vec4.refract">(vec4 method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/tween.html#tween.relative">relative() (tween method)</a>
 </li>
         <li><a href="api/entity.html#entity.remove">remove() (entity method)</a>
@@ -1796,6 +1810,36 @@
 </li>
         <li><a href="api/sound.html#module-sound">sound (module)</a>
 </li>
+        <li><a href="api/sound.html#sound.sound.instance.loop">sound.sound.instance.loop (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.instance.paused">sound.sound.instance.paused (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.instance.pitch">sound.sound.instance.pitch (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.instance.time">sound.sound.instance.time (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.instance.volume">sound.sound.instance.volume (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.SOUND_BLIP">sound.sound.SOUND_BLIP (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.SOUND_COIN">sound.sound.SOUND_COIN (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.SOUND_EXPLOSION">sound.sound.SOUND_EXPLOSION (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.SOUND_HURT">sound.sound.SOUND_HURT (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.SOUND_JUMP">sound.sound.SOUND_JUMP (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.SOUND_LASER">sound.sound.SOUND_LASER (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.SOUND_POWERUP">sound.sound.SOUND_POWERUP (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.source.length">sound.sound.source.length (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.source.loop">sound.sound.source.loop (attribute)</a>
+</li>
+        <li><a href="api/sound.html#sound.sound.source.volume">sound.sound.source.volume (attribute)</a>
+</li>
         <li><a href="api/sound.html#sound.source">source (class in sound)</a>
 </li>
         <li><a href="api/physics3d.html#physics3d.sphere">sphere (class in physics3d)</a>
@@ -1812,12 +1856,16 @@
 </li>
         <li><a href="api/graphics.html#sprite">sprite() (built-in function)</a>, <a href="api/graphics.html#sprite">[1]</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.world.step">step() (physics2d.world method)</a>
 
         <ul>
           <li><a href="api/physics3d.html#physics3d.world.step">(physics3d.world method)</a>
 </li>
         </ul></li>
+        <li><a href="api/sound.html#sound.instance.stop">stop() (sound.instance method)</a>
+</li>
         <li><a href="api/objc.html#objc.string">string() (in module objc)</a>
 </li>
         <li><a href="api/style.html#style.stroke">stroke() (in module style)</a>, <a href="api/style.html#style.stroke">[1]</a>
@@ -1828,8 +1876,6 @@
 </li>
         <li><a href="api/style.html#style.style.ADDITIVE">style.style.ADDITIVE (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/style.html#style.style.BACKGROUND">style.style.BACKGROUND (attribute)</a>
 </li>
         <li><a href="api/style.html#style.style.BASELINE">style.style.BASELINE (attribute)</a>

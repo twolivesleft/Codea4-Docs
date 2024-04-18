@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="scene" href="scene.html" /><link rel="prev" title="material" href="material.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.5 and Furo 2024.01.29 -->
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.6 and Furo 2024.01.29 -->
         <title>sound - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -230,10 +230,204 @@
         <article role="main">
           <section id="sound">
 <h1>sound<a class="headerlink" href="#sound" title="Link to this heading">¶</a></h1>
-<dl class="lua class" id="module-sound">
+<p id="module-sound">The sound module provides a way to play and manage sound effects and background music</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.SOUND_COIN">
+<span class="sig-name descname"><span class="pre">SOUND_COIN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_COIN" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural coin sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.SOUND_LASER">
+<span class="sig-name descname"><span class="pre">SOUND_LASER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_LASER" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural laser sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.SOUND_EXPLOSION">
+<span class="sig-name descname"><span class="pre">SOUND_EXPLOSION</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_EXPLOSION" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural explosion sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.SOUND_POWERUP">
+<span class="sig-name descname"><span class="pre">SOUND_POWERUP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_POWERUP" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural powerup sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.SOUND_HURT">
+<span class="sig-name descname"><span class="pre">SOUND_HURT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_HURT" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural hurt sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.SOUND_JUMP">
+<span class="sig-name descname"><span class="pre">SOUND_JUMP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_JUMP" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural jump sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.SOUND_BLIP">
+<span class="sig-name descname"><span class="pre">SOUND_BLIP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_BLIP" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural blip sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="sound.play">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">preset</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">seed</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sound.play" title="Link to this definition">¶</a></dt>
+<dd><p>Plays a preset procedural SFXR sound effect using a given <code class="docutils literal notranslate"><span class="pre">preset</span></code> and optional <code class="docutils literal notranslate"><span class="pre">seed</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#sound.instance" title="sound.instance"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">sound.instance</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">source</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">volume</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">pitch</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">pan</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">paused</span> <span class="pre">=</span> <span class="pre">false</span></em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Plays a <code class="docutils literal notranslate"><span class="pre">sound.source</span></code> in 2D, returning an active <code class="docutils literal notranslate"><span class="pre">sound.instance</span></code> object that can be adjusted, paused/resumed and stopped</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#sound.instance" title="sound.instance"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">sound.instance</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">volume</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">pitch</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">pan</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">paused</span> <span class="pre">=</span> <span class="pre">false</span></em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Plays a sound using an asset key in 2D, returning an active <code class="docutils literal notranslate"><span class="pre">sound.instance</span></code> object that can be adjusted, paused/resumed and stopped</p>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="sound.play3d">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">play3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">source</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">volume</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">pitch</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">paused</span> <span class="pre">=</span> <span class="pre">false</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sound.play3d" title="Link to this definition">¶</a></dt>
+<dd><p>Plays a <code class="docutils literal notranslate"><span class="pre">sound.source</span></code> in 3D, returning an active <code class="docutils literal notranslate"><span class="pre">sound.instance</span></code> object that can be adjusted, paused/resumed and stopped</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#sound.instance" title="sound.instance"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">sound.instance</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">play3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">volume</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">pitch</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">paused</span> <span class="pre">=</span> <span class="pre">false</span></em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Plays a sound using an asset key in 3D, returning an active <code class="docutils literal notranslate"><span class="pre">sound.instance</span></code> object that can be adjusted, paused/resumed and stopped</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#sound.instance" title="sound.instance"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">sound.instance</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="sound.playBackground">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">playBackground</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">source</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">volume</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">pitch</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">paused</span> <span class="pre">=</span> <span class="pre">false</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sound.playBackground" title="Link to this definition">¶</a></dt>
+<dd><p>Plays a <code class="docutils literal notranslate"><span class="pre">sound.source</span></code> in the background (no spatialisation), returning an active <cite>sound.instance</cite> object that can be adjusted, paused/resumed and stopped</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#sound.instance" title="sound.instance"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">sound.instance</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">playBackground</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">volume</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">pitch</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">paused</span> <span class="pre">=</span> <span class="pre">false</span></em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Plays an <code class="docutils literal notranslate"><span class="pre">asset.key</span></code> in the background (no spatialisation), returning an active <cite>sound.instance</cite> object that can be adjusted, paused/resumed and stopped</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#sound.instance" title="sound.instance"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">sound.instance</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="sound.read">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sound.read" title="Link to this definition">¶</a></dt>
+<dd><p>Reads a <code class="docutils literal notranslate"><span class="pre">sound.source</span></code> using an <code class="docutils literal notranslate"><span class="pre">asset.key</span></code> from the filesystem</p>
+<p>Supported formats are - <code class="docutils literal notranslate"><span class="pre">wav</span></code>, <code class="docutils literal notranslate"><span class="pre">ogg</span></code>, <code class="docutils literal notranslate"><span class="pre">mp3</span></code>, <code class="docutils literal notranslate"><span class="pre">flac</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#sound.source" title="sound.source"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">sound.source</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="sound.generator">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">table</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sound.generator" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua class">
 <dt class="sig sig-object lua" id="sound.source">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#sound.source" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>A source of sound data to be used with <code class="docutils literal notranslate"><span class="pre">sound.play</span></code></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.source.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#sound.sound.source.volume" title="Link to this definition">¶</a></dt>
+<dd><p>Adjusts the default volume of sounds played with this sound source</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.source.loop">
+<span class="sig-name descname"><span class="pre">loop</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#sound.sound.source.loop" title="Link to this definition">¶</a></dt>
+<dd><p>Adjusts the default looping state of sounds played with this sound source</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.source.length">
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span> <span class="pre">[readonly]</span><a class="headerlink" href="#sound.sound.source.length" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the length of this sound source (in seconds)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="sound.instance">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">instance</span></span><a class="headerlink" href="#sound.instance" title="Link to this definition">¶</a></dt>
+<dd><p>An instance of a playing sound from <code class="docutils literal notranslate"><span class="pre">sound.play</span></code> and associated methods</p>
+<p>Sound instances can be used to monitor and adjust sounds while playing</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.instance.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#sound.sound.instance.volume" title="Link to this definition">¶</a></dt>
+<dd><p>Adjusts the volume of the sound instance</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.instance.pitch">
+<span class="sig-name descname"><span class="pre">pitch</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#sound.sound.instance.pitch" title="Link to this definition">¶</a></dt>
+<dd><p>Adjusts the pitch of the sounds (increases/decreases play speed)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.instance.loop">
+<span class="sig-name descname"><span class="pre">loop</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#sound.sound.instance.loop" title="Link to this definition">¶</a></dt>
+<dd><p>The looping state of the sound instance. When set to true the sound instance will continuously loop</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.instance.paused">
+<span class="sig-name descname"><span class="pre">paused</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#sound.sound.instance.paused" title="Link to this definition">¶</a></dt>
+<dd><p>Set the paused state of the sound instance</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="sound.sound.instance.time">
+<span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#sound.sound.instance.time" title="Link to this definition">¶</a></dt>
+<dd><p>Get/set the current time of the sound instances play head (in seconds)</p>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="sound.instance.stop">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sound.instance.stop" title="Link to this definition">¶</a></dt>
+<dd><p>Stop the sound instance from playing</p>
+</dd></dl>
+
+</dd></dl>
 
 </section>
 
