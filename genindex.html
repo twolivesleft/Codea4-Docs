@@ -175,9 +175,10 @@
 <li class="toctree-l1"><a class="reference internal" href="api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/math_types.html">math types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/matrix.html">matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/image.html">image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/shader.html">shader</a></li>
@@ -186,6 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/sound.html">sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/ui.html">ui</a></li>
@@ -245,7 +247,11 @@
 </li>
         </ul></li>
         <li><a href="api/entity.html#entity.add">add() (entity method)</a>
+
+        <ul>
+          <li><a href="api/inspector.html#inspector.add">(in module inspector)</a>
 </li>
+        </ul></li>
         <li><a href="api/mesh.html#mesh.addElement">addElement() (mesh method)</a>
 </li>
         <li><a href="api/mesh.html#mesh.addRect">addRect() (mesh method)</a>
@@ -264,6 +270,8 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/camera.html#camera.apply">apply() (camera method)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.body.applyAngularImpulse">applyAngularImpulse() (physics2d.body method)</a>
 
         <ul>
@@ -366,6 +374,28 @@
   <h2>C</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/camera.html#camera">camera (built-in class)</a>
+</li>
+        <li><a href="api/camera.html#camera.clearColor">camera.clearColor (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.clearMode">camera.clearMode (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.farPlane">camera.farPlane (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.fieldOfView">camera.fieldOfView (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.isOrtho">camera.isOrtho (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.nearPlane">camera.nearPlane (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.orthoSize">camera.orthoSize (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.priority">camera.priority (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.projection">camera.projection (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.view">camera.view (attribute)</a>
+</li>
         <li><a href="api/tween.html#tween.cancel">cancel() (tween method)</a>
 </li>
         <li><a href="api/ui.html#ui.canvas">canvas (class in ui)</a>
@@ -394,6 +424,8 @@
           <li><a href="api/shader.html#buffer.clear">(buffer method)</a>
 </li>
           <li><a href="api/shader.html#bufferLayout.clear">(bufferLayout method)</a>
+</li>
+          <li><a href="api/inspector.html#inspector.clear">(in module inspector)</a>
 </li>
           <li><a href="api/shader.html#indexBuffer.clear">(indexBuffer method)</a>
 </li>
@@ -856,6 +888,8 @@
 </li>
         <li><a href="api/objc.html#objc.inspect">inspect() (in module objc)</a>
 </li>
+        <li><a href="api/inspector.html#module-inspector">inspector (module)</a>
+</li>
         <li><a href="api/sound.html#sound.instance">instance (class in sound)</a>
 </li>
         <li><a href="api/math_types.html#mat2.inverse">inverse() (mat2 method)</a>, <a href="api/math_types.html#mat2.inverse">[1]</a>, <a href="api/math_types.html#mat2.inverse">[2]</a>
@@ -1162,6 +1196,8 @@
 </li>
         <li><a href="api/material.html#material.material">material() (material static method)</a>
 </li>
+        <li><a href="api/matrix.html#module-matrix">matrix (module)</a>
+</li>
         <li><a href="api/math_types.html#vec2.max">max() (vec2 static method)</a>
 
         <ul>
@@ -1226,6 +1262,8 @@
           <li><a href="api/math_types.html#vec4.min">(vec4 static method)</a>
 </li>
         </ul></li>
+        <li><a href="api/matrix.html#matrix.model">model() (in module matrix)</a>
+</li>
         <li><a href="api/input.html#key.modifiers">modifiers() (in module key)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.motor">motor (class in physics2d)</a>
@@ -1292,18 +1330,24 @@
 </li>
         <li><a href="api/objc.html#objc.objc.viewer">objc.objc.viewer (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/tween.html#tween.onComplete">onComplete() (tween method)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/tween.html#tween.onSeek">onSeek() (tween method)</a>
 </li>
         <li><a href="api/tween.html#tween.onStep">onStep() (tween method)</a>, <a href="api/tween.html#tween.onStep">[1]</a>
 </li>
         <li><a href="api/math_types.html#mat2.orbit">orbit() (mat2 static method)</a>, <a href="api/math_types.html#mat2.orbit">[1]</a>
 </li>
-        <li><a href="api/math_types.html#mat2.ortho">ortho() (mat2 static method)</a>
+        <li><a href="api/camera.html#camera.ortho">ortho() (camera static method)</a>
+
+        <ul>
+          <li><a href="api/matrix.html#matrix.ortho">(in module matrix)</a>, <a href="api/matrix.html#matrix.ortho">[1]</a>, <a href="api/matrix.html#matrix.ortho">[2]</a>
 </li>
+          <li><a href="api/math_types.html#mat2.ortho">(mat2 static method)</a>
+</li>
+        </ul></li>
         <li><a href="api/physics2d.html#physics2d.world.overlapBox">overlapBox() (physics2d.world method)</a>
 </li>
     </ul></td>
@@ -1320,8 +1364,14 @@
 </li>
         <li><a href="api/tween.html#tween.pause">pause() (tween method)</a>
 </li>
-        <li><a href="api/math_types.html#mat2.perspective">perspective() (mat2 static method)</a>
+        <li><a href="api/camera.html#camera.perspective">perspective() (camera static method)</a>
+
+        <ul>
+          <li><a href="api/matrix.html#matrix.perspective">(in module matrix)</a>
 </li>
+          <li><a href="api/math_types.html#mat2.perspective">(mat2 static method)</a>
+</li>
+        </ul></li>
         <li><a href="api/physics2d.html#module-physics2d">physics2d (module)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.body.angularDamping">physics2d.physics2d.body.angularDamping (attribute)</a>
@@ -1442,12 +1492,12 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorA">physics2d.physics2d.joint.anchorA (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorB">physics2d.physics2d.joint.anchorB (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.collideConnected">physics2d.physics2d.joint.collideConnected (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.destroyed">physics2d.physics2d.joint.destroyed (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.enabled">physics2d.physics2d.joint.enabled (attribute)</a>
@@ -1565,6 +1615,10 @@
         <li><a href="api/graphics.html#context.pop">pop() (in module context)</a>
 
         <ul>
+          <li><a href="api/inspector.html#inspector.pop">(in module inspector)</a>
+</li>
+          <li><a href="api/matrix.html#matrix.pop">(in module matrix)</a>
+</li>
           <li><a href="api/style.html#style.pop">(in module style)</a>
 </li>
           <li><a href="api/light.html#light.pop">(light static method)</a>
@@ -1574,11 +1628,17 @@
 </li>
         <li><a href="api/input.html#key.pressing">pressing() (in module key)</a>
 </li>
+        <li><a href="api/matrix.html#matrix.projection">projection() (in module matrix)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.pulley">pulley (class in physics2d)</a>
 </li>
         <li><a href="api/graphics.html#context.push">push() (in module context)</a>
 
         <ul>
+          <li><a href="api/inspector.html#inspector.push">(in module inspector)</a>
+</li>
+          <li><a href="api/matrix.html#matrix.push">(in module matrix)</a>
+</li>
           <li><a href="api/style.html#style.push">(in module style)</a>
 </li>
           <li><a href="api/light.html#light.push">(light static method)</a>
@@ -1662,8 +1722,6 @@
           <li><a href="api/math_types.html#vec4.reflect">(vec4 method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec2.refract">refract() (vec2 method)</a>
 
         <ul>
@@ -1672,12 +1730,18 @@
           <li><a href="api/math_types.html#vec4.refract">(vec4 method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/tween.html#tween.relative">relative() (tween method)</a>
 </li>
         <li><a href="api/entity.html#entity.remove">remove() (entity method)</a>
 </li>
-        <li><a href="api/style.html#style.reset">reset() (in module style)</a>
+        <li><a href="api/matrix.html#matrix.reset">reset() (in module matrix)</a>
+
+        <ul>
+          <li><a href="api/style.html#style.reset">(in module style)</a>
 </li>
+        </ul></li>
         <li><a href="api/shader.html#buffer.resize">resize() (buffer method)</a>
 
         <ul>
@@ -1697,6 +1761,8 @@
         <li><a href="api/image.html#image.slice.rotate">rotate() (image.slice method)</a>, <a href="api/image.html#image.slice.rotate">[1]</a>
 
         <ul>
+          <li><a href="api/matrix.html#matrix.rotate">(in module matrix)</a>, <a href="api/matrix.html#matrix.rotate">[1]</a>
+</li>
           <li><a href="api/math_types.html#mat2.rotate">(mat2 static method)</a>, <a href="api/math_types.html#mat2.rotate">[1]</a>
 </li>
         </ul></li>
@@ -1732,6 +1798,8 @@
           <li><a href="api/image.html#image.save">(image static method)</a>
 </li>
         </ul></li>
+        <li><a href="api/matrix.html#matrix.scale">scale() (in module matrix)</a>
+</li>
         <li><a href="api/scene.html#scene">scene (built-in class)</a>
 </li>
         <li><a href="api/scene.html#scene.camera">scene.camera (attribute)</a>
@@ -1750,9 +1818,11 @@
 </li>
         <li><a href="api/objc.html#objc.selector">selector() (in module objc)</a>
 </li>
-        <li><a href="api/objc.html#objc.set">set() (in module objc)</a>
+        <li><a href="api/inspector.html#inspector.set">set() (in module inspector)</a>
 
         <ul>
+          <li><a href="api/objc.html#objc.set">(in module objc)</a>
+</li>
           <li><a href="api/style.html#style.set">(in module style)</a>
 </li>
         </ul></li>
@@ -1854,10 +1924,10 @@
 </li>
         <li><a href="api/light.html#light.spot">spot() (light static method)</a>
 </li>
-        <li><a href="api/graphics.html#sprite">sprite() (built-in function)</a>, <a href="api/graphics.html#sprite">[1]</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/graphics.html#sprite">sprite() (built-in function)</a>, <a href="api/graphics.html#sprite">[1]</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.world.step">step() (physics2d.world method)</a>
 
         <ul>
@@ -2020,16 +2090,24 @@
 </li>
         <li><a href="api/mesh.html#mesh.torus">torus() (mesh static method)</a>
 </li>
+        <li><a href="api/mesh.html#mesh.torusKnot">torusKnot() (mesh static method)</a>
+</li>
+        <li><a href="api/matrix.html#matrix.transform2d">transform2d() (in module matrix)</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/mesh.html#mesh.torusKnot">torusKnot() (mesh static method)</a>
+        <li><a href="api/matrix.html#matrix.transform3d">transform3d() (in module matrix)</a>
 </li>
         <li><a href="api/entity.html#entity.transformDirection">transformDirection() (entity method)</a>
 </li>
         <li><a href="api/entity.html#entity.transformPoint">transformPoint() (entity method)</a>
 </li>
         <li><a href="api/entity.html#entity.translate">translate() (entity method)</a>
+
+        <ul>
+          <li><a href="api/matrix.html#matrix.translate">(in module matrix)</a>
 </li>
+        </ul></li>
         <li><a href="api/math_types.html#mat2.transpose">transpose() (mat2 method)</a>, <a href="api/math_types.html#mat2.transpose">[1]</a>, <a href="api/math_types.html#mat2.transpose">[2]</a>
 </li>
         <li><a href="api/tween.html#tween">tween (built-in class)</a>
@@ -2164,6 +2242,8 @@
           <li><a href="api/physics3d.html#physics3d.body.velocityAtWorldPoint">(physics3d.body method)</a>
 </li>
         </ul></li>
+        <li><a href="api/matrix.html#matrix.view">view() (in module matrix)</a>
+</li>
         <li><a href="api/image.html#image.volume">volume() (image static method)</a>
 </li>
         <li><a href="api/ui.html#ui.vstack">vstack (class in ui)</a>

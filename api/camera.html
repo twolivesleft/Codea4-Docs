@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="entity" href="entity.html" /><link rel="prev" title="sound" href="sound.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="light" href="light.html" /><link rel="prev" title="entity" href="entity.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.3.7 and Furo 2024.01.29 -->
-        <title>scene - Codea 4.0 documentation</title>
+        <title>camera - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -187,9 +187,9 @@
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
@@ -230,111 +230,119 @@
           </label>
         </div>
         <article role="main">
-          <section id="scene">
-<h1>scene<a class="headerlink" href="#scene" title="Link to this heading">¶</a></h1>
+          <section id="camera">
+<h1>camera<a class="headerlink" href="#camera" title="Link to this heading">¶</a></h1>
+<p><em>(class)</em></p>
 <dl class="lua class">
 <dt class="sig sig-object lua">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">scene</span></span></dt>
-<dd><p>A high level scene structure used that integrates object hierarchy, rendering, input, physics and serialisation to simplify and streamline games and simulations</p>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="scene.main">
-<span class="sig-name descname"><span class="pre">main</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">scene</span><a class="headerlink" href="#scene.main" title="Link to this definition">¶</a></dt>
-<dd><p>Sets the main Codea scene, which will be automatically drawn, updated and handle touch events</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-   <span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">default3d</span><span class="p">()</span>
-<span class="kr">end</span>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">camera</span></span></dt>
+<dd><p>A camera object used to rendering. Can be used a component in scenes</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
+<span class="c1">-- Create an entity and attach a perspective camera to it</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">scn</span><span class="p">:</span><span class="n">entity</span><span class="p">():</span><span class="n">add</span><span class="p">(</span><span class="n">camera</span><span class="p">.</span><span class="n">perspective</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Use a camera directly with drawing calls</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="p">.</span><span class="n">perspective</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">cam</span><span class="p">:</span><span class="n">apply</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="camera.ortho">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">ortho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">size</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">near</span></em>, <em class="sig-param"><span class="pre">far</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#camera.ortho" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new orthographic camera</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">camera</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="camera.perspective">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fov</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">near</span></em>, <em class="sig-param"><span class="pre">far</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#camera.perspective" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new perspective camera</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">camera</span></code></span></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="scene.world2d">
-<span class="sig-name descname"><span class="pre">world2d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.world</span><a class="headerlink" href="#scene.world2d" title="Link to this definition">¶</a></dt>
-<dd><p>Gets the scene’s 2D physics world, providing access to various physics functions and properties such as <code class="xref lua lua-meth docutils literal notranslate"><span class="pre">physics2d.world.applyForce()</span></code></p>
+<dt class="sig sig-object lua" id="camera.isOrtho">
+<span class="sig-name descname"><span class="pre">isOrtho</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#camera.isOrtho" title="Link to this definition">¶</a></dt>
+<dd><p>Determines if the camera is orthographic or perspective</p>
 </dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="scene.world3d">
-<span class="sig-name descname"><span class="pre">world3d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics3d.world</span><a class="headerlink" href="#scene.world3d" title="Link to this definition">¶</a></dt>
-<dd><p>Gets the scene’s 3D physics world, providing access to various physics functions and properties such as <code class="xref lua lua-meth docutils literal notranslate"><span class="pre">physics3d.world.applyForce()</span></code></p>
+<dt class="sig sig-object lua" id="camera.orthoSize">
+<span class="sig-name descname"><span class="pre">orthoSize</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.orthoSize" title="Link to this definition">¶</a></dt>
+<dd><p>The ortho graphic size (height) of this camera when in orthographic mode</p>
 </dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="scene.sky">
-<span class="sig-name descname"><span class="pre">sky</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">None</span><a class="headerlink" href="#scene.sky" title="Link to this definition">¶</a></dt>
-<dd><p>Sets the sky visuals, which will depend on the type used:</p>
+<dt class="sig sig-object lua" id="camera.clearMode">
+<span class="sig-name descname"><span class="pre">clearMode</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#camera.clearMode" title="Link to this definition">¶</a></dt>
+<dd><p>The clear mode, which can be one of the following values:</p>
 <ul class="simple">
-<li><p><code class="xref lua lua-class docutils literal notranslate"><span class="pre">asset.key</span></code> - Use an image pointed to by a given asset key</p></li>
-<li><p><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code> - Use an image directly (assumed to be a cube image)</p></li>
-<li><p><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code> - Use a solid color</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera.none</span></code> - do not clear the background</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera.color</span></code> - clear the color only</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera.depth</span></code> - clear the depth only</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">camera.depthAndColor</span></code> - clear both the depth and color</p></li>
 </ul>
 </dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="scene.camera">
-<span class="sig-name descname"><span class="pre">camera</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">entity</span><a class="headerlink" href="#scene.camera" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The scene’s camera entity (if it exists)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><a class="reference internal" href="#scene.entity" title="scene.entity"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code></a></span></p>
-</dd>
-</dl>
+<dt class="sig sig-object lua" id="camera.clearColor">
+<span class="sig-name descname"><span class="pre">clearColor</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">color</span><a class="headerlink" href="#camera.clearColor" title="Link to this definition">¶</a></dt>
+<dd><p>The color to use when clearing the screen with this camera</p>
 </dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="scene.sun">
-<span class="sig-name descname"><span class="pre">sun</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">entity</span><a class="headerlink" href="#scene.sun" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The scene’s sun entity (if it exists)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><a class="reference internal" href="#scene.entity" title="scene.entity"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code></a></span></p>
-</dd>
-</dl>
+<dt class="sig sig-object lua" id="camera.fieldOfView">
+<span class="sig-name descname"><span class="pre">fieldOfView</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.fieldOfView" title="Link to this definition">¶</a></dt>
+<dd><p>The field of view for this camera when in perspective mode</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.nearPlane">
+<span class="sig-name descname"><span class="pre">nearPlane</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.nearPlane" title="Link to this definition">¶</a></dt>
+<dd><p>The distance of near view plane from the view origin</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.farPlane">
+<span class="sig-name descname"><span class="pre">farPlane</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.farPlane" title="Link to this definition">¶</a></dt>
+<dd><p>The distance of far view plane from the view origin</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.priority">
+<span class="sig-name descname"><span class="pre">priority</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#camera.priority" title="Link to this definition">¶</a></dt>
+<dd><p>The priority of the camera when used within a scene (cameras with lower values are drawn first)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.projection">
+<span class="sig-name descname"><span class="pre">projection</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mat4</span><a class="headerlink" href="#camera.projection" title="Link to this definition">¶</a></dt>
+<dd><p>Sets/gets a custom projection matrix</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.view">
+<span class="sig-name descname"><span class="pre">view</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mat4</span><a class="headerlink" href="#camera.view" title="Link to this definition">¶</a></dt>
+<dd><p>Sets/gets a custom view matrix</p>
 </dd></dl>
 
 <dl class="lua method">
-<dt class="sig sig-object lua" id="scene.entity">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">entity</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">name</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.entity" title="Link to this definition">¶</a></dt>
-<dd><p>Creates a new blank <a class="reference internal" href="#scene.entity" title="scene.entity"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code></a> with an optional name</p>
-</dd></dl>
-
-<dl class="lua method">
-<dt class="sig sig-object lua" id="scene.findEntity">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">findEntity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scene.findEntity" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="lua method">
-<dt class="sig sig-object lua" id="scene.entities">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">entities</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">activeOnly</span> <span class="pre">=</span> <span class="pre">true</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.entities" title="Link to this definition">¶</a></dt>
-<dd><p>Returns a table containing all root entities</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>activeOnly</strong> – When set, returns only active root entities</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="lua method">
-<dt class="sig sig-object lua">
-<span class="sig-name descname"><span class="pre">index(name)</span> <span class="pre">[metamethod]</span></span></dt>
-<dd><p>Returns the root entity with the given name (if it exists)</p>
-</dd></dl>
-
-<dl class="lua method">
-<dt class="sig sig-object lua" id="scene.draw">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.draw" title="Link to this definition">¶</a></dt>
-<dd><p>Immediately draws the scene to the current context. When autoUpdate is enabled, <code class="docutils literal notranslate"><span class="pre">update(dt)</span></code> will be called as well</p>
-<p>If set as <code class="docutils literal notranslate"><span class="pre">scene.main</span></code> this will be called automatically right before the global <code class="docutils literal notranslate"><span class="pre">draw()</span></code> function</p>
-</dd></dl>
-
-<dl class="lua method">
-<dt class="sig sig-object lua" id="scene.update">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">deltaTime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scene.update" title="Link to this definition">¶</a></dt>
-<dd><p>Updates the scene, called automatically when <code class="docutils literal notranslate"><span class="pre">draw()</span></code> is called but can also be called manutally if needed</p>
+<dt class="sig sig-object lua" id="camera.apply">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#camera.apply" title="Link to this definition">¶</a></dt>
+<dd><p>Apply this cameras settings to the matrix stack</p>
 </dd></dl>
 
 </dd></dl>
@@ -346,23 +354,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="entity.html">
+          <a class="next-page" href="light.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">entity</div>
+                <div class="title">light</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="sound.html">
+          <a class="prev-page" href="entity.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">sound</div>
+                <div class="title">entity</div>
                 
               </div>
             </a>

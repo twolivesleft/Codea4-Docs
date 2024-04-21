@@ -43,9 +43,10 @@ Codea 4
    api
    api/lua
    api/math_types
-   api/input
    api/graphics
    api/style
+   api/matrix
+   api/input
    api/image
    api/mesh
    api/shader
@@ -54,6 +55,7 @@ Codea 4
    api/sound
    api/scene
    api/entity
+   api/camera
    api/light
    api/tween
    api/ui
