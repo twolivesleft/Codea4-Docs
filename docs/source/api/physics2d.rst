@@ -320,7 +320,7 @@ Collision
 
       Flag turning this collider into a sensor. Sensors do not physically collide with object bodies but will still report collision detection via callbacks
 
-   .. lua:attribute:: catgeory: integer (bitfield)
+   .. lua:attribute:: category: integer (bitfield)
 
       The category for this collider. Categories are used to filter collisions based on their ``mask`` bits
 
