@@ -3,6 +3,9 @@ physics2d
 
 .. lua:module:: physics2d
 
+Simulation
+**********
+
 .. lua:class:: world
 
    .. lua:staticmethod:: world()
@@ -286,19 +289,71 @@ physics2d
 
       See: https://box2d.org/documentation/classb2_contact_listener.html
 
+Collision
+*********
+
 .. lua:class:: collider
+
+   A two dimensional collider that attaches to a `physics2d.body`, detects and reacts to collisions
 
    .. lua:method:: destroy()
 
+      Destroys this collider, removing it in the next simluation step
+
    .. lua:attribute:: destroyed: boolean
+
+      Flag indicating that this collider has already been destroyed
+
    .. lua:attribute:: friction: number
+
+      The coefficient of friction for this collider
+
    .. lua:attribute:: density: number
+
+      The density of this collider
+
    .. lua:attribute:: restitution: number
+
+      The coefficient of restitution for this collider
+
    .. lua:attribute:: sensor: boolean
+
+      Flag turning this collider into a sensor. Sensors do not physically collide with object bodies but will still report collision detection via callbacks
+
    .. lua:attribute:: catgeory: integer (bitfield)
+
+      The category for this collider. Categories are used to filter collisions based on their ``mask`` bits
+
+      .. code-block:: lua         
+         :caption: Example
+
+         PLAYER_CAT = 0x1 -- set bit 1
+         ENEMY_CAT = 0x2 -- set bit 2
+         ITEM_CAT = 0x4 -- set bit 3
+
+         -- Players can collider with enemies and items
+         playerCollider.category = PLAYER_CAT
+         playerCollider.mask = ENEMY_CAT | ITEM_CAT
+
+         -- Enemies only collider with players
+         enemyCollider.category = ENEMY_CAT
+         enemyCollider.mask = PLAYER_CAT
+
+         -- Items only collider with players
+         itemCollider.category = ITEM_CAT
+         itemCollider.mask = PLAYER_CAT
+
    .. lua:attribute:: mask: integer (bitfield)
+
+      The mask determines what categories this collider will pass collision filtering. If the mask bits are set for at least one category of a potential collision partner then a collision will be possible 
+
    .. lua:attribute:: group: integer
+
+      The group index is used for another extra layer of collision filtering. If two colliders have the same group and are positive, they will always collider, and if they are both negative then they will never collide
+
    .. lua:attribute:: body: physics2d.body
+
+      The body this collider belongs to
 
 .. lua:class:: circle: collider
 
@@ -315,106 +370,9 @@ physics2d
 
    .. lua:attribute:: points: table<vec2>
 
-.. lua:class:: joint
-
-   .. lua:method:: destroy()
-
-   .. lua:method:: getReactionForce(invDt)
-   .. lua:method:: getReactionTorque(invDt)
-
-   .. lua:attribute:: enabled: boolean
-   .. lua:attribute:: destroyed: boolean
-   .. lua:attribute:: collideConnected: boolean
-   .. lua:attribute:: anchorA: vec2
-   .. lua:attribute:: anchorB: vec2
-   .. lua:attribute:: localAnchorA: vec2
-   .. lua:attribute:: localAnchorB: vec2
-   .. lua:attribute:: other: physics2d.body
-
-.. lua:class:: hinge: joint
-
-   .. lua:attribute:: referenceAngle: number
-   .. lua:attribute:: angle: number
-   .. lua:attribute:: speed: number
-   .. lua:attribute:: useMotor: boolean
-   .. lua:attribute:: maxTorque: number
-   .. lua:attribute:: motorSpeed: number
-   .. lua:attribute:: useLimit: number
-   .. lua:attribute:: lowerLimit: number
-   .. lua:attribute:: upperLimit: number
-
-.. lua:class:: slider: joint
-
-   .. lua:attribute:: referenceAngle: number
-   .. lua:attribute:: translation: number
-   .. lua:attribute:: speed: number
-   .. lua:attribute:: useMotor: boolean
-   .. lua:attribute:: maxForce: number
-   .. lua:attribute:: motorSpeed: number
-   .. lua:attribute:: useLimit: number
-   .. lua:attribute:: lowerLimit: number
-   .. lua:attribute:: upperLimit: number
-
-.. lua:class:: distance: joint
-
-   .. lua:attribute:: length: number
-   .. lua:attribute:: currentLength: number
-   .. lua:attribute:: stiffness: number
-   .. lua:attribute:: damping: number
-   .. lua:attribute:: minLength: number
-   .. lua:attribute:: maxLength: number
-
-.. lua:class:: pulley: joint
-
-   *Not implemented yet*
-
-.. lua:class:: target: joint
-
-   *Not implemented yet*
-
-.. lua:class:: gear: joint
-
-   *Not implemented yet*
-
-.. lua:class:: weld: joint
-
-   *Not implemented yet*
-
-.. lua:class:: friction: joint
-
-   *Not implemented yet*
-
-.. lua:class:: rope: joint
-
-   *Not implemented yet*
-
-.. lua:class:: motor: joint
-
-   *Not implemented yet*
-
-.. lua:class:: rayHit
-
-   .. lua:attribute:: point: vec2
-
-      The world position of the raycast hit location
-
-   .. lua:attribute:: normal: vec2
-
-      The world normal of the raycast hit location
-
-   .. lua:attribute:: fraction: number
-
-      The fraction of the total ray distance travelled before a hit was detected
-
-   .. lua:attribute:: collider: physics2d.collider
-
-      The collider that was hit by the ray
-
-   .. lua:attribute:: body: physics2d.body
-
-      The body of the collider that was hit by the ray            
-
 .. lua:class:: contact
+
+   Represents physical contact between two colliders during a collision
 
    .. lua:attribute:: enabled: boolean
 
@@ -471,3 +429,205 @@ physics2d
    .. lua:attribute:: otherCollider: physics2d.collider
 
       The second collider involved in this collision contact
+
+.. lua:class:: rayHit
+
+   .. lua:attribute:: point: vec2
+
+      The world position of the raycast hit location
+
+   .. lua:attribute:: normal: vec2
+
+      The world normal of the raycast hit location
+
+   .. lua:attribute:: fraction: number
+
+      The fraction of the total ray distance travelled before a hit was detected
+
+   .. lua:attribute:: collider: physics2d.collider
+
+      The collider that was hit by the ray
+
+   .. lua:attribute:: body: physics2d.body
+
+      The body of the collider that was hit by the ray   
+
+Constraints
+***********
+
+.. lua:class:: joint
+
+   The base class of physical constraints between two bodies (i.e. joints)
+
+   .. lua:method:: destroy()
+
+      Destroys this joint, removing it in the next simluation step
+
+   .. lua:method:: getReactionForce(invDt)
+
+      Gets the reaction force applied to this joint in the previous frame to keep the constraint satisfied
+
+      Call with `1/physicsTimestep` to get accurate results
+
+      :param invDt: The inverse timestep
+      :type number:
+
+   .. lua:method:: getReactionTorque(invDt)
+
+      Gets the reaction torque applied to this joint in the previous frame to keep the constraint satisfied
+
+      Call with `1/physicsTimestep` to get accurate results
+
+      :param invDt: The inverse timestep
+      :type number:
+
+   .. lua:attribute:: enabled: boolean
+
+      Enable/disable this joint
+
+   .. lua:attribute:: destroyed: boolean
+
+      Flag set to true if this joint has already been destroyed
+
+   .. lua:attribute:: collideConnected: boolean
+
+      When enabled bodies connected by a joint will collide with each other. Disabled by default
+
+   .. lua:attribute:: anchorA: vec2
+
+      The anchor point for the first body in world space
+
+   .. lua:attribute:: anchorB: vec2
+
+      The anchor point for the second (attached) body in world space
+
+   .. lua:attribute:: localAnchorA: vec2
+
+      The anchor point for the first body in local space
+
+   .. lua:attribute:: localAnchorB: vec2
+
+      The anchor point for the second (attached) body in local space
+
+   .. lua:attribute:: other: physics2d.body
+
+      The other physics body attached to this joint
+
+.. lua:class:: hinge: joint
+
+   A hinge type joint, pinning the bodies together at the respective anchor points, while allowing for free rotation with optional motor and angular limits
+
+   .. lua:attribute:: referenceAngle: number
+
+      The initial relative angle of the two connected bodies
+
+   .. lua:attribute:: angle: number
+
+      The current angle (in degrees) between the two connected bodies relative to the reference angle
+
+   .. lua:attribute:: speed: number
+
+      The current angular speed of the joint (in degrees per second)
+
+   .. lua:attribute:: useMotor: boolean
+
+      Enable/disables the joint motor (off by default)
+
+   .. lua:attribute:: maxTorque: number
+
+      The maximum amount of torque to apply use the motor
+
+   .. lua:attribute:: motorSpeed: number
+
+      The target speed of the motor
+
+   .. lua:attribute:: useLimit: number
+
+      Enables/disables angular joint limits (off by default)
+
+   .. lua:attribute:: lowerLimit: number
+
+      The lower angular rotation limit in degrees (when limits are enabled)
+
+   .. lua:attribute:: upperLimit: number
+
+      The upper angular rotation limit in degrees (when limits are enabled)
+
+.. lua:class:: slider: joint
+
+   A sliding (prismatic) joint allowing for translation along a single axis
+
+   .. lua:attribute:: referenceAngle: number
+
+      The initial relative angle of the two connected bodies
+
+   .. lua:attribute:: translation: number
+
+      The current relative translation between the two bodies along the constained axis
+
+   .. lua:attribute:: speed: number
+
+      The current relative speed between the two bodies along the constrained axis
+
+   .. lua:attribute:: useMotor: boolean
+
+      Enable/disables the joint motor (off by default)
+
+   .. lua:attribute:: maxForce: number
+      
+      The maximum amount of force to apply use the motor
+
+   .. lua:attribute:: motorSpeed: number
+
+      The target speed of the motor
+
+   .. lua:attribute:: useLimit: number
+
+      Enables/disables linear joint limits (off by default)
+
+   .. lua:attribute:: lowerLimit: number
+
+      The lower linear translation limit in meters (when limits are enabled)
+
+   .. lua:attribute:: upperLimit: number
+
+      The upper linear translation limit in meters (when limits are enabled)
+
+.. lua:class:: distance: joint
+
+   A distance based joint constraint with spring-like properties and distance based limits
+
+   .. lua:attribute:: length: number
+   .. lua:attribute:: currentLength: number
+   .. lua:attribute:: stiffness: number
+   .. lua:attribute:: damping: number
+   .. lua:attribute:: minLength: number
+   .. lua:attribute:: maxLength: number
+
+.. lua:class:: pulley: joint
+
+   *Not implemented yet*
+
+.. lua:class:: target: joint
+
+   *Not implemented yet*
+
+.. lua:class:: gear: joint
+
+   *Not implemented yet*
+
+.. lua:class:: weld: joint
+
+   *Not implemented yet*
+
+.. lua:class:: friction: joint
+
+   *Not implemented yet*
+
+.. lua:class:: rope: joint
+
+   *Not implemented yet*
+
+.. lua:class:: motor: joint
+
+   *Not implemented yet*         
