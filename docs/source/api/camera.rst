@@ -5,7 +5,7 @@ camera
 
 .. lua:class:: camera
 
-   A camera object used to rendering. Can be used a component in scenes
+   A camera object used for rendering. Can also be used as a component in scenes
 
    .. code-block:: lua
 
