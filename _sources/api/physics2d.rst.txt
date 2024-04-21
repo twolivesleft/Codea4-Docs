@@ -4,7 +4,7 @@ physics2d
 .. lua:module:: physics2d
 
 Simulation
-**********
+##########
 
 .. lua:class:: world
 
@@ -290,7 +290,7 @@ Simulation
       See: https://box2d.org/documentation/classb2_contact_listener.html
 
 Collision
-*********
+#########
 
 .. lua:class:: collider
 
@@ -453,7 +453,7 @@ Collision
       The body of the collider that was hit by the ray   
 
 Constraints
-***********
+###########
 
 .. lua:class:: joint
 
