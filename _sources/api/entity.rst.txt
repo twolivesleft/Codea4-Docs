@@ -118,6 +118,13 @@ entity
 
       Retrieves a list of all components attached to this entity
 
+   .. lua:method:: dispatch(name, ...)
+
+      Calls the method ``name`` on this entity (including any custom methods) and any attached custom lua components. Additional arguments will be passed to the method as well
+
+      :param name: The name of the method to call
+      :type: string
+
    **Relationships**
 
    .. lua:attribute:: parent: entity
