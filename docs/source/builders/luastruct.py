@@ -1,35 +1,58 @@
 from docutils import nodes
 
-class LuaClass:
-    def __init__(self, name):
-        self.name = name
-        self.description = ''
-        self.methods = []
-        self.attributes = []
+class DocutilsUtils:
+    @staticmethod
+    def extract_name(node):
+        name_node = next((child for child in node.traverse() if child.tagname == 'desc_name'), None)
+        return name_node.astext() if name_node else None
+    
+    @staticmethod
+    def extract_description(node):
+        content_node = next((child for child in node.traverse() if child.tagname == 'paragraph'), None)
+        return content_node.astext() if content_node else None
+    
+    @staticmethod
+    def extract_module(node):
+        signature_node = next((child for child in node.traverse() if child.tagname == 'desc_signature'), None)
+        # Check if the node directly contains a 'module' attribute
+        if 'module' in signature_node.attributes:
+            return signature_node.attributes['module']
+
+        # Return None or a default if no module attribute is found
+        return None
+
+
+class LuaModule:
+    def __init__(self, node):
+        self.name = DocutilsUtils.extract_name(node)
+        self.description = DocutilsUtils.extract_description(node)
+
+    def __str__(self):
+        return f"{self.name}\n\t{self.description}"
 
     def to_dict(self):
         return {
             'name': self.name,
             'description': self.description,
-            'methods': [method.to_dict() for method in self.methods],
-            'attributes': [attr.to_dict() for attr in self.attributes]
         }
 
-class LuaMethod:
-    def __init__(self, name):
-        self.name = name
-        self.parameters = []
-        self.return_description = ''
-        self.return_type = ''
+class LuaClass:
+    def __init__(self, node):
+        self.name = DocutilsUtils.extract_name(node)
+        self.description = DocutilsUtils.extract_description(node)
+        self.module = DocutilsUtils.extract_module(node)
+        self.members = []
+
+    def __str__(self):
+        return f"{self.name} [{self.module}]\n\t{self.description}"
 
     def to_dict(self):
         return {
             'name': self.name,
-            'parameters': self.parameters,
-            'return_description': self.return_description,
-            'return_type': self.return_type
+            'description': self.description,
+            'module': self.module,
+            'members': [members.to_dict() for members in self.members]
         }
-    
     
 class LuaParameter:
     def __init__(self, name, type_hint=None, optional=False, description=None, default=None):
@@ -40,7 +63,7 @@ class LuaParameter:
         self.default = default
 
     def __str__(self):
-        default_str = f" [Default: {self.default}]" if self.default is not None else ""
+        default_str = f" [default = {self.default}]" if self.default is not None else ""
         optional_str = "Optional" if self.optional else "Required"
         return f"Parameter(Name: {self.name}, Type: {self.type_hint}, {optional_str}{default_str}, Description: {self.description})"
 
@@ -52,16 +75,14 @@ class LuaParameter:
             'description': self.description,
             'default': self.default
         }
-
     
-
 class LuaReturn:
     def __init__(self, type_hint=None, description=None):
         self.type_hint = type_hint
         self.description = description
 
     def __str__(self):
-        return f"Return(Type: {self.type_hint}, Description: {self.description})"
+        return f"Returns `{self.type_hint}`\n\t{self.description}"
 
     def to_dict(self):
         return {
@@ -69,21 +90,14 @@ class LuaReturn:
             'description': self.description
         }
 
-
-class LuaStaticMethod:
-    def __init__(self, node):
-        self.name = self.extract_name(node)
-        self.description = self.extract_description(node)
+class LuaFunction:
+    def __init__(self, node, type):
+        self.name = DocutilsUtils.extract_name(node)
+        self.module = DocutilsUtils.extract_module(node)
+        self.description = DocutilsUtils.extract_description(node)
         self.parameters = self.extract_parameters(node)
-        self.returns = self.extract_returns(node)
-
-    def extract_name(self, node):
-        name_node = next((child for child in node.traverse() if child.tagname == 'desc_name'), None)
-        return name_node.astext() if name_node else None
-
-    def extract_description(self, node):
-        content_node = next((child for child in node.traverse() if child.tagname == 'desc_content'), None)
-        return content_node.astext() if content_node else None
+        self.returns = self.extract_returns(node)        
+        self.type = type
 
     def extract_parameters(self, node):
         params = []
@@ -157,6 +171,8 @@ class LuaStaticMethod:
     def to_dict(self):
         return {
             'name': self.name,
+            'memberType': self.type,
+            'module': self.module,
             'description': self.description,
             'parameters': [p.to_dict() for p in self.parameters],
             'returns': [r.to_dict() for r in self.returns]
@@ -165,15 +181,11 @@ class LuaStaticMethod:
 
 class LuaAttribute:
     def __init__(self, node):
-        self.name = self.extract_name(node)
+        self.name = DocutilsUtils.extract_name(node)
+        self.module = DocutilsUtils.extract_module(node)
         self.default_value = None  # Initializing default value
         self.type = self.extract_type(node)
-        self.description = self.extract_description(node)        
-
-    def extract_name(self, node):
-        # Finds the first 'desc_name' element and extracts its text.
-        name_node = next((child for child in node.traverse() if child.tagname == 'desc_name'), None)
-        return name_node.astext() if name_node else None
+        self.description = DocutilsUtils.extract_description(node)        
 
     def extract_type(self, node):
         # Finds the first 'desc_type' element and extracts its text, along with any default value if specified.
@@ -192,17 +204,14 @@ class LuaAttribute:
             return type_text
         return None
 
-    def extract_description(self, node):
-        # Finds the first paragraph in 'desc_content' and extracts its text.
-        content_node = next((child for child in node.traverse() if child.tagname == 'desc_content'), None)
-        return content_node.astext() if content_node else None
-
     def __str__(self):
-        return f"{self.name}: {self.type} [Default: {self.default_value}]\n\t{self.description}"
+        return f"{self.name}: {self.type} [default = {self.default_value}]\n\t{self.description}"
 
     def to_dict(self):
         return {
             'name': self.name,
+            'memberType': 'attribute',
+            'module': self.module,
             'type': self.type,
             'default_value': self.default_value,
             'description': self.description

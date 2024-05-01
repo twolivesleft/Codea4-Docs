@@ -22,85 +22,81 @@ class LuaJSONBuilder(Builder):
         self.docnames.extend(docnames)
 
     def write_doc(self, docname, doctree):
+        print(f"Parsing {docname}")
+        visitor = LuaJSONVisitor(self, doctree)
+        doctree.walkabout(visitor)
         self.documents[docname] = self.env.get_doctree(docname)
-
-    def finish(self):
-        output = {}
-        for docname, doctree in self.documents.items():
-            visitor = LuaJSONVisitor(self, doctree)
-            doctree.walkabout(visitor)
-            output[docname] = visitor.get_data()
-
-        with open(os.path.join(self.outdir, 'output.json'), 'w') as f:
-            json.dump(output, f, indent=2)
+        data = visitor.get_data()
+        path = os.path.join(self.outdir, f"{docname}.json")
+        print(f"Writing to path {path}")
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, 'w') as f:
+            json.dump(data, f, indent=2)
 
 class LuaJSONVisitor(nodes.NodeVisitor):
     def __init__(self, builder, doc):
         super().__init__(doc)
-        self.builder = builder
-        self.data = []
-        self.stack = []
-
-    def visit_target(self, node):
-        pass #print(f"Target: visiting node: {node}")
+        self.entries = []
+        self.current_class = None
 
     def visit_section(self, node):
-        if node.attributes.get('domain') == 'lua' and node.attributes.get('objtype') in ['class', 'staticmethod', 'attribute']:
-            if node.attributes['objtype'] == 'class':
-                lua_class = LuaClass(node.children[0].astext().split()[-1])
-                self.stack.append(lua_class)
-                print("Found class")
-            elif node.attributes['objtype'] == 'staticmethod':
-                method = LuaMethod(node.children[0].astext().split()[-1])
-                self.stack[-1].methods.append(method)
-                self.stack.append(method)
-                print("Found static method")
-            elif node.attributes['objtype'] == 'attribute':
-                attr_name = node.children[0].astext().split()[-1]
-                attr_type = node.children[0].next_sibling.astext() if node.children[0].next_sibling else 'unknown'
-                attribute = LuaAttribute(attr_name, attr_type)
-                self.stack[-1].attributes.append(attribute)
-                self.stack.append(attribute)
-                print("Found attribute")
-        self.generic_visit(node)
+        pass
 
     def visit_paragraph(self, node):
-        pass #print(f"Paragraph: visiting node: {node}")
+        pass
 
     def visit_text(self, node):
-        pass #print(f"Text: visiting node: {node}")        
+        pass
 
     def visit_title(self, node):
-        pass #print(f"Text: visiting node: {node}")                
+        pass
 
-    def unknown_visit(self, node):   
-        if hasattr(node, 'attributes'):
+    def visit_index(self, node):
+        pass
+
+    def unknown_visit(self, node):
+        if hasattr(node, 'attributes'):            
             match node.attributes.get('objtype'):
+                case 'method':     
+                    method = LuaFunction(node, 'method')
+                    if self.current_class:
+                        self.current_class.members.append(method)
+                    else:
+                        self.entries.append(method)
+
+                case 'class':
+                    self.current_class = LuaClass(node)
+                    self.entries.append(self.current_class)
+
+                case 'function':
+                    self.entries.append(LuaFunction(node, 'function'))
+
                 case 'attribute':
-                    attribute = LuaAttribute(node)
-                    print(f"⭐️ {attribute}")
-                    # for child in node.children:
-                    #     print("\n")
-                    #     print(vars(child))
-                    #     print("\n")
+                    if self.current_class:
+                        self.current_class.members.append(LuaAttribute(node))
+                    else:
+                        self.entries.append(LuaAttribute(node))
 
                 case 'staticmethod':
-                    staticmethod = LuaStaticMethod(node)
-                    print(f"⭐️ {staticmethod}")
-                    for child in node.children:
-                        print("\n")
-                        print(child)
-                        print("\n")
+                    method = LuaFunction(node, 'staticmethod')
+                    if self.current_class:
+                        self.current_class.members.append(method)
+                    else:
+                        self.entries.append(method)
 
-    def unknown_departure(self, node):        
-        pass #print(f"Departing unknown node type: {type(node).__name__}")
+    def unknown_departure(self, node):  
+        if hasattr(node, 'attributes'):            
+            match node.attributes.get('objtype'):
+                case 'class':
+                    self.current_class = None
 
     def generic_visit(self, node):
-        if node.attributes.get('domain') == 'lua' and node.attributes.get('objtype'):
-            print(f"Generic node: {node.attributes['objtype']}")
+        pass
 
     def get_data(self):
-        return self.data
+        return {
+            'entries' : [entry.to_dict() for entry in self.entries]
+        }
 
 def setup(app):
     app.add_builder(LuaJSONBuilder)
