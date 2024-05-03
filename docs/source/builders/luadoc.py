@@ -55,40 +55,39 @@ class LuaJSONVisitor(nodes.NodeVisitor):
         pass
 
     def unknown_visit(self, node):
-        if hasattr(node, 'attributes'):            
-            match node.attributes.get('objtype'):
-                case 'method':     
-                    method = LuaFunction(node, 'method')
-                    if self.current_class:
-                        self.current_class.members.append(method)
-                    else:
-                        self.entries.append(method)
+        if hasattr(node, 'attributes'):
+            objtype = node.attributes.get('objtype')          
+            if objtype == 'method':     
+                method = LuaFunction(node, 'method')
+                if self.current_class:
+                    self.current_class.members.append(method)
+                else:
+                    self.entries.append(method)
 
-                case 'class':
-                    self.current_class = LuaClass(node)
-                    self.entries.append(self.current_class)
+            elif objtype == 'class':
+                self.current_class = LuaClass(node)
+                self.entries.append(self.current_class)
 
-                case 'function':
-                    self.entries.append(LuaFunction(node, 'function'))
+            elif objtype == 'function':
+                self.entries.append(LuaFunction(node, 'function'))
 
-                case 'attribute':
-                    if self.current_class:
-                        self.current_class.members.append(LuaAttribute(node))
-                    else:
-                        self.entries.append(LuaAttribute(node))
+            elif objtype == 'attribute':
+                if self.current_class:
+                    self.current_class.members.append(LuaAttribute(node))
+                else:
+                    self.entries.append(LuaAttribute(node))
 
-                case 'staticmethod':
-                    method = LuaFunction(node, 'staticmethod')
-                    if self.current_class:
-                        self.current_class.members.append(method)
-                    else:
-                        self.entries.append(method)
+            elif objtype == 'staticmethod':
+                method = LuaFunction(node, 'staticmethod')
+                if self.current_class:
+                    self.current_class.members.append(method)
+                else:
+                    self.entries.append(method)
 
     def unknown_departure(self, node):  
         if hasattr(node, 'attributes'):            
-            match node.attributes.get('objtype'):
-                case 'class':
-                    self.current_class = None
+            if node.attributes.get('objtype') == 'class':
+                self.current_class = None
 
     def generic_visit(self, node):
         pass
