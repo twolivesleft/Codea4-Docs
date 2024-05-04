@@ -49,6 +49,7 @@ class LuaClass:
     def to_dict(self):
         return {
             'name': self.name,
+            'kind': 'class',
             'description': self.description,
             'module': self.module,
             'members': [members.to_dict() for members in self.members]
@@ -70,7 +71,7 @@ class LuaParameter:
     def to_dict(self):
         return {
             'name': self.name,
-            'type_hint': self.type_hint,
+            'type': self.type_hint,
             'optional': self.optional,
             'description': self.description,
             'default': self.default
@@ -86,7 +87,7 @@ class LuaReturn:
 
     def to_dict(self):
         return {
-            'type_hint': self.type_hint,
+            'type': self.type_hint,
             'description': self.description
         }
 
@@ -171,7 +172,7 @@ class LuaFunction:
     def to_dict(self):
         return {
             'name': self.name,
-            'memberType': self.type,
+            'kind': self.type,
             'module': self.module,
             'description': self.description,
             'parameters': [p.to_dict() for p in self.parameters],
@@ -210,10 +211,10 @@ class LuaAttribute:
     def to_dict(self):
         return {
             'name': self.name,
-            'memberType': 'attribute',
+            'kind': 'attribute',
             'module': self.module,
             'type': self.type,
-            'default_value': self.default_value,
+            'defaultValue': self.default_value,
             'description': self.description
         }
 
