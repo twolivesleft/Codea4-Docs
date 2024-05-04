@@ -74,7 +74,7 @@ class LuaParameter:
             'type': self.type_hint,
             'optional': self.optional,
             'description': self.description,
-            'default': self.default
+            'defaultValue': self.default
         }
     
 class LuaReturn:
