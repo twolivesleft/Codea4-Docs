@@ -37,7 +37,7 @@ class LuaJSONVisitor(nodes.NodeVisitor):
     def __init__(self, builder, doc):
         super().__init__(doc)
         self.entries = []
-        self.current_class = None
+        self.class_stack = []
 
     def visit_section(self, node):
         pass
@@ -59,35 +59,40 @@ class LuaJSONVisitor(nodes.NodeVisitor):
             objtype = node.attributes.get('objtype')          
             if objtype == 'method':     
                 method = LuaFunction(node, 'method')
-                if self.current_class:
-                    self.current_class.members.append(method)
+                if self.class_stack:
+                    self.class_stack[-1].members.append(method)
                 else:
                     self.entries.append(method)
 
             elif objtype == 'class':
-                self.current_class = LuaClass(node)
-                self.entries.append(self.current_class)
+                cls = LuaClass(node)
+                if self.class_stack:
+                    self.class_stack[-1].members.append(cls)  
+                    self.class_stack.append(cls)                    
+                else:
+                    self.entries.append(cls)
+                    self.class_stack.append(cls)
 
             elif objtype == 'function':
                 self.entries.append(LuaFunction(node, 'function'))
 
             elif objtype == 'attribute':
-                if self.current_class:
-                    self.current_class.members.append(LuaAttribute(node))
+                if self.class_stack:
+                    self.class_stack[-1].members.append(LuaAttribute(node))
                 else:
                     self.entries.append(LuaAttribute(node))
 
             elif objtype == 'staticmethod':
                 method = LuaFunction(node, 'staticmethod')
-                if self.current_class:
-                    self.current_class.members.append(method)
+                if self.class_stack:
+                    self.class_stack[-1].members.append(method)
                 else:
                     self.entries.append(method)
 
     def unknown_departure(self, node):  
         if hasattr(node, 'attributes'):            
             if node.attributes.get('objtype') == 'class':
-                self.current_class = None
+                self.class_stack.pop()
 
     def generic_visit(self, node):
         pass
