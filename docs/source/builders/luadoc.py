@@ -98,7 +98,8 @@ class LuaJSONVisitor(nodes.NodeVisitor):
         pass
 
     def get_data(self):
-        [entry.to_dict() for entry in self.entries]
+        return [entry.to_dict() for entry in self.entries]
+
 
 def setup(app):
     app.add_builder(LuaJSONBuilder)
