@@ -859,6 +859,19 @@
 <dd><p>Callback for the <cite>destroyed()</cite> event, which is called right before the entity is destroyed</p>
 </dd></dl>
 
+<p><strong>Physics Callbacks</strong></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.collisionBegan2d">
+<span class="sig-name descname"><span class="pre">collisionBegan2d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.collisionBegan2d" title="Link to this definition">¶</a></dt>
+<dd><p>Callback for the <code class="docutils literal notranslate"><span class="pre">collisionBegan2d(contact)</span></code> event, which is called when a collision occurs with a <cite>physics2d.body</cite> attached to this entity</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="entity.collisionBegan3d">
+<span class="sig-name descname"><span class="pre">collisionBegan3d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.collisionBegan3d" title="Link to this definition">¶</a></dt>
+<dd><p>Callback for the <code class="docutils literal notranslate"><span class="pre">collisionBegan3d(contact)</span></code> event, which is called when a collision occurs with a <cite>physics3d.body</cite> attached to this entity</p>
+</dd></dl>
+
 <p><strong>Simulation Callbacks</strong></p>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.update">

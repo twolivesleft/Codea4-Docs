@@ -416,6 +416,16 @@ entity
 
       Callback for the `destroyed()` event, which is called right before the entity is destroyed
 
+   **Physics Callbacks**
+
+   .. lua:attribute:: collisionBegan2d: function
+
+      Callback for the ``collisionBegan2d(contact)`` event, which is called when a collision occurs with a `physics2d.body` attached to this entity
+
+   .. lua:attribute:: collisionBegan3d: function
+
+      Callback for the ``collisionBegan3d(contact)`` event, which is called when a collision occurs with a `physics3d.body` attached to this entity
+
    **Simulation Callbacks**
 
    .. lua:attribute:: update: function
@@ -425,6 +435,7 @@ entity
    .. lua:attribute:: fixedUpdate: function
 
       Callback for the ``fixedUpdate(dt)`` event, which is called on all active entities once per fixed update (called a fixed number of times per second). The ``dt`` parameter passes the fixed delta time of the enclosing scene
+
 
    **Interaction Callbacks**
 
