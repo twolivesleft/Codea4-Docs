@@ -77,3 +77,18 @@ camera
    .. lua:method:: apply()
 
       Apply this cameras settings to the matrix stack
+
+   .. lua:method:: screenToWorld(x, y, z)
+
+      Takes a 2D point on the screen (in points) and a depth value and unprojects this point into 3D space. Useful for things like raycasting from touches
+
+      :return: The point at screen position ``x``, ``y`` projected ``z`` units into the screen in world space
+      :rtype: number, number, number
+
+   .. lua:method:: worldToScreen(x, y, z)
+
+      Takes a 3D point in world space and projects it onto screen coordinates (in points)
+
+      :return: The point in world space (``x``, ``y``, ``z``) projected onto the screen
+      :rtype: number, number, number
+   

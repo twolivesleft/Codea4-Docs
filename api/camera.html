@@ -345,6 +345,34 @@
 <dd><p>Apply this cameras settings to the matrix stack</p>
 </dd></dl>
 
+<dl class="lua method">
+<dt class="sig sig-object lua" id="camera.screenToWorld">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">screenToWorld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#camera.screenToWorld" title="Link to this definition">¶</a></dt>
+<dd><p>Takes a 2D point on the screen (in points) and a depth value and unprojects this point into 3D space. Useful for things like raycasting from touches</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The point at screen position <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> projected <code class="docutils literal notranslate"><span class="pre">z</span></code> units into the screen in world space</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number,</span> <span class="pre">number,</span> <span class="pre">number</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="camera.worldToScreen">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">worldToScreen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#camera.worldToScreen" title="Link to this definition">¶</a></dt>
+<dd><p>Takes a 3D point in world space and projects it onto screen coordinates (in points)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The point in world space (<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>) projected onto the screen</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number,</span> <span class="pre">number,</span> <span class="pre">number</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
