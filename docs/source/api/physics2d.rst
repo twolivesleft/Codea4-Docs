@@ -349,7 +349,7 @@ Collision
 
    .. lua:attribute:: group: integer
 
-      The group index is used for another extra layer of collision filtering. If two colliders have the same group and are positive, they will always collider, and if they are both negative then they will never collide
+      The group index is used for another extra layer of collision filtering. If two colliders have the same group and are positive, they will always collide, and if they are both negative then they will never collide
 
    .. lua:attribute:: body: physics2d.body
 
