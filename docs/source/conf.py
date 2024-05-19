@@ -31,7 +31,7 @@ release = '4.0'
 # ones.
 extensions = [
     'luadoc',
-    'sphinxcontrib.luadomain',
+    'luadomain',
     'sphinx_copybutton',
     'sphinx_toolbox.collapse'
 ]

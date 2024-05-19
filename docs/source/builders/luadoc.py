@@ -57,7 +57,7 @@ class LuaJSONVisitor(nodes.NodeVisitor):
     def unknown_visit(self, node):
         if hasattr(node, 'attributes'):
             objtype = node.attributes.get('objtype')          
-            if objtype == 'method':     
+            if objtype == 'method':
                 method = LuaFunction(node, 'method')
                 if self.class_stack:
                     self.class_stack[-1].members.append(method)
@@ -78,9 +78,15 @@ class LuaJSONVisitor(nodes.NodeVisitor):
 
             elif objtype == 'attribute':
                 if self.class_stack:
-                    self.class_stack[-1].members.append(LuaAttribute(node))
+                    self.class_stack[-1].members.append(LuaAttribute(node, objtype))
                 else:
-                    self.entries.append(LuaAttribute(node))
+                    self.entries.append(LuaAttribute(node, objtype))
+
+            elif objtype == 'classattribute':
+                if self.class_stack:
+                    self.class_stack[-1].members.append(LuaAttribute(node, objtype))
+                else:
+                    self.entries.append(LuaAttribute(node, objtype))                   
 
             elif objtype == 'staticmethod':
                 method = LuaFunction(node, 'staticmethod')

@@ -5,8 +5,8 @@ scene
 
    A high level scene structure used that integrates object hierarchy, rendering, input, physics and serialisation to simplify and streamline games and simulations
 
-   .. lua:attribute:: main: scene
-
+   .. lua:classattribute:: main: scene
+      
       Sets the main Codea scene, which will be automatically drawn, updated and handle touch events
 
       .. code-block:: lua

@@ -181,12 +181,13 @@ class LuaFunction:
 
 
 class LuaAttribute:
-    def __init__(self, node):
+    def __init__(self, node, kind):
         self.name = DocutilsUtils.extract_name(node)
         self.module = DocutilsUtils.extract_module(node)
         self.default_value = None  # Initializing default value
         self.type = self.extract_type(node)
-        self.description = DocutilsUtils.extract_description(node)        
+        self.description = DocutilsUtils.extract_description(node)
+        self.kind = kind
 
     def extract_type(self, node):
         # Finds the first 'desc_type' element and extracts its text, along with any default value if specified.
@@ -211,7 +212,7 @@ class LuaAttribute:
     def to_dict(self):
         return {
             'name': self.name,
-            'kind': 'attribute',
+            'kind': self.kind,
             'module': self.module,
             'type': self.type,
             'defaultValue': self.default_value,
