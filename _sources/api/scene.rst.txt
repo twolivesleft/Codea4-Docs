@@ -19,13 +19,19 @@ scene
 
       Creates the default 3D scene containing a perspective camera, directional light and HDR environment
 
+      :rtype: scene
+
    .. lua::staticmethod:: default2d()
 
       Creates the default 2D scene containing an orthographic camera
 
+      :rtype: scene
+
    .. lua::staticmethod:: read(key)
 
       Loads and returns a scene with the supplied asset key
+
+      :rtype: scene
 
    .. lua::staticmethod:: save(key, scene)
 
@@ -61,17 +67,24 @@ scene
 
       Creates a new blank :lua:class:`entity` with an optional name
 
+      :rtype: entity
+
    .. lua:method:: findEntity(name)
+
+      :rtype: entity
 
    .. lua:method:: entities([activeOnly = true])
 
       Returns a table containing all root entities
 
       :param activeOnly: When set, returns only active root entities
+      :rtype: table<entity>
 
    .. lua:method:: index(name) [metamethod]
 
       Returns the root entity with the given name (if it exists)
+
+      :rtype: entity
 
    .. lua:method:: draw()
 
