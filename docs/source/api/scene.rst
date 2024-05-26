@@ -15,25 +15,25 @@ scene
             scene.main = scene.default3d()
          end
 
-   .. lua::staticmethod:: default3d()
+   .. lua:staticmethod:: scene.default3d()
 
       Creates the default 3D scene containing a perspective camera, directional light and HDR environment
 
       :rtype: scene
 
-   .. lua::staticmethod:: default2d()
+   .. lua:staticmethod:: scene.default2d()
 
       Creates the default 2D scene containing an orthographic camera
 
       :rtype: scene
 
-   .. lua::staticmethod:: read(key)
+   .. lua:staticmethod:: scene.read(key)
 
       Loads and returns a scene with the supplied asset key
 
       :rtype: scene
 
-   .. lua::staticmethod:: save(key, scene)
+   .. lua:staticmethod:: scene.save(key, scene)
 
       Saves the supplied scene at the given asset key location
 
