@@ -239,32 +239,32 @@ Gamepad
 
    .. lua:attribute:: light: color
 
-.. lua:class:: gamepad.button
+   .. lua:class:: button
 
-   .. lua:attribute:: pressing: boolean
+      .. lua:attribute:: pressing: boolean
 
-   .. lua:attribute:: pressed: boolean
+      .. lua:attribute:: pressed: boolean
 
-   .. lua:attribute:: released: boolean
+      .. lua:attribute:: released: boolean
 
-   .. lua:attribute:: value: number
+      .. lua:attribute:: value: number
 
-   .. lua:attribute:: touching: boolean
+      .. lua:attribute:: touching: boolean
 
-.. lua:class:: gamepad.directionalPad
+   .. lua:class:: directionalPad
 
-   .. lua:attribute:: pressing: boolean
+      .. lua:attribute:: pressing: boolean
 
-   .. lua:attribute:: dir: vec2
+      .. lua:attribute:: dir: vec2
 
-   .. lua:attribute:: x: number
+      .. lua:attribute:: x: number
 
-   .. lua:attribute:: y: number
+      .. lua:attribute:: y: number
 
-   .. lua:attribute:: left: boolean
+      .. lua:attribute:: left: boolean
 
-   .. lua:attribute:: right: boolean
+      .. lua:attribute:: right: boolean
 
-   .. lua:attribute:: up: boolean
+      .. lua:attribute:: up: boolean
 
-   .. lua:attribute:: down: boolean
+      .. lua:attribute:: down: boolean
