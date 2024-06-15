@@ -8,8 +8,201 @@ Module for accessing input devices such as touches, keyboard, mouse and gamepads
 Touches
 #######
 
+.. lua:class:: touch
+
+   Represents a single touch over time. Generated in response to touch events by the device in response to user interactions
+
+   .. attribute:: id: number
+
+      An id that can be used to uniquely identify the touch
+
+   .. attribute:: state: enum
+
+      The current state of the touch, can be:
+
+      * ``BEGAN`` - the touch began this frame
+      * ``MOVING`` - the touch moved this frame
+      * ``ENDED`` - the touch ended this frame
+      * ``CANCELLED`` - the touch was cancelled (usually by another view or gesture recognizer)
+
+   .. attribute:: type: enum 
+
+      The type of touch, can be:
+
+      * ``touch.direct`` - a touch resulting from direct contact with the screen
+      * ``touch.indirect`` - a touch that does not result from direct contact with the screen
+      * ``touch.pencil`` - a touch resulting from the pencil
+      * ``touch.pointer`` - a touch resulting from a button based device
+
+   .. attribute:: x: number
+
+      The x position of the touch (in screen coordinates)
+
+   .. attribute:: y: number
+
+      The y position of the touch (in screen coordinates)
+
+   .. attribute:: prevX: number
+
+      The previous x position of the touch (in screen coordinates)
+
+   .. attribute:: prevY: number
+
+      The previous y position of the touch (in screen coordinates)
+
+   .. attribute:: deltaX: number
+
+      The x position delta of the touch (in screen coordinates)
+
+   .. attribute:: deltaY: number
+
+      The y position delta of the touch (in screen coordinates)
+
+   .. attribute:: pos: vec2
+
+      The position of the touch (in screen coordinates) as a vector
+
+   .. attribute:: prevPos: vec2
+
+      The previous position of the touch (in screen coordinates) as a vector
+
+   .. attribute:: delta: number
+
+      The position delta of the touch (in screen coordinates) as a vector
+
+   .. attribute:: force: number
+
+      The amount of force being applied (only applies to pencil type touches)
+
+   .. attribute:: maxForce: number
+
+      The maximum amount of force that can be applied (only applies to pencil type touches)
+
+   .. attribute:: timestamp: number  
+      
+      The time when this touch event occured (only applies to pencil type touches)
+
+   .. attribute:: azimuth: number
+
+      The azimuth angle of the pencil (only applies to pencil type touches)
+        
+   .. attribute:: altitude: number
+
+      The altitude angle of the pencil
+
+   .. attribute:: radiusTolerance: number
+
+      The amount the estimated radius can vary due to hardware tolerances
+
+   .. attribute:: radius: number
+
+      The estimated radius of the touch
+
+   .. attribute:: precisePos: vec2
+
+      The precise location of the touch (if available)
+
+   .. attribute:: precisePrevPos: vec2
+      
+      The previous precise location of the touch (if available)
+
 Gestures
 ########
+
+.. lua:class:: gesture
+
+   Represents a single gesture event
+
+   .. lua:attribute:: state: enum
+
+      The current state of the gesture
+
+   .. lua:attribute:: location: vec2
+
+      The location of the gesture event on the screen
+
+   .. lua:attribute:: translation: vec2
+
+      The translation of the gesture event relative to its starting location
+
+   .. lua:attribute:: delta: vec2
+
+      The delta of the gesture event since last update
+
+   .. lua:attribute:: pinchScale: number
+
+      The scale of a pinch gesture relative to its starting distance
+
+   .. lua:attribute:: pinchDelta: number
+
+      The delta of the pinch distance since last update
+
+   .. lua:attribute:: pinchVelocity: number
+
+      The current change in pinch distance over time
+
+   .. lua:attribute:: rotationAngle: number 
+
+      The current angle of a rotation gesture relative to its' starting angle
+
+   .. lua:attribute:: rotationVelocity: number
+
+      The current change in rotation angle over time
+
+   .. lua:attribute:: touchCount: integer
+
+      The current number of touches associated with this gesture
+
+.. lua:class:: gesture.tap
+
+   Tap gesture recognizer (using system gesture recognizer for implementation)
+
+   .. lua:staticmethod:: gesture.tap(callback[, minTouches = 1, maxTouches = 1])
+
+      Creates and registers a new tap gesture recognizer that will call ``callback(gesture)`` when recognized
+
+   .. lua:attribute:: enabled: boolean
+
+      Enables/disables this gesture recognizer
+
+.. lua:class:: gesture.pan
+
+   Pan gesture recognizer (using system gesture recognizer for implementation)
+
+   .. lua:staticmethod:: gesture.pan(callback[, minTouches = 1, maxTouches = 1])
+
+      Creates and registers a new pan gesture recognizer that will call ``callback(gesture)`` when recognized
+
+   .. lua:attribute:: enabled: boolean
+
+      Enables/disables this gesture recognizer
+
+
+.. lua:class:: gesture.pinch
+
+   Pinch gesture recognizer (using system gesture recognizer for implementation)
+
+   .. lua:staticmethod:: gesture.pinch(callback)
+
+      Creates and registers a new pinch gesture recognizer that will call ``callback(gesture)`` when recognized
+
+   .. lua:attribute:: enabled: boolean
+
+      Enables/disables this gesture recognizer
+
+
+.. lua:class:: gesture.rotation
+
+   Rotation gesture recognizer (using system gesture recognizer for implementation)
+
+   .. lua:staticmethod:: gesture.rotation(callback)
+      
+      Creates and registers a new rotation gesture recognizer that will call ``callback(gesture)`` when recognized
+
+   .. lua:attribute:: enabled: boolean
+
+      Enables/disables this gesture recognizer
+
 
 Keyboard
 ########

@@ -29,10 +29,18 @@ General
 
    Sets/gets the fill color for use in vector drawing operations
 
+.. lua:function:: noFill()
+
+   Disables fill
+
 .. lua:function:: stroke(<color>)
                   stroke() -> r, g, b, a
 
    Sets/gets the stroke color for use in vector drawing operations
+
+.. lua:function:: noStroke()
+
+   Disables stroke
 
 .. lua:function:: tint(<color>)
                   tint() -> r, g, b, a
@@ -262,6 +270,101 @@ Constants - Blend Factors
 
    Blend factor of :math:`(f, f, f, 1)` where :math:`f = min(A_s, 1 - A_d)`
 
+Clipping
+########
+
+.. lua:function:: clip(x, y, w, h)
+
+   Settings the clipping rectangle, limiting drawing to within the clipping region
+
+   *Note: the clipping rectangle is effected by the current matrix transform*
+
+.. lua:function:: noClip()
+
+   Disables clipping
+
+Stencil
+#######
+
+.. code-block:: lua
+   :caption: A simple mask effect using stencils
+
+   function draw()
+      background(40, 40, 50)
+
+      -- When a pixel is drawn write 1 to the stencil buffer
+      style.stencil 
+      { 
+         reference = 1, 
+         pass = STENCIL_OP_REPLACE 
+      }
+      
+      -- Use opacity clip to only draw pixels when alpha is great than .99
+      style.opacityClip(0.99)
+      style.blend(DISABLED) -- no blending needed
+      matrix.push().transform2d(CurrentTouch.x, CurrentTouch.y, 1, 1, time.elapsed * 50)
+      sprite(asset.builtin.Cargo_Bot.Codea_Icon, 0, 0, 400)
+      matrix.pop()
+      
+      style.blend(NORMAL)
+      style.noOpacityClip()
+      -- Only draw if stencil is equal to one using the equal test condition
+      style.stencil
+      {
+         reference = 1,
+         condition = STENCIL_TEST_EQUAL
+      }
+      -- This sets the line thickness
+      sprite(asset.builtin.SpaceCute.Beetle_Ship, WIDTH/2, HEIGHT/2, 400)
+   end
+
+Stencils are configured using a table with the following properties:
+
+* ``reference``
+* ``condition``
+* ``readMask``
+* ``pass``
+* ``fail`` 
+* ``zfail`` 
+
+.. lua:function:: stencil(state)
+                  stencil()
+
+   Sets/gets the current stencil state for both front and back faces
+
+.. lua:function:: stencil(front, back)
+
+   Sets/gets the current stencil state for both front and back faces
+
+
+
+Constants - Stencil
+*******************
+
+Used by drawing commands and shaders to control stencil operations
+
+**Stencil Test (conditions)**
+
+.. lua:attribute:: STENCIL_TEST_LESS: const
+.. lua:attribute:: STENCIL_TEST_LEQUAL: const
+.. lua:attribute:: STENCIL_TEST_EQUAL: const
+.. lua:attribute:: STENCIL_TEST_GEQUAL: const
+.. lua:attribute:: STENCIL_TEST_GREATER: const
+.. lua:attribute:: STENCIL_TEST_NOTEQUAL: const
+.. lua:attribute:: STENCIL_TEST_NEVER: const
+.. lua:attribute:: STENCIL_TEST_ALWAYS: const
+
+**Stencil Operations (pass, fail, zfail)**
+
+.. lua:attribute:: STENCIL_OP_ZERO: const
+.. lua:attribute:: STENCIL_OP_KEEP: const
+.. lua:attribute:: STENCIL_OP_REPLACE: const
+.. lua:attribute:: STENCIL_OP_INCREMENT_WRAP: const
+.. lua:attribute:: STENCIL_OP_INCREMENT: const
+.. lua:attribute:: STENCIL_OP_DECREMENT_WRAP: const
+.. lua:attribute:: STENCIL_OP_DECREMENT: const
+.. lua:attribute:: STENCIL_OP_INVERT: const
+
 Text Style
 ##########
 
@@ -349,7 +452,6 @@ Used by shaders to control which color components are written to color buffers (
 
 
 .. lua:attribute:: COLOR_MASK_RGBA: const
-
 
 
 Constants - Culling
