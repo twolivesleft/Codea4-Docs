@@ -266,11 +266,23 @@
 </dd></dl>
 
 <dl class="lua function">
+<dt class="sig sig-object lua" id="style.noFill">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">noFill</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.noFill" title="Link to this definition">¶</a></dt>
+<dd><p>Disables fill</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua" id="style.stroke">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">stroke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">&lt;color&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.stroke" title="Link to this definition">¶</a></dt>
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">stroke</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a</span></span></span></dt>
 <dd><p>Sets/gets the stroke color for use in vector drawing operations</p>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.noStroke">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">noStroke</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.noStroke" title="Link to this definition">¶</a></dt>
+<dd><p>Disables stroke</p>
 </dd></dl>
 
 <dl class="lua function">
@@ -598,6 +610,167 @@
 
 </section>
 </section>
+<section id="clipping">
+<h2>Clipping<a class="headerlink" href="#clipping" title="Link to this heading">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.clip">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.clip" title="Link to this definition">¶</a></dt>
+<dd><p>Settings the clipping rectangle, limiting drawing to within the clipping region</p>
+<p><em>Note: the clipping rectangle is effected by the current matrix transform</em></p>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.noClip">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">noClip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.noClip" title="Link to this definition">¶</a></dt>
+<dd><p>Disables clipping</p>
+</dd></dl>
+
+</section>
+<section id="stencil">
+<h2>Stencil<a class="headerlink" href="#stencil" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">A simple mask effect using stencils</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
+   <span class="n">background</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+   <span class="c1">-- When a pixel is drawn write 1 to the stencil buffer</span>
+   <span class="n">style</span><span class="p">.</span><span class="n">stencil</span>
+   <span class="p">{</span>
+      <span class="n">reference</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="n">pass</span> <span class="o">=</span> <span class="n">STENCIL_OP_REPLACE</span>
+   <span class="p">}</span>
+
+   <span class="c1">-- Use opacity clip to only draw pixels when alpha is great than .99</span>
+   <span class="n">style</span><span class="p">.</span><span class="n">opacityClip</span><span class="p">(</span><span class="mf">0.99</span><span class="p">)</span>
+   <span class="n">style</span><span class="p">.</span><span class="n">blend</span><span class="p">(</span><span class="n">DISABLED</span><span class="p">)</span> <span class="c1">-- no blending needed</span>
+   <span class="n">matrix</span><span class="p">.</span><span class="n">push</span><span class="p">().</span><span class="n">transform2d</span><span class="p">(</span><span class="n">CurrentTouch</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">CurrentTouch</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">time</span><span class="p">.</span><span class="n">elapsed</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+   <span class="n">sprite</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">Cargo_Bot</span><span class="p">.</span><span class="n">Codea_Icon</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+   <span class="n">matrix</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+
+   <span class="n">style</span><span class="p">.</span><span class="n">blend</span><span class="p">(</span><span class="n">NORMAL</span><span class="p">)</span>
+   <span class="n">style</span><span class="p">.</span><span class="n">noOpacityClip</span><span class="p">()</span>
+   <span class="c1">-- Only draw if stencil is equal to one using the equal test condition</span>
+   <span class="n">style</span><span class="p">.</span><span class="n">stencil</span>
+   <span class="p">{</span>
+      <span class="n">reference</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="n">condition</span> <span class="o">=</span> <span class="n">STENCIL_TEST_EQUAL</span>
+   <span class="p">}</span>
+   <span class="c1">-- This sets the line thickness</span>
+   <span class="n">sprite</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">SpaceCute</span><span class="p">.</span><span class="n">Beetle_Ship</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<p>Stencils are configured using a table with the following properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">condition</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readMask</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pass</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fail</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zfail</span></code></p></li>
+</ul>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.stencil">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">stencil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.stencil" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">stencil</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Sets/gets the current stencil state for both front and back faces</p>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">stencil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">front</span></em>, <em class="sig-param"><span class="pre">back</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets/gets the current stencil state for both front and back faces</p>
+</dd></dl>
+
+<section id="constants-stencil">
+<h3>Constants - Stencil<a class="headerlink" href="#constants-stencil" title="Link to this heading">¶</a></h3>
+<p>Used by drawing commands and shaders to control stencil operations</p>
+<p><strong>Stencil Test (conditions)</strong></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_TEST_LESS">
+<span class="sig-name descname"><span class="pre">STENCIL_TEST_LESS</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_TEST_LESS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_TEST_LEQUAL">
+<span class="sig-name descname"><span class="pre">STENCIL_TEST_LEQUAL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_TEST_LEQUAL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_TEST_EQUAL">
+<span class="sig-name descname"><span class="pre">STENCIL_TEST_EQUAL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_TEST_EQUAL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_TEST_GEQUAL">
+<span class="sig-name descname"><span class="pre">STENCIL_TEST_GEQUAL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_TEST_GEQUAL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_TEST_GREATER">
+<span class="sig-name descname"><span class="pre">STENCIL_TEST_GREATER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_TEST_GREATER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_TEST_NOTEQUAL">
+<span class="sig-name descname"><span class="pre">STENCIL_TEST_NOTEQUAL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_TEST_NOTEQUAL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_TEST_NEVER">
+<span class="sig-name descname"><span class="pre">STENCIL_TEST_NEVER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_TEST_NEVER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_TEST_ALWAYS">
+<span class="sig-name descname"><span class="pre">STENCIL_TEST_ALWAYS</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_TEST_ALWAYS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p><strong>Stencil Operations (pass, fail, zfail)</strong></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_OP_ZERO">
+<span class="sig-name descname"><span class="pre">STENCIL_OP_ZERO</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_OP_ZERO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_OP_KEEP">
+<span class="sig-name descname"><span class="pre">STENCIL_OP_KEEP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_OP_KEEP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_OP_REPLACE">
+<span class="sig-name descname"><span class="pre">STENCIL_OP_REPLACE</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_OP_REPLACE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_OP_INCREMENT_WRAP">
+<span class="sig-name descname"><span class="pre">STENCIL_OP_INCREMENT_WRAP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_OP_INCREMENT_WRAP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_OP_INCREMENT">
+<span class="sig-name descname"><span class="pre">STENCIL_OP_INCREMENT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_OP_INCREMENT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_OP_DECREMENT_WRAP">
+<span class="sig-name descname"><span class="pre">STENCIL_OP_DECREMENT_WRAP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_OP_DECREMENT_WRAP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_OP_DECREMENT">
+<span class="sig-name descname"><span class="pre">STENCIL_OP_DECREMENT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_OP_DECREMENT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="style.style.STENCIL_OP_INVERT">
+<span class="sig-name descname"><span class="pre">STENCIL_OP_INVERT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#style.style.STENCIL_OP_INVERT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
 <section id="text-style">
 <h2>Text Style<a class="headerlink" href="#text-style" title="Link to this heading">¶</a></h2>
 <dl class="lua function">
@@ -874,6 +1047,11 @@
 <li><a class="reference internal" href="#constants-blend-modes">Constants - Blend Modes</a></li>
 <li><a class="reference internal" href="#constants-blend-functions">Constants - Blend Functions</a></li>
 <li><a class="reference internal" href="#constants-blend-factors">Constants - Blend Factors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clipping">Clipping</a></li>
+<li><a class="reference internal" href="#stencil">Stencil</a><ul>
+<li><a class="reference internal" href="#constants-stencil">Constants - Stencil</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#text-style">Text Style</a><ul>

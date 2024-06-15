@@ -236,9 +236,291 @@
 <p>Module for accessing input devices such as touches, keyboard, mouse and gamepads</p>
 <section id="touches">
 <h2>Touches<a class="headerlink" href="#touches" title="Link to this heading">¶</a></h2>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="touch">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">touch</span></span><a class="headerlink" href="#touch" title="Link to this definition">¶</a></dt>
+<dd><p>Represents a single touch over time. Generated in response to touch events by the device in response to user interactions</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">id:</span> <span class="pre">number</span></span></dt>
+<dd><p>An id that can be used to uniquely identify the touch</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">state:</span> <span class="pre">enum</span></span></dt>
+<dd><p>The current state of the touch, can be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BEGAN</span></code> - the touch began this frame</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MOVING</span></code> - the touch moved this frame</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENDED</span></code> - the touch ended this frame</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> - the touch was cancelled (usually by another view or gesture recognizer)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">type:</span> <span class="pre">enum</span></span></dt>
+<dd><p>The type of touch, can be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.direct</span></code> - a touch resulting from direct contact with the screen</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.indirect</span></code> - a touch that does not result from direct contact with the screen</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.pencil</span></code> - a touch resulting from the pencil</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.pointer</span></code> - a touch resulting from a button based device</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">x:</span> <span class="pre">number</span></span></dt>
+<dd><p>The x position of the touch (in screen coordinates)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">y:</span> <span class="pre">number</span></span></dt>
+<dd><p>The y position of the touch (in screen coordinates)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">prevX:</span> <span class="pre">number</span></span></dt>
+<dd><p>The previous x position of the touch (in screen coordinates)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">prevY:</span> <span class="pre">number</span></span></dt>
+<dd><p>The previous y position of the touch (in screen coordinates)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">deltaX:</span> <span class="pre">number</span></span></dt>
+<dd><p>The x position delta of the touch (in screen coordinates)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">deltaY:</span> <span class="pre">number</span></span></dt>
+<dd><p>The y position delta of the touch (in screen coordinates)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pos:</span> <span class="pre">vec2</span></span></dt>
+<dd><p>The position of the touch (in screen coordinates) as a vector</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">prevPos:</span> <span class="pre">vec2</span></span></dt>
+<dd><p>The previous position of the touch (in screen coordinates) as a vector</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">delta:</span> <span class="pre">number</span></span></dt>
+<dd><p>The position delta of the touch (in screen coordinates) as a vector</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">force:</span> <span class="pre">number</span></span></dt>
+<dd><p>The amount of force being applied (only applies to pencil type touches)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">maxForce:</span> <span class="pre">number</span></span></dt>
+<dd><p>The maximum amount of force that can be applied (only applies to pencil type touches)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">timestamp:</span> <span class="pre">number</span></span></dt>
+<dd><p>The time when this touch event occured (only applies to pencil type touches)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">azimuth:</span> <span class="pre">number</span></span></dt>
+<dd><p>The azimuth angle of the pencil (only applies to pencil type touches)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">altitude:</span> <span class="pre">number</span></span></dt>
+<dd><p>The altitude angle of the pencil</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">radiusTolerance:</span> <span class="pre">number</span></span></dt>
+<dd><p>The amount the estimated radius can vary due to hardware tolerances</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">radius:</span> <span class="pre">number</span></span></dt>
+<dd><p>The estimated radius of the touch</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">precisePos:</span> <span class="pre">vec2</span></span></dt>
+<dd><p>The precise location of the touch (if available)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">precisePrevPos:</span> <span class="pre">vec2</span></span></dt>
+<dd><p>The previous precise location of the touch (if available)</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="gestures">
 <h2>Gestures<a class="headerlink" href="#gestures" title="Link to this heading">¶</a></h2>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="gesture">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture</span></span><a class="headerlink" href="#gesture" title="Link to this definition">¶</a></dt>
+<dd><p>Represents a single gesture event</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.state">
+<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#gesture.state" title="Link to this definition">¶</a></dt>
+<dd><p>The current state of the gesture</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.location">
+<span class="sig-name descname"><span class="pre">location</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#gesture.location" title="Link to this definition">¶</a></dt>
+<dd><p>The location of the gesture event on the screen</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.translation">
+<span class="sig-name descname"><span class="pre">translation</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#gesture.translation" title="Link to this definition">¶</a></dt>
+<dd><p>The translation of the gesture event relative to its starting location</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.delta">
+<span class="sig-name descname"><span class="pre">delta</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#gesture.delta" title="Link to this definition">¶</a></dt>
+<dd><p>The delta of the gesture event since last update</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.pinchScale">
+<span class="sig-name descname"><span class="pre">pinchScale</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gesture.pinchScale" title="Link to this definition">¶</a></dt>
+<dd><p>The scale of a pinch gesture relative to its starting distance</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.pinchDelta">
+<span class="sig-name descname"><span class="pre">pinchDelta</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gesture.pinchDelta" title="Link to this definition">¶</a></dt>
+<dd><p>The delta of the pinch distance since last update</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.pinchVelocity">
+<span class="sig-name descname"><span class="pre">pinchVelocity</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gesture.pinchVelocity" title="Link to this definition">¶</a></dt>
+<dd><p>The current change in pinch distance over time</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.rotationAngle">
+<span class="sig-name descname"><span class="pre">rotationAngle</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gesture.rotationAngle" title="Link to this definition">¶</a></dt>
+<dd><p>The current angle of a rotation gesture relative to its’ starting angle</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.rotationVelocity">
+<span class="sig-name descname"><span class="pre">rotationVelocity</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gesture.rotationVelocity" title="Link to this definition">¶</a></dt>
+<dd><p>The current change in rotation angle over time</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.touchCount">
+<span class="sig-name descname"><span class="pre">touchCount</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#gesture.touchCount" title="Link to this definition">¶</a></dt>
+<dd><p>The current number of touches associated with this gesture</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="gesture.tap">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture.tap</span></span><a class="headerlink" href="#gesture.tap" title="Link to this definition">¶</a></dt>
+<dd><p>Tap gesture recognizer (using system gesture recognizer for implementation)</p>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="gesture.tap.gesture.tap">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">tap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">minTouches</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">maxTouches</span> <span class="pre">=</span> <span class="pre">1</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#gesture.tap.gesture.tap" title="Link to this definition">¶</a></dt>
+<dd><p>Creates and registers a new tap gesture recognizer that will call <code class="docutils literal notranslate"><span class="pre">callback(gesture)</span></code> when recognized</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.tap.enabled">
+<span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#gesture.tap.enabled" title="Link to this definition">¶</a></dt>
+<dd><p>Enables/disables this gesture recognizer</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="gesture.pan">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture.pan</span></span><a class="headerlink" href="#gesture.pan" title="Link to this definition">¶</a></dt>
+<dd><p>Pan gesture recognizer (using system gesture recognizer for implementation)</p>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="gesture.pan.gesture.pan">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">pan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">minTouches</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">maxTouches</span> <span class="pre">=</span> <span class="pre">1</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#gesture.pan.gesture.pan" title="Link to this definition">¶</a></dt>
+<dd><p>Creates and registers a new pan gesture recognizer that will call <code class="docutils literal notranslate"><span class="pre">callback(gesture)</span></code> when recognized</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.pan.enabled">
+<span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#gesture.pan.enabled" title="Link to this definition">¶</a></dt>
+<dd><p>Enables/disables this gesture recognizer</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="gesture.pinch">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture.pinch</span></span><a class="headerlink" href="#gesture.pinch" title="Link to this definition">¶</a></dt>
+<dd><p>Pinch gesture recognizer (using system gesture recognizer for implementation)</p>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="gesture.pinch.gesture.pinch">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">pinch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gesture.pinch.gesture.pinch" title="Link to this definition">¶</a></dt>
+<dd><p>Creates and registers a new pinch gesture recognizer that will call <code class="docutils literal notranslate"><span class="pre">callback(gesture)</span></code> when recognized</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.pinch.enabled">
+<span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#gesture.pinch.enabled" title="Link to this definition">¶</a></dt>
+<dd><p>Enables/disables this gesture recognizer</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="gesture.rotation">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture.rotation</span></span><a class="headerlink" href="#gesture.rotation" title="Link to this definition">¶</a></dt>
+<dd><p>Rotation gesture recognizer (using system gesture recognizer for implementation)</p>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="gesture.rotation.gesture.rotation">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gesture.rotation.gesture.rotation" title="Link to this definition">¶</a></dt>
+<dd><p>Creates and registers a new rotation gesture recognizer that will call <code class="docutils literal notranslate"><span class="pre">callback(gesture)</span></code> when recognized</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.rotation.enabled">
+<span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#gesture.rotation.enabled" title="Link to this definition">¶</a></dt>
+<dd><p>Enables/disables this gesture recognizer</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="keyboard">
 <h2>Keyboard<a class="headerlink" href="#keyboard" title="Link to this heading">¶</a></h2>
