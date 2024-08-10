@@ -143,6 +143,10 @@ entity
 
       The number of children that this entity possesses
 
+   .. lua:attribute:: depth: integer
+
+      The depth of this entity in the hierarchy (roots have a depth of 0)
+
    .. lua:method:: index(name) [metamethod]
 
       Retrieves children with the supplied name using the property syntax (i.e. ``myEntity.theChildName``)
