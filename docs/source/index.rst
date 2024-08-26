@@ -62,6 +62,7 @@ Codea 4
    api/objc
    api/physics2d
    api/physics3d
+   api/viewer
 
 Indices and tables
 ==================
