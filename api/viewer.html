@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="2D Physics (Box 2D)" href="physics2d.html" /><link rel="prev" title="Assets" href="assets.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="physics3d" href="physics3d.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>Input - Codea 4.0 documentation</title>
+        <title>viewer - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -159,44 +159,44 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="codea_3x.html">Migration from Codea 3.x</a></li>
-<li class="toctree-l1"><a class="reference internal" href="codea.html">How Codea Works</a></li>
-<li class="toctree-l1"><a class="reference internal" href="drawing.html">Drawing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assets.html">Assets</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box 2D)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/codea_3x.html">Migration from Codea 3.x</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/assets.html">Assets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">math types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/matrix.html">matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/input.html">input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/image.html">image</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/mesh.html">mesh</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/shader.html">shader</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/gpu_noise_lib.html">GPU Noise Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">sound</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/scene.html">scene</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/entity.html">entity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/camera.html">camera</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/light.html">light</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/tween.html">tween</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/physics2d.html">physics2d</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/physics3d.html">physics3d</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">viewer</a></li>
 </ul>
 
 </div>
@@ -225,29 +225,65 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="input">
-<h1>Input<a class="headerlink" href="#input" title="Link to this heading">¶</a></h1>
-<section id="input-in-codea">
-<h2>Input in Codea<a class="headerlink" href="#input-in-codea" title="Link to this heading">¶</a></h2>
-</section>
-<section id="touches">
-<h2>Touches<a class="headerlink" href="#touches" title="Link to this heading">¶</a></h2>
-</section>
-<section id="key-presses">
-<h2>Key Presses<a class="headerlink" href="#key-presses" title="Link to this heading">¶</a></h2>
-</section>
-<section id="trackpad">
-<h2>Trackpad<a class="headerlink" href="#trackpad" title="Link to this heading">¶</a></h2>
-</section>
-<section id="hover">
-<h2>Hover<a class="headerlink" href="#hover" title="Link to this heading">¶</a></h2>
-</section>
+          <section id="module-viewer">
+<span id="viewer"></span><h1>viewer<a class="headerlink" href="#module-viewer" title="Link to this heading">¶</a></h1>
+<p>Exposes viewer properties common to both the legacy and modern runtimes.</p>
+<dl class="lua class">
+<dt class="sig sig-object lua" id="viewer.UIEdgeInsets">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">viewer.</span></span><span class="sig-name descname"><span class="pre">UIEdgeInsets</span></span><a class="headerlink" href="#viewer.UIEdgeInsets" title="Link to this definition">¶</a></dt>
+<dd><p>Used by the viewer’s safe area to indicate the insets for the top, left, bottom, and right of the screen.</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.UIEdgeInsets.top">
+<span class="sig-name descname"><span class="pre">top</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#viewer.viewer.UIEdgeInsets.top" title="Link to this definition">¶</a></dt>
+<dd><p>Top value of the UIEdgeInsets</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.UIEdgeInsets.left">
+<span class="sig-name descname"><span class="pre">left</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#viewer.viewer.UIEdgeInsets.left" title="Link to this definition">¶</a></dt>
+<dd><p>Left value of the UIEdgeInsets</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.UIEdgeInsets.bottom">
+<span class="sig-name descname"><span class="pre">bottom</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#viewer.viewer.UIEdgeInsets.bottom" title="Link to this definition">¶</a></dt>
+<dd><p>Bottom value of the UIEdgeInsets</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.UIEdgeInsets.right">
+<span class="sig-name descname"><span class="pre">right</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#viewer.viewer.UIEdgeInsets.right" title="Link to this definition">¶</a></dt>
+<dd><p>Right value of the UIEdgeInsets</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#viewer.viewer.mode" title="Link to this definition">¶</a></dt>
+<dd><p>The display mode of the viewer. You can use this to render your games and simulations in fullscreen mode, fullscreen mode without buttons, or the standard mode. The standard mode includes a sidebar with your output and parameters, as well as buttons to control project execution.</p>
+<p>Values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">STANDARD</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FULLSCREEN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FULLSCREEN_NO_BUTTONS</span></code></p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.safeArea">
+<span class="sig-name descname"><span class="pre">safeArea</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">viewer.UIEdgeInsets</span><a class="headerlink" href="#viewer.viewer.safeArea" title="Link to this definition">¶</a></dt>
+<dd><p>A UIEdgeInsets object with the current safe area insets of the viewer, which can be accessed using <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.top</span></code>, <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.left</span></code>, and <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.right</span></code></p>
+</dd></dl>
+
 </section>
 
         </article>
@@ -255,23 +291,15 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="physics2d.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">2D Physics (Box 2D)</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="assets.html">
+          
+          <a class="prev-page" href="physics3d.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Assets</div>
+                <div class="title">physics3d</div>
                 
               </div>
             </a>
@@ -293,31 +321,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Input</a><ul>
-<li><a class="reference internal" href="#input-in-codea">Input in Codea</a></li>
-<li><a class="reference internal" href="#touches">Touches</a></li>
-<li><a class="reference internal" href="#key-presses">Key Presses</a></li>
-<li><a class="reference internal" href="#trackpad">Trackpad</a></li>
-<li><a class="reference internal" href="#hover">Hover</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
