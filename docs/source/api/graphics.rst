@@ -10,6 +10,8 @@ Background
 
    Clears the current context with solid color, can also be used to set image backgrounds when combined with :lua:func:`context.push`
 
+   .. helptext:: set the background color, image or shader
+
 .. lua:function:: background(cubeImage, [mipLevel = 0])
 
    Clears the current background with the contents of a cube image, using the current camera settings to define eye direction
