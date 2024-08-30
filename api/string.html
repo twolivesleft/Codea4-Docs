@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="GPU Noise Library" href="gpu_noise_lib.html" /><link rel="prev" title="shader" href="shader.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>inspector - Codea 4.0 documentation</title>
+        <title>string - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -173,7 +173,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
@@ -184,7 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
-<li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
@@ -232,37 +232,53 @@
           </label>
         </div>
         <article role="main">
-          <section id="inspector">
-<h1>inspector<a class="headerlink" href="#inspector" title="Link to this heading">¶</a></h1>
-<p><em>(module)</em></p>
-<p>Module for viewing and manipulating objects in the sidebar inspector, an advanced alternative to parameters</p>
-<dl class="lua staticmethod" id="module-inspector">
-<dt class="sig sig-object lua" id="inspector.set">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#inspector.set" title="Link to this definition">¶</a></dt>
-<dd><p>Displays any viewable/editable properties and actions for <code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+          <section id="string">
+<h1>string<a class="headerlink" href="#string" title="Link to this heading">¶</a></h1>
+<p>Used to interact with text files.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Reading and saving text files</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span> <span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
+     <span class="kd">local</span> <span class="n">contentsOrNil</span> <span class="o">=</span> <span class="n">string</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="o">..</span><span class="s2">&quot;Hello.txt&quot;</span><span class="p">)</span>
+     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contents: &quot;</span> <span class="o">..</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">contentsOrNil</span><span class="p">))</span>
+     <span class="kr">if</span> <span class="n">test</span> <span class="o">==</span> <span class="s2">&quot;World&quot;</span> <span class="kr">then</span>
+         <span class="n">string</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">asset</span><span class="o">..</span><span class="s2">&quot;Hello.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+     <span class="kr">else</span>
+         <span class="n">string</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">asset</span><span class="o">..</span><span class="s2">&quot;Hello.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;World&quot;</span><span class="p">)</span>
+     <span class="kr">end</span>
+ <span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<dl class="lua function" id="module-string">
+<dt class="sig sig-object lua" id="string.read">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.read" title="Link to this definition">¶</a></dt>
+<dd><p>Reads the contents of a file as text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>assetKey</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">assetKey</span></code></span>) – The asset key of the file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The contents of the file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="lua staticmethod">
-<dt class="sig sig-object lua" id="inspector.add">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#inspector.add" title="Link to this definition">¶</a></dt>
-<dd><p>Appends <code class="docutils literal notranslate"><span class="pre">object</span></code>’s data to the inspector</p>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.save">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em>, <em class="sig-param"><span class="pre">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.save" title="Link to this definition">¶</a></dt>
+<dd><p>Saves text to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assetKey</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">assetKey</span></code></span>) – The asset key of the file.</p></li>
+<li><p><strong>text</strong> (<span><a class="reference internal" href="#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The text to save.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
-
-<dl class="lua staticmethod">
-<dt class="sig sig-object lua" id="inspector.push">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#inspector.push" title="Link to this definition">¶</a></dt>
-<dd><p>Pushes a new page onto the inspector stack and adds <code class="docutils literal notranslate"><span class="pre">object</span></code> to it</p>
-</dd></dl>
-
-<dl class="lua staticmethod">
-<dt class="sig sig-object lua" id="inspector.pop">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inspector.pop" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="lua staticmethod">
-<dt class="sig sig-object lua" id="inspector.clear">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inspector.clear" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </section>
 
@@ -271,8 +287,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="gpu_noise_lib.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">GPU Noise Library</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="shader.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">shader</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">

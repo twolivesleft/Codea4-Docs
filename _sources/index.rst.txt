@@ -50,6 +50,7 @@ Codea 4
    api/image
    api/mesh
    api/shader
+   api/string
    api/gpu_noise_lib
    api/material
    api/sound

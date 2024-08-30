@@ -184,6 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
@@ -348,7 +349,7 @@
 <dd><p>Returns a type which can be instantiated and used as an Objective-C delegate for the specified type.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<span><a class="reference internal" href="#objc.string" title="objc.string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The name of the delegate.</p>
+<dd class="field-odd"><p><strong>name</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The name of the delegate.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A type to be used as an Objective-C delegate.</p>
@@ -404,7 +405,7 @@
 <dd><p>Returns a type which can be instantiated and used as an Objective-C class, for example combined with a selector when registering for notifications through the NSNotificationCenter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<span><a class="reference internal" href="#objc.string" title="objc.string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The name of the class.</p>
+<dd class="field-odd"><p><strong>name</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The name of the class.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A type to be used as an Objective-C class.</p>
@@ -443,7 +444,7 @@
 <dd><p>Returns an Objective-C selector with the specified name which can be used in combination with an objc.class, for example to register for notifications through the NSNotificationCenter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<span><a class="reference internal" href="#objc.string" title="objc.string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The name of the selector.</p>
+<dd class="field-odd"><p><strong>name</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The name of the selector.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An Objective-C selector (or SEL).</p>
@@ -506,7 +507,7 @@
 <p>By default, strings returned from calls to Objective-C (or reading properties) are automatically converted to Lua strings and vice versa. If you need to access NSString methods, you can convert the strings to NSString using <code class="docutils literal notranslate"><span class="pre">objc.string</span></code>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>text</strong> (<span><a class="reference internal" href="#objc.string" title="objc.string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The text to convert to an NSString.</p>
+<dd class="field-odd"><p><strong>text</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The text to convert to an NSString.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An Objective-C NSString.</p>
@@ -632,7 +633,7 @@
 <dd><p>Log a message using NSLog instead of the Codea console.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>message</strong> (<span><a class="reference internal" href="#objc.string" title="objc.string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – Message to display.</p>
+<dd class="field-odd"><p><strong>message</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – Message to display.</p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>

@@ -33,10 +33,44 @@ General
 
    Disables fill
 
-.. lua:function:: stroke(<color>)
-                  stroke() -> r, g, b, a
+.. lua:function:: stroke()
 
-   Sets/gets the stroke color for use in vector drawing operations
+   Gets the current stroke color for use in vector drawing operations
+
+   .. helptext:: get the stroke color
+   
+.. lua:function:: stroke(color)
+
+   Sets the stroke color to the specified color, or a grayscale value
+
+   .. helptext:: set the stroke color
+
+   :param color: The color to set the stroke to, or a grayscale value
+   :type color: color or number
+
+.. lua:function:: stroke(gray, alpha)
+
+   Sets the stroke color to the specified grayscale value and alpha
+
+   :param number gray: The grayscale value to set the stroke to
+   :param number alpha: The alpha value to set the stroke to
+
+.. lua:function:: stroke(red, green, blue)
+
+   Sets the stroke color to the specified red, green, and blue values
+
+   :param number red: The red value to set the stroke to
+   :param number green: The green value to set the stroke to
+   :param number blue: The blue value to set the stroke to
+
+.. lua:function:: stroke(red, green, blue, alpha)
+
+   Sets the stroke color to the specified red, green, blue, and alpha values
+
+   :param number red: The red value to set the stroke to
+   :param number green: The green value to set the stroke to
+   :param number blue: The blue value to set the stroke to
+   :param number alpha: The alpha value to set the stroke to
 
 .. lua:function:: noStroke()
 

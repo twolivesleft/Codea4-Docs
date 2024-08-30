@@ -184,6 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
@@ -234,36 +235,6 @@
           <section id="module-viewer">
 <span id="viewer"></span><h1>viewer<a class="headerlink" href="#module-viewer" title="Link to this heading">¶</a></h1>
 <p>Exposes viewer properties common to both the legacy and modern runtimes.</p>
-<dl class="lua class">
-<dt class="sig sig-object lua" id="viewer.UIEdgeInsets">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">viewer.</span></span><span class="sig-name descname"><span class="pre">UIEdgeInsets</span></span><a class="headerlink" href="#viewer.UIEdgeInsets" title="Link to this definition">¶</a></dt>
-<dd><p>Used by the viewer’s safe area to indicate the insets for the top, left, bottom, and right of the screen.</p>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="viewer.viewer.UIEdgeInsets.top">
-<span class="sig-name descname"><span class="pre">top</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#viewer.viewer.UIEdgeInsets.top" title="Link to this definition">¶</a></dt>
-<dd><p>Top value of the UIEdgeInsets</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="viewer.viewer.UIEdgeInsets.left">
-<span class="sig-name descname"><span class="pre">left</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#viewer.viewer.UIEdgeInsets.left" title="Link to this definition">¶</a></dt>
-<dd><p>Left value of the UIEdgeInsets</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="viewer.viewer.UIEdgeInsets.bottom">
-<span class="sig-name descname"><span class="pre">bottom</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#viewer.viewer.UIEdgeInsets.bottom" title="Link to this definition">¶</a></dt>
-<dd><p>Bottom value of the UIEdgeInsets</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="viewer.viewer.UIEdgeInsets.right">
-<span class="sig-name descname"><span class="pre">right</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#viewer.viewer.UIEdgeInsets.right" title="Link to this definition">¶</a></dt>
-<dd><p>Right value of the UIEdgeInsets</p>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="viewer.viewer.mode">
 <span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#viewer.viewer.mode" title="Link to this definition">¶</a></dt>
@@ -280,8 +251,18 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="viewer.viewer.safeArea">
-<span class="sig-name descname"><span class="pre">safeArea</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">viewer.UIEdgeInsets</span><a class="headerlink" href="#viewer.viewer.safeArea" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">safeArea</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#viewer.viewer.safeArea" title="Link to this definition">¶</a></dt>
 <dd><p>A UIEdgeInsets object with the current safe area insets of the viewer, which can be accessed using <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.top</span></code>, <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.left</span></code>, and <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.right</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>top</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The top inset of the safe area.</p></li>
+<li><p><strong>bottom</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The bottom inset of the safe area.</p></li>
+<li><p><strong>left</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The left inset of the safe area.</p></li>
+<li><p><strong>right</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The right inset of the safe area.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
