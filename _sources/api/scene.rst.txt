@@ -15,15 +15,15 @@ scene
             scene.main = scene.default3d()
          end
 
-   .. lua:staticmethod:: scene.default3d()
+   .. lua:staticmethod:: scene.default3d([name])
 
-      Creates the default 3D scene containing a perspective camera, directional light and HDR environment
+      Creates the default 3D scene containing a perspective camera, directional light and HDR environment, with an optional name
 
       :rtype: scene
 
-   .. lua:staticmethod:: scene.default2d()
+   .. lua:staticmethod:: scene.default2d([name])
 
-      Creates the default 2D scene containing an orthographic camera
+      Creates the default 2D scene containing an orthographic camera, with an optional name
 
       :rtype: scene
 
@@ -36,6 +36,10 @@ scene
    .. lua:staticmethod:: scene.save(key, scene)
 
       Saves the supplied scene at the given asset key location
+
+   .. lua:attribute:: name: string
+
+      Gets or sets a name for this scene
 
    .. lua:attribute:: world2d: physics2d.world
 

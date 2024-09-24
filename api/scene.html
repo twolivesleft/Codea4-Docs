@@ -251,8 +251,8 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="scene.default3d">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">default3d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.default3d" title="Link to this definition">¶</a></dt>
-<dd><p>Creates the default 3D scene containing a perspective camera, directional light and HDR environment</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">default3d</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">name</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.default3d" title="Link to this definition">¶</a></dt>
+<dd><p>Creates the default 3D scene containing a perspective camera, directional light and HDR environment, with an optional name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">scene</span></code></span></p>
@@ -262,8 +262,8 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="scene.default2d">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">default2d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.default2d" title="Link to this definition">¶</a></dt>
-<dd><p>Creates the default 2D scene containing an orthographic camera</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">default2d</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">name</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.default2d" title="Link to this definition">¶</a></dt>
+<dd><p>Creates the default 2D scene containing an orthographic camera, with an optional name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">scene</span></code></span></p>
@@ -286,6 +286,12 @@
 <dt class="sig sig-object lua" id="scene.save">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">scene</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scene.save" title="Link to this definition">¶</a></dt>
 <dd><p>Saves the supplied scene at the given asset key location</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="scene.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#scene.name" title="Link to this definition">¶</a></dt>
+<dd><p>Gets or sets a name for this scene</p>
 </dd></dl>
 
 <dl class="lua attribute">

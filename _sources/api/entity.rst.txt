@@ -26,9 +26,13 @@ entity
 
       Checks the validity of this entity. When an entity is destroyed it is invalid and can no longer be used. non-valid entities will raise errors when calling functions or accessing properties
 
+   .. lua:attribute:: id: integer
+
+      A read-only identifier unique to the entity
+
    .. lua:attribute:: name: string
 
-      The name of the entity, useful wehen referring to the entity later using the :lua:class:`scene` and :lua:class:`entity` indexers
+      The name of the entity, useful when referring to the entity later using the :lua:class:`scene` and :lua:class:`entity` indexers
 
       .. code-block:: lua
 
