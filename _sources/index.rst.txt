@@ -64,6 +64,7 @@ Codea 4
    api/physics2d
    api/physics3d
    api/viewer
+   api/device
 
 Indices and tables
 ==================
