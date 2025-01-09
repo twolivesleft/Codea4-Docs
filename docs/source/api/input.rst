@@ -240,19 +240,20 @@ Keyboard
 
    Queries the current key modifiers as a bit field, which is composed of the following bit mask constants:
 
-   - :lua:attr:`key.leftAlt`
-   - :lua:attr:`key.rightAlt`
    - :lua:attr:`key.alt`
-   - :lua:attr:`key.leftCtrl`
-   - :lua:attr:`key.rightCtrl`
    - :lua:attr:`key.ctrl`
-   - :lua:attr:`key.leftCmd`
-   - :lua:attr:`key.rightCmd`
    - :lua:attr:`key.cmd`
+   - :lua:attr:`key.shift`
 
-   :param keyCode: The keyCode to query
-   :type keyCode: constant
-   :return: Was the key released this frame
+   Use `key.pressing(keyCode)` to query individual keys such as `key.leftAlt`.
+
+.. lua:function:: modifiersPressed(modifiers)
+
+   Queries whether the supplied key modifiers are currently pressed
+
+   :param modifiers: The key modifiers to query as a bit field
+   :type modifiers: constant
+   :return: Are the key modifiers currently pressed
    :rtype: boolean
 
 Constants - Key Codes
@@ -267,6 +268,9 @@ Constants - Key Codes
 .. lua:attribute:: leftCmd: const
 .. lua:attribute:: rightCmd: const
 .. lua:attribute:: cmd: const
+.. lua:attribute:: leftShift: const
+.. lua:attribute:: rightShift: const
+.. lua:attribute:: shift: const
 .. lua:attribute:: esc: const
 .. lua:attribute:: return: const
 .. lua:attribute:: tab: const
