@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>graphics commands - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -263,27 +263,27 @@
 <em class="property"> </em><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shader</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Clears the current background using a custom shader</p>
 <details class="summary-example">
-<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-    <span class="c1">-- Create a custom background shader</span>
-    <span class="n">skybox</span> <span class="o">=</span> <span class="n">shader</span><span class="p">{</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Skybox&quot;</span><span class="p">,</span>
-        
-        <span class="n">properties</span> <span class="o">=</span>
-        <span class="p">{</span>
-            <span class="p">{</span><span class="s2">&quot;environment&quot;</span><span class="p">,</span> <span class="s2">&quot;texture&quot;</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;mipLevel&quot;</span><span class="p">,</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
-        <span class="p">},</span>
-        
-        <span class="n">pass</span> <span class="o">=</span>
-        <span class="p">{</span>
-            <span class="n">cullFace</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="c1">-- backgrounds don&#39;t need culling</span>
-            <span class="n">depthWrite</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">-- no need to write to depth buffer</span>
-            <span class="n">depthFunc</span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span> <span class="c1">-- no need for depth testing</span>
-            <span class="n">blendMode</span> <span class="o">=</span> <span class="s2">&quot;disabled&quot;</span><span class="p">,</span> <span class="c1">-- no need for blending</span>
-            <span class="n">renderQueue</span> <span class="o">=</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span> <span class="c1">-- render behind everything else</span>
-            
-            <span class="n">vertex</span> <span class="o">=</span>
-            <span class="s">[[</span>
+<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- Create a custom background shader</span>
+<span class="w">    </span><span class="nv">skybox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span><span class="p">{</span>
+<span class="w">        </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Skybox&quot;</span><span class="p">,</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="nv">properties</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="p">{</span><span class="s2">&quot;environment&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;texture&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="s2">&quot;mipLevel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;float&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="nv">pass</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nv">cullFace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;none&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">-- backgrounds don&#39;t need culling</span>
+<span class="w">            </span><span class="nv">depthWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">-- no need to write to depth buffer</span>
+<span class="w">            </span><span class="nv">depthFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">-- no need for depth testing</span>
+<span class="w">            </span><span class="nv">blendMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;disabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">-- no need for blending</span>
+<span class="w">            </span><span class="nv">renderQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;background&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">-- render behind everything else</span>
+<span class="w">            </span>
+<span class="w">            </span><span class="nv">vertex</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="s">[[</span>
 <span class="s">            #version 430</span>
 <span class="s">            #include &lt;codea/common.glsl&gt;</span>
 <span class="s">            </span>
@@ -300,9 +300,9 @@
 <span class="s">                gl_Position = vec4(a_position.xy, 1, 1);</span>
 <span class="s">            }</span>
 <span class="s">            ]]</span><span class="p">,</span>
-    
-            <span class="n">fragment</span> <span class="o">=</span>
-            <span class="s">[[       </span>
+<span class="w">    </span>
+<span class="w">            </span><span class="nv">fragment</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="s">[[       </span>
 <span class="s">                #version 430</span>
 <span class="s">                #include &lt;codea/common.glsl&gt;</span>
 <span class="s">    </span>
@@ -320,25 +320,25 @@
 <span class="s">                    fragColor = vec4(col, 1.0);</span>
 <span class="s">                }</span>
 <span class="s">            ]]</span><span class="p">,</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-    <span class="kd">local</span> <span class="n">hdr</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">cube</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">hdr</span><span class="p">.</span><span class="n">Norway_Forest</span><span class="p">))</span>
-    <span class="n">skybox</span><span class="p">.</span><span class="n">environment</span> <span class="o">=</span> <span class="n">hdr</span><span class="p">:</span><span class="n">generateIrradiance</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">hdr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">cube</span><span class="p">(</span><span class="nv">image</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">hdr</span><span class="p">.</span><span class="py">Norway_Forest</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">skybox</span><span class="p">.</span><span class="py">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">hdr</span><span class="p">:</span><span class="nf">generateIrradiance</span><span class="p">()</span>
 
-    <span class="c1">-- Test mip level adjustment</span>
-    <span class="n">parameter</span><span class="p">.</span><span class="n">number</span><span class="p">(</span><span class="s2">&quot;MipLevel&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">mip</span><span class="p">)</span>
-        <span class="n">skybox</span><span class="p">.</span><span class="n">mipLevel</span> <span class="o">=</span> <span class="n">mip</span>
-    <span class="kr">end</span><span class="p">)</span>  
+<span class="w">    </span><span class="c1">-- Test mip level adjustment</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">number</span><span class="p">(</span><span class="s2">&quot;MipLevel&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">mip</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">skybox</span><span class="p">.</span><span class="py">mipLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mip</span>
+<span class="w">    </span><span class="kr">end</span><span class="p">)</span><span class="w">  </span>
 
-    <span class="n">parameter</span><span class="p">.</span><span class="n">vec2</span><span class="p">(</span><span class="s2">&quot;Rotation&quot;</span><span class="p">,</span> <span class="n">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">vec2</span><span class="p">(</span><span class="s2">&quot;Rotation&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="kr">end</span>
 
-<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
-    <span class="n">matrix</span><span class="p">.</span><span class="n">perspective</span><span class="p">()</span> 
-    <span class="kd">local</span> <span class="n">v</span> <span class="o">=</span> <span class="n">mat4</span><span class="p">.</span><span class="n">orbit</span><span class="p">(</span><span class="n">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Rotation</span><span class="p">:</span><span class="n">unpack</span><span class="p">())</span>    
-    <span class="n">matrix</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-    <span class="n">background</span><span class="p">(</span><span class="n">skybox</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">perspective</span><span class="p">()</span><span class="w"> </span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mat4</span><span class="p">.</span><span class="nf">orbit</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">Rotation</span><span class="p">:</span><span class="nf">unpack</span><span class="p">())</span><span class="w">    </span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">view</span><span class="p">(</span><span class="nv">v</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="nv">skybox</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>
@@ -542,102 +542,102 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> - the color the of the current glyph</p></li>
 </ul>
 <details class="summary-example">
-<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-    <span class="n">text</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">format</span><span class="p">)</span>
-        <span class="kd">local</span> <span class="n">height</span> <span class="o">=</span> <span class="n">tag</span><span class="p">:</span><span class="n">number</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                   
-        <span class="n">format</span><span class="p">.</span><span class="n">fillColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">red</span>
-        <span class="n">format</span><span class="p">.</span><span class="n">textStyle</span> <span class="o">=</span> <span class="n">format</span><span class="p">.</span><span class="n">textStyle</span> <span class="o">|</span> <span class="n">TEXT_ITALICS</span> <span class="o">|</span> <span class="n">TEXT_BOLD</span>
-        <span class="n">format</span><span class="p">.</span><span class="n">callback</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mod</span><span class="p">)</span>
-            <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">=</span> <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">+</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="n">elapsed</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">height</span>
-        <span class="kr">end</span>
-    <span class="kr">end</span>
-    
-    <span class="n">text</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">shake</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">format</span><span class="p">)</span>
-        <span class="kd">local</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">tag</span><span class="p">:</span><span class="n">number</span><span class="p">(</span><span class="s2">&quot;intensity&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                   
-        
-        <span class="n">format</span><span class="p">.</span><span class="n">callback</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mod</span><span class="p">)</span>
-            <span class="kd">local</span> <span class="n">r1</span> <span class="o">=</span> <span class="p">(</span><span class="nb">math.random</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">intensity</span>
-            <span class="kd">local</span> <span class="n">r2</span> <span class="o">=</span> <span class="p">(</span><span class="nb">math.random</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">intensity</span>
-            
-            <span class="n">mod</span><span class="p">.</span><span class="n">offsetX</span> <span class="o">=</span> <span class="n">mod</span><span class="p">.</span><span class="n">offsetX</span> <span class="o">+</span> <span class="n">r1</span>
-            <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">=</span> <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">+</span> <span class="n">r2</span>
-        <span class="kr">end</span>
-    <span class="kr">end</span>
-    
-    <span class="n">text</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">appear</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">format</span><span class="p">)</span>
-        <span class="kd">local</span> <span class="n">t</span> <span class="o">=</span> <span class="n">timer</span> <span class="o">*</span> <span class="n">tag</span><span class="p">:</span><span class="n">number</span><span class="p">(</span><span class="s2">&quot;speed&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>                   
-                
-        <span class="n">format</span><span class="p">.</span><span class="n">callback</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mod</span><span class="p">)</span>
-            <span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">math.min</span><span class="p">(</span><span class="nb">math.max</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">i</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)</span>
-            <span class="kd">local</span> <span class="n">len</span> <span class="o">=</span> <span class="n">str</span><span class="p">:</span><span class="n">len</span><span class="p">()</span>
-            <span class="n">mod</span><span class="p">.</span><span class="n">offsetY</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="nb">math.pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-            <span class="n">mod</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">255</span>        
-        <span class="kr">end</span>
-    <span class="kr">end</span>
-    
-    <span class="n">parameter</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;appear speed=&#39;15&#39;&gt;&lt;b&gt;This&lt;/b&gt; line will appear and &lt;shake intensity = &#39;2&#39;&gt;shake&lt;/shake&gt; and &lt;wave height=&#39;5&#39;&gt;wave&lt;/wave&gt; and might wrap at some point...&lt;/appear&gt;&quot;</span><span class="p">)</span>
-    <span class="c1">--parameter.text(&quot;str&quot;, &quot;Here is a line of text that might wrap at some point...&quot;)</span>
-    <span class="n">parameter</span><span class="p">.</span><span class="n">integer</span><span class="p">(</span><span class="s2">&quot;fontSize&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>    
-    <span class="n">parameter</span><span class="p">.</span><span class="n">number</span><span class="p">(</span><span class="s2">&quot;WaveHeight&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">parameter</span><span class="p">.</span><span class="n">enumerated</span><span class="p">(</span><span class="s2">&quot;TextAlignH&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;LEFT&quot;</span><span class="p">,</span> <span class="s2">&quot;CENTER&quot;</span><span class="p">,</span> <span class="s2">&quot;RIGHT&quot;</span><span class="p">},</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">parameter</span><span class="p">.</span><span class="n">enumerated</span><span class="p">(</span><span class="s2">&quot;TextAlignV&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;BOTTOM&quot;</span><span class="p">,</span> <span class="s2">&quot;MIDDLE&quot;</span><span class="p">,</span> <span class="s2">&quot;TOP&quot;</span><span class="p">},</span> <span class="mi">2</span><span class="p">)</span>
-    
-    <span class="n">parameter</span><span class="p">.</span><span class="n">action</span><span class="p">(</span><span class="s2">&quot;Reset&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span> <span class="n">timer</span> <span class="o">=</span> <span class="mi">0</span> <span class="kr">end</span><span class="p">)</span>
-    
-    <span class="n">alignH</span> <span class="o">=</span> <span class="p">{</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">CENTER</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">}</span>
-    <span class="n">alignV</span> <span class="o">=</span> <span class="p">{</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">MIDDLE</span><span class="p">,</span> <span class="n">TOP</span><span class="p">}</span>
-    <span class="n">timer</span> <span class="o">=</span> <span class="mi">0</span>
-    
-    <span class="cm">--[[</span>
+<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">text</span><span class="p">.</span><span class="py">style</span><span class="p">.</span><span class="py">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">tag</span><span class="p">,</span><span class="w"> </span><span class="nv">format</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">tag</span><span class="p">:</span><span class="nf">number</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">                   </span>
+<span class="w">        </span><span class="nv">format</span><span class="p">.</span><span class="py">fillColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">color</span><span class="p">.</span><span class="py">red</span>
+<span class="w">        </span><span class="nv">format</span><span class="p">.</span><span class="py">textStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">format</span><span class="p">.</span><span class="py">textStyle</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">TEXT_ITALICS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">TEXT_BOLD</span>
+<span class="w">        </span><span class="nv">format</span><span class="p">.</span><span class="py">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">str</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">mod</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">mod</span><span class="p">.</span><span class="py">offsetY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mod</span><span class="p">.</span><span class="py">offsetY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">math.sin</span><span class="p">(</span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="o">*</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">height</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">text</span><span class="p">.</span><span class="py">style</span><span class="p">.</span><span class="py">shake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">tag</span><span class="p">,</span><span class="w"> </span><span class="nv">format</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">intensity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">tag</span><span class="p">:</span><span class="nf">number</span><span class="p">(</span><span class="s2">&quot;intensity&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">                   </span>
+<span class="w">        </span>
+<span class="w">        </span><span class="nv">format</span><span class="p">.</span><span class="py">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">str</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">mod</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">local</span><span class="w"> </span><span class="nv">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nb">math.random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">intensity</span>
+<span class="w">            </span><span class="kd">local</span><span class="w"> </span><span class="nv">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nb">math.random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">intensity</span>
+<span class="w">            </span>
+<span class="w">            </span><span class="nv">mod</span><span class="p">.</span><span class="py">offsetX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mod</span><span class="p">.</span><span class="py">offsetX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">r1</span>
+<span class="w">            </span><span class="nv">mod</span><span class="p">.</span><span class="py">offsetY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mod</span><span class="p">.</span><span class="py">offsetY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">r2</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">text</span><span class="p">.</span><span class="py">style</span><span class="p">.</span><span class="py">appear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">tag</span><span class="p">,</span><span class="w"> </span><span class="nv">format</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">timer</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">tag</span><span class="p">:</span><span class="nf">number</span><span class="p">(</span><span class="s2">&quot;speed&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">                   </span>
+<span class="w">                </span>
+<span class="w">        </span><span class="nv">format</span><span class="p">.</span><span class="py">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">str</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">mod</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">local</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.min</span><span class="p">(</span><span class="nb">math.max</span><span class="p">(</span><span class="nv">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">local</span><span class="w"> </span><span class="nv">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">str</span><span class="p">:</span><span class="nf">len</span><span class="p">()</span>
+<span class="w">            </span><span class="nv">mod</span><span class="p">.</span><span class="py">offsetY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">math.cos</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">math.pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">mod</span><span class="p">.</span><span class="py">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="w">        </span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">text</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;appear speed=&#39;15&#39;&gt;&lt;b&gt;This&lt;/b&gt; line will appear and &lt;shake intensity = &#39;2&#39;&gt;shake&lt;/shake&gt; and &lt;wave height=&#39;5&#39;&gt;wave&lt;/wave&gt; and might wrap at some point...&lt;/appear&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">--parameter.text(&quot;str&quot;, &quot;Here is a line of text that might wrap at some point...&quot;)</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">integer</span><span class="p">(</span><span class="s2">&quot;fontSize&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span><span class="w">    </span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">number</span><span class="p">(</span><span class="s2">&quot;WaveHeight&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">enumerated</span><span class="p">(</span><span class="s2">&quot;TextAlignH&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;LEFT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CENTER&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;RIGHT&quot;</span><span class="p">},</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">enumerated</span><span class="p">(</span><span class="s2">&quot;TextAlignV&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;BOTTOM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MIDDLE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;TOP&quot;</span><span class="p">},</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">action</span><span class="p">(</span><span class="s2">&quot;Reset&quot;</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nv">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kr">end</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">alignH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">LEFT</span><span class="p">,</span><span class="w"> </span><span class="nv">CENTER</span><span class="p">,</span><span class="w"> </span><span class="nv">RIGHT</span><span class="p">}</span>
+<span class="w">    </span><span class="nv">alignV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">BOTTOM</span><span class="p">,</span><span class="w"> </span><span class="nv">MIDDLE</span><span class="p">,</span><span class="w"> </span><span class="nv">TOP</span><span class="p">}</span>
+<span class="w">    </span><span class="nv">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="cm">--[[</span>
 <span class="cm">    scn = scene.default3d()</span>
 <span class="cm">    local rig = scn.camera:add(camera.rigs.orbit)</span>
 <span class="cm">    rig.distance = 50</span>
 <span class="cm">    rig.angles.y = -45    </span>
 <span class="cm">    rig.angles.y = -75</span>
 <span class="cm">    scene.main = scn--]]</span>
-    
-    
+<span class="w">    </span>
+<span class="w">    </span>
 <span class="kr">end</span>
 
-<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
 
-    <span class="kd">local</span> <span class="n">boxWidth</span> <span class="o">=</span> <span class="mi">400</span>
-    <span class="kd">local</span> <span class="n">boxHeight</span> <span class="o">=</span> <span class="mi">200</span>
-    
-    <span class="n">background</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-    
-    <span class="c1">--matrix.ortho()</span>
-    
-    <span class="c1">-- Setup the text drawing style</span>
-    <span class="n">style</span><span class="p">.</span><span class="n">font</span><span class="p">(</span><span class="s2">&quot;Arial&quot;</span><span class="p">)</span>
-    <span class="n">style</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">cyan</span><span class="p">).</span><span class="n">fontSize</span><span class="p">(</span><span class="n">fontSize</span><span class="p">)</span>
-    
-    <span class="n">matrix</span><span class="p">.</span><span class="n">transform3d</span><span class="p">(</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">50</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">boxHeight</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="c1">--matrix.transform3d(0, 0, 0, 0.1, 0.1, 0.1, 0, 0, 0)</span>
-        
-    <span class="n">style</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
-    <span class="n">style</span><span class="p">.</span><span class="n">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="n">textStyle</span><span class="p">(</span><span class="n">TEXT_RICH</span><span class="p">)</span>
-    <span class="c1">--style.noStroke()</span>
-    <span class="n">style</span><span class="p">.</span><span class="n">textAlign</span><span class="p">(</span><span class="n">alignH</span><span class="p">[</span><span class="n">TextAlignH</span><span class="p">]</span> <span class="o">|</span> <span class="n">alignV</span><span class="p">[</span><span class="n">TextAlignV</span><span class="p">])</span>
-    
-    <span class="kd">local</span> <span class="n">so</span> <span class="o">=</span> <span class="p">(</span><span class="n">CurrentTouch</span><span class="p">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">vec2</span><span class="p">(</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="mf">0.1</span>
-    
-    <span class="n">style</span><span class="p">.</span><span class="n">textShadow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">).</span><span class="n">textShadowSoftner</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">textShadowOffset</span><span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">so</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
-        
-    <span class="c1">-- Cache some locals for performance</span>
-    <span class="kd">local</span> <span class="n">len</span> <span class="o">=</span> <span class="n">str</span><span class="p">:</span><span class="n">len</span><span class="p">()</span>
-    <span class="kd">local</span> <span class="n">cps</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="kd">local</span> <span class="n">t</span> <span class="o">=</span> <span class="n">timer</span> <span class="o">*</span> <span class="mi">5</span>
-    <span class="kd">local</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="nb">string.find</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">)</span>
-    
-    <span class="n">text</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">boxWidth</span><span class="p">,</span> <span class="n">boxHeight</span><span class="p">)</span>
-    
-    <span class="n">timer</span> <span class="o">=</span> <span class="n">timer</span> <span class="o">+</span> <span class="n">time</span><span class="p">.</span><span class="n">delta</span>
-    
-    <span class="c1">-- Draw the text&#39;s bounding box and origin</span>
-    <span class="n">style</span><span class="p">.</span><span class="n">noFill</span><span class="p">().</span><span class="n">stroke</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">yellow</span><span class="p">).</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">boxWidth</span><span class="p">,</span> <span class="n">boxHeight</span><span class="p">)</span>
-    <span class="n">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">boxWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">400</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">boxHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">--matrix.ortho()</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">-- Setup the text drawing style</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">font</span><span class="p">(</span><span class="s2">&quot;Arial&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="nv">color</span><span class="p">.</span><span class="py">cyan</span><span class="p">).</span><span class="nf">fontSize</span><span class="p">(</span><span class="nv">fontSize</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">transform3d</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">boxHeight</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">--matrix.transform3d(0, 0, 0, 0.1, 0.1, 0.1, 0, 0, 0)</span>
+<span class="w">        </span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="nf">textStyle</span><span class="p">(</span><span class="nv">TEXT_RICH</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">--style.noStroke()</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">textAlign</span><span class="p">(</span><span class="nv">alignH</span><span class="p">[</span><span class="nv">TextAlignH</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">alignV</span><span class="p">[</span><span class="nv">TextAlignV</span><span class="p">])</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">so</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">CurrentTouch</span><span class="p">.</span><span class="py">pos</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.1</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">textShadow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">).</span><span class="nf">textShadowSoftner</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="nf">textShadowOffset</span><span class="p">(</span><span class="nv">so</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">so</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="w">        </span>
+<span class="w">    </span><span class="c1">-- Cache some locals for performance</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">str</span><span class="p">:</span><span class="nf">len</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">cps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">timer</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">r1</span><span class="p">,</span><span class="w"> </span><span class="nv">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.find</span><span class="p">(</span><span class="nv">str</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nf">text</span><span class="p">(</span><span class="nv">str</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">boxWidth</span><span class="p">,</span><span class="w"> </span><span class="nv">boxHeight</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">timer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">time</span><span class="p">.</span><span class="py">delta</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">-- Draw the text&#39;s bounding box and origin</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">noFill</span><span class="p">().</span><span class="nf">stroke</span><span class="p">(</span><span class="nv">color</span><span class="p">.</span><span class="py">yellow</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">boxWidth</span><span class="p">,</span><span class="w"> </span><span class="nv">boxHeight</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>

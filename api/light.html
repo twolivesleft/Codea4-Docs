@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>light - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -238,38 +238,38 @@
 <p>Casts a light source onto the 3D environment. Can be used with basic immediate mode rendering or as an entity component in scenes</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Using a light as a component in a scene</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-   <span class="c1">-- Create a basic scene with a single directional light source</span>
-   <span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
-   <span class="n">sun</span> <span class="o">=</span> <span class="n">scn</span><span class="p">:</span><span class="n">entity</span><span class="p">(</span><span class="s2">&quot;sun&quot;</span><span class="p">)</span>
-   <span class="n">sun</span><span class="p">.</span><span class="n">eulerRotation</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-   <span class="n">sunLight</span> <span class="o">=</span> <span class="n">sun</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">light</span><span class="p">.</span><span class="n">directional</span><span class="p">(</span><span class="n">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)))</span>
-   <span class="n">sunLight</span><span class="p">.</span><span class="n">castShadows</span> <span class="o">=</span> <span class="kc">true</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">   </span><span class="c1">-- Create a basic scene with a single directional light source</span>
+<span class="w">   </span><span class="nv">scn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
+<span class="w">   </span><span class="nv">sun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;sun&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">sun</span><span class="p">.</span><span class="py">eulerRotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">sunLight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sun</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">light</span><span class="p">.</span><span class="nf">directional</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)))</span>
+<span class="w">   </span><span class="nv">sunLight</span><span class="p">.</span><span class="py">castShadows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 
-   <span class="c1">-- Add a model to represent the sun</span>
-   <span class="n">sun</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">.</span><span class="n">cone</span><span class="p">())</span>
-   <span class="n">sun</span><span class="p">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">material</span><span class="p">.</span><span class="n">unlit</span><span class="p">()</span>
-   <span class="n">sun</span><span class="p">.</span><span class="n">material</span><span class="p">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">yellow</span>
+<span class="w">   </span><span class="c1">-- Add a model to represent the sun</span>
+<span class="w">   </span><span class="nv">sun</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">cone</span><span class="p">())</span>
+<span class="w">   </span><span class="nv">sun</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">material</span><span class="p">.</span><span class="nf">unlit</span><span class="p">()</span>
+<span class="w">   </span><span class="nv">sun</span><span class="p">.</span><span class="py">material</span><span class="p">.</span><span class="py">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">color</span><span class="p">.</span><span class="py">yellow</span>
 
-   <span class="n">sun</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">sun</span><span class="p">.</span><span class="py">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 
-   <span class="n">inspector</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">sun</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">inspector</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nv">sun</span><span class="p">)</span>
 
-   <span class="n">cam</span> <span class="o">=</span> <span class="n">scn</span><span class="p">:</span><span class="n">entity</span><span class="p">(</span><span class="s2">&quot;camera&quot;</span><span class="p">)</span>
-   <span class="n">cam</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">camera</span><span class="p">.</span><span class="n">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
-   <span class="n">cam</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">camera</span><span class="p">.</span><span class="n">rigs</span><span class="p">.</span><span class="n">orbit</span><span class="p">)</span>
-   <span class="n">cam</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="w">   </span><span class="nv">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;camera&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">cam</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
+<span class="w">   </span><span class="nv">cam</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="py">rigs</span><span class="p">.</span><span class="py">orbit</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">cam</span><span class="p">.</span><span class="py">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">10</span>
 
-   <span class="c1">-- Some stuff to light</span>
-   <span class="n">sphere</span> <span class="o">=</span> <span class="n">scn</span><span class="p">:</span><span class="n">entity</span><span class="p">(</span><span class="s2">&quot;sphere&quot;</span><span class="p">)</span>
-   <span class="n">sphere</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">.</span><span class="n">sphere</span><span class="p">())</span>
+<span class="w">   </span><span class="c1">-- Some stuff to light</span>
+<span class="w">   </span><span class="nv">sphere</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;sphere&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">sphere</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">())</span>
 
-   <span class="n">ground</span> <span class="o">=</span> <span class="n">scn</span><span class="p">:</span><span class="n">entity</span><span class="p">(</span><span class="s2">&quot;ground&quot;</span><span class="p">)</span>
-   <span class="n">ground</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">.</span><span class="n">plane</span><span class="p">())</span>
-   <span class="n">ground</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-   <span class="n">ground</span><span class="p">.</span><span class="n">uniformScale</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="w">   </span><span class="nv">ground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;ground&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">ground</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">plane</span><span class="p">())</span>
+<span class="w">   </span><span class="nv">ground</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="w">   </span><span class="nv">ground</span><span class="p">.</span><span class="py">uniformScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
 
-   <span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scn</span>
+<span class="w">   </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span>
 <span class="kr">end</span>
 </pre></div>
 </div>

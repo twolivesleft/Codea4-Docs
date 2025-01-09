@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>How Codea Works - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -239,24 +239,24 @@
 <p>When you create a project you are given a basic template in <code class="docutils literal notranslate"><span class="pre">Main.lua</span></code> that
 contains some global functions:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Called once at the beggining</span>
-<span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-   <span class="n">x</span> <span class="o">=</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span>
-   <span class="n">y</span> <span class="o">=</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">   </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span>
+<span class="w">   </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span>
 <span class="kr">end</span>
 
 <span class="c1">-- Called every frame</span>
-<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
-   <span class="n">background</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-   <span class="n">style</span><span class="p">.</span><span class="n">push</span><span class="p">().</span><span class="n">fill</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">red</span><span class="p">).</span><span class="n">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-   <span class="n">ellipse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">   </span><span class="nf">background</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="nv">color</span><span class="p">.</span><span class="py">red</span><span class="p">).</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">   </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="c1">-- Called when a touch is detected or updated</span>
-<span class="kr">function</span> <span class="nf">touched</span><span class="p">(</span><span class="n">touch</span><span class="p">)</span>
-   <span class="kr">if</span> <span class="n">touch</span><span class="p">.</span><span class="n">began</span> <span class="ow">or</span> <span class="n">touch</span><span class="p">.</span><span class="n">moving</span> <span class="kr">then</span>
-      <span class="n">x</span> <span class="o">=</span> <span class="n">touch</span><span class="p">.</span><span class="n">x</span>
-      <span class="n">y</span> <span class="o">=</span> <span class="n">touch</span><span class="p">.</span><span class="n">y</span>
-   <span class="kr">end</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">began</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">moving</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">      </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span>
+<span class="w">      </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span>
+<span class="w">   </span><span class="kr">end</span>
 <span class="kr">end</span>
 </pre></div>
 </div>
@@ -285,7 +285,7 @@ every time the screen is about to be redrawn</p>
 </section>
 <section id="fixedupdate-dt">
 <h3>fixedUpdate(dt)<a class="headerlink" href="#fixedupdate-dt" title="Link to this heading">¶</a></h3>
-<p>A special update function that is called a fixed number of times per second regardless of the current framerate, ideal for physics calculations and simulations that require a stable stepping rate. The delta time value passed in is the same as <code class="code highlight lua docutils literal highlight-lua"><span class="n">time</span><span class="p">.</span><span class="n">fixedDelta</span></code></p>
+<p>A special update function that is called a fixed number of times per second regardless of the current framerate, ideal for physics calculations and simulations that require a stable stepping rate. The delta time value passed in is the same as <code class="code highlight lua docutils literal highlight-lua"><span class="nv">time</span><span class="p">.</span><span class="py">fixedDelta</span></code></p>
 </section>
 <section id="keypressed-keypress">
 <h3>keyPressed(keyPress)<a class="headerlink" href="#keypressed-keypress" title="Link to this heading">¶</a></h3>

@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>image - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -238,14 +238,14 @@
 <p>Made of pixels and used by codea for drawing to the screen and texturing meshes</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Loading and drawing an image</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-   <span class="c1">-- load an image from a builtin image asset</span>
-   <span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">Cargo_Bot</span><span class="p">.</span><span class="n">Codea_Icon</span><span class="p">)</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">   </span><span class="c1">-- load an image from a builtin image asset</span>
+<span class="w">   </span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">.</span><span class="py">Codea_Icon</span><span class="p">)</span>
 <span class="kr">end</span>
 
-<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
-   <span class="n">background</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
-   <span class="n">sprite</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">   </span><span class="nf">background</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+<span class="w">   </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">img</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>
@@ -782,15 +782,15 @@
 <p>Create slices using an existing image via the <code class="docutils literal notranslate"><span class="pre">image.slice</span></code> property. Slices can be configured using a fluent syntax, allowing for rotation, flipping and 9-patch stretching among other things</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">Creating slices</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-   <span class="n">button</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="p">.</span><span class="n">builtin</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Grey_Button_10</span><span class="p">)</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">   </span><span class="nv">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">UI</span><span class="p">.</span><span class="py">Grey_Button_10</span><span class="p">)</span>
 
-   <span class="c1">-- create a stretchable 9-patch of the original image</span>
-   <span class="n">buttonSlice</span> <span class="o">=</span> <span class="n">btn</span><span class="p">.</span><span class="n">slice</span><span class="p">:</span><span class="n">patch</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="w">   </span><span class="c1">-- create a stretchable 9-patch of the original image</span>
+<span class="w">   </span><span class="nv">buttonSlice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">btn</span><span class="p">.</span><span class="py">slice</span><span class="p">:</span><span class="nf">patch</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="kr">end</span>
 
-<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
-   <span class="n">sprite</span><span class="p">(</span><span class="n">buttonSlice</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">   </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">buttonSlice</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>

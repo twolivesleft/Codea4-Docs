@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>objc - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -239,31 +239,31 @@
 <p><strong>Native Classes</strong></p>
 <p>To access a native Objective-C class, append its name to <code class="docutils literal notranslate"><span class="pre">objc</span></code>.</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- access the UIScreen class</span>
-<span class="n">UIScreen</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">UIScreen</span>
+<span class="nv">UIScreen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">UIScreen</span>
 </pre></div>
 </div>
 <p><strong>Constructor</strong></p>
 <p>If the native class has a <code class="docutils literal notranslate"><span class="pre">new</span></code> constructor, you can invoke it directly instead of calling the <code class="docutils literal notranslate"><span class="pre">new</span></code> method.</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- create an instance of NSDateComponents</span>
-<span class="n">dateComponents</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">NSDateComponents</span><span class="p">()</span>
+<span class="nv">dateComponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">NSDateComponents</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Properties</strong></p>
 <p>Properties can be read and modified directly.</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- read the screen brightness</span>
-<span class="n">brightness</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">.</span><span class="n">brightness</span>
+<span class="nv">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">UIScreen</span><span class="p">.</span><span class="py">mainScreen</span><span class="p">.</span><span class="py">brightness</span>
 
 <span class="c1">-- change the screen brightness</span>
-<span class="n">objc</span><span class="p">.</span><span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">.</span><span class="n">brightness</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="nv">objc</span><span class="p">.</span><span class="py">UIScreen</span><span class="p">.</span><span class="py">mainScreen</span><span class="p">.</span><span class="py">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
 </pre></div>
 </div>
 <p><strong>Methods</strong></p>
 <p>Methods are invoked using the ‘:’ operator and their full selector name, including named arguments separated by underscores ‘_’ instead of colons. Note that the Objective-C method names must always end with an underscore in Codea. The underscores are required for Codea to find the corresponding signatures in Objective-C.</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Calling a method with multiple arguments</span>
-<span class="n">controller</span><span class="p">:</span><span class="n">presentViewController_animated_completion_</span><span class="p">(</span><span class="n">newController</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="nv">controller</span><span class="p">:</span><span class="nf">presentViewController_animated_completion_</span><span class="p">(</span><span class="nv">newController</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="c1">-- Calling a method with no argument</span>
-<span class="n">webView</span><span class="p">:</span><span class="n">goBack_</span><span class="p">()</span>
+<span class="nv">webView</span><span class="p">:</span><span class="nf">goBack_</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Callbacks</strong></p>
@@ -291,57 +291,57 @@
 <li><p><strong>vec2</strong>: CGPoint</p></li>
 </ul>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">--- uiView: objc.UIView</span>
-<span class="n">uiView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nv">uiView</span><span class="p">.</span><span class="py">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">--- uiTextView: objc.UITextView</span>
-<span class="n">uiTextView</span><span class="p">:</span><span class="n">setContentOffset_</span><span class="p">(</span><span class="n">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="nv">uiTextView</span><span class="p">:</span><span class="nf">setContentOffset_</span><span class="p">(</span><span class="nf">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><strong>Examples</strong></p>
 <details class="summary-change-the-screen-brightness-to-50">
-<summary>Change the screen brightness to 50%</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">.</span><span class="n">brightness</span> <span class="o">=</span> <span class="mf">0.5</span>
+<summary>Change the screen brightness to 50%</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="py">UIScreen</span><span class="p">.</span><span class="py">mainScreen</span><span class="p">.</span><span class="py">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
 </pre></div>
 </div>
 </details><details class="summary-request-application-review">
-<summary>Request application review</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">keyWindow</span><span class="p">.</span><span class="n">windowScene</span>
-<span class="n">store</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">SKStoreReviewController</span>
-<span class="n">store</span><span class="p">:</span><span class="n">requestReviewInScene_</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
+<summary>Request application review</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">scene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">app</span><span class="p">.</span><span class="py">keyWindow</span><span class="p">.</span><span class="py">windowScene</span>
+<span class="nv">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">SKStoreReviewController</span>
+<span class="nv">store</span><span class="p">:</span><span class="nf">requestReviewInScene_</span><span class="p">(</span><span class="nv">scene</span><span class="p">)</span>
 </pre></div>
 </div>
 </details><details class="summary-request-notifications-permission">
-<summary>Request notifications permission</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">center</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span>
-    <span class="n">UNUserNotificationCenter</span><span class="p">.</span>
-    <span class="n">currentNotificationCenter</span>
-<span class="n">options</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">enum</span><span class="p">.</span><span class="n">UNAuthorizationOptions</span>
-<span class="n">center</span><span class="p">:</span><span class="n">requestAuthorizationWithOptions_completionHandler_</span><span class="p">(</span>
-    <span class="n">options</span><span class="p">.</span><span class="n">badge</span> <span class="o">|</span> <span class="n">options</span><span class="p">.</span><span class="n">sound</span> <span class="o">|</span> <span class="n">options</span><span class="p">.</span><span class="n">alert</span><span class="p">,</span>
-    <span class="kr">function</span><span class="p">(</span><span class="n">boolGranted</span><span class="p">,</span> <span class="n">objError</span><span class="p">)</span>
-    <span class="kr">if</span> <span class="n">boolGranted</span> <span class="kr">then</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;granted&quot;</span><span class="p">)</span>
-    <span class="kr">elseif</span> <span class="n">objError</span> <span class="kr">then</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error &quot;</span> <span class="o">..</span> <span class="n">objError</span><span class="p">.</span><span class="n">code</span><span class="p">)</span>
-    <span class="kr">end</span>
-    <span class="kr">end</span><span class="p">)</span>
+<summary>Request notifications permission</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span>
+<span class="w">    </span><span class="py">UNUserNotificationCenter</span><span class="p">.</span>
+<span class="w">    </span><span class="py">currentNotificationCenter</span>
+<span class="nv">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">enum</span><span class="p">.</span><span class="py">UNAuthorizationOptions</span>
+<span class="nv">center</span><span class="p">:</span><span class="nf">requestAuthorizationWithOptions_completionHandler_</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">options</span><span class="p">.</span><span class="py">badge</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">options</span><span class="p">.</span><span class="py">sound</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">options</span><span class="p">.</span><span class="py">alert</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">function</span><span class="p">(</span><span class="nv">boolGranted</span><span class="p">,</span><span class="w"> </span><span class="nv">objError</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">boolGranted</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;granted&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">objError</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error &quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">objError</span><span class="p">.</span><span class="py">code</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span><span class="p">)</span>
 </pre></div>
 </div>
 </details><details class="summary-enumerate-words-until-the-word-stop-is-found">
-<summary>Enumerate words until the word stop is found</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;First second stop third fourth&quot;</span>
-<span class="n">str</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">string</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
-<span class="n">str</span><span class="p">:</span><span class="n">enumerateSubstringsInRange_options_usingBlock_</span><span class="p">(</span>
-    <span class="n">objc</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">txt</span><span class="p">:</span><span class="n">len</span><span class="p">()),</span>
-    <span class="n">objc</span><span class="p">.</span><span class="n">enum</span><span class="p">.</span><span class="n">NSStringEnumerationOptions</span><span class="p">.</span><span class="n">byWords</span><span class="p">,</span>
-    <span class="kr">function</span><span class="p">(</span><span class="n">objWord</span><span class="p">,</span>
-            <span class="n">isubstringLocation</span><span class="p">,</span>
-            <span class="n">iSubstringLength</span><span class="p">,</span>
-            <span class="n">iEnclosingLocation</span><span class="p">,</span>
-            <span class="n">iEnclosingLength</span><span class="p">,</span>
-            <span class="n">pboolStop</span><span class="p">)</span>
-        <span class="kr">if</span> <span class="n">objWord</span> <span class="o">==</span> <span class="s2">&quot;stop&quot;</span> <span class="kr">then</span>
-            <span class="n">pboolStop</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">true</span>
-        <span class="kr">else</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">objWord</span><span class="p">)</span>
-        <span class="kr">end</span>
-    <span class="kr">end</span><span class="p">)</span>
+<summary>Enumerate words until the word stop is found</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">txt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;First second stop third fourth&quot;</span>
+<span class="nv">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">txt</span><span class="p">)</span>
+<span class="nv">str</span><span class="p">:</span><span class="nf">enumerateSubstringsInRange_options_usingBlock_</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">objc</span><span class="p">.</span><span class="nf">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">txt</span><span class="p">:</span><span class="nf">len</span><span class="p">()),</span>
+<span class="w">    </span><span class="nv">objc</span><span class="p">.</span><span class="py">enum</span><span class="p">.</span><span class="py">NSStringEnumerationOptions</span><span class="p">.</span><span class="py">byWords</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">function</span><span class="p">(</span><span class="nv">objWord</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">isubstringLocation</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">iSubstringLength</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">iEnclosingLocation</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">iEnclosingLength</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">pboolStop</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">objWord</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;stop&quot;</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="nv">pboolStop</span><span class="p">.</span><span class="py">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="kr">else</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="nv">objWord</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span><span class="p">)</span>
 </pre></div>
 </div>
 </details><dl class="lua function" id="module-objc">
@@ -359,21 +359,21 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">delegate</span><span class="p">(</span><span class="s2">&quot;DelegateName&quot;</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">delegate</span><span class="p">(</span><span class="s2">&quot;DelegateName&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-uitextviewdelegate-example">
-<summary>UITextViewDelegate Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">Delegate</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">delegate</span><span class="p">(</span><span class="s2">&quot;UITextViewDelegate&quot;</span><span class="p">)</span>
+<summary>UITextViewDelegate Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">Delegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">delegate</span><span class="p">(</span><span class="s2">&quot;UITextViewDelegate&quot;</span><span class="p">)</span>
 
-<span class="kr">function</span> <span class="nc">Delegate</span><span class="p">:</span><span class="nf">textViewShouldBeginEditing_</span><span class="p">(</span><span class="n">objTextView</span><span class="p">)</span>
-    <span class="c1">-- replace with false to prevent editing</span>
-    <span class="kr">return</span> <span class="kc">true</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Delegate</span><span class="p">:</span><span class="nf">textViewShouldBeginEditing_</span><span class="p">(</span><span class="nv">objTextView</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- replace with false to prevent editing</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="kc">true</span>
 <span class="kr">end</span>
 
-<span class="kr">function</span> <span class="nc">Delegate</span><span class="p">:</span><span class="nf">textViewDidChange_</span><span class="p">(</span><span class="n">objTextView</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">objTextView</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Delegate</span><span class="p">:</span><span class="nf">textViewDidChange_</span><span class="p">(</span><span class="nv">objTextView</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">objTextView</span><span class="p">.</span><span class="py">text</span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="c1">-- uiTextView.delegate = Delegate()</span>
@@ -382,19 +382,19 @@
 </details><details class="summary-wkscriptmessagehandler-example">
 <summary>WKScriptMessageHandler Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Exposes the following method to JavaScript:</span>
 <span class="c1">-- window.webkit.messageHandlers.log.postMessage</span>
-<span class="n">Handler</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">delegate</span><span class="p">(</span><span class="s2">&quot;WKScriptMessageHandler&quot;</span><span class="p">)</span>
+<span class="nv">Handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">delegate</span><span class="p">(</span><span class="s2">&quot;WKScriptMessageHandler&quot;</span><span class="p">)</span>
 
-<span class="kr">function</span> <span class="nc">Handler</span><span class="p">:</span>
-    <span class="nf">userContentController_didReceiveScriptMessage_</span><span class="p">(</span>
-    <span class="n">objUserContentController</span><span class="p">,</span> <span class="n">objMessage</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">objMessage</span><span class="p">.</span><span class="n">body</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Handler</span><span class="p">:</span>
+<span class="w">    </span><span class="nf">userContentController_didReceiveScriptMessage_</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">objUserContentController</span><span class="p">,</span><span class="w"> </span><span class="nv">objMessage</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">objMessage</span><span class="p">.</span><span class="py">body</span><span class="p">)</span>
 <span class="kr">end</span>
 
-<span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-    <span class="kd">local</span> <span class="n">ctrl</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">WKUserContentController</span><span class="p">()</span>
-    <span class="kd">local</span> <span class="n">logHandler</span> <span class="o">=</span> <span class="n">Handler</span><span class="p">()</span>
-    <span class="n">ctrl</span><span class="p">:</span><span class="n">addScriptMessageHandler_name_</span><span class="p">(</span>
-    <span class="n">logHandler</span><span class="p">,</span> <span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">ctrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">WKUserContentController</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">logHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Handler</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">ctrl</span><span class="p">:</span><span class="nf">addScriptMessageHandler_name_</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">logHandler</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>
@@ -415,26 +415,26 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">class</span><span class="p">(</span><span class="s2">&quot;ClassName&quot;</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">class</span><span class="p">(</span><span class="s2">&quot;ClassName&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-notificationhandler-example">
-<summary>NotificationHandler Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">NotificationHandler</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">class</span><span class="p">(</span><span class="s2">&quot;NotificationHandler&quot;</span><span class="p">)</span>
+<summary>NotificationHandler Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">NotificationHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">class</span><span class="p">(</span><span class="s2">&quot;NotificationHandler&quot;</span><span class="p">)</span>
 
-<span class="kr">function</span> <span class="nc">NotificationHandler</span><span class="p">:</span><span class="nf">textDidChange</span><span class="p">(</span><span class="n">objNotification</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">objNotification</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">NotificationHandler</span><span class="p">:</span><span class="nf">textDidChange</span><span class="p">(</span><span class="nv">objNotification</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">objNotification</span><span class="p">.</span><span class="py">object</span><span class="p">.</span><span class="py">text</span><span class="p">)</span>
 <span class="kr">end</span>
 
-<span class="n">handler</span> <span class="o">=</span> <span class="n">NotificationHandler</span><span class="p">()</span>
+<span class="nv">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">NotificationHandler</span><span class="p">()</span>
 
-<span class="n">notificationCenter</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">NSNotificationCenter</span><span class="p">.</span><span class="n">defaultCenter</span>
-<span class="n">notificationCenter</span><span class="p">:</span><span class="n">addObserver_selector_name_object_</span><span class="p">(</span>
-    <span class="n">handler</span><span class="p">,</span>
-    <span class="n">objc</span><span class="p">.</span><span class="n">selector</span><span class="p">(</span><span class="s2">&quot;textDidChange&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;UITextViewTextDidChangeNotification&quot;</span><span class="p">,</span>
-    <span class="kc">nil</span><span class="p">)</span>
+<span class="nv">notificationCenter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">NSNotificationCenter</span><span class="p">.</span><span class="py">defaultCenter</span>
+<span class="nv">notificationCenter</span><span class="p">:</span><span class="nf">addObserver_selector_name_object_</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">handler</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">objc</span><span class="p">.</span><span class="nf">selector</span><span class="p">(</span><span class="s2">&quot;textDidChange&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">&quot;UITextViewTextDidChangeNotification&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kc">nil</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -454,26 +454,26 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">selector</span><span class="p">(</span><span class="s2">&quot;SelectorName&quot;</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">selector</span><span class="p">(</span><span class="s2">&quot;SelectorName&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-notificationhandler-example">
-<summary>NotificationHandler Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">NotificationHandler</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">class</span><span class="p">(</span><span class="s2">&quot;NotificationHandler&quot;</span><span class="p">)</span>
+<summary>NotificationHandler Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">NotificationHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">class</span><span class="p">(</span><span class="s2">&quot;NotificationHandler&quot;</span><span class="p">)</span>
 
-<span class="kr">function</span> <span class="nc">NotificationHandler</span><span class="p">:</span><span class="nf">textDidChange</span><span class="p">(</span><span class="n">objNotification</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">objNotification</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">NotificationHandler</span><span class="p">:</span><span class="nf">textDidChange</span><span class="p">(</span><span class="nv">objNotification</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">objNotification</span><span class="p">.</span><span class="py">object</span><span class="p">.</span><span class="py">text</span><span class="p">)</span>
 <span class="kr">end</span>
 
-<span class="n">handler</span> <span class="o">=</span> <span class="n">NotificationHandler</span><span class="p">()</span>
+<span class="nv">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">NotificationHandler</span><span class="p">()</span>
 
-<span class="n">notificationCenter</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">NSNotificationCenter</span><span class="p">.</span><span class="n">defaultCenter</span>
-<span class="n">notificationCenter</span><span class="p">:</span><span class="n">addObserver_selector_name_object_</span><span class="p">(</span>
-    <span class="n">handler</span><span class="p">,</span>
-    <span class="n">objc</span><span class="p">.</span><span class="n">selector</span><span class="p">(</span><span class="s2">&quot;textDidChange&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;UITextViewTextDidChangeNotification&quot;</span><span class="p">,</span>
-    <span class="kc">nil</span><span class="p">)</span>
+<span class="nv">notificationCenter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">NSNotificationCenter</span><span class="p">.</span><span class="py">defaultCenter</span>
+<span class="nv">notificationCenter</span><span class="p">:</span><span class="nf">addObserver_selector_name_object_</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">handler</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">objc</span><span class="p">.</span><span class="nf">selector</span><span class="p">(</span><span class="s2">&quot;textDidChange&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">&quot;UITextViewTextDidChangeNotification&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kc">nil</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -494,7 +494,7 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">set</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">})</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">set</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">})</span>
 </pre></div>
 </div>
 </dd>
@@ -517,7 +517,7 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">string</span><span class="p">(</span><span class="s2">&quot;Text&quot;</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">string</span><span class="p">(</span><span class="s2">&quot;Text&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -539,16 +539,16 @@
 <dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-odd">Syntax<span class="colon">:</span></dt>
-<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">enum</span><span class="p">.</span><span class="n">EnumName</span><span class="p">.</span><span class="n">ValueName</span>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="py">enum</span><span class="p">.</span><span class="py">EnumName</span><span class="p">.</span><span class="py">ValueName</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-combine-unauthorizationoptions">
-<summary>Combine UNAuthorizationOptions</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">opts</span> <span class="o">=</span>
-    <span class="n">objc</span><span class="p">.</span><span class="n">enum</span><span class="p">.</span><span class="n">UNAuthorizationOptions</span><span class="p">.</span><span class="n">badge</span> <span class="o">|</span>
-    <span class="n">objc</span><span class="p">.</span><span class="n">enum</span><span class="p">.</span><span class="n">UNAuthorizationOptions</span><span class="p">.</span><span class="n">sound</span> <span class="o">|</span>
-    <span class="n">objc</span><span class="p">.</span><span class="n">enum</span><span class="p">.</span><span class="n">UNAuthorizationOptions</span><span class="p">.</span><span class="n">alert</span>
+<summary>Combine UNAuthorizationOptions</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">opts</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="nv">objc</span><span class="p">.</span><span class="py">enum</span><span class="p">.</span><span class="py">UNAuthorizationOptions</span><span class="p">.</span><span class="py">badge</span><span class="w"> </span><span class="o">|</span>
+<span class="w">    </span><span class="nv">objc</span><span class="p">.</span><span class="py">enum</span><span class="p">.</span><span class="py">UNAuthorizationOptions</span><span class="p">.</span><span class="py">sound</span><span class="w"> </span><span class="o">|</span>
+<span class="w">    </span><span class="nv">objc</span><span class="p">.</span><span class="py">enum</span><span class="p">.</span><span class="py">UNAuthorizationOptions</span><span class="p">.</span><span class="py">alert</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -596,7 +596,7 @@
 </dd>
 </dl>
 <details class="summary-test-if-running-in-an-exported-project">
-<summary>Test if running in an exported project</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">isStandalone</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">info</span><span class="p">.</span><span class="n">bundleIdentifier</span> <span class="o">~=</span> <span class="s2">&quot;com.twolivesleft.Codify&quot;</span>
+<summary>Test if running in an exported project</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">isStandalone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">info</span><span class="p">.</span><span class="py">bundleIdentifier</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="s2">&quot;com.twolivesleft.Codify&quot;</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -621,7 +621,7 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">insets</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">insets</span><span class="p">(</span><span class="nv">top</span><span class="p">,</span><span class="w"> </span><span class="nv">left</span><span class="p">,</span><span class="w"> </span><span class="nv">bottom</span><span class="p">,</span><span class="w"> </span><span class="nv">right</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -637,7 +637,7 @@
 <dd class="field-odd"><p><strong>message</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – Message to display.</p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nv">message</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -696,14 +696,14 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">class</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">inspect</span><span class="p">(</span><span class="nv">class</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-inspect-the-sfspeechrecognizer-class">
-<summary>Inspect the SFSpeechRecognizer class</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">inspect</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">objc</span><span class="p">.</span><span class="n">SFSpeechRecognizer</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Class has &quot;</span> <span class="o">..</span> <span class="o">#</span><span class="n">inspect</span><span class="p">.</span><span class="n">methods</span> <span class="o">..</span> <span class="s2">&quot; instance methods.&quot;</span><span class="p">)</span>
+<summary>Inspect the SFSpeechRecognizer class</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">inspect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">inspect</span><span class="p">(</span><span class="nv">objc</span><span class="p">.</span><span class="py">SFSpeechRecognizer</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Class has &quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="o">#</span><span class="nv">inspect</span><span class="p">.</span><span class="py">methods</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot; instance methods.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -717,14 +717,14 @@
 <dd class="field-odd"><p><strong>function</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">function</span></code></span>) – Parameterless function to run on the main thread.</p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">async</span><span class="p">(</span><span class="n">someFunction</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">async</span><span class="p">(</span><span class="nv">someFunction</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-run-a-function-on-the-main-thread">
-<summary>Run a function on the main thread</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">async</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will run on the main thread.&quot;</span><span class="p">)</span>
+<summary>Run a function on the main thread</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">async</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will run on the main thread.&quot;</span><span class="p">)</span>
 <span class="kr">end</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -748,13 +748,13 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">point</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-create-a-cgpoint">
-<summary>Create a CGPoint</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<summary>Create a CGPoint</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">point</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -779,13 +779,13 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">rect</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">width</span><span class="p">,</span><span class="w"> </span><span class="nv">height</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-create-a-cgrect">
-<summary>Create a CGRect</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">rect</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">rect</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<summary>Create a CGRect</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">rect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">rect</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -808,13 +808,13 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">width</span><span class="p">,</span><span class="w"> </span><span class="nv">height</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-create-a-cgsize">
-<summary>Create a CGSize</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<summary>Create a CGSize</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -837,13 +837,13 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">len</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">range</span><span class="p">(</span><span class="nv">loc</span><span class="p">,</span><span class="w"> </span><span class="nv">len</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-create-a-nsrange">
-<summary>Create a NSRange</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">range</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<summary>Create a NSRange</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -868,13 +868,13 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">color</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">color</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-create-a-cgcolor">
-<summary>Create a CGColor</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">color</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<summary>Create a CGColor</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -897,13 +897,13 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">vector</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">vector</span><span class="p">(</span><span class="nv">dx</span><span class="p">,</span><span class="w"> </span><span class="nv">dy</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-create-a-cgvector">
-<summary>Create a CGVector</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<summary>Create a CGVector</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -930,13 +930,13 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">objc</span><span class="p">.</span><span class="n">affineTransform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">tx</span><span class="p">,</span> <span class="n">ty</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">affineTransform</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">c</span><span class="p">,</span><span class="w"> </span><span class="nv">d</span><span class="p">,</span><span class="w"> </span><span class="nv">tx</span><span class="p">,</span><span class="w"> </span><span class="nv">ty</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <details class="summary-create-a-cgaffinetransform">
-<summary>Create a CGAffineTransform</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">affineTransform</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">affineTransform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<summary>Create a CGAffineTransform</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">affineTransform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">affineTransform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
 </details></dd></dl>
@@ -984,21 +984,21 @@
 <p>For a more exhaustive list, use the example code below.</p>
 <details class="summary-list-all-included-system-frameworks">
 <summary>List all included system Frameworks</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- list all included system Frameworks</span>
-<span class="kd">local</span> <span class="n">bundles</span> <span class="o">=</span> <span class="n">objc</span><span class="p">.</span><span class="n">NSBundle</span><span class="p">.</span><span class="n">allFrameworks</span>
-<span class="kd">local</span> <span class="n">systemBundles</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">bundles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">NSBundle</span><span class="p">.</span><span class="py">allFrameworks</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">systemBundles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="kr">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">bundles</span><span class="p">)</span> <span class="kr">do</span>
-    <span class="kr">if</span> <span class="nb">string.find</span><span class="p">(</span>
-        <span class="n">b</span><span class="p">.</span><span class="n">bundlePath</span><span class="p">,</span>
-        <span class="s2">&quot;System/Library/Frameworks/&quot;</span><span class="p">)</span> <span class="kr">then</span>
-        <span class="nb">table.insert</span><span class="p">(</span><span class="n">systemBundles</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">bundlePath</span><span class="p">)</span>
-    <span class="kr">end</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">bundles</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nb">string.find</span><span class="p">(</span>
+<span class="w">        </span><span class="nv">b</span><span class="p">.</span><span class="py">bundlePath</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;System/Library/Frameworks/&quot;</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">systemBundles</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">.</span><span class="py">bundlePath</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
 <span class="kr">end</span>
 
-<span class="nb">table.sort</span><span class="p">(</span><span class="n">systemBundles</span><span class="p">)</span>
+<span class="nb">table.sort</span><span class="p">(</span><span class="nv">systemBundles</span><span class="p">)</span>
 
-<span class="kr">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bundle</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">systemBundles</span><span class="p">)</span> <span class="kr">do</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">bundle</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">bundle</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">systemBundles</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">bundle</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>

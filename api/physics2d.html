@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>physics2d - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -717,21 +717,21 @@
 <dd><p>The category for this collider. Categories are used to filter collisions based on their <code class="docutils literal notranslate"><span class="pre">mask</span></code> bits</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Example</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">PLAYER_CAT</span> <span class="o">=</span> <span class="mh">0x1</span> <span class="c1">-- set bit 1</span>
-<span class="n">ENEMY_CAT</span> <span class="o">=</span> <span class="mh">0x2</span> <span class="c1">-- set bit 2</span>
-<span class="n">ITEM_CAT</span> <span class="o">=</span> <span class="mh">0x4</span> <span class="c1">-- set bit 3</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">PLAYER_CAT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x1</span><span class="w"> </span><span class="c1">-- set bit 1</span>
+<span class="nv">ENEMY_CAT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2</span><span class="w"> </span><span class="c1">-- set bit 2</span>
+<span class="nv">ITEM_CAT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x4</span><span class="w"> </span><span class="c1">-- set bit 3</span>
 
 <span class="c1">-- Players can collider with enemies and items</span>
-<span class="n">playerCollider</span><span class="p">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">PLAYER_CAT</span>
-<span class="n">playerCollider</span><span class="p">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">ENEMY_CAT</span> <span class="o">|</span> <span class="n">ITEM_CAT</span>
+<span class="nv">playerCollider</span><span class="p">.</span><span class="py">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PLAYER_CAT</span>
+<span class="nv">playerCollider</span><span class="p">.</span><span class="py">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ENEMY_CAT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">ITEM_CAT</span>
 
 <span class="c1">-- Enemies only collider with players</span>
-<span class="n">enemyCollider</span><span class="p">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">ENEMY_CAT</span>
-<span class="n">enemyCollider</span><span class="p">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">PLAYER_CAT</span>
+<span class="nv">enemyCollider</span><span class="p">.</span><span class="py">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ENEMY_CAT</span>
+<span class="nv">enemyCollider</span><span class="p">.</span><span class="py">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PLAYER_CAT</span>
 
 <span class="c1">-- Items only collider with players</span>
-<span class="n">itemCollider</span><span class="p">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">ITEM_CAT</span>
-<span class="n">itemCollider</span><span class="p">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">PLAYER_CAT</span>
+<span class="nv">itemCollider</span><span class="p">.</span><span class="py">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ITEM_CAT</span>
+<span class="nv">itemCollider</span><span class="p">.</span><span class="py">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PLAYER_CAT</span>
 </pre></div>
 </div>
 </div>

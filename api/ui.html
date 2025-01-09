@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>ui - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -268,21 +268,21 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">STRETCH</span></code> - Stretch the component relative to it’s parent</p></li>
 </ul>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">scn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
 
 <span class="c1">-- Create an entity to contain the button</span>
-<span class="n">ent</span> <span class="o">=</span> <span class="n">scn</span><span class="p">.</span><span class="n">canvas</span><span class="p">:</span><span class="n">child</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">)</span>
+<span class="nv">ent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">.</span><span class="py">canvas</span><span class="p">:</span><span class="nf">child</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">)</span>
 
 <span class="c1">-- Adjust the button size</span>
-<span class="n">ent</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">vec2</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="nv">ent</span><span class="p">.</span><span class="py">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">)</span>
 
 <span class="c1">-- Add a button component</span>
-<span class="n">btn</span> <span class="o">=</span> <span class="n">ent</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">ui</span><span class="p">.</span><span class="n">button</span><span class="p">)</span>
-<span class="n">btn</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Press Me!&quot;</span>
+<span class="nv">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ent</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">ui</span><span class="p">.</span><span class="py">button</span><span class="p">)</span>
+<span class="nv">btn</span><span class="p">.</span><span class="py">label</span><span class="p">.</span><span class="py">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Press Me!&quot;</span>
 
 <span class="c1">-- Add a callback function to react to button taps</span>
-<span class="kr">function</span> <span class="nc">ent</span><span class="p">:</span><span class="nf">tapped</span><span class="p">()</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tapped!&quot;</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">ent</span><span class="p">:</span><span class="nf">tapped</span><span class="p">()</span>
+<span class="w">   </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tapped!&quot;</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>
@@ -370,12 +370,12 @@
 <dd><p>The button’s style. Background image and color tint can be set for each button state</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Button table structure</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">btn</span><span class="p">.</span><span class="n">style</span> <span class="o">=</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">btn</span><span class="p">.</span><span class="py">style</span><span class="w"> </span><span class="o">=</span>
 <span class="p">{</span>
-   <span class="n">normal</span> <span class="o">=</span> <span class="p">{</span> <span class="n">sprite</span> <span class="o">=</span> <span class="p">...,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">...</span> <span class="p">},</span>
-   <span class="n">pressed</span> <span class="o">=</span> <span class="p">{</span> <span class="n">sprite</span> <span class="o">=</span> <span class="p">...,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">...</span> <span class="p">},</span>
-   <span class="n">disabled</span> <span class="o">=</span> <span class="p">{</span> <span class="n">sprite</span> <span class="o">=</span> <span class="p">...,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">...</span> <span class="p">},</span>
-   <span class="n">selected</span> <span class="o">=</span> <span class="p">{</span> <span class="n">sprite</span> <span class="o">=</span> <span class="p">...,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">...</span> <span class="p">}</span>
+<span class="w">   </span><span class="nv">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">sprite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">   </span><span class="nv">pressed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">sprite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">   </span><span class="nv">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">sprite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">   </span><span class="nv">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">sprite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>

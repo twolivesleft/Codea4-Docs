@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>entity - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -246,59 +246,59 @@
 <span class="sig-name descname"><span class="pre">active</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#entity.active" title="Link to this definition">¶</a></dt>
 <dd><p>The active state of this entity, when inactive an entity will not be rendered, simulate physics or respond to automatic callbacks</p>
 <details class="summary-example">
-<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-    <span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">default3d</span><span class="p">()</span>
-    
-    <span class="n">red</span> <span class="o">=</span> <span class="n">material</span><span class="p">.</span><span class="n">lit</span><span class="p">()</span>
-    <span class="n">red</span><span class="p">.</span><span class="n">baseColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">red</span>
-    <span class="n">red</span><span class="p">.</span><span class="n">roughness</span> <span class="o">=</span> <span class="mi">1</span>
+<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="nf">default3d</span><span class="p">()</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">material</span><span class="p">.</span><span class="nf">lit</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">red</span><span class="p">.</span><span class="py">baseColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">color</span><span class="p">.</span><span class="py">red</span>
+<span class="w">    </span><span class="nv">red</span><span class="p">.</span><span class="py">roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 
-    <span class="n">green</span> <span class="o">=</span> <span class="n">material</span><span class="p">.</span><span class="n">lit</span><span class="p">()</span>
-    <span class="n">green</span><span class="p">.</span><span class="n">baseColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">green</span>
-    <span class="n">green</span><span class="p">.</span><span class="n">roughness</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="w">    </span><span class="nv">green</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">material</span><span class="p">.</span><span class="nf">lit</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">green</span><span class="p">.</span><span class="py">baseColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">color</span><span class="p">.</span><span class="py">green</span>
+<span class="w">    </span><span class="nv">green</span><span class="p">.</span><span class="py">roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 
-    <span class="n">blue</span> <span class="o">=</span> <span class="n">material</span><span class="p">.</span><span class="n">lit</span><span class="p">()</span>
-    <span class="n">blue</span><span class="p">.</span><span class="n">baseColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">blue</span>
-    <span class="n">blue</span><span class="p">.</span><span class="n">roughness</span> <span class="o">=</span> <span class="mi">1</span>
-    
-    <span class="c1">-- Create some sphere that orbit each other with parenting</span>
-    <span class="n">e1</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">:</span><span class="n">entity</span><span class="p">()</span>
-    <span class="n">e1</span><span class="p">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">.</span><span class="n">sphere</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">e1</span><span class="p">.</span><span class="n">mesh</span><span class="p">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">red</span>
-    
-    <span class="n">e1</span><span class="p">.</span><span class="n">update</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
-        <span class="n">entity</span><span class="p">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">quat</span><span class="p">.</span><span class="n">eulerAngles</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">time</span><span class="p">.</span><span class="n">elapsed</span> <span class="o">*</span> <span class="mi">90</span><span class="p">)</span>
-    <span class="kr">end</span>
-    
-    <span class="n">e2</span> <span class="o">=</span> <span class="n">e1</span><span class="p">:</span><span class="n">child</span><span class="p">()</span>
-    <span class="n">e2</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.5</span>
-    <span class="n">e2</span><span class="p">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">.</span><span class="n">sphere</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">e2</span><span class="p">.</span><span class="n">mesh</span><span class="p">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">green</span>
-    <span class="n">e2</span><span class="p">.</span><span class="n">update</span> <span class="o">=</span> <span class="n">e1</span><span class="p">.</span><span class="n">update</span>
-    
-    <span class="n">e3</span> <span class="o">=</span> <span class="n">e2</span><span class="p">:</span><span class="n">child</span><span class="p">()</span>
-    <span class="n">e3</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="n">e3</span><span class="p">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">.</span><span class="n">sphere</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
-    <span class="n">e3</span><span class="p">.</span><span class="n">mesh</span><span class="p">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">blue</span>
-    
-    <span class="c1">-- Test switching entity active states on and off for bits of the hierarchy</span>
-    <span class="n">parameter</span><span class="p">.</span><span class="n">boolean</span><span class="p">(</span><span class="s2">&quot;E1_Active&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-        <span class="n">e1</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">b</span>
-    <span class="kr">end</span><span class="p">)</span>
-    
-    <span class="n">parameter</span><span class="p">.</span><span class="n">watch</span><span class="p">(</span><span class="s2">&quot;e1.activeInHierarchy&quot;</span><span class="p">)</span>
-    
-    <span class="n">parameter</span><span class="p">.</span><span class="n">boolean</span><span class="p">(</span><span class="s2">&quot;E2_Active&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-        <span class="n">e2</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">b</span>
-    <span class="kr">end</span><span class="p">)</span>
-    
-    <span class="n">parameter</span><span class="p">.</span><span class="n">watch</span><span class="p">(</span><span class="s2">&quot;e2.activeInHierarchy&quot;</span><span class="p">)</span>
-    
-    <span class="n">parameter</span><span class="p">.</span><span class="n">boolean</span><span class="p">(</span><span class="s2">&quot;E3_Active&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-        <span class="n">e3</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">b</span>
-    <span class="kr">end</span><span class="p">)</span>
-    
-    <span class="n">parameter</span><span class="p">.</span><span class="n">watch</span><span class="p">(</span><span class="s2">&quot;e3.activeInHierarchy&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">blue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">material</span><span class="p">.</span><span class="nf">lit</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">blue</span><span class="p">.</span><span class="py">baseColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">color</span><span class="p">.</span><span class="py">blue</span>
+<span class="w">    </span><span class="nv">blue</span><span class="p">.</span><span class="py">roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">-- Create some sphere that orbit each other with parenting</span>
+<span class="w">    </span><span class="nv">e1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">e1</span><span class="p">.</span><span class="py">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">e1</span><span class="p">.</span><span class="py">mesh</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">red</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">e1</span><span class="p">.</span><span class="py">update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">entity</span><span class="p">,</span><span class="w"> </span><span class="nv">dt</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">entity</span><span class="p">.</span><span class="py">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">quat</span><span class="p">.</span><span class="nf">eulerAngles</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">e2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">e1</span><span class="p">:</span><span class="nf">child</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">e2</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span>
+<span class="w">    </span><span class="nv">e2</span><span class="p">.</span><span class="py">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">e2</span><span class="p">.</span><span class="py">mesh</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">green</span>
+<span class="w">    </span><span class="nv">e2</span><span class="p">.</span><span class="py">update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">e1</span><span class="p">.</span><span class="py">update</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">e3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">e2</span><span class="p">:</span><span class="nf">child</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">e3</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="nv">e3</span><span class="p">.</span><span class="py">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">e3</span><span class="p">.</span><span class="py">mesh</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">blue</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">-- Test switching entity active states on and off for bits of the hierarchy</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">boolean</span><span class="p">(</span><span class="s2">&quot;E1_Active&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">b</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">e1</span><span class="p">.</span><span class="py">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">b</span>
+<span class="w">    </span><span class="kr">end</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">watch</span><span class="p">(</span><span class="s2">&quot;e1.activeInHierarchy&quot;</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">boolean</span><span class="p">(</span><span class="s2">&quot;E2_Active&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">b</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">e2</span><span class="p">.</span><span class="py">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">b</span>
+<span class="w">    </span><span class="kr">end</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">watch</span><span class="p">(</span><span class="s2">&quot;e2.activeInHierarchy&quot;</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">boolean</span><span class="p">(</span><span class="s2">&quot;E3_Active&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">b</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">e3</span><span class="p">.</span><span class="py">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">b</span>
+<span class="w">    </span><span class="kr">end</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">watch</span><span class="p">(</span><span class="s2">&quot;e3.activeInHierarchy&quot;</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>
@@ -326,9 +326,9 @@
 <dt class="sig sig-object lua" id="entity.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#entity.name" title="Link to this definition">¶</a></dt>
 <dd><p>The name of the entity, useful when referring to the entity later using the <code class="xref lua lua-class docutils literal notranslate"><span class="pre">scene</span></code> and <code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code> indexers</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
-<span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">:</span><span class="n">entity</span><span class="p">(</span><span class="s2">&quot;ball&quot;</span><span class="p">)</span> <span class="c1">-- create a new entity named &#39;ball&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">ball</span><span class="p">)</span> <span class="c1">-- retrieve the entity named &#39;ball&#39;</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
+<span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;ball&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- create a new entity named &#39;ball&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">.</span><span class="py">ball</span><span class="p">)</span><span class="w"> </span><span class="c1">-- retrieve the entity named &#39;ball&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -339,22 +339,22 @@
 <em class="property"> </em><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">delay</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#entity.destroy" title="Link to this definition">¶</a></dt>
 <dd><p>Marks this entity for destruction in the next <a class="reference internal" href="scene.html#scene.update" title="scene.update"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">scene.update()</span></code></a>, or after a <code class="docutils literal notranslate"><span class="pre">delay</span></code> (in seconds), further access to this entity after destruction will result in errors</p>
 <details class="summary-example">
-<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-    <span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">default3d</span><span class="p">()</span>
-    <span class="n">e</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">:</span><span class="n">entity</span><span class="p">()</span>
-    <span class="n">e</span><span class="p">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">quat</span><span class="p">.</span><span class="n">eulerAngles</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
-    <span class="n">e</span><span class="p">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">.</span><span class="n">box</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">e</span><span class="p">.</span><span class="n">mesh</span><span class="p">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">material</span><span class="p">.</span><span class="n">lit</span><span class="p">()</span>
+<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="nf">default3d</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">e</span><span class="p">.</span><span class="py">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">quat</span><span class="p">.</span><span class="nf">eulerAngles</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">e</span><span class="p">.</span><span class="py">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">box</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">e</span><span class="p">.</span><span class="py">mesh</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">material</span><span class="p">.</span><span class="nf">lit</span><span class="p">()</span>
 
-    <span class="c1">-- Destroy after 1 second when touched</span>
-    <span class="n">e</span><span class="p">.</span><span class="n">touched</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">touch</span><span class="p">)</span>
-        <span class="kr">if</span> <span class="n">touch</span><span class="p">.</span><span class="n">began</span> <span class="kr">then</span> <span class="n">entity</span><span class="p">:</span><span class="n">destroy</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="kr">end</span>
-    <span class="kr">end</span>
+<span class="w">    </span><span class="c1">-- Destroy after 1 second when touched</span>
+<span class="w">    </span><span class="nv">e</span><span class="p">.</span><span class="py">touched</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">entity</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">began</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">entity</span><span class="p">:</span><span class="nf">destroy</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
 
-    <span class="c1">-- Play hurt sound when destroyed</span>
-    <span class="n">e</span><span class="p">.</span><span class="n">destroyed</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
-        <span class="n">sound</span><span class="p">.</span><span class="n">play</span><span class="p">(</span><span class="n">SOUND_HURT</span><span class="p">)</span>
-    <span class="kr">end</span>
+<span class="w">    </span><span class="c1">-- Play hurt sound when destroyed</span>
+<span class="w">    </span><span class="nv">e</span><span class="p">.</span><span class="py">destroyed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">sound</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">SOUND_HURT</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
 
 <span class="kr">end</span>
 </pre></div>
@@ -392,15 +392,15 @@
 </dl>
 </li>
 </ul>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
-<span class="kd">local</span> <span class="n">sphere</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">:</span><span class="n">entity</span><span class="p">()</span>
-<span class="n">sphere</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">.</span><span class="n">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1">-- Add a sphere mesh to the entity</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">sphere</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="nv">sphere</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="c1">-- Add a sphere mesh to the entity</span>
 
 <span class="c1">-- Add an orbit rig to the camera (supersedes OrbitViewer from Craft)</span>
-<span class="n">scene</span><span class="p">.</span><span class="n">camera</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">camera</span><span class="p">.</span><span class="n">rigs</span><span class="p">.</span><span class="n">orbit</span><span class="p">)</span>
+<span class="nv">scene</span><span class="p">.</span><span class="py">camera</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="py">rigs</span><span class="p">.</span><span class="py">orbit</span><span class="p">)</span>
 
 <span class="c1">-- Hypothetical day-night cycle Lua component for making the same orbit the planet</span>
-<span class="n">scene</span><span class="p">.</span><span class="n">sun</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">DayNightCycle</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nv">scene</span><span class="p">.</span><span class="py">sun</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">DayNightCycle</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><em>Note on Lua classes/components</em></p>
@@ -413,10 +413,10 @@
 <dt class="sig sig-object lua" id="entity.remove">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">component</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.remove" title="Link to this definition">¶</a></dt>
 <dd><p>Removes a given component type from this entity</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
-<span class="kd">local</span> <span class="n">sphere</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">:</span><span class="n">entity</span><span class="p">()</span>
-<span class="n">sphere</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">.</span><span class="n">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1">-- add a sphere mesh to the entity</span>
-<span class="n">sphere</span><span class="p">:</span><span class="n">remove</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span> <span class="c1">-- remove the sphere mesh</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">sphere</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="nv">sphere</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="c1">-- add a sphere mesh to the entity</span>
+<span class="nv">sphere</span><span class="p">:</span><span class="nf">remove</span><span class="p">(</span><span class="nv">mesh</span><span class="p">)</span><span class="w"> </span><span class="c1">-- remove the sphere mesh</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -425,10 +425,10 @@
 <dt class="sig sig-object lua" id="entity.has">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">has</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">component</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.has" title="Link to this definition">¶</a></dt>
 <dd><p>Checks if a component type is attached to this entity</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
-<span class="kd">local</span> <span class="n">sphere</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">:</span><span class="n">entity</span><span class="p">()</span>
-<span class="n">sphere</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">.</span><span class="n">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1">-- add a sphere mesh to the entity</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sphere</span><span class="p">:</span><span class="n">has</span><span class="p">(</span><span class="n">mesh</span><span class="p">))</span> <span class="c1">-- prints &#39;true&#39;</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">sphere</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="nv">sphere</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="c1">-- add a sphere mesh to the entity</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">sphere</span><span class="p">:</span><span class="nf">has</span><span class="p">(</span><span class="nv">mesh</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &#39;true&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -437,10 +437,10 @@
 <dt class="sig sig-object lua" id="entity.get">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">component</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.get" title="Link to this definition">¶</a></dt>
 <dd><p>Retrieves a component type attached to this entity</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span><span class="p">.</span><span class="n">main</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
-<span class="kd">local</span> <span class="n">sphere</span> <span class="o">=</span> <span class="n">scene</span><span class="p">.</span><span class="n">main</span><span class="p">:</span><span class="n">entity</span><span class="p">()</span>
-<span class="n">sphere</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">.</span><span class="n">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1">-- add a sphere mesh to the entity</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sphere</span><span class="p">:</span><span class="n">get</span><span class="p">(</span><span class="n">mesh</span><span class="p">))</span> <span class="c1">-- prints the mesh description</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">sphere</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="nv">sphere</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="c1">-- add a sphere mesh to the entity</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">sphere</span><span class="p">:</span><span class="nf">get</span><span class="p">(</span><span class="nv">mesh</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints the mesh description</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -848,22 +848,22 @@
 <dt class="sig sig-object lua" id="entity.created">
 <span class="sig-name descname"><span class="pre">created</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.created" title="Link to this definition">¶</a></dt>
 <dd><p>Callback for the <cite>created(…)</cite> event, which is called right after a Lua component is created, and forwards all parameters passed from the <code class="docutils literal notranslate"><span class="pre">entity:add(component,</span> <span class="pre">...)</span></code> function</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">SelfDestructor</span> <span class="o">=</span> <span class="n">class</span><span class="p">(</span><span class="s1">&#39;SelfDestructor&#39;</span><span class="p">)</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">SelfDestructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="s1">&#39;SelfDestructor&#39;</span><span class="p">)</span>
 
 <span class="c1">-- Called when created but no parameters are forwarded here</span>
-<span class="kr">function</span> <span class="nc">SelfDestructor</span><span class="p">:</span><span class="nf">init</span><span class="p">()</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">SelfDestructor</span><span class="p">:</span><span class="nf">init</span><span class="p">()</span>
 <span class="kr">end</span>
 
 <span class="c1">-- Use for custom component initialization, all parameters forwarded to here</span>
-<span class="kr">function</span> <span class="nc">SelfDestructor</span><span class="p">:</span><span class="nf">created</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I will self destruct in &quot;</span><span class="p">,</span> <span class="n">delay</span><span class="p">,</span> <span class="s2">&quot; seconds&quot;</span><span class="p">)</span>
-   <span class="n">self</span><span class="p">.</span><span class="n">entity</span><span class="p">:</span><span class="n">destroy</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">SelfDestructor</span><span class="p">:</span><span class="nf">created</span><span class="p">(</span><span class="nv">delay</span><span class="p">)</span>
+<span class="w">   </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I will self destruct in &quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">delay</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; seconds&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">self</span><span class="p">.</span><span class="py">entity</span><span class="p">:</span><span class="nf">destroy</span><span class="p">(</span><span class="nv">delay</span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="p">...</span>
 
-<span class="kd">local</span> <span class="n">ent</span> <span class="o">=</span> <span class="n">main</span><span class="p">.</span><span class="n">scene</span><span class="p">:</span><span class="n">entity</span><span class="p">()</span>
-<span class="n">ent</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">SelfDestructor</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">-- prints &quot;I will self destruct in 3 seconds&quot;</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">ent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">main</span><span class="p">.</span><span class="py">scene</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="nv">ent</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">SelfDestructor</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">-- prints &quot;I will self destruct in 3 seconds&quot;</span>
 </pre></div>
 </div>
 </dd></dl>

@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>Drawing - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -239,10 +239,10 @@
 <h2>Drawing in Codea<a class="headerlink" href="#drawing-in-codea" title="Link to this heading">¶</a></h2>
 <p>Codea comes with an immediate mode drawing API that forms the basis of
 rendering both 2D and 3D graphics</p>
-<p>The user-defined global <code class="code highlight lua docutils literal highlight-lua"><span class="n">draw</span><span class="p">()</span></code> function is called once per frame to
+<p>The user-defined global <code class="code highlight lua docutils literal highlight-lua"><span class="nf">draw</span><span class="p">()</span></code> function is called once per frame to
 update the contents of the screen</p>
-<p>The <code class="code highlight lua docutils literal highlight-lua"><span class="n">background</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">)</span></code> function is used to clear the background with a given color. When this isn’t called the contents of the background will stay the same as the preivous frame</p>
-<p>Codea uses an hybrid-immediate mode drawing system, where various built-in functions can be used to paint objects to the screen when called, such as <code class="code highlight lua docutils literal highlight-lua"><span class="n">line</span><span class="p">()</span></code>, <code class="code highlight lua docutils literal highlight-lua"><span class="n">sprite</span><span class="p">()</span></code> and <code class="code highlight lua docutils literal highlight-lua"><span class="n">rect</span><span class="p">()</span></code></p>
+<p>The <code class="code highlight lua docutils literal highlight-lua"><span class="nf">background</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="nv">g</span><span class="p">,</span><span class="nv">b</span><span class="p">,</span><span class="nv">a</span><span class="p">)</span></code> function is used to clear the background with a given color. When this isn’t called the contents of the background will stay the same as the preivous frame</p>
+<p>Codea uses an hybrid-immediate mode drawing system, where various built-in functions can be used to paint objects to the screen when called, such as <code class="code highlight lua docutils literal highlight-lua"><span class="nf">line</span><span class="p">()</span></code>, <code class="code highlight lua docutils literal highlight-lua"><span class="nf">sprite</span><span class="p">()</span></code> and <code class="code highlight lua docutils literal highlight-lua"><span class="nf">rect</span><span class="p">()</span></code></p>
 <p>These functions use the current render state, defined by the current style and matrix in use, which effects things like fill color and stroke color / width</p>
 </section>
 <section id="style">
@@ -250,18 +250,18 @@ update the contents of the screen</p>
 <p>The style module contains functions that set the current drawing state</p>
 <p>This module uses a fluent syntax, so any call that does not return a value, will instead return the style module itself, allowing multiple style commands to be chained together:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Draw a red ellipse with a 5px white stroke</span>
-<span class="n">style</span><span class="p">.</span><span class="n">push</span><span class="p">().</span><span class="n">fill</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">red</span><span class="p">).</span><span class="n">stroke</span><span class="p">(</span><span class="n">color</span><span class="p">.</span><span class="n">white</span><span class="p">).</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">ellipse</span><span class="p">(</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">style</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="nv">color</span><span class="p">.</span><span class="py">red</span><span class="p">).</span><span class="nf">stroke</span><span class="p">(</span><span class="nv">color</span><span class="p">.</span><span class="py">white</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nf">ellipse</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="../api/style.html"><span class="doc">style</span></a> for a complete reference of all functionality</p>
 <p>Anywhere <code class="docutils literal notranslate"><span class="pre">&lt;color&gt;</span></code> is used as a parameter, the following forms can be used:</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">style</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="c1">-- separate color components in the range 0-255</span>
-<span class="n">style</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="c1">-- only red, green, blue color components with alpha assumed to be 255</span>
-<span class="n">style</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">grey</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span> <span class="c1">-- only greyscale and alpha</span>
-<span class="n">style</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">grey</span><span class="p">)</span> <span class="c1">-- only grayscale with alph assumed to be 255</span>
-<span class="n">style</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="c1">-- a color object</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="c1">-- separate color components in the range 0-255</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span><span class="w"> </span><span class="c1">-- only red, green, blue color components with alpha assumed to be 255</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">grey</span><span class="p">,</span><span class="w"> </span><span class="nv">alpha</span><span class="p">)</span><span class="w"> </span><span class="c1">-- only greyscale and alpha</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">grey</span><span class="p">)</span><span class="w"> </span><span class="c1">-- only grayscale with alph assumed to be 255</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">color</span><span class="p">)</span><span class="w"> </span><span class="c1">-- a color object</span>
 </pre></div>
 </div>
 </section>

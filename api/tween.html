@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>tween - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -238,16 +238,16 @@
 <p>Procedurally animate values over time, otherwise known as tweening</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Tweening a value</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-   <span class="n">p</span> <span class="o">=</span> <span class="n">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-   <span class="n">tween</span><span class="p">(</span><span class="n">p</span><span class="p">):</span><span class="n">to</span><span class="p">{</span><span class="n">x</span> <span class="o">=</span> <span class="n">WIDTH</span><span class="p">}:</span><span class="n">time</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">   </span><span class="nv">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">   </span><span class="nf">tween</span><span class="p">(</span><span class="nv">p</span><span class="p">):</span><span class="nv">to</span><span class="p">{</span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">WIDTH</span><span class="p">}:</span><span class="nf">time</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="kr">end</span>
 
-<span class="kr">function</span> <span class="nf">draw</span><span class="p">()</span>
-   <span class="n">background</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">   </span><span class="nf">background</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
 
-   <span class="n">style</span><span class="p">.</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-   <span class="n">ellipse</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">style</span><span class="p">.</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">   </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">p</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>

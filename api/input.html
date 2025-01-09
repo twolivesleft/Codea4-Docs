@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>input - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -583,22 +583,24 @@
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">key.</span></span><span class="sig-name descname"><span class="pre">modifiers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#key.modifiers" title="Link to this definition">¶</a></dt>
 <dd><p>Queries the current key modifiers as a bit field, which is composed of the following bit mask constants:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#key.key.leftAlt" title="key.key.leftAlt"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.leftAlt</span></code></a></p></li>
-<li><p><a class="reference internal" href="#key.key.rightAlt" title="key.key.rightAlt"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.rightAlt</span></code></a></p></li>
 <li><p><a class="reference internal" href="#key.key.alt" title="key.key.alt"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.alt</span></code></a></p></li>
-<li><p><a class="reference internal" href="#key.key.leftCtrl" title="key.key.leftCtrl"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.leftCtrl</span></code></a></p></li>
-<li><p><a class="reference internal" href="#key.key.rightCtrl" title="key.key.rightCtrl"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.rightCtrl</span></code></a></p></li>
 <li><p><a class="reference internal" href="#key.key.ctrl" title="key.key.ctrl"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.ctrl</span></code></a></p></li>
-<li><p><a class="reference internal" href="#key.key.leftCmd" title="key.key.leftCmd"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.leftCmd</span></code></a></p></li>
-<li><p><a class="reference internal" href="#key.key.rightCmd" title="key.key.rightCmd"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.rightCmd</span></code></a></p></li>
 <li><p><a class="reference internal" href="#key.key.cmd" title="key.key.cmd"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.cmd</span></code></a></p></li>
+<li><p><a class="reference internal" href="#key.key.shift" title="key.key.shift"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.shift</span></code></a></p></li>
 </ul>
+<p>Use <cite>key.pressing(keyCode)</cite> to query individual keys such as <cite>key.leftAlt</cite>.</p>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="key.modifiersPressed">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">key.</span></span><span class="sig-name descname"><span class="pre">modifiersPressed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">modifiers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#key.modifiersPressed" title="Link to this definition">¶</a></dt>
+<dd><p>Queries whether the supplied key modifiers are currently pressed</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>keyCode</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">constant</span></code></span>) – The keyCode to query</p>
+<dd class="field-odd"><p><strong>modifiers</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">constant</span></code></span>) – The key modifiers to query as a bit field</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Was the key released this frame</p>
+<dd class="field-even"><p>Are the key modifiers currently pressed</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">boolean</span></code></span></p>
@@ -651,6 +653,21 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="key.key.cmd">
 <span class="sig-name descname"><span class="pre">cmd</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.cmd" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.leftShift">
+<span class="sig-name descname"><span class="pre">leftShift</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.leftShift" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.rightShift">
+<span class="sig-name descname"><span class="pre">rightShift</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.rightShift" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.shift">
+<span class="sig-name descname"><span class="pre">shift</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.shift" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua attribute">

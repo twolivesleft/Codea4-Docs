@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>Migration from Codea 3.x - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -325,32 +325,32 @@
 <h2>Fluent API (style, matrix, etc…)<a class="headerlink" href="#fluent-api-style-matrix-etc" title="Link to this heading">¶</a></h2>
 <p>In 4.x we’ve changed style calls to a fluent/chaining syntax, where the namespace <code class="docutils literal notranslate"><span class="pre">style</span></code> is used to access all style related commands, where each one returns a reference to the style table so they can be chained one after the other</p>
 <p>So the following code:</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">pushStyle</span><span class="p">()</span>
-<span class="linenos">2</span><span class="n">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
-<span class="linenos">3</span><span class="n">stroke</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-<span class="linenos">4</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="linenos">5</span><span class="n">rect</span><span class="p">(</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="linenos">6</span><span class="n">popStyle</span><span class="p">()</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nf">pushStyle</span><span class="p">()</span>
+<span class="linenos">2</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="linenos">3</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+<span class="linenos">4</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos">5</span><span class="nf">rect</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos">6</span><span class="nf">popStyle</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Can now he written as:</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">style</span><span class="p">.</span><span class="n">push</span><span class="p">().</span><span class="n">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="n">stroke</span><span class="p">(</span><span class="mi">128</span><span class="p">).</span><span class="n">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="linenos">2</span><span class="n">rect</span><span class="p">(</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="linenos">3</span><span class="n">style</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">128</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos">2</span><span class="nf">rect</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos">3</span><span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The same goes for matrix, camera and context</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">matrix</span><span class="p">.</span><span class="n">push</span><span class="p">().</span><span class="n">translate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">).</span><span class="n">scale</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="linenos">2</span><span class="n">matrix</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">translate</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">).</span><span class="nf">scale</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos">2</span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
 <span class="linenos">3</span>
-<span class="linenos">4</span><span class="n">camera</span><span class="p">.</span><span class="n">perspective</span><span class="p">()</span>
+<span class="linenos">4</span><span class="nv">camera</span><span class="p">.</span><span class="nf">perspective</span><span class="p">()</span>
 <span class="linenos">5</span>
-<span class="linenos">6</span><span class="n">context</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="linenos">7</span><span class="n">context</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="linenos">6</span><span class="nv">context</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nv">img</span><span class="p">)</span>
+<span class="linenos">7</span><span class="nv">context</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>If you prefer the old syntax you can use the following in <code class="docutils literal notranslate"><span class="pre">Main.lua</span></code> for limited* compatibility:</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">require</span> <span class="s1">&#39;codea.legacy&#39;</span><span class="p">:</span><span class="n">export</span><span class="p">()</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;codea.legacy&#39;</span><span class="p">:</span><span class="nf">export</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -451,22 +451,22 @@
 <h2>Time<a class="headerlink" href="#time" title="Link to this heading">¶</a></h2>
 <p>Intead of <code class="docutils literal notranslate"><span class="pre">ElapsedTime</span></code> and <code class="docutils literal notranslate"><span class="pre">DeltaTime</span></code>, there is now the <code class="docutils literal notranslate"><span class="pre">time</span></code> module, which contains:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">-- Time difference since last frame</span>
-<span class="linenos"> 2</span><span class="n">time</span><span class="p">.</span><span class="n">delta</span>
+<span class="linenos"> 2</span><span class="nv">time</span><span class="p">.</span><span class="py">delta</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="c1">-- Time elapsed since the start of play</span>
-<span class="linenos"> 5</span><span class="n">time</span><span class="p">.</span><span class="n">elapsed</span>
+<span class="linenos"> 5</span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span>
 <span class="linenos"> 6</span>
 <span class="linenos"> 7</span><span class="c1">-- Fixed time difference since last simulation step (for physics calculations)</span>
-<span class="linenos"> 8</span><span class="n">time</span><span class="p">.</span><span class="n">fixedDelta</span>
+<span class="linenos"> 8</span><span class="nv">time</span><span class="p">.</span><span class="py">fixedDelta</span>
 <span class="linenos"> 9</span>
 <span class="linenos">10</span><span class="c1">-- Unscaled delta time (uneffected by time.scale)</span>
-<span class="linenos">11</span><span class="n">time</span><span class="p">.</span><span class="n">unscaledDelta</span>
+<span class="linenos">11</span><span class="nv">time</span><span class="p">.</span><span class="py">unscaledDelta</span>
 <span class="linenos">12</span>
 <span class="linenos">13</span><span class="c1">-- Unscaled elapsed time (uneffected by time.scale)</span>
-<span class="linenos">14</span><span class="n">time</span><span class="p">.</span><span class="n">unscapedElapsed</span>
+<span class="linenos">14</span><span class="nv">time</span><span class="p">.</span><span class="py">unscapedElapsed</span>
 <span class="linenos">15</span>
 <span class="linenos">16</span><span class="c1">-- Time scale for speeding and slowing passage of time (default = 1)</span>
-<span class="linenos">17</span><span class="n">time</span><span class="p">.</span><span class="n">scale</span>
+<span class="linenos">17</span><span class="nv">time</span><span class="p">.</span><span class="py">scale</span>
 </pre></div>
 </div>
 </section>

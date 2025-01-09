@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>string - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -238,15 +238,15 @@
 <p>Used to interact with text files.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Reading and saving text files</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span> <span class="kr">function</span> <span class="nf">setup</span><span class="p">()</span>
-     <span class="kd">local</span> <span class="n">contentsOrNil</span> <span class="o">=</span> <span class="n">string</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">asset</span><span class="o">..</span><span class="s2">&quot;Hello.txt&quot;</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contents: &quot;</span> <span class="o">..</span> <span class="nb">tostring</span><span class="p">(</span><span class="n">contentsOrNil</span><span class="p">))</span>
-     <span class="kr">if</span> <span class="n">test</span> <span class="o">==</span> <span class="s2">&quot;World&quot;</span> <span class="kr">then</span>
-         <span class="n">string</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">asset</span><span class="o">..</span><span class="s2">&quot;Hello.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
-     <span class="kr">else</span>
-         <span class="n">string</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">asset</span><span class="o">..</span><span class="s2">&quot;Hello.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;World&quot;</span><span class="p">)</span>
-     <span class="kr">end</span>
- <span class="kr">end</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">     </span><span class="kd">local</span><span class="w"> </span><span class="nv">contentsOrNil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">string</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">asset</span><span class="o">..</span><span class="s2">&quot;Hello.txt&quot;</span><span class="p">)</span>
+<span class="w">     </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contents: &quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nb">tostring</span><span class="p">(</span><span class="nv">contentsOrNil</span><span class="p">))</span>
+<span class="w">     </span><span class="kr">if</span><span class="w"> </span><span class="nv">test</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;World&quot;</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">         </span><span class="nv">string</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="nv">asset</span><span class="o">..</span><span class="s2">&quot;Hello.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="w">     </span><span class="kr">else</span>
+<span class="w">         </span><span class="nv">string</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="nv">asset</span><span class="o">..</span><span class="s2">&quot;Hello.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;World&quot;</span><span class="p">)</span>
+<span class="w">     </span><span class="kr">end</span>
+<span class="w"> </span><span class="kr">end</span>
 </pre></div>
 </div>
 </div>

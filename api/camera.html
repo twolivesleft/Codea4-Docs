@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>camera - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -240,14 +240,14 @@
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">camera</span></span></dt>
 <dd><p>A camera object used for rendering. Can also be used as a component in scenes</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="p">()</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">scn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
 <span class="c1">-- Create an entity and attach a perspective camera to it</span>
-<span class="n">cam</span> <span class="o">=</span> <span class="n">scn</span><span class="p">:</span><span class="n">entity</span><span class="p">():</span><span class="n">add</span><span class="p">(</span><span class="n">camera</span><span class="p">.</span><span class="n">perspective</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="nv">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">():</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Use a camera directly with drawing calls</span>
-<span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="p">.</span><span class="n">perspective</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">cam</span><span class="p">:</span><span class="n">apply</span><span class="p">()</span>
+<span class="nv">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">camera</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="nv">cam</span><span class="p">:</span><span class="nf">apply</span><span class="p">()</span>
 </pre></div>
 </div>
 <dl class="lua staticmethod">

@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>Shaders and Materials - Codea 4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -238,17 +238,17 @@
 <p>A special program that runs per vertex/pixel for drawing and compute operations on the GPU</p>
 <p>Codea shaders are written in GLSL (GL shading language)</p>
 <p>In Codea shaders can be used in various places to customise rendering including meshes, entities, sprites, backgrounds and post processing effects</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">myShader</span> <span class="o">=</span> <span class="n">shader</span><span class="p">(</span><span class="n">vsh</span><span class="p">,</span> <span class="n">fsh</span><span class="p">)</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">myShader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">shader</span><span class="p">(</span><span class="nv">vsh</span><span class="p">,</span><span class="w"> </span><span class="nv">fsh</span><span class="p">)</span>
 
-<span class="n">myMesh</span><span class="p">.</span><span class="n">shader</span> <span class="o">=</span> <span class="n">myShader</span>
+<span class="nv">myMesh</span><span class="p">.</span><span class="py">shader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">myShader</span>
 
-<span class="n">myMaterial</span> <span class="o">=</span> <span class="n">material</span><span class="p">(</span><span class="n">shader</span><span class="p">)</span>
+<span class="nv">myMaterial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">material</span><span class="p">(</span><span class="nv">shader</span><span class="p">)</span>
 
-<span class="n">myMesh</span><span class="p">.</span><span class="n">material</span> <span class="o">=</span> <span class="n">myMaterial</span>
+<span class="nv">myMesh</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">myMaterial</span>
 
-<span class="n">sprite</span><span class="p">(</span><span class="n">myShader</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="nf">sprite</span><span class="p">(</span><span class="nv">myShader</span><span class="p">,</span><span class="w"> </span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">w</span><span class="p">,</span><span class="w"> </span><span class="nv">h</span><span class="p">)</span>
 
-<span class="n">background</span><span class="p">(</span><span class="n">myShader</span><span class="p">)</span>
+<span class="nf">background</span><span class="p">(</span><span class="nv">myShader</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>.</p>
@@ -272,7 +272,7 @@
 <h2>Compute Shaders<a class="headerlink" href="#compute-shaders" title="Link to this heading">¶</a></h2>
 <p>Compute shaders bypass the normal rasterisation stage, useful for more general purpose computations</p>
 <p>More info: <a class="reference external" href="https://www.khronos.org/opengl/wiki/Compute_Shader">https://www.khronos.org/opengl/wiki/Compute_Shader</a></p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">myComputeShader</span> <span class="o">=</span> <span class="n">shader</span><span class="p">.</span><span class="n">compute</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">myComputeShader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span><span class="p">.</span><span class="py">compute</span>
 <span class="s">[[</span>
 <span class="s">   #version 430</span>
 <span class="s">   #include &lt;codea/common.glsl&gt;</span>
@@ -321,32 +321,32 @@
 </div></blockquote>
 </li>
 </ul>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">shdr</span> <span class="o">=</span> <span class="n">shader</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">shdr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span>
 <span class="p">{</span>
-   <span class="n">properties</span> <span class="o">=</span>
-   <span class="p">{</span>
-      <span class="p">{</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="p">...}</span>
-   <span class="p">},</span>
+<span class="w">   </span><span class="nv">properties</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">{</span><span class="nv">name</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="p">,</span><span class="w"> </span><span class="p">...}</span>
+<span class="w">   </span><span class="p">},</span>
 
-   <span class="n">options</span> <span class="o">=</span>
-   <span class="p">{</span>
-      <span class="n">NAME</span> <span class="o">=</span> <span class="p">{</span><span class="n">default</span><span class="p">,</span> <span class="n">options</span><span class="p">}</span>
-   <span class="p">},</span>
+<span class="w">   </span><span class="nv">options</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">default</span><span class="p">,</span><span class="w"> </span><span class="nv">options</span><span class="p">}</span>
+<span class="w">   </span><span class="p">},</span>
 
-   <span class="n">passes</span> <span class="o">=</span>
-   <span class="p">{</span>
-      <span class="p">{</span>
-         <span class="n">vertex</span> <span class="o">=</span>
-         <span class="s">[[</span>
+<span class="w">   </span><span class="nv">passes</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nv">vertex</span><span class="w"> </span><span class="o">=</span>
+<span class="w">         </span><span class="s">[[</span>
 <span class="s">            ...</span>
 <span class="s">         ]]</span><span class="p">,</span>
 
-         <span class="n">fragment</span> <span class="o">=</span>
-         <span class="s">[[</span>
+<span class="w">         </span><span class="nv">fragment</span><span class="w"> </span><span class="o">=</span>
+<span class="w">         </span><span class="s">[[</span>
 <span class="s">            ...</span>
 <span class="s">         ]]</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -426,21 +426,21 @@
 <p>Surface shaders provide support for advanced shading models, where only the surface attributes need to be specified</p>
 <p>Our shading models are derived from Google’s amazing Filament: <a class="reference external" href="https://google.github.io/filament/Materials.html">https://google.github.io/filament/Materials.html</a></p>
 <p>Surface shaders are created using a shader definition with a <code class="docutils literal notranslate"><span class="pre">shadingModel</span></code> set. A vertex and material function can then be spefified to customise the surface appearance</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">surface</span> <span class="o">=</span> <span class="n">shader</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">surface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span>
 <span class="p">{</span>
-   <span class="n">pass</span> <span class="o">=</span>
-   <span class="p">{</span>
-      <span class="n">shadingModel</span> <span class="o">=</span> <span class="s2">&quot;lit&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nv">pass</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">shadingModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lit&quot;</span><span class="p">,</span>
 
-      <span class="n">vertex</span> <span class="o">=</span>
-      <span class="s">[[</span>
+<span class="w">      </span><span class="nv">vertex</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="s">[[</span>
 <span class="s">         void materialVertex(inout MaterialVertexInputs material)</span>
 <span class="s">         {</span>
 <span class="s">         }</span>
 <span class="s">      ]]</span><span class="p">,</span>
 
-      <span class="n">material</span> <span class="o">=</span>
-      <span class="s">[[</span>
+<span class="w">      </span><span class="nv">material</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="s">[[</span>
 <span class="s">         void material(inout MaterialInputs material)</span>
 <span class="s">         {</span>
 <span class="s">            prepareMaterial(material);</span>
@@ -453,7 +453,7 @@
 <span class="s">            material.baseColor = baseColor;</span>
 <span class="s">         }</span>
 <span class="s">      ]]</span>
-   <span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
 
 <span class="p">}</span>
 </pre></div>
