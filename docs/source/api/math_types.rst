@@ -74,6 +74,22 @@ vec2
    .. lua:method:: unpack() -> x, y
 
       Unpack this vector as multiple number values
+   
+   .. lua:method:: cross(v)
+
+      Perform a cross product with another vec2 and return the result
+   
+   .. lua:method:: rotate(angleRadians)
+
+      Rotate this vector by a given angle in radians
+   
+   .. lua:method:: rotate90()
+
+      Rotate this vector by 90 degrees
+   
+   .. lua:method:: angleBetween(v)
+
+      Calculate the oriented angle between this vector and another, between -pi and pi
 
 vec3
 ####
