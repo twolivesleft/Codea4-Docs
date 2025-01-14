@@ -13,7 +13,7 @@ color
                          color(red, green, blue)
                          color(red, green, blue, alpha)
 
-      Creates a new color object
+      Creates a new color object from the given values between 0 and 255
     
    .. lua:staticmethod:: hsv(h, s, v)
                          hsv(vec3)
@@ -80,5 +80,5 @@ color
 
    * `+` : Adds two colors together component-wise
    * `-` : Subtracts two colors component-wise
-   * `*` : Multiplies a color by a scalar, or another color component-wise
+   * `*` : Multiplies a color by a scalar, or another color component-wise using their [0-1] range
    * `/` : Divides a color by a scalar
