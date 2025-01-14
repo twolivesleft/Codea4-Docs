@@ -417,7 +417,7 @@ Slices and Atlases
          button = image.read(asset.builtin.UI.Grey_Button_10)
 
          -- create a stretchable 9-patch of the original image
-         buttonSlice = btn.slice:patch(10)
+         buttonSlice = button.slice:patch(10)
       end
 
       function draw()
