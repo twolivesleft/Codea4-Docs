@@ -255,6 +255,18 @@ vec4
 
       Unpack this vector as multiple number values
 
+vector swizzling
+################
+
+``vec2``, ``vec3`` and ``vec4`` support swizzling, which allows you to access and manipulate their components in a variety of ways
+
+.. code-block:: lua
+
+   v = vec4(1, 2, 3, 4)
+   print(v.wzyx) -- prints '(4.0, 3.0, 2.0, 1.0)'
+   print(v.zzz) -- prints '(3.0, 3.0, 3.0)'
+   print(v.xw) -- prints '(1.0, 4.0)'
+
 quat
 ####
 
