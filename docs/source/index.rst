@@ -43,6 +43,7 @@ Codea 4
    api
    api/lua
    api/math_types
+   api/color
    api/graphics
    api/style
    api/matrix
