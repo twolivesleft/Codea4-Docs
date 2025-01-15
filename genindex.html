@@ -175,6 +175,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/matrix.html">matrix</a></li>
@@ -453,8 +454,6 @@
           <li><a href="api/mesh.html#mesh.clear">(mesh method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/style.html#style.clip">clip() (in module style)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.collider">collider (class in physics2d)</a>
@@ -463,12 +462,48 @@
           <li><a href="api/physics3d.html#physics3d.collider">(class in physics3d)</a>
 </li>
         </ul></li>
-        <li><a href="api/objc.html#objc.color">color() (in module objc)</a>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/color.html#color">color (built-in class)</a>
+</li>
+        <li><a href="api/color.html#color.color">color() (color static method)</a>
 
         <ul>
+          <li><a href="api/objc.html#objc.color">(in module objc)</a>
+</li>
           <li><a href="api/mesh.html#mesh.color">(mesh method)</a>, <a href="api/mesh.html#mesh.color">[1]</a>
 </li>
         </ul></li>
+        <li><a href="api/color.html#color.a">color.a (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.b">color.b (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.black">color.black (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.blue">color.blue (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.clear">color.clear (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.cyan">color.cyan (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.g">color.g (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.gray">color.gray (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.green">color.green (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.grey">color.grey (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.magenta">color.magenta (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.r">color.r (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.red">color.red (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.white">color.white (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.yellow">color.yellow (attribute)</a>
+</li>
         <li><a href="api/math_types.html#mat2.column">column() (mat2 method)</a>, <a href="api/math_types.html#mat2.column">[1]</a>, <a href="api/math_types.html#mat2.column">[2]</a>
 </li>
         <li><a href="api/shader.html#shader.compute">compute() (shader static method)</a>
@@ -839,6 +874,8 @@
 </li>
         <li><a href="api/input.html#gamepad.virtual">gamepad.virtual (attribute)</a>
 </li>
+        <li><a href="api/color.html#color.gamma">gamma() (color method)</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.gear">gear (class in physics2d)</a>
@@ -899,6 +936,8 @@
 </li>
         <li><a href="api/graphics.html#module-gizmos">gizmos (module)</a>
 </li>
+        <li><a href="api/color.html#color.grayscale">grayscale() (color method)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -915,16 +954,22 @@
           <li><a href="api/physics3d.html#physics3d.hinge">(class in physics3d)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.body.hinge">hinge() (physics2d.body method)</a>
 
         <ul>
           <li><a href="api/physics3d.html#physics3d.body.hinge">(physics3d.body method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/ui.html#ui.hstack">hstack (class in ui)</a>
 </li>
+        <li><a href="api/color.html#color.hsv">hsv() (color method)</a>
+
+        <ul>
+          <li><a href="api/color.html#color.hsv">(color static method)</a>
+</li>
+        </ul></li>
     </ul></td>
   </tr></table>
 </section>
@@ -1241,6 +1286,8 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/color.html#color.linear">linear() (color method)</a>
+</li>
         <li><a href="api/style.html#style.lineCap">lineCap() (in module style)</a>
 </li>
         <li><a href="api/style.html#style.lineJoin">lineJoin() (in module style)</a>
@@ -1353,6 +1400,8 @@
           <li><a href="api/math_types.html#vec4.min">(vec4 static method)</a>
 </li>
         </ul></li>
+        <li><a href="api/color.html#color.mix">mix() (color static method)</a>
+</li>
         <li><a href="api/matrix.html#matrix.model">model() (in module matrix)</a>
 </li>
         <li><a href="api/input.html#key.modifiers">modifiers() (in module key)</a>
@@ -2309,10 +2358,10 @@
 </li>
         <li><a href="api/ui.html#ui.ui.label.shadowOffset">ui.ui.label.shadowOffset (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/ui.html#ui.ui.label.shadowSoftner">ui.ui.label.shadowSoftner (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/ui.html#ui.ui.label.style">ui.ui.label.style (attribute)</a>
 </li>
         <li><a href="api/ui.html#ui.ui.label.text">ui.ui.label.text (attribute)</a>
@@ -2323,9 +2372,11 @@
 </li>
         <li><a href="api/material.html#material.unlit">unlit() (material static method)</a>
 </li>
-        <li><a href="api/math_types.html#vec2.unpack">unpack() (vec2 method)</a>
+        <li><a href="api/color.html#color.unpack">unpack() (color method)</a>
 
         <ul>
+          <li><a href="api/math_types.html#vec2.unpack">(vec2 method)</a>
+</li>
           <li><a href="api/math_types.html#vec3.unpack">(vec3 method)</a>
 </li>
           <li><a href="api/math_types.html#vec4.unpack">(vec4 method)</a>
