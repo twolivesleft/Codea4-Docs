@@ -620,6 +620,23 @@
 </dd></dl>
 
 </section>
+<section id="vector-swizzling">
+<h2>vector swizzling<a class="headerlink" href="#vector-swizzling" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">vec2</span></code>, <code class="docutils literal notranslate"><span class="pre">vec3</span></code> and <code class="docutils literal notranslate"><span class="pre">vec4</span></code> support swizzling, which allows you to access and manipulate their components in a variety of ways</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec4</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="nv">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1">-- Reading</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">v1</span><span class="p">.</span><span class="py">wzyx</span><span class="p">)</span><span class="w">      </span><span class="c1">-- prints &#39;(4.0, 3.0, 2.0, 1.0)&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">v1</span><span class="p">.</span><span class="py">zzz</span><span class="p">)</span><span class="w">       </span><span class="c1">-- prints &#39;(3.0, 3.0, 3.0)&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">v2</span><span class="p">.</span><span class="py">xz</span><span class="p">)</span><span class="w">        </span><span class="c1">-- prints &#39;(5.0, 7.0)&#39;</span>
+
+<span class="c1">-- Writing</span>
+<span class="nv">v1</span><span class="p">.</span><span class="py">yx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w">  </span><span class="c1">-- v1 is now &#39;(6.0, 5.0, 3.0, 4.0)&#39;</span>
+<span class="nv">v1</span><span class="p">.</span><span class="py">xyz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">v2</span><span class="p">.</span><span class="py">yzx</span><span class="w">     </span><span class="c1">-- v1 is now &#39;(6.0, 7.0, 5.0, 4.0)&#39;</span>
+</pre></div>
+</div>
+</section>
 <section id="quat">
 <h2>quat<a class="headerlink" href="#quat" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
@@ -1123,6 +1140,7 @@
 <li><a class="reference internal" href="#vec2">vec2</a></li>
 <li><a class="reference internal" href="#vec3">vec3</a></li>
 <li><a class="reference internal" href="#vec4">vec4</a></li>
+<li><a class="reference internal" href="#vector-swizzling">vector swizzling</a></li>
 <li><a class="reference internal" href="#quat">quat</a></li>
 <li><a class="reference internal" href="#mat2">mat2</a></li>
 <li><a class="reference internal" href="#mat3">mat3</a></li>
