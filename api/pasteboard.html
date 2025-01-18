@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="physics2d" href="physics2d.html" /><link rel="prev" title="objc" href="objc.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>inspector - Codea 4.0 documentation</title>
+        <title>pasteboard - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -173,7 +173,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
@@ -196,7 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
@@ -235,37 +235,96 @@
           </label>
         </div>
         <article role="main">
-          <section id="inspector">
-<h1>inspector<a class="headerlink" href="#inspector" title="Link to this heading">¶</a></h1>
-<p><em>(module)</em></p>
-<p>Module for viewing and manipulating objects in the sidebar inspector, an advanced alternative to parameters</p>
-<dl class="lua staticmethod" id="module-inspector">
-<dt class="sig sig-object lua" id="inspector.set">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#inspector.set" title="Link to this definition">¶</a></dt>
-<dd><p>Displays any viewable/editable properties and actions for <code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+          <section id="pasteboard">
+<h1>pasteboard<a class="headerlink" href="#pasteboard" title="Link to this heading">¶</a></h1>
+<p>Exposes pasteboard functionnalities to copy and paste strings, images, colors and URLs.</p>
+<p>To minimize unnecessary notifications when accessing pasteboard data from other applications,
+first call <code class="docutils literal notranslate"><span class="pre">hasStrings</span></code>, <code class="docutils literal notranslate"><span class="pre">hasImages</span></code>, <code class="docutils literal notranslate"><span class="pre">hasColors</span></code> or <code class="docutils literal notranslate"><span class="pre">hasURLs</span></code> to check if the desired
+data type is available before retrieving it. This prevents a notification when the requested
+type is not present, but a notification may still appear if data is accessed.</p>
+<dl class="lua attribute" id="module-pasteboard">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#pasteboard.pasteboard.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the pasteboard.</p>
 </dd></dl>
 
-<dl class="lua staticmethod">
-<dt class="sig sig-object lua" id="inspector.add">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#inspector.add" title="Link to this definition">¶</a></dt>
-<dd><p>Appends <code class="docutils literal notranslate"><span class="pre">object</span></code>’s data to the inspector</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.numberOfItems">
+<span class="sig-name descname"><span class="pre">numberOfItems</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#pasteboard.pasteboard.numberOfItems" title="Link to this definition">¶</a></dt>
+<dd><p>The number of items in the pasteboard.</p>
 </dd></dl>
 
-<dl class="lua staticmethod">
-<dt class="sig sig-object lua" id="inspector.push">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#inspector.push" title="Link to this definition">¶</a></dt>
-<dd><p>Pushes a new page onto the inspector stack and adds <code class="docutils literal notranslate"><span class="pre">object</span></code> to it</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.hasStrings">
+<span class="sig-name descname"><span class="pre">hasStrings</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#pasteboard.pasteboard.hasStrings" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the pasteboard contains one or more strings.</p>
 </dd></dl>
 
-<dl class="lua staticmethod">
-<dt class="sig sig-object lua" id="inspector.pop">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inspector.pop" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.string">
+<span class="sig-name descname"><span class="pre">string</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#pasteboard.pasteboard.string" title="Link to this definition">¶</a></dt>
+<dd><p>The first string in the pasteboard.</p>
+</dd></dl>
 
-<dl class="lua staticmethod">
-<dt class="sig sig-object lua" id="inspector.clear">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">inspector.</span></span><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inspector.clear" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.strings">
+<span class="sig-name descname"><span class="pre">strings</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#pasteboard.pasteboard.strings" title="Link to this definition">¶</a></dt>
+<dd><p>A table of strings in the pasteboard.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.hasImages">
+<span class="sig-name descname"><span class="pre">hasImages</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#pasteboard.pasteboard.hasImages" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the pasteboard contains one or more images.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.image">
+<span class="sig-name descname"><span class="pre">image</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">image</span><a class="headerlink" href="#pasteboard.pasteboard.image" title="Link to this definition">¶</a></dt>
+<dd><p>The first image in the pasteboard.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.images">
+<span class="sig-name descname"><span class="pre">images</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#pasteboard.pasteboard.images" title="Link to this definition">¶</a></dt>
+<dd><p>A table of images in the pasteboard.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.hasColors">
+<span class="sig-name descname"><span class="pre">hasColors</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#pasteboard.pasteboard.hasColors" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the pasteboard contains one or more colors.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.color">
+<span class="sig-name descname"><span class="pre">color</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">color</span><a class="headerlink" href="#pasteboard.pasteboard.color" title="Link to this definition">¶</a></dt>
+<dd><p>The first color in the pasteboard.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.colors">
+<span class="sig-name descname"><span class="pre">colors</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#pasteboard.pasteboard.colors" title="Link to this definition">¶</a></dt>
+<dd><p>A table of colors in the pasteboard.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.hasURLs">
+<span class="sig-name descname"><span class="pre">hasURLs</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#pasteboard.pasteboard.hasURLs" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the pasteboard contains one or more URLs.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.URL">
+<span class="sig-name descname"><span class="pre">URL</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#pasteboard.pasteboard.URL" title="Link to this definition">¶</a></dt>
+<dd><p>The first URL in the pasteboard.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pasteboard.pasteboard.URLs">
+<span class="sig-name descname"><span class="pre">URLs</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#pasteboard.pasteboard.URLs" title="Link to this definition">¶</a></dt>
+<dd><p>A table of URLs in the pasteboard.</p>
+</dd></dl>
 
 </section>
 
@@ -274,8 +333,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="physics2d.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">physics2d</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="objc.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">objc</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
