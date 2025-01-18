@@ -463,6 +463,14 @@ Slices and Atlases
    .. lua:method:: flip()            
 
       Sets/gets the horizontal and vertical flip for the slice
+    
+   .. lua:attribute:: image: image
+
+      The image this slice is derived from
+    
+   .. lua:attribute:: atlas: atlas
+
+      The atlas this slice is part of
 
 .. lua:class:: atlas
 
