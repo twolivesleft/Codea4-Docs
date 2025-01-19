@@ -410,13 +410,13 @@ Gamepad
 
    .. lua:attribute:: rightStickButton: gamepad.button
 
-   .. lua:attribute:: buttonA: gamepad.button
+   .. lua:attribute:: a: gamepad.button
 
-   .. lua:attribute:: buttonB: gamepad.button
+   .. lua:attribute:: b: gamepad.button
 
-   .. lua:attribute:: buttonX: gamepad.button
+   .. lua:attribute:: x: gamepad.button
 
-   .. lua:attribute:: buttonY: gamepad.button
+   .. lua:attribute:: y: gamepad.button
 
    .. lua:attribute:: home: gamepad.button
 
