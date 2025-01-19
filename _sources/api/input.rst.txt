@@ -297,6 +297,7 @@ Constants - Key Codes
 .. lua:attribute:: period: const
 .. lua:attribute:: slash: const
 .. lua:attribute:: backslash: const
+.. lua:attribute:: nonUSBackslash: const
 .. lua:attribute:: tilde: const
 .. lua:attribute:: f1: const
 .. lua:attribute:: f2: const
