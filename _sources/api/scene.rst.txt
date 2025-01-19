@@ -57,6 +57,14 @@ scene
       - :lua:class:`image` - Use an image directly (assumed to be a cube image)
       - :lua:class:`color` - Use a solid color
 
+   .. lua:attribute:: skyBlur : number
+
+      the blur strength of the skybox
+
+   .. lua:attribute:: skyExposure : number
+
+      the brightness of the skybox
+
    .. lua:attribute:: camera : entity
 
       :returns: The scene's camera entity (if it exists)
@@ -66,6 +74,15 @@ scene
 
       :returns: The scene's sun entity (if it exists)
       :rtype: entity
+
+   .. lua:attribute:: canvas : ui.canvas
+
+      :returns: The main ui canvas of the scene (ui starts here)
+      :rtype: ui.canvas
+
+   .. lua:attribute:: pixelsPerUnit : number
+
+      the amount of pixels that are in a grid unit
 
    .. lua:method:: entity([name])
 
