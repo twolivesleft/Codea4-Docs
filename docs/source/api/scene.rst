@@ -77,8 +77,8 @@ scene
 
    .. lua:attribute:: canvas : ui.canvas
 
-         :returns: The main UI canvas of the scene
-         :rtype: ui.canvas
+      :returns: The main UI canvas of the scene
+      :rtype: ui.canvas
 
    .. lua:attribute:: pixelsPerUnit : number
 
