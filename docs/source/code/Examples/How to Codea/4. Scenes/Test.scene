@@ -1,0 +1,619 @@
+{
+    "version": 0,
+    "snapSettings": {
+        "cereal_class_version": 0,
+        "enabled": false,
+        "visible": true,
+        "spacing": 1.0,
+        "angle": 45.0,
+        "axes": {
+            "x": true,
+            "y": true,
+            "z": true
+        }
+    },
+    "render2dSettings": {
+        "cereal_class_version": 0,
+        "pixelsPerUnit": 100.0
+    },
+    "render3dSettings": {
+        "cereal_class_version": 0,
+        "skyType": 0,
+        "skyImage": {
+            "cereal_class_version": 0,
+            "location": 1,
+            "key": "builtin/hdr/Norway Forest.hdr"
+        },
+        "skyMaterial": {
+            "cereal_class_version": 0,
+            "location": 2
+        },
+        "skyColor": {
+            "cereal_class_version": 0,
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 0.0
+        }
+    },
+    "timeSettings": {
+        "cereal_class_version": 0,
+        "autoUpdate": true,
+        "maximumTimeStep": 0.10000000149011612,
+        "fixedDeltaTime": 0.008333333767950535,
+        "timeScale": 1.0
+    },
+    "physics2dSettings": {
+        "cereal_class_version": 0,
+        "gravity": {
+            "x": 0.0,
+            "y": -9.800000190734864
+        },
+        "velocityIterations": 9,
+        "positionIterations": 3
+    },
+    "physics3dSettings": {
+        "cereal_class_version": 0,
+        "gravity": {
+            "x": 0.0,
+            "y": -9.800000190734864,
+            "z": 0.0
+        }
+    },
+    "entities": [
+        {
+            "id": 0,
+            "name": "camera",
+            "active": true,
+            "children": [],
+            "Transform": {
+                "cereal_class_version": 0,
+                "position": {
+                    "x": -6.632872581481934,
+                    "y": 5.5807085037231449,
+                    "z": -4.986050128936768
+                },
+                "rotation": {
+                    "x": 0.2609981894493103,
+                    "y": 0.42729082703590395,
+                    "z": -0.13031993806362153,
+                    "w": 0.8557565212249756
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "Camera": {
+                "cereal_class_version": 0,
+                "camera": {
+                    "ptr_wrapper": {
+                        "id": 2147483649,
+                        "data": {
+                            "ortho": false,
+                            "orthoSize": 1.0,
+                            "fovy": 45.0,
+                            "aspect": -1.0,
+                            "zNear": 0.10000000149011612,
+                            "zFar": 1000.0,
+                            "priority": 0,
+                            "clearMode": 4,
+                            "clearColor": {
+                                "r": 0.0,
+                                "g": 0.0,
+                                "b": 0.0,
+                                "a": 1.0
+                            }
+                        }
+                    }
+                }
+            },
+            "Scripting": {
+                "cereal_class_version": 0,
+                "scripts": [
+                    {
+                        "cereal_class_version": 0,
+                        "enabled": true,
+                        "embedded": false,
+                        "class": "camera.rigs.orbit"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1,
+            "name": "sun",
+            "active": true,
+            "children": [],
+            "Transform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.3535533845424652,
+                    "y": 0.3535533845424652,
+                    "z": -0.1464466154575348,
+                    "w": 0.8535534143447876
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "Light": {
+                "cereal_class_version": 0,
+                "light": {
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "cereal_class_version": 1,
+                            "type": 0,
+                            "position": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0
+                            },
+                            "direction": {
+                                "x": 0.0,
+                                "y": -1.0,
+                                "z": 0.0
+                            },
+                            "color": {
+                                "r": 1.0,
+                                "g": 1.0,
+                                "b": 1.0,
+                                "a": 1.0
+                            },
+                            "intensity": 1.0,
+                            "castShadows": true,
+                            "shadowOptions": {
+                                "cereal_class_version": 0,
+                                "mapSize": 512,
+                                "shadowCascades": 3,
+                                "cascadeSplitPositions": {
+                                    "value0": 0.6000000238418579,
+                                    "value1": 0.800000011920929,
+                                    "value2": 0.8500000238418579,
+                                    "value3": 0.8999999761581421
+                                },
+                                "constantBias": 0.0010000000474974514,
+                                "normalBias": 0.10000000149011612,
+                                "shadowFar": 0.0,
+                                "shadowNearHint": 1.0,
+                                "shadowFarHint": 100.0,
+                                "polygonOffsetConstant": 0.5,
+                                "polygonOffsetSlope": 2.0
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": 2,
+            "name": "ground",
+            "active": true,
+            "children": [
+                {
+                    "id": 5242884,
+                    "name": "Tile_-1_-1",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": -0.5,
+                            "y": 0.10000000149011612,
+                            "z": -0.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "cereal_class_version": 0,
+                        "mesh": {
+                            "cereal_class_version": 0,
+                            "location": 1,
+                            "key": "builtin/Minigolf/bumpWalls.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 8388614,
+                    "name": "Tile_0_-1",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": 0.5,
+                            "y": 0.10000000149011612,
+                            "z": -0.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/narrowRound.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 6291468,
+                    "name": "Tile_1_-1",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": 1.5,
+                            "y": 0.10000000149011612,
+                            "z": -0.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/windmill.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 15728645,
+                    "name": "Tile_2_-1",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": 2.5,
+                            "y": 0.10000000149011612,
+                            "z": -0.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.7071065902709961,
+                            "z": 0.0,
+                            "w": -0.70710688829422
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/roundCornerA.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 19922955,
+                    "name": "Tile_2_-2",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": 2.5,
+                            "y": 0.10000000149011612,
+                            "z": -1.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.7071065902709961,
+                            "z": 0.0,
+                            "w": -0.70710688829422
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/side.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 6291466,
+                    "name": "Tile_2_-3",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": 2.5,
+                            "y": 0.10000000149011612,
+                            "z": -2.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/squareCornerA.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 28311555,
+                    "name": "Tile_1_-3",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": 1.5,
+                            "y": 0.10000000149011612,
+                            "z": -2.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/narrowSquare.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 8388617,
+                    "name": "Tile_0_-3",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": 0.5,
+                            "y": 0.10000000149011612,
+                            "z": -2.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.9999999403953552,
+                            "z": 0.0,
+                            "w": -1.4901161193847657e-7
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/holeRound.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 6291469,
+                    "name": "Tile_-2_-1",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": -1.5,
+                            "y": 0.10000000149011612,
+                            "z": -0.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.9999999403953552,
+                            "z": 0.0,
+                            "w": -1.4901161193847657e-7
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/rampA.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 10485768,
+                    "name": "Tile_-3_-1",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": -2.5,
+                            "y": 0.10000000149011612,
+                            "z": -0.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/obstacleBlock.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 7340046,
+                    "name": "Tile_-2_-2",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": -1.5,
+                            "y": 0.10000000149011612,
+                            "z": -1.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/start.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 8388623,
+                    "name": "Tile_-2_0",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": -1.5,
+                            "y": 0.10000000149011612,
+                            "z": 0.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/bumpDownWalls.obj"
+                        }
+                    }
+                },
+                {
+                    "id": 6291473,
+                    "name": "Tile_-1_0",
+                    "active": true,
+                    "children": [],
+                    "Transform": {
+                        "position": {
+                            "x": -0.5,
+                            "y": 0.10000000149011612,
+                            "z": 0.5
+                        },
+                        "rotation": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        }
+                    },
+                    "Mesh": {
+                        "mesh": {
+                            "location": 1,
+                            "key": "builtin/Minigolf/castle.obj"
+                        }
+                    }
+                }
+            ],
+            "Transform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "Mesh": {
+                "mesh": {
+                    "location": 0
+                }
+            }
+        }
+    ]
+}

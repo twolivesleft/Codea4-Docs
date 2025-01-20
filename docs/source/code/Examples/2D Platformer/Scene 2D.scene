@@ -1,0 +1,871 @@
+{
+    "version": 2,
+    "snapSettings": {
+        "cereal_class_version": 0,
+        "enabled": false,
+        "visible": true,
+        "spacing": 1.0,
+        "angle": 45.0,
+        "axes": {
+            "x": true,
+            "y": true,
+            "z": true
+        }
+    },
+    "render2dSettings": {
+        "cereal_class_version": 0,
+        "pixelsPerUnit": 16.0
+    },
+    "render3dSettings": {
+        "cereal_class_version": 0,
+        "skyType": 0,
+        "skyImage": {
+            "cereal_class_version": 0,
+            "location": 2
+        },
+        "skyMaterial": {
+            "cereal_class_version": 0,
+            "location": 2
+        },
+        "skyColor": {
+            "cereal_class_version": 0,
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 0.0
+        }
+    },
+    "timeSettings": {
+        "cereal_class_version": 0,
+        "autoUpdate": true,
+        "maximumTimeStep": 0.10000000149011612,
+        "fixedDeltaTime": 0.008333333767950535,
+        "timeScale": 1.0
+    },
+    "physics2dSettings": {
+        "cereal_class_version": 0,
+        "gravity": {
+            "x": 0.0,
+            "y": -9.800000190734864
+        },
+        "velocityIterations": 9,
+        "positionIterations": 3
+    },
+    "physics3dSettings": {
+        "cereal_class_version": 0,
+        "gravity": {
+            "x": 0.0,
+            "y": -9.800000190734864,
+            "z": 0.0
+        }
+    },
+    "value0": 7,
+    "value1": 0,
+    "value2": 1,
+    "value3": 1048578,
+    "value4": 2097155,
+    "value5": 1048580,
+    "value6": 1048581,
+    "value7": 2097158,
+    "value8": 1048575,
+    "value9": 1,
+    "value10": 1,
+    "value11": 0,
+    "value12": 7,
+    "value13": 1048581,
+    "value14": 1048578,
+    "value15": 1048580,
+    "value16": 2097155,
+    "value17": 2097158,
+    "value18": 1,
+    "value19": 0,
+    "value20": 7,
+    "value21": 1048581,
+    "value22": 1048578,
+    "value23": 1048580,
+    "value24": 2097155,
+    "value25": 2097158,
+    "value26": 1,
+    "value27": 0,
+    "value28": 7,
+    "value29": 1048581,
+    "value30": 1048578,
+    "value31": 1048580,
+    "value32": 2097155,
+    "value33": 2097158,
+    "value34": 1,
+    "value35": 0,
+    "value36": 7,
+    "value37": 1048581,
+    "value38": {
+        "cereal_class_version": 0,
+        "name": "Test Entity"
+    },
+    "value39": 1048578,
+    "value40": {
+        "name": "Slice.154"
+    },
+    "value41": 1048580,
+    "value42": {
+        "name": "Slice.154"
+    },
+    "value43": 2097155,
+    "value44": {
+        "name": "Slice.11"
+    },
+    "value45": 2097158,
+    "value46": {
+        "name": "Slice.154"
+    },
+    "value47": 1,
+    "value48": {
+        "name": "Editor Camera"
+    },
+    "value49": 0,
+    "value50": {
+        "name": "Camera"
+    },
+    "value51": 7,
+    "value52": 1048581,
+    "value53": {
+        "cereal_class_version": 0,
+        "parent": 1048575,
+        "prev": 1048575,
+        "next": 1048575,
+        "first": 1048575,
+        "last": 1048575,
+        "childCount": 0
+    },
+    "value54": 1048578,
+    "value55": {
+        "parent": 1048575,
+        "prev": 1048575,
+        "next": 1048575,
+        "first": 1048575,
+        "last": 1048575,
+        "childCount": 0
+    },
+    "value56": 1048580,
+    "value57": {
+        "parent": 1048575,
+        "prev": 1048575,
+        "next": 1048575,
+        "first": 1048575,
+        "last": 1048575,
+        "childCount": 0
+    },
+    "value58": 2097155,
+    "value59": {
+        "parent": 1048575,
+        "prev": 1048575,
+        "next": 1048575,
+        "first": 1048575,
+        "last": 1048575,
+        "childCount": 0
+    },
+    "value60": 2097158,
+    "value61": {
+        "parent": 1048575,
+        "prev": 1048575,
+        "next": 1048575,
+        "first": 1048575,
+        "last": 1048575,
+        "childCount": 0
+    },
+    "value62": 1,
+    "value63": {
+        "parent": 1048575,
+        "prev": 1048575,
+        "next": 1048575,
+        "first": 1048575,
+        "last": 1048575,
+        "childCount": 0
+    },
+    "value64": 0,
+    "value65": {
+        "parent": 1048575,
+        "prev": 1048575,
+        "next": 1048575,
+        "first": 1048575,
+        "last": 1048575,
+        "childCount": 0
+    },
+    "value66": 7,
+    "value67": 1048581,
+    "value68": {
+        "cereal_class_version": 0,
+        "order": 5
+    },
+    "value69": 1048578,
+    "value70": {
+        "order": 3
+    },
+    "value71": 1048580,
+    "value72": {
+        "order": 3
+    },
+    "value73": 2097155,
+    "value74": {
+        "order": 4
+    },
+    "value75": 2097158,
+    "value76": {
+        "order": 3
+    },
+    "value77": 1,
+    "value78": {
+        "order": 2
+    },
+    "value79": 0,
+    "value80": {
+        "order": 1
+    },
+    "value81": 7,
+    "value82": 1048581,
+    "value83": {
+        "cereal_class_version": 0,
+        "position": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+        },
+        "scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        }
+    },
+    "value84": 1048578,
+    "value85": {
+        "position": {
+            "x": -2.797109365463257,
+            "y": -1.9441794157028199,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.09240903705358505,
+            "w": 0.9957210421562195
+        },
+        "scale": {
+            "x": 0.9174497127532959,
+            "y": 0.9174497127532959,
+            "z": 0.9174497127532959
+        }
+    },
+    "value86": 1048580,
+    "value87": {
+        "position": {
+            "x": -2.087080240249634,
+            "y": -3.1961660385131838,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -0.19527587294578553,
+            "w": 0.9807477593421936
+        },
+        "scale": {
+            "x": 0.8660013675689697,
+            "y": 0.8660013675689697,
+            "z": 0.8660013675689697
+        }
+    },
+    "value88": 2097155,
+    "value89": {
+        "position": {
+            "x": -2.8954238891601564,
+            "y": -0.4176211357116699,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.2177629917860031,
+            "w": 0.9760016202926636
+        },
+        "scale": {
+            "x": 0.7688984274864197,
+            "y": 0.7823925614356995,
+            "z": 0.6807054877281189
+        }
+    },
+    "value90": 2097158,
+    "value91": {
+        "position": {
+            "x": -3.8792436122894289,
+            "y": -3.106018543243408,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -0.015756377950310708,
+            "w": 0.9998728632926941
+        },
+        "scale": {
+            "x": 0.9258149862289429,
+            "y": 0.9258149862289429,
+            "z": 0.9258149862289429
+        }
+    },
+    "value92": 1,
+    "value93": {
+        "position": {
+            "x": -3.259005069732666,
+            "y": -1.5691536664962769,
+            "z": -4.181514739990234
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+        },
+        "scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        }
+    },
+    "value94": 0,
+    "value95": {
+        "position": {
+            "x": -3.747082233428955,
+            "y": -1.6083301305770875,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+        },
+        "scale": {
+            "x": 0.7054021954536438,
+            "y": 0.7054021954536438,
+            "z": 0.7054021954536438
+        }
+    },
+    "value96": 2,
+    "value97": 1,
+    "value98": {
+        "cereal_class_version": 0,
+        "camera": {
+            "ptr_wrapper": {
+                "id": 2147483649,
+                "data": {
+                    "ortho": true,
+                    "orthoSize": 9.300966262817383,
+                    "fovy": 45.0,
+                    "aspect": -1.0,
+                    "zNear": 0.0,
+                    "zFar": 1000.0,
+                    "priority": 0,
+                    "clearMode": 3,
+                    "clearColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 1.0
+                    }
+                }
+            }
+        }
+    },
+    "value99": 0,
+    "value100": {
+        "camera": {
+            "ptr_wrapper": {
+                "id": 2147483650,
+                "data": {
+                    "ortho": true,
+                    "orthoSize": 8.800000190734864,
+                    "fovy": 45.0,
+                    "aspect": -1.0,
+                    "zNear": 0.0,
+                    "zFar": 1000.0,
+                    "priority": 0,
+                    "clearMode": 3,
+                    "clearColor": {
+                        "r": 0.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 1.0
+                    }
+                }
+            }
+        }
+    },
+    "value101": 0,
+    "value102": 4,
+    "value103": 1048578,
+    "value104": {
+        "cereal_class_version": 0,
+        "flip": {
+            "x": false,
+            "y": false
+        },
+        "color": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+        },
+        "sprite": {
+            "cereal_class_version": 0,
+            "location": 1,
+            "key": "project/Terrain/Terrain (16x16).png/Slice.154"
+        }
+    },
+    "value105": 1048580,
+    "value106": {
+        "flip": {
+            "x": false,
+            "y": false
+        },
+        "color": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+        },
+        "sprite": {
+            "location": 1,
+            "key": "project/Terrain/Terrain (16x16).png/Slice.154"
+        }
+    },
+    "value107": 2097155,
+    "value108": {
+        "flip": {
+            "x": false,
+            "y": false
+        },
+        "color": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+        },
+        "sprite": {
+            "location": 1,
+            "key": "project/Main Characters/Ninja Frog/Idle (32x32).png/Slice.11"
+        }
+    },
+    "value109": 2097158,
+    "value110": {
+        "flip": {
+            "x": false,
+            "y": false
+        },
+        "color": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+        },
+        "sprite": {
+            "location": 1,
+            "key": "project/Terrain/Terrain (16x16).png/Slice.154"
+        }
+    },
+    "value111": 0,
+    "value112": 0,
+    "value113": 1,
+    "value114": 1048581,
+    "value115": {
+        "cereal_class_version": 0,
+        "scripts": [
+            {
+                "cereal_class_version": 0,
+                "enabled": true,
+                "embedded": true,
+                "code": "function created(self)\n\tprint(self.enabled, self.entity, self.scene)\nend\n\nfunction update(self, dt)\nend\n"
+            }
+        ]
+    },
+    "value116": 4,
+    "value117": 1048578,
+    "value118": {
+        "cereal_class_version": 0,
+        "body": {
+            "ptr_wrapper": {
+                "id": 2147483651,
+                "data": {
+                    "cereal_class_version": 0,
+                    "type": 2,
+                    "position": {
+                        "x": -2.797109365463257,
+                        "y": -1.9441794157028199
+                    },
+                    "angle": 10.604424476623536,
+                    "enabled": true,
+                    "bullet": false,
+                    "fixedRotation": false,
+                    "sleepingAllowed": true,
+                    "linearDamping": 0.0,
+                    "angularDamping": 0.0,
+                    "gravityScale": 1.0
+                }
+            }
+        }
+    },
+    "value119": 1048580,
+    "value120": {
+        "body": {
+            "ptr_wrapper": {
+                "id": 2147483652,
+                "data": {
+                    "type": 2,
+                    "position": {
+                        "x": -2.087080240249634,
+                        "y": -3.1961660385131838
+                    },
+                    "angle": -22.521671295166017,
+                    "enabled": true,
+                    "bullet": false,
+                    "fixedRotation": false,
+                    "sleepingAllowed": true,
+                    "linearDamping": 0.0,
+                    "angularDamping": 0.0,
+                    "gravityScale": 1.0
+                }
+            }
+        }
+    },
+    "value121": 2097155,
+    "value122": {
+        "body": {
+            "ptr_wrapper": {
+                "id": 2147483653,
+                "data": {
+                    "type": 2,
+                    "position": {
+                        "x": -2.8954238891601564,
+                        "y": -0.4176211357116699
+                    },
+                    "angle": 25.155353546142579,
+                    "enabled": true,
+                    "bullet": false,
+                    "fixedRotation": false,
+                    "sleepingAllowed": true,
+                    "linearDamping": 0.0,
+                    "angularDamping": 0.0,
+                    "gravityScale": 1.0
+                }
+            }
+        }
+    },
+    "value123": 2097158,
+    "value124": {
+        "body": {
+            "ptr_wrapper": {
+                "id": 2147483654,
+                "data": {
+                    "type": 2,
+                    "position": {
+                        "x": -3.8792436122894289,
+                        "y": -3.106018543243408
+                    },
+                    "angle": -1.8056176900863648,
+                    "enabled": true,
+                    "bullet": false,
+                    "fixedRotation": false,
+                    "sleepingAllowed": true,
+                    "linearDamping": 0.0,
+                    "angularDamping": 0.0,
+                    "gravityScale": 1.0
+                }
+            }
+        }
+    },
+    "value125": 4,
+    "value126": 1048578,
+    "value127": {
+        "cereal_class_version": 0,
+        "objects": [
+            {
+                "polymorphic_id": 2147483649,
+                "polymorphic_name": "Carbide::Physics2D::Box",
+                "ptr_wrapper": {
+                    "id": 2147483655,
+                    "data": {
+                        "cereal_class_version": 0,
+                        "body": {
+                            "ptr_wrapper": {
+                                "id": 3
+                            }
+                        },
+                        "center": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "size": {
+                            "x": 0.5,
+                            "y": 0.5
+                        },
+                        "angle": 0.0,
+                        "collider": {
+                            "cereal_class_version": 0,
+                            "density": 1.0,
+                            "friction": 0.20000000298023225,
+                            "restitution": 0.0,
+                            "sensor": false,
+                            "category": 1,
+                            "mask": 65535,
+                            "group": 0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "value128": 1048580,
+    "value129": {
+        "objects": [
+            {
+                "polymorphic_id": 1,
+                "ptr_wrapper": {
+                    "id": 2147483656,
+                    "data": {
+                        "body": {
+                            "ptr_wrapper": {
+                                "id": 4
+                            }
+                        },
+                        "center": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "size": {
+                            "x": 0.5,
+                            "y": 0.5
+                        },
+                        "angle": 0.0,
+                        "collider": {
+                            "density": 1.0,
+                            "friction": 0.20000000298023225,
+                            "restitution": 0.0,
+                            "sensor": false,
+                            "category": 1,
+                            "mask": 65535,
+                            "group": 0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "value130": 2097155,
+    "value131": {
+        "objects": [
+            {
+                "polymorphic_id": 2147483650,
+                "polymorphic_name": "Carbide::Physics2D::Circle",
+                "ptr_wrapper": {
+                    "id": 2147483657,
+                    "data": {
+                        "cereal_class_version": 0,
+                        "body": {
+                            "ptr_wrapper": {
+                                "id": 5
+                            }
+                        },
+                        "center": {
+                            "x": 0.0,
+                            "y": -0.4000000059604645
+                        },
+                        "radius": 0.5,
+                        "collider": {
+                            "density": 1.0,
+                            "friction": 0.20000000298023225,
+                            "restitution": 0.0,
+                            "sensor": false,
+                            "category": 1,
+                            "mask": 65535,
+                            "group": 0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "value132": 2097158,
+    "value133": {
+        "objects": [
+            {
+                "polymorphic_id": 1,
+                "ptr_wrapper": {
+                    "id": 2147483658,
+                    "data": {
+                        "body": {
+                            "ptr_wrapper": {
+                                "id": 6
+                            }
+                        },
+                        "center": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "size": {
+                            "x": 0.5,
+                            "y": 0.5
+                        },
+                        "angle": 0.0,
+                        "collider": {
+                            "density": 1.0,
+                            "friction": 0.20000000298023225,
+                            "restitution": 0.0,
+                            "sensor": false,
+                            "category": 1,
+                            "mask": 65535,
+                            "group": 0
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "value134": 3,
+    "value135": 1048578,
+    "value136": {
+        "cereal_class_version": 0,
+        "objects": [
+            {
+                "polymorphic_id": 2147483651,
+                "polymorphic_name": "Carbide::Physics2D::Hinge",
+                "ptr_wrapper": {
+                    "id": 2147483659,
+                    "data": {
+                        "cereal_class_version": 0,
+                        "bodyA": {
+                            "ptr_wrapper": {
+                                "id": 3
+                            }
+                        },
+                        "bodyB": {
+                            "ptr_wrapper": {
+                                "id": 6
+                            }
+                        },
+                        "localAnchorA": {
+                            "x": -0.5,
+                            "y": -8.940696716308594e-8
+                        },
+                        "localAnchorB": {
+                            "x": 0.5566715598106384,
+                            "y": 1.0879056453704835
+                        },
+                        "collideConnected": false,
+                        "referenceAngle": 0.0,
+                        "limitEnabled": true,
+                        "lowerLimit": -10.0,
+                        "upperLimit": 10.0,
+                        "motorEnabled": false,
+                        "motorSpeed": 0.0,
+                        "maxMotorTorque": 0.0
+                    }
+                }
+            }
+        ]
+    },
+    "value137": 1048580,
+    "value138": {
+        "objects": [
+            {
+                "polymorphic_id": 3,
+                "ptr_wrapper": {
+                    "id": 2147483660,
+                    "data": {
+                        "bodyA": {
+                            "ptr_wrapper": {
+                                "id": 4
+                            }
+                        },
+                        "bodyB": {
+                            "ptr_wrapper": {
+                                "id": 3
+                            }
+                        },
+                        "localAnchorA": {
+                            "x": -0.5000001788139343,
+                            "y": -1.043081283569336e-7
+                        },
+                        "localAnchorB": {
+                            "x": 0.048767805099487308,
+                            "y": -1.0880271196365357
+                        },
+                        "collideConnected": false,
+                        "referenceAngle": 0.0,
+                        "limitEnabled": true,
+                        "lowerLimit": -10.0,
+                        "upperLimit": 10.0,
+                        "motorEnabled": false,
+                        "motorSpeed": 0.0,
+                        "maxMotorTorque": 0.0
+                    }
+                }
+            }
+        ]
+    },
+    "value139": 2097158,
+    "value140": {
+        "objects": [
+            {
+                "polymorphic_id": 3,
+                "ptr_wrapper": {
+                    "id": 2147483661,
+                    "data": {
+                        "bodyA": {
+                            "ptr_wrapper": {
+                                "id": 6
+                            }
+                        },
+                        "bodyB": {
+                            "ptr_wrapper": {
+                                "id": 0
+                            }
+                        },
+                        "localAnchorA": {
+                            "x": -0.49999961256980898,
+                            "y": 9.499490261077881e-8
+                        },
+                        "localAnchorB": {
+                            "x": -4.378994941711426,
+                            "y": -3.090264081954956
+                        },
+                        "collideConnected": false,
+                        "referenceAngle": 0.0,
+                        "limitEnabled": true,
+                        "lowerLimit": -10.0,
+                        "upperLimit": 10.0,
+                        "motorEnabled": false,
+                        "motorSpeed": 0.0,
+                        "maxMotorTorque": 0.0
+                    }
+                }
+            }
+        ]
+    },
+    "value141": 1,
+    "value142": 1,
+    "value143": {
+        "cereal_class_version": 0,
+        "focus": {
+            "x": -3.259005069732666,
+            "y": -1.5691536664962769,
+            "z": 0.0
+        },
+        "pitch": 0.0,
+        "yaw": 45.0,
+        "distance": 4.181514739990234
+    }
+}
