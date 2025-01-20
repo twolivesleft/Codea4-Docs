@@ -59,11 +59,11 @@ scene
 
    .. lua:attribute:: skyBlur : number
 
-      The blur strength of the skybox
+        the blur strength of the skybox
 
    .. lua:attribute:: skyExposure : number
 
-      The brightness of the skybox
+        the brightness of the skybox
 
    .. lua:attribute:: camera : entity
 
