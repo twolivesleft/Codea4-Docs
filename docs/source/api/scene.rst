@@ -59,11 +59,11 @@ scene
 
    .. lua:attribute:: skyBlur : number
 
-         the blur strength of the skybox
+      The blur strength of the skybox
 
    .. lua:attribute:: skyExposure : number
 
-      the brightness of the skybox
+      The brightness of the skybox
 
    .. lua:attribute:: camera : entity
 
@@ -77,12 +77,12 @@ scene
 
    .. lua:attribute:: canvas : ui.canvas
 
-         :returns: The main ui canvas of the scene (ui starts here)
+         :returns: The main UI canvas of the scene
          :rtype: ui.canvas
 
    .. lua:attribute:: pixelsPerUnit : number
 
-      the amount of pixels that are in a grid unit
+      The amount of pixels that are in a grid unit
 
    .. lua:method:: entity([name])
 
