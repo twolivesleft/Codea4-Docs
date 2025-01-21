@@ -11,7 +11,7 @@ motion
 
    If set, motion tracking will start automatically as soon as any attribute is read. Default is ``true``.
 
-   Set to false if you can to control when motion is tracked manually using the ``start`` and ``stop`` functions.
+   Set to false if you want to control when motion is tracked manually using the ``start`` and ``stop`` functions.
 
 .. lua:function:: start(referenceFrame)
 
