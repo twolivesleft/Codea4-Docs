@@ -21,13 +21,13 @@ motion
    :type referenceFrame: number
 
    - ``motion.referenceFrame.XArbitraryZVertical`` (default): The X-axis is arbitrary and the Z-axis is vertical.
-   - ``motion.referenceFrame.XArbitraryCorrectedZVertical``: The X-axis is arbitrary and the Z-axis is vertical. The system will attempt to correct for the device's orientation.
+   - ``motion.referenceFrame.XArbitraryCorrectedZVertical``: The X-axis is arbitrary and the Z-axis is vertical. If available, the magnetometer will be used to correct for accumulated yaw errors.
    - ``motion.referenceFrame.XMagneticNorthZVertical``: The X-axis points toward the magnetic north and the Z-axis is vertical.
    - ``motion.referenceFrame.XTrueNorthZVertical``: The X-axis points toward the true north and the Z-axis is vertical.
 
 .. lua:function:: stop()
 
-   Stop tracking motion metrics.
+   Stop tracking motion metrics and set autoStart to false.
 
 .. lua:attribute:: updateInterval: number
 
