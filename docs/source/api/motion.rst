@@ -37,15 +37,15 @@ motion
 
 .. lua:attribute:: gravity: vec2
 
-   The gravity vector in the device's reference frame. This vector is automatically rotated following device orientation changes.
+   The gravity vector in the device's reference frame. This vector is automatically rotated to follow device orientation changes.
 
 .. lua:attribute:: acceleration: vec2
 
-   The acceleration vector in the device's reference frame. This vector is automatically rotated following device orientation changes.
+   The acceleration vector in the device's reference frame. This vector is automatically rotated to follow device orientation changes.
 
 .. lua:attribute:: rotationRate: vec2
 
-   The rotation rate in the device's reference frame. This vector is automatically rotated following device orientation changes.
+   The rotation rate in the device's reference frame. This vector is automatically rotated to follow device orientation changes.
 
 .. lua:attribute:: sensorLocation: integer
 
