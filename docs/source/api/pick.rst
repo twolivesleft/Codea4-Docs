@@ -19,9 +19,9 @@ pick
 
     .. lua:staticmethod:: pick.image()
 
-        Opens the document picker to pick an image asset.
+        Opens the document picker to pick an image or PDF asset.
         
-        :returns: The picked image asset
+        :returns: The picked image or PDF asset
         :rtype: image
 
         .. code-block:: lua
@@ -32,7 +32,7 @@ pick
 
     .. lua:staticmethod:: pick.table()
 
-        Opens the document picker to pick a json asset and convert it to a table.
+        Opens the document picker to pick a JSON asset and convert it to a table.
         
         :returns: The picked asset converted to a table
         :rtype: table
@@ -71,7 +71,9 @@ pick
 
     .. lua:staticmethod:: pick.photo()
 
-        Opens the photo picker to pick a single photo.
+        Opens the photo picker to pick a single photo from the photo library.
+
+        This is a different picker than the document picker, and only allows picking a single photo at a time.
         
         :returns: The picked photo as an image asset
         :rtype: image
@@ -84,9 +86,9 @@ pick
 
     .. lua:staticmethod:: pick.sound()
 
-        Opens the document picker to pick a sound asset.
+        Opens the document picker to pick an audio asset (sound or music).
         
-        :returns: The picked sound asset
+        :returns: The picked audio asset
         :rtype: sound.source
 
         .. code-block:: lua
@@ -100,7 +102,7 @@ pick
                           pick.photo(...)
                           pick.sound(...)
 
-        Pick assets with the specified types, options and callback function.
+        Pick assets with the specified UTType strings, options and callback function.
 
         See ``pick(...)`` below for more information.
 
@@ -108,28 +110,27 @@ pick
 
         A table containing the following options:
 
-        - :lua:attr:`multiple` - Allows multiple assets to be picked
-        - :lua:attr:`decodeTable` - Decodes the picked asset as a table (only for json assets)
-        - :lua:attr:`assetKey` - Returns the asset key instead of the asset content
-        - :lua:attr:`image` - Picks an image asset
-        - :lua:attr:`text` - Picks a text asset
-        - :lua:attr:`table` - Picks a table asset
-        - :lua:attr:`json` - Picks a JSON asset
-        - :lua:attr:`sound` - Picks a sound asset
-        - :lua:attr:`pdf` - Picks a PDF asset
+        - ``text`` - Text asset
+        - ``json`` - JSON asset
+        - ``sound`` - Audio asset (sound or music)
+        - ``pdf`` - PDF asset
+        - ``image`` - Image or PDF asset, defined as { "public.image", "com.adobe.pdf" }
+        - ``table`` - JSON asset converted to a table, defined as { pick.option.json, pick.option.decodeTable }
+        - ``multiple`` - Enable multiple asset selection
+        - ``assetKey`` - Return the asset key instead of the asset content
+        - ``decodeTable`` - Decode the picked asset as a table (only for json assets)
 
 .. lua:function:: pick(...)
 
-    Pick assets with the specified types, options and callback function.
+    Pick assets with the specified UTType strings, options and callback function.
 
-    When a callback function is provided, the function is asynchronous and the picked asset is passed to the callback function.
+    The order of types, options and callback is not important, though we recommend passing the callback last for readability.
+
+    When a callback function is provided, the function becomes asynchronous and the picked asset is passed to the callback function.
 
     .. code-block:: lua
         
-        pick(pick.option.pdf, pick.option.multiple, function(pdfAssets)
-            if pdfAssets then
-                print("Picked " .. #pdfAssets .. " PDF assets")
-            else
-                print("No PDF assets picked")
-            end
+        -- Pick multiple assets of type yaml or image
+        pick("public.yaml", pick.option.image, pick.option.multiple, function(multipleAssets)
+            print("Picked " .. #multipleAssets .. " assets")
         })
