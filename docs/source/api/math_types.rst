@@ -6,10 +6,27 @@ vec2
 
 .. lua:class:: vec2
 
-   .. lua:staticmethod:: vec2(x)
-                         vec2(x, y)
+   This type represents a 2D vector. Most mathematical operators such as equality, addition, subtraction, multiplication and division are provided, so you can use ``vec2`` data types similarly to how you use numerical types. In addition there are a number of methods, such as ``v:dot( vec2 )`` that can be called on vec2 types.
 
-      Create a new ``vec2`` by setting both values at once or each one individually
+   :param x: Initial x value of the vector
+   :type x: number
+   :param y: Initial y value of the vector
+   :type y: number
+
+   :syntax:
+      .. code-block:: lua
+
+         v = vec2(1, 2)
+         v = vec2(1) -- set both x and y to 1
+         v = vec2() -- set both x and y to 0
+
+   .. lua:attribute:: x: number
+
+      The x component of this vector
+
+   .. lua:attribute:: y: number
+
+      The y component of this vector      
 
    .. lua:staticmethod:: min(v1, v2)
 
@@ -18,14 +35,6 @@ vec2
    .. lua:staticmethod:: max(v1, v2)
 
       Return a ``vec2`` containing the component-wise maximum two vectors
-
-   .. lua:attribute:: x: number
-
-      The x component of this vector
-
-   .. lua:attribute:: y: number
-
-      The y component of this vector
 
    .. lua:attribute:: length: number
 
