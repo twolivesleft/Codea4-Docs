@@ -8,10 +8,11 @@ class DocutilsUtils:
     
     @staticmethod
     def extract_description(node):
-        paragraphs = node.traverse(condition=lambda n: n.tagname == 'paragraph')
-        if not paragraphs:
+        desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
+        if not desc_content:
             return None
 
+        paragraphs = [child for child in desc_content.children if child.tagname == 'paragraph']
         description_parts = []
         for paragraph in paragraphs:
             paragraph_text = []
@@ -130,10 +131,11 @@ class DocutilsUtils:
 
 
 class LuaModule:
-    def __init__(self, node):
+    def __init__(self, node, group=None):
         self.name = DocutilsUtils.extract_name(node)
         self.description = DocutilsUtils.extract_description(node)
         self.examples = DocutilsUtils.extract_code_samples(node)
+        self.group = group
 
     def __str__(self):
         return f"{self.name}\n\t{self.description}"
@@ -142,21 +144,23 @@ class LuaModule:
         return {
             'name': self.name,
             'description': self.description,
-            'examples': self.examples
+            'examples': self.examples,
+            'group': self.group
         }
 
 class LuaClass:
-    def __init__(self, node):        
+    def __init__(self, node, group=None):        
         self.name = DocutilsUtils.extract_name(node)
         self.description = DocutilsUtils.extract_description(node)
         self.module = DocutilsUtils.extract_module(node)
         self.syntax = DocutilsUtils.extract_syntax(node)
         self.parameters = DocutilsUtils.extract_parameters(node, True)
         self.examples = DocutilsUtils.extract_code_samples(node)
+        self.group = group
         self.members = []
 
-        if self.name == "image.slice":
-            print(node)
+        # if self.name == "vec2":
+        #     print(node)
 
     def __str__(self):
         return f"{self.name} [{self.module}]\n\t{self.description}"
@@ -170,6 +174,7 @@ class LuaClass:
             'parameters': [p.to_dict() for p in self.parameters],
             'syntax': self.syntax,
             'examples': self.examples,
+            'group': self.group,
             'members': [members.to_dict() for members in self.members]
         }
     
@@ -210,7 +215,7 @@ class LuaReturn:
         }
 
 class LuaFunction:
-    def __init__(self, node, type):
+    def __init__(self, node, type, group=None):
         self.name = DocutilsUtils.extract_name(node)
         self.module = DocutilsUtils.extract_module(node)
         self.description = DocutilsUtils.extract_description(node)
@@ -219,6 +224,7 @@ class LuaFunction:
         self.examples = DocutilsUtils.extract_code_samples(node)
         self.returns = self.extract_returns(node)        
         self.type = type
+        self.group = group
 
     def extract_returns(self, node):
         returns = []
@@ -252,13 +258,14 @@ class LuaFunction:
             'description': self.description,
             'parameters': [p.to_dict() for p in self.parameters],
             'syntax': self.syntax,
+            'group': self.group,
             'examples': self.examples,
             'returns': [r.to_dict() for r in self.returns]
         }
 
 
 class LuaAttribute:
-    def __init__(self, node, kind):
+    def __init__(self, node, kind, group=None):
         self.name = DocutilsUtils.extract_name(node)
         self.module = DocutilsUtils.extract_module(node)
         self.syntax = DocutilsUtils.extract_syntax(node)
@@ -267,9 +274,7 @@ class LuaAttribute:
         self.type = self.extract_type(node)
         self.description = DocutilsUtils.extract_description(node)
         self.kind = kind
-
-        if self.name == "updateInterval":
-            print(node)
+        self.group = group
 
     def extract_type(self, node):
         # Finds the first 'desc_type' element and extracts its text, along with any default value if specified.
@@ -299,6 +304,7 @@ class LuaAttribute:
             'syntax': self.syntax,
             'examples': self.examples,
             'type': self.type,
+            'group': self.group,
             'defaultValue': self.default_value,
             'description': self.description
         }
