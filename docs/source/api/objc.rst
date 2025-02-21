@@ -436,16 +436,19 @@ Some Codea types will be converted to corresponding Objective types automaticall
             print("Class has " .. #inspect.methods .. " instance methods.")
 
 .. lua:function:: async(function)
+                  async(objc.async.background, function)
 
-    Calls the function parameter on the main thread asynchronously.
+    Calls the function parameter on the main thread asynchronously, or on a background thread if objc.async.background is used.
     
-    :param function: Parameterless function to run on the main thread.
+    :param function: Parameterless function to run on the target thread.
     :type function: function
     :syntax:
     
         .. code-block:: lua
     
-            objc.async(someFunction)
+            objc.async(someFunction) -- run on the main thread
+
+            objc.async(objc.async.background, someFunction) -- run on a background thread
 
     ..  collapse:: Run a function on the main thread
         
@@ -453,6 +456,14 @@ Some Codea types will be converted to corresponding Objective types automaticall
         
                 objc.async(function()
                     print("This will run on the main thread.")
+                end)
+    
+    ..  collapse:: Run a function on a background thread
+        
+            .. code-block:: lua
+        
+                objc.async(objc.async.background, function()
+                    print("This will run on a background thread.")
                 end)
 
 .. lua:function:: point(x, y)

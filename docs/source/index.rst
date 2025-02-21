@@ -66,6 +66,7 @@ Codea 4
    api/pasteboard
    api/physics2d
    api/physics3d
+   api/pick
    api/viewer
    api/device
 
