@@ -198,6 +198,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/pasteboard.html">pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/viewer.html">viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/device.html">device</a></li>
 </ul>
@@ -305,6 +306,8 @@
 </li>
         </ul></li>
         <li><a href="api/graphics.html#arc">arc() (built-in function)</a>
+</li>
+        <li><a href="api/pick.html#pick.asset">asset() (pick static method)</a>, <a href="api/pick.html#pick.asset">[1]</a>
 </li>
         <li><a href="api/objc.html#objc.async">async() (in module objc)</a>
 </li>
@@ -991,7 +994,11 @@
 </li>
         </ul></li>
         <li><a href="api/image.html#image.image">image() (image static method)</a>
+
+        <ul>
+          <li><a href="api/pick.html#pick.image">(pick static method)</a>, <a href="api/pick.html#pick.image">[1]</a>
 </li>
+        </ul></li>
         <li><a href="api/image.html#image.cubeMap">image.cubeMap (attribute)</a>
 </li>
         <li><a href="api/image.html#image.depth">image.depth (attribute)</a>
@@ -1596,6 +1603,8 @@
           <li><a href="api/math_types.html#mat2.perspective">(mat2 static method)</a>
 </li>
         </ul></li>
+        <li><a href="api/pick.html#pick.photo">photo() (pick static method)</a>, <a href="api/pick.html#pick.photo">[1]</a>
+</li>
         <li><a href="api/physics2d.html#module-physics2d">physics2d (module)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.body.angularDamping">physics2d.physics2d.body.angularDamping (attribute)</a>
@@ -1704,10 +1713,10 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.motorSpeed">physics2d.physics2d.hinge.motorSpeed (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.referenceAngle">physics2d.physics2d.hinge.referenceAngle (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.speed">physics2d.physics2d.hinge.speed (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.upperLimit">physics2d.physics2d.hinge.upperLimit (attribute)</a>
@@ -1805,6 +1814,12 @@
         <li><a href="api/physics3d.html#physics3d.physics3d.rayHit.uv">physics3d.physics3d.rayHit.uv (attribute)</a>
 </li>
         <li><a href="api/physics3d.html#physics3d.physics3d.world.gravity">physics3d.physics3d.world.gravity (attribute)</a>
+</li>
+        <li><a href="api/pick.html#pick">pick (built-in class)</a>
+</li>
+        <li><a href="api/pick.html#pick">pick() (built-in function)</a>, <a href="api/pick.html#pick">[1]</a>
+</li>
+        <li><a href="api/pick.html#pick.option">pick.option (attribute)</a>
 </li>
         <li><a href="api/input.html#gesture.pinch.gesture.pinch">pinch() (gesture.pinch.gesture static method)</a>
 </li>
@@ -2132,6 +2147,8 @@
 </li>
         <li><a href="api/sound.html#module-sound">sound (module)</a>
 </li>
+        <li><a href="api/pick.html#pick.sound">sound() (pick static method)</a>, <a href="api/pick.html#pick.sound">[1]</a>
+</li>
         <li><a href="api/sound.html#sound.sound.instance.loop">sound.sound.instance.loop (attribute)</a>
 </li>
         <li><a href="api/sound.html#sound.sound.instance.paused">sound.sound.instance.paused (attribute)</a>
@@ -2188,14 +2205,14 @@
           <li><a href="api/physics3d.html#physics3d.world.step">(physics3d.world method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/motion.html#motion.stop">stop() (in module motion)</a>
 
         <ul>
           <li><a href="api/sound.html#sound.instance.stop">(sound.instance method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/string.html#module-string">string (module)</a>
 </li>
         <li><a href="api/objc.html#objc.string">string() (in module objc)</a>
@@ -2368,6 +2385,12 @@
   <h2>T</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/lua.html#table">table (built-in class)</a>
+</li>
+        <li><a href="api/pick.html#pick.table">table() (pick static method)</a>, <a href="api/pick.html#pick.table">[1]</a>
+</li>
+        <li><a href="api/lua.html#table.flatten">table.flatten() (built-in function)</a>
+</li>
         <li><a href="api/input.html#gesture.tap.gesture.tap">tap() (gesture.tap.gesture static method)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.target">target (class in physics2d)</a>
@@ -2375,7 +2398,11 @@
         <li><a href="api/mesh.html#mesh.teapot">teapot() (mesh static method)</a>
 </li>
         <li><a href="api/graphics.html#text">text() (built-in function)</a>
+
+        <ul>
+          <li><a href="api/pick.html#pick.text">(pick static method)</a>, <a href="api/pick.html#pick.text">[1]</a>
 </li>
+        </ul></li>
         <li><a href="api/style.html#style.textAlign">textAlign() (in module style)</a>
 </li>
         <li><a href="api/tween.html#tween.time">time() (tween method)</a>
@@ -2386,12 +2413,12 @@
 </li>
         <li><a href="api/mesh.html#mesh.torus">torus() (mesh static method)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.torusKnot">torusKnot() (mesh static method)</a>
 </li>
         <li><a href="api/input.html#touch">touch (built-in class)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/matrix.html#matrix.transform2d">transform2d() (in module matrix)</a>
 </li>
         <li><a href="api/matrix.html#matrix.transform3d">transform3d() (in module matrix)</a>

@@ -200,6 +200,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
 </ul>
@@ -359,7 +360,7 @@
 <dd class="field-even"><p>A type to be used as an Objective-C delegate.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">delegate</span><span class="p">(</span><span class="s2">&quot;DelegateName&quot;</span><span class="p">)</span>
@@ -415,7 +416,7 @@
 <dd class="field-even"><p>A type to be used as an Objective-C class.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">class</span><span class="p">(</span><span class="s2">&quot;ClassName&quot;</span><span class="p">)</span>
@@ -454,7 +455,7 @@
 <dd class="field-even"><p>An Objective-C selector (or SEL).</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">selector</span><span class="p">(</span><span class="s2">&quot;SelectorName&quot;</span><span class="p">)</span>
@@ -488,13 +489,13 @@
 <p>By default, NSSet returned from calls to Objective-C (or reading properties) are automatically converted to Lua tables. If you need to use the NSSet, you can convert the table to NSSet using <code class="docutils literal notranslate"><span class="pre">objc.set</span></code>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>table</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span>) – A Lua table.</p>
+<dd class="field-odd"><p><strong>table</strong> (<span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span>) – A Lua table.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An Objective-C NSSet.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">set</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">})</span>
@@ -517,7 +518,7 @@
 <dd class="field-even"><p>An Objective-C NSString.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">string</span><span class="p">(</span><span class="s2">&quot;Text&quot;</span><span class="p">)</span>
@@ -539,7 +540,7 @@
 <dd class="field-odd"><p>A table containing native enumerations and their values.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-odd">Syntax<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="py">enum</span><span class="p">.</span><span class="py">EnumName</span><span class="p">.</span><span class="py">ValueName</span>
@@ -565,7 +566,7 @@
 <dd class="field-odd"><p>The UIApplication’s <code class="docutils literal notranslate"><span class="pre">sharedApplication</span></code>.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -579,7 +580,7 @@
 <dd class="field-odd"><p>The runtime <code class="docutils literal notranslate"><span class="pre">UIViewController</span></code>.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -595,7 +596,7 @@
 <dd class="field-odd"><p>A table containing the info dictionary keys and values.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 </dl>
 <details class="summary-test-if-running-in-an-exported-project">
@@ -621,7 +622,7 @@
 <dd class="field-even"><p>The UIEdgeInsets struct.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">insets</span><span class="p">(</span><span class="nv">top</span><span class="p">,</span><span class="w"> </span><span class="nv">left</span><span class="p">,</span><span class="w"> </span><span class="nv">bottom</span><span class="p">,</span><span class="w"> </span><span class="nv">right</span><span class="p">)</span>
@@ -690,13 +691,13 @@
 <p>Class members are accessible by prefixing with <code class="docutils literal notranslate"><span class="pre">class.</span></code>, for example using <code class="docutils literal notranslate"><span class="pre">objc.inspect(myClass).class.variables</span></code> to list the class variables of myClass.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>class</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span>) – Objective-C class to inspect.</p>
+<dd class="field-odd"><p><strong>class</strong> (<span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span>) – Objective-C class to inspect.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A table with the class information</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">inspect</span><span class="p">(</span><span class="nv">class</span><span class="p">)</span>
@@ -714,13 +715,17 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="objc.async">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">function</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.async" title="Link to this definition">¶</a></dt>
-<dd><p>Calls the function parameter on the main thread asynchronously.</p>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">objc.async.background</span></em>, <em class="sig-param"><span class="pre">function</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calls the function parameter on the main thread asynchronously, or on a background thread if objc.async.background is used.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>function</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">function</span></code></span>) – Parameterless function to run on the main thread.</p>
+<dd class="field-odd"><p><strong>function</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">function</span></code></span>) – Parameterless function to run on the target thread.</p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
-<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">async</span><span class="p">(</span><span class="nv">someFunction</span><span class="p">)</span>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">async</span><span class="p">(</span><span class="nv">someFunction</span><span class="p">)</span><span class="w"> </span><span class="c1">-- run on the main thread</span>
+
+<span class="nv">objc</span><span class="p">.</span><span class="nf">async</span><span class="p">(</span><span class="nv">objc</span><span class="p">.</span><span class="py">async</span><span class="p">.</span><span class="py">background</span><span class="p">,</span><span class="w"> </span><span class="nv">someFunction</span><span class="p">)</span><span class="w"> </span><span class="c1">-- run on a background thread</span>
 </pre></div>
 </div>
 </dd>
@@ -728,6 +733,12 @@
 <details class="summary-run-a-function-on-the-main-thread">
 <summary>Run a function on the main thread</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">async</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
 <span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will run on the main thread.&quot;</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
+</pre></div>
+</div>
+</details><details class="summary-run-a-function-on-a-background-thread">
+<summary>Run a function on a background thread</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">async</span><span class="p">(</span><span class="nv">objc</span><span class="p">.</span><span class="py">async</span><span class="p">.</span><span class="py">background</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will run on a background thread.&quot;</span><span class="p">)</span>
 <span class="kr">end</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -748,7 +759,7 @@
 <dd class="field-even"><p>The CGPoint struct.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">point</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span>
@@ -779,7 +790,7 @@
 <dd class="field-even"><p>The CGRect struct.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">rect</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">width</span><span class="p">,</span><span class="w"> </span><span class="nv">height</span><span class="p">)</span>
@@ -808,7 +819,7 @@
 <dd class="field-even"><p>The CGSize struct.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">width</span><span class="p">,</span><span class="w"> </span><span class="nv">height</span><span class="p">)</span>
@@ -837,7 +848,7 @@
 <dd class="field-even"><p>The NSRange struct.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">range</span><span class="p">(</span><span class="nv">loc</span><span class="p">,</span><span class="w"> </span><span class="nv">len</span><span class="p">)</span>
@@ -868,7 +879,7 @@
 <dd class="field-even"><p>The CGColor struct.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">color</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span>
@@ -897,7 +908,7 @@
 <dd class="field-even"><p>The CGVector struct.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">vector</span><span class="p">(</span><span class="nv">dx</span><span class="p">,</span><span class="w"> </span><span class="nv">dy</span><span class="p">)</span>
@@ -930,7 +941,7 @@
 <dd class="field-even"><p>The CGAffineTransform struct.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+<dd class="field-odd"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">affineTransform</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">c</span><span class="p">,</span><span class="w"> </span><span class="nv">d</span><span class="p">,</span><span class="w"> </span><span class="nv">tx</span><span class="p">,</span><span class="w"> </span><span class="nv">ty</span><span class="p">)</span>
