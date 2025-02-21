@@ -1,6 +1,12 @@
 pick
 ====
 
+The pick API allows bringing up the native document (or photo) picker to pick assets from the files or photo library.
+
+By default, documents are always copied to your project's assets unless pick.option.reference is used.
+
+Images are always copied to the project's assets and cannot be loaded as references.
+
 .. lua:function:: pick()
 
     Opens the document picker to pick a single asset and convert it to its corresponding Codea asset type.
@@ -119,6 +125,7 @@ pick
         - ``multiple`` - Enable multiple asset selection
         - ``assetKey`` - Return the asset key instead of the asset content
         - ``decodeTable`` - Decode the picked asset as a table (only for json assets)
+        - ``reference`` - Do not copy the asset to the project's assets, instead reference the original file
 
 .. lua:function:: pick(...)
 
@@ -134,3 +141,31 @@ pick
         pick("public.yaml", pick.option.image, pick.option.multiple, function(multipleAssets)
             print("Picked " .. #multipleAssets .. " assets")
         })
+
+pick.option.reference
+---------------------
+
+When using pick.option.reference, the picked asset is not copied to the project's assets and instead points to the original file.
+
+This allows you to make updates to the original file.
+
+However, you cannot store the path to the file (e.g. using your ``assetKey.path``) as the path is not guaranteed to be the same on subsequent runs.
+
+If you need to store the path, you must save and read bookmarks using ``assetKey:saveBookmark(name)`` and ``assets.readBookmark(name)``.
+
+Bookmarks can be removed using ``assets.removeBookmark(name)``.
+
+.. collapse:: Pick a reference and store a bookmark
+
+    .. code-block:: lua
+
+        local assetKey = pick.asset(pick.option.reference)
+        if assetKey then
+            assetKey:saveBookmark("myBookmark")
+        end
+
+        -- On subsequent runs, read the bookmark
+        local assetKey = assets.readBookmark("myBookmark")
+        if assetKey then
+            print(assetKey.path)
+        end
