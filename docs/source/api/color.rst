@@ -15,8 +15,8 @@ color
 
       Creates a new color object from the given values between 0 and 255
     
-   .. lua:staticmethod:: hsv(h, s, v)
-                         hsv(vec3)
+   .. lua:staticmethod:: fromHsv(h, s, v)
+                         fromHsv(vec3)
     
       Creates a new color object from HSV values
 
