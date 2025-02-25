@@ -239,6 +239,39 @@
         <article role="main">
           <section id="lua">
 <h1>lua<a class="headerlink" href="#lua" title="Link to this heading">¶</a></h1>
+<p><strong>Global Functions</strong></p>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="typeof">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">typeof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">o</span></em><span class="sig-paren">)</span><a class="headerlink" href="#typeof" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a user-friendly string representation of the type of the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>o</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">any</span></code></span>) – The object to check</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The type of the object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+</dl>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">SomeClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="s2">&quot;SomeClass&quot;</span><span class="p">)</span>
+<span class="nv">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">SomeClass</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nv">SomeClass</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;class&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nv">c</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;SomeClass&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;string&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;number&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;vec3&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">mat3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;mat3&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">quat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;quat&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;color&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">image</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;image&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nv">scene</span><span class="p">.</span><span class="nf">default3d</span><span class="p">()))</span><span class="w"> </span><span class="c1">-- prints &quot;scene&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">.</span><span class="py">Claw_Arm</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;assetKey&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <p><strong>Table Extensions</strong></p>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="table">
