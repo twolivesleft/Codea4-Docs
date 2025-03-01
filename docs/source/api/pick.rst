@@ -11,7 +11,7 @@ Images are always copied to the project's assets and cannot be loaded as referen
 
     Opens the document picker to pick a single asset and convert it to its corresponding Codea asset type.
     
-    :returns: The picked asset
+    :return: The picked asset
     :rtype: any
 
     .. code-block:: lua
@@ -27,7 +27,7 @@ Images are always copied to the project's assets and cannot be loaded as referen
 
         Opens the document picker to pick an image or PDF asset.
         
-        :returns: The picked image or PDF asset
+        :return: The picked image or PDF asset
         :rtype: image
 
         .. code-block:: lua
@@ -40,7 +40,7 @@ Images are always copied to the project's assets and cannot be loaded as referen
 
         Opens the document picker to pick a JSON asset and convert it to a table.
         
-        :returns: The picked asset converted to a table
+        :return: The picked asset converted to a table
         :rtype: table
 
         .. code-block:: lua
@@ -53,7 +53,7 @@ Images are always copied to the project's assets and cannot be loaded as referen
 
         Opens the document picker to pick a text asset.
         
-        :returns: The text content of the picked asset
+        :return: The text content of the picked asset
         :rtype: string
 
         .. code-block:: lua
@@ -66,7 +66,7 @@ Images are always copied to the project's assets and cannot be loaded as referen
 
         Opens the document picker to pick an asset and return its asset key.
         
-        :returns: The picked asset key
+        :return: The picked asset key
         :rtype: asset.key
 
         .. code-block:: lua
@@ -81,7 +81,7 @@ Images are always copied to the project's assets and cannot be loaded as referen
 
         This is a different picker than the document picker, and only allows picking a single photo at a time.
         
-        :returns: The picked photo as an image asset
+        :return: The picked photo as an image asset
         :rtype: image
 
         .. code-block:: lua
@@ -94,7 +94,7 @@ Images are always copied to the project's assets and cannot be loaded as referen
 
         Opens the document picker to pick an audio asset (sound or music).
         
-        :returns: The picked audio asset
+        :return: The picked audio asset
         :rtype: sound.source
 
         .. code-block:: lua
