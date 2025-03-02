@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="input" href="input.html" /><link rel="prev" title="style" href="style.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="objc" href="objc.html" /><link rel="prev" title="motion" href="motion.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>matrix - Codea 4.0 documentation</title>
+        <title>require - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -180,7 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
@@ -196,7 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html">motion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
@@ -238,114 +238,58 @@
           </label>
         </div>
         <article role="main">
-          <section id="matrix">
-<h1>matrix<a class="headerlink" href="#matrix" title="Link to this heading">¶</a></h1>
-<p><em>(module)</em></p>
-<p>A module for setting the current matrices used with various graphics functions in Codea</p>
-<section id="general">
-<span id="module-matrix"></span><h2>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h2>
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.push">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.push" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua" id="matrix.pop">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.pop" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua" id="matrix.reset">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.reset" title="Link to this definition">¶</a></dt>
-<dd><p>Functions for manipulating the matrix stack, use these when you want to temporarily change current space-transform for drawing operations</p>
-</dd></dl>
-
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.model">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.model" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">matrix</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Gets/sets the model matrix used to transform from local to world space</p>
-</dd></dl>
-
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.view">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.view" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">matrix</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Gets/sets the view matrix used to transform from world to view space (generally controlled by cameras)</p>
-</dd></dl>
-
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.projection">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">projection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.projection" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">matrix</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Gets/sets the projection matrix, used for final projection (i.e. othro and perspective projection)</p>
-</dd></dl>
-
+          <section id="require">
+<h1>require<a class="headerlink" href="#require" title="Link to this heading">¶</a></h1>
+<p>The require API allows importing Lua files from the specified asset key.</p>
+<section id="codea-project">
+<h2>Codea Project<a class="headerlink" href="#codea-project" title="Link to this heading">¶</a></h2>
+<p>For Codea project asset keys, all Lua files except Main.lua are imported by default, including the global variables and functions.</p>
+<p><cite>require.option.loadMain</cite> can be used to import Main.lua.
+<cite>require.option.noImport</cite> can be used to prevent importing global variables and functions.</p>
 </section>
-<section id="transform">
-<h2>Transform<a class="headerlink" href="#transform" title="Link to this heading">¶</a></h2>
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.transform2d">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">transform2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">sx</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">sy</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">0</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.transform2d" title="Link to this definition">¶</a></dt>
-<dd><p>Apply a generic 2D transform to the model matrix</p>
-</dd></dl>
-
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.transform3d">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">transform3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em>, <em class="sig-param"><span class="pre">sx</span></em>, <em class="sig-param"><span class="pre">sy</span></em>, <em class="sig-param"><span class="pre">sz</span></em>, <em class="sig-param"><span class="pre">rx</span></em>, <em class="sig-param"><span class="pre">ry</span></em>, <em class="sig-param"><span class="pre">rz</span></em><span class="sig-paren">)</span><a class="headerlink" href="#matrix.transform3d" title="Link to this definition">¶</a></dt>
-<dd><p>Apply a generic 3D transform to the model matrix</p>
-</dd></dl>
-
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.translate">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">z</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.translate" title="Link to this definition">¶</a></dt>
-<dd><p>Translate the current model matrix</p>
-</dd></dl>
-
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.rotate">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">quat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#matrix.rotate" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="lua function">
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">angle</span></em>, <em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Rotate the current model matrix</p>
-</dd></dl>
-
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.scale">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">z</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.scale" title="Link to this definition">¶</a></dt>
-<dd><p>Scale the current model matrix</p>
-</dd></dl>
-
+<section id="single-lua-file">
+<h2>Single Lua File<a class="headerlink" href="#single-lua-file" title="Link to this heading">¶</a></h2>
+<p>For single Lua file asset keys, only the specified file is imported, including its global variables and functions by default.</p>
+<p><cite>require.option.noImport</cite> can be used to prevent importing global variables and functions.</p>
 </section>
-<section id="projection">
-<h2>Projection<a class="headerlink" href="#projection" title="Link to this heading">¶</a></h2>
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.ortho">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">ortho</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.ortho" title="Link to this definition">¶</a></dt>
-<dd><p>Set the projection matrix to ortho using the device screen settings (i.e. coordinates range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">0]</span></code> to <code class="docutils literal notranslate"><span class="pre">[WIDTH,</span> <span class="pre">HEIGHT]</span></code>)</p>
-</dd></dl>
-
+<section id="id1">
+<h2>require<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <dl class="lua function">
 <dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">ortho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">height</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Sets an orthographic projection matrix <code class="docutils literal notranslate"><span class="pre">height</span></code> units high, using the aspect ratio of the screen to set the width</p>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">require</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Import a single file from the specified asset key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>height</strong> – The height of the orthographic projection</p>
+<dd class="field-odd"><p><strong>assetKey</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">assetKey</span></code></span>) – The asset key of the file to import</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Value returned by the imported file, if any</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">any</span></code></span></p>
 </dd>
 </dl>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="p">.</span><span class="py">MyLibrary</span><span class="p">,</span><span class="w"> </span><span class="nb">require</span><span class="p">.</span><span class="nv">option</span><span class="p">.</span><span class="py">noImport</span><span class="p">,</span><span class="w"> </span><span class="nb">require</span><span class="p">.</span><span class="nv">option</span><span class="p">.</span><span class="py">loadMain</span><span class="p">)</span>
+
+<span class="nv">myFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="p">.</span><span class="py">MyOtherLibrary</span><span class="p">.</span><span class="py">MyFeature</span><span class="p">,</span><span class="w"> </span><span class="nb">require</span><span class="p">.</span><span class="nv">option</span><span class="p">.</span><span class="py">noImport</span><span class="p">)</span>
+
+<span class="nb">require</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="p">.</span><span class="py">MyOtherLibrary</span><span class="p">.</span><span class="py">MyOtherFeature</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
-<dl class="lua function">
+<dl class="lua class">
 <dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">ortho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">left</span></em>, <em class="sig-param"><span class="pre">right</span></em>, <em class="sig-param"><span class="pre">bottom</span></em>, <em class="sig-param"><span class="pre">top</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">near</span></em>, <em class="sig-param"><span class="pre">far</span></em><span class="optional">]</span><span class="sig-paren">)</span></dt>
-<dd><p>Sets an orthographic projection matrix using the supplied edge values</p>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">require</span></span></dt>
+<dd><dl class="lua attribute">
+<dt class="sig sig-object lua" id="require.option">
+<span class="sig-name descname"><span class="pre">option</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">None</span><a class="headerlink" href="#require.option" title="Link to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">loadMain</span></code> - When used with a Codea project, load Main.lua</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">noImport</span></code> - Do not import global variables and functions</p></li>
+</ul>
 </dd></dl>
 
-<dl class="lua function">
-<dt class="sig sig-object lua" id="matrix.perspective">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fov,</span> <span class="pre">aspect,</span> <span class="pre">near,</span> <span class="pre">far]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#matrix.perspective" title="Link to this definition">¶</a></dt>
-<dd><p>Sets a perspective projection matrix</p>
 </dd></dl>
 
 </section>
@@ -356,23 +300,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="input.html">
+          <a class="next-page" href="objc.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">input</div>
+                <div class="title">objc</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="style.html">
+          <a class="prev-page" href="motion.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">style</div>
+                <div class="title">motion</div>
                 
               </div>
             </a>
@@ -406,10 +350,10 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">matrix</a><ul>
-<li><a class="reference internal" href="#general">General</a></li>
-<li><a class="reference internal" href="#transform">Transform</a></li>
-<li><a class="reference internal" href="#projection">Projection</a></li>
+<li><a class="reference internal" href="#">require</a><ul>
+<li><a class="reference internal" href="#codea-project">Codea Project</a></li>
+<li><a class="reference internal" href="#single-lua-file">Single Lua File</a></li>
+<li><a class="reference internal" href="#id1">require</a></li>
 </ul>
 </li>
 </ul>

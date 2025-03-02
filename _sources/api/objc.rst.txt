@@ -148,7 +148,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     
     :param name: The name of the delegate.
     :type name: string
-    :returns: A type to be used as an Objective-C delegate.
+    :return: A type to be used as an Objective-C delegate.
     :rtype: table
     :syntax:
     
@@ -200,7 +200,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     
     :param name: The name of the class.
     :type name: string
-    :returns: A type to be used as an Objective-C class.
+    :return: A type to be used as an Objective-C class.
     :rtype: table
     :syntax:
     
@@ -233,7 +233,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     
     :param name: The name of the selector.
     :type name: string
-    :returns: An Objective-C selector (or SEL).
+    :return: An Objective-C selector (or SEL).
     :rtype: table
     :syntax:
     
@@ -268,7 +268,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     
     :param table: A Lua table.
     :type table: table
-    :returns: An Objective-C NSSet.
+    :return: An Objective-C NSSet.
     :rtype: table
     :syntax:
     
@@ -284,7 +284,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     
     :param text: The text to convert to an NSString.
     :type text: string
-    :returns: An Objective-C NSString.
+    :return: An Objective-C NSString.
     :rtype: table
     :syntax:
     
@@ -302,7 +302,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
         
         Unnamed enum values can be found directly under ``objc.enum``, e.g. ``objc.enum.NSUTF8StringEncoding``.
         
-        :returns: A table containing native enumerations and their values.
+        :return: A table containing native enumerations and their values.
         :rtype: table
         :syntax:
         
@@ -323,14 +323,14 @@ Some Codea types will be converted to corresponding Objective types automaticall
 
         The UIApplication's ``sharedApplication``.
         
-        :returns: The UIApplication's ``sharedApplication``.
+        :return: The UIApplication's ``sharedApplication``.
         :rtype: table
 
 .. lua:attribute:: viewer: table
     
         The runtime ``UIViewController``.
         
-        :returns: The runtime ``UIViewController``.
+        :return: The runtime ``UIViewController``.
         :rtype: table
 
 .. lua:attribute:: info: table
@@ -341,7 +341,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
         
         For example, to get the value of ``NSBundleIdentifier``, use ``objc.info.bundleIdentifier``.
         
-        :returns: A table containing the info dictionary keys and values.
+        :return: A table containing the info dictionary keys and values.
         :rtype: table
         
         ..  collapse:: Test if running in an exported project
@@ -362,7 +362,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
         :type bottom: number
         :param right: right value of the UIEdgeInsets
         :type right: number
-        :returns: The UIEdgeInsets struct.
+        :return: The UIEdgeInsets struct.
         :rtype: table
         :syntax:
         
@@ -420,7 +420,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     
     :param class: Objective-C class to inspect.
     :type class: table
-    :returns: A table with the class information
+    :return: A table with the class information
     :rtype: table
     :syntax:
     
@@ -474,7 +474,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     :type x: number
     :param y: y position of the CGPoint
     :type y: number
-    :returns: The CGPoint struct.
+    :return: The CGPoint struct.
     :rtype: table
     :syntax:
     
@@ -500,7 +500,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     :type width: number
     :param height: height of the CGRect
     :type height: number
-    :returns: The CGRect struct.
+    :return: The CGRect struct.
     :rtype: table
     :syntax:
     
@@ -522,7 +522,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     :type width: number
     :param height: height of the CGSize
     :type height: number
-    :returns: The CGSize struct.
+    :return: The CGSize struct.
     :rtype: table
     :syntax:
     
@@ -544,7 +544,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     :type loc: number
     :param len: length of the NSRange
     :type len: number
-    :returns: The NSRange struct.
+    :return: The NSRange struct.
     :rtype: table
     :syntax:
     
@@ -570,7 +570,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     :type b: number
     :param a: alpha value of the CGColor
     :type a: number
-    :returns: The CGColor struct.
+    :return: The CGColor struct.
     :rtype: table
     :syntax:
     
@@ -592,7 +592,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
     :type dx: number
     :param dy: y direction of the CGVector
     :type dy: number
-    :returns: The CGVector struct.
+    :return: The CGVector struct.
     :rtype: table
     :syntax:
     
@@ -622,7 +622,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
         :type tx: number
         :param ty: ty value of the CGAffineTransform
         :type ty: number
-        :returns: The CGAffineTransform struct.
+        :return: The CGAffineTransform struct.
         :rtype: table
         :syntax:
         
