@@ -272,7 +272,10 @@ Constants - Key Codes
 .. lua:attribute:: rightShift: const
 .. lua:attribute:: shift: const
 .. lua:attribute:: esc: const
-.. lua:attribute:: return: const
+.. lua:attribute:: enter: const
+
+   The return key
+   
 .. lua:attribute:: tab: const
 .. lua:attribute:: space: const
 .. lua:attribute:: backspace: const
