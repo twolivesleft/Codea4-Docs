@@ -214,6 +214,17 @@ Text
    :param h: optional height of the text box
    :param callback: a special glyph modifier callback
 
+.. lua:function:: textSize(str[, width])
+
+   Gets the size of a text being drawn
+
+   :param str: the text to query
+   :type str: string
+   :param width: the width of the textbox
+   :type width: number
+   :return: The ``width`` and ``height`` of the text 
+   :rtype: number, number
+
 Gizmos
 ######
 
@@ -224,6 +235,17 @@ Gizmos are useful for drawing shapes in 2D/3D space for debugging and editing
 .. lua:function:: line(x1, y1, z1, x2, y2, z2)
 
    Draws a 3D antialiased line
+
+Color Space
+###########
+
+.. lua:currentmodule:: None
+
+.. lua:function:: colorspace(type)
+
+   Changes the color space used for drawing images and sprites
+
+   :param type: Either ``GAMMA`` or ``LINEAR``
 
 Contexts
 ########
