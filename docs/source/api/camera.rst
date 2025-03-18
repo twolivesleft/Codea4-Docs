@@ -74,6 +74,19 @@ camera
 
       Sets/gets a custom view matrix
 
+   .. lua:attribute:: viewport: vec4
+
+      Sets/gets the current viewport using normalized coordinates. Can be used for adjusting the rendered area of the camera relative to the screen. For instance, writing ``camera.viewport = vec4(0.0, 0.0, 0.5, 1.0)`` will render the camera to only the left half of the screen.
+
+      - ``x``: The x position of the viewport
+      - ``y``: The y position of the viewport
+      - ``z``: The width of the viewport
+      - ``w``: The height of the viewport
+
+   .. lua:attribute:: aspect: number
+
+      Sets/gets the aspect ratio of the viewport
+
    .. lua:method:: apply()
 
       Apply this cameras settings to the matrix stack
