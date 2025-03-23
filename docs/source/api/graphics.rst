@@ -164,11 +164,8 @@ Text
 
       The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.
 
-      |bold_italic|
-
-   .. |bold_italic| image:: /images/example_richText_bold_italic.png
-      :width: 512
-
+      .. image:: /images/example_richText_bold_italic.png
+         :width: 512
 
    *Custom Tags*
 
