@@ -347,6 +347,24 @@
 <dd><p>Sets/gets a custom view matrix</p>
 </dd></dl>
 
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.viewport">
+<span class="sig-name descname"><span class="pre">viewport</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec4</span><a class="headerlink" href="#camera.viewport" title="Link to this definition">¶</a></dt>
+<dd><p>Sets/gets the current viewport using normalized coordinates. Can be used for adjusting the rendered area of the camera relative to the screen. For instance, writing <code class="docutils literal notranslate"><span class="pre">camera.viewport</span> <span class="pre">=</span> <span class="pre">vec4(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.5,</span> <span class="pre">1.0)</span></code> will render the camera to only the left half of the screen.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>: The x position of the viewport</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: The y position of the viewport</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z</span></code>: The width of the viewport</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">w</span></code>: The height of the viewport</p></li>
+</ul>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.aspect">
+<span class="sig-name descname"><span class="pre">aspect</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.aspect" title="Link to this definition">¶</a></dt>
+<dd><p>Sets/gets the aspect ratio of the viewport</p>
+</dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="camera.apply">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#camera.apply" title="Link to this definition">¶</a></dt>
