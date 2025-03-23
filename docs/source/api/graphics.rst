@@ -215,6 +215,10 @@ Text
    - ``fillColor``
    - ``strokeColor``
    - ``strokeWidth``
+   - ``textOverline``
+   - ``textUnderline``
+   - ``textStrikeThrough``
+   - ``textBackground``
    - ``textShadow``
    - ``textShadowOffset``
    - ``textShadowSoftner``
