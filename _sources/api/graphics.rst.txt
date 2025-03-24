@@ -146,15 +146,48 @@ Text
       - ``BOTTOM``
    - *Text Style* with :lua:func:`style.textStyle`
       - ``TEXT_NORMAL``
+
+        - Renders the text normally
+
       - ``TEXT_BACKGROUND``
+
+        - Renders a rectangle behind the text using the background color
+
       - ``TEXT_UNDERLINE``
+
+        - Renders a line below the text
+        
       - ``TEXT_OVERLINE``
+
+        - Renders a line above the text
+
       - ``TEXT_STRIKE_THROUGH``
+
+        - Renders a line through the text
+
       - ``TEXT_BOLD``
+
+        - Renders the text in bold
+
       - ``TEXT_ITALICS``
+
+        - Renders the text in italics
+
       - ``TEXT_RICH``
 
-   The ``TEXT_RICH`` style option enables rich text, which parses xml tags within the supplied string to format individual characters
+        - Enables rich text, which parses xml tags within the supplied string to format individual characters.
+
+      - ``TEXT_UPPERCASE``
+
+        - Renders all text in uppercase
+
+      - ``TEXT_LOWERCASE``
+
+        - Renders all text in lowercase
+
+      - ``TEXT_NATIVE``
+
+        - Enables native text rendering, which uses the system font renderer to draw text and supports emojis. Note that other text styles are disabled while using the native renderer.
 
    **Built-In Tags**
 
@@ -164,11 +197,8 @@ Text
 
       The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.
 
-      |bold_italic|
-
-   .. |bold_italic| image:: /images/example_richText_bold_italic.png
-      :width: 512
-
+      .. image:: /images/example_richText_bold_italic.png
+         :width: 512
 
    *Custom Tags*
 
@@ -185,6 +215,10 @@ Text
    - ``fillColor``
    - ``strokeColor``
    - ``strokeWidth``
+   - ``textOverline``
+   - ``textUnderline``
+   - ``textStrikeThrough``
+   - ``textBackground``
    - ``textShadow``
    - ``textShadowOffset``
    - ``textShadowSoftner``

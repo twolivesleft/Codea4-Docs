@@ -406,6 +406,8 @@ Text Style
 
 .. lua:function:: textAlign(align)
 
+.. lua:function:: textStyle(style)
+
 Constants - Text
 ****************
 

@@ -495,26 +495,73 @@
 </dl>
 </li>
 <li><dl class="simple">
-<dt><em>Text Style</em> with <code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.textStyle()</span></code></dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_NORMAL</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_BACKGROUND</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_UNDERLINE</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_OVERLINE</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_STRIKE_THROUGH</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_BOLD</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_ITALICS</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_RICH</span></code></p></li>
+<dt><em>Text Style</em> with <a class="reference internal" href="style.html#style.textStyle" title="style.textStyle"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.textStyle()</span></code></a></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_NORMAL</span></code></p>
+<ul>
+<li><p>Renders the text normally</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_BACKGROUND</span></code></p>
+<ul>
+<li><p>Renders a rectangle behind the text using the background color</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_UNDERLINE</span></code></p>
+<ul>
+<li><p>Renders a line below the text</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_OVERLINE</span></code></p>
+<ul>
+<li><p>Renders a line above the text</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_STRIKE_THROUGH</span></code></p>
+<ul>
+<li><p>Renders a line through the text</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_BOLD</span></code></p>
+<ul>
+<li><p>Renders the text in bold</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_ITALICS</span></code></p>
+<ul>
+<li><p>Renders the text in italics</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_RICH</span></code></p>
+<ul>
+<li><p>Enables rich text, which parses xml tags within the supplied string to format individual characters.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_UPPERCASE</span></code></p>
+<ul>
+<li><p>Renders all text in uppercase</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_LOWERCASE</span></code></p>
+<ul>
+<li><p>Renders all text in lowercase</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXT_NATIVE</span></code></p>
+<ul>
+<li><p>Enables native text rendering, which uses the system font renderer to draw text and supports emojis. Note that other text styles are disabled while using the native renderer.</p></li>
+</ul>
+</li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">TEXT_RICH</span></code> style option enables rich text, which parses xml tags within the supplied string to format individual characters</p>
 <p><strong>Built-In Tags</strong></p>
 <p><em>Bold and Italic</em></p>
 <blockquote class="epigraph">
 <div><p>The &lt;i&gt;quick brown fox&lt;/i&gt; jumps over the &lt;b&gt;lazy dog&lt;/b&gt;.</p>
-<p><a class="reference internal" href="../_images/example_richText_bold_italic.png"><img alt="bold_italic" src="../_images/example_richText_bold_italic.png" style="width: 512px;" /></a></p>
+<a class="reference internal image-reference" href="../_images/example_richText_bold_italic.png"><img alt="../_images/example_richText_bold_italic.png" src="../_images/example_richText_bold_italic.png" style="width: 512px;" />
+</a>
 </div></blockquote>
 <p><em>Custom Tags</em></p>
 <p>Custom tags can assigned using a callback function - <code class="docutils literal notranslate"><span class="pre">text.style.myCustomTag</span> <span class="pre">=</span> <span class="pre">function(tag,</span> <span class="pre">format)</span> <span class="pre">...</span> <span class="pre">end</span></code></p>
@@ -528,6 +575,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">fillColor</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">strokeColor</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">strokeWidth</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">textOverline</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">textUnderline</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">textStrikeThrough</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">textBackground</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">textShadow</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">textShadowOffset</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">textShadowSoftner</span></code></p></li>
