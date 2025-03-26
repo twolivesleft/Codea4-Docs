@@ -27,3 +27,9 @@ Exposes viewer properties common to both the legacy and modern runtimes.
    :param number bottom: The bottom inset of the safe area.
    :param number left: The left inset of the safe area.
    :param number right: The right inset of the safe area.
+
+.. lua:attribute:: paused: boolean
+
+   A boolean value that indicates whether the viewer is paused.
+
+   .. helptext:: paused state of the viewer
