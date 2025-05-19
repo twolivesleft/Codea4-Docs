@@ -282,7 +282,7 @@ quat
 .. lua:class:: quat
 
    .. lua:staticmethod:: quat()
-                         quat(x, y, z, w)
+                         quat(w, x, y, z)
 
       Create a new ``quat``
 
