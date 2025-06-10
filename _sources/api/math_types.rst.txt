@@ -403,7 +403,7 @@ mat2
 mat3
 ####
 
-.. lua:class:: mat2
+.. lua:class:: mat3
 
    A simple 3x3 matrix
 
@@ -447,7 +447,7 @@ mat3
 mat4
 ####
 
-.. lua:class:: mat2
+.. lua:class:: mat4
 
    A simple 4x4 matrix, typically used for 3D homogonous transformations
 

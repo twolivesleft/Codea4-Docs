@@ -356,6 +356,17 @@
 </dd></dl>
 
 <dl class="lua function">
+<dt class="sig sig-object lua" id="style.pixelScaling">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">pixelScaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">scale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.pixelScaling" title="Link to this definition">¶</a></dt>
+<dd><p>Sets/gets the scale of a sprite when rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scale</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the scaling factor of the sprite image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua" id="style.strokeWidth">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">strokeWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.strokeWidth" title="Link to this definition">¶</a></dt>
 <dt class="sig sig-object lua">
@@ -671,6 +682,25 @@
 </dd></dl>
 
 </section>
+</section>
+<section id="viewport">
+<h2>Viewport<a class="headerlink" href="#viewport" title="Link to this heading">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="style.viewRect">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">viewRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.viewRect" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the viewport of the renderer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The x position of the viewport</p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The y position of the viewport</p></li>
+<li><p><strong>w</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The width of the viewport</p></li>
+<li><p><strong>h</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The height of the viewport</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="clipping">
 <h2>Clipping<a class="headerlink" href="#clipping" title="Link to this heading">¶</a></h2>
@@ -1116,6 +1146,7 @@
 <li><a class="reference internal" href="#constants-blend-factors">Constants - Blend Factors</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#viewport">Viewport</a></li>
 <li><a class="reference internal" href="#clipping">Clipping</a></li>
 <li><a class="reference internal" href="#stencil">Stencil</a><ul>
 <li><a class="reference internal" href="#constants-stencil">Constants - Stencil</a></li>
