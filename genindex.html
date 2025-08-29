@@ -164,6 +164,7 @@
 <li class="toctree-l1"><a class="reference internal" href="manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/assets.html">Assets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box 2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
@@ -201,6 +202,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/objc.html">objc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics3d.html">physics3d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/pick.html">pick</a></li>
@@ -544,6 +546,8 @@
 </li>
         <li><a href="api/graphics.html#module-context">context (module)</a>
 </li>
+        <li><a href="api/file.html#file.copy">copy() (in module file)</a>
+</li>
         <li><a href="api/math_types.html#vec2.cross">cross() (vec2 method)</a>
 
         <ul>
@@ -820,6 +824,8 @@
 </li>
         <li><a href="api/math_types.html#quat.eulerAngles">eulerAngles() (quat static method)</a>
 </li>
+        <li><a href="api/file.html#file.exists">exists() (in module file)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -828,16 +834,18 @@
   <h2>F</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/file.html#module-file">file (module)</a>
+</li>
         <li><a href="api/style.html#style.fill">fill() (in module style)</a>
 </li>
         <li><a href="api/entity.html#entity.findChild">findChild() (entity method)</a>
 </li>
         <li><a href="api/scene.html#scene.findEntity">findEntity() (scene method)</a>
 </li>
-        <li><a href="api/image.html#image.slice.flip">flip() (image.slice method)</a>, <a href="api/image.html#image.slice.flip">[1]</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/image.html#image.slice.flip">flip() (image.slice method)</a>, <a href="api/image.html#image.slice.flip">[1]</a>
+</li>
         <li><a href="api/style.html#style.fontSize">fontSize() (in module style)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.friction">friction (class in physics2d)</a>
@@ -1434,10 +1442,10 @@
 </li>
         <li><a href="api/mesh.html#mesh.submeshIndex">mesh.submeshIndex (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.texCoords">mesh.texCoords (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.texture">mesh.texture (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.uvs">mesh.uvs (attribute)</a>
@@ -1455,6 +1463,8 @@
 </li>
         </ul></li>
         <li><a href="api/color.html#color.mix">mix() (color static method)</a>
+</li>
+        <li><a href="api/file.html#file.mkdir">mkdir() (in module file)</a>
 </li>
         <li><a href="api/matrix.html#matrix.model">model() (in module matrix)</a>
 </li>
@@ -1491,6 +1501,8 @@
         <li><a href="api/motion.html#motion.motion.updateInterval">motion.motion.updateInterval (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.motor">motor (class in physics2d)</a>
+</li>
+        <li><a href="api/file.html#file.move">move() (in module file)</a>
 </li>
         <li><a href="api/entity.html#entity.moveAfter">moveAfter() (entity method)</a>
 </li>
@@ -2014,9 +2026,15 @@
         </ul></li>
         <li><a href="api/tween.html#tween.relative">relative() (tween method)</a>
 </li>
+        <li><a href="api/entity.html#entity.remove">remove() (entity method)</a>
+
+        <ul>
+          <li><a href="api/file.html#file.remove">(in module file)</a>
+</li>
+        </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/entity.html#entity.remove">remove() (entity method)</a>
+        <li><a href="api/file.html#file.rename">rename() (in module file)</a>
 </li>
         <li><a href="api/require.html#require">require (built-in class)</a>
 </li>

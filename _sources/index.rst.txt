@@ -30,6 +30,7 @@ Codea 4
    manual/drawing
    manual/sound
    manual/assets
+   manual/file_operations
    manual/input
    manual/physics2d
    manual/physics3d
@@ -65,6 +66,7 @@ Codea 4
    api/require
    api/objc
    api/pasteboard
+   api/file
    api/physics2d
    api/physics3d
    api/pick
