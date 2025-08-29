@@ -311,7 +311,7 @@ Constants - Blend Factors
    Blend factor of :math:`(f, f, f, 1)` where :math:`f = min(A_s, 1 - A_d)`
 
 Viewport
-#######
+########
 
 .. lua:function:: viewRect(x, y, w, h)
 

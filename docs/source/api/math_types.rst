@@ -1,15 +1,32 @@
 math types
 ==========
 
-vec2
-####
+2D Vectors
+##########
 
 .. lua:class:: vec2
 
-   .. lua:staticmethod:: vec2(x)
-                         vec2(x, y)
+   This type represents a 2D vector. Most mathematical operators such as equality, addition, subtraction, multiplication and division are provided, so you can use ``vec2`` data types similarly to how you use numerical types. In addition there are a number of methods, such as ``v:dot( vec2 )`` that can be called on vec2 types.
 
-      Create a new ``vec2`` by setting both values at once or each one individually
+   :param x: Initial x value of the vector
+   :type x: number
+   :param y: Initial y value of the vector
+   :type y: number
+
+   :syntax:
+      .. code-block:: lua
+
+         v = vec2(1, 2)
+         v = vec2(1) -- set both x and y to 1
+         v = vec2() -- set both x and y to 0
+
+   .. lua:attribute:: x: number
+
+      The x component of this vector
+
+   .. lua:attribute:: y: number
+
+      The y component of this vector      
 
    .. lua:staticmethod:: min(v1, v2)
 
@@ -18,14 +35,6 @@ vec2
    .. lua:staticmethod:: max(v1, v2)
 
       Return a ``vec2`` containing the component-wise maximum two vectors
-
-   .. lua:attribute:: x: number
-
-      The x component of this vector
-
-   .. lua:attribute:: y: number
-
-      The y component of this vector
 
    .. lua:attribute:: length: number
 
@@ -91,8 +100,8 @@ vec2
 
       Calculate the oriented angle between this vector and another, between -pi and pi
 
-vec3
-####
+3D Vectors
+##########
 
 .. lua:class:: vec3
 
@@ -173,8 +182,8 @@ vec3
 
       Unpack this vector as multiple number values
 
-vec4
-####
+4D Vectors
+##########
 
 .. lua:class:: vec4
 
@@ -255,7 +264,7 @@ vec4
 
       Unpack this vector as multiple number values
 
-vector swizzling
+Vector Swizzling
 ################
 
 ``vec2``, ``vec3`` and ``vec4`` support swizzling, which allows you to access and manipulate their components in a variety of ways
@@ -276,8 +285,8 @@ vector swizzling
 
    
 
-quat
-####
+Quaternions
+###########
 
 .. lua:class:: quat
 
@@ -356,8 +365,8 @@ quat
 
       :return: a normalized copy of this quaternion
 
-mat2
-####
+2x2 Matrix
+##########
 
 .. lua:class:: mat2
 
@@ -400,8 +409,8 @@ mat2
       :rtype: vec2
 
 
-mat3
-####
+3x3 Matrix
+##########
 
 .. lua:class:: mat3
 
@@ -444,8 +453,8 @@ mat3
       :rtype: vec3
 
 
-mat4
-####
+4x4 Matrix
+##########
 
 .. lua:class:: mat4
 
@@ -503,8 +512,8 @@ mat4
       :return: the column at a given ``index`` (starting at 1)
       :rtype: vec3
 
-aabb
-####
+Axis-Aligned Bounding Box (AABB)
+################################
 
 .. lua:module:: bounds
 

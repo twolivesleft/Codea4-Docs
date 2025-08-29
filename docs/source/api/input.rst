@@ -12,11 +12,11 @@ Touches
 
    Represents a single touch over time. Generated in response to touch events by the device in response to user interactions
 
-   .. attribute:: id: number
+   .. lua:attribute:: id: number
 
       An id that can be used to uniquely identify the touch
 
-   .. attribute:: state: enum
+   .. lua:attribute:: state: enum
 
       The current state of the touch, can be:
 
@@ -25,7 +25,7 @@ Touches
       * ``ENDED`` - the touch ended this frame
       * ``CANCELLED`` - the touch was cancelled (usually by another view or gesture recognizer)
 
-   .. attribute:: type: enum 
+   .. lua:attribute:: type: enum 
 
       The type of touch, can be:
 
@@ -34,75 +34,75 @@ Touches
       * ``touch.pencil`` - a touch resulting from the pencil
       * ``touch.pointer`` - a touch resulting from a button based device
 
-   .. attribute:: x: number
+   .. lua:attribute:: x: number
 
       The x position of the touch (in screen coordinates)
 
-   .. attribute:: y: number
+   .. lua:attribute:: y: number
 
       The y position of the touch (in screen coordinates)
 
-   .. attribute:: prevX: number
+   .. lua:attribute:: prevX: number
 
       The previous x position of the touch (in screen coordinates)
 
-   .. attribute:: prevY: number
+   .. lua:attribute:: prevY: number
 
       The previous y position of the touch (in screen coordinates)
 
-   .. attribute:: deltaX: number
+   .. lua:attribute:: deltaX: number
 
       The x position delta of the touch (in screen coordinates)
 
-   .. attribute:: deltaY: number
+   .. lua:attribute:: deltaY: number
 
       The y position delta of the touch (in screen coordinates)
 
-   .. attribute:: pos: vec2
+   .. lua:attribute:: pos: vec2
 
       The position of the touch (in screen coordinates) as a vector
 
-   .. attribute:: prevPos: vec2
+   .. lua:attribute:: prevPos: vec2
 
       The previous position of the touch (in screen coordinates) as a vector
 
-   .. attribute:: delta: number
+   .. lua:attribute:: delta: number
 
       The position delta of the touch (in screen coordinates) as a vector
 
-   .. attribute:: force: number
+   .. lua:attribute:: force: number
 
       The amount of force being applied (only applies to pencil type touches)
 
-   .. attribute:: maxForce: number
+   .. lua:attribute:: maxForce: number
 
       The maximum amount of force that can be applied (only applies to pencil type touches)
 
-   .. attribute:: timestamp: number  
+   .. lua:attribute:: timestamp: number  
       
       The time when this touch event occured (only applies to pencil type touches)
 
-   .. attribute:: azimuth: number
+   .. lua:attribute:: azimuth: number
 
       The azimuth angle of the pencil (only applies to pencil type touches)
         
-   .. attribute:: altitude: number
+   .. lua:attribute:: altitude: number
 
       The altitude angle of the pencil
 
-   .. attribute:: radiusTolerance: number
+   .. lua:attribute:: radiusTolerance: number
 
       The amount the estimated radius can vary due to hardware tolerances
 
-   .. attribute:: radius: number
+   .. lua:attribute:: radius: number
 
       The estimated radius of the touch
 
-   .. attribute:: precisePos: vec2
+   .. lua:attribute:: precisePos: vec2
 
       The precise location of the touch (if available)
 
-   .. attribute:: precisePrevPos: vec2
+   .. lua:attribute:: precisePrevPos: vec2
       
       The previous precise location of the touch (if available)
 

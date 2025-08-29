@@ -1,4 +1,5 @@
 from docutils import nodes
+from enum import Enum
 
 class DocutilsUtils:
     @staticmethod
@@ -8,8 +9,22 @@ class DocutilsUtils:
     
     @staticmethod
     def extract_description(node):
-        content_node = next((child for child in node.traverse() if child.tagname == 'paragraph'), None)
-        return content_node.astext() if content_node else None
+        desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
+        if not desc_content:
+            return None
+
+        paragraphs = [child for child in desc_content.children if child.tagname == 'paragraph']
+        description_parts = []
+        for paragraph in paragraphs:
+            paragraph_text = []
+            for child in paragraph.children:
+                if isinstance(child, nodes.literal):
+                    paragraph_text.append(f"`{child.astext()}`")
+                else:
+                    paragraph_text.append(child.astext())
+            description_parts.append(''.join(paragraph_text))
+
+        return '\n\n'.join(description_parts)
     
     @staticmethod
     def extract_module(node):
@@ -20,12 +35,127 @@ class DocutilsUtils:
 
         # Return None or a default if no module attribute is found
         return None
+    
+    @staticmethod
+    def extract_parameters(node, isClass = False):
+        params = []
+        param_list = node.next_node(condition=lambda n: n.tagname == 'desc_parameterlist')
+        # Search for the field list that contains parameter details
+        field_list = node.next_node(condition=lambda n: n.tagname == 'field_list')
+        param_details = {}
+
+        if field_list:
+            for field in field_list.children:
+                if isinstance(field, nodes.field):
+                    field_name = field.next_node(condition=lambda n: n.tagname == 'field_name')
+                    if field_name and field_name.astext() == "Parameters":
+                        field_body = field.next_node(condition=lambda n: n.tagname == 'field_body')
+                        if field_body:
+                            bullet_list = field_body.next_node(condition=lambda n: n.tagname == 'bullet_list')
+                            if bullet_list:
+                                for list_item in bullet_list.children:
+                                    param_name_node = list_item.next_node(condition=lambda n: n.tagname == 'literal_strong')
+                                    param_description_nodes = list_item.next_node(condition=lambda n: n.tagname == 'paragraph')
+
+                                    if param_name_node and param_description_nodes:
+                                        param_name = param_name_node.astext().split('=')[0].strip()  # Handle default values here if specified
+                                        default_value = param_name_node.astext().split('=')[1].strip() if '=' in param_name_node.astext() else None
+                                        # Extract the type if available within parenthesis
+                                        param_type = None
+                                        description_text = param_description_nodes.astext()
+
+                                        if ('(' in description_text and ')' in description_text):
+                                            start = description_text.find('(') + 1
+                                            end = description_text.find(')')
+                                            param_type = description_text[start:end]
+                                            
+                                        # Description often follows the type enclosed in dash
+                                        param_description = description_text.split('–')[-1].strip()
+                                        param_details[param_name] = {
+                                            'type': param_type,
+                                            'description': param_description,
+                                            'default': default_value
+                                        }        
+
+        if param_list and isClass == False:
+            for child in param_list.children:
+                if child.tagname == 'desc_parameter' or child.tagname == 'desc_optional':
+                    for param_node in child.children:
+                        param_name = param_node.astext().split('=')[0].strip()
+                        default_value = param_node.astext().split('=')[1].strip() if '=' in param_node.astext() else None
+                        optional = child.tagname == 'desc_optional'
+                        param_info = param_details.get(param_name, {})
+                        params.append(LuaParameter(name=param_name,
+                                                   type_hint=param_info.get('type'),
+                                                   optional=optional,
+                                                   description=param_info.get('description'),
+                                                   default=default_value or param_info.get('default')))
+        elif isClass == True:
+            for key, value in param_details.items():
+                params.append(LuaParameter(name=key,
+                                            type_hint=value.get('type'),
+                                            optional=False,
+                                            description=value.get('description'),
+                                            default=value.get('default')))
+
+        return params
+
+    @staticmethod
+    def extract_syntax(node):
+        field_list = node.next_node(condition=lambda n: n.tagname == 'field_list')
+        if not field_list:
+            return None
+
+        for field in field_list.children:
+            if isinstance(field, nodes.field):
+                field_name = field.next_node(condition=lambda n: n.tagname == 'field_name')
+                if field_name and field_name.astext() == "Syntax":
+                    field_body = field.next_node(condition=lambda n: n.tagname == 'field_body')
+                    if field_body:
+                        syntax_node = field_body.next_node(condition=lambda n: n.tagname == 'literal_block')
+                        if syntax_node:
+                            return syntax_node.astext()
+        return None
+
+    @staticmethod
+    def extract_code_samples(node):
+        code_samples = []
+        for container in node.traverse(condition=lambda n: n.tagname == 'container' and 'literal-block-wrapper' in n['classes']):
+            caption_node = container.next_node(condition=lambda n: n.tagname == 'caption')
+            code_node = container.next_node(condition=lambda n: n.tagname == 'literal_block')
+            if caption_node and code_node:
+                code_samples.append({
+                    'title': caption_node.astext(),
+                    'code': code_node.astext()
+                })
+        return code_samples
+
+    @staticmethod
+    def extract_overview(node):
+        desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
+        if not desc_content:
+            return None
+
+        paragraphs = [child for child in desc_content.children if child.tagname == 'paragraph']
+        overview_parts = []
+        for paragraph in paragraphs:
+            paragraph_text = []
+            for child in paragraph.children:
+                if isinstance(child, nodes.literal):
+                    paragraph_text.append(f"`{child.astext()}`")
+                else:
+                    paragraph_text.append(child.astext())
+            overview_parts.append(''.join(paragraph_text))
+
+        return '\n\n'.join(overview_parts)
 
 
 class LuaModule:
-    def __init__(self, node):
+    def __init__(self, node, group=None):
         self.name = DocutilsUtils.extract_name(node)
         self.description = DocutilsUtils.extract_description(node)
+        self.examples = DocutilsUtils.extract_code_samples(node)
+        self.group = group
 
     def __str__(self):
         return f"{self.name}\n\t{self.description}"
@@ -34,14 +164,23 @@ class LuaModule:
         return {
             'name': self.name,
             'description': self.description,
+            'examples': self.examples,
+            'group': self.group
         }
 
 class LuaClass:
-    def __init__(self, node):
+    def __init__(self, node, group=None):        
         self.name = DocutilsUtils.extract_name(node)
         self.description = DocutilsUtils.extract_description(node)
         self.module = DocutilsUtils.extract_module(node)
+        self.syntax = DocutilsUtils.extract_syntax(node)
+        self.parameters = DocutilsUtils.extract_parameters(node, True)
+        self.examples = DocutilsUtils.extract_code_samples(node)
+        self.group = group
         self.members = []
+
+        # if self.name == "vec2":
+        #     print(node)
 
     def __str__(self):
         return f"{self.name} [{self.module}]\n\t{self.description}"
@@ -52,6 +191,10 @@ class LuaClass:
             'kind': 'class',
             'description': self.description,
             'module': self.module,
+            'parameters': [p.to_dict() for p in self.parameters],
+            'syntax': self.syntax,
+            'examples': self.examples,
+            'group': self.group,
             'members': [members.to_dict() for members in self.members]
         }
     
@@ -92,58 +235,16 @@ class LuaReturn:
         }
 
 class LuaFunction:
-    def __init__(self, node, type):
+    def __init__(self, node, type, group=None):
         self.name = DocutilsUtils.extract_name(node)
         self.module = DocutilsUtils.extract_module(node)
         self.description = DocutilsUtils.extract_description(node)
-        self.parameters = self.extract_parameters(node)
+        self.parameters = DocutilsUtils.extract_parameters(node)
+        self.syntax = DocutilsUtils.extract_syntax(node)
+        self.examples = DocutilsUtils.extract_code_samples(node)
         self.returns = self.extract_returns(node)        
         self.type = type
-
-    def extract_parameters(self, node):
-        params = []
-        param_list = node.next_node(condition=lambda n: n.tagname == 'desc_parameterlist')
-        # Search for the field list that contains parameter details
-        field_list = node.next_node(condition=lambda n: n.tagname == 'field_list')
-        param_details = {}
-        if field_list:
-            for field in field_list.children:
-                if isinstance(field, nodes.field):
-                    param_name_node = field.next_node(condition=lambda n: n.tagname == 'literal_strong')
-                    param_description_nodes = field.next_node(condition=lambda n: n.tagname == 'paragraph')
-                    if param_name_node and param_description_nodes:
-                        param_name = param_name_node.astext().split('=')[0].strip()  # Handle default values here if specified
-                        default_value = param_name_node.astext().split('=')[1].strip() if '=' in param_name_node.astext() else None
-                        # Extract the type if available within parenthesis
-                        param_type = None
-                        description_text = param_description_nodes.astext()
-                        if '(' in description_text and ')' in description_text:
-                            start = description_text.find('(') + 1
-                            end = description_text.find(')')
-                            param_type = description_text[start:end]
-                        # Description often follows the type enclosed in dash
-                        param_description = description_text.split('–')[-1].strip()
-                        param_details[param_name] = {
-                            'type': param_type,
-                            'description': param_description,
-                            'default': default_value
-                        }
-
-        if param_list:
-            for child in param_list.children:
-                if child.tagname == 'desc_parameter' or child.tagname == 'desc_optional':
-                    for param_node in child.children:
-                        param_name = param_node.astext().split('=')[0].strip()
-                        default_value = param_node.astext().split('=')[1].strip() if '=' in param_node.astext() else None
-                        optional = child.tagname == 'desc_optional'
-                        param_info = param_details.get(param_name, {})
-                        params.append(LuaParameter(name=param_name,
-                                                   type_hint=param_info.get('type'),
-                                                   optional=optional,
-                                                   description=param_info.get('description'),
-                                                   default=default_value or param_info.get('default')))
-
-        return params
+        self.group = group
 
     def extract_returns(self, node):
         returns = []
@@ -176,18 +277,24 @@ class LuaFunction:
             'module': self.module,
             'description': self.description,
             'parameters': [p.to_dict() for p in self.parameters],
+            'syntax': self.syntax,
+            'group': self.group,
+            'examples': self.examples,
             'returns': [r.to_dict() for r in self.returns]
         }
 
 
 class LuaAttribute:
-    def __init__(self, node, kind):
+    def __init__(self, node, kind, group=None):
         self.name = DocutilsUtils.extract_name(node)
         self.module = DocutilsUtils.extract_module(node)
+        self.syntax = DocutilsUtils.extract_syntax(node)
+        self.examples = DocutilsUtils.extract_code_samples(node)
         self.default_value = None  # Initializing default value
         self.type = self.extract_type(node)
         self.description = DocutilsUtils.extract_description(node)
         self.kind = kind
+        self.group = group
 
     def extract_type(self, node):
         # Finds the first 'desc_type' element and extracts its text, along with any default value if specified.
@@ -214,8 +321,44 @@ class LuaAttribute:
             'name': self.name,
             'kind': self.kind,
             'module': self.module,
+            'syntax': self.syntax,
+            'examples': self.examples,
             'type': self.type,
+            'group': self.group,
             'defaultValue': self.default_value,
             'description': self.description
         }
 
+class LuaOverview:
+    def __init__(self, content, group=None):
+        self.content = content
+        self.group = group
+
+    def __str__(self):
+        return f"Overview\n\t{self.content}"
+
+    def to_dict(self):
+        return {
+            'kind': 'overview',
+            'content': [c.to_dict() for c in self.content],
+            'group': self.group
+        }
+
+class OverviewContentKind(Enum):
+    TEXT = "text"
+    CODE = "code"
+
+# Class to represent either code block or text content
+class OverviewContent:
+    def __init__(self, content, type: OverviewContentKind):
+        self.content = content
+        self.type = type.value
+
+    def __str__(self):
+        return f"{self.type}: {self.content}"
+
+    def to_dict(self):
+        return {
+            'type': self.type,
+            'content': self.content
+        }
