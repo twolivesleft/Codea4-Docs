@@ -1,4 +1,5 @@
 from docutils import nodes
+from enum import Enum
 
 class DocutilsUtils:
     @staticmethod
@@ -128,6 +129,25 @@ class DocutilsUtils:
                     'code': code_node.astext()
                 })
         return code_samples
+
+    @staticmethod
+    def extract_overview(node):
+        desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
+        if not desc_content:
+            return None
+
+        paragraphs = [child for child in desc_content.children if child.tagname == 'paragraph']
+        overview_parts = []
+        for paragraph in paragraphs:
+            paragraph_text = []
+            for child in paragraph.children:
+                if isinstance(child, nodes.literal):
+                    paragraph_text.append(f"`{child.astext()}`")
+                else:
+                    paragraph_text.append(child.astext())
+            overview_parts.append(''.join(paragraph_text))
+
+        return '\n\n'.join(overview_parts)
 
 
 class LuaModule:
@@ -309,3 +329,36 @@ class LuaAttribute:
             'description': self.description
         }
 
+class LuaOverview:
+    def __init__(self, content, group=None):
+        self.content = content
+        self.group = group
+
+    def __str__(self):
+        return f"Overview\n\t{self.content}"
+
+    def to_dict(self):
+        return {
+            'kind': 'overview',
+            'content': [c.to_dict() for c in self.content],
+            'group': self.group
+        }
+
+class OverviewContentKind(Enum):
+    TEXT = "text"
+    CODE = "code"
+
+# Class to represent either code block or text content
+class OverviewContent:
+    def __init__(self, content, type: OverviewContentKind):
+        self.content = content
+        self.type = type.value
+
+    def __str__(self):
+        return f"{self.type}: {self.content}"
+
+    def to_dict(self):
+        return {
+            'type': self.type,
+            'content': self.content
+        }
