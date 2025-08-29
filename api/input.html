@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="image" href="image.html" /><link rel="prev" title="matrix" href="matrix.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Images Overview" href="image.html" /><link rel="prev" title="matrix" href="matrix.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>input - Codea 4.0 documentation</title>
@@ -182,7 +182,8 @@
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html#image">Image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
@@ -195,7 +196,10 @@
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html">motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
@@ -248,15 +252,15 @@
 <dt class="sig sig-object lua" id="touch">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">touch</span></span><a class="headerlink" href="#touch" title="Link to this definition">¶</a></dt>
 <dd><p>Represents a single touch over time. Generated in response to touch events by the device in response to user interactions</p>
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">id:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.id" title="Link to this definition">¶</a></dt>
 <dd><p>An id that can be used to uniquely identify the touch</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">state:</span> <span class="pre">enum</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.state">
+<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#touch.state" title="Link to this definition">¶</a></dt>
 <dd><p>The current state of the touch, can be:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">BEGAN</span></code> - the touch began this frame</p></li>
@@ -266,9 +270,9 @@
 </ul>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">type:</span> <span class="pre">enum</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#touch.type" title="Link to this definition">¶</a></dt>
 <dd><p>The type of touch, can be:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">touch.direct</span></code> - a touch resulting from direct contact with the screen</p></li>
@@ -278,111 +282,111 @@
 </ul>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">x:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.x" title="Link to this definition">¶</a></dt>
 <dd><p>The x position of the touch (in screen coordinates)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">y:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.y" title="Link to this definition">¶</a></dt>
 <dd><p>The y position of the touch (in screen coordinates)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">prevX:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.prevX">
+<span class="sig-name descname"><span class="pre">prevX</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.prevX" title="Link to this definition">¶</a></dt>
 <dd><p>The previous x position of the touch (in screen coordinates)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">prevY:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.prevY">
+<span class="sig-name descname"><span class="pre">prevY</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.prevY" title="Link to this definition">¶</a></dt>
 <dd><p>The previous y position of the touch (in screen coordinates)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">deltaX:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.deltaX">
+<span class="sig-name descname"><span class="pre">deltaX</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.deltaX" title="Link to this definition">¶</a></dt>
 <dd><p>The x position delta of the touch (in screen coordinates)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">deltaY:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.deltaY">
+<span class="sig-name descname"><span class="pre">deltaY</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.deltaY" title="Link to this definition">¶</a></dt>
 <dd><p>The y position delta of the touch (in screen coordinates)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">pos:</span> <span class="pre">vec2</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#touch.pos" title="Link to this definition">¶</a></dt>
 <dd><p>The position of the touch (in screen coordinates) as a vector</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">prevPos:</span> <span class="pre">vec2</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.prevPos">
+<span class="sig-name descname"><span class="pre">prevPos</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#touch.prevPos" title="Link to this definition">¶</a></dt>
 <dd><p>The previous position of the touch (in screen coordinates) as a vector</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">delta:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.delta">
+<span class="sig-name descname"><span class="pre">delta</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.delta" title="Link to this definition">¶</a></dt>
 <dd><p>The position delta of the touch (in screen coordinates) as a vector</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">force:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.force">
+<span class="sig-name descname"><span class="pre">force</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.force" title="Link to this definition">¶</a></dt>
 <dd><p>The amount of force being applied (only applies to pencil type touches)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">maxForce:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.maxForce">
+<span class="sig-name descname"><span class="pre">maxForce</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.maxForce" title="Link to this definition">¶</a></dt>
 <dd><p>The maximum amount of force that can be applied (only applies to pencil type touches)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">timestamp:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.timestamp">
+<span class="sig-name descname"><span class="pre">timestamp</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.timestamp" title="Link to this definition">¶</a></dt>
 <dd><p>The time when this touch event occured (only applies to pencil type touches)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">azimuth:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.azimuth">
+<span class="sig-name descname"><span class="pre">azimuth</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.azimuth" title="Link to this definition">¶</a></dt>
 <dd><p>The azimuth angle of the pencil (only applies to pencil type touches)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">altitude:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.altitude">
+<span class="sig-name descname"><span class="pre">altitude</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.altitude" title="Link to this definition">¶</a></dt>
 <dd><p>The altitude angle of the pencil</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">radiusTolerance:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.radiusTolerance">
+<span class="sig-name descname"><span class="pre">radiusTolerance</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.radiusTolerance" title="Link to this definition">¶</a></dt>
 <dd><p>The amount the estimated radius can vary due to hardware tolerances</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">radius:</span> <span class="pre">number</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.radius">
+<span class="sig-name descname"><span class="pre">radius</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.radius" title="Link to this definition">¶</a></dt>
 <dd><p>The estimated radius of the touch</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">precisePos:</span> <span class="pre">vec2</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.precisePos">
+<span class="sig-name descname"><span class="pre">precisePos</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#touch.precisePos" title="Link to this definition">¶</a></dt>
 <dd><p>The precise location of the touch (if available)</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">precisePrevPos:</span> <span class="pre">vec2</span></span></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.precisePrevPos">
+<span class="sig-name descname"><span class="pre">precisePrevPos</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#touch.precisePrevPos" title="Link to this definition">¶</a></dt>
 <dd><p>The previous precise location of the touch (if available)</p>
 </dd></dl>
 
@@ -1347,7 +1351,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">image</div>
+                <div class="title">Images Overview</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

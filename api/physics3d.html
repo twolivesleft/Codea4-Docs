@@ -182,7 +182,8 @@
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html#image">Image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
@@ -195,7 +196,10 @@
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html">motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
@@ -291,8 +295,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>origin</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The origin of the ray</p></li>
-<li><p><strong>direction</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The direction of the ray</p></li>
+<li><p><strong>origin</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The origin of the ray</p></li>
+<li><p><strong>direction</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The direction of the ray</p></li>
 <li><p><strong>distance</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The maximum distance for the ray to travel</p></li>
 </ul>
 </dd>
@@ -313,8 +317,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>origin</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The origin of the ray</p></li>
-<li><p><strong>direction</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The direction of the ray</p></li>
+<li><p><strong>origin</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The origin of the ray</p></li>
+<li><p><strong>direction</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The direction of the ray</p></li>
 <li><p><strong>distance</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The maximum distance for the ray to travel</p></li>
 <li><p><strong>radius</strong> – The radius of the sphere used to perform the cast</p></li>
 </ul>
@@ -443,12 +447,12 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>other</strong> (<span><a class="reference internal" href="#physics3d.body" title="physics3d.body"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">physics3d.body</span></code></a></span>) – The other body to connect to the joint</p></li>
-<li><p><strong>anchor</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The world-space anchor for one or two-body hinges</p></li>
+<li><p><strong>anchor</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The world-space anchor for one or two-body hinges</p></li>
 <li><p><strong>axis</strong> – The world-space axis for one or two-body hinges</p></li>
-<li><p><strong>anchorA</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The local-space anchor for the main body</p></li>
-<li><p><strong>axisA</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The local-space axis for the main body</p></li>
-<li><p><strong>anchorB</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The local-space anchor for the attached body</p></li>
-<li><p><strong>axisB</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The local-space axis for the attached body</p></li>
+<li><p><strong>anchorA</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The local-space anchor for the main body</p></li>
+<li><p><strong>axisA</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The local-space axis for the main body</p></li>
+<li><p><strong>anchorB</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The local-space anchor for the attached body</p></li>
+<li><p><strong>axisB</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The local-space axis for the attached body</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -468,8 +472,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>force</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></span>) – The force to apply</p></li>
-<li><p><strong>worldPoint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The world-space location to apply the force at</p></li>
+<li><p><strong>force</strong> (<span><a class="reference internal" href="math_types.html#vec2" title="vec2"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></a></span>) – The force to apply</p></li>
+<li><p><strong>worldPoint</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The world-space location to apply the force at</p></li>
 <li><p><strong>force</strong> – The force vector to apply</p></li>
 </ul>
 </dd>
@@ -481,7 +485,7 @@
 <em class="property"> </em><span class="sig-name descname"><span class="pre">applyTorque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">torque</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics3d.body.applyTorque" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>torque</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The torque vector to apply</p>
+<dd class="field-odd"><p><strong>torque</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The torque vector to apply</p>
 </dd>
 </dl>
 </dd></dl>
@@ -491,7 +495,7 @@
 <em class="property"> </em><span class="sig-name descname"><span class="pre">applyLinearImpulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">impulse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics3d.body.applyLinearImpulse" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>impulse</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The linear impulse to apply</p>
+<dd class="field-odd"><p><strong>impulse</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The linear impulse to apply</p>
 </dd>
 </dl>
 </dd></dl>
@@ -501,7 +505,7 @@
 <em class="property"> </em><span class="sig-name descname"><span class="pre">applyAngularImpulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">impulse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#physics3d.body.applyAngularImpulse" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>impulse</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The angular impulse to apply</p>
+<dd class="field-odd"><p><strong>impulse</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The angular impulse to apply</p>
 </dd>
 </dl>
 </dd></dl>
@@ -512,10 +516,10 @@
 <dd><p>Transforms <code class="docutils literal notranslate"><span class="pre">localPoint</span></code> from local space to world space in respect to this body</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>localPoint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The local space point to transform</p>
+<dd class="field-odd"><p><strong>localPoint</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The local space point to transform</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -526,10 +530,10 @@
 <dd><p>Transforms <code class="docutils literal notranslate"><span class="pre">localVector</span></code> from world space to local space in respect to this body</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>localVector</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The world space vector to transform</p>
+<dd class="field-odd"><p><strong>localVector</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The world space vector to transform</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -540,10 +544,10 @@
 <dd><p>Transforms <code class="docutils literal notranslate"><span class="pre">worldPoint</span></code> from world space to local space in respect to this body</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>worldPoint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The world space point to transform</p>
+<dd class="field-odd"><p><strong>worldPoint</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The world space point to transform</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -554,10 +558,10 @@
 <dd><p>Transforms <code class="docutils literal notranslate"><span class="pre">worldVector</span></code> from world space to local space in respect to this body</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>worldVector</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The world space vector to transform</p>
+<dd class="field-odd"><p><strong>worldVector</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The world space vector to transform</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -569,10 +573,10 @@
 <p>Useful for determining velocity on a body at a specific location for calculating effects, sounds and damage during collisions</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>localPoint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The local point to sample velocity from</p>
+<dd class="field-odd"><p><strong>localPoint</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The local point to sample velocity from</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -584,10 +588,10 @@
 <p>Useful for determining velocity on a body at a specific location for calculating effects, sounds and damage during collisions</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>worldPoint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The world point to sample velocity from</p>
+<dd class="field-odd"><p><strong>worldPoint</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The world point to sample velocity from</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>

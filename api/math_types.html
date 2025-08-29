@@ -182,7 +182,8 @@
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html#image">Image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
@@ -195,7 +196,10 @@
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html">motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
@@ -240,17 +244,37 @@
         <article role="main">
           <section id="math-types">
 <h1>math types<a class="headerlink" href="#math-types" title="Link to this heading">¶</a></h1>
-<section id="vec2">
-<h2>vec2<a class="headerlink" href="#vec2" title="Link to this heading">¶</a></h2>
+<section id="d-vectors">
+<h2>2D Vectors<a class="headerlink" href="#d-vectors" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span></dt>
-<dd><dl class="lua staticmethod">
-<dt class="sig sig-object lua" id="vec2.vec2">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.vec2" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">vec2</span></code> by setting both values at once or each one individually</p>
+<dt class="sig sig-object lua" id="vec2">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec2</span></span><a class="headerlink" href="#vec2" title="Link to this definition">¶</a></dt>
+<dd><p>This type represents a 2D vector. Most mathematical operators such as equality, addition, subtraction, multiplication and division are provided, so you can use <code class="docutils literal notranslate"><span class="pre">vec2</span></code> data types similarly to how you use numerical types. In addition there are a number of methods, such as <code class="docutils literal notranslate"><span class="pre">v:dot(</span> <span class="pre">vec2</span> <span class="pre">)</span></code> that can be called on vec2 types.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Initial x value of the vector</p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Initial y value of the vector</p></li>
+</ul>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nv">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">-- set both x and y to 1</span>
+<span class="nv">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">()</span><span class="w"> </span><span class="c1">-- set both x and y to 0</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="vec2.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.x" title="Link to this definition">¶</a></dt>
+<dd><p>The x component of this vector</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="vec2.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.y" title="Link to this definition">¶</a></dt>
+<dd><p>The y component of this vector</p>
 </dd></dl>
 
 <dl class="lua staticmethod">
@@ -263,18 +287,6 @@
 <dt class="sig sig-object lua" id="vec2.max">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec2.max" title="Link to this definition">¶</a></dt>
 <dd><p>Return a <code class="docutils literal notranslate"><span class="pre">vec2</span></code> containing the component-wise maximum two vectors</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="vec2.x">
-<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.x" title="Link to this definition">¶</a></dt>
-<dd><p>The x component of this vector</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="vec2.y">
-<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#vec2.y" title="Link to this definition">¶</a></dt>
-<dd><p>The y component of this vector</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -376,11 +388,11 @@
 </dd></dl>
 
 </section>
-<section id="vec3">
-<h2>vec3<a class="headerlink" href="#vec3" title="Link to this heading">¶</a></h2>
+<section id="id1">
+<h2>3D Vectors<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec3</span></span></dt>
+<dt class="sig sig-object lua" id="vec3">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec3</span></span><a class="headerlink" href="#vec3" title="Link to this definition">¶</a></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec3.vec3">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec3.vec3" title="Link to this definition">¶</a></dt>
@@ -500,11 +512,11 @@
 </dd></dl>
 
 </section>
-<section id="vec4">
-<h2>vec4<a class="headerlink" href="#vec4" title="Link to this heading">¶</a></h2>
+<section id="id2">
+<h2>4D Vectors<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec4</span></span></dt>
+<dt class="sig sig-object lua" id="vec4">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">vec4</span></span><a class="headerlink" href="#vec4" title="Link to this definition">¶</a></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="vec4.vec4">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">vec4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vec4.vec4" title="Link to this definition">¶</a></dt>
@@ -625,7 +637,7 @@
 
 </section>
 <section id="vector-swizzling">
-<h2>vector swizzling<a class="headerlink" href="#vector-swizzling" title="Link to this heading">¶</a></h2>
+<h2>Vector Swizzling<a class="headerlink" href="#vector-swizzling" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">vec2</span></code>, <code class="docutils literal notranslate"><span class="pre">vec3</span></code> and <code class="docutils literal notranslate"><span class="pre">vec4</span></code> support swizzling, which allows you to access and manipulate their components in a variety of ways</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec4</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
 <span class="nv">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
@@ -641,11 +653,11 @@
 </pre></div>
 </div>
 </section>
-<section id="quat">
-<h2>quat<a class="headerlink" href="#quat" title="Link to this heading">¶</a></h2>
+<section id="quaternions">
+<h2>Quaternions<a class="headerlink" href="#quaternions" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">quat</span></span></dt>
+<dt class="sig sig-object lua" id="quat">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">quat</span></span><a class="headerlink" href="#quat" title="Link to this definition">¶</a></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="quat.quat">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">quat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quat.quat" title="Link to this definition">¶</a></dt>
@@ -670,8 +682,8 @@
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>from</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The direction to rotate from</p></li>
-<li><p><strong>to</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The direction to rotate to</p></li>
+<li><p><strong>from</strong> (<span><a class="reference internal" href="#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The direction to rotate from</p></li>
+<li><p><strong>to</strong> (<span><a class="reference internal" href="#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The direction to rotate to</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -687,7 +699,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>angle</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The amount of rotation in degrees</p></li>
-<li><p><strong>axis</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The axis of rotation</p></li>
+<li><p><strong>axis</strong> (<span><a class="reference internal" href="#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The axis of rotation</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -789,11 +801,11 @@
 </dd></dl>
 
 </section>
-<section id="mat2">
-<h2>mat2<a class="headerlink" href="#mat2" title="Link to this heading">¶</a></h2>
+<section id="x2-matrix">
+<h2>2x2 Matrix<a class="headerlink" href="#x2-matrix" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mat2</span></span></dt>
+<dt class="sig sig-object lua" id="mat2">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mat2</span></span><a class="headerlink" href="#mat2" title="Link to this definition">¶</a></dt>
 <dd><p>A simple 2x2 matrix</p>
 <p>Each entry can be accessed via an index as well</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mat2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">-- init with diagonals set to 1</span>
@@ -850,7 +862,7 @@
 <dd class="field-odd"><p>the row at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="#vec2" title="vec2"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -863,7 +875,7 @@
 <dd class="field-odd"><p>the column at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="#vec2" title="vec2"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -871,11 +883,11 @@
 </dd></dl>
 
 </section>
-<section id="mat3">
-<h2>mat3<a class="headerlink" href="#mat3" title="Link to this heading">¶</a></h2>
+<section id="x3-matrix">
+<h2>3x3 Matrix<a class="headerlink" href="#x3-matrix" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mat3</span></span></dt>
+<dt class="sig sig-object lua" id="mat3">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mat3</span></span><a class="headerlink" href="#mat3" title="Link to this definition">¶</a></dt>
 <dd><p>A simple 3x3 matrix</p>
 <p>Each entry can be accessed via an index as well</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mat3</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">-- init with diagonals set to 1</span>
@@ -932,7 +944,7 @@
 <dd class="field-odd"><p>the row at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -945,7 +957,7 @@
 <dd class="field-odd"><p>the column at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -953,11 +965,11 @@
 </dd></dl>
 
 </section>
-<section id="mat4">
-<h2>mat4<a class="headerlink" href="#mat4" title="Link to this heading">¶</a></h2>
+<section id="x4-matrix">
+<h2>4x4 Matrix<a class="headerlink" href="#x4-matrix" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mat4</span></span></dt>
+<dt class="sig sig-object lua" id="mat4">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mat4</span></span><a class="headerlink" href="#mat4" title="Link to this definition">¶</a></dt>
 <dd><p>A simple 4x4 matrix, typically used for 3D homogonous transformations</p>
 <p>Each entry can be accessed via an index as well</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mat4</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">-- init with diagonals set to 1</span>
@@ -1054,7 +1066,7 @@
 <dd class="field-odd"><p>the row at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1067,7 +1079,7 @@
 <dd class="field-odd"><p>the column at a given <code class="docutils literal notranslate"><span class="pre">index</span></code> (starting at 1)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span></p>
+<dd class="field-even"><p><span><a class="reference internal" href="#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1075,8 +1087,8 @@
 </dd></dl>
 
 </section>
-<section id="aabb">
-<h2>aabb<a class="headerlink" href="#aabb" title="Link to this heading">¶</a></h2>
+<section id="axis-aligned-bounding-box-aabb">
+<h2>Axis-Aligned Bounding Box (AABB)<a class="headerlink" href="#axis-aligned-bounding-box-aabb" title="Link to this heading">¶</a></h2>
 <dl class="lua class" id="module-bounds">
 <dt class="sig sig-object lua" id="bounds.aabb">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bounds.</span></span><span class="sig-name descname"><span class="pre">aabb</span></span><a class="headerlink" href="#bounds.aabb" title="Link to this definition">¶</a></dt>
@@ -1141,15 +1153,15 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">math types</a><ul>
-<li><a class="reference internal" href="#vec2">vec2</a></li>
-<li><a class="reference internal" href="#vec3">vec3</a></li>
-<li><a class="reference internal" href="#vec4">vec4</a></li>
-<li><a class="reference internal" href="#vector-swizzling">vector swizzling</a></li>
-<li><a class="reference internal" href="#quat">quat</a></li>
-<li><a class="reference internal" href="#mat2">mat2</a></li>
-<li><a class="reference internal" href="#mat3">mat3</a></li>
-<li><a class="reference internal" href="#mat4">mat4</a></li>
-<li><a class="reference internal" href="#aabb">aabb</a></li>
+<li><a class="reference internal" href="#d-vectors">2D Vectors</a></li>
+<li><a class="reference internal" href="#id1">3D Vectors</a></li>
+<li><a class="reference internal" href="#id2">4D Vectors</a></li>
+<li><a class="reference internal" href="#vector-swizzling">Vector Swizzling</a></li>
+<li><a class="reference internal" href="#quaternions">Quaternions</a></li>
+<li><a class="reference internal" href="#x2-matrix">2x2 Matrix</a></li>
+<li><a class="reference internal" href="#x3-matrix">3x3 Matrix</a></li>
+<li><a class="reference internal" href="#x4-matrix">4x4 Matrix</a></li>
+<li><a class="reference internal" href="#axis-aligned-bounding-box-aabb">Axis-Aligned Bounding Box (AABB)</a></li>
 </ul>
 </li>
 </ul>

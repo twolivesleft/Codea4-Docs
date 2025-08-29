@@ -1,5 +1,5 @@
-image
-=====
+Images Overview
+===============
 
 Made of pixels and used by codea for drawing to the screen and texturing meshes
 
@@ -15,6 +15,9 @@ Made of pixels and used by codea for drawing to the screen and texturing meshes
       background(64)
       sprite(img, WIDTH/2, HEIGHT/2)
    end
+
+Image
+=====
 
 .. lua:class:: image
 

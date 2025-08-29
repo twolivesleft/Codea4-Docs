@@ -1,9 +1,12 @@
-motion
-======
+Motion Overview
+===============
       
-   Exposes Core Motion functionalities such as accessing the device's accelerometer, gyroscope, and magnetometer data.
+Exposes Core Motion functionalities such as accessing the device's accelerometer, gyroscope, and magnetometer data.
 
-   Tracking of motion metrics can impact performance and battery drain. Use this feature judiciously to avoid negatively affecting the user experience.
+Tracking of motion metrics can impact performance and battery drain. Use this feature judiciously to avoid negatively affecting the user experience.
+
+Motion
+======
 
 .. lua:module:: motion
 
@@ -61,38 +64,53 @@ motion
 
    The heading in degrees relative to the current reference frame.
 
+Device Orientation
+==================
+
 .. lua:class:: attitude
 
-   .. lua:attribute:: pitch: number
+   Represents a measurement of your device attitude. This orientation of a body relative to a given frame of reference.
 
-      The pitch of the device, in radians.
+   You can set ``motion.attitude.referenceFrame`` to specify the frame of reference in which the attitude is expressed.
 
-   .. lua:attribute:: yaw: number
+   The value can be one of the following ``motion.referenceFrame.XArbitraryZVertical``, ``motion.referenceFrame.XArbitraryCorrectedZVertical``, ``motion.referenceFrame.XMagneticNorthZVertical``, ``motion.referenceFrame.XTrueNorthZVertical``.
 
-      The yaw of the device, in radians.
+   :param pitch: The pitch of the device, in radians.
+   :type pitch: number
 
-   .. lua:attribute:: roll: number
+   :param yaw: The yaw of the device, in radians.
+   :type yaw: number
 
-      The roll of the device, in radians.
+   :param roll: The roll of the device, in radians.
+   :type roll: number   
 
-   .. lua:attribute:: rotationMatrix: mat3x3
+   :param rotationMatrix: The rotation matrix that describes the device's orientation.
+   :type rotationMatrix: mat3x3
 
-      The rotation matrix that describes the device's orientation.
+   :param quaternion: The quaternion that describes the device's orientation.
+   :type quaternion: quat
 
-   .. lua:attribute:: quaternion: quat
+   :param referenceFrame: The reference frame in which motion metrics are tracked.
+   :type referenceFrame: integer      
 
-      The quaternion that describes the device's orientation.
+   .. lua:attribute:: XArbitraryZVertical: integer
 
-   .. lua:attribute:: referenceFrame: integer
+      The X-axis is arbitrary and the Z-axis is vertical.
 
-      The reference frame in which motion metrics are tracked.
+   .. lua:attribute:: XArbitraryCorrectedZVertical: integer
 
-      The value can be one of the following:
+      The X-axis is arbitrary and the Z-axis is vertical. The system will attempt to correct for the device's orientation.
 
-      - ``motion.referenceFrame.XArbitraryZVertical``: The X-axis is arbitrary and the Z-axis is vertical.
-      - ``motion.referenceFrame.XArbitraryCorrectedZVertical``: The X-axis is arbitrary and the Z-axis is vertical. The system will attempt to correct for the device's orientation.
-      - ``motion.referenceFrame.XMagneticNorthZVertical``: The X-axis points toward the magnetic north and the Z-axis is vertical.
-      - ``motion.referenceFrame.XTrueNorthZVertical``: The X-axis points toward the true north and the Z-axis is vertical.
+   .. lua:attribute:: XMagneticNorthZVertical: integer
+      
+      The X-axis points toward the magnetic north and the Z-axis is vertical.
+
+   .. lua:attribute:: XTrueNorthZVertical: integer
+      
+      The X-axis points toward the true north and the Z-axis is vertical.
+
+Magnetic Field Data
+===================
 
 .. lua:class:: magnetic
 

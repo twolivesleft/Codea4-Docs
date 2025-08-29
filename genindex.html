@@ -180,7 +180,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/input.html">input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/image.html">image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/image.html">Images Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/image.html#image">Image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/shader.html">shader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/string.html">string</a></li>
@@ -193,7 +194,10 @@
 <li class="toctree-l1"><a class="reference internal" href="api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/motion.html">motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/motion.html">Motion Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/motion.html#device-orientation">Device Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/objc.html">objc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/pasteboard.html">pasteboard</a></li>
@@ -1430,10 +1434,10 @@
 </li>
         <li><a href="api/mesh.html#mesh.submeshIndex">mesh.submeshIndex (attribute)</a>
 </li>
-        <li><a href="api/mesh.html#mesh.texCoords">mesh.texCoords (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/mesh.html#mesh.texCoords">mesh.texCoords (attribute)</a>
+</li>
         <li><a href="api/mesh.html#mesh.texture">mesh.texture (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.uvs">mesh.uvs (attribute)</a>
@@ -1462,17 +1466,13 @@
 </li>
         <li><a href="api/motion.html#motion.motion.acceleration">motion.motion.acceleration (attribute)</a>
 </li>
-        <li><a href="api/motion.html#motion.motion.attitude.pitch">motion.motion.attitude.pitch (attribute)</a>
+        <li><a href="api/motion.html#motion.motion.attitude.XArbitraryCorrectedZVertical">motion.motion.attitude.XArbitraryCorrectedZVertical (attribute)</a>
 </li>
-        <li><a href="api/motion.html#motion.motion.attitude.quaternion">motion.motion.attitude.quaternion (attribute)</a>
+        <li><a href="api/motion.html#motion.motion.attitude.XArbitraryZVertical">motion.motion.attitude.XArbitraryZVertical (attribute)</a>
 </li>
-        <li><a href="api/motion.html#motion.motion.attitude.referenceFrame">motion.motion.attitude.referenceFrame (attribute)</a>
+        <li><a href="api/motion.html#motion.motion.attitude.XMagneticNorthZVertical">motion.motion.attitude.XMagneticNorthZVertical (attribute)</a>
 </li>
-        <li><a href="api/motion.html#motion.motion.attitude.roll">motion.motion.attitude.roll (attribute)</a>
-</li>
-        <li><a href="api/motion.html#motion.motion.attitude.rotationMatrix">motion.motion.attitude.rotationMatrix (attribute)</a>
-</li>
-        <li><a href="api/motion.html#motion.motion.attitude.yaw">motion.motion.attitude.yaw (attribute)</a>
+        <li><a href="api/motion.html#motion.motion.attitude.XTrueNorthZVertical">motion.motion.attitude.XTrueNorthZVertical (attribute)</a>
 </li>
         <li><a href="api/motion.html#motion.motion.autoStart">motion.motion.autoStart (attribute)</a>
 </li>
@@ -2468,9 +2468,51 @@
 </li>
         <li><a href="api/mesh.html#mesh.torusKnot">torusKnot() (mesh static method)</a>
 </li>
+        <li><a href="api/input.html#touch">touch (built-in class)</a>
+</li>
+        <li><a href="api/input.html#touch.altitude">touch.altitude (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.azimuth">touch.azimuth (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.delta">touch.delta (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.deltaX">touch.deltaX (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.deltaY">touch.deltaY (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.force">touch.force (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.id">touch.id (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.maxForce">touch.maxForce (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.pos">touch.pos (attribute)</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/input.html#touch">touch (built-in class)</a>
+        <li><a href="api/input.html#touch.precisePos">touch.precisePos (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.precisePrevPos">touch.precisePrevPos (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.prevPos">touch.prevPos (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.prevX">touch.prevX (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.prevY">touch.prevY (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.radius">touch.radius (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.radiusTolerance">touch.radiusTolerance (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.state">touch.state (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.timestamp">touch.timestamp (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.type">touch.type (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.x">touch.x (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.y">touch.y (attribute)</a>
 </li>
         <li><a href="api/matrix.html#matrix.transform2d">transform2d() (in module matrix)</a>
 </li>
@@ -2575,8 +2617,6 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec2">vec2 (built-in class)</a>
-</li>
-        <li><a href="api/math_types.html#vec2.vec2">vec2() (vec2 static method)</a>
 </li>
         <li><a href="api/math_types.html#vec2.length">vec2.length (attribute)</a>
 </li>

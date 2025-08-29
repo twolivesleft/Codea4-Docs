@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="shader" href="shader.html" /><link rel="prev" title="image" href="image.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="shader" href="shader.html" /><link rel="prev" title="Images Overview" href="image.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>mesh - Codea 4.0 documentation</title>
@@ -182,7 +182,8 @@
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html#image">Image</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
@@ -195,7 +196,10 @@
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html">motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
@@ -587,8 +591,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – Half of the side length in x, y and z directions</p></li>
-<li><p><strong>segments</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The number of segments in x, y and z directions</p></li>
+<li><p><strong>size</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – Half of the side length in x, y and z directions</p></li>
+<li><p><strong>segments</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The number of segments in x, y and z directions</p></li>
 </ul>
 </dd>
 </dl>
@@ -602,9 +606,9 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>radius</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The corner radius of the rounded edges</p></li>
-<li><p><strong>size</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – Half of the side length in x, y and z directions</p></li>
+<li><p><strong>size</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – Half of the side length in x, y and z directions</p></li>
 <li><p><strong>slices</strong> – The number of subdivisions in the rounded edges / corners</p></li>
-<li><p><strong>segments</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></span>) – The number of segments in x, y and z directions</p></li>
+<li><p><strong>segments</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The number of segments in x, y and z directions</p></li>
 </ul>
 </dd>
 </dl>
@@ -692,8 +696,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></span>) – Half of the side length in x and z direction</p></li>
-<li><p><strong>segments</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></span>) – Number of subdivisions in the x and z directions</p></li>
+<li><p><strong>size</strong> (<span><a class="reference internal" href="math_types.html#vec2" title="vec2"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></a></span>) – Half of the side length in x and z direction</p></li>
+<li><p><strong>segments</strong> (<span><a class="reference internal" href="math_types.html#vec2" title="vec2"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></a></span>) – Number of subdivisions in the x and z directions</p></li>
 </ul>
 </dd>
 </dl>
@@ -772,7 +776,7 @@ The lid is pointing towards the z axis and the spout towards the x axis</p>
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">image</div>
+                <div class="title">Images Overview</div>
                 
               </div>
             </a>

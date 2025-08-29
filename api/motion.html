@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="require" href="require.html" /><link rel="prev" title="ui" href="ui.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>motion - Codea 4.0 documentation</title>
+        <title>Motion Overview - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -182,7 +182,8 @@
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image.html">image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html#image">Image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
@@ -195,7 +196,10 @@
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">motion</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Motion Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#device-orientation">Device Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
@@ -238,13 +242,14 @@
           </label>
         </div>
         <article role="main">
-          <section id="module-motion">
-<span id="motion"></span><h1>motion<a class="headerlink" href="#module-motion" title="Link to this heading">¶</a></h1>
-<blockquote>
-<div><p>Exposes Core Motion functionalities such as accessing the device’s accelerometer, gyroscope, and magnetometer data.</p>
+          <section id="motion-overview">
+<h1>Motion Overview<a class="headerlink" href="#motion-overview" title="Link to this heading">¶</a></h1>
+<p>Exposes Core Motion functionalities such as accessing the device’s accelerometer, gyroscope, and magnetometer data.</p>
 <p>Tracking of motion metrics can impact performance and battery drain. Use this feature judiciously to avoid negatively affecting the user experience.</p>
-</div></blockquote>
-<dl class="lua attribute">
+</section>
+<section id="motion">
+<h1>Motion<a class="headerlink" href="#motion" title="Link to this heading">¶</a></h1>
+<dl class="lua attribute" id="module-motion">
 <dt class="sig sig-object lua" id="motion.motion.autoStart">
 <span class="sig-name descname"><span class="pre">autoStart</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#motion.motion.autoStart" title="Link to this definition">¶</a></dt>
 <dd><p>If set, motion tracking will start automatically as soon as any attribute is read. Default is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
@@ -317,54 +322,56 @@
 <dd><p>The heading in degrees relative to the current reference frame.</p>
 </dd></dl>
 
+</section>
+<section id="device-orientation">
+<h1>Device Orientation<a class="headerlink" href="#device-orientation" title="Link to this heading">¶</a></h1>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="motion.attitude">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">motion.</span></span><span class="sig-name descname"><span class="pre">attitude</span></span><a class="headerlink" href="#motion.attitude" title="Link to this definition">¶</a></dt>
-<dd><dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.pitch">
-<span class="sig-name descname"><span class="pre">pitch</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#motion.motion.attitude.pitch" title="Link to this definition">¶</a></dt>
-<dd><p>The pitch of the device, in radians.</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.yaw">
-<span class="sig-name descname"><span class="pre">yaw</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#motion.motion.attitude.yaw" title="Link to this definition">¶</a></dt>
-<dd><p>The yaw of the device, in radians.</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.roll">
-<span class="sig-name descname"><span class="pre">roll</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#motion.motion.attitude.roll" title="Link to this definition">¶</a></dt>
-<dd><p>The roll of the device, in radians.</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.rotationMatrix">
-<span class="sig-name descname"><span class="pre">rotationMatrix</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mat3x3</span><a class="headerlink" href="#motion.motion.attitude.rotationMatrix" title="Link to this definition">¶</a></dt>
-<dd><p>The rotation matrix that describes the device’s orientation.</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.quaternion">
-<span class="sig-name descname"><span class="pre">quaternion</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">quat</span><a class="headerlink" href="#motion.motion.attitude.quaternion" title="Link to this definition">¶</a></dt>
-<dd><p>The quaternion that describes the device’s orientation.</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.referenceFrame">
-<span class="sig-name descname"><span class="pre">referenceFrame</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.attitude.referenceFrame" title="Link to this definition">¶</a></dt>
-<dd><p>The reference frame in which motion metrics are tracked.</p>
-<p>The value can be one of the following:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XArbitraryZVertical</span></code>: The X-axis is arbitrary and the Z-axis is vertical.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XArbitraryCorrectedZVertical</span></code>: The X-axis is arbitrary and the Z-axis is vertical. The system will attempt to correct for the device’s orientation.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XMagneticNorthZVertical</span></code>: The X-axis points toward the magnetic north and the Z-axis is vertical.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XTrueNorthZVertical</span></code>: The X-axis points toward the true north and the Z-axis is vertical.</p></li>
+<dd><p>Represents a measurement of your device attitude. This orientation of a body relative to a given frame of reference.</p>
+<p>You can set <code class="docutils literal notranslate"><span class="pre">motion.attitude.referenceFrame</span></code> to specify the frame of reference in which the attitude is expressed.</p>
+<p>The value can be one of the following <code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XArbitraryZVertical</span></code>, <code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XArbitraryCorrectedZVertical</span></code>, <code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XMagneticNorthZVertical</span></code>, <code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XTrueNorthZVertical</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pitch</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The pitch of the device, in radians.</p></li>
+<li><p><strong>yaw</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The yaw of the device, in radians.</p></li>
+<li><p><strong>roll</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The roll of the device, in radians.</p></li>
+<li><p><strong>rotationMatrix</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">mat3x3</span></code></span>) – The rotation matrix that describes the device’s orientation.</p></li>
+<li><p><strong>quaternion</strong> (<span><a class="reference internal" href="math_types.html#quat" title="quat"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">quat</span></code></a></span>) – The quaternion that describes the device’s orientation.</p></li>
+<li><p><strong>referenceFrame</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The reference frame in which motion metrics are tracked.</p></li>
 </ul>
+</dd>
+</dl>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="motion.motion.attitude.XArbitraryZVertical">
+<span class="sig-name descname"><span class="pre">XArbitraryZVertical</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.attitude.XArbitraryZVertical" title="Link to this definition">¶</a></dt>
+<dd><p>The X-axis is arbitrary and the Z-axis is vertical.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="motion.motion.attitude.XArbitraryCorrectedZVertical">
+<span class="sig-name descname"><span class="pre">XArbitraryCorrectedZVertical</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.attitude.XArbitraryCorrectedZVertical" title="Link to this definition">¶</a></dt>
+<dd><p>The X-axis is arbitrary and the Z-axis is vertical. The system will attempt to correct for the device’s orientation.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="motion.motion.attitude.XMagneticNorthZVertical">
+<span class="sig-name descname"><span class="pre">XMagneticNorthZVertical</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.attitude.XMagneticNorthZVertical" title="Link to this definition">¶</a></dt>
+<dd><p>The X-axis points toward the magnetic north and the Z-axis is vertical.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="motion.motion.attitude.XTrueNorthZVertical">
+<span class="sig-name descname"><span class="pre">XTrueNorthZVertical</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.attitude.XTrueNorthZVertical" title="Link to this definition">¶</a></dt>
+<dd><p>The X-axis points toward the true north and the Z-axis is vertical.</p>
 </dd></dl>
 
 </dd></dl>
 
+</section>
+<section id="magnetic-field-data">
+<h1>Magnetic Field Data<a class="headerlink" href="#magnetic-field-data" title="Link to this heading">¶</a></h1>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="motion.magnetic">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">motion.</span></span><span class="sig-name descname"><span class="pre">magnetic</span></span><a class="headerlink" href="#motion.magnetic" title="Link to this definition">¶</a></dt>
