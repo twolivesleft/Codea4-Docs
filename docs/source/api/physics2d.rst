@@ -237,6 +237,14 @@ Simulation
 
       The interial tensor in kg m^2
 
+   .. lua:attribute:: linearVelocity: vec2
+
+      The linear velocity of the body
+
+   .. lua:attribute:: angularVelocity: number
+
+      The angular velocity of the body
+
    .. lua:attribute:: linearDamping: number
 
       The amount of linear damping to apply, slowing velocity proportionally over time

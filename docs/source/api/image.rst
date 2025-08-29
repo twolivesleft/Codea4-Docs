@@ -117,6 +117,10 @@ Image
 
       The sampler state for this image, which determines how texels are sampled by shaders
 
+   .. lua:attribute:: smooth: boolean
+
+      Sets/gets whether this image has linear or nearest filtering
+
    .. lua:attribute:: key: assetKey
 
       The asset key for this image (if it has one)

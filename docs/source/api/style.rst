@@ -81,6 +81,12 @@ General
 
    Sets/gets the tint color for use to tint calls to :lua:func:`sprite` and :lua:meth:`mesh.draw`
 
+.. lua:function:: pixelScaling(scale)
+
+   Sets/gets the scale of a sprite when rendering
+
+   :param number scale: the scaling factor of the sprite image
+
 .. lua:function:: strokeWidth(width)
                   stroke() -> number
 
@@ -304,6 +310,18 @@ Constants - Blend Factors
 
    Blend factor of :math:`(f, f, f, 1)` where :math:`f = min(A_s, 1 - A_d)`
 
+Viewport
+#######
+
+.. lua:function:: viewRect(x, y, w, h)
+
+   Sets the viewport of the renderer
+
+   :param number x: The x position of the viewport
+   :param number y: The y position of the viewport
+   :param number w: The width of the viewport
+   :param number h: The height of the viewport
+
 Clipping
 ########
 
@@ -405,6 +423,8 @@ Text Style
 .. lua:function:: fontSize(size)
 
 .. lua:function:: textAlign(align)
+
+.. lua:function:: textStyle(style)
 
 Constants - Text
 ****************

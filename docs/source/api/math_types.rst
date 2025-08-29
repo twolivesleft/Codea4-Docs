@@ -291,7 +291,7 @@ Quaternions
 .. lua:class:: quat
 
    .. lua:staticmethod:: quat()
-                         quat(x, y, z, w)
+                         quat(w, x, y, z)
 
       Create a new ``quat``
 
@@ -412,7 +412,7 @@ Quaternions
 3x3 Matrix
 ##########
 
-.. lua:class:: mat2
+.. lua:class:: mat3
 
    A simple 3x3 matrix
 
@@ -456,7 +456,7 @@ Quaternions
 4x4 Matrix
 ##########
 
-.. lua:class:: mat2
+.. lua:class:: mat4
 
    A simple 4x4 matrix, typically used for 3D homogonous transformations
 

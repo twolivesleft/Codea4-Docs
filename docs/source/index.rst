@@ -62,10 +62,12 @@ Codea 4
    api/tween
    api/ui
    api/motion
+   api/require
    api/objc
    api/pasteboard
    api/physics2d
    api/physics3d
+   api/pick
    api/viewer
    api/device
 

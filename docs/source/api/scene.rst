@@ -67,17 +67,17 @@ scene
 
    .. lua:attribute:: camera : entity
 
-      :returns: The scene's camera entity (if it exists)
+      :return: The scene's camera entity (if it exists)
       :rtype: entity
 
    .. lua:attribute:: sun : entity
 
-      :returns: The scene's sun entity (if it exists)
+      :return: The scene's sun entity (if it exists)
       :rtype: entity
 
    .. lua:attribute:: canvas : ui.canvas
 
-      :returns: The main UI canvas of the scene
+      :return: The main UI canvas of the scene
       :rtype: ui.canvas
 
    .. lua:attribute:: pixelsPerUnit : number

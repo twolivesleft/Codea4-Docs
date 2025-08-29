@@ -303,6 +303,10 @@ entity
 
       The tint color to use
 
+   .. lua:attribute:: visible: boolean
+
+      Sets/gets whether the entity should be drawn or not
+
    .. lua:attribute:: flipX: boolean
 
       Flips the sprite on the x-axis
