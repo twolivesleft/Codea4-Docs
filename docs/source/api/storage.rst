@@ -35,6 +35,7 @@ Writes are asynchronous by default. Use ``storage:flush()`` when you need to ens
    :type key: string
    :param value: Value to store (JSON-encodable)
    :type value: any
+
    .. code-block:: lua
 
       storage:set("musicEnabled", true)
@@ -62,6 +63,7 @@ Writes are asynchronous by default. Use ``storage:flush()`` when you need to ens
 
    :param key: Key to remove
    :type key: string
+   
    .. code-block:: lua
 
       storage:delete("tutorialSeen")
