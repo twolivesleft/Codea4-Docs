@@ -1,9 +1,9 @@
 storage
 =======
 
-Simple key/value storage backed by JSON and the built-in ``string.read`` / ``string.save`` functions. The default storage is per-project (stored under ``asset``). A device-wide store is available under ``storage.global`` (stored under ``asset.documents``).
+Simple key/value storage backed by JSON and the built-in ``string.read`` / ``string.saveAsync`` functions. The default storage is per-project (stored under ``asset``). A device-wide store is available under ``storage.global`` (stored under ``asset.documents``).
 
-All writes are immediate. Keys must be strings, and values must be JSON-encodable (``nil``, ``boolean``, ``number``, ``string``, ``table``).
+Writes are asynchronous by default. Use ``storage:flush()`` when you need to ensure data is persisted immediately. Keys must be strings, and values must be JSON-encodable (``nil``, ``boolean``, ``number``, ``string``, ``table``).
 
 .. lua:module:: storage
 
@@ -35,9 +35,6 @@ All writes are immediate. Keys must be strings, and values must be JSON-encodabl
    :type key: string
    :param value: Value to store (JSON-encodable)
    :type value: any
-   :return: True on success, false on failure
-   :rtype: boolean
-
    .. code-block:: lua
 
       storage:set("musicEnabled", true)
@@ -65,9 +62,6 @@ All writes are immediate. Keys must be strings, and values must be JSON-encodabl
 
    :param key: Key to remove
    :type key: string
-   :return: True on success, false on failure
-   :rtype: boolean
-
    .. code-block:: lua
 
       storage:delete("tutorialSeen")
@@ -89,12 +83,18 @@ All writes are immediate. Keys must be strings, and values must be JSON-encodabl
 
    Removes all keys from the store.
 
-   :return: True on success, false on failure
-   :rtype: boolean
-
    .. code-block:: lua
 
       storage:clear()
+
+.. lua:function:: flush()
+
+   Writes any pending changes synchronously.
+
+   .. code-block:: lua
+
+      storage:set("level", 3)
+      storage:flush()
 
 .. lua:function:: key()
 
@@ -190,4 +190,4 @@ All writes are immediate. Keys must be strings, and values must be JSON-encodabl
 
 * Keys must be strings
 * Values must be JSON-encodable
-* Writes are immediate
+* Writes are asynchronous; call ``storage:flush()`` to force persistence
