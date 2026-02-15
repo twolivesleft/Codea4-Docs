@@ -1,46 +1,31 @@
 storage
 =======
 
-Simple key/value storage backed by JSON and the built-in ``string.read`` / ``string.saveAsync`` functions. The default storage is per-project (stored under ``asset``). A device-wide store is available under ``storage.global`` (stored under ``asset.documents``).
+Simple key/value storage.
 
-Writes are asynchronous by default. Use ``storage:flush()`` when you need to ensure data is persisted immediately. Keys must be strings, and values must be JSON-encodable (``nil``, ``boolean``, ``number``, ``string``, ``table``).
+Saving happens in the background, so your project can keep running smoothly. If you need to make sure your changes are saved right away (for example, before quitting or switching levels), call storage:flush().
+
+Storage uses string keys (like "highScore"), and the value you save must be either boolean, number, string, or a table containing only those kinds of values. If you store nil for a given key, then that key/value pair will be removed from storage.
+
+You can read and write values directly using property-style access (``storage.highScore = 100`` and ``print(storage.highScore)``).
+
+The default storage is per-project. A device-wide store is available under ``storage.global``.
 
 .. lua:module:: storage
 
-.. lua:function:: get(key [, default])
+**Basic Usage**
 
-   Gets a value for a key, returning ``default`` if the key does not exist.
+.. code-block:: lua
 
-   :param key: Key to read
-   :type key: string
-   :param default: Value to return when key is missing
-   :type default: any
-   :return: Stored value or default
-   :rtype: any
+   -- Default project storage
+   storage.highScore = 9001
+   print(storage.highScore or 0)
 
-   .. code-block:: lua
+   -- Missing key uses default
+   print(storage.missing or 42)
 
-      -- Default project storage
-      storage:set("highScore", 9001)
-      print(storage:get("highScore", 0))
-
-      -- Missing key uses default
-      print(storage:get("missing", 42))
-
-.. lua:function:: set(key, value)
-
-   Sets a key to a value. Passing ``nil`` deletes the key.
-
-   :param key: Key to write
-   :type key: string
-   :param value: Value to store (JSON-encodable)
-   :type value: any
-
-   .. code-block:: lua
-
-      storage:set("musicEnabled", true)
-      storage:set("volume", 0.8)
-      storage:set("temp", nil) -- deletes the key
+   -- Remove a key
+   storage.temp = nil
 
 .. lua:function:: has(key)
 
@@ -59,11 +44,11 @@ Writes are asynchronous by default. Use ``storage:flush()`` when you need to ens
 
 .. lua:function:: delete(key)
 
-   Removes a key. This is a synonym for ``set(key, nil)``.
+   Removes a key.
 
    :param key: Key to remove
    :type key: string
-   
+
    .. code-block:: lua
 
       storage:delete("tutorialSeen")
@@ -95,10 +80,10 @@ Writes are asynchronous by default. Use ``storage:flush()`` when you need to ens
 
    .. code-block:: lua
 
-      storage:set("level", 3)
+      storage.level = 3
       storage:flush()
 
-.. lua:function:: key()
+.. lua:function:: asset()
 
    Returns the underlying asset key for the storage file.
 
@@ -107,7 +92,7 @@ Writes are asynchronous by default. Use ``storage:flush()`` when you need to ens
 
    .. code-block:: lua
 
-      print(storage:key())
+      print(storage:asset())
 
 .. lua:function:: namespace(prefix)
 
@@ -121,8 +106,8 @@ Writes are asynchronous by default. Use ``storage:flush()`` when you need to ens
    .. code-block:: lua
 
       local prefs = storage:namespace("prefs")
-      prefs:set("audioMuted", true) -- stored as "prefs.audioMuted"
-      print(prefs:get("audioMuted"))
+      prefs.audioMuted = true -- stored as "prefs.audioMuted"
+      print(prefs.audioMuted)
 
 .. lua:attribute:: storage.project: storage
 
@@ -132,29 +117,9 @@ Writes are asynchronous by default. Use ``storage:flush()`` when you need to ens
 
    Default device-wide storage (stored under ``asset.documents``).
 
-.. lua:function:: store(name [, opts])
-
-   Returns a named store. Stores are cached by name and scope, so repeated calls return the same store instance.
-
-   :param name: Store name (used to derive the file name)
-   :type name: string
-   :param opts: Options table
-   :type opts: table
-   :return: Storage instance
-   :rtype: table
-
-   **Options**
-
-   * ``scope``: ``"project"`` (default) or ``"global"``
-
-   .. code-block:: lua
-
-      local settings = storage.store("settings")
-      local globalPrefs = storage.store("prefs", { scope = "global" })
-
 .. lua:function:: projectStore(name)
 
-   Convenience wrapper for ``storage.store(name, { scope = "project" })``.
+   Convenience wrapper for ``storage(name, "project")``.
 
    :param name: Store name
    :type name: string
@@ -163,12 +128,30 @@ Writes are asynchronous by default. Use ``storage:flush()`` when you need to ens
 
 .. lua:function:: globalStore(name)
 
-   Convenience wrapper for ``storage.store(name, { scope = "global" })``.
+   Convenience wrapper for ``storage(name, "global")``.
 
    :param name: Store name
    :type name: string
    :return: Storage instance
    :rtype: table
+
+.. lua:currentmodule:: None
+
+.. lua:function:: storage(name [, scope])
+
+   Returns a named store. Stores are cached by name and scope, so repeated calls return the same store instance.
+
+   :param name: Store name (used to derive the file name)
+   :type name: string
+   :param scope: Store scope (``"project"`` or ``"global"``)
+   :type scope: string
+   :return: Storage instance
+   :rtype: table
+
+   .. code-block:: lua
+
+      local settings = storage("settings")
+      local globalPrefs = storage("prefs", "global")
 
 **Usage Patterns**
 
@@ -178,18 +161,18 @@ Writes are asynchronous by default. Use ``storage:flush()`` when you need to ens
    local prefs = storage:namespace("prefs")
    local stats = storage:namespace("stats")
 
-   prefs:set("musicEnabled", true)
-   stats:set("gamesPlayed", 12)
+   prefs.musicEnabled = true
+   stats.gamesPlayed = 12
 
    -- Project vs global
    local projectStore = storage.project
    local globalStore = storage.global
 
-   projectStore:set("level", 3)
-   globalStore:set("unlocked", { "sword", "shield" })
+   projectStore.level = 3
+   globalStore.unlocked = { "sword", "shield" }
 
 **Notes**
 
 * Keys must be strings
-* Values must be JSON-encodable
-* Writes are asynchronous; call ``storage:flush()`` to force persistence
+* Values must be (``nil``, ``boolean``, ``number``, ``string``, ``table``)
+* Storage saves in the background, call storage:flush() if you need to write storage immediately (for example, before quitting)
