@@ -72,6 +72,7 @@ Codea 4
    api/pick
    api/viewer
    api/device
+   api/storage
 
 Indices and tables
 ==================
