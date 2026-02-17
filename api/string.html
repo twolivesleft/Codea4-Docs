@@ -210,6 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
 </ul>
 
 </div>
@@ -280,16 +281,25 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="string.save">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em>, <em class="sig-param"><span class="pre">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.save" title="Link to this definition">¶</a></dt>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em>, <em class="sig-param"><span class="pre">text</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">callback</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#string.save" title="Link to this definition">¶</a></dt>
 <dd><p>Saves text to a file.</p>
+<p>If a callback is supplied, saving will happen in the background. Multiple calls to save the same file are grouped and only the latest save will be performed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>assetKey</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">assetKey</span></code></span>) – The asset key of the file.</p></li>
 <li><p><strong>text</strong> (<span><a class="reference internal" href="#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The text to save.</p></li>
+<li><p><strong>callback</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">function</span></code></span>) – Optional completion callback <code class="docutils literal notranslate"><span class="pre">function(ok,</span> <span class="pre">err)</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">string</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;Config.json&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">json</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="nv">config</span><span class="p">),</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">err</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">ok</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Save failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">err</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

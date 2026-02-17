@@ -29,11 +29,22 @@ Used to interact with text files.
     :return: The contents of the file.
     :rtype: string
 
-.. lua:function:: save(assetKey, text)
+.. lua:function:: save(assetKey, text [, callback])
 
     Saves text to a file.
+
+    If a callback is supplied, saving will happen in the background. Multiple calls to save the same file are grouped and only the latest save will be performed.
 
     .. helptext:: save the text to a file
 
     :param assetKey assetKey: The asset key of the file.
     :param string text: The text to save.
+    :param function callback: Optional completion callback ``function(ok, err)``.
+
+    .. code-block:: lua
+
+        string.save(asset.documents .. "Config.json", json.encode(config), function(ok, err)
+            if not ok then
+                print("Save failed:", err)
+            end
+        end)

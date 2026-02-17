@@ -208,6 +208,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/viewer.html">viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/device.html">device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/storage.html">storage</a></li>
 </ul>
 
 </div>
@@ -284,10 +285,10 @@
           <li><a href="api/shader.html#indexBuffer.append">(indexBuffer method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/camera.html#camera.apply">apply() (camera method)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.body.applyAngularImpulse">applyAngularImpulse() (physics2d.body method)</a>
 
         <ul>
@@ -314,8 +315,12 @@
         </ul></li>
         <li><a href="api/graphics.html#arc">arc() (built-in function)</a>
 </li>
-        <li><a href="api/pick.html#pick.asset">asset() (pick static method)</a>, <a href="api/pick.html#pick.asset">[1]</a>
+        <li><a href="api/storage.html#storage.asset">asset() (in module storage)</a>
+
+        <ul>
+          <li><a href="api/pick.html#pick.asset">(pick static method)</a>, <a href="api/pick.html#pick.asset">[1]</a>
 </li>
+        </ul></li>
         <li><a href="api/objc.html#objc.async">async() (in module objc)</a>
 </li>
         <li><a href="api/image.html#atlas">atlas (built-in class)</a>
@@ -465,6 +470,8 @@
 </li>
           <li><a href="api/inspector.html#inspector.clear">(in module inspector)</a>
 </li>
+          <li><a href="api/storage.html#storage.clear">(in module storage)</a>
+</li>
           <li><a href="api/shader.html#indexBuffer.clear">(indexBuffer method)</a>
 </li>
           <li><a href="api/light.html#light.clear">(light static method)</a>
@@ -573,6 +580,8 @@
         <li><a href="api/scene.html#scene.default3d">default3d() (scene static method)</a>
 </li>
         <li><a href="api/objc.html#objc.delegate">delegate() (in module objc)</a>
+</li>
+        <li><a href="api/storage.html#storage.delete">delete() (in module storage)</a>
 </li>
         <li><a href="api/entity.html#entity.destroy">destroy() (entity method)</a>
 
@@ -842,9 +851,11 @@
 </li>
         <li><a href="api/scene.html#scene.findEntity">findEntity() (scene method)</a>
 </li>
+        <li><a href="api/image.html#image.slice.flip">flip() (image.slice method)</a>, <a href="api/image.html#image.slice.flip">[1]</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/image.html#image.slice.flip">flip() (image.slice method)</a>, <a href="api/image.html#image.slice.flip">[1]</a>
+        <li><a href="api/storage.html#storage.flush">flush() (in module storage)</a>
 </li>
         <li><a href="api/style.html#style.fontSize">fontSize() (in module style)</a>
 </li>
@@ -918,10 +929,10 @@
 </li>
         <li><a href="api/color.html#color.gamma">gamma() (color method)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.gear">gear (class in physics2d)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.generateIrradiance">generateIrradiance() (image method)</a>, <a href="api/image.html#image.generateIrradiance">[1]</a>
 </li>
         <li><a href="api/sound.html#sound.generator">generator() (in module sound)</a>
@@ -978,6 +989,8 @@
 </li>
         <li><a href="api/graphics.html#module-gizmos">gizmos (module)</a>
 </li>
+        <li><a href="api/storage.html#storage.globalStore">globalStore() (in module storage)</a>
+</li>
         <li><a href="api/color.html#color.grayscale">grayscale() (color method)</a>
 </li>
     </ul></td>
@@ -989,7 +1002,11 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/entity.html#entity.has">has() (entity method)</a>
+
+        <ul>
+          <li><a href="api/storage.html#storage.has">(in module storage)</a>
 </li>
+        </ul></li>
         <li><a href="api/physics2d.html#physics2d.hinge">hinge (class in physics2d)</a>
 
         <ul>
@@ -1202,10 +1219,10 @@
 </li>
         <li><a href="api/input.html#key.key.num0">key.key.num0 (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#key.key.num1">key.key.num1 (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#key.key.num2">key.key.num2 (attribute)</a>
 </li>
         <li><a href="api/input.html#key.key.num3">key.key.num3 (attribute)</a>
@@ -1303,6 +1320,8 @@
         <li><a href="api/input.html#key.key.y">key.key.y (attribute)</a>
 </li>
         <li><a href="api/input.html#key.key.z">key.key.z (attribute)</a>
+</li>
+        <li><a href="api/storage.html#storage.keys">keys() (in module storage)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -1517,6 +1536,8 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.slice.name">name() (image.slice method)</a>, <a href="api/image.html#image.slice.name">[1]</a>
+</li>
+        <li><a href="api/storage.html#storage.namespace">namespace() (in module storage)</a>
 </li>
         <li><a href="api/style.html#style.noClip">noClip() (in module style)</a>
 </li>
@@ -1920,6 +1941,8 @@
 </li>
         <li><a href="api/matrix.html#matrix.projection">projection() (in module matrix)</a>
 </li>
+        <li><a href="api/storage.html#storage.projectStore">projectStore() (in module storage)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.pulley">pulley (class in physics2d)</a>
 </li>
         <li><a href="api/graphics.html#context.push">push() (in module context)</a>
@@ -2272,14 +2295,22 @@
           <li><a href="api/physics3d.html#physics3d.world.step">(physics3d.world method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/motion.html#motion.stop">stop() (in module motion)</a>
 
         <ul>
           <li><a href="api/sound.html#sound.instance.stop">(sound.instance method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/storage.html#module-storage">storage (module)</a>
+</li>
+        <li><a href="api/storage.html#storage">storage() (built-in function)</a>
+</li>
+        <li><a href="api/storage.html#storage.storage.storage.global">storage.storage.storage.global (attribute)</a>
+</li>
+        <li><a href="api/storage.html#storage.storage.storage.project">storage.storage.storage.project (attribute)</a>
+</li>
         <li><a href="api/string.html#module-string">string (module)</a>
 </li>
         <li><a href="api/objc.html#objc.string">string() (in module objc)</a>
