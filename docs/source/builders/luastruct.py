@@ -41,56 +41,7 @@ class DocutilsUtils:
             return signature_node.attributes['module']
 
         # Return None or a default if no module attribute is found
-        return None
-    
-    @staticmethod
-    def extract_syntax(node):
-        field_list = node.next_node(condition=lambda n: n.tagname == 'field_list')
-        if not field_list:
-            return None
-
-        for field in field_list.children:
-            if isinstance(field, nodes.field):
-                field_name = field.next_node(condition=lambda n: n.tagname == 'field_name')
-                if field_name and field_name.astext() == "Syntax":
-                    field_body = field.next_node(condition=lambda n: n.tagname == 'field_body')
-                    if field_body:
-                        syntax_node = field_body.next_node(condition=lambda n: n.tagname == 'literal_block')
-                        if syntax_node:
-                            return syntax_node.astext()
-        return None
-
-    @staticmethod
-    def extract_code_samples(node):
-        code_samples = []
-        for container in node.traverse(condition=lambda n: n.tagname == 'container' and 'literal-block-wrapper' in n['classes']):
-            caption_node = container.next_node(condition=lambda n: n.tagname == 'caption')
-            code_node = container.next_node(condition=lambda n: n.tagname == 'literal_block')
-            if caption_node and code_node:
-                code_samples.append({
-                    'title': caption_node.astext(),
-                    'code': code_node.astext()
-                })
-        return code_samples
-    
-    @staticmethod
-    def extract_overview(node):
-        desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
-        if not desc_content:
-            return None
-
-        paragraphs = [child for child in desc_content.children if child.tagname == 'paragraph']
-        overview_parts = []
-        for paragraph in paragraphs:
-            paragraph_text = []
-            for child in paragraph.children:
-                if isinstance(child, nodes.literal):
-                    paragraph_text.append(f"`{child.astext()}`")
-                else:
-                    paragraph_text.append(child.astext())
-            overview_parts.append(''.join(paragraph_text))
-
-        return '\n\n'.join(overview_parts)    
+        return None  
     
     @staticmethod
     def extract_parameters(node, isClass = False):
@@ -156,6 +107,54 @@ class DocutilsUtils:
 
         return params    
 
+    @staticmethod
+    def extract_syntax(node):
+        field_list = node.next_node(condition=lambda n: n.tagname == 'field_list')
+        if not field_list:
+            return None
+
+        for field in field_list.children:
+            if isinstance(field, nodes.field):
+                field_name = field.next_node(condition=lambda n: n.tagname == 'field_name')
+                if field_name and field_name.astext() == "Syntax":
+                    field_body = field.next_node(condition=lambda n: n.tagname == 'field_body')
+                    if field_body:
+                        syntax_node = field_body.next_node(condition=lambda n: n.tagname == 'literal_block')
+                        if syntax_node:
+                            return syntax_node.astext()
+        return None
+
+    @staticmethod
+    def extract_code_samples(node):
+        code_samples = []
+        for container in node.traverse(condition=lambda n: n.tagname == 'container' and 'literal-block-wrapper' in n['classes']):
+            caption_node = container.next_node(condition=lambda n: n.tagname == 'caption')
+            code_node = container.next_node(condition=lambda n: n.tagname == 'literal_block')
+            if caption_node and code_node:
+                code_samples.append({
+                    'title': caption_node.astext(),
+                    'code': code_node.astext()
+                })
+        return code_samples
+    
+    @staticmethod
+    def extract_overview(node):
+        desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
+        if not desc_content:
+            return None
+
+        paragraphs = [child for child in desc_content.children if child.tagname == 'paragraph']
+        overview_parts = []
+        for paragraph in paragraphs:
+            paragraph_text = []
+            for child in paragraph.children:
+                if isinstance(child, nodes.literal):
+                    paragraph_text.append(f"`{child.astext()}`")
+                else:
+                    paragraph_text.append(child.astext())
+            overview_parts.append(''.join(paragraph_text))
+
+        return '\n\n'.join(overview_parts)  
 
 class LuaModule:
     def __init__(self, node, group=None):
