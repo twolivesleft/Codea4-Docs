@@ -1,5 +1,7 @@
 import json
 from sphinx.builders import Builder
+from sphinx.addnodes import desc, desc_content
+from docutils.nodes import field_list, field, paragraph, literal_block, title, section
 from docutils import nodes
 from luastruct import *
 import os
@@ -38,17 +40,39 @@ class LuaJSONVisitor(nodes.NodeVisitor):
         super().__init__(doc)
         self.entries = []
         self.class_stack = []
+        self.current_group = None
+        self.current_section_content = []
 
-    def visit_section(self, node):
-        pass
+    def has_desc_ancestor(self, node):
+        """Walk up parent chain to check for desc ancestors"""
+        current = node
+        while current:
+            if isinstance(current, desc):
+                return True
+            current = current.parent
+        return False
 
     def visit_paragraph(self, node):
-        pass
+        if isinstance(node.parent, section) and not self.has_desc_ancestor(node):
+            self.current_section_content.append(OverviewContent(node.astext(), OverviewContentKind.TEXT))
 
-    def visit_text(self, node):
-        pass
+    def visit_literal_block(self, node):
+        if isinstance(node.parent, section) and not self.has_desc_ancestor(node):
+            self.current_section_content.append(OverviewContent(node.astext(), OverviewContentKind.CODE))
 
     def visit_title(self, node):
+        self.flush_content()
+        self.current_group = node.astext()
+
+    def depart_section(self, node):
+        self.flush_content()
+        
+    def flush_content(self):
+        if self.current_section_content:
+            self.entries.append(LuaOverview(self.current_section_content, self.current_group))
+            self.current_section_content = []        
+
+    def visit_text(self, node):
         pass
 
     def visit_index(self, node):
@@ -57,20 +81,25 @@ class LuaJSONVisitor(nodes.NodeVisitor):
     def unknown_visit(self, node):
         if hasattr(node, 'attributes'):
             objtype = node.attributes.get('objtype')          
+
+            # Flush content before any Lua object
+            if objtype:
+                self.flush_content()
+
             if objtype == 'method':
-                method = LuaFunction(node, 'method')
+                method = LuaFunction(node, 'method', self.current_group)
                 self.add_to_current_scope(method)
 
             elif objtype == 'class':
-                cls = LuaClass(node)
+                cls = LuaClass(node, self.current_group)
                 self.add_to_current_scope(cls)
                 self.class_stack.append(cls)
 
             elif objtype == 'function':
-                self.entries.append(LuaFunction(node, 'function'))
+                self.entries.append(LuaFunction(node, 'function', self.current_group))
 
             elif objtype == 'attribute' or objtype == 'classattribute':
-                attribute = LuaAttribute(node, objtype)
+                attribute = LuaAttribute(node, objtype, self.current_group)
                 self.add_to_current_scope(attribute)
 
                 # Check if this attribute should create an anonymous LuaClass
@@ -79,7 +108,7 @@ class LuaJSONVisitor(nodes.NodeVisitor):
                         lua_class_name = f"table#{attribute.module}#{attribute.name}"
                     else:
                         lua_class_name = f"table#{attribute.name}"
-                    lua_class = LuaClass(name=lua_class_name, description=attribute.description, module=attribute.module)
+                    lua_class = LuaClass(name=lua_class_name, description=attribute.description, module=attribute.module, group=self.current_group)
                     fields = attribute.extract_fields(node)
 
                     if fields:
@@ -90,10 +119,10 @@ class LuaJSONVisitor(nodes.NodeVisitor):
                         attribute.type = lua_class.name
 
             elif objtype == 'classattribute':
-                self.add_to_current_scope(LuaAttribute(node, objtype))                 
+                self.add_to_current_scope(LuaAttribute(node, objtype, self.current_group))
 
             elif objtype == 'staticmethod':
-                method = LuaFunction(node, 'staticmethod')
+                method = LuaFunction(node, 'staticmethod', self.current_group)
                 self.add_to_current_scope(method)
 
     def unknown_departure(self, node):  
