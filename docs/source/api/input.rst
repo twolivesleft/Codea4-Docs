@@ -106,6 +106,13 @@ Touches
       
       The previous precise location of the touch (if available)
 
+   .. lua:function:: cancelTouch(scene)
+
+      Cancels the touch of a scene
+
+      :param scene: The keyCode to query
+      :type scene: scene
+
 Gestures
 ########
 
@@ -469,3 +476,124 @@ Gamepad
       .. lua:attribute:: up: boolean
 
       .. lua:attribute:: down: boolean
+
+Mouse
+########
+
+.. lua:currentmodule:: None
+
+.. lua:class:: mouse
+
+   .. lua:attribute:: active: boolean
+
+      Is there a mouse active
+
+   .. lua:attribute:: connected: function(mouse)
+
+      Callback for when a mouse is connected
+
+   .. lua:attribute:: disconnected: function(mouse)
+
+      Callback for when a mouse is disconnected
+
+   .. lua:attribute:: left: mouse.button
+
+   .. lua:attribute:: middle: mouse.button
+
+   .. lua:attribute:: right: mouse.button
+
+   .. lua:attribute:: scroll: vec2
+      
+   .. lua:attribute:: x: number
+   
+   .. lua:attribute:: y: number
+
+   .. lua:attribute:: pos: vec2
+
+      Return a vec2 of both the x and y position
+
+   .. lua:attribute:: dx: number
+   
+   .. lua:attribute:: dy: number
+
+   .. lua:attribute:: deltaX: number
+   
+   .. lua:attribute:: deltaY: number
+
+   .. lua:attribute:: delta: vec2
+
+      Return a vec2 of both dx and dy
+
+   .. lua:attribute:: visible: boolean
+
+      Sets whether the mouse is visible or hidden
+
+   .. lua:attribute:: pressed: function(mouseName)
+
+      Callback for when the mouse is pressed
+
+      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
+      :type mouseName: string
+
+   .. lua:attribute:: released: function(mouseName)
+
+      Callback for when the mouse is released
+
+      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
+      :type mouseName: string
+
+   .. lua:attribute:: changed: function(mouseName, changeState)
+
+      Callback for when the mouse has been changed
+
+      :param mouseName: Returns the name of the mouse being selected ("left", "right", "middle") 
+      :type mouseName: string
+      :param changeState: Inputs true if the mouse was pressed or false if the mouse was released
+      :type wasPressed: boolean
+
+   .. lua:attribute:: moved: function(deltaX, deltaY)
+
+      Callback for when the mouse has been moved
+
+      :param deltaX: The delta x of the mouse
+      :type deltaX: number
+      :param deltaY: The delta y of the mouse
+      :type deltaY: number
+
+   .. lua:class:: button
+
+      .. lua:attribute:: pressing: boolean
+
+      .. lua:attribute:: pressed: boolean
+
+      .. lua:attribute:: released: boolean
+
+      .. lua:attribute:: value: number
+
+      .. lua:attribute:: touching: boolean
+
+.. lua:module:: mouse
+
+.. lua:function:: default()
+
+   Changes the mouse back to its default style
+
+.. lua:function:: path(polygon1, polygon...) 
+
+   Turns the mouse style to a path (allows multiple polygons for unique shapes)
+
+   :param polygon1: Table that represents point of the mouse shape (offset from the mouse)
+   :type polygon1: table<vec2>
+   :param polygon...: for more polygons
+   :type polygon...: table<vec2>
+
+.. lua:function:: rect(pos, size [, roundedRadius = 0]) 
+
+   Turns the mouse style to a rectangle 
+
+   :param pos: Represents the positions of the rectangle from the mouse
+   :type pos: vec2
+   :param size: Represents the size of the rectangle
+   :type size: vec2
+   :param roundedRadius: Radius of the rectangle
+   :type roundedRadius: number

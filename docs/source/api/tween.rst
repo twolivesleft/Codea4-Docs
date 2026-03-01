@@ -68,6 +68,20 @@ Procedurally animate values over time, otherwise known as tweening
       :param easeType: The easing function to use
       :type easeType: constant
 
+   .. lua:method:: ease(easeFunction)
+
+      Sets a custom easing callback for the current tweening segment (created via ``to{}``)
+
+      :param easeCallback: The easing callback to use
+      :type easeCallback: function(t, from, to)
+
+   .. lua:method:: delay(time)
+
+      Adds a delay to the tween for a certain time
+
+      :param time: Time in seconds to delay the tween
+      :type easeType: integer
+
    .. lua:method:: loop(count)
 
       Sets the loop count for the current tweening segment (created via ``to{}``). Using `nil` for the count will result in an infinite number of loops
@@ -118,6 +132,13 @@ Procedurally animate values over time, otherwise known as tweening
    .. lua:method:: onComplete(callback)
 
       Sets a callback for each time the tween completes
+
+      :param callback: The callback function
+      :type callback: function
+
+   .. lua:method:: onSubComplete(callback)
+
+      Sets a callback for each time the tween reach a sub time in the tween
 
       :param callback: The callback function
       :type callback: function

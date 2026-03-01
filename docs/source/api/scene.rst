@@ -49,6 +49,18 @@ scene
 
       Gets the scene's 3D physics world, providing access to various physics functions and properties such as :lua:meth:`physics3d.world.applyForce`
 
+   .. lua:attribute:: physics2d: physics2d.settings
+
+      Gets the scene's 2D physics settings, providing access to various physics functions and properties such as :lua:meth:`physics2d.settings.debugDraw` 
+
+   .. lua:attribute:: physics3d: physics3d.settings
+
+      Gets the scene's 3D physics settings, providing access to various physics functions and properties such as :lua:meth:`physics3d.settings.debugDraw`
+
+   .. lua:attribute:: time: time.settings
+
+      Gets the scene's time settings, providing access to various time functions and properties such as :lua:meth:`time.settings.autoUpdate`
+
    .. lua:attribute:: sky
 
       Sets the sky visuals, which will depend on the type used:
@@ -94,12 +106,50 @@ scene
 
       :rtype: entity
 
-   .. lua:method:: entities([activeOnly = true])
+   .. lua:method:: entities([includeFlag = scene.DEFAULT])
 
-      Returns a table containing all root entities
+      Returns a table containing entities in the scene
 
-      :param activeOnly: When set, returns only active root entities
+      :param includeFlag: Flag to include certain entities.
       :rtype: table<entity>
+
+      * ``scene.DEFAULT`` - only active entities *not including the children*
+      * ``scene.INACTIVE`` - include inactive entities
+      * ``scene.CHILDREN`` - include all the children and sub childrens of the entities
+      * ``scene.ALL`` - include all entities in the scene: ``scene.INACTIVE | scene.CHILDREN``
+
+      .. code-block:: lua
+         :caption: Getting all the entities
+
+         scen = scene.default2d("test")
+
+         enti = scen:entity("enti")
+         childEnti = enti:child("childEnti")
+
+         otherEnti = scen:entity("otherEnti")
+         otherEnti.active = false
+
+         -- include only enti (you could input scene.DEFAULT in parameter for same result)
+         entityList1 = scen:entities()
+
+         -- include only enti and childEnti
+         entityList2 = scen:entities(scene.CHILDREN)
+
+         -- include only enti and otherEnti (no children included)
+         entityList2 = scen:entities(scene.INACTIVE)
+
+         -- loop over all entities in the scene (can use scene.ALL instead)
+         scen:forEach(function(currentEnti)
+            print(currentEnti.name)
+         end, scene.INACTIVE | scene.CHILDREN)
+      
+   .. lua:method:: forEach(loopFunction, [includeFlag = scene.DEFAULT])
+
+      Inputs a callback to that is called while looping over entities in the scene
+
+      :param loopFunction: Function to loop over
+      :type loopFunction: function(entity)
+      :param includeFlag: Flag to include certain entities.
 
    .. lua:method:: index(name) [metamethod]
 
