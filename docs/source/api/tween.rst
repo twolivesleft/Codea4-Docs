@@ -185,9 +185,9 @@ Here is a list of all easing functions
    * - ``backIn``
    * - ``backOut``
    * - ``backInOut``
-   * - ``bounceIn``
-   * - ``bounceOut``
-   * - ``bounceInOut``
+   * - ``bounceIn`` - only for ``tween``
+   * - ``bounceOut`` - only for ``tween``
+   * - ``bounceInOut`` - only for ``tween``
    * - ``circularIn``
    * - ``circularOut``
    * - ``circularInOut``
@@ -207,3 +207,4 @@ Here is a list of all easing functions
    * - ``elasticOut``
    * - ``elasticInOut``
    * - ``punch``
+   * - ``hold`` - only for ``animation.easing``
