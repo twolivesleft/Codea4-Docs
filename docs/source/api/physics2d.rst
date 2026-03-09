@@ -363,6 +363,26 @@ Collision
 
       The body this collider belongs to
 
+   .. lua:method:: collide(otherCollider)
+
+      Checks the collision between two colliers: this one and another collider and gives infomation about it
+
+      :param otherCollider: The other collider to collide with
+      :type otherCollider: collider
+
+      :return: ``didCollide[, point, normal, penetration]`` - `didCollide` is whether the collision happened
+      :rtype: boolean[, vec2, vec2, number]
+
+   .. lua:method:: overlap(otherCollider)
+
+      Checks overlapping between two colliers: this one and another collider
+
+      :param otherCollider: The other collider to overlap with
+      :type otherCollider: collider
+
+      :return: Checks whether the two colliders are overlapping
+      :rtype: boolean
+
 .. lua:class:: circle: collider
 
    .. lua:attribute:: radius: number
@@ -437,6 +457,14 @@ Collision
    .. lua:attribute:: otherCollider: physics2d.collider
 
       The second collider involved in this collision contact
+
+   .. lua:attribute:: entity: entity
+
+      The first entity in this contact (the entity receiving the callback)
+
+   .. lua:attribute:: otherEntity: entity
+
+      The second entity involved in this collision contact
 
 .. lua:class:: rayHit
 
@@ -639,3 +667,24 @@ Constraints
 .. lua:class:: motor: joint
 
    *Not implemented yet*         
+
+Settings
+########
+
+.. lua:class:: settings
+
+   .. lua:attribute:: debugDraw: boolean
+
+      Draws physics objects in the scene
+
+   .. lua:attribute:: gravity: vec2
+      
+      Changes the gravity of the physics world
+
+   .. lua:attribute:: velocityIterations: number
+
+   .. lua:attribute:: positionIterations: number
+
+   .. lua:attribute:: paused: boolean
+
+      Whether you want to paused the physics in a scene

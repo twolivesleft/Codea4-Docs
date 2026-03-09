@@ -518,3 +518,135 @@ Axis-Aligned Bounding Box (AABB)
 .. lua:module:: bounds
 
 .. lua:class:: aabb
+
+   .. lua:attribute:: min: vec3
+
+   .. lua:attribute:: max: vec3
+
+   .. lua:attribute:: size: vec3
+
+      Size of the bounding box
+
+   .. lua:attribute:: offect: vec3
+
+      Offset of the bounding box
+
+   .. lua:attribute:: valid: boolean
+
+      Checks if the bounding box is valid
+   
+   .. lua:method:: set(min, max)
+
+      :param min: The minimum position of the bounding box
+      :type min: vec3
+      :param max: The maximum position of the bounding box
+      :type max: vec3
+
+   .. lua:method:: translate(amount)
+
+      :param amount: The amount to move the bounding box
+      :type amount: vec3
+
+   .. lua:method:: transform(transformMatrix)
+
+      :param transformMatrix: The matrix used to transform the current matrix
+      :type transformMatrix: mat4
+      :return: New bounds to fit the transformed bound
+      :rtype: aabb
+
+   .. lua:method:: encapsulate(point)
+
+      Adjust the bound to fit a point
+
+      :param point: The point you want to fit
+      :type point: vec3
+
+   .. lua:method:: encapsulate(otherAABB)
+
+      Adjust the bound to fit another bound
+
+      :param otherAABB: The aabb you want to fit
+      :type otherAABB: aabb
+
+   .. lua:method:: raycast(origin, dir)
+
+      :param origin: The position of the ray
+      :type origin: vec3
+      :param dir: The direction of the ray
+      :type dir: mat4
+      :return: The hit infomation of the raycast
+      :rtype: hit
+   
+.. lua:class:: hit
+
+   .. lua:attribute:: point: vec3
+
+      The position where the raycast hit
+
+   .. lua:attribute:: normal: vec3
+
+      The normal of the point hit
+
+Math Extensions
+###############
+
+.. lua:currentmodule:: None
+
+.. lua:class:: math
+
+   The following are extensions to the Lua math class.
+
+   .. lua:method:: lerp(a, b, t)
+
+      :param a: The first point
+      :type a: number
+      :param b: The second point
+      :type b: number
+      :param t: Value between 0 and 1 to represent the progress between a and b
+      :type t: number
+      :return: The value that is t% between a and b
+      :rtype: number
+
+   .. lua:method:: inverseLerp(a, b, v)
+
+      Give the t (progress) value that v is in a and b
+
+      :param a: The first point
+      :type a: number
+      :param b: The second point
+      :type b: number
+      :param v: Value between a and b
+      :type v: number
+      :return: The t (progress) that v is between a and b
+      :rtype: number
+
+   .. lua:method:: sign(value)
+
+      if value < 0 then -1, if value == 0 then 0, if value > 0 then 1
+
+      :param value: The value to take the sign of
+      :type value: number
+      :return: The sign of the value
+      :rtype: number
+
+   .. lua:method:: clamp(value, a, b)
+
+      Give the clamp value between a and b, value less than `a` the function outputs `a` and value greater than `b` the function outputs `b`
+
+      :param value: The value to clamp
+      :type value: number
+      :param a: The left end of the clamp
+      :type a: number
+      :param b: The right end of the clamp
+      :type b: number
+      :return: The t (progress) that v is between a and b
+      :rtype: number
+
+   .. lua:method:: clamp01(value)
+
+      Clamp value between 0 and 1
+
+      :param value: The value to clamp
+      :type value: number
+      :return: The clamped value
+      :rtype: number

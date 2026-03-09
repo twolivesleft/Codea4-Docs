@@ -51,6 +51,10 @@ entity
          .. literalinclude:: /code/Example_entity_destroy.codea/Main.lua
             :language: lua
 
+   .. lua:method:: destroyChildren()
+
+      Destroys all the children of an entity
+
    **Components**
 
    .. lua:method:: add(component, ...)
@@ -428,6 +432,16 @@ entity
 
       Callback for the `destroyed()` event, which is called right before the entity is destroyed
 
+   **Activation Callbacks**
+
+   .. lua:attribute:: activated: function
+
+      Callback for the ``activated()`` event, which is called when ``entity.active`` is set to true
+
+   .. lua:attribute:: deactivated: function
+
+      Callback for the ``deactivated()`` event, which is called when ``entity.active`` is set to false
+
    **Physics Callbacks**
 
    .. lua:attribute:: collisionBegan2d: function
@@ -460,4 +474,8 @@ entity
    .. lua:attribute:: hitTest: boolean [default = false]
 
       Enables hit testing for the ``touched(touch)`` event, which will filter touches based on collision checks using attached physics components on the main camera
+
+   .. lua:attribute:: touchPriority: number [default = 0]
+
+      Sets the priority of entity in ``touched(touch)`` event
 

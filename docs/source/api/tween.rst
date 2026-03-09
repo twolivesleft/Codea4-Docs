@@ -68,6 +68,20 @@ Procedurally animate values over time, otherwise known as tweening
       :param easeType: The easing function to use
       :type easeType: constant
 
+   .. lua:method:: ease(easeFunction)
+
+      Sets a custom easing callback for the current tweening segment (created via ``to{}``)
+
+      :param easeCallback: The easing callback to use
+      :type easeCallback: function(t, from, to)
+
+   .. lua:method:: delay(time)
+
+      Adds a delay to the tween for a certain time
+
+      :param time: Time in seconds to delay the tween
+      :type easeType: integer
+
    .. lua:method:: loop(count)
 
       Sets the loop count for the current tweening segment (created via ``to{}``). Using `nil` for the count will result in an infinite number of loops
@@ -122,6 +136,13 @@ Procedurally animate values over time, otherwise known as tweening
       :param callback: The callback function
       :type callback: function
 
+   .. lua:method:: onSubComplete(callback)
+
+      Sets a callback for each time the tween reach a sub time in the tween
+
+      :param callback: The callback function
+      :type callback: function
+
    .. lua:method:: seek(percent)
 
       Seeks the tween to a specific normalized time (percentage of duration)
@@ -164,9 +185,9 @@ Here is a list of all easing functions
    * - ``backIn``
    * - ``backOut``
    * - ``backInOut``
-   * - ``bounceIn``
-   * - ``bounceOut``
-   * - ``bounceInOut``
+   * - ``bounceIn`` - only for ``tween``
+   * - ``bounceOut`` - only for ``tween``
+   * - ``bounceInOut`` - only for ``tween``
    * - ``circularIn``
    * - ``circularOut``
    * - ``circularInOut``
@@ -186,3 +207,4 @@ Here is a list of all easing functions
    * - ``elasticOut``
    * - ``elasticInOut``
    * - ``punch``
+   * - ``hold`` - only for ``animation.easing``
