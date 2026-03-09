@@ -160,11 +160,35 @@ Gestures
 
       The current number of touches associated with this gesture
 
+   .. lua:attribute:: direction: enum
+
+      The direction of the swipe
+
+   .. lua:attribute:: left: integer
+
+      Left direction enum
+
+   .. lua:attribute:: right: integer
+
+      Right direction enum
+
+   .. lua:attribute:: up: integer
+
+      Up direction enum
+
+   .. lua:attribute:: down: integer
+
+      Down direction enum
+
+   .. lua:attribute:: all: integer
+
+      All direction enum
+
 .. lua:class:: gesture.tap
 
    Tap gesture recognizer (using system gesture recognizer for implementation)
 
-   .. lua:staticmethod:: gesture.tap(callback[, minTouches = 1, maxTouches = 1])
+   .. lua:staticmethod:: gesture.tap(callback[, tapCount = 1, touchCount = 1])
 
       Creates and registers a new tap gesture recognizer that will call ``callback(gesture)`` when recognized
 
@@ -176,7 +200,7 @@ Gestures
 
    Pan gesture recognizer (using system gesture recognizer for implementation)
 
-   .. lua:staticmethod:: gesture.pan(callback[, minTouches = 1, maxTouches = 1])
+   .. lua:staticmethod:: gesture.pan(callback[, minTouches = 1, maxTouches = 1, trackpadSupport = false])
 
       Creates and registers a new pan gesture recognizer that will call ``callback(gesture)`` when recognized
 
@@ -210,6 +234,32 @@ Gestures
 
       Enables/disables this gesture recognizer
 
+.. lua:class:: gesture.swipe
+
+   Swipe gesture recognizer (using system gesture recognizer for implementation)
+
+   .. lua:staticmethod:: gesture.swipe(callback[, swipeDirection = gesture.all, touchCount = 1])
+
+      Creates and registers a new swipe gesture recognizer that will call ``callback(gesture)`` when recognized
+
+      :return: The gestures in this order (left, right, up, down). But if a direction is not included then it is ingored
+      :rtype: gesture.swipe, gesture.swipe, gesture.swipe, gesture.swipe 
+
+   .. lua:attribute:: enabled: boolean
+
+      Enables/disables this gesture recognizer
+
+.. lua:class:: gesture.longPress
+
+   Rotation gesture recognizer (using system gesture recognizer for implementation)
+
+   .. lua:staticmethod:: gesture.longPress(callback[, tapCount = 0, touchCount = 1, allowableMovement = 10, minimumPressDuration = 0.5])
+      
+      Creates and registers a new long press gesture recognizer that will call ``callback(gesture)`` when recognized
+
+   .. lua:attribute:: enabled: boolean
+
+      Enables/disables this gesture recognizer
 
 Keyboard
 ########
@@ -528,38 +578,6 @@ Mouse
 
       Sets whether the mouse is visible or hidden
 
-   .. lua:attribute:: pressed: function(mouseName)
-
-      Callback for when the mouse is pressed
-
-      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
-      :type mouseName: string
-
-   .. lua:attribute:: released: function(mouseName)
-
-      Callback for when the mouse is released
-
-      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
-      :type mouseName: string
-
-   .. lua:attribute:: changed: function(mouseName, changeState)
-
-      Callback for when the mouse has been changed
-
-      :param mouseName: Returns the name of the mouse being selected ("left", "right", "middle") 
-      :type mouseName: string
-      :param changeState: Inputs true if the mouse was pressed or false if the mouse was released
-      :type wasPressed: boolean
-
-   .. lua:attribute:: moved: function(deltaX, deltaY)
-
-      Callback for when the mouse has been moved
-
-      :param deltaX: The delta x of the mouse
-      :type deltaX: number
-      :param deltaY: The delta y of the mouse
-      :type deltaY: number
-
    .. lua:class:: button
 
       .. lua:attribute:: pressing: boolean
@@ -597,3 +615,41 @@ Mouse
    :type size: vec2
    :param roundedRadius: Radius of the rectangle
    :type roundedRadius: number
+
+.. lua:currentmodule:: None
+
+**Global Mouse Funcitons**
+
+.. lua:method:: mousePressed(mouseName)
+
+      Function for when the mouse is pressed
+
+      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
+      :type mouseName: string
+
+.. lua:method:: mouseReleased(mouseName)
+
+      Function for when the mouse is released
+
+      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
+      :type mouseName: string
+
+.. lua:method:: mouseChanged(mouseName, changeState)
+
+      Function for when the mouse has been changed
+
+      :param mouseName: Returns the name of the mouse being selected ("left", "right", "middle") 
+      :type mouseName: string
+      :param changeState: Inputs true if the mouse was pressed or false if the mouse was released
+      :type wasPressed: boolean
+
+.. lua:method:: mouseMoved(deltaX, deltaY)
+
+      Function for when the mouse has been moved
+
+      :param deltaX: The delta x of the mouse
+      :type deltaX: number
+      :param deltaY: The delta y of the mouse
+      :type deltaY: number
+
+

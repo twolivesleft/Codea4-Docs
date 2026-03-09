@@ -305,6 +305,34 @@ Animation Track
 
         Does the same thing as ``keyAtTime``
 
+    .. lua:method:: custom ([function])
+
+        This allows this track to use a custom function instead the property to set the target
+
+        :param function: Sets the custom function if no input then use default behavior
+        :type function: function
+
+        .. code-block:: lua
+            :caption: How to use custom
+
+            ani:target(boyEntity)
+            trac = ani.rz -- creates a track of the "rz" (rotation on z axis).
+                :key(0.0, nil)
+                :key(1.0, 720.0)
+            
+            trac:custom(function(value) -- because setting "rz" is unstable it is safer to set the rotation variable directly so we use a custom function
+                boy.rotation = quat.eulerAngles(0, 0, value)
+            end)
+
+    .. lua:attribute:: openBeginning: boolean
+
+        This is a variable that sets the 0 second key frame to be open meaning that the track will add a key frame at 0 second time and will set the value to the current property value.
+        This can be used to smoothly go from game play to a cut scene without an abrupt cut.
+
+    .. lua:attribute:: openEasing: animation.easing
+
+        This is the easing of the open key frame
+
 Animation Key
 #############
 
