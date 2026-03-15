@@ -54,12 +54,16 @@ Procedurally animate values over time, otherwise known as tweening
       :param keyValuePairs: The key value pairs to be tweened
       :type keyValuePairs: table
 
+      .. helptext:: add a tweening segment with target values
+
    .. lua:method:: time(duration)
 
       Sets The duration of the current tweening segment (created via ``to{}``)
 
       :param duration: The amount of time to take in seconds
       :type keyValuePairs: number
+
+      .. helptext:: set the duration of the current tween segment
 
    .. lua:method:: ease(easeType)
 
@@ -68,12 +72,16 @@ Procedurally animate values over time, otherwise known as tweening
       :param easeType: The easing function to use
       :type easeType: constant
 
+      .. helptext:: set the easing function for the current tween segment
+
    .. lua:method:: loop(count)
 
       Sets the loop count for the current tweening segment (created via ``to{}``). Using `nil` for the count will result in an infinite number of loops
 
       :param count: The number of times to loop
       :type easeType: integer
+
+      .. helptext:: set the loop count for the current tween segment
 
    .. lua:method:: pingpong(count)
 
@@ -82,17 +90,23 @@ Procedurally animate values over time, otherwise known as tweening
       :param count: The number of times to ping-pong
       :type easeType: integer
 
+      .. helptext:: set the current tween segment to ping-pong
+
    .. lua:method:: relative()
 
       Sets the current tweening segment (created via ``to{}``) to be relative
 
       Relative tweens will apply values additively from their initial state
 
+      .. helptext:: set the current tween segment to use relative values
+
    .. lua:method:: unscaled()
 
       Sets the current tweening segment (created via ``to{}``) to used unscaled time
 
       Unscaled tweens will not be effected by ``time.scale``
+
+      .. helptext:: set the current tween segment to use unscaled time
 
    .. lua:method:: onStep(callback)
 
@@ -101,12 +115,16 @@ Procedurally animate values over time, otherwise known as tweening
       :param callback: The number of times to ping-pong
       :type callback: function
 
+      .. helptext:: set a callback for each tween step
+
    .. lua:method:: onStep(callback)
 
       Sets a callback for each time the tween is stepped (advanced once per frame)
 
       :param callback: The callback function
       :type callback: function
+
+      .. helptext:: set a callback for each tween step
 
    .. lua:method:: onSeek(callback)
 
@@ -115,12 +133,16 @@ Procedurally animate values over time, otherwise known as tweening
       :param callback: The callback function
       :type callback: function
 
+      .. helptext:: set a callback for each tween seek
+
    .. lua:method:: onComplete(callback)
 
       Sets a callback for each time the tween completes
 
       :param callback: The callback function
       :type callback: function
+
+      .. helptext:: set a callback for when the tween completes
 
    .. lua:method:: seek(percent)
 
@@ -129,27 +151,39 @@ Procedurally animate values over time, otherwise known as tweening
       :param percent: The normalized time in the tween to seek to
       :type percent: number
 
+      .. helptext:: seek the tween to a normalized time
+
    .. lua:method:: pause()
 
       Pauses the tween
+
+      .. helptext:: pause the tween
 
    .. lua:method:: play()
 
       Plays/resumes the tween
 
+      .. helptext:: play or resume the tween
+
    .. lua:method:: restart()
 
       Restarts the tween from the beginning
 
+      .. helptext:: restart the tween from the beginning
+
    .. lua:method:: cancel()
 
       Cancels and destroys the tween (this still counts as the tween completing)
+
+      .. helptext:: cancel and destroy the tween
 
    .. lua:method:: dontDestroy()
 
       Prevent the tween from being automatically destroyed when complete
 
       This is useful if you plan to reuse the tween using ``restart()``
+
+      .. helptext:: prevent the tween from being destroyed when complete
 
 Easing Functions
 ----------------
