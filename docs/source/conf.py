@@ -13,6 +13,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('./builders'))
+sys.path.append(os.path.abspath('./extensions'))
 
 # -- Project information -----------------------------------------------------
 
@@ -33,7 +34,8 @@ extensions = [
     'luadoc',
     'luadomain',
     'sphinx_copybutton',
-    'sphinx_toolbox.collapse'
+    'sphinx_toolbox.collapse',
+    'helptext'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
