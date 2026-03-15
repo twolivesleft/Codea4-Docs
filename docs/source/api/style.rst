@@ -19,10 +19,14 @@ General
 
    Use :lua:func:`style.reset` to restore the default style
 
+   .. helptext:: push, pop and reset the style stack
+
 .. lua:function:: get()
                   set(style)
 
    Gets/sets the current style as a graphicsStyle object allowing styles to be saved and restored arbitrarily
+
+   .. helptext:: get the current style
 
 .. lua:function:: fill(<color>)
                   fill() -> r, g, b, a
@@ -59,6 +63,8 @@ General
    :param number gray: The grayscale value to set the stroke to
    :param number alpha: The alpha value to set the stroke to
 
+   .. helptext:: set the stroke color
+
 .. lua:function:: stroke(red, green, blue)
 
    Sets the stroke color to the specified red, green, and blue values
@@ -66,6 +72,8 @@ General
    :param number red: The red value to set the stroke to
    :param number green: The green value to set the stroke to
    :param number blue: The blue value to set the stroke to
+
+   .. helptext:: set the stroke color
 
 .. lua:function:: stroke(red, green, blue, alpha)
 
@@ -75,6 +83,8 @@ General
    :param number green: The green value to set the stroke to
    :param number blue: The blue value to set the stroke to
    :param number alpha: The alpha value to set the stroke to
+
+   .. helptext:: set the stroke color
 
 .. lua:function:: noStroke()
 
@@ -94,6 +104,8 @@ General
    Sets/gets the scale of a sprite when rendering
 
    :param number scale: the scaling factor of the sprite image
+
+   .. helptext:: set the pixel scaling for sprite()
 
 .. lua:function:: strokeWidth(width)
                   stroke() -> number
@@ -122,6 +134,8 @@ General
    - :lua:attr:`MITER`
    - :lua:attr:`BEVEL`
 
+   .. helptext:: set the join style of polyline()
+
 .. lua:function:: shapeMode(mode)
                   shapeMode() -> enum
 
@@ -131,6 +145,8 @@ General
    - :lua:attr:`CORNERS` - Draw shapes by specifying the two opposite corners
    - :lua:attr:`CORNER` - Draw shapes by specifying the bottom left corner and then width/height
    - :lua:attr:`RADIUS` - Draw shapes by specifying center and radius
+
+   .. helptext:: set the drawing origin for rect() and ellipse()
 
 Constants - Shape Mode
 **********************
@@ -147,6 +163,8 @@ Constants - Shape Mode
 .. lua:attribute:: RADIUS: const
 
 .. lua:function:: sortOrder(order)
+
+   .. helptext:: set the sort order for drawing
 
 Blending Style
 ##############
@@ -171,13 +189,19 @@ Functions
 
    Sets a custom blend mode for both rgb and alpha components using ``src`` (source) and ``dst`` destination blending factors
 
+   .. helptext:: set a custom blend mode
+
 .. lua:function:: blend(src, dst, srcAlpha, dstAlpha)
 
    Sets a custom blend mode with separate blending factors for both rgb and alpha components
 
+   .. helptext:: set a custom blend mode with separate alpha factors
+
 .. lua:function:: blend() -> src, dst, srcAlpha, dstAlpha
 
    Returns the current blend factors for both rgb and alpha components (regardless of how the blend modes were set)
+
+   .. helptext:: get the current blend factors
 
 .. lua:function:: blendFunc(func)
                   blendFunc(func, alphaFunc)
@@ -195,9 +219,13 @@ Functions
    - :lua:`EQUATION_MAX` - Maximum (blend factors are ignored)
       :math:`R = max(R_s, R_d)`
 
+   .. helptext:: set the blend equation function
+
 .. lua:function:: blendFunc() -> func, alphaFunc
 
    Returns the current blend function for both rgb and alpha components (regardless of how the functions were set)
+
+   .. helptext:: get the current blend equation function
 
 Constants - Blend Modes
 ***********************
@@ -336,6 +364,8 @@ Viewport
    :param number w: The width of the viewport
    :param number h: The height of the viewport
 
+   .. helptext:: set the viewport of the renderer
+
 Clipping
 ########
 
@@ -350,6 +380,8 @@ Clipping
 .. lua:function:: noClip()
 
    Disables clipping
+
+   .. helptext:: disable clipping
 
 Stencil
 #######
@@ -400,9 +432,13 @@ Stencils are configured using a table with the following properties:
 
    Sets/gets the current stencil state for both front and back faces
 
+   .. helptext:: set the stencil state for front and back faces
+
 .. lua:function:: stencil(front, back)
 
    Sets/gets the current stencil state for both front and back faces
+
+   .. helptext:: set separate stencil states for front and back faces
 
 
 
@@ -445,6 +481,8 @@ Text Style
    .. helptext:: set alignment for text()
 
 .. lua:function:: textStyle(style)
+
+   .. helptext:: set the style for text()
 
 Constants - Text
 ****************
