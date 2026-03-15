@@ -136,6 +136,8 @@ Image
       :return: A new image containing the irradiance data
       :rtype: image
 
+      .. helptext:: generate pre-computed irradiance data
+
    .. lua:method:: generateIrradiance(target, samples)
 
       Generates a guassian pyramid of pre-computed irradiance levels, used for image based lighting
@@ -146,6 +148,8 @@ Image
       :type samples: integer
       :return: The target image containing the irradiance data
       :rtype: image
+
+      .. helptext:: generate irradiance data into a target image
 
 Image Formats
 -------------
@@ -434,44 +438,76 @@ Slices and Atlases
       end
 
    .. lua:method:: name(name)
+
+      .. helptext:: set the slice name
    .. lua:method:: name()      
 
       Gets/sets the slice name (for retrieval  in the ``atlas`` class)
+
+      .. helptext:: get the slice name
 
    .. lua:method:: normal()
 
       Reset the slice to the normal drawing mode (from patch or polygon mode)
 
+      .. helptext:: reset the slice to normal drawing mode
+
    .. lua:method:: rect(x, y, w, h)
+
+      .. helptext:: set the slice sub-rectangle
    .. lua:method:: rect()      
 
       Set/gets the sub-rectangle for the slice (in pixels). Use this to draw a portion of the sliced image
 
+      .. helptext:: get the slice sub-rectangle
+
    .. lua:method:: patch(left, right, top, bottom)      
+
+      .. helptext:: set the slice as a 9-patch with margins
    .. lua:method:: patch(margin)            
 
       Sets the slice to draw as a 9-patch using the supplied margins. This allows the slice to be stretched to an arbitrary size while maintaining fixed-sized borders
 
+      .. helptext:: set the slice as a 9-patch with a uniform margin
+
    .. lua:method:: padding(left, right, top, bottom)      
+
+      .. helptext:: set the slice padding
    .. lua:method:: padding(amount)              
+
+      .. helptext:: set the slice padding uniformly
    .. lua:method:: padding()            
 
       Sets/gets the slice padding. This allows for a larger slice to be drawn but discards empty space at the edges (useful sprites packed into an atlas that trims empty space)
 
+      .. helptext:: get the slice padding
+
    .. lua:method:: anchor(x, y)      
+
+      .. helptext:: set the slice anchor
    .. lua:method:: anchor()      
 
       Sets/gets the slice anchor (also known as a pivot). The anchor is the geometric center of the slice for transformations such as rotation/scale and flipping
 
+      .. helptext:: get the slice anchor
+
    .. lua:method:: rotate(angle)      
+
+      .. helptext:: set the slice rotation
    .. lua:method:: rotate()     
 
       Sets/gets the sice rotation (in discrete 90 degree turns). Useful for atlas packed sprites that might be rotated to fit, or when reusing a slice at a different 90 degee angle
 
+      .. helptext:: get the slice rotation
+
    .. lua:method:: flip(x, y)      
+
+      .. helptext:: set the slice horizontal and vertical flip
    .. lua:method:: flip()            
 
       Sets/gets the horizontal and vertical flip for the slice
+
+      .. helptext:: get the slice flip
     
    .. lua:attribute:: image: image
 
@@ -497,7 +533,13 @@ Slices and Atlases
 
    .. lua:method:: clear()
 
+      .. helptext:: clear all slices from this atlas
+
    .. lua:method:: setWithCellSize(cellWidth[, cellHeight, padding])
 
+      .. helptext:: generate slices using cell size
+
    .. lua:method:: setWithCellCount(cellColumns[, cellRows, padding])      
+
+      .. helptext:: generate slices using cell count
    
