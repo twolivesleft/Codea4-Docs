@@ -68,9 +68,15 @@ shader
 
    .. lua:method:: setOption(name, on)
 
+      .. helptext:: set a shader option
+
    .. lua:method:: dispatch(wx, wy, wz)
 
+      .. helptext:: dispatch this compute shader
+
    .. lua:method:: dispatchIndirect(indirectBuffer, start, num)
+
+      .. helptext:: dispatch this compute shader indirectly
 
    .. lua:class:: builder
 
@@ -104,13 +110,19 @@ shader
 
          Resize the buffer
 
+         .. helptext:: resize the buffer
+
       .. lua:method:: clear()  
 
          Clear the buffer
 
+         .. helptext:: clear the buffer
+
       .. lua:method:: append(attribute1, value1, attribute2, value2[, ...])
 
          Append a new element to the buffer using pairs of attributes and values
+
+         .. helptext:: append a new element to the buffer
 
    .. lua:class:: indexBuffer
 
@@ -126,13 +138,19 @@ shader
 
          Resize the buffer
 
+         .. helptext:: resize the index buffer
+
       .. lua:method:: clear()  
 
          Clear the buffer
 
+         .. helptext:: clear the index buffer
+
       .. lua:method:: append(i1, i2, i3, ...)
 
          Appends multiple elements to the buffer
+
+         .. helptext:: append elements to the index buffer
 
    .. lua:class:: bufferLayout
 
@@ -220,9 +238,13 @@ shader
 
          Resize the buffer to a given ``size``
 
+         .. helptext:: resize the buffer to a given size
+
       .. lua:method:: clear()
 
          Clear the buffer
+
+         .. helptext:: clear the buffer
       
 
 
