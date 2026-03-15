@@ -14,6 +14,8 @@ color
                          color(red, green, blue, alpha)
 
       Creates a new color object from the given values between 0 and 255
+
+      .. helptext:: create a new color type
     
    .. lua:staticmethod:: fromHSV(h, s, v)
                          fromHSV(vec3)

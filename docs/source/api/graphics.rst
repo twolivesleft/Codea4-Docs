@@ -16,12 +16,16 @@ Background
 
    Clears the current background with the contents of a cube image, using the current camera settings to define eye direction
 
+   .. helptext:: set the background color, image or shader
+
    :param cubeImage: The image to clear the background with
    :param mipLevel: The mip level of the image to use, useful for displaying pre-blurred image mips, such as those calculated using :lua:meth:`image.generateIrradiance`
 
 .. lua:function:: background(shader)
 
    Clears the current background using a custom shader
+
+   .. helptext:: set the background color, image or shader
 
    .. collapse:: Example
 
@@ -53,9 +57,13 @@ A set of graphics functions which are so commonly used they are in the global na
    .. |project_cap| image:: /images/example_lineCap_PROJECT.png
       :width: 100
 
+   .. helptext:: draw a line between two points
+
 .. lua:function:: line(x, y)
 
    Variation of line command used as part of shape drawing
+
+   .. helptext:: draw a line between two points
 
 .. lua:function:: polyline(x1, y1, x2, y2, ... xn, yn)
 
@@ -106,6 +114,8 @@ A set of graphics functions which are so commonly used they are in the global na
 
    Draw an ellipse with a given origin point and width / height (or radius)
 
+   .. helptext:: draw a circle or oval
+
 .. lua:function:: rect(x, y, w, h)
                   rect(x, y, w, h, r)
                   rect(x, y, w, h, r1, r2, r3, r4)
@@ -113,6 +123,8 @@ A set of graphics functions which are so commonly used they are in the global na
    Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on :lua:func:`style.shapeMode`
 
    Additional arguments allow for rounded corners (either all one radius or four separate radii)
+
+   .. helptext:: draw a rectangle
 
 Sprites
 #######
@@ -123,8 +135,12 @@ Sprites
 
    Draws a sprite using a an asset - :lua:class:`image`, :lua:class:`asset.key` or :lua:class:`sprite.slice`
 
+   .. helptext:: draw a sprite or image
+
 
 .. lua:function:: sprite(shader, x, y, w, h)
+
+   .. helptext:: draw a sprite or image
 
 
 Text
@@ -133,6 +149,8 @@ Text
 .. lua:function:: text(str, x, y, [w, h])
 
    Draws one or more lines of text based on the current style. Use the optional width and height parameters to draw a fixed size text box with line wrapping enabled
+
+   .. helptext:: draw text at a location
 
    - *Text Color* with :lua:func:`style.fill`
    - *Text Outline* with :lua:func:`style.stroke`
@@ -252,6 +270,8 @@ Text
 
    Gets the size of a text being drawn
 
+   .. helptext:: get the width and height of the drawn string
+
    :param str: the text to query
    :type str: string
    :param width: the width of the textbox
@@ -269,6 +289,8 @@ Gizmos are useful for drawing shapes in 2D/3D space for debugging and editing
 .. lua:function:: line(x1, y1, z1, x2, y2, z2)
 
    Draws a 3D antialiased line
+
+   .. helptext:: draw a line between two points
 
 Color Space
 ###########

@@ -29,9 +29,13 @@ General
 
    Sets/gets the fill color for use in vector drawing operations
 
+   .. helptext:: set the fill color
+
 .. lua:function:: noFill()
 
    Disables fill
+
+   .. helptext:: clear the fill color
 
 .. lua:function:: stroke()
 
@@ -76,10 +80,14 @@ General
 
    Disables stroke
 
+   .. helptext:: clear the stroke color
+
 .. lua:function:: tint(<color>)
                   tint() -> r, g, b, a
 
    Sets/gets the tint color for use to tint calls to :lua:func:`sprite` and :lua:meth:`mesh.draw`
+
+   .. helptext:: set the tint color for images drawn with sprite()
 
 .. lua:function:: pixelScaling(scale)
 
@@ -92,6 +100,8 @@ General
 
    Sets/gets the stroke width for use in vector drawing operations
 
+   .. helptext:: set the width of outlines
+
 .. lua:function:: lineCap(mode)
                   lineCap() -> enum
 
@@ -100,6 +110,8 @@ General
    - :lua:attr:`ROUND`
    - :lua:attr:`SQUARE`
    - :lua:attr:`PROJECT`
+
+   .. helptext:: set the cap style of line()
 
 .. lua:function:: lineJoin(mode)
                   lineJoin() -> enum
@@ -145,6 +157,8 @@ Functions
 .. lua:function:: blend(mode)
 
    Sets the current blend mode to one of the available presets. Blending composites pixels onto the current drawing context based on source and destination color and alpha values
+
+   .. helptext:: set the blend mode for drawing
 
    The default mode is :lua:`NORMAL` which applies standard alpha blended transparency with the following equation:
 
@@ -331,6 +345,8 @@ Clipping
 
    *Note: the clipping rectangle is effected by the current matrix transform*
 
+   .. helptext:: setup a clipping region on the screen
+
 .. lua:function:: noClip()
 
    Disables clipping
@@ -422,7 +438,11 @@ Text Style
 
 .. lua:function:: fontSize(size)
 
+   .. helptext:: set the font size for text()
+
 .. lua:function:: textAlign(align)
+
+   .. helptext:: set alignment for text()
 
 .. lua:function:: textStyle(style)
 

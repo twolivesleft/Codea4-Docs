@@ -25,6 +25,8 @@ Image
 
       Create a blank 2D image (default format is `rgba`)
 
+      .. helptext:: create a new blank image
+
       :param width: The width of the image
       :type width: integer
       :param height: The height of the image
@@ -499,4 +501,3 @@ Slices and Atlases
 
    .. lua:method:: setWithCellCount(cellColumns[, cellRows, padding])      
    
-

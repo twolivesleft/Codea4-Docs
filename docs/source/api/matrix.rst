@@ -47,14 +47,20 @@ Transform
 
    Translate the current model matrix
 
+   .. helptext:: translate the current transform
+
 .. lua:function:: rotate(quat)
 .. lua:function:: rotate(angle, x, y, z)
 
    Rotate the current model matrix
 
+   .. helptext:: rotate the current transform
+
 .. lua:function:: scale(x, y[, z])
 
    Scale the current model matrix
+
+   .. helptext:: scale the current transform
 
 Projection
 ##########
@@ -63,9 +69,13 @@ Projection
 
    Set the projection matrix to ortho using the device screen settings (i.e. coordinates range ``[0, 0]`` to ``[WIDTH, HEIGHT]``)
 
+   .. helptext:: setup an orthographic view
+
 .. lua:function:: ortho(height)
 
    Sets an orthographic projection matrix ``height`` units high, using the aspect ratio of the screen to set the width
+
+   .. helptext:: setup an orthographic view
 
    :param height: The height of the orthographic projection
    :type number:
@@ -74,6 +84,10 @@ Projection
 
    Sets an orthographic projection matrix using the supplied edge values
 
+   .. helptext:: setup an orthographic view
+
 .. lua:function:: perspective(fov, aspect, near, far])
 
    Sets a perspective projection matrix
+
+   .. helptext:: setup a perspective view
