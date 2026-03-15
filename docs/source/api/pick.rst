@@ -21,6 +21,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
             print(pickedAsset)
         end
 
+   .. helptext:: open the document picker to pick an asset
+
 .. lua:class:: pick
 
     .. lua:staticmethod:: pick.image()
@@ -141,6 +143,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
         pick("public.yaml", pick.option.image, pick.option.multiple, function(multipleAssets)
             print("Picked " .. #multipleAssets .. " assets")
         })
+
+   .. helptext:: pick assets with specified types and options
 
 pick.option.reference
 ---------------------

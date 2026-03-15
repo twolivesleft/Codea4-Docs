@@ -86,17 +86,25 @@ A set of graphics functions which are so commonly used they are in the global na
    .. |bevel_join| image:: /images/example_lineJoin_BEVEL.png
       :width: 100
 
+   .. helptext:: draw a continuous polyline
+
 .. lua:function:: polygon(x1, y1, x2, y2, ... xn, yn)
 
    Draws a closed 2D polygon with an arbitrary number of points based on the current style
+
+   .. helptext:: draw a closed polygon
 
 .. lua:function:: bezier(x1, y1, cx1, cy1, cx2, cy2, x2, y2)
 
    Draw a quadratic bezier curve using four points based on the current style
 
+   .. helptext:: draw a cubic bezier curve
+
 .. lua:function:: bezier(cx1, cy1, cx2, cy2, x2, y2)
 
    Variation of bezier command used as part of shape drawing
+
+   .. helptext:: draw a bezier curve segment
 
 .. lua:function:: arc(x, y, radius, startAngle, endAngle, dir)
 
@@ -108,6 +116,8 @@ A set of graphics functions which are so commonly used they are in the global na
    :param startAngle: the start angle of the arc (in degrees)
    :param endAngle: the end angle of the arc (in degrees)
    :param dir: the direction of the arc, 1 or clockwise, -1 for anti-clockwise
+
+   .. helptext:: draw a 2D arc
 
 .. lua:function:: ellipse(x, y, w, h)
                   ellipse(x, y, r)
@@ -303,6 +313,8 @@ Color Space
 
    :param type: Either ``GAMMA`` or ``LINEAR``
 
+   .. helptext:: set the drawing color space
+
 Contexts
 ########
 
@@ -316,6 +328,10 @@ Contexts
    :param layer: The layer of image to draw to
    :param mip: The mip of the image to draw to
 
+   .. helptext:: push an image onto the drawing context
+
 .. lua:function:: pop
 
    Pops the current image from the context if one exists, subsequent drawing operations are again applied to the main context (i.e. the display)
+
+   .. helptext:: pop the current image from the drawing context

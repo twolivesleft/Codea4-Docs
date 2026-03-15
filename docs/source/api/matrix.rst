@@ -16,21 +16,29 @@ General
 
    Functions for manipulating the matrix stack, use these when you want to temporarily change current space-transform for drawing operations
 
+   .. helptext:: push, pop and reset the matrix stack
+
 .. lua:function:: model()
                   model(matrix)
                   
 
    Gets/sets the model matrix used to transform from local to world space
 
+   .. helptext:: get or set the model matrix
+
 .. lua:function:: view()
                   view(matrix)
 
    Gets/sets the view matrix used to transform from world to view space (generally controlled by cameras)
 
+   .. helptext:: get or set the view matrix
+
 .. lua:function:: projection()
                   projection(matrix)
 
    Gets/sets the projection matrix, used for final projection (i.e. othro and perspective projection)
+
+   .. helptext:: get or set the projection matrix
 
 Transform
 #########
@@ -39,9 +47,13 @@ Transform
 
    Apply a generic 2D transform to the model matrix
 
+   .. helptext:: apply a 2D transform to the model matrix
+
 .. lua:function:: transform3d(x, y, z, sx, sy, sz, rx, ry, rz)
 
    Apply a generic 3D transform to the model matrix
+
+   .. helptext:: apply a 3D transform to the model matrix
 
 .. lua:function:: translate(x, y[, z])
 
@@ -50,6 +62,8 @@ Transform
    .. helptext:: translate the current transform
 
 .. lua:function:: rotate(quat)
+
+   .. helptext:: rotate the current transform
 .. lua:function:: rotate(angle, x, y, z)
 
    Rotate the current model matrix

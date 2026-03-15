@@ -41,22 +41,32 @@ color
    .. lua:method:: linear() -> color
 
       Returns the color converted to linear space
+
+      .. helptext:: convert this color to linear space
    
    .. lua:method:: gamma() -> color
 
       Returns the color converted to gamma space
 
+      .. helptext:: convert this color to gamma space
+
    .. lua:method:: grayscale() -> number
 
       Returns the color converted to grayscale
+
+      .. helptext:: convert this color to grayscale
    
    .. lua:method:: hsv() -> vec3
 
       Returns the color converted to HSV values
+
+      .. helptext:: convert this color to HSV values
    
    .. lua:method:: unpack() -> number, number, number, number
 
       Returns the color as a tuple of 4 numbers
+
+      .. helptext:: unpack this color as four numbers
    
    .. lua:staticmethod:: mix(a, b, t) -> color
 
