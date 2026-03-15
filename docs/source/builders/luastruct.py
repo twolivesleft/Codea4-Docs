@@ -170,8 +170,9 @@ class LuaModule:
     def to_dict(self):
         return {
             'name': self.name,
-            'description': self.description,
+            'description': self.description,            
             'helptext': self.helptext,
+            'examples': self.examples,
             'group': self.group
         }
 
