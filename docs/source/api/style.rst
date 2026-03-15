@@ -11,22 +11,40 @@ General
 .. lua:module:: style
 
 .. lua:function:: push()
-                  push(style)
-                  pop()
-                  reset()
 
-   Functions for manipulating the style stack, use these when you want to temporarily change the style and restore it to it's previous state
+   Push the current style onto the stack
 
-   Use :lua:func:`style.reset` to restore the default style
+   .. helptext:: push the current style onto the stack
 
-   .. helptext:: push, pop and reset the style stack
+.. lua:function:: push(style)
+
+   Push a specific style onto the stack
+
+   .. helptext:: push a style onto the stack
+
+.. lua:function:: pop()
+
+   Pop the current style from the stack, restoring the previous style
+
+   .. helptext:: pop the current style from the stack
+
+.. lua:function:: reset()
+
+   Reset the current style to defaults. Use this to restore the default style
+
+   .. helptext:: reset the style to defaults
 
 .. lua:function:: get()
-                  set(style)
 
-   Gets/sets the current style as a graphicsStyle object allowing styles to be saved and restored arbitrarily
+   Gets the current style as a graphicsStyle object, allowing styles to be saved and restored arbitrarily
 
    .. helptext:: get the current style
+
+.. lua:function:: set(style)
+
+   Sets the current style from a graphicsStyle object
+
+   .. helptext:: set the current style
 
 .. lua:function:: fill(<color>)
                   fill() -> r, g, b, a
@@ -93,11 +111,16 @@ General
    .. helptext:: clear the stroke color
 
 .. lua:function:: tint(<color>)
-                  tint() -> r, g, b, a
 
-   Sets/gets the tint color for use to tint calls to :lua:func:`sprite` and :lua:meth:`mesh.draw`
+   Sets the tint color for use with :lua:func:`sprite` and :lua:meth:`mesh.draw`
 
    .. helptext:: set the tint color for images drawn with sprite()
+
+.. lua:function:: tint() -> r, g, b, a
+
+   Gets the current tint color
+
+   .. helptext:: get the tint color
 
 .. lua:function:: pixelScaling(scale)
 
@@ -108,16 +131,20 @@ General
    .. helptext:: set the pixel scaling for sprite()
 
 .. lua:function:: strokeWidth(width)
-                  stroke() -> number
 
-   Sets/gets the stroke width for use in vector drawing operations
+   Sets the stroke width for use in vector drawing operations
 
    .. helptext:: set the width of outlines
 
-.. lua:function:: lineCap(mode)
-                  lineCap() -> enum
+.. lua:function:: strokeWidth() -> number
 
-   Sets/gets the current line cap mode, used by :lua:`line`, :lua:`polyline` and :lua:`shape`
+   Gets the current stroke width
+
+   .. helptext:: get the current outline width
+
+.. lua:function:: lineCap(mode)
+
+   Sets the current line cap mode, used by :lua:`line`, :lua:`polyline` and :lua:`shape`
 
    - :lua:attr:`ROUND`
    - :lua:attr:`SQUARE`
@@ -125,16 +152,27 @@ General
 
    .. helptext:: set the cap style of line()
 
-.. lua:function:: lineJoin(mode)
-                  lineJoin() -> enum
+.. lua:function:: lineCap() -> enum
 
-   Sets/gets the current line join mode, used by :lua:`polyline`, :lua:`polygon` and :lua:`shape` used when joining multiple line segments
+   Gets the current line cap mode
+
+   .. helptext:: get the current line cap style
+
+.. lua:function:: lineJoin(mode)
+
+   Sets the current line join mode, used by :lua:`polyline`, :lua:`polygon` and :lua:`shape` when joining multiple line segments
 
    - :lua:attr:`ROUND`
    - :lua:attr:`MITER`
    - :lua:attr:`BEVEL`
 
    .. helptext:: set the join style of polyline()
+
+.. lua:function:: lineJoin() -> enum
+
+   Gets the current line join mode
+
+   .. helptext:: get the current line join style
 
 .. lua:function:: shapeMode(mode)
                   shapeMode() -> enum
@@ -204,9 +242,8 @@ Functions
    .. helptext:: get the current blend factors
 
 .. lua:function:: blendFunc(func)
-                  blendFunc(func, alphaFunc)
 
-   Sets the current blend function (the default is :lua:`EQUATION_ADD`) which determines how source and destination parts of the blending equation are combined
+   Sets the same blend function for both rgb and alpha components (the default is :lua:`EQUATION_ADD`) which determines how source and destination parts of the blending equation are combined
 
    - :lua:`EQUATION_ADD` - Add (default)
       :math:`R = R_s*k_s+R_d*k_d`
@@ -220,6 +257,12 @@ Functions
       :math:`R = max(R_s, R_d)`
 
    .. helptext:: set the blend equation function
+
+.. lua:function:: blendFunc(func, alphaFunc)
+
+   Sets separate blend functions for rgb and alpha components
+
+   .. helptext:: set separate blend equation functions for rgb and alpha
 
 .. lua:function:: blendFunc() -> func, alphaFunc
 

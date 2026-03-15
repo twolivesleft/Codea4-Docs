@@ -11,34 +11,58 @@ General
 #######
 
 .. lua:function:: push()
-                  pop()
-                  reset()
 
-   Functions for manipulating the matrix stack, use these when you want to temporarily change current space-transform for drawing operations
+   Push the current matrix onto the stack, saving the current transform
 
-   .. helptext:: push, pop and reset the matrix stack
+   .. helptext:: push the current matrix onto the stack
+
+.. lua:function:: pop()
+
+   Pop the matrix from the stack, restoring the previous transform
+
+   .. helptext:: pop the current matrix from the stack
+
+.. lua:function:: reset()
+
+   Reset the current matrix to the identity matrix
+
+   .. helptext:: reset the matrix stack
 
 .. lua:function:: model()
-                  model(matrix)
-                  
 
-   Gets/sets the model matrix used to transform from local to world space
+   Gets the model matrix used to transform from local to world space
 
-   .. helptext:: get or set the model matrix
+   .. helptext:: get the model matrix
+
+.. lua:function:: model(matrix)
+
+   Sets the model matrix used to transform from local to world space
+
+   .. helptext:: set the model matrix
 
 .. lua:function:: view()
-                  view(matrix)
 
-   Gets/sets the view matrix used to transform from world to view space (generally controlled by cameras)
+   Gets the view matrix used to transform from world to view space
 
-   .. helptext:: get or set the view matrix
+   .. helptext:: get the view matrix
+
+.. lua:function:: view(matrix)
+
+   Sets the view matrix used to transform from world to view space (generally controlled by cameras)
+
+   .. helptext:: set the view matrix
 
 .. lua:function:: projection()
-                  projection(matrix)
 
-   Gets/sets the projection matrix, used for final projection (i.e. othro and perspective projection)
+   Gets the projection matrix used for final projection
 
-   .. helptext:: get or set the projection matrix
+   .. helptext:: get the projection matrix
+
+.. lua:function:: projection(matrix)
+
+   Sets the projection matrix, used for final projection (i.e. ortho and perspective projection)
+
+   .. helptext:: set the projection matrix
 
 Transform
 #########

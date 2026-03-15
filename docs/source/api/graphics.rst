@@ -16,7 +16,7 @@ Background
 
    Clears the current background with the contents of a cube image, using the current camera settings to define eye direction
 
-   .. helptext:: set the background color, image or shader
+   .. helptext:: clear the background with a cube image
 
    :param cubeImage: The image to clear the background with
    :param mipLevel: The mip level of the image to use, useful for displaying pre-blurred image mips, such as those calculated using :lua:meth:`image.generateIrradiance`
@@ -25,7 +25,7 @@ Background
 
    Clears the current background using a custom shader
 
-   .. helptext:: set the background color, image or shader
+   .. helptext:: clear the background with a shader
 
    .. collapse:: Example
 
