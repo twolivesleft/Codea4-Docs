@@ -51,6 +51,8 @@ entity
          .. literalinclude:: /code/Example_entity_destroy.codea/Main.lua
             :language: lua
 
+      .. helptext:: mark this entity for destruction
+
    **Components**
 
    .. lua:method:: add(component, ...)
@@ -83,6 +85,8 @@ entity
 
          When calling ``entity:add(component, ...)`` with a Lua class, all parameters will be forwarded to the ``created(...)`` event after the component's construction, allowing for customised initialisation
 
+      .. helptext:: add a component to this entity
+
    .. lua:method:: remove(component)
 
       Removes a given component type from this entity
@@ -93,6 +97,8 @@ entity
          local sphere = scene.main:entity()
          sphere:add(mesh.sphere(1)) -- add a sphere mesh to the entity         
          sphere:remove(mesh) -- remove the sphere mesh
+
+      .. helptext:: remove a component from this entity
 
 
    .. lua:method:: has(component)
@@ -106,6 +112,8 @@ entity
          sphere:add(mesh.sphere(1)) -- add a sphere mesh to the entity         
          print(sphere:has(mesh)) -- prints 'true'
 
+      .. helptext:: check if a component is attached to this entity
+
 
    .. lua:method:: get(component)
 
@@ -118,6 +126,8 @@ entity
          sphere:add(mesh.sphere(1)) -- add a sphere mesh to the entity         
          print(sphere:get(mesh)) -- prints the mesh description
 
+      .. helptext:: get a component attached to this entity
+
    .. lua:attribute:: components: table<component>
 
       Retrieves a list of all components attached to this entity
@@ -128,6 +138,8 @@ entity
 
       :param name: The name of the method to call
       :type: string
+
+      .. helptext:: dispatch a method call to this entity and its components
 
    **Relationships**
 
@@ -157,17 +169,25 @@ entity
 
       *Note that this will not work if the child name is an existing property or method name in the entity class*
 
+      .. helptext:: retrieve a child by name using property syntax
+
    .. lua:method:: child(name)
 
       Creates a new child entity of this entity
+
+      .. helptext:: create a new child entity
 
    .. lua:method:: findChild(name)
 
       :return: Finds the child named ``name`` or ``nil`` if it does not exist
 
+      .. helptext:: find a child entity by name
+
    .. lua:method:: childAt(index)
 
       :return: The child entity at a given index (between 1..childCount) or ``nil`` if an invalid index is supplied
+
+      .. helptext:: get the child entity at a given index
 
    .. lua:method:: moveBefore(entity)
 
@@ -175,11 +195,15 @@ entity
 
       *Note this may result in an entity's parent changing to make it the sibling or another entity*
 
+      .. helptext:: move this entity before another in the hierarchy
+
    .. lua:method:: moveAfter(entity)
 
       Rearranges this entity to appear after the supplied ``entity`` in the transform hierarchy
 
       *Note this may result in an entity's parent changing to make it the sibling or another entity*
+
+      .. helptext:: move this entity after another in the hierarchy
 
    **Transform**
 
@@ -266,12 +290,16 @@ entity
       :param localPoint: The point to transform
       :type localPoint: vec3
 
+      .. helptext:: transform a point from local to world space
+
    .. lua:method:: inverseTransformPoint(worldPoint)
 
       Transform a point from world to local space
 
       :param worldPoint: The point to transform
       :type worldPoint: vec3
+
+      .. helptext:: transform a point from world to local space
 
    .. lua:method:: transformDirection(localDir)
 
@@ -280,6 +308,8 @@ entity
       :param localDir: The vector to transform
       :type localDir: vec3
 
+      .. helptext:: transform a direction from local to world space
+
    .. lua:method:: inverseTransformDirection(worldDir)
 
       Transform a vector from world to local space
@@ -287,11 +317,15 @@ entity
       :param worldDir: The vector to transform
       :type worldDir: vec3
 
+      .. helptext:: transform a direction from world to local space
+
    .. lua:method:: translate(x, y[, z])
 
       Moves the entity by the provided translation vector in local space
 
       Also supports ``vec2`` and ``vec3`` parameters
+
+      .. helptext:: translate this entity in local space
 
    **Sprite Properties**
 
