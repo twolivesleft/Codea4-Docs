@@ -68,7 +68,7 @@ type is not present, but a notification may still appear if data is accessed.
 
     The first color in the pasteboard.
 
-   .. helptext:: create a new color type
+   .. helptext:: get or set the color on this pasteboard
 
 .. lua:attribute:: colors: table
 
