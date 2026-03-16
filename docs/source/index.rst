@@ -71,6 +71,7 @@ Codea 4
    api/physics3d
    api/pick
    api/viewer
+   api/inspector
    api/device
    api/storage
 

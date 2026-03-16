@@ -9,6 +9,8 @@ File operations module for working with assets and the file system. All file ope
 
    Copies a file or folder from one location to another. When copying to an asset library (folder), the file maintains its original name in the destination. Fails if the source does not exist or if the destination already exists.
 
+   .. helptext:: copy a file or folder
+
    :param source: Source file or folder to copy
    :type source: assetKey or assetLibrary
    :param destination: Destination path or folder
@@ -33,6 +35,8 @@ File operations module for working with assets and the file system. All file ope
 .. lua:function:: move(source, destination)
 
    Moves a file or folder from one location to another. When moving to an asset library (folder), the file maintains its original name in the destination. Fails if the source does not exist or if the destination already exists.
+
+   .. helptext:: move a file or folder
 
    :param source: Source file or folder to move
    :type source: assetKey or assetLibrary
@@ -59,6 +63,8 @@ File operations module for working with assets and the file system. All file ope
 
    Removes a file or folder. Built-in folders and top-level asset packs (asset, asset.builtin, asset.documents, asset.icloud) cannot be removed. Fails if the file does not exist.
 
+   .. helptext:: remove a file or folder
+
    :param asset: File or folder to remove
    :type asset: assetKey or assetLibrary
    :return: Success status and error message
@@ -78,6 +84,8 @@ File operations module for working with assets and the file system. All file ope
 .. lua:function:: mkdir(asset)
 
    Creates a new directory. Fails if the directory already exists or if the parent directory does not exist.
+
+   .. helptext:: create a new folder
 
    :param asset: Path where the directory should be created
    :type asset: assetKey or assetLibrary
@@ -102,6 +110,8 @@ File operations module for working with assets and the file system. All file ope
 
    Renames a file or folder within the same parent directory. This is a synonym for moving within the same parent folder to a new name. Fails if the source does not exist or a sibling with the new name already exists.
 
+   .. helptext:: rename a file or folder
+
    :param asset: Source file or folder to rename
    :type asset: assetKey
    :param newName: The new name for the file or folder
@@ -123,6 +133,8 @@ File operations module for working with assets and the file system. All file ope
 .. lua:function:: exists(asset)
 
    Checks if a file or folder exists at the given path.
+
+   .. helptext:: check if a file or folder exists
 
    :param asset: Path to check for existence
    :type asset: assetKey or assetLibrary

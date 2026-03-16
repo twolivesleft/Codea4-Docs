@@ -25,13 +25,19 @@ physics3d
       :return: The newly created body
       :rtype: physics3d.body
 
+      .. helptext:: create a new rigidbody in this world
+
    .. lua:method:: step([deltaTime])
 
       Steps the simulation by ``deltaTime``
 
+      .. helptext:: step the physics simulation
+
    .. lua:method:: draw()
 
       Draws a debug representation of the physics world using primitive shapes
+
+      .. helptext:: draw a debug representation of the physics world
 
    .. lua:method:: raycast(origin, direction, distance[, mask])
 
@@ -50,6 +56,8 @@ physics3d
 
       :return: The raycast hit info or ``nil`` is no collider was hit
       :rtype: physics3d.rayHit
+
+      .. helptext:: perform a raycast in this physics world
 
    .. lua:method:: sphereCast(origin, direction, distance, radius[, mask])
 
@@ -72,6 +80,8 @@ physics3d
       :return: The raycast hit info or ``nil`` is no collider was hit
       :rtype: physics3d.rayHit      
 
+      .. helptext:: perform a sphere cast in this physics world
+
    .. lua:attribute:: gravity: vec3
 
       The current gravity vector for this world
@@ -83,6 +93,8 @@ physics3d
    .. lua:method:: destroy()
 
       Destroys this body, removing it from the world in the next simluation step
+
+      .. helptext:: destroy this body
 
    .. lua:method:: sphere(radius, [offsetX, offsetY, offsetZ])
 
@@ -102,6 +114,8 @@ physics3d
 
       :return: The new circle collider
       :rtype: physics3d.sphere
+
+      .. helptext:: attach a sphere collider to this body
 
    .. lua:method:: box(halfWidth, halfHeight, halfDepth, [offsetX, offsetY, offsetZ])
 
@@ -128,6 +142,8 @@ physics3d
       :return: The new box collider
       :rtype: physics3d.box
 
+      .. helptext:: attach a box collider to this body
+
    .. lua:method:: capsule(radius, height[, offsetX, offsetY, offsetZ])
 
       Creates and attaches a capsule collider to this body
@@ -150,12 +166,16 @@ physics3d
       :return: The new capsule collider
       :rtype: physics3d.polygon
 
+      .. helptext:: attach a capsule collider to this body
+
    .. lua:method:: mesh(mesh[, convex])
 
       Creates and attaches a mesh collider to this body
 
       :return: The new capsule collider
       :rtype: physics3d.mesh
+
+      .. helptext:: attach a mesh collider to this body
 
    .. lua:method:: hinge(anchor, axis)
                    hinge(other, anchor, axis)
@@ -191,6 +211,8 @@ physics3d
       :return: The new hinge joint
       :rtype: physics3d.hinge
 
+      .. helptext:: attach a hinge joint to this body
+
    .. lua:method:: applyForce(force[, worldPoint])
 
       Applies a force to this body over time (non-instantanious). Ideal for physical effects such as wind, bouyancy and springs
@@ -206,20 +228,28 @@ physics3d
       :param force: The force vector to apply
       :type force: vec2
 
+      .. helptext:: apply a continuous force to this body
+
    .. lua:method:: applyTorque(torque)
 
       :param torque: The torque vector to apply
       :type torque: vec3
+
+      .. helptext:: apply a torque to this body
 
    .. lua:method:: applyLinearImpulse(impulse)
 
       :param impulse: The linear impulse to apply
       :type impulse: vec3
 
+      .. helptext:: apply a linear impulse to this body
+
    .. lua:method:: applyAngularImpulse(impulse)
 
       :param impulse: The angular impulse to apply
       :type impulse: vec3
+
+      .. helptext:: apply an angular impulse to this body
 
    .. lua:method:: worldPoint(localPoint)
 
@@ -230,6 +260,8 @@ physics3d
 
       :rtype: vec3
 
+      .. helptext:: transform a local point to world space
+
    .. lua:method:: worldVector(localVector)
 
       Transforms ``localVector`` from world space to local space in respect to this body
@@ -238,6 +270,8 @@ physics3d
       :type localVector: vec3
 
       :rtype: vec3
+
+      .. helptext:: transform a local vector to world space
 
    .. lua:method:: localPoint(worldPoint)
 
@@ -248,6 +282,8 @@ physics3d
 
       :rtype: vec3
 
+      .. helptext:: transform a world point to local space
+
    .. lua:method:: localVector(worldVector)
 
       Transforms ``worldVector`` from world space to local space in respect to this body
@@ -256,6 +292,8 @@ physics3d
       :type worldVector: vec3
 
       :rtype: vec3
+
+      .. helptext:: transform a world vector to local space
 
    .. lua:method:: velocityAtLocalPoint(localPoint)
 
@@ -268,6 +306,8 @@ physics3d
 
       :rtype: vec3
 
+      .. helptext:: sample the body velocity at a local point
+
    .. lua:method:: velocityAtWorldPoint(worldPoint)
 
       Samples the velocity of the body at ``worldPoint`` in world space
@@ -278,6 +318,8 @@ physics3d
       :type worldPoint: vec3
 
       :rtype: vec3
+
+      .. helptext:: sample the body velocity at a world point
 
    .. lua:attribute:: destroyed: boolean
 

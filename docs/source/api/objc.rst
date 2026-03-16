@@ -145,6 +145,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: delegate(name)
 
     Returns a type which can be instantiated and used as an Objective-C delegate for the specified type.
+
+    .. helptext:: create an Objective-C delegate type
     
     :param name: The name of the delegate.
     :type name: string
@@ -197,6 +199,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: class(name)
 
     Returns a type which can be instantiated and used as an Objective-C class, for example combined with a selector when registering for notifications through the NSNotificationCenter.
+
+    .. helptext:: create an Objective-C class type
     
     :param name: The name of the class.
     :type name: string
@@ -230,6 +234,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: selector(name)
 
     Returns an Objective-C selector with the specified name which can be used in combination with an objc.class, for example to register for notifications through the NSNotificationCenter.
+
+    .. helptext:: create an Objective-C selector
     
     :param name: The name of the selector.
     :type name: string
@@ -263,6 +269,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: set(table)
 
     Returns an Objective-C NSSet initialized from a Lua table.
+
+    .. helptext:: create an NSSet from a Lua table
     
     By default, NSSet returned from calls to Objective-C (or reading properties) are automatically converted to Lua tables. If you need to use the NSSet, you can convert the table to NSSet using ``objc.set``.
     
@@ -279,6 +287,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: string(text)
 
     Returns an Objective-C NSString initialized from a Lua string.
+
+    .. helptext:: create an NSString from a Lua string
     
     By default, strings returned from calls to Objective-C (or reading properties) are automatically converted to Lua strings and vice versa. If you need to access NSString methods, you can convert the strings to NSString using ``objc.string``.
     
@@ -295,6 +305,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:attribute:: enum: table
     
         Exposes native Objective-C enumerations.
+
+        .. helptext:: access native enumarations
         
         When value names are prefixed with their enumeration's name, the prefix is removed to simplify their usage.
         
@@ -322,6 +334,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:attribute:: app: table
 
         The UIApplication's ``sharedApplication``.
+
+        .. helptext:: access the sharedApplication
         
         :return: The UIApplication's ``sharedApplication``.
         :rtype: table
@@ -329,6 +343,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:attribute:: viewer: table
     
         The runtime ``UIViewController``.
+
+        .. helptext:: update view settings such as display mode
         
         :return: The runtime ``UIViewController``.
         :rtype: table
@@ -336,6 +352,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:attribute:: info: table
         
         Exposes the info dictionary keys and values.
+
+        .. helptext:: access the application info dictionary
         
         For better readability, all keys have their Apple prefix removed.
         
@@ -353,6 +371,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:attribute:: insets: table
 
         Create a UIEdgeInsets.
+
+        .. helptext:: create a UIEdgeInsets
         
         :param top: top value of the UIEdgeInsets
         :type top: number
@@ -373,6 +393,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: log(message)
 
     Log a message using NSLog instead of the Codea console.
+
+    .. helptext:: log a message with NSLog
     
     :param message: Message to display.
     :type message: string
@@ -385,6 +407,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: inspect(class)
 
     Inspect an Objective-C class, listing its variables, properties, methods and protocols.
+
+    .. helptext:: inspect an Objective-C class
     
     Returns a table with the following information:
     
@@ -439,6 +463,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
                   async(objc.async.background, function)
 
     Calls the function parameter on the main thread asynchronously, or on a background thread if objc.async.background is used.
+
+    .. helptext:: run a function asynchronously
     
     :param function: Parameterless function to run on the target thread.
     :type function: function
@@ -469,6 +495,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: point(x, y)
     
     Create a CGPoint.
+
+    .. helptext:: create a CGPoint
     
     :param x: x position of the CGPoint
     :type x: number
@@ -491,6 +519,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: rect(x, y, width, height)
 
     Create a CGRect.
+
+    .. helptext:: draw a rectangle
     
     :param x: x position of the CGRect
     :type x: number
@@ -517,6 +547,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: size(width, height)
 
     Create a CGSize.
+
+    .. helptext:: create a CGSize
     
     :param width: width of the CGSize
     :type width: number
@@ -539,6 +571,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: range(loc, len)
 
     Create a NSRange.
+
+    .. helptext:: create an NSRange
     
     :param loc: location of the NSRange
     :type loc: number
@@ -561,6 +595,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: color(r, g, b, a)
 
     Create a CGColor. For UIColor, use the Codea Color type instead.
+
+    .. helptext:: create a new color type
     
     :param r: red value of the CGColor
     :type r: number
@@ -587,6 +623,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: vector(dx, dy)
 
     Create a CGVector.
+
+    .. helptext:: create a CGVector
     
     :param dx: x direction of the CGVector
     :type dx: number
@@ -609,6 +647,8 @@ Some Codea types will be converted to corresponding Objective types automaticall
 .. lua:function:: affineTransform
     
         Create a `CGAffineTransform <https://developer.apple.com/documentation/coregraphics/cgaffinetransform?language=objc>`_.
+
+        .. helptext:: create a CGAffineTransform
         
         :param a: a value of the CGAffineTransform
         :type a: number

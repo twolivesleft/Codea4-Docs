@@ -161,9 +161,13 @@ Gestures
 
       Creates and registers a new tap gesture recognizer that will call ``callback(gesture)`` when recognized
 
+      .. helptext:: create a tap gesture recognizer
+
    .. lua:attribute:: enabled: boolean
 
       Enables/disables this gesture recognizer
+
+      .. helptext:: whether the gesture recognizer is enabled
 
 .. lua:class:: gesture.pan
 
@@ -173,9 +177,13 @@ Gestures
 
       Creates and registers a new pan gesture recognizer that will call ``callback(gesture)`` when recognized
 
+      .. helptext:: create a pan gesture recognizer
+
    .. lua:attribute:: enabled: boolean
 
       Enables/disables this gesture recognizer
+
+      .. helptext:: whether the gesture recognizer is enabled
 
 
 .. lua:class:: gesture.pinch
@@ -186,9 +194,13 @@ Gestures
 
       Creates and registers a new pinch gesture recognizer that will call ``callback(gesture)`` when recognized
 
+      .. helptext:: create a pinch gesture recognizer
+
    .. lua:attribute:: enabled: boolean
 
       Enables/disables this gesture recognizer
+
+      .. helptext:: whether the gesture recognizer is enabled
 
 
 .. lua:class:: gesture.rotation
@@ -199,9 +211,13 @@ Gestures
       
       Creates and registers a new rotation gesture recognizer that will call ``callback(gesture)`` when recognized
 
+      .. helptext:: create a rotation gesture recognizer
+
    .. lua:attribute:: enabled: boolean
 
       Enables/disables this gesture recognizer
+
+      .. helptext:: whether the gesture recognizer is enabled
 
 
 Keyboard
@@ -213,6 +229,8 @@ Keyboard
 
    Queries whether the key is currently being pressed this frame
 
+   .. helptext:: check if a key is currently pressed
+
    :param keyCode: The keyCode to query
    :type keyCode: constant
    :return: Is the key being pressed this frame
@@ -221,6 +239,8 @@ Keyboard
 .. lua:function:: wasPressed(keyCode)
 
    Queries whether the key is was pressed down this frame
+
+   .. helptext:: check if a key was pressed this frame
 
    :param keyCode: The keyCode to query
    :type keyCode: constant
@@ -231,6 +251,8 @@ Keyboard
 
    Queries whether the supplied key code was released this frame
 
+   .. helptext:: check if a key was released this frame
+
    :param keyCode: The keyCode to query
    :type keyCode: constant
    :return: Was the key released this frame
@@ -239,6 +261,8 @@ Keyboard
 .. lua:function:: modifiers()
 
    Queries the current key modifiers as a bit field, which is composed of the following bit mask constants:
+
+   .. helptext:: get the current keyboard modifiers
 
    - :lua:attr:`key.alt`
    - :lua:attr:`key.ctrl`
@@ -250,6 +274,8 @@ Keyboard
 .. lua:function:: modifiersPressed(modifiers)
 
    Queries whether the supplied key modifiers are currently pressed
+
+   .. helptext:: check if keyboard modifiers are pressed
 
    :param modifiers: The key modifiers to query as a bit field
    :type modifiers: constant

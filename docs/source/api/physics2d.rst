@@ -23,13 +23,19 @@ Simulation
       :param y: The initial y position of the new body
       :type y: number
 
+      .. helptext:: create a new rigidbody in this world
+
    .. lua:method:: step([deltaTime])
 
       Steps the simulation by ``deltaTime``
 
+      .. helptext:: step the physics simulation
+
    .. lua:method:: draw()
 
       Draws a debug representation of the physics world using primitive shapes
+
+      .. helptext:: draw a debug representation of the physics world
 
    .. lua:method:: raycast(origin, direction, distance[, mask])
 
@@ -49,11 +55,19 @@ Simulation
       :return: The raycast hit info or nil is no collider was hit
       :rtype: physics2d.rayHit
 
+      .. helptext:: perform a raycast in this physics world
+
    .. lua:method:: overlapBox(origin, size[, mask])
+
+      .. helptext:: check if a box overlaps any collider
 
    .. lua:method:: queryBox(origin, size[, mask])
 
+      .. helptext:: query colliders overlapping a box
+
    .. lua:method:: queryBoxAll(origin, size[, mask])
+
+      .. helptext:: query all colliders overlapping a box
 
 
    .. lua:attribute:: gravity: vec2
@@ -67,6 +81,8 @@ Simulation
    .. lua:method:: destroy()
 
       Destroys this body, removing it from the world in the next simluation step
+
+      .. helptext:: destroy this body
 
    .. lua:method:: circle(radius, [offsetX, offsetY])
 
@@ -84,6 +100,8 @@ Simulation
       :return: The new circle collider
       :rtype: physics2d.circle
 
+      .. helptext:: attach a circle collider to this body
+
    .. lua:method:: box(halfWidth, halfHeight, [offsetX, offsetY, rotation])
 
       Creates and attaches a box collider to this body
@@ -91,12 +109,16 @@ Simulation
       :return: The new box collider
       :rtype: physics2d.box
 
+      .. helptext:: attach a box collider to this body
+
    .. lua:method:: polygon(points)
 
       Creates and attaches a polygon collider to this body
 
       :return: The new polygon collider
       :rtype: physics2d.polygon
+
+      .. helptext:: attach a polygon collider to this body
 
    .. lua:method:: hinge(anchor)
                    hinge(other, anchor)
@@ -121,6 +143,8 @@ Simulation
       :return: The new hinge joint
       :rtype: physics2d.hinge
 
+      .. helptext:: attach a hinge joint to this body
+
    .. lua:method:: slider(anchor, axis)
                    slider(other, anchor, axis)
                    slider(other, anchorA, anchorB, axis)
@@ -129,6 +153,8 @@ Simulation
 
       :return: The new slider joint
       :rtype: physics2d.slider
+
+      .. helptext:: attach a slider joint to this body
 
    .. lua:method:: distance(anchorA, anchorB)
                    distance(other, anchorA, anchorB)
@@ -141,6 +167,8 @@ Simulation
       :return: The new distance joint
       :rtype: physics2d.distance
 
+      .. helptext:: attach a distance joint to this body
+
    .. lua:method:: applyForce(force)
 
       Applies a force to this body over time (non-instantanious). Ideal for physical effects such as wind, bouyancy and springs
@@ -148,20 +176,28 @@ Simulation
       :param force: The force vector to apply
       :type force: vec2
 
+      .. helptext:: apply a continuous force to this body
+
    .. lua:method:: applyTorque(torque)
 
       :param torque: The torque vector to apply
       :type torque: number
+
+      .. helptext:: apply a torque to this body
 
    .. lua:method:: applyLinearImpulse(impulse)
 
       :param impulse: The linear impulse to apply
       :type impulse: vec2
 
+      .. helptext:: apply a linear impulse to this body
+
    .. lua:method:: applyAngularImpulse(impulse)
 
       :param impulse: The angular impulse to apply
       :type impulse: number
+
+      .. helptext:: apply an angular impulse to this body
 
    .. lua:method:: worldPoint(localPoint)
 
@@ -172,6 +208,8 @@ Simulation
 
       :rtype: vec2
 
+      .. helptext:: transform a local point to world space
+
    .. lua:method:: worldVector(localVector)
 
       Transforms ``localVector`` from world space to local space in respect to this body
@@ -180,6 +218,8 @@ Simulation
       :type localVector: vec2
 
       :rtype: vec2
+
+      .. helptext:: transform a local vector to world space
 
    .. lua:method:: localPoint(worldPoint)
 
@@ -190,6 +230,8 @@ Simulation
 
       :rtype: vec2
 
+      .. helptext:: transform a world point to local space
+
    .. lua:method:: localVector(worldVector)
 
       Transforms ``worldVector`` from world space to local space in respect to this body
@@ -198,6 +240,8 @@ Simulation
       :type worldVector: vec2
 
       :rtype: vec2
+
+      .. helptext:: transform a world vector to local space
 
    .. lua:method:: velocityAtLocalPoint(localPoint)
 
@@ -210,6 +254,8 @@ Simulation
 
       :rtype: vec2
 
+      .. helptext:: sample the body velocity at a local point
+
    .. lua:method:: velocityAtWorldPoint(worldPoint)
 
       Samples the velocity of the body at ``worldPoint`` in world space
@@ -220,6 +266,8 @@ Simulation
       :type worldPoint: vec2
 
       :rtype: vec2
+
+      .. helptext:: sample the body velocity at a world point
 
    .. lua:attribute:: destroyed: boolean
 
@@ -307,6 +355,8 @@ Collision
    .. lua:method:: destroy()
 
       Destroys this collider, removing it in the next simluation step
+
+      .. helptext:: destroy this collider
 
    .. lua:attribute:: destroyed: boolean
 
@@ -471,6 +521,8 @@ Constraints
 
       Destroys this joint, removing it in the next simluation step
 
+      .. helptext:: destroy this joint
+
    .. lua:method:: getReactionForce(invDt)
 
       Gets the reaction force applied to this joint in the previous frame to keep the constraint satisfied
@@ -480,6 +532,8 @@ Constraints
       :param invDt: The inverse timestep
       :type number:
 
+      .. helptext:: get the reaction force applied to this joint
+
    .. lua:method:: getReactionTorque(invDt)
 
       Gets the reaction torque applied to this joint in the previous frame to keep the constraint satisfied
@@ -488,6 +542,8 @@ Constraints
 
       :param invDt: The inverse timestep
       :type number:
+
+      .. helptext:: get the reaction torque applied to this joint
 
    .. lua:attribute:: enabled: boolean
 
