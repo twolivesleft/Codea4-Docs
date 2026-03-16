@@ -44,13 +44,13 @@ Touches
 
       The x position of the touch (in screen coordinates)
 
-      .. helptext:: X key constant
+      .. helptext:: get the x position of this touch
 
    .. lua:attribute:: y: number
 
       The y position of the touch (in screen coordinates)
 
-      .. helptext:: Y key constant
+      .. helptext:: get the y position of this touch
 
    .. lua:attribute:: prevX: number
 
