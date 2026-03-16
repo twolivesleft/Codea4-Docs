@@ -247,6 +247,8 @@ shader
       .. lua:attribute:: size: integer
 
          The current size of the buffer
+
+         .. helptext:: get the size of this shader buffer
       
       .. lua:method:: resize(size)
 
