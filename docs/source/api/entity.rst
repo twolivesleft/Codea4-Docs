@@ -477,7 +477,7 @@ entity
 
       When enabled, clips drawing to within the bounds of the UI element
 
-      .. helptext:: setup a clipping region on the screen
+      .. helptext:: get or set whether clipping is enabled
 
    **Physics2D Properties**
 
