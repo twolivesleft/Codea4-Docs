@@ -91,7 +91,7 @@ mesh
 
       Custom shader for this mesh, used when ``mesh:draw()`` is invoked
 
-      .. helptext:: load a shader by name or source
+      .. helptext:: get or set the shader for this mesh
 
    .. lua:attribute:: material: material
 
