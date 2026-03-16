@@ -143,14 +143,14 @@ Sprites
                   sprite(asset.key, x, y, [w, h])
                   sprite(sprite.slice, x, y, [w, h])
 
-   Draws a sprite using a an asset - :lua:class:`image`, :lua:class:`asset.key` or :lua:class:`sprite.slice`
+   Draws a sprite using an asset - :lua:class:`image`, :lua:class:`asset.key` or :lua:class:`sprite.slice`
 
    .. helptext:: draw a sprite or image
 
 
 .. lua:function:: sprite(shader, x, y, w, h)
 
-   .. helptext:: draw a sprite or image
+   .. helptext:: draw using a shader
 
 
 Text
