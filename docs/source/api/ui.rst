@@ -71,7 +71,7 @@ A module for creating basic UI elements in scenes
 
       Scale factor for canvas drawing
 
-      .. helptext:: scale the current transform
+      .. helptext:: get or set the canvas scale
 
 
 .. lua:class:: label : component
