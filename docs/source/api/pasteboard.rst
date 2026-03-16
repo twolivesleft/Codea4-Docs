@@ -50,7 +50,7 @@ type is not present, but a notification may still appear if data is accessed.
 
     The first image in the pasteboard.
 
-   .. helptext:: create a new blank image
+   .. helptext:: get or set the image on this pasteboard
 
 .. lua:attribute:: images: table
 
