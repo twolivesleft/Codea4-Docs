@@ -88,6 +88,8 @@ physics3d
 
       The current gravity vector for this world
 
+      .. helptext:: get or set the 3D physics gravity vector
+
 .. lua:class:: body
 
    A three dimensional rigidbody that simulated within a :lua:class:`physics3d.world`. Used to simulate both dynamic and static objects, responding to physical forces, collisions and physics queries (i.e. raycast, queryBox, etc...)
@@ -327,37 +329,55 @@ physics3d
 
       Flag indicating that this body has already been destroyed
 
+      .. helptext:: get whether this body is destroyed
+
    .. lua:attribute:: position: vec3
 
       The position of this body in the simulated world
+
+      .. helptext:: get or set the position of this body
 
    .. lua:attribute:: mass: number
 
       The mass of this body in kilograms
 
+      .. helptext:: get or set the mass of this body
+
    .. lua:attribute:: inertia: number (readonly)
 
       The interial tensor in kg m^2
+
+      .. helptext:: get the inertia tensor of this body
 
    .. lua:attribute:: linearDamping: number
 
       The amount of linear damping to apply, slowing velocity proportionally over time
 
+      .. helptext:: get or set the linear damping
+
    .. lua:attribute:: angularDamping: number
 
       The amount of linear damping to apply, slowing rotation propotionally over time
+
+      .. helptext:: get or set the angular damping
 
    .. lua:attribute:: sleepingAllowed: boolean
 
       Flag for allowing sleeping for this body
 
+      .. helptext:: get or set whether sleeping is allowed
+
    .. lua:attribute:: awake: boolean
 
       Flag for the current awake state of this body, set to ``true`` to wake immediately
 
+      .. helptext:: get or set whether this body is awake
+
    .. lua:attribute:: enabled: boolean
 
       Flag for whether simulation is enabled
+
+      .. helptext:: get or set whether this body is enabled
 
    .. lua:attribute:: constraints: bitfield 
 
@@ -375,9 +395,13 @@ physics3d
 
       These flags can also be combined, i.e. ``myBody.constraints = physics3d.freezePositionX | physics3d.freezeRotation``
 
+      .. helptext:: get or set the motion constraints bitfield
+
    .. lua:attribute:: bullet: boolean
 
       Continuous physics switch for this body, used to prevent tunneling for fast moving objects
+
+      .. helptext:: get or set whether bullet mode is enabled
 
 .. lua:class:: collider
 
@@ -441,30 +465,45 @@ physics3d
 
       The world position of the raycast hit location
 
+      .. helptext:: get the raycast hit point
+
    .. lua:attribute:: normal: vec3
 
       The world normal of the raycast hit location
+
+      .. helptext:: get the raycast hit normal
 
    .. lua:attribute:: fraction: number
 
       The fraction of the total ray distance travelled before a hit was detected
 
+      .. helptext:: get the raycast hit fraction
+
    .. lua:attribute:: triangleIndex: integer
 
       The index of the triangle hit (if we hit a mesh collider)
+
+      .. helptext:: get the raycast hit triangle index
 
    .. lua:attribute:: uv: vec2
 
       The uv coorindate of the triangle hit (if we hit a mesh collider)
 
+      .. helptext:: get the raycast hit UV coordinate
+
    .. lua:attribute:: barycentric: vec2
 
       The barycentric coorindate of the triangle hit (if we hit a mesh collider)
+
+      .. helptext:: get the raycast hit barycentric coordinate
 
    .. lua:attribute:: collider: physics3d.collider
 
       The collider that was hit by the ray
 
+      .. helptext:: get the raycast hit collider
+
    .. lua:attribute:: body: physics3d.body
 
       The body of the collider that was hit by the ray      
+      .. helptext:: get the raycast hit body
