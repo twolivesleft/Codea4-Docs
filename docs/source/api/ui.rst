@@ -82,7 +82,7 @@ A module for creating basic UI elements in scenes
 
       The text to render on the label
 
-      .. helptext:: draw text at a location
+      .. helptext:: get or set the label text
 
    .. lua:attribute:: color: color
 
