@@ -728,7 +728,7 @@ Gamepad
 
    .. lua:attribute:: a: gamepad.button
 
-      .. helptext:: A key constant
+      .. helptext:: get the a button
 
    .. lua:attribute:: b: gamepad.button
 
