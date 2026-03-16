@@ -54,17 +54,25 @@ shader
 
       This is useful for fairly basic shaders
 
+      .. helptext:: load a shader by name or source
+
    .. lua:staticmethod:: shader(shaderDefinition)
 
       A more advanced form of shader creation, with many more options that can be tailored for specific use-cases
+
+      .. helptext:: load a shader by name or source
 
    .. lua:staticmethod:: compute(source)
 
       Create a compute shader without any extra settings
 
+      .. helptext:: create a compute shader
+
    .. lua:staticmethod:: read(asset)
 
       Read a shader asset from the filesystem
+
+      .. helptext:: read a shader asset from the filesystem
 
    .. lua:method:: setOption(name, on)
 
@@ -106,6 +114,8 @@ shader
 
          ``myBuffer = shader.buffer(layout)``
 
+         .. helptext:: create a GPU buffer with a given layout
+
       .. lua:method:: resize(size)
 
          Resize the buffer
@@ -133,6 +143,8 @@ shader
          ``myBuffer = shader.indexBuffer(shader.indexBuffer.i32|i16)``
     
          Buffer type can be 32 bit (``shader.indexBuffer.i32``) or 16 bit (``shader.indexBuffer.i16``)          
+
+         .. helptext:: create a GPU index buffer
 
       .. lua:method:: resize(size)
 
@@ -229,6 +241,8 @@ shader
          - ``int16``
          - ``half``
          - ``float``
+
+         .. helptext:: create a buffer layout from a definition
 
       .. lua:attribute:: size: integer
 
