@@ -88,7 +88,7 @@ A module for creating basic UI elements in scenes
 
       The label's text color
 
-      .. helptext:: create a new color type
+      .. helptext:: get or set the label text color
 
    .. lua:attribute:: fontSize: number
 
