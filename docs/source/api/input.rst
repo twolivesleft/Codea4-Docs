@@ -421,7 +421,7 @@ Constants - Key Codes
    .. helptext:: delete key constant
 .. lua:attribute:: home: const
 
-   .. helptext:: get the home button
+   .. helptext:: home key constant
 .. lua:attribute:: end: const
 
    .. helptext:: end key constant
