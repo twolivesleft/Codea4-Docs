@@ -147,4 +147,5 @@ material
    .. lua:staticmethod:: unlit()
 
       Create a default unlit material using the standard shader
+
       .. helptext:: create a default unlit material
