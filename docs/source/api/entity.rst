@@ -399,7 +399,7 @@ entity
 
       The tint color to use
 
-      .. helptext:: create a new color type
+      .. helptext:: get or set the tint color of this entity
 
    .. lua:attribute:: visible: boolean
 
