@@ -31,6 +31,8 @@ The default storage is per-project. A device-wide store is available under ``sto
 
    Checks if a key exists.
 
+   .. helptext:: check if a key exists
+
    :param key: Key to check
    :type key: string
    :return: True if the key exists, false otherwise
@@ -46,6 +48,8 @@ The default storage is per-project. A device-wide store is available under ``sto
 
    Removes a key.
 
+   .. helptext:: remove a key from storage
+
    :param key: Key to remove
    :type key: string
 
@@ -56,6 +60,8 @@ The default storage is per-project. A device-wide store is available under ``sto
 .. lua:function:: keys()
 
    Returns a sorted array of all keys in the store.
+
+   .. helptext:: get all keys in storage
 
    :return: Sorted list of keys
    :rtype: table
@@ -70,6 +76,8 @@ The default storage is per-project. A device-wide store is available under ``sto
 
    Removes all keys from the store.
 
+   .. helptext:: remove all keys from storage
+
    .. code-block:: lua
 
       storage:clear()
@@ -77,6 +85,8 @@ The default storage is per-project. A device-wide store is available under ``sto
 .. lua:function:: flush()
 
    Writes any pending changes synchronously.
+
+   .. helptext:: write pending storage changes immediately
 
    .. code-block:: lua
 
@@ -86,6 +96,8 @@ The default storage is per-project. A device-wide store is available under ``sto
 .. lua:function:: asset()
 
    Returns the underlying asset key for the storage file.
+
+   .. helptext:: get the asset key used by this store
 
    :return: Asset key used for the store file
    :rtype: assetKey
@@ -97,6 +109,8 @@ The default storage is per-project. A device-wide store is available under ``sto
 .. lua:function:: namespace(prefix)
 
    Returns a view of the store that prefixes all keys with ``prefix``. A ``.`` is added automatically if missing.
+
+   .. helptext:: create a namespaced view of storage
 
    :param prefix: Namespace prefix (for example, ``"prefs"``)
    :type prefix: string
@@ -113,13 +127,19 @@ The default storage is per-project. A device-wide store is available under ``sto
 
    Default project-scoped storage (stored under ``asset``). This is the same store used by the top-level ``storage`` functions.
 
+   .. helptext:: default project storage
+
 .. lua:attribute:: storage.global: storage
 
    Default device-wide storage (stored under ``asset.documents``).
 
+   .. helptext:: default device-wide storage
+
 .. lua:function:: projectStore(name)
 
    Convenience wrapper for ``storage(name, "project")``.
+
+   .. helptext:: create or get a named project store
 
    :param name: Store name
    :type name: string
@@ -129,6 +149,8 @@ The default storage is per-project. A device-wide store is available under ``sto
 .. lua:function:: globalStore(name)
 
    Convenience wrapper for ``storage(name, "global")``.
+
+   .. helptext:: create or get a named global store
 
    :param name: Store name
    :type name: string
@@ -140,6 +162,8 @@ The default storage is per-project. A device-wide store is available under ``sto
 .. lua:function:: storage(name [, scope])
 
    Returns a named store. Stores are cached by name and scope, so repeated calls return the same store instance.
+
+   .. helptext:: create or get a named storage object
 
    :param name: Store name (used to derive the file name)
    :type name: string

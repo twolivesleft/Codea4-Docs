@@ -209,6 +209,7 @@
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
 </ul>
@@ -254,22 +255,37 @@
 <dl class="lua function" id="module-style">
 <dt class="sig sig-object lua" id="style.push">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.push" title="Link to this definition">¶</a></dt>
+<dd><p>Push the current style onto the stack</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">style</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Push a specific style onto the stack</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua" id="style.pop">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.pop" title="Link to this definition">¶</a></dt>
+<dd><p>Pop the current style from the stack, restoring the previous style</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua" id="style.reset">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.reset" title="Link to this definition">¶</a></dt>
-<dd><p>Functions for manipulating the style stack, use these when you want to temporarily change the style and restore it to it’s previous state</p>
-<p>Use <a class="reference internal" href="#style.reset" title="style.reset"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.reset()</span></code></a> to restore the default style</p>
+<dd><p>Reset the current style to defaults. Use this to restore the default style</p>
 </dd></dl>
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="style.get">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#style.get" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the current style as a graphicsStyle object, allowing styles to be saved and restored arbitrarily</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua" id="style.set">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">style</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.set" title="Link to this definition">¶</a></dt>
-<dd><p>Gets/sets the current style as a graphicsStyle object allowing styles to be saved and restored arbitrarily</p>
+<dd><p>Sets the current style from a graphicsStyle object</p>
 </dd></dl>
 
 <dl class="lua function">
@@ -357,9 +373,13 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="style.tint">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">tint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">&lt;color&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.tint" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the tint color for use with <a class="reference internal" href="graphics.html#sprite" title="sprite"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">sprite()</span></code></a> and <a class="reference internal" href="mesh.html#mesh.draw" title="mesh.draw"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">mesh.draw()</span></code></a></p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">tint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a</span></span></span></dt>
-<dd><p>Sets/gets the tint color for use to tint calls to <a class="reference internal" href="graphics.html#sprite" title="sprite"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">sprite()</span></code></a> and <a class="reference internal" href="mesh.html#mesh.draw" title="mesh.draw"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">mesh.draw()</span></code></a></p>
+<dd><p>Gets the current tint color</p>
 </dd></dl>
 
 <dl class="lua function">
@@ -376,17 +396,19 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="style.strokeWidth">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">strokeWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.strokeWidth" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the stroke width for use in vector drawing operations</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">stroke</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">number</span></span></span></dt>
-<dd><p>Sets/gets the stroke width for use in vector drawing operations</p>
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">strokeWidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">number</span></span></span></dt>
+<dd><p>Gets the current stroke width</p>
 </dd></dl>
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="style.lineCap">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineCap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.lineCap" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineCap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">enum</span></span></span></dt>
-<dd><p>Sets/gets the current line cap mode, used by <code class="code highlight lua docutils literal highlight-lua"><span class="nv">line</span></code>, <code class="code highlight lua docutils literal highlight-lua"><span class="nv">polyline</span></code> and <code class="code highlight lua docutils literal highlight-lua"><span class="nv">shape</span></code></p>
+<dd><p>Sets the current line cap mode, used by <code class="code highlight lua docutils literal highlight-lua"><span class="nv">line</span></code>, <code class="code highlight lua docutils literal highlight-lua"><span class="nv">polyline</span></code> and <code class="code highlight lua docutils literal highlight-lua"><span class="nv">shape</span></code></p>
 <ul class="simple">
 <li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></p></li>
 <li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">SQUARE</span></code></p></li>
@@ -395,16 +417,26 @@
 </dd></dl>
 
 <dl class="lua function">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineCap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">enum</span></span></span></dt>
+<dd><p>Gets the current line cap mode</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua" id="style.lineJoin">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineJoin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.lineJoin" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineJoin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">enum</span></span></span></dt>
-<dd><p>Sets/gets the current line join mode, used by <code class="code highlight lua docutils literal highlight-lua"><span class="nv">polyline</span></code>, <code class="code highlight lua docutils literal highlight-lua"><span class="nv">polygon</span></code> and <code class="code highlight lua docutils literal highlight-lua"><span class="nv">shape</span></code> used when joining multiple line segments</p>
+<dd><p>Sets the current line join mode, used by <code class="code highlight lua docutils literal highlight-lua"><span class="nv">polyline</span></code>, <code class="code highlight lua docutils literal highlight-lua"><span class="nv">polygon</span></code> and <code class="code highlight lua docutils literal highlight-lua"><span class="nv">shape</span></code> when joining multiple line segments</p>
 <ul class="simple">
 <li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></p></li>
 <li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">MITER</span></code></p></li>
 <li><p><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">BEVEL</span></code></p></li>
 </ul>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">lineJoin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">enum</span></span></span></dt>
+<dd><p>Gets the current line join mode</p>
 </dd></dl>
 
 <dl class="lua function">
@@ -487,9 +519,7 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="style.blendFunc">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blendFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#style.blendFunc" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blendFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func</span></em>, <em class="sig-param"><span class="pre">alphaFunc</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Sets the current blend function (the default is <code class="code highlight lua docutils literal highlight-lua"><span class="nv">EQUATION_ADD</span></code>) which determines how source and destination parts of the blending equation are combined</p>
+<dd><p>Sets the same blend function for both rgb and alpha components (the default is <code class="code highlight lua docutils literal highlight-lua"><span class="nv">EQUATION_ADD</span></code>) which determines how source and destination parts of the blending equation are combined</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt><code class="code highlight lua docutils literal highlight-lua"><span class="nv">EQUATION_ADD</span></code> - Add (default)</dt><dd><p><span class="math notranslate nohighlight">\(R = R_s*k_s+R_d*k_d\)</span></p>
@@ -517,6 +547,12 @@
 </dl>
 </li>
 </ul>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">style.</span></span><span class="sig-name descname"><span class="pre">blendFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func</span></em>, <em class="sig-param"><span class="pre">alphaFunc</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets separate blend functions for rgb and alpha components</p>
 </dd></dl>
 
 <dl class="lua function">

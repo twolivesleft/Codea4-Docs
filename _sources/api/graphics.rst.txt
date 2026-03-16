@@ -16,12 +16,16 @@ Background
 
    Clears the current background with the contents of a cube image, using the current camera settings to define eye direction
 
+   .. helptext:: clear the background with a cube image
+
    :param cubeImage: The image to clear the background with
    :param mipLevel: The mip level of the image to use, useful for displaying pre-blurred image mips, such as those calculated using :lua:meth:`image.generateIrradiance`
 
 .. lua:function:: background(shader)
 
    Clears the current background using a custom shader
+
+   .. helptext:: clear the background with a shader
 
    .. collapse:: Example
 
@@ -53,9 +57,13 @@ A set of graphics functions which are so commonly used they are in the global na
    .. |project_cap| image:: /images/example_lineCap_PROJECT.png
       :width: 100
 
+   .. helptext:: draw a line between two points
+
 .. lua:function:: line(x, y)
 
    Variation of line command used as part of shape drawing
+
+   .. helptext:: draw a line between two points
 
 .. lua:function:: polyline(x1, y1, x2, y2, ... xn, yn)
 
@@ -78,17 +86,25 @@ A set of graphics functions which are so commonly used they are in the global na
    .. |bevel_join| image:: /images/example_lineJoin_BEVEL.png
       :width: 100
 
+   .. helptext:: draw a continuous polyline
+
 .. lua:function:: polygon(x1, y1, x2, y2, ... xn, yn)
 
    Draws a closed 2D polygon with an arbitrary number of points based on the current style
+
+   .. helptext:: draw a closed polygon
 
 .. lua:function:: bezier(x1, y1, cx1, cy1, cx2, cy2, x2, y2)
 
    Draw a quadratic bezier curve using four points based on the current style
 
+   .. helptext:: draw a cubic bezier curve
+
 .. lua:function:: bezier(cx1, cy1, cx2, cy2, x2, y2)
 
    Variation of bezier command used as part of shape drawing
+
+   .. helptext:: draw a bezier curve segment
 
 .. lua:function:: arc(x, y, radius, startAngle, endAngle, dir)
 
@@ -101,10 +117,14 @@ A set of graphics functions which are so commonly used they are in the global na
    :param endAngle: the end angle of the arc (in degrees)
    :param dir: the direction of the arc, 1 or clockwise, -1 for anti-clockwise
 
+   .. helptext:: draw a 2D arc
+
 .. lua:function:: ellipse(x, y, w, h)
                   ellipse(x, y, r)
 
    Draw an ellipse with a given origin point and width / height (or radius)
+
+   .. helptext:: draw a circle or oval
 
 .. lua:function:: rect(x, y, w, h)
                   rect(x, y, w, h, r)
@@ -114,6 +134,8 @@ A set of graphics functions which are so commonly used they are in the global na
 
    Additional arguments allow for rounded corners (either all one radius or four separate radii)
 
+   .. helptext:: draw a rectangle
+
 Sprites
 #######
 
@@ -121,10 +143,14 @@ Sprites
                   sprite(asset.key, x, y, [w, h])
                   sprite(sprite.slice, x, y, [w, h])
 
-   Draws a sprite using a an asset - :lua:class:`image`, :lua:class:`asset.key` or :lua:class:`sprite.slice`
+   Draws a sprite using an asset - :lua:class:`image`, :lua:class:`asset.key` or :lua:class:`sprite.slice`
+
+   .. helptext:: draw a sprite or image
 
 
 .. lua:function:: sprite(shader, x, y, w, h)
+
+   .. helptext:: draw using a shader
 
 
 Text
@@ -133,6 +159,8 @@ Text
 .. lua:function:: text(str, x, y, [w, h])
 
    Draws one or more lines of text based on the current style. Use the optional width and height parameters to draw a fixed size text box with line wrapping enabled
+
+   .. helptext:: draw text at a location
 
    - *Text Color* with :lua:func:`style.fill`
    - *Text Outline* with :lua:func:`style.stroke`
@@ -252,6 +280,8 @@ Text
 
    Gets the size of a text being drawn
 
+   .. helptext:: get the width and height of the drawn string
+
    :param str: the text to query
    :type str: string
    :param width: the width of the textbox
@@ -270,6 +300,8 @@ Gizmos are useful for drawing shapes in 2D/3D space for debugging and editing
 
    Draws a 3D antialiased line
 
+   .. helptext:: draw a line between two points
+
 Color Space
 ###########
 
@@ -280,6 +312,8 @@ Color Space
    Changes the color space used for drawing images and sprites
 
    :param type: Either ``GAMMA`` or ``LINEAR``
+
+   .. helptext:: set the drawing color space
 
 Contexts
 ########
@@ -294,6 +328,10 @@ Contexts
    :param layer: The layer of image to draw to
    :param mip: The mip of the image to draw to
 
+   .. helptext:: push an image onto the drawing context
+
 .. lua:function:: pop
 
    Pops the current image from the context if one exists, subsequent drawing operations are again applied to the main context (i.e. the display)
+
+   .. helptext:: pop the current image from the drawing context

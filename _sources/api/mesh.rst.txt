@@ -161,11 +161,15 @@ mesh
 
       Draws the mesh to the screen with the current camera, matrix and context settings
 
+      .. helptext:: draw this mesh to the screen
+
    .. lua:method:: drawIndirect(indirectBuffer[, start = 0, num  = 1])
 
       Draws the mesh indirectly using ``indirectBuffer``
 
       Used in combination with compute shaders for indirect drawing operations
+
+      .. helptext:: draw this mesh indirectly using a buffer
 
    **Mesh Manipulation**
 
@@ -178,58 +182,94 @@ mesh
       :return: the index of the new rectangle
       :rtype: integer
 
+      .. helptext:: append a 2D rectangle to this mesh
+
    .. lua:method:: setRect(index, position, size[, rotation])
 
       Sets existing rectangle position, size and rotation using an index from a previous call to ``addRect()``
+
+      .. helptext:: set the position and size of an existing rectangle
 
    .. lua:method:: setRectTex(index, uvRect)      
 
       Sets existing rectangle uvs using an index from a previous call to ``addRect()``
 
+      .. helptext:: set the uv of an existing rectangle
+
    .. lua:method:: setRectColor(index, color)            
 
       Sets existing rectangle color using an index from a previous call to ``addRect()``
+
+      .. helptext:: set the color of an existing rectangle
 
    .. lua:method:: resizeVertices(size)
 
       Sets the number of vertices in the mesh (must be positive)
 
+      .. helptext:: resize the vertex buffer of this mesh
+
    .. lua:method:: resizeIndices(size)
 
       Sets the number of indices in the mesh (must be positive)
+
+      .. helptext:: resize the index buffer of this mesh
 
    .. lua:method:: addElement(p1, p2, p3[, ...])
 
       Adds a new element to the mesh consisting of ``N`` indices (i.e. add three indices for a new triangle)
 
+      .. helptext:: add a new triangle element to this mesh
+
    .. lua:method:: clear()
 
       Clears the mesh, reducing vertices and indices to zero
 
+      .. helptext:: clear all vertices and indices from this mesh
+
    .. lua:method:: position(index)
+
+      .. helptext:: get the position of a vertex
    .. lua:method:: position(index, position)
    
       Gets/sets the position of the vertex at ``index``
 
+      .. helptext:: set the position of a vertex
+
    .. lua:method:: normal(index)      
+
+      .. helptext:: get the normal of a vertex
    .. lua:method:: normal(index, normal)
 
       Gets/sets the normal of the vertex at ``index``
 
+      .. helptext:: set the normal of a vertex
+
    .. lua:method:: color(index)      
+
+      .. helptext:: get the color of a vertex
    .. lua:method:: color(index, color)
    
       Gets/sets the color of the vertex at ``index``
 
+      .. helptext:: set the color of a vertex
+
    .. lua:method:: uv(index)      
+
+      .. helptext:: get the uv of a vertex
    .. lua:method:: uv(index, uv)            
 
       Gets/sets the uv of the vertex at ``index``
 
+      .. helptext:: set the uv of a vertex
+
    .. lua:method:: index(index)
+
+      .. helptext:: get the index at a given position
    .. lua:method:: index(index, i)
 
       Gets/sets the index at ``index``   
+
+      .. helptext:: set the index at a given position
 
    **Mesh Generation**
 

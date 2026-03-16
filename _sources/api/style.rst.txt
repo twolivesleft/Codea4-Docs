@@ -11,27 +11,53 @@ General
 .. lua:module:: style
 
 .. lua:function:: push()
-                  push(style)
-                  pop()
-                  reset()
 
-   Functions for manipulating the style stack, use these when you want to temporarily change the style and restore it to it's previous state
+   Push the current style onto the stack
 
-   Use :lua:func:`style.reset` to restore the default style
+   .. helptext:: push the current style onto the stack
+
+.. lua:function:: push(style)
+
+   Push a specific style onto the stack
+
+   .. helptext:: push a style onto the stack
+
+.. lua:function:: pop()
+
+   Pop the current style from the stack, restoring the previous style
+
+   .. helptext:: pop the current style from the stack
+
+.. lua:function:: reset()
+
+   Reset the current style to defaults. Use this to restore the default style
+
+   .. helptext:: reset the style to defaults
 
 .. lua:function:: get()
-                  set(style)
 
-   Gets/sets the current style as a graphicsStyle object allowing styles to be saved and restored arbitrarily
+   Gets the current style as a graphicsStyle object, allowing styles to be saved and restored arbitrarily
+
+   .. helptext:: get the current style
+
+.. lua:function:: set(style)
+
+   Sets the current style from a graphicsStyle object
+
+   .. helptext:: set the current style
 
 .. lua:function:: fill(<color>)
                   fill() -> r, g, b, a
 
    Sets/gets the fill color for use in vector drawing operations
 
+   .. helptext:: set the fill color
+
 .. lua:function:: noFill()
 
    Disables fill
+
+   .. helptext:: clear the fill color
 
 .. lua:function:: stroke()
 
@@ -55,6 +81,8 @@ General
    :param number gray: The grayscale value to set the stroke to
    :param number alpha: The alpha value to set the stroke to
 
+   .. helptext:: set the stroke color
+
 .. lua:function:: stroke(red, green, blue)
 
    Sets the stroke color to the specified red, green, and blue values
@@ -62,6 +90,8 @@ General
    :param number red: The red value to set the stroke to
    :param number green: The green value to set the stroke to
    :param number blue: The blue value to set the stroke to
+
+   .. helptext:: set the stroke color
 
 .. lua:function:: stroke(red, green, blue, alpha)
 
@@ -72,14 +102,25 @@ General
    :param number blue: The blue value to set the stroke to
    :param number alpha: The alpha value to set the stroke to
 
+   .. helptext:: set the stroke color
+
 .. lua:function:: noStroke()
 
    Disables stroke
 
-.. lua:function:: tint(<color>)
-                  tint() -> r, g, b, a
+   .. helptext:: clear the stroke color
 
-   Sets/gets the tint color for use to tint calls to :lua:func:`sprite` and :lua:meth:`mesh.draw`
+.. lua:function:: tint(<color>)
+
+   Sets the tint color for use with :lua:func:`sprite` and :lua:meth:`mesh.draw`
+
+   .. helptext:: set the tint color for images drawn with sprite()
+
+.. lua:function:: tint() -> r, g, b, a
+
+   Gets the current tint color
+
+   .. helptext:: get the tint color
 
 .. lua:function:: pixelScaling(scale)
 
@@ -87,28 +128,51 @@ General
 
    :param number scale: the scaling factor of the sprite image
 
-.. lua:function:: strokeWidth(width)
-                  stroke() -> number
+   .. helptext:: set the pixel scaling for sprite()
 
-   Sets/gets the stroke width for use in vector drawing operations
+.. lua:function:: strokeWidth(width)
+
+   Sets the stroke width for use in vector drawing operations
+
+   .. helptext:: set the width of outlines
+
+.. lua:function:: strokeWidth() -> number
+
+   Gets the current stroke width
+
+   .. helptext:: get the current outline width
 
 .. lua:function:: lineCap(mode)
-                  lineCap() -> enum
 
-   Sets/gets the current line cap mode, used by :lua:`line`, :lua:`polyline` and :lua:`shape`
+   Sets the current line cap mode, used by :lua:`line`, :lua:`polyline` and :lua:`shape`
 
    - :lua:attr:`ROUND`
    - :lua:attr:`SQUARE`
    - :lua:attr:`PROJECT`
 
-.. lua:function:: lineJoin(mode)
-                  lineJoin() -> enum
+   .. helptext:: set the cap style of line()
 
-   Sets/gets the current line join mode, used by :lua:`polyline`, :lua:`polygon` and :lua:`shape` used when joining multiple line segments
+.. lua:function:: lineCap() -> enum
+
+   Gets the current line cap mode
+
+   .. helptext:: get the current line cap style
+
+.. lua:function:: lineJoin(mode)
+
+   Sets the current line join mode, used by :lua:`polyline`, :lua:`polygon` and :lua:`shape` when joining multiple line segments
 
    - :lua:attr:`ROUND`
    - :lua:attr:`MITER`
    - :lua:attr:`BEVEL`
+
+   .. helptext:: set the join style of polyline()
+
+.. lua:function:: lineJoin() -> enum
+
+   Gets the current line join mode
+
+   .. helptext:: get the current line join style
 
 .. lua:function:: shapeMode(mode)
                   shapeMode() -> enum
@@ -119,6 +183,8 @@ General
    - :lua:attr:`CORNERS` - Draw shapes by specifying the two opposite corners
    - :lua:attr:`CORNER` - Draw shapes by specifying the bottom left corner and then width/height
    - :lua:attr:`RADIUS` - Draw shapes by specifying center and radius
+
+   .. helptext:: set the drawing origin for rect() and ellipse()
 
 Constants - Shape Mode
 **********************
@@ -136,6 +202,8 @@ Constants - Shape Mode
 
 .. lua:function:: sortOrder(order)
 
+   .. helptext:: set the sort order for drawing
+
 Blending Style
 ##############
 
@@ -145,6 +213,8 @@ Functions
 .. lua:function:: blend(mode)
 
    Sets the current blend mode to one of the available presets. Blending composites pixels onto the current drawing context based on source and destination color and alpha values
+
+   .. helptext:: set the blend mode for drawing
 
    The default mode is :lua:`NORMAL` which applies standard alpha blended transparency with the following equation:
 
@@ -157,18 +227,23 @@ Functions
 
    Sets a custom blend mode for both rgb and alpha components using ``src`` (source) and ``dst`` destination blending factors
 
+   .. helptext:: set a custom blend mode
+
 .. lua:function:: blend(src, dst, srcAlpha, dstAlpha)
 
    Sets a custom blend mode with separate blending factors for both rgb and alpha components
+
+   .. helptext:: set a custom blend mode with separate alpha factors
 
 .. lua:function:: blend() -> src, dst, srcAlpha, dstAlpha
 
    Returns the current blend factors for both rgb and alpha components (regardless of how the blend modes were set)
 
-.. lua:function:: blendFunc(func)
-                  blendFunc(func, alphaFunc)
+   .. helptext:: get the current blend factors
 
-   Sets the current blend function (the default is :lua:`EQUATION_ADD`) which determines how source and destination parts of the blending equation are combined
+.. lua:function:: blendFunc(func)
+
+   Sets the same blend function for both rgb and alpha components (the default is :lua:`EQUATION_ADD`) which determines how source and destination parts of the blending equation are combined
 
    - :lua:`EQUATION_ADD` - Add (default)
       :math:`R = R_s*k_s+R_d*k_d`
@@ -181,9 +256,19 @@ Functions
    - :lua:`EQUATION_MAX` - Maximum (blend factors are ignored)
       :math:`R = max(R_s, R_d)`
 
+   .. helptext:: set the blend equation function
+
+.. lua:function:: blendFunc(func, alphaFunc)
+
+   Sets separate blend functions for rgb and alpha components
+
+   .. helptext:: set separate blend equation functions for rgb and alpha
+
 .. lua:function:: blendFunc() -> func, alphaFunc
 
    Returns the current blend function for both rgb and alpha components (regardless of how the functions were set)
+
+   .. helptext:: get the current blend equation function
 
 Constants - Blend Modes
 ***********************
@@ -322,6 +407,8 @@ Viewport
    :param number w: The width of the viewport
    :param number h: The height of the viewport
 
+   .. helptext:: set the viewport of the renderer
+
 Clipping
 ########
 
@@ -331,9 +418,13 @@ Clipping
 
    *Note: the clipping rectangle is effected by the current matrix transform*
 
+   .. helptext:: setup a clipping region on the screen
+
 .. lua:function:: noClip()
 
    Disables clipping
+
+   .. helptext:: disable clipping
 
 Stencil
 #######
@@ -384,9 +475,13 @@ Stencils are configured using a table with the following properties:
 
    Sets/gets the current stencil state for both front and back faces
 
+   .. helptext:: set the stencil state for front and back faces
+
 .. lua:function:: stencil(front, back)
 
    Sets/gets the current stencil state for both front and back faces
+
+   .. helptext:: set separate stencil states for front and back faces
 
 
 
@@ -422,9 +517,15 @@ Text Style
 
 .. lua:function:: fontSize(size)
 
+   .. helptext:: set the font size for text()
+
 .. lua:function:: textAlign(align)
 
+   .. helptext:: set alignment for text()
+
 .. lua:function:: textStyle(style)
+
+   .. helptext:: set the style for text()
 
 Constants - Text
 ****************

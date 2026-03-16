@@ -209,6 +209,7 @@
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
 </ul>
@@ -254,35 +255,55 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="matrix.push">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.push" title="Link to this definition">¶</a></dt>
+<dd><p>Push the current matrix onto the stack, saving the current transform</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua" id="matrix.pop">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.pop" title="Link to this definition">¶</a></dt>
+<dd><p>Pop the matrix from the stack, restoring the previous transform</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua" id="matrix.reset">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.reset" title="Link to this definition">¶</a></dt>
-<dd><p>Functions for manipulating the matrix stack, use these when you want to temporarily change current space-transform for drawing operations</p>
+<dd><p>Reset the current matrix to the identity matrix</p>
 </dd></dl>
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="matrix.model">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.model" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the model matrix used to transform from local to world space</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">matrix</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Gets/sets the model matrix used to transform from local to world space</p>
+<dd><p>Sets the model matrix used to transform from local to world space</p>
 </dd></dl>
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="matrix.view">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">view</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.view" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the view matrix used to transform from world to view space</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">matrix</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Gets/sets the view matrix used to transform from world to view space (generally controlled by cameras)</p>
+<dd><p>Sets the view matrix used to transform from world to view space (generally controlled by cameras)</p>
 </dd></dl>
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="matrix.projection">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">projection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.projection" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the projection matrix used for final projection</p>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">matrix</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Gets/sets the projection matrix, used for final projection (i.e. othro and perspective projection)</p>
+<dd><p>Sets the projection matrix, used for final projection (i.e. ortho and perspective projection)</p>
 </dd></dl>
 
 </section>

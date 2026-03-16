@@ -209,6 +209,7 @@
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
 </ul>
@@ -264,16 +265,20 @@
 <dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">require</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assetKey</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Import a single file from the specified asset key.</p>
+<dd><blockquote>
+<div><p>Import a single file from the specified asset key.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>assetKey</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">assetKey</span></code></span>) – The asset key of the file to import</p>
+<dt class="field-odd">param assetKey<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The asset key of the file to import</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Value returned by the imported file, if any</p>
+<dt class="field-even">type assetKey<span class="colon">:</span></dt>
+<dd class="field-even"><p>assetKey</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">any</span></code></span></p>
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Value returned by the imported file, if any</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>any</p>
 </dd>
 </dl>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="p">.</span><span class="py">MyLibrary</span><span class="p">,</span><span class="w"> </span><span class="nb">require</span><span class="p">.</span><span class="nv">option</span><span class="p">.</span><span class="py">noImport</span><span class="p">,</span><span class="w"> </span><span class="nb">require</span><span class="p">.</span><span class="nv">option</span><span class="p">.</span><span class="py">loadMain</span><span class="p">)</span>
@@ -283,6 +288,7 @@
 <span class="nb">require</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="p">.</span><span class="py">MyOtherLibrary</span><span class="p">.</span><span class="py">MyOtherFeature</span><span class="p">)</span>
 </pre></div>
 </div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="lua class">
