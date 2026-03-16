@@ -191,14 +191,22 @@ Constants - Shape Mode
 
 .. lua:attribute:: CORNER: const
 
+   .. helptext:: corner rect mode constant
+
 
 .. lua:attribute:: CORNERS: const
+
+   .. helptext:: corners rect mode constant
 
 
 .. lua:attribute:: CENTER: const
 
+   .. helptext:: center mode constant
+
 
 .. lua:attribute:: RADIUS: const
+
+   .. helptext:: radius mode constant
 
 .. lua:function:: sortOrder(order)
 
@@ -280,12 +288,16 @@ Constants - Blend Modes
    .. image:: /images/example_blendMode_NORMAL.png
       :width: 200
 
+   .. helptext:: normal blend mode constant
+
 .. lua:attribute:: ADDITIVE: const
 
    Additive blend mode
 
    .. image:: /images/example_blendMode_ADDITIVE.png
       :width: 200
+
+   .. helptext:: additive blend mode constant
 
 .. lua:attribute:: MULTIPLY: const
 
@@ -294,12 +306,16 @@ Constants - Blend Modes
    .. image:: /images/example_blendMode_MULTIPLY.png
       :width: 200
 
+   .. helptext:: multiply blend mode constant
+
 .. lua:attribute:: SCREEN: const
 
    Screen blend mode
 
    .. image:: /images/example_blendMode_SCREEN.png
       :width: 200
+
+   .. helptext:: screen blend mode constant
 
 .. lua:attribute:: LIGHTEN: const
 
@@ -308,12 +324,16 @@ Constants - Blend Modes
    .. image:: /images/example_blendMode_LIGHTEN.png
       :width: 200
 
+   .. helptext:: lighten blend mode constant
+
 .. lua:attribute:: LINEAR_BURN: const
 
    Linear burn blend mode
 
    .. image:: /images/example_blendMode_LINEAR_BURN.png
       :width: 200
+
+   .. helptext:: linear burn blend mode constant
 
 .. lua:attribute:: PREMULTIPLIED: const
 
@@ -322,12 +342,16 @@ Constants - Blend Modes
    .. image:: /images/example_blendMode_PREMULTIPLIED.png
       :width: 200
 
+   .. helptext:: premultiplied blend mode constant
+
 .. lua:attribute:: DISABLED: const
 
    Disables blending
 
    .. image:: /images/example_blendMode_DISABLED.png
       :width: 200
+
+   .. helptext:: disabled blend mode constant
 
 Constants - Blend Functions
 ***************************
@@ -336,21 +360,31 @@ Constants - Blend Functions
 
    Combines source and destination pixels using addition
 
+   .. helptext:: additive blend equation constant
+
 .. lua:attribute:: EQUATION_SUB: const
 
    Combines source and destination pixels using subtraction
+
+   .. helptext:: subtractive blend equation constant
 
 .. lua:attribute:: EQUATION_REVSUB: const
 
    Combines source and destination pixels using subtraction in reverse order
 
+   .. helptext:: reverse subtractive blend equation constant
+
 .. lua:attribute:: EQUATION_MIN: const
 
    Combines source and destination pixels by taking the minimum of each component (ignores blend factors)
 
+   .. helptext:: minimum blend equation constant
+
 .. lua:attribute:: EQUATION_MAX: const
 
    Combines source and destination pixels by taking the maximum of each component (ignores blend factors)
+
+   .. helptext:: maximum blend equation constant
 
 Constants - Blend Factors
 *************************
@@ -359,41 +393,61 @@ Constants - Blend Factors
 
    Blend factor of :math:`(0, 0, 0, 0)`
 
+   .. helptext:: zero blend factor constant
+
 .. lua:attribute:: ONE: const
 
    Blend factor or :math:`(1, 1, 1, 1)`
+
+   .. helptext:: one blend factor constant
 
 .. lua:attribute:: SRC_COLOR: const
 
    Blend factor of :math:`(R_s, G_s, B_s, A_s)`
 
+   .. helptext:: source color blend factor constant
+
 .. lua:attribute:: ONE_MINUS_SRC_COLOR: const
 
    Blend factor of :math:`(1-R_s, 1-G_s, 1-B_s, 1-A_s)`
+
+   .. helptext:: one minus source color blend factor constant
 
 .. lua:attribute:: SRC_ALPHA: const
 
    Blend factor of :math:`(A_s, A_s, A_s, A_s)`
 
+   .. helptext:: source alpha blend factor constant
+
 .. lua:attribute:: ONE_MINUS_SRC_ALPHA: const
 
    Blend factor of :math:`(1-A_s, 1-A_s, 1-A_s, 1-A_s)`
+
+   .. helptext:: one minus source alpha blend factor constant
 
 .. lua:attribute:: DST_ALPHA: const
 
    Blend factor of :math:`(A_d, A_d, A_d, A_d)`
 
+   .. helptext:: destination alpha blend factor constant
+
 .. lua:attribute:: ONE_MINUS_DST_ALPHA: const
 
    Blend factor of :math:`(1-A_d, 1-A_d, 1-A_d, 1-A_d)`
+
+   .. helptext:: one minus destination alpha blend factor constant
 
 .. lua:attribute:: DST_COLOR: const
 
    Blend factor of :math:`(R_d, G_d, B_d, A_d)`
 
+   .. helptext:: destination color blend factor constant
+
 .. lua:attribute:: SRC_ALPHA_SATURATE: const
 
    Blend factor of :math:`(f, f, f, 1)` where :math:`f = min(A_s, 1 - A_d)`
+
+   .. helptext:: source alpha saturate blend factor constant
 
 Viewport
 ########
@@ -493,24 +547,56 @@ Used by drawing commands and shaders to control stencil operations
 **Stencil Test (conditions)**
 
 .. lua:attribute:: STENCIL_TEST_LESS: const
+
+   .. helptext:: less-than stencil test constant
 .. lua:attribute:: STENCIL_TEST_LEQUAL: const
+
+   .. helptext:: less-than-or-equal stencil test constant
 .. lua:attribute:: STENCIL_TEST_EQUAL: const
+
+   .. helptext:: equal stencil test constant
 .. lua:attribute:: STENCIL_TEST_GEQUAL: const
+
+   .. helptext:: greater-than-or-equal stencil test constant
 .. lua:attribute:: STENCIL_TEST_GREATER: const
+
+   .. helptext:: greater-than stencil test constant
 .. lua:attribute:: STENCIL_TEST_NOTEQUAL: const
+
+   .. helptext:: not-equal stencil test constant
 .. lua:attribute:: STENCIL_TEST_NEVER: const
+
+   .. helptext:: never stencil test constant
 .. lua:attribute:: STENCIL_TEST_ALWAYS: const
+
+   .. helptext:: always stencil test constant
 
 **Stencil Operations (pass, fail, zfail)**
 
 .. lua:attribute:: STENCIL_OP_ZERO: const
+
+   .. helptext:: zero stencil operation constant
 .. lua:attribute:: STENCIL_OP_KEEP: const
+
+   .. helptext:: keep stencil operation constant
 .. lua:attribute:: STENCIL_OP_REPLACE: const
+
+   .. helptext:: replace stencil operation constant
 .. lua:attribute:: STENCIL_OP_INCREMENT_WRAP: const
+
+   .. helptext:: increment wrap stencil operation constant
 .. lua:attribute:: STENCIL_OP_INCREMENT: const
+
+   .. helptext:: increment stencil operation constant
 .. lua:attribute:: STENCIL_OP_DECREMENT_WRAP: const
+
+   .. helptext:: decrement wrap stencil operation constant
 .. lua:attribute:: STENCIL_OP_DECREMENT: const
+
+   .. helptext:: decrement stencil operation constant
 .. lua:attribute:: STENCIL_OP_INVERT: const
+
+   .. helptext:: invert stencil operation constant
 
 Text Style
 ##########
@@ -532,23 +618,37 @@ Constants - Text
 
 .. lua:attribute:: LEFT: const
 
+   .. helptext:: left alignment constant
+
 
 .. lua:attribute:: CENTER: const
+
+   .. helptext:: center mode constant
 
 
 .. lua:attribute:: RIGHT: const
 
+   .. helptext:: right alignment constant
+
 
 .. lua:attribute:: TOP: const
+
+   .. helptext:: top alignment constant
 
 
 .. lua:attribute:: MIDDLE: const
 
+   .. helptext:: middle alignment constant
+
 
 .. lua:attribute:: BOTTOM: const
 
+   .. helptext:: bottom alignment constant
+
 
 .. lua:attribute:: BASELINE: const
+
+   .. helptext:: baseline alignment constant
 
 
 Constants - Style
@@ -556,17 +656,27 @@ Constants - Style
 
 .. lua:attribute:: ROUND: const
 
+   .. helptext:: round line cap constant
+
 
 .. lua:attribute:: SQUARE: const
+
+   .. helptext:: square line cap constant
 
 
 .. lua:attribute:: PROJECT: const
 
+   .. helptext:: project line cap constant
+
 
 .. lua:attribute:: MITER: const
 
+   .. helptext:: miter line join constant
+
 
 .. lua:attribute:: BEVEL: const
+
+   .. helptext:: bevel line join constant
 
 
 Constants - Render Queues
@@ -574,14 +684,22 @@ Constants - Render Queues
 
 .. lua:attribute:: BACKGROUND: const
 
+   .. helptext:: background pass type constant
+
 
 .. lua:attribute:: OPAQUE: const
+
+   .. helptext:: opaque pass type constant
 
 
 .. lua:attribute:: TRANSPARENT: const
 
+   .. helptext:: transparent pass type constant
+
 
 .. lua:attribute:: OVERLAY: const
+
+   .. helptext:: overlay pass type constant
 
 Constants - Color Mask
 ######################
@@ -590,23 +708,37 @@ Used by shaders to control which color components are written to color buffers (
 
 .. lua:attribute:: COLOR_MASK_NONE: const
 
+   .. helptext:: no color channels mask constant
+
 
 .. lua:attribute:: COLOR_MASK_RED: const
+
+   .. helptext:: red channel mask constant
 
 
 .. lua:attribute:: COLOR_MASK_GREEN: const
 
+   .. helptext:: green channel mask constant
+
 
 .. lua:attribute:: COLOR_MASK_BLUE: const
+
+   .. helptext:: blue channel mask constant
 
 
 .. lua:attribute:: COLOR_MASK_ALPHA: const
 
+   .. helptext:: alpha channel mask constant
+
 
 .. lua:attribute:: COLOR_MASK_RGB: const
 
+   .. helptext:: RGB channels mask constant
+
 
 .. lua:attribute:: COLOR_MASK_RGBA: const
+
+   .. helptext:: all color channels mask constant
 
 
 Constants - Culling
@@ -616,11 +748,17 @@ Used by shaders / meshes to control which triangles are culled (based on winding
 
 .. lua:attribute:: CULL_FACE_NONE: const
 
+   .. helptext:: no face culling constant
+
 
 .. lua:attribute:: CULL_FACE_FRONT: const
 
+   .. helptext:: front face culling constant
+
 
 .. lua:attribute:: CULL_FACE_BACK: const
+
+   .. helptext:: back face culling constant
 
 Constants - Depth
 #################
@@ -629,26 +767,44 @@ Used by shaders to control depth rejection for opaque and translucent fragments
 
 .. lua:attribute:: DEPTH_WRITE_ENABLED: const
 
+   .. helptext:: depth write enabled constant
+
 
 .. lua:attribute:: DEPTH_WRITE_DISABLED: const
+
+   .. helptext:: depth write disabled constant
 
 
 .. lua:attribute:: DEPTH_FUNC_NEVER: const
 
+   .. helptext:: never depth function constant
+
 
 .. lua:attribute:: DEPTH_FUNC_LESS: const
+
+   .. helptext:: less-than depth function constant
 
 
 .. lua:attribute:: DEPTH_FUNC_EQUAL: const
 
+   .. helptext:: equal depth function constant
+
 
 .. lua:attribute:: DEPTH_FUNC_LESS_EQUAL: const
+
+   .. helptext:: less-than-or-equal depth function constant
 
 
 .. lua:attribute:: DEPTH_FUNC_GREATER: const
 
+   .. helptext:: greater-than depth function constant
+
 
 .. lua:attribute:: DEPTH_FUNC_NOT_EQUAL: const
 
+   .. helptext:: not-equal depth function constant
+
 
 .. lua:attribute:: DEPTH_FUNC_GREATER_EQUAL: const
+
+   .. helptext:: greater-than-or-equal depth function constant
