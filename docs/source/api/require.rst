@@ -47,4 +47,4 @@ require
         - ``loadMain`` - When used with a Codea project, load Main.lua
         - ``noImport`` - Do not import global variables and functions
 
-       .. helptext:: an option value for this module
+       .. helptext:: an option value for require

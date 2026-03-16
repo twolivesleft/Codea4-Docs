@@ -104,7 +104,7 @@ Casts a light source onto the 3D environment. Can be used with basic immediate m
 
       The color of the light source
 
-      .. helptext:: create a new color type
+      .. helptext:: get or set the light color
 
    .. lua:attribute:: castShadows: boolean
 

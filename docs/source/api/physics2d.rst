@@ -655,13 +655,13 @@ Constraints
 
       Enable/disable this joint
 
-      .. helptext:: get or set whether this body or joint is enabled
+      .. helptext:: get or set whether this joint is enabled
 
    .. lua:attribute:: destroyed: boolean
 
       Flag set to true if this joint has already been destroyed
 
-      .. helptext:: get whether this body or collider is destroyed
+      .. helptext:: get whether this joint is destroyed
 
    .. lua:attribute:: collideConnected: boolean
 
