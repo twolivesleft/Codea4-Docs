@@ -126,9 +126,9 @@ A module for creating basic UI elements in scenes
 
    .. lua:attribute:: image: image
 
-      .. helptext:: create a new blank image
+      The image to draw
 
-   The image to draw
+      .. helptext:: get or set the image to draw
 
 .. lua:class:: button: component
 
