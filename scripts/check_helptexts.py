@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
 Scan all RST files under docs/source and report lua:function /
-lua:method / lua:staticmethod directives that are missing a `.. helptext::` in their content block.
+lua:method / lua:staticmethod / lua:attribute directives that are missing a `.. helptext::` in their content block.
 """
 
 import re
 import sys
 from pathlib import Path
 
-DIRECTIVE_RE = re.compile(r'^(\s*)\.\. lua:(function|method|staticmethod)::(.*)')
+DIRECTIVE_RE = re.compile(r'^(\s*)\.\. lua:(function|method|staticmethod|attribute)::(.*)')
 HELPTEXT_RE  = re.compile(r'\.\. helptext::')
 
 DOCS_DIR = Path(__file__).parent.parent / 'docs' / 'source'
