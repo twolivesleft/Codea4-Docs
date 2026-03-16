@@ -143,6 +143,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
         - ``decodeTable`` - Decode the picked asset as a table (only for json assets)
         - ``reference`` - Do not copy the asset to the project's assets, instead reference the original file
 
+       .. helptext:: an option value for the picker
+
 .. lua:function:: pick(...)
 
     Pick assets with the specified UTType strings, options and callback function.
