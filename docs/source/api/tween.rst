@@ -33,6 +33,8 @@ Procedurally animate values over time, otherwise known as tweening
       :param target: The target to tween
       :type target: table | usertype
 
+      .. helptext:: tween a value or values to a given target
+
    .. lua:attribute:: duration: number
 
       The total duration of the tween in seconds
