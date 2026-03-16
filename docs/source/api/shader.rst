@@ -54,7 +54,7 @@ shader
 
       This is useful for fairly basic shaders
 
-      .. helptext:: load a shader by name or source
+      .. helptext:: create a shader from vertex and fragment sources
 
    .. lua:staticmethod:: shader(shaderDefinition)
 
