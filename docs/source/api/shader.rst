@@ -114,7 +114,7 @@ shader
 
          ``myBuffer = shader.buffer(layout)``
 
-         .. helptext:: create a GPU buffer with a given layout
+         .. helptext:: create a gpu buffer with a given layout
 
       .. lua:method:: resize(size)
 
