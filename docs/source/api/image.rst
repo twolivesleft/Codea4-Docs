@@ -103,41 +103,61 @@ Image
 
       The width of the image in pixels
 
+      .. helptext:: get the width of this image in pixels
+
    .. lua:attribute:: height: integer
 
       The height of the image in pixels
+
+      .. helptext:: get the height of this image in pixels
 
    .. lua:attribute:: depth: integer
 
       The depth of the image in pixels (for volume images)
 
+      .. helptext:: get the depth of this image in pixels
+
    .. lua:attribute:: numLayers: integer
 
       The number of layers in this image
+
+      .. helptext:: get the number of layers in this image
 
    .. lua:attribute:: hasMips: boolean
 
       Whether this image has mip mapping or not
 
+      .. helptext:: get whether this image has mip mapping
+
    .. lua:attribute:: cubeMap: boolean
 
       Whether this image is a cube or not
+
+      .. helptext:: get whether this image is a cube map
 
    .. lua:attribute:: numMips: integer
 
       The number of mips this image has
 
+      .. helptext:: get the number of mips in this image
+
    .. lua:attribute:: sampler: samplerState
 
       The sampler state for this image, which determines how texels are sampled by shaders
+
+      .. helptext:: get or set the sampler state for this image
 
    .. lua:attribute:: smooth: boolean
 
       Sets/gets whether this image has linear or nearest filtering
 
+      .. helptext:: enable smooth graphics
+
    .. lua:attribute:: key: assetKey
 
       The asset key for this image (if it has one)
+
+      .. helptext:: get the asset key for this image
 
    .. lua:method:: generateIrradiance(samples)
 
@@ -406,25 +426,37 @@ The ``mip`` property controls how mipmapping is handled, ``linear`` will blend b
 
       The minification filter, can be ``point``, ``linear`` or ``none``
 
+      .. helptext:: get or set the minification filter mode
+
    .. lua:attribute:: mag: filterMode
 
       The magnification filter, can be ``point``, ``linear`` or ``none``
+
+      .. helptext:: get or set the magnification filter mode
 
    .. lua:attribute:: mip: filterMode
 
       The mip filter, can be ``point``, ``linear`` or ``none``
 
+      .. helptext:: get or set the mip filter mode
+
    .. lua:attribute:: u: samplerMode
 
       The u sampler mode, can be ``repeat``, ``clamp`` or ``mirror``
+
+      .. helptext:: get or set the u sampler wrap mode
 
    .. lua:attribute:: v: samplerMode
 
       The v sampler mode, can be ``repeat``, ``clamp`` or ``mirror``
 
+      .. helptext:: get or set the v sampler wrap mode
+
    .. lua:attribute:: w: samplerMode
 
       The w sampler mode, can be ``repeat``, ``clamp`` or ``mirror``
+
+      .. helptext:: get or set the w sampler wrap mode
 
 Slices and Atlases
 -------------------
@@ -524,10 +556,14 @@ Slices and Atlases
    .. lua:attribute:: image: image
 
       The image this slice is derived from
+
+      .. helptext:: create a new blank image
     
    .. lua:attribute:: atlas: atlas
 
       The atlas this slice is part of
+
+      .. helptext:: get or set the source atlas
 
 .. lua:class:: atlas
 
