@@ -65,7 +65,7 @@ A module for creating basic UI elements in scenes
 
       The entity for this canvas
 
-      .. helptext:: get the entity associated with this UI element
+      .. helptext:: get the entity associated to this canvas
 
    .. lua:attribute:: scale: number
 

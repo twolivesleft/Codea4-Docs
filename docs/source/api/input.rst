@@ -732,15 +732,15 @@ Gamepad
 
    .. lua:attribute:: b: gamepad.button
 
-      .. helptext:: B key constant
+      .. helptext:: get the b button
 
    .. lua:attribute:: x: gamepad.button
 
-      .. helptext:: X key constant
+      .. helptext:: get the x button
 
    .. lua:attribute:: y: gamepad.button
 
-      .. helptext:: Y key constant
+      .. helptext:: get the y button
 
    .. lua:attribute:: home: gamepad.button
 
@@ -812,24 +812,24 @@ Gamepad
 
       .. lua:attribute:: x: number
 
-         .. helptext:: X key constant
+         .. helptext:: get the x value of the directional pad
 
       .. lua:attribute:: y: number
 
-         .. helptext:: Y key constant
+         .. helptext:: get the y value of the directional pad
 
       .. lua:attribute:: left: boolean
 
-         .. helptext:: left arrow key constant
+         .. helptext:: get if the directional pad is moved left
 
       .. lua:attribute:: right: boolean
 
-         .. helptext:: right arrow key constant
+         .. helptext:: get if the directional pad is moved right
 
       .. lua:attribute:: up: boolean
 
-         .. helptext:: up arrow key constant
+         .. helptext:: get if the directional pad is moved up
 
       .. lua:attribute:: down: boolean
 
-         .. helptext:: down arrow key constant
+         .. helptext:: get if the directional pad is moved down
