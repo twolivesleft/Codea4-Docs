@@ -151,7 +151,7 @@ Image
 
       Sets/gets whether this image has linear or nearest filtering
 
-      .. helptext:: enable smooth graphics
+      .. helptext:: enable or disable smooth filtering
 
    .. lua:attribute:: key: assetKey
 
