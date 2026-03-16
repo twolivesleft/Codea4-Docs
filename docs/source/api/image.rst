@@ -47,6 +47,8 @@ Image
       :param size: The size of the image cube
       :type size: integer
 
+      .. helptext:: create a blank cube image
+
    .. lua:staticmethod:: image.cube(equirect)
 
       Creates a cube image from a single equirect image (i.e. hdr)
@@ -54,9 +56,13 @@ Image
       :param equirect: The source equirect image
       :type equirect: image
 
+      .. helptext:: create a cube image from an equirect image
+
    .. lua:staticmethod:: image.cube(imageNX, imagePX, imageNY, imagePY, imageNZ, imagePZ)
 
       Creates a cube image from six source images, one for each cube face
+
+      .. helptext:: create a cube image from six face images
 
    .. lua:staticmethod:: image.volume(width, height, depth, format)
 
@@ -71,12 +77,16 @@ Image
       :param format: The format of the volume image
       :type format: image format
 
+      .. helptext:: create a blank volume image
+
    .. lua:staticmethod:: image.read(key)
 
       Read an image asset from the filesystem
 
       :param key: The asset key to load
       :rtype: image
+
+      .. helptext:: read an image asset from the filesystem
 
    .. lua:staticmethod:: image.save(key, image)
 
@@ -86,6 +96,8 @@ Image
       :type key: assetKey
       :param image: The image to save
       :type image: image
+
+      .. helptext:: save an image asset to the filesystem
 
    .. lua:attribute:: width: integer
 
@@ -527,9 +539,15 @@ Slices and Atlases
 
       Create a new blank atlas using an existing image
 
+      .. helptext:: create a new blank atlas from an image
+
    .. lua:staticmethod:: read(assetKey)
 
+      .. helptext:: read an atlas from an asset key
+
    .. lua:staticmethod:: save(assetKey, atlas)
+
+      .. helptext:: save an atlas to an asset key
 
    .. lua:method:: clear()
 
