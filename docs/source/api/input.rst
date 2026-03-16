@@ -762,10 +762,6 @@ Gamepad
 
       .. helptext:: get the touchpad surface
 
-   .. lua:attribute:: touchpadSurface: gamepad.directionalPad
-
-      .. helptext:: get the touchpad surface
-
    .. lua:attribute:: batteryLevel: number
 
       .. helptext:: get the battery level of the gamepad
