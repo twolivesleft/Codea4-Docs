@@ -65,9 +65,13 @@ A module for creating basic UI elements in scenes
 
       The entity for this canvas
 
+      .. helptext:: get the entity associated with this UI element
+
    .. lua:attribute:: scale: number
 
       Scale factor for canvas drawing
+
+      .. helptext:: scale the current transform
 
 
 .. lua:class:: label : component
@@ -78,35 +82,51 @@ A module for creating basic UI elements in scenes
 
       The text to render on the label
 
+      .. helptext:: draw text at a location
+
    .. lua:attribute:: color: color
 
       The label's text color
+
+      .. helptext:: create a new color type
 
    .. lua:attribute:: fontSize: number
 
       The label's font size
 
+      .. helptext:: set the font size for text()
+
    .. lua:attribute:: align: flags
 
       The label's text alignment
+
+      .. helptext:: get or set the text alignment flags
 
    .. lua:attribute:: style: flags
 
       The label's text style
 
+      .. helptext:: get or set the style flags or table
+
    .. lua:attribute:: shadowOffset: vec2
 
       The offset of the labels text shadow
 
+      .. helptext:: get or set the text shadow offset
+
    .. lua:attribute:: shadowSoftner: number
 
       The softness of the labels text shadow
+
+      .. helptext:: get or set the text shadow softness
 
 .. lua:class:: image : component
 
    Draws an image on a canvas entity
 
    .. lua:attribute:: image: image
+
+      .. helptext:: create a new blank image
 
    The image to draw
 
@@ -129,6 +149,8 @@ A module for creating basic UI elements in scenes
             selected = { sprite = ..., color = ... }
          }
 
+      .. helptext:: get or set the style flags or table
+
 
 .. lua:class:: vstack: component
 
@@ -138,9 +160,13 @@ A module for creating basic UI elements in scenes
 
       The outer padding for the stack, used to create a border around the edge
 
+      .. helptext:: get or set the padding
+
    .. lua:attribute:: spacing: number
 
       The spacing between each item in the stack
+
+      .. helptext:: get or set the spacing
 
 
 .. lua:class:: hstack: component
@@ -151,6 +177,10 @@ A module for creating basic UI elements in scenes
 
       The outer padding for the stack, used to create a border around the edge
 
+      .. helptext:: get or set the padding
+
    .. lua:attribute:: spacing: number
 
       The spacing between each item in the stack
+
+      .. helptext:: get or set the spacing
