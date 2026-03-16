@@ -563,7 +563,7 @@ Slices and Atlases
 
       The atlas this slice is part of
 
-      .. helptext:: get or set the source atlas
+      .. helptext:: get the atlas this slice is part of
 
 .. lua:class:: atlas
 
