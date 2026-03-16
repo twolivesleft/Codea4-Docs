@@ -557,7 +557,7 @@ Slices and Atlases
 
       The image this slice is derived from
 
-      .. helptext:: create a new blank image
+      .. helptext:: get the source image for this slice
     
    .. lua:attribute:: atlas: atlas
 
