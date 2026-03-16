@@ -144,7 +144,7 @@ shader
     
          Buffer type can be 32 bit (``shader.indexBuffer.i32``) or 16 bit (``shader.indexBuffer.i16``)          
 
-         .. helptext:: create a GPU index buffer
+         .. helptext:: create a gpu index buffer
 
       .. lua:method:: resize(size)
 
