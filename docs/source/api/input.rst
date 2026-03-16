@@ -88,7 +88,7 @@ Touches
 
       .. helptext:: get the previous position as a vec2
 
-   .. lua:attribute:: delta: number
+   .. lua:attribute:: delta: vec2
 
       The position delta of the touch (in screen coordinates) as a vector
 
