@@ -393,7 +393,7 @@ entity
 
       The sprite (``image.slice``) attached to this entity. This will be drawn at the entities' transform within the scene
 
-      .. helptext:: draw a sprite or image
+      .. helptext:: get or set the sprite attached to this entity
 
    .. lua:attribute:: color: color
 
