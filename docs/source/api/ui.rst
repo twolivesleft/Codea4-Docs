@@ -94,7 +94,7 @@ A module for creating basic UI elements in scenes
 
       The label's font size
 
-      .. helptext:: set the font size for text()
+      .. helptext:: get or set the font size
 
    .. lua:attribute:: align: flags
 
