@@ -39,13 +39,19 @@ Procedurally animate values over time, otherwise known as tweening
 
       The total duration of the tween in seconds
 
+      .. helptext:: get the duration of this tween
+
    .. lua:attribute:: progress: number
 
       The current progress of the tween in seconds
+
+      .. helptext:: get the progress of this tween
    
    .. lua:attribute:: target: object
 
       The target object being tweened
+
+      .. helptext:: get the target object of this tween
 
    .. lua:method:: to(keyValuePairs)
 

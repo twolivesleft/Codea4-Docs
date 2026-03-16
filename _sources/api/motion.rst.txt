@@ -115,17 +115,25 @@ Device Orientation
 
       The X-axis is arbitrary and the Z-axis is vertical.
 
+      .. helptext:: arbitrary x axis, vertical z reference frame
+
    .. lua:attribute:: XArbitraryCorrectedZVertical: integer
 
       The X-axis is arbitrary and the Z-axis is vertical. The system will attempt to correct for the device's orientation.
+
+      .. helptext:: corrected arbitrary x axis, vertical z reference frame
 
    .. lua:attribute:: XMagneticNorthZVertical: integer
       
       The X-axis points toward the magnetic north and the Z-axis is vertical.
 
+      .. helptext:: magnetic north x axis, vertical z reference frame
+
    .. lua:attribute:: XTrueNorthZVertical: integer
       
       The X-axis points toward the true north and the Z-axis is vertical.
+
+      .. helptext:: true north x axis, vertical z reference frame
 
 Magnetic Field Data
 ===================
@@ -135,6 +143,8 @@ Magnetic Field Data
    .. lua:attribute:: field: vec3
 
       The magnetic field vector in the device's reference frame.
+
+      .. helptext:: get the magnetic field vector
    
    .. lua:attribute:: accuracy: integer
 
@@ -146,3 +156,5 @@ Magnetic Field Data
       - ``motion.magneticAccuracy.low``: The magnetic field data is of low accuracy.
       - ``motion.magneticAccuracy.medium``: The magnetic field data is of medium accuracy.
       - ``motion.magneticAccuracy.high``: The magnetic field data is of high accuracy.
+
+      .. helptext:: get the magnetic field accuracy

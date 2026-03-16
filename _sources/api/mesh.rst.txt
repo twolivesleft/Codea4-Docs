@@ -85,21 +85,31 @@ mesh
 
       The mesh texture, used by the default mesh shader (and accessible to custom shaders as well) for basic surface textures
 
+      .. helptext:: get or set the texture for this mesh
+
    .. lua:attribute:: shader: shader
 
       Custom shader for this mesh, used when ``mesh:draw()`` is invoked
+
+      .. helptext:: get or set the shader for this mesh
 
    .. lua:attribute:: material: material
 
       The same as assigning a shader but with a material instead
 
+      .. helptext:: get or set the material for this mesh
+
    .. lua:attribute:: submeshIndex: integer
 
       The current sub-mesh index. Useful for multi-material meshes
 
+      .. helptext:: get or set the submesh index
+
    .. lua:attribute:: submeshCount: integer
    
       The total number of sub-meshes within this mesh
+
+      .. helptext:: get the number of submeshes
 
    .. lua:attribute:: vertexCount: integer
 
@@ -107,35 +117,51 @@ mesh
 
       *3.x compatiblity note: This was originally called* ``count``
 
+      .. helptext:: get the number of vertices
+
    .. lua:attribute:: indexCount: integer
 
       The total number of indices in the currently selected sub-mesh
 
       *3.x compatiblity note: meshes originally did not contain indices and therefore did not have an index count*
 
+      .. helptext:: get the number of indices
+
    .. lua:attribute:: bounds: bounds.abbb
 
       The local bounds of this mesh (no scaling or rotation applied)
+
+      .. helptext:: get the axis-aligned bounding box
 
    .. lua:attribute:: positions: table<vec3>
 
       Gets/sets the positions of the mesh vertices
 
+      .. helptext:: get or set the vertex positions
+
    .. lua:attribute:: normals: table<vec3>      
 
       Gets/sets the normals of the mesh vertices
+
+      .. helptext:: get or set the vertex normals
 
    .. lua:attribute:: colors: table<color>
 
       Gets/sets the colors of the mesh vertices
 
+      .. helptext:: get or set the vertex colors
+
    .. lua:attribute:: uvs: table<vec2>                  
 
       Gets/sets the uvs of the mesh vertices
 
+      .. helptext:: get or set the vertex UV coordinates
+
    .. lua:attribute:: indices: table<integer>
 
       Gets/sets the indices of the mesh
+
+      .. helptext:: get or set the mesh indices
 
    .. lua:attribute:: vertices: table<vec2|vec3>
 
@@ -143,11 +169,15 @@ mesh
 
       *3.x compatiblity note: works the same as the original vertices property*
 
+      .. helptext:: get or set the mesh vertices
+
    .. lua:attribute:: texCoords: table<vec2>                  
 
       Gets/sets the uvs of the mesh vertices
 
       *3.x compatiblity note: works the same as the uvs property for the sake of backwards compatiblity*
+
+      .. helptext:: get or set the texture coordinates
 
    .. lua:attribute:: root: entity
 
@@ -155,9 +185,13 @@ mesh
 
       *WARNING: do not attempt to delete any nodes within the root as it may have unintended side effects*
 
+      .. helptext:: get the root entity of this mesh
+
    .. lua:attribute:: animations: table<animation>
 
       Contains the list of all animations for this mesh
+
+      .. helptext:: get the animations in this mesh
 
    **Mesh Drawing**
 
