@@ -22,6 +22,8 @@ color
     
       Creates a new color object from HSV values
 
+      .. helptext:: create a color from HSV values
+
    .. lua:attribute:: r: number
 
       The red component of the color
@@ -71,6 +73,8 @@ color
    .. lua:staticmethod:: mix(a, b, t) -> color
 
       Linearly interpolates between two colors, performing `a * (1-t) + b * t`
+
+      .. helptext:: linearly interpolate between two colors
    
    Predefined colors
    *****************

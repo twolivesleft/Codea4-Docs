@@ -32,9 +32,13 @@ math types
 
       Return a ``vec2`` containing the component-wise minimum of two vectors
 
+      .. helptext:: return the component-wise minimum of two vectors
+
    .. lua:staticmethod:: max(v1, v2)
 
       Return a ``vec2`` containing the component-wise maximum two vectors
+
+      .. helptext:: return the component-wise maximum of two vectors
 
    .. lua:attribute:: length: number
 
@@ -138,13 +142,19 @@ math types
 
       Create a new ``vec3`` by setting all values at once or each one individually
 
+      .. helptext:: create a new vec3
+
    .. lua:staticmethod:: min(v1, v2)
 
       Return a ``vec3`` containing the component-wise minimum of two vectors
 
+      .. helptext:: return the component-wise minimum of two vectors
+
    .. lua:staticmethod:: max(v1, v2)
 
       Return a ``vec3`` containing the component-wise maximum two vectors
+
+      .. helptext:: return the component-wise maximum of two vectors
 
    .. lua:attribute:: x: number
 
@@ -242,13 +252,19 @@ math types
 
       Create a new ``vec4`` by setting all values at once or each one individually
 
+      .. helptext:: create a new vec4
+
    .. lua:staticmethod:: min(v1, v2)
 
       Return a ``vec4`` containing the component-wise minimum of two vectors
 
+      .. helptext:: return the component-wise minimum of two vectors
+
    .. lua:staticmethod:: max(v1, v2)
 
       Return a ``vec4`` containing the component-wise maximum two vectors
+
+      .. helptext:: return the component-wise maximum of two vectors
 
    .. lua:attribute:: x: number
 
@@ -365,9 +381,13 @@ Quaternions
 
       Create a new ``quat``
 
+      .. helptext:: create a new quaternion
+
    .. lua:staticmethod:: lookRotation(forward, up)
 
       :return: A ``quat`` that points in the ``forward`` direction using ``up`` to orient it correctly
+
+      .. helptext:: create a rotation looking in a forward direction
 
    .. lua:staticmethod:: fromToRotate(from, to)
 
@@ -377,6 +397,8 @@ Quaternions
       :type to: vec3
       :return: a ``quat`` containing a relative rotation between the ``from`` and ``to`` vectors
 
+      .. helptext:: create a rotation from one direction to another
+
    .. lua:staticmethod:: angleAxis(angle, axis)
 
       :param angle: The amount of rotation in degrees
@@ -384,6 +406,8 @@ Quaternions
       :param axis: The axis of rotation
       :type axis: vec3
       :return: a new ``quat`` containing a rotation defined by ``angle`` (in degrees) rotated about the ``axis`` vector
+
+      .. helptext:: create a rotation from an angle and axis
 
    .. lua:staticmethod:: eulerAngles(x, y, z)
 
@@ -394,6 +418,8 @@ Quaternions
       :param z: The amount of rotation about the z axis (roll) in degrees
       :type z: number
       :return: a new ``quat`` containing a rotation defined by 3 euler angles (i.e. yaw, pitch roll) in radians
+
+      .. helptext:: create a rotation from euler angles
 
    .. lua:attribute:: x: number
 
@@ -464,6 +490,8 @@ Quaternions
 
       Create a new ``mat2``, default, diagonals, 2 ``vec2`` objects or all 4 entries
 
+      .. helptext:: create a new 2x2 matrix
+
    .. lua:method:: inverse()
 
       :return: the inverse of this matrix
@@ -517,6 +545,8 @@ Quaternions
                          mat3(m11, m12, m31, ..., m33)
 
       Create a new ``mat3``, default, diagonals, 3 ``vec3`` objects or all 9 entries
+
+      .. helptext:: create a new 3x3 matrix
 
    .. lua:method:: inverse()
 
@@ -572,21 +602,39 @@ Quaternions
 
       Create a new ``mat4``, default, diagonals, 4 ``vec4`` objects or all 16 entries
 
+      .. helptext:: create a new 4x4 matrix
+
    .. lua:staticmethod:: lookAt(eye, center, up)
+
+      .. helptext:: create a look-at view matrix
 
    .. lua:staticmethod:: lookAt(matrix, eye, center, up)
 
+      .. helptext:: apply a look-at transform to a matrix
+
    .. lua:staticmethod:: orbit(origin, distance, x, y)
+
+      .. helptext:: create an orbit view matrix
 
    .. lua:staticmethod:: orbit(matrix, origin, distance, x, y)
 
+      .. helptext:: apply an orbit transform to a matrix
+
    .. lua:staticmethod:: ortho(left, right, top, bottom, [near, far])
+
+      .. helptext:: setup an orthographic view
 
    .. lua:staticmethod:: perspective(fovy, aspect, near, far)
 
+      .. helptext:: setup a perspective view
+
    .. lua:staticmethod:: rotate(angle, axis)
 
+      .. helptext:: rotate the current transform
+
    .. lua:staticmethod:: rotate(matrix, angle, axis)
+
+      .. helptext:: rotate a matrix by an angle and axis
 
    .. lua:method:: inverse()
 

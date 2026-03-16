@@ -136,10 +136,16 @@ material
 
       Create a new material using the supplied :lua:class:`shader` 
 
+      .. helptext:: create a new material with a shader
+
    .. lua:staticmethod:: lit()
 
       Create a default lit material using the standard shader
 
+      .. helptext:: create a default lit material
+
    .. lua:staticmethod:: unlit()
 
       Create a default unlit material using the standard shader
+
+      .. helptext:: create a default unlit material

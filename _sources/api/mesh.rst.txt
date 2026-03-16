@@ -60,6 +60,8 @@ mesh
       :param submeshCount: The number of submeshes that this mesh will be created with (optoinal)
       :type submeshCount: integer
 
+      .. helptext:: create a new mesh
+
    .. lua:staticmethod:: mesh.read(key)
 
       Loads a mesh from a file
@@ -76,6 +78,8 @@ mesh
       Saving meshes is not currently supported
       
       :param key: The asset key to load
+
+      .. helptext:: load a mesh from a file
 
    .. lua:attribute:: texture: image
 
@@ -292,6 +296,8 @@ mesh
       :param segmentSweep: Counterclockwise angle
       :type segmentSweep: number
 
+      .. helptext:: generate a sphere mesh
+
    .. lua:staticmethod:: mesh.icoSphere([radius = 1, subdivisions = 4]) 
 
       Generates an ico-sphere, aka spherical subdivided icosahedron
@@ -301,6 +307,8 @@ mesh
       :param subdivisions: Subdivisions for the ico-sphere
       :type subdivisions: number
 
+      .. helptext:: generate an icosphere mesh
+
    .. lua:staticmethod:: mesh.box([size = vec3(1, 1, 1), segments = vec3(8, 8, 8)])
 
       Rectangular box centered at origin aligned along the x, y and z axis
@@ -309,6 +317,8 @@ mesh
       :type size: vec3
       :param segments: The number of segments in x, y and z directions
       :type segments: vec3
+
+      .. helptext:: generate a box mesh
 
    .. lua:staticmethod:: mesh.roundedBox([radius = 0.25, size = vec3(1, 1, 1), slices = 4, segments = vec3(8, 8, 8)])
 
@@ -322,6 +332,8 @@ mesh
       :type slices:
       :param segments: The number of segments in x, y and z directions
       :type segments: vec3
+
+      .. helptext:: generate a rounded box mesh
 
    .. lua:staticmethod:: mesh.cone([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
 
@@ -342,6 +354,8 @@ mesh
       :param sweep: Counterclockwise angle around the y-axis
       :type sweep: number
 
+      .. helptext:: generate a cone mesh
+
    .. lua:staticmethod:: mesh.cylinder([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
 
       Capped cylinder centered at origin aligned along the y-axis
@@ -360,6 +374,8 @@ mesh
       :type segments: number
       :param sweep: Counterclockwise angle around the y-axis
       :type segments: number
+
+      .. helptext:: generate a cylinder mesh
 
    .. lua:staticmethod:: mesh.capsule([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
 
@@ -380,6 +396,8 @@ mesh
       :param sweep: Counterclockwise angle around the y-axis
       :type segments: number
 
+      .. helptext:: generate a capsule mesh
+
    .. lua:staticmethod:: mesh.disk([radius = 1, innerRadius = 1, slices = 32, rings = 4, start = 0, sweep = 360])
 
       A circular disk centered at origin on the xz-plane
@@ -397,6 +415,8 @@ mesh
       :param sweep: Counterclockwise angle
       :type sweep: number
 
+      .. helptext:: generate a disk mesh
+
    .. lua:staticmethod:: mesh.plane([size = vec2(1, 1), segments = vec2(8, 8)])
 
       A flat plane centered at the origin on the xy-plane
@@ -405,6 +425,8 @@ mesh
       :type size: vec2
       :param segments: Number of subdivisions in the x and z directions
       :type segments: vec2
+
+      .. helptext:: generate a plane mesh
 
    .. lua:staticmethod:: mesh.torus([minor = 0.25, major = 1, slices = 32, segments = 8, minorStart = 0, minorSweep = 360, majorStart = 0, majorSweep = 360])      
 
@@ -427,6 +449,8 @@ mesh
       :param majorSweep: Counterclockwise angle around the y-axis
       :type majorSweep: number
 
+      .. helptext:: generate a torus mesh
+
    .. lua:staticmethod:: mesh.torusKnot([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])            
 
       Generates a torus knot
@@ -440,6 +464,8 @@ mesh
       :param segments:
       :type segments: integer
 
+      .. helptext:: generate a torus knot mesh
+
    .. lua:staticmethod:: mesh.teapot([subdivisions = 8])            
 
       Generates the Utah teapot using the original data
@@ -447,4 +473,6 @@ mesh
 
       :param segments:
       :type segments: integer
+
+      .. helptext:: generate the Utah teapot mesh
 
