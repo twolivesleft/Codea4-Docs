@@ -433,7 +433,7 @@ Constants - Key Codes
    .. helptext:: page down key constant
 .. lua:attribute:: print: const
 
-   .. helptext:: print a message to the console
+   .. helptext:: print key constant
 .. lua:attribute:: plus: const
 
    .. helptext:: plus key constant
