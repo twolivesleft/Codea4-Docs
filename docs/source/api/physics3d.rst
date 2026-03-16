@@ -9,6 +9,8 @@ physics3d
 
       Create a new physics world
 
+      .. helptext:: create a new 3D physics world
+
    .. lua:method:: body(type, x, y, z)
 
       Create a new rigidbody in this world

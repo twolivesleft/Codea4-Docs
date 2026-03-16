@@ -45,11 +45,15 @@ Casts a light source onto the 3D environment. Can be used with basic immediate m
 
       Create a new directional light
 
+      .. helptext:: create a new directional light
+
    .. lua:staticmethod:: light.point([position])
 
       Create a new positional light
 
       *note: currently not supported by the renderer*
+
+      .. helptext:: create a new point light
 
    .. lua:staticmethod:: light.spot([position, direction])
 
@@ -57,19 +61,27 @@ Casts a light source onto the 3D environment. Can be used with basic immediate m
 
       *note: currently not supported by the renderer*
 
+      .. helptext:: create a new spot light
+
    .. lua:staticmethod:: light.push(light)
 
       Pushes a light source onto the rendering stack
       
       This will apply basic lighting to 3D objects with lit materials after the light has been pushed but will not support advanced features such as shadows
 
+      .. helptext:: push a light source onto the rendering stack
+
    .. lua:staticmethod:: light.pop()
 
       Pops a light source from the rendering stack
+
+      .. helptext:: pop a light source from the rendering stack
    
    .. lua:staticmethod:: light.clear()
 
       Clears all lights from the rendering stack
+
+      .. helptext:: clear all lights from the rendering stack
 
    .. lua:attribute:: type: enum
 
