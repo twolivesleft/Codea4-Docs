@@ -76,6 +76,8 @@ Simulation
 
       The current gravity vector for this world
 
+      .. helptext:: get or set the 2D physics gravity vector
+
 .. lua:class:: body
 
    A two dimensional rigidbody that simulated within a :lua:class:`physics2d.world`. Used to simulate both dynamic and static objects, responding to physical forces, collisions and physics queries (i.e. raycast, queryBox, etc...)
@@ -275,65 +277,97 @@ Simulation
 
       Flag indicating that this body has already been destroyed
 
+      .. helptext:: get whether this body or collider is destroyed
+
    .. lua:attribute:: position: vec2
 
       The position of this body in the simulated world
+
+      .. helptext:: get or set the position of this body
 
    .. lua:attribute:: mass: number (readonly)
 
       The mass of this body in kilograms
 
+      .. helptext:: get the mass of this body
+
    .. lua:attribute:: inertia: number
 
       The interial tensor in kg m^2
+
+      .. helptext:: get or set the inertia of this body
 
    .. lua:attribute:: linearVelocity: vec2
 
       The linear velocity of the body
 
+      .. helptext:: get or set the linear velocity
+
    .. lua:attribute:: angularVelocity: number
 
       The angular velocity of the body
+
+      .. helptext:: get or set the angular velocity
 
    .. lua:attribute:: linearDamping: number
 
       The amount of linear damping to apply, slowing velocity proportionally over time
 
+      .. helptext:: get or set the linear damping
+
    .. lua:attribute:: angularDamping: number
 
       The amount of linear damping to apply, slowing rotation propotionally over time
+
+      .. helptext:: get or set the angular damping
 
    .. lua:attribute:: gravityScale: number
 
       The scale factor to apply to global gravity, settings 0 will disable gravity
 
+      .. helptext:: get or set the gravity scale
+
    .. lua:attribute:: bullet: boolean
 
       Continuous physics switch for this body, used to prevent tunneling for fast moving objects
+
+      .. helptext:: get or set whether bullet mode is enabled
 
    .. lua:attribute:: sleepingAllowed: boolean
 
       Flag for allowing sleeping for this body
 
+      .. helptext:: get or set whether sleeping is allowed
+
    .. lua:attribute:: awake: boolean
 
       Flag for the current awake state of this body, set to ``true`` to wake immediately
+
+      .. helptext:: get or set whether this body is awake
 
    .. lua:attribute:: enabled: boolean
 
       Flag for whether simulation is enabled
 
+      .. helptext:: get or set whether this body or joint is enabled
+
    .. lua:attribute:: fixedRotation: boolean
 
       Flag for fixed rotation state, set to ``false`` to disable rotation
+
+      .. helptext:: get or set whether rotation is fixed
 
    .. lua:attribute:: onCollisionBegan: function<physics2d.contact>
 
       A callback for when a collision with this body begins, with more information provided by the supplied :lua:class:`physics2d.contact` object
 
+      .. helptext:: callback invoked when collision begins
+
    .. lua:attribute:: onCollisionEnded: function<physics2d.contact>
 
       A callback for when a collision with this body ends, with more information provided by the supplied :lua:class:`physics2d.contact` object
+
+      .. helptext:: callback invoked when collision ends
 
    .. lua:attribute:: onPreSolve: function<physics2d.contact>
 
@@ -341,11 +375,15 @@ Simulation
 
       See: https://box2d.org/documentation/classb2_contact_listener.html
 
+      .. helptext:: callback invoked before collision is resolved
+
    .. lua:attribute:: onPostSolve: function<physics2d.contact>
 
       A callback for when a collision with this body has been solved, allowing for some :lua:class:`physics2d.contact` information to be used for other purposes
 
       See: https://box2d.org/documentation/classb2_contact_listener.html
+
+      .. helptext:: callback invoked after collision is resolved
 
 Collision
 #########
@@ -364,21 +402,31 @@ Collision
 
       Flag indicating that this collider has already been destroyed
 
+      .. helptext:: get whether this body or collider is destroyed
+
    .. lua:attribute:: friction: number
 
       The coefficient of friction for this collider
+
+      .. helptext:: get or set the friction coefficient
 
    .. lua:attribute:: density: number
 
       The density of this collider
 
+      .. helptext:: get or set the density
+
    .. lua:attribute:: restitution: number
 
       The coefficient of restitution for this collider
 
+      .. helptext:: get or set the restitution coefficient
+
    .. lua:attribute:: sensor: boolean
 
       Flag turning this collider into a sensor. Sensors do not physically collide with object bodies but will still report collision detection via callbacks
+
+      .. helptext:: get or set whether this collider is a sensor
 
    .. lua:attribute:: category: integer (bitfield)
 
@@ -403,32 +451,52 @@ Collision
          itemCollider.category = ITEM_CAT
          itemCollider.mask = PLAYER_CAT
 
+      .. helptext:: get or set the collision category bitfield
+
    .. lua:attribute:: mask: integer (bitfield)
 
       The mask determines what categories this collider will pass collision filtering. If the mask bits are set for at least one category of a potential collision partner then a collision will be possible 
+
+      .. helptext:: get or set the collision mask bitfield
 
    .. lua:attribute:: group: integer
 
       The group index is used for another extra layer of collision filtering. If two colliders have the same group and are positive, they will always collide, and if they are both negative then they will never collide
 
+      .. helptext:: get or set the collision group
+
    .. lua:attribute:: body: physics2d.body
 
       The body this collider belongs to
 
+      .. helptext:: get the body this collider belongs to
+
 .. lua:class:: circle: collider
 
    .. lua:attribute:: radius: number
+
+      .. helptext:: get or set the radius
    .. lua:attribute:: center: vec2
+
+      .. helptext:: get or set the center point
 
 .. lua:class:: box: collider
 
    .. lua:attribute:: center: vec2
+
+      .. helptext:: get or set the center point
    .. lua:attribute:: size: vec2
+
+      .. helptext:: get or set the size
    .. lua:attribute:: angle: number
+
+      .. helptext:: get or set the angle
 
 .. lua:class:: polygon: collider
 
    .. lua:attribute:: points: table<vec2>
+
+      .. helptext:: get or set the polygon points
 
 .. lua:class:: contact
 
@@ -440,17 +508,25 @@ Collision
 
       Useful for one way platforms (checking collision normals and conditionally disabling them)
 
+      .. helptext:: get or set whether this body or joint is enabled
+
    .. lua:attribute:: touching: boolean
 
       Where the contact is currently touching (in some cases this may be false during collision resolution substeps)
+
+      .. helptext:: get whether these bodies are touching
 
    .. lua:attribute:: friction: number
 
       The friction of this contact, which can be modified within the :lua:attr:`physics2d.body.onPreSolve` callback
 
+      .. helptext:: get or set the friction coefficient
+
    .. lua:attribute:: restitution: number
 
       The restitution of this contact, which can be modified within the :lua:attr:`physics2d.body.onPreSolve` callback
+
+      .. helptext:: get or set the restitution coefficient
 
    .. lua:attribute:: tangentSpeed: number
 
@@ -458,37 +534,55 @@ Collision
 
       Useful for creating things like conveyor belts which have a moving surface while remaining stationary
 
+      .. helptext:: get or set the tangent speed
+
    .. lua:attribute:: localPoint: vec2
 
       The local position of the contact point (averaged from the manifold)
+
+      .. helptext:: get the local contact point
 
    .. lua:attribute:: worldPoint: vec2
 
       The world position of the contact point (averaged from the manifold)
 
+      .. helptext:: get the world contact point
+
    .. lua:attribute:: localNormal: vec2
 
       The local normal of the contact point (averaged from the manifold)
+
+      .. helptext:: get the local contact normal
 
    .. lua:attribute:: worldNormal: vec2
 
       The world normal of the contact point (averaged from the manifold)
 
+      .. helptext:: get the world contact normal
+
    .. lua:attribute:: body: physics2d.body
 
       The first body in this contact (the body receiving the callback)
+
+      .. helptext:: get the body this collider belongs to
 
    .. lua:attribute:: otherBody: physics2d.body
 
       The second body involved in this collision contact
 
+      .. helptext:: get the other body in the contact
+
    .. lua:attribute:: collider: physics2d.collider
 
       The first collider in this contact (attached to the body recieving the callback)
 
+      .. helptext:: get the collider in the contact
+
    .. lua:attribute:: otherCollider: physics2d.collider
 
       The second collider involved in this collision contact
+
+      .. helptext:: get the other collider in the contact
 
 .. lua:class:: rayHit
 
@@ -496,21 +590,31 @@ Collision
 
       The world position of the raycast hit location
 
+      .. helptext:: get the contact or raycast hit point
+
    .. lua:attribute:: normal: vec2
 
       The world normal of the raycast hit location
+
+      .. helptext:: get the contact or raycast hit normal
 
    .. lua:attribute:: fraction: number
 
       The fraction of the total ray distance travelled before a hit was detected
 
+      .. helptext:: get the raycast hit fraction
+
    .. lua:attribute:: collider: physics2d.collider
 
       The collider that was hit by the ray
 
+      .. helptext:: get the collider in the contact
+
    .. lua:attribute:: body: physics2d.body
 
       The body of the collider that was hit by the ray   
+
+      .. helptext:: get the body this collider belongs to
 
 Constraints
 ###########
@@ -551,33 +655,49 @@ Constraints
 
       Enable/disable this joint
 
+      .. helptext:: get or set whether this body or joint is enabled
+
    .. lua:attribute:: destroyed: boolean
 
       Flag set to true if this joint has already been destroyed
+
+      .. helptext:: get whether this body or collider is destroyed
 
    .. lua:attribute:: collideConnected: boolean
 
       When enabled bodies connected by a joint will collide with each other. Disabled by default
 
+      .. helptext:: get or set whether connected bodies collide
+
    .. lua:attribute:: anchorA: vec2
 
       The anchor point for the first body in world space
+
+      .. helptext:: get or set anchor point A in world space
 
    .. lua:attribute:: anchorB: vec2
 
       The anchor point for the second (attached) body in world space
 
+      .. helptext:: get or set anchor point B in world space
+
    .. lua:attribute:: localAnchorA: vec2
 
       The anchor point for the first body in local space
+
+      .. helptext:: get or set local anchor point A
 
    .. lua:attribute:: localAnchorB: vec2
 
       The anchor point for the second (attached) body in local space
 
+      .. helptext:: get or set local anchor point B
+
    .. lua:attribute:: other: physics2d.body
 
       The other physics body attached to this joint
+
+      .. helptext:: get the other body connected by this joint
 
 .. lua:class:: hinge: joint
 
@@ -587,37 +707,55 @@ Constraints
 
       The initial relative angle of the two connected bodies
 
+      .. helptext:: get or set the reference angle
+
    .. lua:attribute:: angle: number
 
       The current angle (in degrees) between the two connected bodies relative to the reference angle
+
+      .. helptext:: get or set the angle
 
    .. lua:attribute:: speed: number
 
       The current angular speed of the joint (in degrees per second)
 
+      .. helptext:: get or set the motor speed
+
    .. lua:attribute:: useMotor: boolean
 
       Enable/disables the joint motor (off by default)
+
+      .. helptext:: get or set whether the motor is enabled
 
    .. lua:attribute:: maxTorque: number
 
       The maximum amount of torque to apply use the motor
 
+      .. helptext:: get or set the maximum motor torque
+
    .. lua:attribute:: motorSpeed: number
 
       The target speed of the motor
+
+      .. helptext:: get or set the motor speed
 
    .. lua:attribute:: useLimit: number
 
       Enables/disables angular joint limits (off by default)
 
+      .. helptext:: get or set whether limits are enabled
+
    .. lua:attribute:: lowerLimit: number
 
       The lower angular rotation limit in degrees (when limits are enabled)
 
+      .. helptext:: get or set the lower joint limit
+
    .. lua:attribute:: upperLimit: number
 
       The upper angular rotation limit in degrees (when limits are enabled)
+
+      .. helptext:: get or set the upper joint limit
 
 .. lua:class:: slider: joint
 
@@ -627,48 +765,78 @@ Constraints
 
       The initial relative angle of the two connected bodies
 
+      .. helptext:: get or set the reference angle
+
    .. lua:attribute:: translation: number
 
       The current relative translation between the two bodies along the constained axis
+
+      .. helptext:: get the joint translation
 
    .. lua:attribute:: speed: number
 
       The current relative speed between the two bodies along the constrained axis
 
+      .. helptext:: get or set the motor speed
+
    .. lua:attribute:: useMotor: boolean
 
       Enable/disables the joint motor (off by default)
+
+      .. helptext:: get or set whether the motor is enabled
 
    .. lua:attribute:: maxForce: number
       
       The maximum amount of force to apply use the motor
 
+      .. helptext:: get or set the maximum motor force
+
    .. lua:attribute:: motorSpeed: number
 
       The target speed of the motor
+
+      .. helptext:: get or set the motor speed
 
    .. lua:attribute:: useLimit: number
 
       Enables/disables linear joint limits (off by default)
 
+      .. helptext:: get or set whether limits are enabled
+
    .. lua:attribute:: lowerLimit: number
 
       The lower linear translation limit in meters (when limits are enabled)
 
+      .. helptext:: get or set the lower joint limit
+
    .. lua:attribute:: upperLimit: number
 
       The upper linear translation limit in meters (when limits are enabled)
+
+      .. helptext:: get or set the upper joint limit
 
 .. lua:class:: distance: joint
 
    A distance based joint constraint with spring-like properties and distance based limits
 
    .. lua:attribute:: length: number
+
+      .. helptext:: get or set the rope length
    .. lua:attribute:: currentLength: number
+
+      .. helptext:: get the current rope length
    .. lua:attribute:: stiffness: number
+
+      .. helptext:: get or set the spring stiffness
    .. lua:attribute:: damping: number
+
+      .. helptext:: get or set the spring damping
    .. lua:attribute:: minLength: number
+
+      .. helptext:: get or set the minimum rope length
    .. lua:attribute:: maxLength: number
+
+      .. helptext:: get or set the maximum rope length
 
 .. lua:class:: pulley: joint
 
