@@ -60,7 +60,7 @@ shader
 
       A more advanced form of shader creation, with many more options that can be tailored for specific use-cases
 
-      .. helptext:: load a shader by name or source
+      .. helptext:: create a shader from a shader definition
 
    .. lua:staticmethod:: compute(source)
 
