@@ -425,7 +425,7 @@ entity
 
       The mesh attached to this entity. This will be drawn the entities' transform within the scene
 
-      .. helptext:: create a new mesh
+      .. helptext:: get or set the mesh attached to this entity
 
    .. lua:attribute:: material: material
 
