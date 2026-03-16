@@ -245,7 +245,7 @@ entity
 
       The scale of the entity in local 3D space
 
-      .. helptext:: scale the current transform
+      .. helptext:: get or set the scale of this entity
 
    .. lua:attribute:: uniformScale: number
 
