@@ -9,29 +9,43 @@ The sound module provides a way to play and manage sound effects and background 
 
    Procedural coin sound preset (SFXR)
 
+   .. helptext:: coin sound effect constant
+
 .. lua:attribute:: SOUND_LASER: const
 
    Procedural laser sound preset (SFXR)
+
+   .. helptext:: laser sound effect constant
 
 .. lua:attribute:: SOUND_EXPLOSION: const
 
    Procedural explosion sound preset (SFXR)
 
+   .. helptext:: explosion sound effect constant
+
 .. lua:attribute:: SOUND_POWERUP: const
 
    Procedural powerup sound preset (SFXR)
+
+   .. helptext:: power-up sound effect constant
 
 .. lua:attribute:: SOUND_HURT: const
 
    Procedural hurt sound preset (SFXR)
 
+   .. helptext:: hurt sound effect constant
+
 .. lua:attribute:: SOUND_JUMP: const
 
    Procedural jump sound preset (SFXR)
 
+   .. helptext:: jump sound effect constant
+
 .. lua:attribute:: SOUND_BLIP: const
 
    Procedural blip sound preset (SFXR)
+
+   .. helptext:: blip sound effect constant
 
 .. lua:staticmethod:: play(preset[, seed])
 

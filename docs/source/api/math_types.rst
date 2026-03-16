@@ -24,9 +24,13 @@ math types
 
       The x component of this vector
 
+      .. helptext:: get or set the x component
+
    .. lua:attribute:: y: number
 
       The y component of this vector      
+
+      .. helptext:: get or set the y component
 
    .. lua:staticmethod:: min(v1, v2)
 
@@ -44,9 +48,13 @@ math types
 
       The length of this vector
 
+      .. helptext:: get the length of this vector
+
    .. lua:attribute:: length2: number
 
       The squared length of this vector
+
+      .. helptext:: get the squared length of this vector
 
    .. lua:method:: normalize()
 
@@ -160,21 +168,31 @@ math types
 
       The x component of this vector
 
+      .. helptext:: get or set the x component
+
    .. lua:attribute:: y: number
 
       The y component of this vector
+
+      .. helptext:: get or set the y component
 
    .. lua:attribute:: z: number
 
       The z component of this vector
 
+      .. helptext:: get or set the z component
+
    .. lua:attribute:: length: number
 
       The length of this vector
 
+      .. helptext:: get the length of this vector
+
    .. lua:attribute:: length2: number
 
       The squared length of this vector
+
+      .. helptext:: get the squared length of this vector
 
    .. lua:method:: normalize()
 
@@ -270,25 +288,37 @@ math types
 
       The x component of this vector
 
+      .. helptext:: get or set the x component
+
    .. lua:attribute:: y: number
 
       The y component of this vector
+
+      .. helptext:: get or set the y component
 
    .. lua:attribute:: z: number
 
       The z component of this vector
 
+      .. helptext:: get or set the z component
+
    .. lua:attribute:: w: number
 
       The w component of this vector
+
+      .. helptext:: get or set the w component
 
    .. lua:attribute:: length: number
 
       The length of this vector
 
+      .. helptext:: get the length of this vector
+
    .. lua:attribute:: length2: number
 
       The squared length of this vector
+
+      .. helptext:: get the squared length of this vector
 
    .. lua:method:: normalize()
 
@@ -425,23 +455,33 @@ Quaternions
 
       The x component of this vector
 
+      .. helptext:: get or set the x component
+
    .. lua:attribute:: y: number
 
       The y component of this vector
+
+      .. helptext:: get or set the y component
 
    .. lua:attribute:: z: number
 
       The z component of this vector
 
+      .. helptext:: get or set the z component
+
    .. lua:attribute:: w: number
 
       The w component of this vector
+
+      .. helptext:: get or set the w component
 
    .. lua:attribute:: angles: vec3
 
       A set of euler angles (in degrees) that generates the same rotation as this quaternion
 
       *Please note that the potential euler angles from any given quaternion are ambiguous and should not be relied upon for smooth or consistent rotations especially when interpolating them*
+
+      .. helptext:: get the euler angles of this quaternion
 
    .. lua:method:: slerp(q, t)
 
