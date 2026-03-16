@@ -27,18 +27,26 @@ color
    .. lua:attribute:: r: number
 
       The red component of the color
+
+      .. helptext:: get or set the red component
    
    .. lua:attribute:: g: number
 
       The green component of the color
 
+      .. helptext:: get or set the green component
+
    .. lua:attribute:: b: number
 
       The blue component of the color
 
+      .. helptext:: get or set the blue component
+
    .. lua:attribute:: a: number
 
       The alpha component of the color
+
+      .. helptext:: get or set the alpha component
 
    .. lua:method:: linear() -> color
 
@@ -80,16 +88,38 @@ color
    *****************
 
    .. lua:attribute:: black: const
+
+      .. helptext:: predefined black color constant
    .. lua:attribute:: white: const
+
+      .. helptext:: predefined white color constant
    .. lua:attribute:: clear: const
+
+      .. helptext:: predefined clear (transparent) color constant
    .. lua:attribute:: cyan: const
+
+      .. helptext:: predefined cyan color constant
    .. lua:attribute:: gray: const
+
+      .. helptext:: predefined gray color constant
    .. lua:attribute:: grey: const
+
+      .. helptext:: predefined grey color constant
    .. lua:attribute:: red: const
+
+      .. helptext:: predefined red color constant
    .. lua:attribute:: green: const
+
+      .. helptext:: predefined green color constant
    .. lua:attribute:: blue: const
+
+      .. helptext:: predefined blue color constant
    .. lua:attribute:: magenta: const
+
+      .. helptext:: predefined magenta color constant
    .. lua:attribute:: yellow: const
+
+      .. helptext:: predefined yellow color constant
 
    Color operators
    ***************
