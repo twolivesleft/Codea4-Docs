@@ -103,6 +103,20 @@ Transform
 Projection
 ##########
 
+.. note::
+
+   Codea 4.x uses a **left-handed, +Z-forward** coordinate system for 3D rendering. When :lua:func:`matrix.perspective` is active, the camera is at the origin looking toward **+Z**. Objects must be translated to positive Z to appear in front of the camera. This is the opposite of the -Z-forward convention used in OpenGL and Codea 3.x Craft.
+
+   .. code-block:: lua
+
+      -- Minimal 3D draw loop
+      matrix.push()
+          matrix.perspective(60)          -- 60° FOV, camera at origin, +Z forward
+          matrix.translate(0, 0, 4)       -- object 4 units in front
+          matrix.rotate(angle, 0, 1, 0)
+          myMesh:draw()
+      matrix.pop()
+
 .. lua:function:: ortho()
 
    Set the projection matrix to ortho using the device screen settings (i.e. coordinates range ``[0, 0]`` to ``[WIDTH, HEIGHT]``)
