@@ -171,7 +171,7 @@ mesh
 
    .. lua:attribute:: vertices: table<vec2|vec3>
 
-      Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices. This is the preferred way to assign geometry for manually-built meshes because it automatically creates sequential indices (0, 1, 2, …), making the mesh immediately drawable.
+      Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices. This is the preferred way to assign geometry for manually-built meshes because it automatically populates a sequential index buffer matching the vertex order, making the mesh immediately drawable.
 
       *3.x compatiblity note: works the same as the original vertices property*
 
