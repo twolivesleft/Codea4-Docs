@@ -265,7 +265,7 @@ Both shaders and materials can be applied to a mesh to control how it is rendere
 Lighting
 --------
 
-Codea supports dynamic lighting via :doc:`/api/light`. Generated meshes (``mesh.sphere()``, ``mesh.box()``, etc.) render black by default because there are no lights and the default material requires lighting. There are two ways to make them visible:
+Codea supports dynamic lighting via :doc:`/api/light`. Generated meshes (``mesh.sphere()``, ``mesh.box()``, etc.) use a lit material by default, so without any lights they render black. There are two ways to make them visible:
 
 **Option 1: Unlit material with a color** (no light needed):
 
