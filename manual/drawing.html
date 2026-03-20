@@ -254,7 +254,7 @@
 rendering both 2D and 3D graphics</p>
 <p>The user-defined global <code class="code highlight lua docutils literal highlight-lua"><span class="nf">draw</span><span class="p">()</span></code> function is called once per frame to
 update the contents of the screen</p>
-<p>The <code class="code highlight lua docutils literal highlight-lua"><span class="nf">background</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="nv">g</span><span class="p">,</span><span class="nv">b</span><span class="p">,</span><span class="nv">a</span><span class="p">)</span></code> function is used to clear the background with a given color. When this isn’t called the contents of the background will stay the same as the preivous frame</p>
+<p>The <code class="code highlight lua docutils literal highlight-lua"><span class="nf">background</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="nv">g</span><span class="p">,</span><span class="nv">b</span><span class="p">,</span><span class="nv">a</span><span class="p">)</span></code> function is used to clear the background with a given color. When this isn’t called the contents of the background will stay the same as the previous frame</p>
 <p>Codea uses an hybrid-immediate mode drawing system, where various built-in functions can be used to paint objects to the screen when called, such as <code class="code highlight lua docutils literal highlight-lua"><span class="nf">line</span><span class="p">()</span></code>, <code class="code highlight lua docutils literal highlight-lua"><span class="nf">sprite</span><span class="p">()</span></code> and <code class="code highlight lua docutils literal highlight-lua"><span class="nf">rect</span><span class="p">()</span></code></p>
 <p>These functions use the current render state, defined by the current style and matrix in use, which effects things like fill color and stroke color / width</p>
 </section>
@@ -273,7 +273,7 @@ update the contents of the screen</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="c1">-- separate color components in the range 0-255</span>
 <span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span><span class="w"> </span><span class="c1">-- only red, green, blue color components with alpha assumed to be 255</span>
 <span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">grey</span><span class="p">,</span><span class="w"> </span><span class="nv">alpha</span><span class="p">)</span><span class="w"> </span><span class="c1">-- only greyscale and alpha</span>
-<span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">grey</span><span class="p">)</span><span class="w"> </span><span class="c1">-- only grayscale with alph assumed to be 255</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">grey</span><span class="p">)</span><span class="w"> </span><span class="c1">-- only grayscale with alpha assumed to be 255</span>
 <span class="nv">style</span><span class="p">.</span><span class="nf">func</span><span class="p">(</span><span class="nv">color</span><span class="p">)</span><span class="w"> </span><span class="c1">-- a color object</span>
 </pre></div>
 </div>
@@ -282,31 +282,317 @@ update the contents of the screen</p>
 <h2>Matrix<a class="headerlink" href="#matrix" title="Link to this heading">¶</a></h2>
 <p>The matrix module is used to manipulate the current immediate mode transform, view and projection matrices, which can be thought of as object pose, camera pose and perspective</p>
 <p>By combining different matrix commands, any 2D or 3D drawing setup can be achieved, and there is also the <code class="xref lua lua-class docutils literal notranslate"><span class="pre">camera</span></code> class which can be used on its own or part of a <code class="xref lua lua-class docutils literal notranslate"><span class="pre">scene</span></code> for a higher level abstraction</p>
+<p>The matrix module also uses a fluent syntax, so calls can be chained:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Translate then rotate in one expression</span>
+<span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">translate</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">).</span><span class="nf">rotate</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+<span class="nf">rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../api/matrix.html"><span class="doc">matrix</span></a> for a complete reference</p>
 </section>
-<section id="backround">
-<h2>Backround<a class="headerlink" href="#backround" title="Link to this heading">¶</a></h2>
+<section id="d-drawing">
+<h2>3D Drawing<a class="headerlink" href="#d-drawing" title="Link to this heading">¶</a></h2>
+<p>To draw in 3D, switch from the default 2D orthographic projection to a perspective projection using <a class="reference internal" href="../api/matrix.html#matrix.perspective" title="matrix.perspective"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">matrix.perspective()</span></code></a>. Always wrap 3D drawing in a <a class="reference internal" href="../api/matrix.html#matrix.push" title="matrix.push"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">matrix.push()</span></code></a> / <a class="reference internal" href="../api/matrix.html#matrix.pop" title="matrix.pop"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">matrix.pop()</span></code></a> pair so the 2D projection is restored afterwards.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>With <a class="reference internal" href="../api/matrix.html#matrix.perspective" title="matrix.perspective"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">matrix.perspective()</span></code></a>, the camera sits at the origin and looks toward <strong>+Z</strong>. Objects must have a <strong>positive Z coordinate</strong> to be visible. Use <a class="reference internal" href="../api/matrix.html#matrix.translate" title="matrix.translate"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">matrix.translate()</span></code></a> to move objects in front of the camera.</p>
+</div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- All 3D drawing goes inside a matrix.push/pop block</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w">          </span><span class="c1">-- 60° field of view</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">       </span><span class="c1">-- move object 5 units forward (+Z)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="nv">angle</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">   </span><span class="c1">-- spin around Y axis</span>
+<span class="w">        </span><span class="nv">myMesh</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- 2D drawing after matrix.pop() uses the default screen projection</span>
+<span class="w">    </span><span class="nf">text</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>To position the camera elsewhere in the scene, set a custom view matrix using <a class="reference internal" href="../api/matrix.html#matrix.view" title="matrix.view"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">matrix.view()</span></code></a> together with <a class="reference internal" href="../api/math_types.html#mat4.orbit" title="mat4.orbit"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">mat4.orbit()</span></code></a>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- Orbit camera: looking at origin from distance 8, tilted 20° up and 45° around Y</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">view</span><span class="p">(</span><span class="nv">mat4</span><span class="p">.</span><span class="nf">orbit</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">myMesh</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading">¶</a></h2>
+<p><code class="xref lua lua-func docutils literal notranslate"><span class="pre">background()</span></code> clears the screen each frame with a solid color (or image/shader):</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nf">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">        </span><span class="c1">-- black</span>
+<span class="nf">background</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w">     </span><span class="c1">-- dark blue-grey</span>
+<span class="nf">background</span><span class="p">(</span><span class="nv">color</span><span class="p">.</span><span class="py">white</span><span class="p">)</span><span class="w">    </span><span class="c1">-- using a color object</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../api/graphics.html"><span class="doc">graphics commands</span></a> for full documentation</p>
 </section>
 <section id="vector-drawing">
 <h2>Vector Drawing<a class="headerlink" href="#vector-drawing" title="Link to this heading">¶</a></h2>
+<p>A set of 2D drawing functions are available in the global namespace. They all respect the current <a class="reference internal" href="../api/style.html"><span class="doc">style</span></a> settings:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Lines</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nf">line</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+
+<span class="c1">-- Shapes</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">).</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nf">rect</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w">       </span><span class="c1">-- centered rectangle</span>
+<span class="nf">ellipse</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">)</span><span class="w">    </span><span class="c1">-- circle</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+
+<span class="c1">-- Polygon</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nf">polygon</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../api/graphics.html"><span class="doc">graphics commands</span></a> for a complete list of vector drawing functions</p>
 </section>
 <section id="text">
 <h2>Text<a class="headerlink" href="#text" title="Link to this heading">¶</a></h2>
+<p>Use <code class="xref lua lua-func docutils literal notranslate"><span class="pre">text()</span></code> to draw strings to the screen. Text color is set with <a class="reference internal" href="../api/style.html#style.fill" title="style.fill"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.fill()</span></code></a>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">32</span><span class="p">).</span><span class="nf">textAlign</span><span class="p">(</span><span class="nv">CENTER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">MIDDLE</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">&quot;Hello, Codea!&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Emojis require native rendering</strong></p>
+<p>By default Codea uses its own text renderer, which does not support emoji characters (they appear as empty boxes). To render emojis, enable native text rendering with <code class="docutils literal notranslate"><span class="pre">TEXT_NATIVE</span></code>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Emojis render as boxes with the default renderer</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">&quot;Broken: 🎉 🚀 ❤️&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
+
+<span class="c1">-- Enable native rendering to display emojis correctly</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">textStyle</span><span class="p">(</span><span class="nv">TEXT_NATIVE</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">&quot;Working: 🎉 🚀 ❤️&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">TEXT_NATIVE</span></code> uses the system font renderer, so other <code class="docutils literal notranslate"><span class="pre">textStyle</span></code> flags (bold, italic, rich text, etc.) are ignored while it is active.</p>
+</div>
 </section>
 <section id="images-and-sprites">
 <h2>Images and Sprites<a class="headerlink" href="#images-and-sprites" title="Link to this heading">¶</a></h2>
+<p>Images are loaded with <a class="reference internal" href="../api/image.html#image.read" title="image.read"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">image.read()</span></code></a> and drawn with <a class="reference internal" href="../api/graphics.html#sprite" title="sprite"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">sprite()</span></code></a>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Blocks</span><span class="p">.</span><span class="py">Brick</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">img</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 <section id="context">
 <h2>Context<a class="headerlink" href="#context" title="Link to this heading">¶</a></h2>
+<p>The context module lets you draw into an image instead of the screen, using <a class="reference internal" href="../api/graphics.html#context.push" title="context.push"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">context.push()</span></code></a> and <a class="reference internal" href="../api/graphics.html#context.pop" title="context.pop"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">context.pop()</span></code></a>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">image</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="mi">512</span><span class="p">)</span>
+
+<span class="nv">context</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nv">target</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="nv">context</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+
+<span class="c1">-- Now draw that image to screen</span>
+<span class="nf">sprite</span><span class="p">(</span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="meshes">
 <h2>Meshes<a class="headerlink" href="#meshes" title="Link to this heading">¶</a></h2>
-</section>
+<p>The <code class="xref lua lua-class docutils literal notranslate"><span class="pre">mesh</span></code> class is the primary way to draw custom 3D geometry. You can either use the built-in mesh generators or build geometry manually.</p>
+<p><strong>Built-in mesh generators</strong></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">sphereMesh</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w">          </span><span class="c1">-- sphere, radius 1</span>
+<span class="nv">boxMesh</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">box</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="w">   </span><span class="c1">-- box, 1×1×1</span>
+<span class="nv">cylinderMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">cylinder</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">   </span><span class="c1">-- radius 0.5, height 1</span>
+<span class="nv">torusMesh</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">torus</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">     </span><span class="c1">-- torus</span>
+</pre></div>
+</div>
+<p><strong>Drawing a mesh in 3D</strong></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">sphereMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">angle</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span>
+
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="nv">angle</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">sphereMesh</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p><strong>Building a mesh manually — use</strong> <code class="docutils literal notranslate"><span class="pre">vertices</span></code> <strong>not</strong> <code class="docutils literal notranslate"><span class="pre">positions</span></code></p>
+<p>When setting mesh geometry by hand, use the <a class="reference internal" href="../api/mesh.html#mesh.vertices" title="mesh.vertices"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">mesh.vertices</span></code></a> property. It sets positions <strong>and</strong> automatically creates a sequential index buffer so the mesh draws immediately. <a class="reference internal" href="../api/mesh.html#mesh.positions" title="mesh.positions"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">mesh.positions</span></code></a> only updates positions without touching the index buffer — useful for deforming an existing mesh, but on a fresh empty mesh it will leave the indices empty and nothing will be drawn:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- CORRECT: vertices sets positions AND indices automatically</span>
+<span class="nv">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mesh</span><span class="p">()</span>
+<span class="nv">m</span><span class="p">.</span><span class="py">vertices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">-- one triangle</span>
+<span class="nv">m</span><span class="p">.</span><span class="py">colors</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="nv">m</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+
+<span class="c1">-- Use positions only to deform an existing mesh (preserves its index buffer)</span>
+<span class="nv">sph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">-- modify sph.positions each frame to animate without breaking sphere indices</span>
+</pre></div>
+</div>
+<p><strong>Complete example: Rotating RGB Cube</strong></p>
+<details class="summary-example">
+<summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- RGB Cube</span>
+<span class="c1">-- A rotating cube with RGB vertex colors</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">viewer</span><span class="p">.</span><span class="py">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">FULLSCREEN</span>
+
+<span class="w">    </span><span class="c1">-- Build a cube mesh with 8 corners</span>
+<span class="w">    </span><span class="nv">cubeMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mesh</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nf">vec3</span><span class="p">(</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">),</span>
+<span class="w">        </span><span class="nf">vec3</span><span class="p">(</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">),</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">-- Map each corner&#39;s position to an RGB color</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">posToColor</span><span class="p">(</span><span class="nv">p</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span>
+<span class="w">            </span><span class="nb">math.floor</span><span class="p">((</span><span class="nv">p</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">s</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nv">s</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">),</span>
+<span class="w">            </span><span class="nb">math.floor</span><span class="p">((</span><span class="nv">p</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">s</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nv">s</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">),</span>
+<span class="w">            </span><span class="nb">math.floor</span><span class="p">((</span><span class="nv">p</span><span class="p">.</span><span class="py">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">s</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nv">s</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- 6 faces × 2 triangles, wound for correct front-face culling</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">faces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">7</span><span class="p">]},</span><span class="w"> </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">8</span><span class="p">]},</span><span class="w"> </span><span class="c1">-- Front  (+z)</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">4</span><span class="p">]},</span><span class="w"> </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]},</span><span class="w"> </span><span class="c1">-- Back   (-z)</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">8</span><span class="p">]},</span><span class="w"> </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">4</span><span class="p">]},</span><span class="w"> </span><span class="c1">-- Left   (-x)</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]},</span><span class="w"> </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">7</span><span class="p">]},</span><span class="w"> </span><span class="c1">-- Right  (+x)</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]},</span><span class="w"> </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">4</span><span class="p">]},</span><span class="w"> </span><span class="c1">-- Top    (+y)</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">6</span><span class="p">]},</span><span class="w"> </span><span class="p">{</span><span class="nv">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="nv">v</span><span class="p">[</span><span class="mi">5</span><span class="p">]},</span><span class="w"> </span><span class="c1">-- Bottom (-y)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">verts</span><span class="p">,</span><span class="w"> </span><span class="nv">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">tri</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">faces</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">tri</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">            </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">verts</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">cols</span><span class="p">,</span><span class="w"> </span><span class="nf">posToColor</span><span class="p">(</span><span class="nv">p</span><span class="p">))</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- Use &#39;vertices&#39; (not &#39;positions&#39;) so indices are set automatically</span>
+<span class="w">    </span><span class="nv">cubeMesh</span><span class="p">.</span><span class="py">vertices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">verts</span>
+<span class="w">    </span><span class="nv">cubeMesh</span><span class="p">.</span><span class="py">colors</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">cols</span>
+
+<span class="w">    </span><span class="nv">angleX</span><span class="p">,</span><span class="w"> </span><span class="nv">angleY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">angleX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">angleX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.4</span>
+<span class="w">    </span><span class="nv">angleY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">angleY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.6</span>
+
+<span class="w">    </span><span class="c1">-- Set up perspective projection.</span>
+<span class="w">    </span><span class="c1">-- With matrix.perspective() the camera is at the origin looking</span>
+<span class="w">    </span><span class="c1">-- toward +Z, so objects must have a positive Z to be visible.</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">      </span><span class="c1">-- place cube 3 units in front</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="nv">angleX</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="nv">angleY</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">cubeMesh</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</details></section>
 <section id="shaders-and-materials">
 <h2>Shaders and Materials<a class="headerlink" href="#shaders-and-materials" title="Link to this heading">¶</a></h2>
+<p>Both shaders and materials can be applied to a mesh to control how it is rendered. See <a class="reference internal" href="../api/shader.html"><span class="doc">shader</span></a>, <a class="reference internal" href="../api/material.html"><span class="doc">material</span></a> and <a class="reference internal" href="shaders.html"><span class="doc">Shaders and Materials</span></a> for details.</p>
 </section>
 <section id="lighting">
 <h2>Lighting<a class="headerlink" href="#lighting" title="Link to this heading">¶</a></h2>
-</section>
+<p>Codea supports dynamic lighting via <a class="reference internal" href="../api/light.html"><span class="doc">light</span></a>. Generated meshes (<code class="docutils literal notranslate"><span class="pre">mesh.sphere()</span></code>, <code class="docutils literal notranslate"><span class="pre">mesh.box()</span></code>, etc.) use a lit material by default, so without any lights they render black. There are two ways to make them visible:</p>
+<p><strong>Option 1: Unlit material with a color</strong> (no light needed):</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">sph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nv">sph</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">material</span><span class="p">.</span><span class="nf">unlit</span><span class="p">()</span>
+<span class="nv">sph</span><span class="p">.</span><span class="py">material</span><span class="p">.</span><span class="py">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Option 2: Lit material with a directional light</strong> (produces 3D shading):</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">sph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">sph</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">material</span><span class="p">.</span><span class="nf">lit</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">sph</span><span class="p">.</span><span class="py">material</span><span class="p">.</span><span class="py">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">dirLight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">light</span><span class="p">.</span><span class="nf">directional</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">dirLight</span><span class="p">.</span><span class="py">intensity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">light</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nv">dirLight</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">sph</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">light</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only <code class="docutils literal notranslate"><span class="pre">light.directional()</span></code> is currently supported for immediate-mode rendering. <code class="docutils literal notranslate"><span class="pre">light.point()</span></code> and <code class="docutils literal notranslate"><span class="pre">light.spot()</span></code> are defined but not yet implemented by the renderer.</p>
+</div>
+<details class="summary-full-sphere-example">
+<summary>Full sphere example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- 3D Sphere with directional light</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">viewer</span><span class="p">.</span><span class="py">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">FULLSCREEN</span>
+<span class="w">    </span><span class="nv">sphereMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">sphereMesh</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">material</span><span class="p">.</span><span class="nf">lit</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">sphereMesh</span><span class="p">.</span><span class="py">material</span><span class="p">.</span><span class="py">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">dirLight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">light</span><span class="p">.</span><span class="nf">directional</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">dirLight</span><span class="p">.</span><span class="py">intensity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="w">    </span><span class="nv">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">angle</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span>
+
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">light</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nv">dirLight</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="nv">angle</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">sphereMesh</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">light</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</details></section>
 </section>
 
         </article>
@@ -368,7 +654,8 @@ update the contents of the screen</p>
 <li><a class="reference internal" href="#drawing-in-codea">Drawing in Codea</a></li>
 <li><a class="reference internal" href="#style">Style</a></li>
 <li><a class="reference internal" href="#matrix">Matrix</a></li>
-<li><a class="reference internal" href="#backround">Backround</a></li>
+<li><a class="reference internal" href="#d-drawing">3D Drawing</a></li>
+<li><a class="reference internal" href="#background">Background</a></li>
 <li><a class="reference internal" href="#vector-drawing">Vector Drawing</a></li>
 <li><a class="reference internal" href="#text">Text</a></li>
 <li><a class="reference internal" href="#images-and-sprites">Images and Sprites</a></li>
