@@ -55,7 +55,16 @@ This means that there is no longer a ``craft.model`` type, but instead all funct
 
 The practical upshot of this, is that you can use load meshes directly from a file and draw them to the screen using :lua:meth:`mesh.draw`
 
-Part of the new streamlined API design is that almost all features that were restricted to craft scenes can be used directly in the immediate mode drawing API. We now have lighting which can be used with :lua:meth:`mesh.draw` and materials can be used directly with meshes as well
+Part of the new streamlined API design is that almost all features that were restricted to craft scenes can be used directly in the immediate mode drawing API. We now have lighting which can be used with :lua:meth:`mesh.draw` and materials can be used directly with meshes as well.
+
+Lights are pushed/popped onto a rendering stack using :lua:func:`light.push` and :lua:func:`light.pop` as static functions (not methods). Currently only directional lights are supported in immediate mode:
+
+.. code-block:: lua
+
+   dirLight = light.directional(vec3(0, -1, 0))
+   light.push(dirLight)
+   myMesh:draw()
+   light.pop()
 
 Scenes and Entities
 -------------------
@@ -250,3 +259,56 @@ Matrix and Vector Types
 -----------------------
 
 The matrix type has now been split into mat2, mat3, mat4
+
+3D Coordinate System
+--------------------
+
+In Codea 4.x the camera convention changed. When using :lua:func:`matrix.perspective`, the camera sits at the origin and looks toward **positive Z**. This is a left-handed, +Z-forward coordinate system (consistent with Metal and DirectX), which differs from the right-handed, -Z-forward system used in OpenGL and Codea 3.x's Craft.
+
+.. important::
+
+   Objects must be at **positive Z** to be visible. Translate objects forward along +Z, **not** -Z.
+
+.. code-block:: lua
+   :linenos:
+
+   -- Codea 3.x (Craft / OpenGL convention — -Z forward)
+   -- camera(0, 0, 5,  0, 0, 0,  0, 1, 0)  -- camera behind object looking at -Z
+   -- translate(0, 0, -3)                    -- object in front = negative Z
+
+   -- Codea 4.x (Carbide / Metal convention — +Z forward)
+   matrix.push()
+   matrix.perspective(60)
+   matrix.translate(0, 0, 3)   -- object in front = positive Z
+   myMesh:draw()
+   matrix.pop()
+
+Mesh: ``vertices`` vs ``positions``
+------------------------------------
+
+The :lua:attr:`mesh.vertices` and :lua:attr:`mesh.positions` properties serve different purposes:
+
+- **``mesh.vertices``** — sets vertex positions *and* automatically creates a sequential index buffer (0, 1, 2, …). Use this when building a mesh from scratch.
+- **``mesh.positions``** — sets only the vertex positions, **leaving the index buffer untouched**. Use this when modifying an existing mesh (e.g. from a generator or ``mesh.read()``) to deform or animate its vertices without destroying the original index topology.
+
+.. code-block:: lua
+   :linenos:
+
+   -- Building from scratch: use 'vertices' so indices are created automatically
+   m = mesh()
+   m.vertices = { vec3(0,0,0), vec3(1,0,0), vec3(0.5,1,0) }
+   m.colors   = { color(255,0,0), color(0,255,0), color(0,0,255) }
+
+   -- Deforming an existing mesh each frame: use 'positions' to preserve indices
+   sph = mesh.sphere(1)
+   function draw()
+       local pos = sph.positions          -- read current positions
+       for i, p in ipairs(pos) do
+           pos[i] = p * (1 + 0.1 * math.sin(time.elapsed + i))
+       end
+       sph.positions = pos                -- write back, indices unchanged
+       sph:draw()
+   end
+
+This distinction does not apply when reading positions — both properties return the same vertex data.
+

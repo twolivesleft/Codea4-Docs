@@ -135,7 +135,13 @@ mesh
 
    .. lua:attribute:: positions: table<vec3>
 
-      Gets/sets the positions of the mesh vertices
+      Gets/sets the positions of the mesh vertices **without touching the index buffer**.
+
+      This is the correct property to use when modifying vertex positions on an already-built mesh (e.g. one created by :lua:func:`mesh.sphere`, :lua:func:`mesh.box`, or loaded via :lua:meth:`mesh.read`), since those meshes have optimised index buffers with shared vertices that you want to preserve.
+
+      .. warning::
+
+         When building a mesh **from scratch**, use :lua:attr:`mesh.vertices` instead. Setting ``positions`` alone leaves the index buffer empty, so nothing will be drawn.
 
       .. helptext:: get or set the vertex positions
 
@@ -165,7 +171,7 @@ mesh
 
    .. lua:attribute:: vertices: table<vec2|vec3>
 
-      Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices
+      Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices. This is the preferred way to assign geometry for manually-built meshes because it automatically populates a sequential index buffer matching the vertex order, making the mesh immediately drawable.
 
       *3.x compatiblity note: works the same as the original vertices property*
 

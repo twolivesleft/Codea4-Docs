@@ -127,14 +127,33 @@ class DocutilsUtils:
     @staticmethod
     def extract_code_samples(node):
         code_samples = []
+        seen_code = set()
+
+        # Captioned code blocks (.. code-block:: with :caption:) are wrapped in a container
         for container in node.traverse(condition=lambda n: n.tagname == 'container' and 'literal-block-wrapper' in n['classes']):
             caption_node = container.next_node(condition=lambda n: n.tagname == 'caption')
             code_node = container.next_node(condition=lambda n: n.tagname == 'literal_block')
             if caption_node and code_node:
+                code = code_node.astext()
+                seen_code.add(code)
                 code_samples.append({
                     'title': caption_node.astext(),
-                    'code': code_node.astext()
+                    'code': code
                 })
+
+        # Uncaptioned code blocks (plain .. code-block:: lua) appear as bare literal_block nodes
+        desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
+        if desc_content:
+            for child in desc_content.children:
+                if child.tagname == 'literal_block':
+                    code = child.astext()
+                    if code not in seen_code:
+                        seen_code.add(code)
+                        code_samples.append({
+                            'title': '',
+                            'code': code
+                        })
+
         return code_samples
     
     @staticmethod
