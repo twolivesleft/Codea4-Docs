@@ -38,9 +38,13 @@ require
 
         require(asset.documents.MyOtherLibrary.MyOtherFeature)
 
+   .. helptext:: import a Lua file from an asset key
+
 .. lua:class:: require
 
     .. lua:attribute:: option
 
         - ``loadMain`` - When used with a Codea project, load Main.lua
         - ``noImport`` - Do not import global variables and functions
+
+       .. helptext:: an option value for require

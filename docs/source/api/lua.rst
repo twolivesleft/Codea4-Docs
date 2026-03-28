@@ -7,6 +7,8 @@ lua
 
    Returns a user-friendly string representation of the type of the object.
 
+   .. helptext:: get the type name of an object
+
    :param o: The object to check
    :type o: any
    :return: The type of the object
@@ -37,6 +39,8 @@ lua
    .. lua:function:: flatten(t)
 
       Flattens a table into a single array.
+
+      .. helptext:: flatten a nested table into one array
 
       :param t: The table to flatten
       :type t: table

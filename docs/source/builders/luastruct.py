@@ -27,6 +27,13 @@ class DocutilsUtils:
         return '\n\n'.join(description_parts)
     
     @staticmethod
+    def extract_helptext(node):
+        helptext_node = next((child for child in node.traverse() if child.tagname == 'helptext'), None)
+        if helptext_node:
+            return helptext_node.attributes['text']
+        return None
+    
+    @staticmethod
     def extract_module(node):
         signature_node = next((child for child in node.traverse() if child.tagname == 'desc_signature'), None)
         # Check if the node directly contains a 'module' attribute
@@ -34,7 +41,7 @@ class DocutilsUtils:
             return signature_node.attributes['module']
 
         # Return None or a default if no module attribute is found
-        return None
+        return None  
     
     @staticmethod
     def extract_parameters(node, isClass = False):
@@ -98,7 +105,7 @@ class DocutilsUtils:
                                             description=value.get('description'),
                                             default=value.get('default')))
 
-        return params
+        return params    
 
     @staticmethod
     def extract_syntax(node):
@@ -120,16 +127,35 @@ class DocutilsUtils:
     @staticmethod
     def extract_code_samples(node):
         code_samples = []
+        seen_code = set()
+
+        # Captioned code blocks (.. code-block:: with :caption:) are wrapped in a container
         for container in node.traverse(condition=lambda n: n.tagname == 'container' and 'literal-block-wrapper' in n['classes']):
             caption_node = container.next_node(condition=lambda n: n.tagname == 'caption')
             code_node = container.next_node(condition=lambda n: n.tagname == 'literal_block')
             if caption_node and code_node:
+                code = code_node.astext()
+                seen_code.add(code)
                 code_samples.append({
                     'title': caption_node.astext(),
-                    'code': code_node.astext()
+                    'code': code
                 })
-        return code_samples
 
+        # Uncaptioned code blocks (plain .. code-block:: lua) appear as bare literal_block nodes
+        desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
+        if desc_content:
+            for child in desc_content.children:
+                if child.tagname == 'literal_block':
+                    code = child.astext()
+                    if code not in seen_code:
+                        seen_code.add(code)
+                        code_samples.append({
+                            'title': '',
+                            'code': code
+                        })
+
+        return code_samples
+    
     @staticmethod
     def extract_overview(node):
         desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
@@ -147,13 +173,13 @@ class DocutilsUtils:
                     paragraph_text.append(child.astext())
             overview_parts.append(''.join(paragraph_text))
 
-        return '\n\n'.join(overview_parts)
-
+        return '\n\n'.join(overview_parts)  
 
 class LuaModule:
     def __init__(self, node, group=None):
         self.name = DocutilsUtils.extract_name(node)
         self.description = DocutilsUtils.extract_description(node)
+        self.helptext = DocutilsUtils.extract_helptext(node)
         self.examples = DocutilsUtils.extract_code_samples(node)
         self.group = group
 
@@ -163,24 +189,36 @@ class LuaModule:
     def to_dict(self):
         return {
             'name': self.name,
-            'description': self.description,
+            'description': self.description,            
+            'helptext': self.helptext,
             'examples': self.examples,
             'group': self.group
         }
 
 class LuaClass:
-    def __init__(self, node, group=None):        
-        self.name = DocutilsUtils.extract_name(node)
-        self.description = DocutilsUtils.extract_description(node)
-        self.module = DocutilsUtils.extract_module(node)
-        self.syntax = DocutilsUtils.extract_syntax(node)
-        self.parameters = DocutilsUtils.extract_parameters(node, True)
-        self.examples = DocutilsUtils.extract_code_samples(node)
-        self.group = group
-        self.members = []
+    def __init__(self, node=None, group=None, name=None, description=None, module=None, helptext=None, syntax=None, parameters=None, examples=None):
+        if node:
+            # Initialize from a node
+            self.name = DocutilsUtils.extract_name(node)
+            self.description = DocutilsUtils.extract_description(node)
+            self.helptext = DocutilsUtils.extract_helptext(node)
+            self.module = DocutilsUtils.extract_module(node)
+            self.syntax = DocutilsUtils.extract_syntax(node)
+            self.parameters = DocutilsUtils.extract_parameters(node, True)
+            self.examples = DocutilsUtils.extract_code_samples(node)            
+            self.group = group
+        else:
+            # Initialize from provided parameters
+            self.name = name
+            self.description = description
+            self.helptext = helptext
+            self.module = module
+            self.syntax = syntax
+            self.parameters = parameters if parameters else []
+            self.examples = examples if examples else []
+            self.group = group
 
-        # if self.name == "vec2":
-        #     print(node)
+        self.members = []
 
     def __str__(self):
         return f"{self.name} [{self.module}]\n\t{self.description}"
@@ -190,9 +228,10 @@ class LuaClass:
             'name': self.name,
             'kind': 'class',
             'description': self.description,
+            'helptext': self.helptext,
             'module': self.module,
-            'parameters': [p.to_dict() for p in self.parameters],
             'syntax': self.syntax,
+            'parameters': [param.to_dict() for param in self.parameters],
             'examples': self.examples,
             'group': self.group,
             'members': [members.to_dict() for members in self.members]
@@ -239,12 +278,13 @@ class LuaFunction:
         self.name = DocutilsUtils.extract_name(node)
         self.module = DocutilsUtils.extract_module(node)
         self.description = DocutilsUtils.extract_description(node)
+        self.helptext = DocutilsUtils.extract_helptext(node)
         self.parameters = DocutilsUtils.extract_parameters(node)
+        self.group = group
         self.syntax = DocutilsUtils.extract_syntax(node)
-        self.examples = DocutilsUtils.extract_code_samples(node)
+        self.examples = DocutilsUtils.extract_code_samples(node)        
         self.returns = self.extract_returns(node)        
         self.type = type
-        self.group = group
 
     def extract_returns(self, node):
         returns = []
@@ -276,25 +316,41 @@ class LuaFunction:
             'kind': self.type,
             'module': self.module,
             'description': self.description,
+            'helptext': self.helptext,
             'parameters': [p.to_dict() for p in self.parameters],
             'syntax': self.syntax,
             'group': self.group,
-            'examples': self.examples,
+            'examples': self.examples,            
             'returns': [r.to_dict() for r in self.returns]
         }
 
 
 class LuaAttribute:
-    def __init__(self, node, kind, group=None):
-        self.name = DocutilsUtils.extract_name(node)
-        self.module = DocutilsUtils.extract_module(node)
-        self.syntax = DocutilsUtils.extract_syntax(node)
-        self.examples = DocutilsUtils.extract_code_samples(node)
-        self.default_value = None  # Initializing default value
-        self.type = self.extract_type(node)
-        self.description = DocutilsUtils.extract_description(node)
-        self.kind = kind
-        self.group = group
+    def __init__(self, node=None, kind=None, group=None, name=None, type=None, module=None, description=None, helptext=None, syntax=None, examples=None):
+        if node:
+            # Initialize from a node
+            self.name = DocutilsUtils.extract_name(node)
+            self.module = DocutilsUtils.extract_module(node)
+            self.syntax = DocutilsUtils.extract_syntax(node)
+            self.examples = DocutilsUtils.extract_code_samples(node)            
+            self.type = self.extract_type(node)
+            self.description = DocutilsUtils.extract_description(node)
+            self.helptext = DocutilsUtils.extract_helptext(node)
+            self.kind = kind
+            self.group = group
+            self.default_value = None  # Initializing default value
+        else:
+            # Initialize from provided parameters
+            self.name = name
+            self.type = type
+            self.module = module
+            self.description = description
+            self.syntax = syntax
+            self.examples = examples
+            self.helptext = helptext
+            self.default_value = None
+            self.group = group
+            self.kind = kind if kind else 'attribute'
 
     def extract_type(self, node):
         # Finds the first 'desc_type' element and extracts its text, along with any default value if specified.
@@ -312,6 +368,51 @@ class LuaAttribute:
                 return type_name
             return type_text
         return None
+    
+    def extract_fields(self, node):
+        fields = []
+        # Search for the field list that contains parameter details
+        field_list = node.next_node(condition=lambda n: n.tagname == 'field_list')
+        
+        if field_list and len(field_list.children) > 0:
+            # The first child contains the parameters
+            parameters_field = field_list.children[0]
+            bullet_list = parameters_field.next_node(condition=lambda n: n.tagname == 'bullet_list')
+            
+            if bullet_list:
+                for list_item in bullet_list.children:
+                    if isinstance(list_item, nodes.list_item):
+                        param_name_node = list_item.next_node(condition=lambda n: n.tagname == 'literal_strong')
+                        param_description_node = list_item.next_node(condition=lambda n: n.tagname == 'paragraph')
+                        
+                        if param_name_node and param_description_node:
+                            # Extract the parameter name
+                            param_name = param_name_node.astext().split('=')[0].strip()
+                            
+                            # Handle default values if specified
+                            default_value = param_name_node.astext().split('=')[1].strip() if '=' in param_name_node.astext() else None
+                            
+                            # Extract the type from the description if available within parenthesis
+                            param_type = None
+                            description_text = param_description_node.astext()
+                            if '(' in description_text and ')' in description_text:
+                                start = description_text.find('(') + 1
+                                end = description_text.find(')')
+                                param_type = description_text[start:end]
+                            
+                            # Description often follows the type enclosed in a dash
+                            param_description = description_text.split('–')[-1].strip()
+
+                            # Create a LuaAttribute for the field
+                            lua_attribute = LuaAttribute(
+                                name=param_name,
+                                type=param_type,
+                                module=self.module,  # Use the current module context
+                                description=param_description
+                            )
+                            lua_attribute.default_value = default_value
+                            fields.append(lua_attribute)
+        return fields
 
     def __str__(self):
         return f"{self.name}: {self.type} [default = {self.default_value}]\n\t{self.description}"
@@ -322,12 +423,14 @@ class LuaAttribute:
             'kind': self.kind,
             'module': self.module,
             'syntax': self.syntax,
-            'examples': self.examples,
+            'examples': self.examples,            
             'type': self.type,
             'group': self.group,
             'defaultValue': self.default_value,
-            'description': self.description
+            'description': self.description,
+            'helptext': self.helptext
         }
+
 
 class LuaOverview:
     def __init__(self, content, group=None):

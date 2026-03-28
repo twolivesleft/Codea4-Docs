@@ -9,33 +9,49 @@ The sound module provides a way to play and manage sound effects and background 
 
    Procedural coin sound preset (SFXR)
 
+   .. helptext:: coin sound effect constant
+
 .. lua:attribute:: SOUND_LASER: const
 
    Procedural laser sound preset (SFXR)
+
+   .. helptext:: laser sound effect constant
 
 .. lua:attribute:: SOUND_EXPLOSION: const
 
    Procedural explosion sound preset (SFXR)
 
+   .. helptext:: explosion sound effect constant
+
 .. lua:attribute:: SOUND_POWERUP: const
 
    Procedural powerup sound preset (SFXR)
+
+   .. helptext:: power-up sound effect constant
 
 .. lua:attribute:: SOUND_HURT: const
 
    Procedural hurt sound preset (SFXR)
 
+   .. helptext:: hurt sound effect constant
+
 .. lua:attribute:: SOUND_JUMP: const
 
    Procedural jump sound preset (SFXR)
+
+   .. helptext:: jump sound effect constant
 
 .. lua:attribute:: SOUND_BLIP: const
 
    Procedural blip sound preset (SFXR)
 
+   .. helptext:: blip sound effect constant
+
 .. lua:staticmethod:: play(preset[, seed])
 
    Plays a preset procedural SFXR sound effect using a given ``preset`` and optional ``seed``
+
+   .. helptext:: play a procedural sound preset
 
    :rtype: sound.instance
 
@@ -43,15 +59,21 @@ The sound module provides a way to play and manage sound effects and background 
 
    Plays a ``sound.source`` in 2D, returning an active ``sound.instance`` object that can be adjusted, paused/resumed and stopped
 
+   .. helptext:: play a sound in 2D
+
    :rtype: sound.instance
 
 .. lua:staticmethod:: play(assetKey[, volume = 1, pitch = 1, pan = 0, paused = false])
 
    Plays a sound using an asset key in 2D, returning an active ``sound.instance`` object that can be adjusted, paused/resumed and stopped
 
+   .. helptext:: play a sound in 2D
+
 .. lua:staticmethod:: play3d(source[, volume = 1, pitch = 1, paused = false])   
 
    Plays a ``sound.source`` in 3D, returning an active ``sound.instance`` object that can be adjusted, paused/resumed and stopped
+
+   .. helptext:: play a sound in 3D
 
    :rtype: sound.instance
 
@@ -59,11 +81,15 @@ The sound module provides a way to play and manage sound effects and background 
 
    Plays a sound using an asset key in 3D, returning an active ``sound.instance`` object that can be adjusted, paused/resumed and stopped
 
+   .. helptext:: play a sound in 3D
+
    :rtype: sound.instance
 
 .. lua:staticmethod:: playBackground(source[, volume = 1, pitch = 1, paused = false])   
 
    Plays a ``sound.source`` in the background (no spatialisation), returning an active `sound.instance` object that can be adjusted, paused/resumed and stopped
+
+   .. helptext:: play background audio
 
    :rtype: sound.instance
 
@@ -71,17 +97,23 @@ The sound module provides a way to play and manage sound effects and background 
 
    Plays an ``asset.key`` in the background (no spatialisation), returning an active `sound.instance` object that can be adjusted, paused/resumed and stopped
 
+   .. helptext:: play background audio
+
    :rtype: sound.instance
 
 .. lua:staticmethod:: read(assetKey)
 
    Reads a ``sound.source`` using an ``asset.key`` from the filesystem
 
+   .. helptext:: load a sound from an asset
+
    Supported formats are - ``wav``, ``ogg``, ``mp3``, ``flac``
 
    :rtype: sound.source
    
 .. lua:staticmethod:: generator(table)      
+
+   .. helptext:: create a procedural sound generator
 
 .. lua:class:: source
 
@@ -91,9 +123,13 @@ The sound module provides a way to play and manage sound effects and background 
 
       Adjusts the default volume of sounds played with this sound source
 
+      .. helptext:: default playback volume
+
    .. lua:attribute:: loop: boolean
 
       Adjusts the default looping state of sounds played with this sound source
+
+      .. helptext:: default looping state
 
    .. lua:attribute:: length: number [readonly]
 
@@ -102,6 +138,8 @@ The sound module provides a way to play and manage sound effects and background 
    .. lua:attribute:: key: assetKey
 
    The asset key for this sound (if it has one)
+
+      .. helptext:: length of the sound in seconds
 
 .. lua:class:: instance
 
@@ -113,38 +151,58 @@ The sound module provides a way to play and manage sound effects and background 
 
       Adjusts the volume of the sound instance
 
+      .. helptext:: current playback volume
+
    .. lua:attribute:: pitch: number
 
       Adjusts the pitch of the sounds (increases/decreases play speed)
+
+      .. helptext:: current playback pitch
 
    .. lua:attribute:: loop: boolean
 
       The looping state of the sound instance. When set to true the sound instance will continuously loop
 
+      .. helptext:: whether the sound loops
+
    .. lua:attribute:: paused: number
 
       Set the paused state of the sound instance
 
+      .. helptext:: whether the sound is paused
+
    .. lua:attribute:: time: number
 
       Get/set the current time of the sound instances play head (in seconds)
+      
+      .. helptext:: current playback time
 
    .. lua:attribute:: samplerate: number
 
       Get the samplerate of the sound instance
+      
+      .. helptext:: current playback samplerate
 
    .. lua:attribute:: amplitude: number
 
       Get the amplitude of the sound instance at the current time
+      
+      .. helptext:: current playback amplitude
 
    .. lua:attribute:: wave: table<number>
 
       Get the wave data of the sound instance at the current time
+      
+      .. helptext:: current playback wave data
 
    .. lua:attribute:: fft: table<number>
 
       Get the fft data of the sound instance at the current time
+      
+      .. helptext:: current playback fft data
 
    .. lua:method:: stop
 
       Stop the sound instance from playing
+
+      .. helptext:: stop the sound

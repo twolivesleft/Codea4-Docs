@@ -74,6 +74,7 @@ Codea 4
    api/animation
    api/pick
    api/viewer
+   api/inspector
    api/device
    api/storage
 

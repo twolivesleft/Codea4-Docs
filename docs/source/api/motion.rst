@@ -14,11 +14,15 @@ Motion
 
    If set, motion tracking will start automatically as soon as any attribute is read. Default is ``true``.
 
+   .. helptext:: start motion tracking automatically on first access
+
    Set to false if you want to control when motion is tracked manually using the ``start`` and ``stop`` functions.
 
 .. lua:function:: start(referenceFrame)
 
    Start tracking motion metrics.
+
+   .. helptext:: start motion tracking
 
    :param referenceFrame: The reference frame in which to track motion metrics. Can be one of the following values:
    :type referenceFrame: number
@@ -32,9 +36,13 @@ Motion
 
    Stop tracking motion metrics and set autoStart to false.
 
+   .. helptext:: stop motion tracking
+
 .. lua:attribute:: updateInterval: number
 
    The interval, in seconds, at which motion data is updated. This value can be set to control the frequency of motion updates. A lower value means more frequent updates, which can provide smoother motion tracking but may consume more power. The default value is 1/30 second.
+
+   .. helptext:: interval between motion updates
 
    Note that the interval is clamped between limits defined by the system.
 
@@ -42,17 +50,25 @@ Motion
 
    The gravity vector in the device's reference frame. This vector is automatically rotated to follow device orientation changes.
 
+   .. helptext:: current gravity vector
+
 .. lua:attribute:: acceleration: vec2
 
    The acceleration vector in the device's reference frame. This vector is automatically rotated to follow device orientation changes.
+
+   .. helptext:: current acceleration vector
 
 .. lua:attribute:: rotationRate: vec2
 
    The rotation rate in the device's reference frame. This vector is automatically rotated to follow device orientation changes.
 
+   .. helptext:: current rotation rate
+
 .. lua:attribute:: sensorLocation: integer
 
    The location of the device's sensors.
+
+   .. helptext:: location of the motion sensors
 
    The value can be one of the following:
 
@@ -63,6 +79,8 @@ Motion
 .. lua:attribute:: heading: number
 
    The heading in degrees relative to the current reference frame.
+
+   .. helptext:: current device heading
 
 Device Orientation
 ==================
@@ -97,17 +115,25 @@ Device Orientation
 
       The X-axis is arbitrary and the Z-axis is vertical.
 
+      .. helptext:: arbitrary x axis, vertical z reference frame
+
    .. lua:attribute:: XArbitraryCorrectedZVertical: integer
 
       The X-axis is arbitrary and the Z-axis is vertical. The system will attempt to correct for the device's orientation.
+
+      .. helptext:: corrected arbitrary x axis, vertical z reference frame
 
    .. lua:attribute:: XMagneticNorthZVertical: integer
       
       The X-axis points toward the magnetic north and the Z-axis is vertical.
 
+      .. helptext:: magnetic north x axis, vertical z reference frame
+
    .. lua:attribute:: XTrueNorthZVertical: integer
       
       The X-axis points toward the true north and the Z-axis is vertical.
+
+      .. helptext:: true north x axis, vertical z reference frame
 
 Magnetic Field Data
 ===================
@@ -117,6 +143,8 @@ Magnetic Field Data
    .. lua:attribute:: field: vec3
 
       The magnetic field vector in the device's reference frame.
+
+      .. helptext:: get the magnetic field vector
    
    .. lua:attribute:: accuracy: integer
 
@@ -128,3 +156,5 @@ Magnetic Field Data
       - ``motion.magneticAccuracy.low``: The magnetic field data is of low accuracy.
       - ``motion.magneticAccuracy.medium``: The magnetic field data is of medium accuracy.
       - ``motion.magneticAccuracy.high``: The magnetic field data is of high accuracy.
+
+      .. helptext:: get the magnetic field accuracy

@@ -24,81 +24,121 @@ math types
 
       The x component of this vector
 
+      .. helptext:: get or set the x component
+
    .. lua:attribute:: y: number
 
       The y component of this vector      
+
+      .. helptext:: get or set the y component
 
    .. lua:staticmethod:: min(v1, v2)
 
       Return a ``vec2`` containing the component-wise minimum of two vectors
 
+      .. helptext:: return the component-wise minimum of two vectors
+
    .. lua:staticmethod:: max(v1, v2)
 
       Return a ``vec2`` containing the component-wise maximum two vectors
+
+      .. helptext:: return the component-wise maximum of two vectors
 
    .. lua:attribute:: length: number
 
       The length of this vector
 
+      .. helptext:: get the length of this vector
+
    .. lua:attribute:: length2: number
 
       The squared length of this vector
+
+      .. helptext:: get the squared length of this vector
 
    .. lua:method:: normalize()
 
       Normalize this vector
 
+      .. helptext:: normalize this vector
+
    .. lua:method:: normalized()
 
       Return a normalized copy of this vector
+
+      .. helptext:: return a normalized copy of this vector
 
    .. lua:method:: dot(v)
 
       Perform a scalar dot product with another vector and return the result
 
+      .. helptext:: calculate the dot product with another vector
+
    .. lua:method:: distance(v)
 
       Calculate the distance (i.e. L1 norm) to another vector
+
+      .. helptext:: calculate the distance to another vector
 
    .. lua:method:: distance2(v)
 
       Calculate the squared distance (i.e. L2 norm) to another vector
 
+      .. helptext:: calculate the squared distance to another vector
+
    .. lua:method:: reflect(normal)
 
       Reflect this vector about another
+
+      .. helptext:: reflect this vector about a normal
 
    .. lua:method:: refract(normal, ior)
 
       Refract this vector though another with a given index or refraction
 
+      .. helptext:: refract this vector through a normal
+
    .. lua:method:: lerp(v, t)
 
       Interpolate this vector with another by the a given factor (typically between 0 and 1)
+
+      .. helptext:: linearly interpolate this vector with another
 
    .. lua:method:: abs()
 
       Return a copy of this vector with component-wise absolute values
 
+      .. helptext:: return a copy with component-wise absolute values
+
    .. lua:method:: unpack() -> x, y
 
       Unpack this vector as multiple number values
+
+      .. helptext:: unpack this vector as multiple numbers
    
    .. lua:method:: cross(v)
 
       Perform a cross product with another vec2 and return the result
+
+      .. helptext:: calculate the cross product with another vector
    
    .. lua:method:: rotate(angleRadians)
 
       Rotate this vector by a given angle in radians
+
+      .. helptext:: rotate this vector by an angle in radians
    
    .. lua:method:: rotate90()
 
       Rotate this vector by 90 degrees
+
+      .. helptext:: rotate this vector by 90 degrees
    
    .. lua:method:: angleBetween(v)
 
       Calculate the oriented angle between this vector and another, between -pi and pi
+
+      .. helptext:: calculate the oriented angle between this vector and another
 
 3D Vectors
 ##########
@@ -110,77 +150,115 @@ math types
 
       Create a new ``vec3`` by setting all values at once or each one individually
 
+      .. helptext:: create a new vec3
+
    .. lua:staticmethod:: min(v1, v2)
 
       Return a ``vec3`` containing the component-wise minimum of two vectors
+
+      .. helptext:: return the component-wise minimum of two vectors
 
    .. lua:staticmethod:: max(v1, v2)
 
       Return a ``vec3`` containing the component-wise maximum two vectors
 
+      .. helptext:: return the component-wise maximum of two vectors
+
    .. lua:attribute:: x: number
 
       The x component of this vector
+
+      .. helptext:: get or set the x component
 
    .. lua:attribute:: y: number
 
       The y component of this vector
 
+      .. helptext:: get or set the y component
+
    .. lua:attribute:: z: number
 
       The z component of this vector
+
+      .. helptext:: get or set the z component
 
    .. lua:attribute:: length: number
 
       The length of this vector
 
+      .. helptext:: get the length of this vector
+
    .. lua:attribute:: length2: number
 
       The squared length of this vector
+
+      .. helptext:: get the squared length of this vector
 
    .. lua:method:: normalize()
 
       Normalize this vector
 
+      .. helptext:: normalize this vector
+
    .. lua:method:: normalized()
 
       Return a normalized copy of this vector
+
+      .. helptext:: return a normalized copy of this vector
 
    .. lua:method:: dot(v)
 
       Perform a scalar dot product with another vector and return the result
 
+      .. helptext:: calculate the dot product with another vector
+
    .. lua:method:: cross(v)
 
       Perform a cross product with another vec3 and return the result
+
+      .. helptext:: calculate the cross product with another vector
 
    .. lua:method:: distance(v)
 
       Calculate the distance (i.e. L1 norm) to another vector
 
+      .. helptext:: calculate the distance to another vector
+
    .. lua:method:: distance2(v)
 
       Calculate the squared distance (i.e. L2 norm) to another vector
+
+      .. helptext:: calculate the squared distance to another vector
 
    .. lua:method:: reflect(normal)
 
       Reflect this vector about another
 
+      .. helptext:: reflect this vector about a normal
+
    .. lua:method:: refract(normal, ior)
 
       Refract this vector though another with a given index or refraction
+
+      .. helptext:: refract this vector through a normal
 
    .. lua:method:: lerp(v, t)
 
       Interpolate this vector with another by the a given factor (typically between 0 and 1)
 
+      .. helptext:: linearly interpolate this vector with another
+
    .. lua:method:: abs()
 
       Return a copy of this vector with component-wise absolute values
 
+      .. helptext:: return a copy with component-wise absolute values
+
    .. lua:method:: unpack() -> x, y, z
 
       Unpack this vector as multiple number values
+
+      .. helptext:: unpack this vector as multiple numbers
 
 4D Vectors
 ##########
@@ -192,77 +270,115 @@ math types
 
       Create a new ``vec4`` by setting all values at once or each one individually
 
+      .. helptext:: create a new vec4
+
    .. lua:staticmethod:: min(v1, v2)
 
       Return a ``vec4`` containing the component-wise minimum of two vectors
+
+      .. helptext:: return the component-wise minimum of two vectors
 
    .. lua:staticmethod:: max(v1, v2)
 
       Return a ``vec4`` containing the component-wise maximum two vectors
 
+      .. helptext:: return the component-wise maximum of two vectors
+
    .. lua:attribute:: x: number
 
       The x component of this vector
+
+      .. helptext:: get or set the x component
 
    .. lua:attribute:: y: number
 
       The y component of this vector
 
+      .. helptext:: get or set the y component
+
    .. lua:attribute:: z: number
 
       The z component of this vector
+
+      .. helptext:: get or set the z component
 
    .. lua:attribute:: w: number
 
       The w component of this vector
 
+      .. helptext:: get or set the w component
+
    .. lua:attribute:: length: number
 
       The length of this vector
+
+      .. helptext:: get the length of this vector
 
    .. lua:attribute:: length2: number
 
       The squared length of this vector
 
+      .. helptext:: get the squared length of this vector
+
    .. lua:method:: normalize()
 
       Normalize this vector
+
+      .. helptext:: normalize this vector
 
    .. lua:method:: normalized()
 
       Return a normalized copy of this vector
 
+      .. helptext:: return a normalized copy of this vector
+
    .. lua:method:: dot(v)
 
       Perform a scalar dot product with another vector and return the result
+
+      .. helptext:: calculate the dot product with another vector
 
    .. lua:method:: distance(v)
 
       Calculate the distance (i.e. L1 norm) to another vector
 
+      .. helptext:: calculate the distance to another vector
+
    .. lua:method:: distance2(v)
 
       Calculate the squared distance (i.e. L2 norm) to another vector
+
+      .. helptext:: calculate the squared distance to another vector
 
    .. lua:method:: reflect(normal)
 
       Reflect this vector about another
 
+      .. helptext:: reflect this vector about a normal
+
    .. lua:method:: refract(normal, ior)
 
       Refract this vector though another with a given index or refraction
+
+      .. helptext:: refract this vector through a normal
 
    .. lua:method:: lerp(v, t)
 
       Interpolate this vector with another by the a given factor (typically between 0 and 1)
 
+      .. helptext:: linearly interpolate this vector with another
+
    .. lua:method:: abs()
 
       Return a copy of this vector with component-wise absolute values
 
+      .. helptext:: return a copy with component-wise absolute values
+
    .. lua:method:: unpack() -> x, y, z, w
 
       Unpack this vector as multiple number values
+
+      .. helptext:: unpack this vector as multiple numbers
 
 Vector Swizzling
 ################
@@ -295,9 +411,13 @@ Quaternions
 
       Create a new ``quat``
 
+      .. helptext:: create a new quaternion
+
    .. lua:staticmethod:: lookRotation(forward, up)
 
       :return: A ``quat`` that points in the ``forward`` direction using ``up`` to orient it correctly
+
+      .. helptext:: create a rotation looking in a forward direction
 
    .. lua:staticmethod:: fromToRotate(from, to)
 
@@ -307,6 +427,8 @@ Quaternions
       :type to: vec3
       :return: a ``quat`` containing a relative rotation between the ``from`` and ``to`` vectors
 
+      .. helptext:: create a rotation from one direction to another
+
    .. lua:staticmethod:: angleAxis(angle, axis)
 
       :param angle: The amount of rotation in degrees
@@ -314,6 +436,8 @@ Quaternions
       :param axis: The axis of rotation
       :type axis: vec3
       :return: a new ``quat`` containing a rotation defined by ``angle`` (in degrees) rotated about the ``axis`` vector
+
+      .. helptext:: create a rotation from an angle and axis
 
    .. lua:staticmethod:: eulerAngles(x, y, z)
 
@@ -325,21 +449,31 @@ Quaternions
       :type z: number
       :return: a new ``quat`` containing a rotation defined by 3 euler angles (i.e. yaw, pitch roll) in radians
 
+      .. helptext:: create a rotation from euler angles
+
    .. lua:attribute:: x: number
 
       The x component of this vector
+
+      .. helptext:: get or set the x component
 
    .. lua:attribute:: y: number
 
       The y component of this vector
 
+      .. helptext:: get or set the y component
+
    .. lua:attribute:: z: number
 
       The z component of this vector
 
+      .. helptext:: get or set the z component
+
    .. lua:attribute:: w: number
 
       The w component of this vector
+
+      .. helptext:: get or set the w component
 
    .. lua:attribute:: angles: vec3
 
@@ -347,23 +481,33 @@ Quaternions
 
       *Please note that the potential euler angles from any given quaternion are ambiguous and should not be relied upon for smooth or consistent rotations especially when interpolating them*
 
+      .. helptext:: get the euler angles of this quaternion
+
    .. lua:method:: slerp(q, t)
 
       :param q: The other quaternion to slerp to
       :param t: The amount of interpolation (from 0 to 1)
       :return: a new ``quat`` that is spherically interpolated from this quaternion to ``q`` via ``t`` (between 0 and 1)
 
+      .. helptext:: spherically interpolate this quaternion with another
+
    .. lua:method:: conjugate()
 
       :return: a new ``quat`` containing the conjugate of this quaternion
+
+      .. helptext:: return the conjugate of this quaternion
 
    .. lua:method:: normalize()
 
       Normalizes this quaternion
 
+      .. helptext:: normalize this quaternion
+
    .. lua:method:: normalized()
 
       :return: a normalized copy of this quaternion
+
+      .. helptext:: return a normalized copy of this quaternion
 
 2x2 Matrix
 ##########
@@ -386,27 +530,39 @@ Quaternions
 
       Create a new ``mat2``, default, diagonals, 2 ``vec2`` objects or all 4 entries
 
+      .. helptext:: create a new 2x2 matrix
+
    .. lua:method:: inverse()
 
       :return: the inverse of this matrix
+
+      .. helptext:: return the inverse of this matrix
 
    .. lua:method:: transpose()
 
       :return: the transpose of this matrix
 
+      .. helptext:: return the transpose of this matrix
+
    .. lua:method:: determinant()
 
       :return: the determinant of this matrix
+
+      .. helptext:: return the determinant of this matrix
 
    .. lua:method:: row(index)
 
       :return: the row at a given ``index`` (starting at 1)
       :rtype: vec2
 
+      .. helptext:: return the row at the given index
+
    .. lua:method:: column(index)
 
       :return: the column at a given ``index`` (starting at 1)
       :rtype: vec2
+
+      .. helptext:: return the column at the given index
 
 
 3x3 Matrix
@@ -430,27 +586,39 @@ Quaternions
 
       Create a new ``mat3``, default, diagonals, 3 ``vec3`` objects or all 9 entries
 
+      .. helptext:: create a new 3x3 matrix
+
    .. lua:method:: inverse()
 
       :return: the inverse of this matrix
+
+      .. helptext:: return the inverse of this matrix
 
    .. lua:method:: transpose()
 
       :return: the transpose of this matrix
 
+      .. helptext:: return the transpose of this matrix
+
    .. lua:method:: determinant()
 
       :return: the determinant of this matrix
+
+      .. helptext:: return the determinant of this matrix
 
    .. lua:method:: row(index)
 
       :return: the row at a given ``index`` (starting at 1)
       :rtype: vec3
 
+      .. helptext:: return the row at the given index
+
    .. lua:method:: column(index)
 
       :return: the column at a given ``index`` (starting at 1)
       :rtype: vec3
+
+      .. helptext:: return the column at the given index
 
 
 4x4 Matrix
@@ -474,43 +642,71 @@ Quaternions
 
       Create a new ``mat4``, default, diagonals, 4 ``vec4`` objects or all 16 entries
 
+      .. helptext:: create a new 4x4 matrix
+
    .. lua:staticmethod:: lookAt(eye, center, up)
+
+      .. helptext:: create a look-at view matrix
 
    .. lua:staticmethod:: lookAt(matrix, eye, center, up)
 
+      .. helptext:: apply a look-at transform to a matrix
+
    .. lua:staticmethod:: orbit(origin, distance, x, y)
+
+      .. helptext:: create an orbit view matrix
 
    .. lua:staticmethod:: orbit(matrix, origin, distance, x, y)
 
+      .. helptext:: apply an orbit transform to a matrix
+
    .. lua:staticmethod:: ortho(left, right, top, bottom, [near, far])
+
+      .. helptext:: setup an orthographic view
 
    .. lua:staticmethod:: perspective(fovy, aspect, near, far)
 
+      .. helptext:: setup a perspective view
+
    .. lua:staticmethod:: rotate(angle, axis)
 
+      .. helptext:: rotate the current transform
+
    .. lua:staticmethod:: rotate(matrix, angle, axis)
+
+      .. helptext:: rotate a matrix by an angle and axis
 
    .. lua:method:: inverse()
 
       :return: the inverse of this matrix
 
+      .. helptext:: return the inverse of this matrix
+
    .. lua:method:: transpose()
 
       :return: the transpose of this matrix
 
+      .. helptext:: return the transpose of this matrix
+
    .. lua:method:: determinant()
 
       :return: the determinant of this matrix
+
+      .. helptext:: return the determinant of this matrix
 
    .. lua:method:: row(index)
 
       :return: the row at a given ``index`` (starting at 1)
       :rtype: vec3
 
+      .. helptext:: return the row at the given index
+
    .. lua:method:: column(index)
 
       :return: the column at a given ``index`` (starting at 1)
       :rtype: vec3
+
+      .. helptext:: return the column at the given index
 
 Axis-Aligned Bounding Box (AABB)
 ################################

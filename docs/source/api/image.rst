@@ -25,6 +25,8 @@ Image
 
       Create a blank 2D image (default format is `rgba`)
 
+      .. helptext:: create a new blank image
+
       :param width: The width of the image
       :type width: integer
       :param height: The height of the image
@@ -45,6 +47,8 @@ Image
       :param size: The size of the image cube
       :type size: integer
 
+      .. helptext:: create a blank cube image
+
    .. lua:staticmethod:: image.cube(equirect)
 
       Creates a cube image from a single equirect image (i.e. hdr)
@@ -52,9 +56,13 @@ Image
       :param equirect: The source equirect image
       :type equirect: image
 
+      .. helptext:: create a cube image from an equirect image
+
    .. lua:staticmethod:: image.cube(imageNX, imagePX, imageNY, imagePY, imageNZ, imagePZ)
 
       Creates a cube image from six source images, one for each cube face
+
+      .. helptext:: create a cube image from six face images
 
    .. lua:staticmethod:: image.volume(width, height, depth, format)
 
@@ -69,12 +77,16 @@ Image
       :param format: The format of the volume image
       :type format: image format
 
+      .. helptext:: create a blank volume image
+
    .. lua:staticmethod:: image.read(key)
 
       Read an image asset from the filesystem
 
       :param key: The asset key to load
       :rtype: image
+
+      .. helptext:: read an image asset from the filesystem
 
    .. lua:staticmethod:: image.save(key, image)
 
@@ -85,45 +97,67 @@ Image
       :param image: The image to save
       :type image: image
 
+      .. helptext:: save an image asset to the filesystem
+
    .. lua:attribute:: width: integer
 
       The width of the image in pixels
+
+      .. helptext:: get the width of this image in pixels
 
    .. lua:attribute:: height: integer
 
       The height of the image in pixels
 
+      .. helptext:: get the height of this image in pixels
+
    .. lua:attribute:: depth: integer
 
       The depth of the image in pixels (for volume images)
+
+      .. helptext:: get the depth of this image in pixels
 
    .. lua:attribute:: numLayers: integer
 
       The number of layers in this image
 
+      .. helptext:: get the number of layers in this image
+
    .. lua:attribute:: hasMips: boolean
 
       Whether this image has mip mapping or not
+
+      .. helptext:: get whether this image has mip mapping
 
    .. lua:attribute:: cubeMap: boolean
 
       Whether this image is a cube or not
 
+      .. helptext:: get whether this image is a cube map
+
    .. lua:attribute:: numMips: integer
 
       The number of mips this image has
+
+      .. helptext:: get the number of mips in this image
 
    .. lua:attribute:: sampler: samplerState
 
       The sampler state for this image, which determines how texels are sampled by shaders
 
+      .. helptext:: get or set the sampler state for this image
+
    .. lua:attribute:: smooth: boolean
 
       Sets/gets whether this image has linear or nearest filtering
 
+      .. helptext:: enable or disable smooth filtering
+
    .. lua:attribute:: key: assetKey
 
       The asset key for this image (if it has one)
+
+      .. helptext:: get the asset key for this image
 
    .. lua:method:: generateIrradiance(samples)
 
@@ -133,6 +167,8 @@ Image
       :type samples: integer
       :return: A new image containing the irradiance data
       :rtype: image
+
+      .. helptext:: generate pre-computed irradiance data
 
    .. lua:method:: generateIrradiance(target, samples)
 
@@ -144,6 +180,8 @@ Image
       :type samples: integer
       :return: The target image containing the irradiance data
       :rtype: image
+
+      .. helptext:: generate irradiance data into a target image
 
 Image Formats
 -------------
@@ -388,25 +426,37 @@ The ``mip`` property controls how mipmapping is handled, ``linear`` will blend b
 
       The minification filter, can be ``point``, ``linear`` or ``none``
 
+      .. helptext:: get or set the minification filter mode
+
    .. lua:attribute:: mag: filterMode
 
       The magnification filter, can be ``point``, ``linear`` or ``none``
+
+      .. helptext:: get or set the magnification filter mode
 
    .. lua:attribute:: mip: filterMode
 
       The mip filter, can be ``point``, ``linear`` or ``none``
 
+      .. helptext:: get or set the mip filter mode
+
    .. lua:attribute:: u: samplerMode
 
       The u sampler mode, can be ``repeat``, ``clamp`` or ``mirror``
+
+      .. helptext:: get or set the u sampler wrap mode
 
    .. lua:attribute:: v: samplerMode
 
       The v sampler mode, can be ``repeat``, ``clamp`` or ``mirror``
 
+      .. helptext:: get or set the v sampler wrap mode
+
    .. lua:attribute:: w: samplerMode
 
       The w sampler mode, can be ``repeat``, ``clamp`` or ``mirror``
+
+      .. helptext:: get or set the w sampler wrap mode
 
 Slices and Atlases
 -------------------
@@ -432,52 +482,88 @@ Slices and Atlases
       end
 
    .. lua:method:: name(name)
+
+      .. helptext:: set the slice name
    .. lua:method:: name()      
 
       Gets/sets the slice name (for retrieval  in the ``atlas`` class)
+
+      .. helptext:: get the slice name
 
    .. lua:method:: normal()
 
       Reset the slice to the normal drawing mode (from patch or polygon mode)
 
+      .. helptext:: reset the slice to normal drawing mode
+
    .. lua:method:: rect(x, y, w, h)
+
+      .. helptext:: set the slice sub-rectangle
    .. lua:method:: rect()      
 
       Set/gets the sub-rectangle for the slice (in pixels). Use this to draw a portion of the sliced image
 
+      .. helptext:: get the slice sub-rectangle
+
    .. lua:method:: patch(left, right, top, bottom)      
+
+      .. helptext:: set the slice as a 9-patch with margins
    .. lua:method:: patch(margin)            
 
       Sets the slice to draw as a 9-patch using the supplied margins. This allows the slice to be stretched to an arbitrary size while maintaining fixed-sized borders
 
+      .. helptext:: set the slice as a 9-patch with a uniform margin
+
    .. lua:method:: padding(left, right, top, bottom)      
+
+      .. helptext:: set the slice padding
    .. lua:method:: padding(amount)              
+
+      .. helptext:: set the slice padding uniformly
    .. lua:method:: padding()            
 
       Sets/gets the slice padding. This allows for a larger slice to be drawn but discards empty space at the edges (useful sprites packed into an atlas that trims empty space)
 
+      .. helptext:: get the slice padding
+
    .. lua:method:: anchor(x, y)      
+
+      .. helptext:: set the slice anchor
    .. lua:method:: anchor()      
 
       Sets/gets the slice anchor (also known as a pivot). The anchor is the geometric center of the slice for transformations such as rotation/scale and flipping
 
+      .. helptext:: get the slice anchor
+
    .. lua:method:: rotate(angle)      
+
+      .. helptext:: set the slice rotation
    .. lua:method:: rotate()     
 
       Sets/gets the sice rotation (in discrete 90 degree turns). Useful for atlas packed sprites that might be rotated to fit, or when reusing a slice at a different 90 degee angle
 
+      .. helptext:: get the slice rotation
+
    .. lua:method:: flip(x, y)      
+
+      .. helptext:: set the slice horizontal and vertical flip
    .. lua:method:: flip()            
 
       Sets/gets the horizontal and vertical flip for the slice
+
+      .. helptext:: get the slice flip
     
    .. lua:attribute:: image: image
 
       The image this slice is derived from
+
+      .. helptext:: get the source image for this slice
     
    .. lua:attribute:: atlas: atlas
 
       The atlas this slice is part of
+
+      .. helptext:: get the atlas this slice is part of
 
 .. lua:class:: atlas
 
@@ -489,14 +575,25 @@ Slices and Atlases
 
       Create a new blank atlas using an existing image
 
+      .. helptext:: create a new blank atlas from an image
+
    .. lua:staticmethod:: read(assetKey)
+
+      .. helptext:: read an atlas from an asset key
 
    .. lua:staticmethod:: save(assetKey, atlas)
 
+      .. helptext:: save an atlas to an asset key
+
    .. lua:method:: clear()
+
+      .. helptext:: clear all slices from this atlas
 
    .. lua:method:: setWithCellSize(cellWidth[, cellHeight, padding])
 
-   .. lua:method:: setWithCellCount(cellColumns[, cellRows, padding])      
-   
+      .. helptext:: generate slices using cell size
 
+   .. lua:method:: setWithCellCount(cellColumns[, cellRows, padding])      
+
+      .. helptext:: generate slices using cell count
+   

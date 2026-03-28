@@ -21,6 +21,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
             print(pickedAsset)
         end
 
+   .. helptext:: open the document picker to pick an asset
+
 .. lua:class:: pick
 
     .. lua:staticmethod:: pick.image()
@@ -36,6 +38,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
             ...
             sprite(myImage, WIDTH/2, HEIGHT/2)
 
+       .. helptext:: open the document picker to pick an image
+
     .. lua:staticmethod:: pick.table()
 
         Opens the document picker to pick a JSON asset and convert it to a table.
@@ -48,6 +52,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
             myTable = pick.table()
             ...
             print(myTable["key"])
+
+       .. helptext:: open the document picker to pick a JSON asset as table
 
     .. lua:staticmethod:: pick.text()
 
@@ -62,6 +68,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
             ...
             text(myText, WIDTH/2, HEIGHT/2)
 
+       .. helptext:: open the document picker to pick a text asset
+
     .. lua:staticmethod:: pick.asset()
 
         Opens the document picker to pick an asset and return its asset key.
@@ -74,6 +82,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
             myAssetKey = pick.asset()
             ...
             print(myAssetKey.type)
+
+       .. helptext:: open the document picker to pick an asset key
 
     .. lua:staticmethod:: pick.photo()
 
@@ -90,6 +100,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
             ...
             sprite(myPhoto, WIDTH/2, HEIGHT/2)
 
+       .. helptext:: open the photo picker to pick a photo
+
     .. lua:staticmethod:: pick.sound()
 
         Opens the document picker to pick an audio asset (sound or music).
@@ -101,6 +113,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
 
             sound.play(pick.sound())
 
+       .. helptext:: open the document picker to pick an audio asset
+
     .. lua:staticmethod:: pick.image(...)
                           pick.table(...)
                           pick.text(...)
@@ -111,6 +125,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
         Pick assets with the specified UTType strings, options and callback function.
 
         See ``pick(...)`` below for more information.
+
+       .. helptext:: pick assets with specified types and options
 
     .. lua:attribute:: option
 
@@ -127,6 +143,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
         - ``decodeTable`` - Decode the picked asset as a table (only for json assets)
         - ``reference`` - Do not copy the asset to the project's assets, instead reference the original file
 
+       .. helptext:: an option value for the picker
+
 .. lua:function:: pick(...)
 
     Pick assets with the specified UTType strings, options and callback function.
@@ -141,6 +159,8 @@ Images are always copied to the project's assets and cannot be loaded as referen
         pick("public.yaml", pick.option.image, pick.option.multiple, function(multipleAssets)
             print("Picked " .. #multipleAssets .. " assets")
         })
+
+   .. helptext:: pick assets with specified types and options
 
 pick.option.reference
 ---------------------

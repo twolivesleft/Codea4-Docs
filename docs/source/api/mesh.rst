@@ -60,6 +60,8 @@ mesh
       :param submeshCount: The number of submeshes that this mesh will be created with (optoinal)
       :type submeshCount: integer
 
+      .. helptext:: create a new mesh
+
    .. lua:staticmethod:: mesh.read(key)
 
       Loads a mesh from a file
@@ -77,25 +79,37 @@ mesh
       
       :param key: The asset key to load
 
+      .. helptext:: load a mesh from a file
+
    .. lua:attribute:: texture: image
 
       The mesh texture, used by the default mesh shader (and accessible to custom shaders as well) for basic surface textures
+
+      .. helptext:: get or set the texture for this mesh
 
    .. lua:attribute:: shader: shader
 
       Custom shader for this mesh, used when ``mesh:draw()`` is invoked
 
+      .. helptext:: get or set the shader for this mesh
+
    .. lua:attribute:: material: material
 
       The same as assigning a shader but with a material instead
+
+      .. helptext:: get or set the material for this mesh
 
    .. lua:attribute:: submeshIndex: integer
 
       The current sub-mesh index. Useful for multi-material meshes
 
+      .. helptext:: get or set the submesh index
+
    .. lua:attribute:: submeshCount: integer
    
       The total number of sub-meshes within this mesh
+
+      .. helptext:: get the number of submeshes
 
    .. lua:attribute:: vertexCount: integer
 
@@ -103,41 +117,65 @@ mesh
 
       *3.x compatiblity note: This was originally called* ``count``
 
+      .. helptext:: get the number of vertices
+
    .. lua:attribute:: indexCount: integer
 
       The total number of indices in the currently selected sub-mesh
 
       *3.x compatiblity note: meshes originally did not contain indices and therefore did not have an index count*
 
+      .. helptext:: get the number of indices
+
    .. lua:attribute:: bounds: bounds.abbb
 
       The local bounds of this mesh (no scaling or rotation applied)
 
+      .. helptext:: get the axis-aligned bounding box
+
    .. lua:attribute:: positions: table<vec3>
 
-      Gets/sets the positions of the mesh vertices
+      Gets/sets the positions of the mesh vertices **without touching the index buffer**.
+
+      This is the correct property to use when modifying vertex positions on an already-built mesh (e.g. one created by :lua:func:`mesh.sphere`, :lua:func:`mesh.box`, or loaded via :lua:meth:`mesh.read`), since those meshes have optimised index buffers with shared vertices that you want to preserve.
+
+      .. warning::
+
+         When building a mesh **from scratch**, use :lua:attr:`mesh.vertices` instead. Setting ``positions`` alone leaves the index buffer empty, so nothing will be drawn.
+
+      .. helptext:: get or set the vertex positions
 
    .. lua:attribute:: normals: table<vec3>      
 
       Gets/sets the normals of the mesh vertices
 
+      .. helptext:: get or set the vertex normals
+
    .. lua:attribute:: colors: table<color>
 
       Gets/sets the colors of the mesh vertices
+
+      .. helptext:: get or set the vertex colors
 
    .. lua:attribute:: uvs: table<vec2>                  
 
       Gets/sets the uvs of the mesh vertices
 
+      .. helptext:: get or set the vertex UV coordinates
+
    .. lua:attribute:: indices: table<integer>
 
       Gets/sets the indices of the mesh
 
+      .. helptext:: get or set the mesh indices
+
    .. lua:attribute:: vertices: table<vec2|vec3>
 
-      Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices
+      Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices. This is the preferred way to assign geometry for manually-built meshes because it automatically populates a sequential index buffer matching the vertex order, making the mesh immediately drawable.
 
       *3.x compatiblity note: works the same as the original vertices property*
+
+      .. helptext:: get or set the mesh vertices
 
    .. lua:attribute:: texCoords: table<vec2>                  
 
@@ -145,15 +183,21 @@ mesh
 
       *3.x compatiblity note: works the same as the uvs property for the sake of backwards compatiblity*
 
+      .. helptext:: get or set the texture coordinates
+
    .. lua:attribute:: root: entity
 
       Meshes loaded via ``mesh.read()`` may contain sub-objects and bones used for animations, these can be accessed as entities in a simple scene-like hierarchy
 
       *WARNING: do not attempt to delete any nodes within the root as it may have unintended side effects*
 
+      .. helptext:: get the root entity of this mesh
+
    .. lua:attribute:: animations: table<animation>
 
       Contains the list of all animations for this mesh
+
+      .. helptext:: get the animations in this mesh
 
    **Mesh Drawing**
 
@@ -161,11 +205,15 @@ mesh
 
       Draws the mesh to the screen with the current camera, matrix and context settings
 
+      .. helptext:: draw this mesh to the screen
+
    .. lua:method:: drawIndirect(indirectBuffer[, start = 0, num  = 1])
 
       Draws the mesh indirectly using ``indirectBuffer``
 
       Used in combination with compute shaders for indirect drawing operations
+
+      .. helptext:: draw this mesh indirectly using a buffer
 
    **Mesh Manipulation**
 
@@ -178,58 +226,94 @@ mesh
       :return: the index of the new rectangle
       :rtype: integer
 
+      .. helptext:: append a 2D rectangle to this mesh
+
    .. lua:method:: setRect(index, position, size[, rotation])
 
       Sets existing rectangle position, size and rotation using an index from a previous call to ``addRect()``
+
+      .. helptext:: set the position and size of an existing rectangle
 
    .. lua:method:: setRectTex(index, uvRect)      
 
       Sets existing rectangle uvs using an index from a previous call to ``addRect()``
 
+      .. helptext:: set the uv of an existing rectangle
+
    .. lua:method:: setRectColor(index, color)            
 
       Sets existing rectangle color using an index from a previous call to ``addRect()``
+
+      .. helptext:: set the color of an existing rectangle
 
    .. lua:method:: resizeVertices(size)
 
       Sets the number of vertices in the mesh (must be positive)
 
+      .. helptext:: resize the vertex buffer of this mesh
+
    .. lua:method:: resizeIndices(size)
 
       Sets the number of indices in the mesh (must be positive)
+
+      .. helptext:: resize the index buffer of this mesh
 
    .. lua:method:: addElement(p1, p2, p3[, ...])
 
       Adds a new element to the mesh consisting of ``N`` indices (i.e. add three indices for a new triangle)
 
+      .. helptext:: add a new triangle element to this mesh
+
    .. lua:method:: clear()
 
       Clears the mesh, reducing vertices and indices to zero
 
+      .. helptext:: clear all vertices and indices from this mesh
+
    .. lua:method:: position(index)
+
+      .. helptext:: get the position of a vertex
    .. lua:method:: position(index, position)
    
       Gets/sets the position of the vertex at ``index``
 
+      .. helptext:: set the position of a vertex
+
    .. lua:method:: normal(index)      
+
+      .. helptext:: get the normal of a vertex
    .. lua:method:: normal(index, normal)
 
       Gets/sets the normal of the vertex at ``index``
 
+      .. helptext:: set the normal of a vertex
+
    .. lua:method:: color(index)      
+
+      .. helptext:: get the color of a vertex
    .. lua:method:: color(index, color)
    
       Gets/sets the color of the vertex at ``index``
 
+      .. helptext:: set the color of a vertex
+
    .. lua:method:: uv(index)      
+
+      .. helptext:: get the uv of a vertex
    .. lua:method:: uv(index, uv)            
 
       Gets/sets the uv of the vertex at ``index``
 
+      .. helptext:: set the uv of a vertex
+
    .. lua:method:: index(index)
+
+      .. helptext:: get the index at a given position
    .. lua:method:: index(index, i)
 
       Gets/sets the index at ``index``   
+
+      .. helptext:: set the index at a given position
 
    **Mesh Generation**
 
@@ -252,6 +336,8 @@ mesh
       :param segmentSweep: Counterclockwise angle
       :type segmentSweep: number
 
+      .. helptext:: generate a sphere mesh
+
    .. lua:staticmethod:: mesh.icoSphere([radius = 1, subdivisions = 4]) 
 
       Generates an ico-sphere, aka spherical subdivided icosahedron
@@ -261,6 +347,8 @@ mesh
       :param subdivisions: Subdivisions for the ico-sphere
       :type subdivisions: number
 
+      .. helptext:: generate an icosphere mesh
+
    .. lua:staticmethod:: mesh.box([size = vec3(1, 1, 1), segments = vec3(8, 8, 8)])
 
       Rectangular box centered at origin aligned along the x, y and z axis
@@ -269,6 +357,8 @@ mesh
       :type size: vec3
       :param segments: The number of segments in x, y and z directions
       :type segments: vec3
+
+      .. helptext:: generate a box mesh
 
    .. lua:staticmethod:: mesh.roundedBox([radius = 0.25, size = vec3(1, 1, 1), slices = 4, segments = vec3(8, 8, 8)])
 
@@ -282,6 +372,8 @@ mesh
       :type slices:
       :param segments: The number of segments in x, y and z directions
       :type segments: vec3
+
+      .. helptext:: generate a rounded box mesh
 
    .. lua:staticmethod:: mesh.cone([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
 
@@ -302,6 +394,8 @@ mesh
       :param sweep: Counterclockwise angle around the y-axis
       :type sweep: number
 
+      .. helptext:: generate a cone mesh
+
    .. lua:staticmethod:: mesh.cylinder([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
 
       Capped cylinder centered at origin aligned along the y-axis
@@ -320,6 +414,8 @@ mesh
       :type segments: number
       :param sweep: Counterclockwise angle around the y-axis
       :type segments: number
+
+      .. helptext:: generate a cylinder mesh
 
    .. lua:staticmethod:: mesh.capsule([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
 
@@ -340,6 +436,8 @@ mesh
       :param sweep: Counterclockwise angle around the y-axis
       :type segments: number
 
+      .. helptext:: generate a capsule mesh
+
    .. lua:staticmethod:: mesh.disk([radius = 1, innerRadius = 1, slices = 32, rings = 4, start = 0, sweep = 360])
 
       A circular disk centered at origin on the xz-plane
@@ -357,6 +455,8 @@ mesh
       :param sweep: Counterclockwise angle
       :type sweep: number
 
+      .. helptext:: generate a disk mesh
+
    .. lua:staticmethod:: mesh.plane([size = vec2(1, 1), segments = vec2(8, 8)])
 
       A flat plane centered at the origin on the xy-plane
@@ -365,6 +465,8 @@ mesh
       :type size: vec2
       :param segments: Number of subdivisions in the x and z directions
       :type segments: vec2
+
+      .. helptext:: generate a plane mesh
 
    .. lua:staticmethod:: mesh.torus([minor = 0.25, major = 1, slices = 32, segments = 8, minorStart = 0, minorSweep = 360, majorStart = 0, majorSweep = 360])      
 
@@ -387,6 +489,8 @@ mesh
       :param majorSweep: Counterclockwise angle around the y-axis
       :type majorSweep: number
 
+      .. helptext:: generate a torus mesh
+
    .. lua:staticmethod:: mesh.torusKnot([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])            
 
       Generates a torus knot
@@ -400,6 +504,8 @@ mesh
       :param segments:
       :type segments: integer
 
+      .. helptext:: generate a torus knot mesh
+
    .. lua:staticmethod:: mesh.teapot([subdivisions = 8])            
 
       Generates the Utah teapot using the original data
@@ -407,4 +513,6 @@ mesh
 
       :param segments:
       :type segments: integer
+
+      .. helptext:: generate the Utah teapot mesh
 
