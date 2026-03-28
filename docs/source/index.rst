@@ -61,6 +61,7 @@ Codea 4
    api/camera
    api/light
    api/tween
+   api/time
    api/ui
    api/motion
    api/require
@@ -69,11 +70,14 @@ Codea 4
    api/file
    api/physics2d
    api/physics3d
+   api/tilemap
+   api/animation
    api/pick
    api/viewer
    api/inspector
    api/device
    api/storage
+
 
 Indices and tables
 ==================

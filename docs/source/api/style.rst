@@ -601,6 +601,10 @@ Used by drawing commands and shaders to control stencil operations
 Text Style
 ##########
 
+.. lua:function:: font(assetKey)
+
+   Adds a custom font in Codea using it's asset key
+
 .. lua:function:: fontSize(size)
 
    .. helptext:: set the font size for text()
