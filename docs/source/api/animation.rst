@@ -75,7 +75,7 @@ Animation
 
     .. lua:method:: update(timeDelta)
 
-        Updates the animation based on ``time.delta``
+        Updates the animation by ``time.delta``
 
         :param timeDelta: time.delta
         :type timeDelta: number
