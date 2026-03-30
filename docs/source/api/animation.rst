@@ -1,7 +1,7 @@
 animation
 =========
 
-Api for creating animation
+API for creating animation
 
 **It Contains**
 
