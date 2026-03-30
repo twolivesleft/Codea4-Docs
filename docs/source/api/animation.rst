@@ -68,7 +68,7 @@ Animation
 
     .. lua:method:: removeTrack(trackObj)
 
-        Removes this track from a list
+        Removes this track
 
         :param trackObj: the track to be removed
         :type trackObj: animation.track
