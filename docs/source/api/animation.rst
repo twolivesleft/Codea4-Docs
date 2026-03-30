@@ -50,7 +50,7 @@ Animation
 
         Adds a new track to the animation using that property. Type of the track is inferred.
 
-        :param propertyName: The string that direct to the proper target (property name)
+        :param propertyName: The string that directs to the proper target (property name)
         :type propertyName: string
       
         :return: A new animation track
