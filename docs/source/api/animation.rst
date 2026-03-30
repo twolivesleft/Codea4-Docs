@@ -7,7 +7,7 @@ API for creating animation
 
     - ``animation`` - infomation on a animation
     - ``animation.track`` - infomation on how animation tracks work
-    - ``animation.key`` - infomation on how animation key frames work
+    - ``animation.key`` - information on how animation key frames work
     - ``animation.easing`` - information on how animation easing work
 
 Animation
