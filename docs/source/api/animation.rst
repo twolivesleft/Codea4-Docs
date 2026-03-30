@@ -64,7 +64,7 @@ Animation
 
     .. lua:method:: [index] (propertyName)
 
-        Same as function above. You can just index using the property name to add new track
+        Adds a new track by passing the property name as index.
 
     .. lua:method:: removeTrack(trackObj)
 
