@@ -229,7 +229,7 @@ Gestures
 
       The direction of the swipe
       
-      .. helptext:: get the direction for this gesture
+      .. helptext:: get the direction of the swipe
 
    .. lua:attribute:: left: integer
 
@@ -335,7 +335,7 @@ Gestures
 
       Creates and registers a new swipe gesture recognizer that will call ``callback(gesture)`` when recognized
 
-      :return: The gestures in this order (left, right, up, down). But if a direction is not included then it is ingored
+      :return: The gestures in this order (left, right, up, down). But if a direction is not included, it is ignored.
       :rtype: gesture.swipe, gesture.swipe, gesture.swipe, gesture.swipe 
       
       .. helptext:: create a swipe gesture recognizer
@@ -360,7 +360,7 @@ Gestures
 
       Enables/disables this gesture recognizer
       
-      .. helptext:: whether the gesture recognizer is enabled
+      .. helptext:: get or set if the gesture recognizer is enabled
 
 Keyboard
 ########
@@ -919,7 +919,7 @@ Mouse
 
    .. lua:attribute:: active: boolean
 
-      Is there a mouse active
+      Checks if a mouse is currently active.
       
       .. helptext:: checks if a mouse is active
 
@@ -927,13 +927,13 @@ Mouse
 
       Callback for when a mouse is connected
       
-      .. helptext:: sets a callback to call when a mouse is connected
+      .. helptext:: callback to call when a mouse is connected
 
    .. lua:attribute:: disconnected: function(mouse)
 
       Callback for when a mouse is disconnected
       
-      .. helptext:: sets a callback to call when a mouse is disconnected
+      .. helptext:: callback to call when a mouse is disconnected
 
    .. lua:attribute:: left: mouse.button
    

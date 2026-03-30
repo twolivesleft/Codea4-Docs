@@ -473,7 +473,7 @@ Collision
 
    .. lua:method:: collide(otherCollider)
 
-      Checks the collision between two colliers: this one and another collider and gives infomation about it
+      Checks the collision between this collider and another collider, and returns information about the collision.
 
       :param otherCollider: The other collider to collide with
       :type otherCollider: collider
@@ -481,11 +481,11 @@ Collision
       :return: ``didCollide[, point, normal, penetration]`` - `didCollide` is whether the collision happened
       :rtype: boolean[, vec2, vec2, number]
       
-      .. helptext:: allows users to do check collision between two colliders
+      .. helptext:: check for a collision with another collider
 
    .. lua:method:: overlap(otherCollider)
 
-      Checks overlapping between two colliers: this one and another collider
+      Checks if the collider overlaps with another collider.
 
       :param otherCollider: The other collider to overlap with
       :type otherCollider: collider
@@ -493,7 +493,7 @@ Collision
       :return: Checks whether the two colliders are overlapping
       :rtype: boolean
       
-      .. helptext:: allows users to do check if two colliders are overlapping
+      .. helptext:: check for an overlap with another collider
 
 .. lua:class:: circle: collider
 
@@ -909,11 +909,11 @@ Settings
 
    .. lua:attribute:: debugDraw: boolean
 
-      Draws physics objects in the scene
+      Draws physics objects in the scene.
 
    .. lua:attribute:: gravity: vec2
       
-      Changes the gravity of the physics world
+      Changes the gravity of the physics world.
 
    .. lua:attribute:: velocityIterations: number
 

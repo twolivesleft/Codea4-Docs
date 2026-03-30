@@ -800,7 +800,7 @@ Math Extensions
       :type b: number
       :param t: Value between 0 and 1 to represent the progress between a and b
       :type t: number
-      :return: The value that is t% between a and b
+      :return: The interpolated value between a and b at ratio t.
       :rtype: number
 
    .. lua:method:: inverseLerp(a, b, v)
@@ -813,12 +813,12 @@ Math Extensions
       :type b: number
       :param v: Value between a and b
       :type v: number
-      :return: The t (progress) that v is between a and b
+      :return: The ratio from a to b at which the interpolated value is v
       :rtype: number
 
    .. lua:method:: sign(value)
 
-      if value < 0 then -1, if value == 0 then 0, if value > 0 then 1
+      Returns -1 if value < 0, 0 if value == 0, 1 if value > 0.
 
       :param value: The value to take the sign of
       :type value: number
@@ -827,7 +827,7 @@ Math Extensions
 
    .. lua:method:: clamp(value, a, b)
 
-      Give the clamp value between a and b, value less than `a` the function outputs `a` and value greater than `b` the function outputs `b`
+      Clamp the value between `a` and `b`. If the value is less than `a`, the function outputs `a`. If the value is greater than `b`, the function outputs `b`. Returns value otherwise.
 
       :param value: The value to clamp
       :type value: number
@@ -840,7 +840,7 @@ Math Extensions
 
    .. lua:method:: clamp01(value)
 
-      Clamp value between 0 and 1
+      Clamp the value between 0 and 1.
 
       :param value: The value to clamp
       :type value: number

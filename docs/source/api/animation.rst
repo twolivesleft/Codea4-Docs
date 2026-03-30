@@ -117,19 +117,19 @@ Animation
 
     .. lua:attribute:: loopAmount: integer
 
-        Sets the amount of times the animation loop. Set to 0 for an infinite loop
+        Sets the amount of times the animation loops. Set to 0 for an infinite loop.
 
     .. lua:attribute:: onComplete: function
 
-        Set the function that is called when animation is completed
+        Set a function to call when the animation is complete.
 
     .. lua:method:: group(animation1, ... , animationX)
 
-        Groups multiple animations into one animaiton so they can be played synchronously using the same time. 
+        Groups multiple animations into one animations so they can be played synchronously using the same time. 
         Each animation gets their own track (``type: animationClip``).
-        At the front of the track (0 second), an animation clip key frame is place with each animation as a animation clip.
+        At the front of the track (0 second), an animation clip key frame is placed with each animation as an animation clip.
 
-        `Note that duration of the grouped animation is the length of the longest animation`
+        `Note that the duration of the grouped animation is the length of the longest animation.`
 
         :param animation1: A single animation to be added to the group
         :type animation1: animation
@@ -139,10 +139,10 @@ Animation
 
     .. lua:method:: sequence(animation1, ... , animationX)
 
-        Groups multiple animations into a one animaiton so they can be played in a sequence.
-        Each animation is place in a singlar track one after another (``type: animationClip``).
+        Groups multiple animations into a single animation so they can be played sequentially.
+        Each animation is placed in a singlar track one after another (``type: animationClip``).
 
-        `Note that duration of the sequenced animation is the sum of all the animations' duration`
+        `Note that the duration of the sequenced animation is the sum of all the animations' duration.`
 
         :param animation1: A single animation to be added to the sequence
         :type animation1: animation
@@ -156,13 +156,13 @@ Animation Track
 .. lua:class:: animation.track
 
     .. code-block:: lua
-        :caption: How to create a animation.track
+        :caption: How to create an animation.track
 
         local ball = { x = 0, y = 3, col = color.red, image = asset.ball1 }
 
         ballColorAnimation = animation(ball)
 
-        -- animate ball color
+        -- Animate the ball's color
         colorTrack = ballColorAnimation.col
         
         -- Set the key frames of the ball
@@ -172,7 +172,7 @@ Animation Track
             :key(2.0, color.green)
         
         
-        firstKey = colorTrack:keyAtIndex(1) -- get the key at the first index
+        firstKey = colorTrack:keyAtIndex(1) -- get the first key
         firstKey.value = color.white
         colorTrack:keyAtTime(1.0).value = color.black -- change the key value at time 1.0 from blue to magenta 
         colorTrack[2.0].value = color.magenta -- another way to get time
@@ -181,13 +181,13 @@ Animation Track
 
         -- animate ball sprite with frames
         spriteTrack = ballAnimation:property("image") -- another way to create a track for the "image" property
-        spriteTrack:frames({asset.ball1, asset.ball2, asset.ball3}, { loop = 4, fps = 6 }) -- add frames to track make them loop 4 time at 6 fps 
+        spriteTrack:frames({asset.ball1, asset.ball2, asset.ball3}, { loop = 4, fps = 6 }) -- add frames to the track and make it loop 4 times at 6 fps 
 
-        groupAnimation = animaiton.bundle(ballColorAnimation, ballSpriteAnimation)
+        groupAnimation = animation.bundle(ballColorAnimation, ballSpriteAnimation)
         spriteAnimationTrack = groupAnimation.tracks[2] -- get the second track
         secondTrackKey = spriteAnimationTrack:keyAtIndex(1)
-        local theDuration = secondTrackKey.duration -- get first keyframe
-        secondTrackKey.duration = theDuration * 2 -- make sprite animation loop 2 times
+        local theDuration = secondTrackKey.duration -- get first key frame
+        secondTrackKey.duration = theDuration * 2 -- make the sprite animation loop 2 times
 
         groupAnimation:play()
 
@@ -196,7 +196,7 @@ Animation Track
         
     .. lua:attribute:: type: trackType
 
-        What type of track this track is
+        Returns this track's type.
 
             * ``animation.track.boolean`` - boolean track
             * ``animation.track.number`` - number track
@@ -207,8 +207,8 @@ Animation Track
             * ``animation.track.quat`` - quat track
             * ``animation.track.sprite`` - sprite track
             * ``animation.track.sound`` - sound track
-            * ``animation.track.function`` - function track: calls a function at a the time
-            * ``animation.track.animationClip`` - animationClip track: plays other animations as a key frame
+            * ``animation.track.function`` - function call track
+            * ``animation.track.animationClip`` - animationClip track: plays another animation
 
     .. lua:attribute:: target: table/userdata
             
@@ -216,7 +216,7 @@ Animation Track
 
     .. lua:attribute:: property: string
 
-        The string that direct to the proper target (property name)
+        The string that directs to the proper target (property name)
 
     .. lua:attribute:: duration: number
 
@@ -228,37 +228,37 @@ Animation Track
 
     .. lua:attribute:: timeDelta: number
 
-        Gap of time between each frame placed.
+        Gap of time between each frame played.
 
     .. lua:method:: frames(theFrames[, frameProperties])
 
-        A way to quickly get/set the keyframes for a sprite track (``type = animation.track.sprite``). It uses the timeDelta as a way to space out the sprites
+        A way to quickly get/set the keyframes for a sprite track (``type = animation.track.sprite``). It uses the timeDelta as a way to space out the sprites.
 
-        :param theFrames: a table of frames to represent the frames of an the sprite animation
+        :param theFrames: a table of frames to represent the frames of the sprite animation
         :type theFrames: table<sprite>
 
         :param frameProperties: a table of properties of how the frames should behave
         :type frameProperties: table
 
-            * ``"delta"`` - sets the space of time each frame should be placed. For example: 0.1 (this would space the frames but every 0.1 seconds)
+            * ``"delta"`` - sets the space of time each frame should be played. For example: 0.1 (this would space the frames every 0.1 seconds)
             * ``"fps"`` - another way of doing delta but sets the fps of the sprites
-            * ``"loop"`` - amount of times the sprites should loop
+            * ``"loop"`` - number of times the sprites should loop
 
     .. lua:method:: adjustFrames()
 
-        If the timeDelta/fps gets changed this method will adjust all the frames to fit the new timeDelta/fps
+        Adjust the frames to fit the new timeDelta/fps.
 
     .. lua:attribute:: count: integer
 
-        The amount of keyframes in a track
+        The number of key frames in a track.
 
     .. lua:method:: key(time[, value, properties])
 
-        This is the function to add a keyframe to the track. (Does Chaining)
+        Add a key frame to the track. (supports chaining)
 
         :param time: The time of the key frame
         :type time: number
-        :param value: The value of the key frame. If ``trackType = animation.track.vec2`` then value should be a ``vec2``. Every type follow this rule. If there is no value then set to current value of ``target[property]``
+        :param value: The value of the key frame. If ``trackType = animation.track.vec2`` then value should be a ``vec2``. Every type follows this rule. If there is no value then set to current value of ``target[property]``
         :type value: any type
         :param properties: Quick way to add properties of key
         :type properties: table or easing enum
@@ -307,7 +307,7 @@ Animation Track
 
     .. lua:method:: custom ([function])
 
-        This allows this track to use a custom function instead the property to set the target
+        This allows this track to use a custom function instead of a property to set the target
 
         :param function: Sets the custom function if no input then use default behavior
         :type function: function
@@ -326,8 +326,8 @@ Animation Track
 
     .. lua:attribute:: openBeginning: boolean
 
-        This is a variable that sets the 0 second key frame to be open meaning that the track will add a key frame at 0 second time and will set the value to the current property value.
-        This can be used to smoothly go from game play to a cut scene without an abrupt cut.
+        This is a variable that sets the 0 second key frame to be open. When true, the track will add a key frame at 0 second time and set the value to the current property value.
+        This can be used to smoothly go from gameplay to a cut scene without an abrupt cut.
 
     .. lua:attribute:: openEasing: animation.easing
 
@@ -362,7 +362,7 @@ Animation Key
 
     .. lua:method:: restoreDuration()
 
-        Resets the duration of this key frame (sound or animation clip) to it original duration
+        Resets the duration of this key frame (sound or animation clip) to its original duration
 
     .. lua:method:: delete()
 
@@ -391,5 +391,5 @@ Animation Easing
 
     .. lua:attribute:: loopAmount: integer
 
-        Changes amount of previous frames that are looped 
+        Changes the amount of previous frames to loop 
     
