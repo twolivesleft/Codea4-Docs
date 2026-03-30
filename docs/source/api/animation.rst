@@ -42,7 +42,7 @@ Animation
     
     .. lua:attribute:: id: number
 
-        Can get and set an id for an animation
+        Get or set the animation's identifier
 
     .. lua:attribute:: name: string
 
