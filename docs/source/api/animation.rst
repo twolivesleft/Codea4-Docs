@@ -16,7 +16,7 @@ Animation
 .. lua:class:: animation
 
     .. code-block:: lua
-        :caption: How to create a animation
+        :caption: How to create an animation
 
         local ball = { x = 0, y = 3, col = color.red }
 
