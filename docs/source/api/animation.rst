@@ -87,10 +87,6 @@ Animation
     .. lua:method:: pause()
 
         Pauses the animation
-        
-    .. lua:method:: pause()
-
-        Pauses the animation
 
     .. lua:method:: restart([shouldPlay = true])
 
