@@ -921,4 +921,4 @@ Settings
 
    .. lua:attribute:: paused: boolean
 
-      Whether you want to paused the physics in a scene
+      Get or set whether the physics simulation is currently paused. 

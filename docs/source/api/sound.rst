@@ -179,7 +179,7 @@ The sound module provides a way to play and manage sound effects and background 
 
    .. lua:attribute:: samplerate: number
 
-      Get the samplerate of the sound instance
+      Get the sample rate of the sound instance.
       
       .. helptext:: current playback samplerate
 

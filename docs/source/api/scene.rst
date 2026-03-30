@@ -186,7 +186,7 @@ scene
       
    .. lua:method:: forEach(loopFunction, [includeFlag = scene.DEFAULT])
 
-      Inputs a callback to that is called while looping over entities in the scene
+      Call a function `loopFunction` for each matching entity in the scene.
 
       :param loopFunction: Function to loop over
       :type loopFunction: function(entity)
