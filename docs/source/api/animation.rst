@@ -60,7 +60,7 @@ Animation
 
         * ``"call"`` - creates a function track
         * ``"sound"`` - creates a sound track
-        * ``"clip"`` - creates a animation clip track
+        * ``"clip"`` - creates an animation clip track
 
     .. lua:method:: [index] (propertyName)
 
