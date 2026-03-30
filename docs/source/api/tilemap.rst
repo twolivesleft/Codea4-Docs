@@ -133,7 +133,7 @@ Ruleset
 
     .. lua:method:: area(row1,... , rowX)
 
-        Set the tile area rule to determine with sprite should be display in the correct spot. The rows must be a old number 3 - 7. Rows and cols should be the same length
+        Set the tile area rule to determine with sprite should be displayed in the correct spot. The rows must be a old number 3 - 7. Rows and cols should be the same length
 
         :param rowX: The layout of the tile (sprite) with other tiles 
         :type spriteList: string
