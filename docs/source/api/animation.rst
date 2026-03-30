@@ -23,7 +23,7 @@ Animation
         newAnimation = animation(ball)
 
         newTrack = newAnimation.col -- creates a animation track using the property "col"
-        newTrack2 = newAnimation:property("y") -- another way to creates a animation track using the property "y"
+        newTrack2 = newAnimation:property("y") -- another way to create an animation track using the property "y"
 
         newAnimation:play()
 
