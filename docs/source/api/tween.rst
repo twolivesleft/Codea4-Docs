@@ -79,8 +79,26 @@ Procedurally animate values over time, otherwise known as tweening
 
       :param easeType: The easing function to use
       :type easeType: constant
-
+      
       .. helptext:: set the easing function for the current tween segment
+
+   .. lua:method:: ease(easeFunction)
+
+      Sets a custom easing callback for the current tweening segment (created via ``to{}``)
+
+      :param easeCallback: The easing callback to use
+      :type easeCallback: function(t, from, to)
+      
+      .. helptext:: set the easing function for the current tween segment
+
+   .. lua:method:: delay(time)
+
+      Adds a delay to the tween for a certain time
+
+      :param time: Time in seconds to delay the tween
+      :type easeType: integer
+      
+      .. helptext:: adds a deley to the tween
 
    .. lua:method:: loop(count)
 
@@ -149,8 +167,17 @@ Procedurally animate values over time, otherwise known as tweening
 
       :param callback: The callback function
       :type callback: function
-
+      
       .. helptext:: set a callback for when the tween completes
+
+   .. lua:method:: onSubComplete(callback)
+
+      Sets a callback for each time the tween finishs a segment in the tween
+
+      :param callback: The callback function
+      :type callback: function
+      
+      .. helptext:: set a callback for when a segment of the tween completes
 
    .. lua:method:: seek(percent)
 
@@ -206,9 +233,9 @@ Here is a list of all easing functions
    * - ``backIn``
    * - ``backOut``
    * - ``backInOut``
-   * - ``bounceIn``
-   * - ``bounceOut``
-   * - ``bounceInOut``
+   * - ``bounceIn`` - only for ``tween``
+   * - ``bounceOut`` - only for ``tween``
+   * - ``bounceInOut`` - only for ``tween``
    * - ``circularIn``
    * - ``circularOut``
    * - ``circularInOut``
@@ -228,3 +255,4 @@ Here is a list of all easing functions
    * - ``elasticOut``
    * - ``elasticInOut``
    * - ``punch``
+   * - ``hold`` - only for ``animation.easing``

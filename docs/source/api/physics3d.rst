@@ -505,6 +505,29 @@ physics3d
 
    .. lua:attribute:: body: physics3d.body
 
-      The body of the collider that was hit by the ray      
-
+      The body of the collider which was hit by the ray.
+      
       .. helptext:: get the raycast hit body
+
+Settings
+########
+
+.. lua:class:: settings
+
+   .. lua:attribute:: debugDraw: boolean
+
+      Draws physics objects in the scene.
+      
+      .. helptext:: draws physics objects in the scene
+
+   .. lua:attribute:: gravity: vec3
+
+      Changes the gravity of the physics world.
+      
+      .. helptext:: gravity of the physics world
+
+   .. lua:attribute:: paused: boolean
+
+      Get or set whether the physics simulation is paused.
+      
+      .. helptext:: pauses the physics world

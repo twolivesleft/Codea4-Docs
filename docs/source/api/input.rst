@@ -145,8 +145,18 @@ Touches
    .. lua:attribute:: precisePrevPos: vec2
       
       The previous precise location of the touch (if available)
-
+      
       .. helptext:: get the precise previous position of this touch
+
+
+   .. lua:function:: cancelTouch(scene)
+
+      Cancels the touch of a scene
+
+      :param scene: The scene to cancel touch to
+      :type scene: scene
+      
+      .. helptext:: cancels the touch in a scene
 
 Gestures
 ########
@@ -212,14 +222,50 @@ Gestures
    .. lua:attribute:: touchCount: integer
 
       The current number of touches associated with this gesture
-
+      
       .. helptext:: get the touch count for this gesture
+
+   .. lua:attribute:: direction: enum
+
+      The direction of the swipe
+      
+      .. helptext:: get the direction of the swipe
+
+   .. lua:attribute:: left: integer
+
+      Left direction enum
+      
+      .. helptext:: left direction enum
+
+   .. lua:attribute:: right: integer
+
+      Right direction enum
+      
+      .. helptext:: right direction enum
+      
+   .. lua:attribute:: up: integer
+
+      Up direction enum
+      
+      .. helptext:: up direction enum
+
+   .. lua:attribute:: down: integer
+
+      Down direction enum
+      
+      .. helptext:: down direction enum
+
+   .. lua:attribute:: all: integer
+
+      All direction enum
+      
+      .. helptext:: all direction enum
 
 .. lua:class:: gesture.tap
 
    Tap gesture recognizer (using system gesture recognizer for implementation)
 
-   .. lua:staticmethod:: gesture.tap(callback[, minTouches = 1, maxTouches = 1])
+   .. lua:staticmethod:: gesture.tap(callback[, tapCount = 1, touchCount = 1])
 
       Creates and registers a new tap gesture recognizer that will call ``callback(gesture)`` when recognized
 
@@ -235,7 +281,7 @@ Gestures
 
    Pan gesture recognizer (using system gesture recognizer for implementation)
 
-   .. lua:staticmethod:: gesture.pan(callback[, minTouches = 1, maxTouches = 1])
+   .. lua:staticmethod:: gesture.pan(callback[, minTouches = 1, maxTouches = 1, trackpadSupport = false])
 
       Creates and registers a new pan gesture recognizer that will call ``callback(gesture)`` when recognized
 
@@ -278,9 +324,43 @@ Gestures
    .. lua:attribute:: enabled: boolean
 
       Enables/disables this gesture recognizer
-
+      
       .. helptext:: whether the gesture recognizer is enabled
 
+.. lua:class:: gesture.swipe
+
+   Swipe gesture recognizer (using system gesture recognizer for implementation)
+
+   .. lua:staticmethod:: gesture.swipe(callback[, swipeDirection = gesture.all, touchCount = 1])
+
+      Creates and registers a new swipe gesture recognizer that will call ``callback(gesture)`` when recognized
+
+      :return: The gestures in this order (left, right, up, down). But if a direction is not included, it is ignored.
+      :rtype: gesture.swipe, gesture.swipe, gesture.swipe, gesture.swipe 
+      
+      .. helptext:: create a swipe gesture recognizer
+
+   .. lua:attribute:: enabled: boolean
+
+      Enables/disables this gesture recognizer
+      
+      .. helptext:: whether the gesture recognizer is enabled
+
+.. lua:class:: gesture.longPress
+
+   Rotation gesture recognizer (using system gesture recognizer for implementation)
+
+   .. lua:staticmethod:: gesture.longPress(callback[, tapCount = 0, touchCount = 1, allowableMovement = 10, minimumPressDuration = 0.5])
+      
+      Creates and registers a new long press gesture recognizer that will call ``callback(gesture)`` when recognized
+      
+      .. helptext:: create a long press gesture recognizer
+
+   .. lua:attribute:: enabled: boolean
+
+      Enables/disables this gesture recognizer
+      
+      .. helptext:: get or set if the gesture recognizer is enabled
 
 Keyboard
 ########
@@ -827,5 +907,186 @@ Gamepad
          .. helptext:: get if the directional pad is moved up
 
       .. lua:attribute:: down: boolean
-
+      
          .. helptext:: get if the directional pad is moved down
+
+Mouse
+########
+
+.. lua:currentmodule:: None
+
+.. lua:class:: mouse
+
+   .. lua:attribute:: active: boolean
+
+      Checks if a mouse is currently active.
+      
+      .. helptext:: checks if a mouse is active
+
+   .. lua:attribute:: connected: function(mouse)
+
+      Callback for when a mouse is connected
+      
+      .. helptext:: callback to call when a mouse is connected
+
+   .. lua:attribute:: disconnected: function(mouse)
+
+      Callback for when a mouse is disconnected
+      
+      .. helptext:: callback to call when a mouse is disconnected
+
+   .. lua:attribute:: left: mouse.button
+   
+      .. helptext:: gets the left mouse button
+
+   .. lua:attribute:: middle: mouse.button
+   
+      .. helptext:: gets the middle mouse button
+
+   .. lua:attribute:: right: mouse.button
+   
+      .. helptext:: gets the right mouse button
+
+   .. lua:attribute:: scroll: vec2
+   
+      .. helptext:: gets the mouse scoll value
+      
+   .. lua:attribute:: x: number
+   
+      .. helptext:: gets the x position of the mouse
+   
+   .. lua:attribute:: y: number
+   
+      .. helptext:: gets the y position of the mouse
+
+   .. lua:attribute:: pos: vec2
+
+      Return a vec2 of both the x and y position
+      
+      .. helptext:: gets the position of the mouse
+
+   .. lua:attribute:: dx: number
+   
+      .. helptext:: gets the delta X of the mouse
+   
+   .. lua:attribute:: dy: number
+   
+      .. helptext:: gets the delta Y of the mouse
+
+   .. lua:attribute:: deltaX: number
+   
+      .. helptext:: gets the delta X of the mouse
+   
+   .. lua:attribute:: deltaY: number
+   
+      .. helptext:: gets the delta Y of the mouse
+
+   .. lua:attribute:: delta: vec2
+
+      Return a vec2 of both dx and dy
+      
+      .. helptext:: gets the delta of the mouse
+
+   .. lua:attribute:: visible: boolean
+
+      Sets whether the mouse is visible or hidden
+      
+      .. helptext:: set the visibility of the mouse
+
+   .. lua:class:: button
+
+      .. lua:attribute:: pressing: boolean
+      
+         .. helptext:: get whether this button is being pressed
+
+      .. lua:attribute:: pressed: 
+      
+         .. helptext:: get whether this button was just pressed
+
+      .. lua:attribute:: released: boolean
+      
+         .. helptext:: get whether this button was just released
+
+      .. lua:attribute:: value: number
+      
+         .. helptext:: get the analog value of this button
+
+      .. lua:attribute:: touching: boolean
+      
+         .. helptext:: get whether the touchpad is being touched
+
+.. lua:module:: mouse
+
+.. lua:function:: default()
+
+   Changes the mouse back to its default style
+   
+   .. helptext:: sets the mouse style to default
+
+.. lua:function:: path(polygon1, polygon...) 
+
+   Turns the mouse style to a path (allows multiple polygons for unique shapes)
+
+   :param polygon1: Table that represents point of the mouse shape (offset from the mouse)
+   :type polygon1: table<vec2>
+   :param polygon...: for more polygons
+   :type polygon...: table<vec2>
+   
+   .. helptext:: sets the mouse style to a path
+
+.. lua:function:: rect(pos, size [, roundedRadius = 0]) 
+
+   Turns the mouse style to a rectangle 
+
+   :param pos: Represents the positions of the rectangle from the mouse
+   :type pos: vec2
+   :param size: Represents the size of the rectangle
+   :type size: vec2
+   :param roundedRadius: Radius of the rectangle
+   :type roundedRadius: number
+   
+   .. helptext:: sets the mouse style to roundable rectangle
+
+.. lua:currentmodule:: None
+
+**Global Mouse Funcitons**
+
+.. lua:method:: mousePressed(mouseName)
+
+      Function for when the mouse is pressed
+
+      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
+      :type mouseName: string
+      
+      .. helptext:: function that is called when the mouse has been pressed
+
+.. lua:method:: mouseReleased(mouseName)
+
+      Function for when the mouse is released
+
+      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
+      :type mouseName: string
+      
+      .. helptext:: function that is called when the mouse has been released
+
+.. lua:method:: mouseChanged(mouseName, changeState)
+
+      Function for when the mouse has been changed
+
+      :param mouseName: Returns the name of the mouse being selected ("left", "right", "middle") 
+      :type mouseName: string
+      :param changeState: Inputs true if the mouse was pressed or false if the mouse was released
+      :type wasPressed: boolean
+      
+      .. helptext:: function that is called when the mouse has been changed
+
+.. lua:method:: mouseMoved(deltaX, deltaY)
+
+      Function for when the mouse has been moved
+
+      :param deltaX: The delta x of the mouse
+      :type deltaX: number
+      :param deltaY: The delta y of the mouse
+      :type deltaY: number
+      
+      .. helptext:: function that is called when the mouse has been moved

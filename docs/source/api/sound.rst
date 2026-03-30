@@ -134,6 +134,10 @@ The sound module provides a way to play and manage sound effects and background 
    .. lua:attribute:: length: number [readonly]
 
       Gets the length of this sound source (in seconds)
+      
+   .. lua:attribute:: key: assetKey
+
+   The asset key for this sound (if it has one)
 
       .. helptext:: length of the sound in seconds
 
@@ -170,8 +174,32 @@ The sound module provides a way to play and manage sound effects and background 
    .. lua:attribute:: time: number
 
       Get/set the current time of the sound instances play head (in seconds)
-
+      
       .. helptext:: current playback time
+
+   .. lua:attribute:: samplerate: number
+
+      Get the sample rate of the sound instance.
+      
+      .. helptext:: current playback samplerate
+
+   .. lua:attribute:: amplitude: number
+
+      Get the amplitude of the sound instance at the current time
+      
+      .. helptext:: current playback amplitude
+
+   .. lua:attribute:: wave: table<number>
+
+      Get the wave data of the sound instance at the current time
+      
+      .. helptext:: current playback wave data
+
+   .. lua:attribute:: fft: table<number>
+
+      Get the fft data of the sound instance at the current time
+      
+      .. helptext:: current playback fft data
 
    .. lua:method:: stop
 
