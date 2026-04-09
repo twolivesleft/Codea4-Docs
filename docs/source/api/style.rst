@@ -605,6 +605,8 @@ Text Style
 
    Adds a custom font in Codea using it's asset key
 
+   .. helptext:: adds a custom font in Codea using it's asset key
+
 .. lua:function:: fontSize(size)
 
    .. helptext:: set the font size for text()

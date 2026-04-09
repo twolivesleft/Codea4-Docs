@@ -134,10 +134,12 @@ The sound module provides a way to play and manage sound effects and background 
    .. lua:attribute:: length: number [readonly]
 
       Gets the length of this sound source (in seconds)
+
+      .. helptext:: gets the length of this sound source (in seconds)
       
    .. lua:attribute:: key: assetKey
 
-   The asset key for this sound (if it has one)
+      The asset key for this sound (if it has one)
 
       .. helptext:: length of the sound in seconds
 

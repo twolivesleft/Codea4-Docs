@@ -1051,42 +1051,42 @@ Mouse
 
 **Global Mouse Funcitons**
 
-.. lua:method:: mousePressed(mouseName)
+.. lua:function:: mousePressed(mouseName)
 
-      Function for when the mouse is pressed
+   Function for when the mouse is pressed
 
-      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
-      :type mouseName: string
-      
-      .. helptext:: function that is called when the mouse has been pressed
+   :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
+   :type mouseName: string
+   
+   .. helptext:: function that is called when the mouse has been pressed
 
-.. lua:method:: mouseReleased(mouseName)
+.. lua:function:: mouseReleased(mouseName)
 
-      Function for when the mouse is released
+   Function for when the mouse is released
 
-      :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
-      :type mouseName: string
-      
-      .. helptext:: function that is called when the mouse has been released
+   :param mouseName: return the name of the mouse being selected ("left", "right", "middle") 
+   :type mouseName: string
+   
+   .. helptext:: function that is called when the mouse has been released
 
-.. lua:method:: mouseChanged(mouseName, changeState)
+.. lua:function:: mouseChanged(mouseName, changeState)
 
-      Function for when the mouse has been changed
+   Function for when the mouse has been changed
 
-      :param mouseName: Returns the name of the mouse being selected ("left", "right", "middle") 
-      :type mouseName: string
-      :param changeState: Inputs true if the mouse was pressed or false if the mouse was released
-      :type wasPressed: boolean
-      
-      .. helptext:: function that is called when the mouse has been changed
+   :param mouseName: Returns the name of the mouse being selected ("left", "right", "middle") 
+   :type mouseName: string
+   :param changeState: Inputs true if the mouse was pressed or false if the mouse was released
+   :type wasPressed: boolean
+   
+   .. helptext:: function that is called when the mouse has been changed
 
-.. lua:method:: mouseMoved(deltaX, deltaY)
+.. lua:function:: mouseMoved(deltaX, deltaY)
 
-      Function for when the mouse has been moved
+   Function for when the mouse has been moved
 
-      :param deltaX: The delta x of the mouse
-      :type deltaX: number
-      :param deltaY: The delta y of the mouse
-      :type deltaY: number
-      
-      .. helptext:: function that is called when the mouse has been moved
+   :param deltaX: The delta x of the mouse
+   :type deltaX: number
+   :param deltaY: The delta y of the mouse
+   :type deltaY: number
+   
+   .. helptext:: function that is called when the mouse has been moved

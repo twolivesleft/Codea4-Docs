@@ -717,19 +717,29 @@ Axis-Aligned Bounding Box (AABB)
 
    .. lua:attribute:: min: vec3
 
+      .. helptext:: minimum position of the bound
+
    .. lua:attribute:: max: vec3
+
+      .. helptext:: maximum position of the bound
 
    .. lua:attribute:: size: vec3
 
       Size of the bounding box
 
+      .. helptext:: size of the bound
+
    .. lua:attribute:: offect: vec3
 
       Offset of the bounding box
 
+      .. helptext:: offset of the bound
+
    .. lua:attribute:: valid: boolean
 
       Checks if the bounding box is valid
+
+      .. helptext:: checks if the bound is valid
    
    .. lua:method:: set(min, max)
 
@@ -738,10 +748,14 @@ Axis-Aligned Bounding Box (AABB)
       :param max: The maximum position of the bounding box
       :type max: vec3
 
+      .. helptext:: sets the new min and max of the bound
+
    .. lua:method:: translate(amount)
 
       :param amount: The amount to move the bounding box
       :type amount: vec3
+
+      .. helptext:: translates the bounding box
 
    .. lua:method:: transform(transformMatrix)
 
@@ -750,6 +764,8 @@ Axis-Aligned Bounding Box (AABB)
       :return: New bounds to fit the transformed bound
       :rtype: aabb
 
+      .. helptext:: creates news bound to fix the transformed bound
+
    .. lua:method:: encapsulate(point)
 
       Adjust the bound to fit a point
@@ -757,12 +773,16 @@ Axis-Aligned Bounding Box (AABB)
       :param point: The point you want to fit
       :type point: vec3
 
+      .. helptext:: adjust the bound to fit a point
+
    .. lua:method:: encapsulate(otherAABB)
 
       Adjust the bound to fit another bound
 
       :param otherAABB: The aabb you want to fit
       :type otherAABB: aabb
+
+      .. helptext:: adjust the bound to fit another bound
 
    .. lua:method:: raycast(origin, dir)
 
@@ -772,6 +792,8 @@ Axis-Aligned Bounding Box (AABB)
       :type dir: mat4
       :return: The hit infomation of the raycast
       :rtype: hit
+
+      .. helptext:: performs a raycast on the bound box
    
 .. lua:class:: hit
 
@@ -779,9 +801,13 @@ Axis-Aligned Bounding Box (AABB)
 
       The position where the raycast hit
 
+      .. helptext:: the position where the raycast hit
+
    .. lua:attribute:: normal: vec3
 
       The normal of the point hit
+
+      .. helptext:: the normal of the point hit
 
 Math Extensions
 ###############
@@ -794,6 +820,8 @@ Math Extensions
 
    .. lua:method:: lerp(a, b, t)
 
+      Interpolate a and b by the a given factor (typically between 0 and 1) 
+
       :param a: The first point
       :type a: number
       :param b: The second point
@@ -803,9 +831,11 @@ Math Extensions
       :return: The interpolated value between a and b at ratio t.
       :rtype: number
 
+      .. helptext:: interpolate two numbers by a t value
+
    .. lua:method:: inverseLerp(a, b, v)
 
-      Give the t (progress) value that v is in a and b
+      Returns the ratio from a to b where the interpolated value is v.
 
       :param a: The first point
       :type a: number
@@ -816,6 +846,8 @@ Math Extensions
       :return: The ratio from a to b at which the interpolated value is v
       :rtype: number
 
+      .. helptext:: the ratio from two number where the interpolated value is v
+
    .. lua:method:: sign(value)
 
       Returns -1 if value < 0, 0 if value == 0, 1 if value > 0.
@@ -824,6 +856,8 @@ Math Extensions
       :type value: number
       :return: The sign of the value
       :rtype: number
+
+      .. helptext:: returns -1 if value < 0, 0 if value == 0, 1 if value > 0
 
    .. lua:method:: clamp(value, a, b)
 
@@ -838,6 +872,8 @@ Math Extensions
       :return: The t (progress) that v is between a and b
       :rtype: number
 
+      .. helptext:: clamp the value between a and b
+
    .. lua:method:: clamp01(value)
 
       Clamp the value between 0 and 1.
@@ -846,3 +882,5 @@ Math Extensions
       :type value: number
       :return: The clamped value
       :rtype: number
+
+      .. helptext:: clamp the value between 0 and 1

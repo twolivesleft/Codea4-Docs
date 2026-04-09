@@ -911,14 +911,24 @@ Settings
 
       Draws physics objects in the scene.
 
+      .. helptext:: draws physics objects in the scene
+
    .. lua:attribute:: gravity: vec2
       
       Changes the gravity of the physics world.
 
+      .. helptext:: gravity of the physics world
+
    .. lua:attribute:: velocityIterations: number
 
+      .. helptext:: velocity iterations
+
    .. lua:attribute:: positionIterations: number
+
+      .. helptext:: position iterations
 
    .. lua:attribute:: paused: boolean
 
       Get or set whether the physics simulation is currently paused. 
+
+      .. helptext:: pauses the physics simluation

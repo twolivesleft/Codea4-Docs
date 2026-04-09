@@ -1,11 +1,13 @@
 tilemap
 =======
 
-Api for creating tile maps
+API for creating tile maps
 
-**It Contains**
-    - ``tm.tiles`` - infomation on a single tile
-    - ``tm.ruleset`` - infomation on how sprites should behavior in a tile
+Content
+#######
+
+    - ``tm.tiles`` - information on a single tile
+    - ``tm.ruleset`` - information on how sprites should behavior in a tile
     - ``tm.tileset`` - collection of tiles used in the scene
     - ``tm.layer`` - the placement of tiles in the single layer
     - ``tm.tilemap`` - the grouping of tilemap layers to draw to the scene
@@ -32,9 +34,14 @@ Tile
 
     .. lua:attribute:: id: number
 
-    .. lua:method:: sprite([spriteIcon])
+        .. helptext:: the tile's identifier
 
-        Set/Get the sprite image of the tile
+    .. lua:method:: sprite(spriteIcon)
+
+        .. helptext:: sets the sprite of the rule
+    .. lua:method:: sprite()
+
+        Sets/gets the sprite image of the tile
 
         :param spriteIcon: The image that the tile contains
         :type spriteIcon: sprite
@@ -44,9 +51,11 @@ Tile
         :return: The sprite image
         :rtype: sprite
 
+        .. helptext:: gets the sprite of the tile
+
     .. lua:method:: group(groupNum)
 
-        Set the sprite image of the tile
+        Sets the group of the tile
 
         :param groupNum: The group number the tile is from
         :type groupNum: number
@@ -54,25 +63,32 @@ Tile
         :return: self for function chaining
         :rtype: tile
 
+        .. helptext:: sets the group of the tile
+
     .. lua:method:: collision(mode)
 
-        Set the collision mode of the tile
+        Sets the collision mode of the tile
 
         :param mode: The enum of the collision
         :type mode: enum
 
         :return: self for function chaining
         :rtype: tile
-
+        
         **Collision Mode Enum:**
 
         * ``tm.collision.none`` - no collision
         * ``tm.collision.square`` - for square collision
         * ``tm.collision.sprite`` - for sprite collision
 
-    .. lua:method:: ruleset([theRuleset])
+        .. helptext:: sets the collision mode of the tile
 
-        Set/Get the ruleset of the tile
+    .. lua:method:: ruleset(theRuleset)
+
+        .. helptext:: sets the ruleset of the tile
+    .. lua:method:: ruleset()
+
+        Sets/gets the ruleset of the tile
 
         :param theRuleset: The ruleset to be applied to the tile
         :type theRuleset: tm.ruleset
@@ -82,20 +98,23 @@ Tile
         :return: The ruleset of the tile
         :rtype: tm.ruleset
 
+        .. helptext:: gets the ruleset of the tile
+
 Ruleset
 #######
 
 .. lua:class:: ruleset
 
-    A ruleset is a object to allows the user to determine how the same tiles should a aranged using certain rules.
-    Having a ruleset simplify the creation of tilemap as common patterns can be set as a rule
+        A ruleset is an object to determine how the same tiles should arrange using certain rules.
 
     .. lua:method:: rule()
 
-        Creates a rule in the ruleset and select it. Following ruleset functions will apply to this rule.
+        Creates a rule in the ruleset and selects it. Following ruleset functions will apply to this rule.
 
         :return: self for function chaining. 
         :rtype: ruleset
+
+        .. helptext:: creates a rule in the ruleset
 
     .. lua:method:: [index] (ruleNum)
 
@@ -107,11 +126,17 @@ Ruleset
         :return: self for function chaining
         :rtype: ruleset
 
+        .. helptext:: creates a rule in the ruleset
+
     **Below happens to rule created above**
 
-    .. lua:method:: sprite([spriteIcon])
+    .. lua:method:: sprite(spriteIcon)
 
-        Set/Get the sprite image of the rule
+        .. helptext:: sets the sprite image of the rule
+
+    .. lua:method:: sprite()
+
+        Sets/gets the sprite image of the rule
 
         :param spriteIcon: The image that the rule contains
         :type spriteIcon: sprite
@@ -121,9 +146,11 @@ Ruleset
         :return: One sprite image for regular and a table for `random`
         :rtype: sprite or table<sprite>
 
-    .. lua:method:: random([spriteList])
+        .. helptext:: gets the sprite image of the rule
 
-        Set the sprite that will be randomly selected (good for dirt tiles)
+    .. lua:method:: random(spriteList)
+
+        Sets the sprites that will be randomly selected
 
         :param spriteList: The images that the rule contains
         :type spriteList: table<sprite>
@@ -131,9 +158,13 @@ Ruleset
         :return: self for function chaining
         :rtype: ruleset
 
+        .. helptext:: sets the sprites that will be randomly selected
+
     .. lua:method:: area(row1,... , rowX)
 
-        Set the tile area rule to determine with sprite should be displayed in the correct spot. The rows must be a old number 3 - 7. Rows and cols should be the same length
+        Sets the tile area rule to determine which sprite should be displayed in the correct spot. 
+
+        .. note:: The rows must be an odd number from 3 to 7. Rows and columns should be the same length
 
         :param rowX: The layout of the tile (sprite) with other tiles 
         :type spriteList: string
@@ -158,7 +189,13 @@ Ruleset
         :return: self for function chaining
         :rtype: ruleset
 
-    .. lua:method:: rotate([shouldRotate])
+        .. helptext:: sets the tile area rule to determine which sprite should be displayed
+
+    .. lua:method:: rotate(shouldRotate)
+
+        .. helptext:: sets the rotation of the rule's tile
+
+    .. lua:method:: rotate()
 
         Rotates the rule's tile
 
@@ -168,7 +205,13 @@ Ruleset
         :return: self for function chaining
         :rtype: ruleset
 
-    .. lua:method:: flip([flipX, flipY])
+        .. helptext:: gets the rotation of the rule's tile
+
+    .. lua:method:: flip(flipX, flipY)
+
+        .. helptext:: sets the flip of the rule
+
+    .. lua:method:: flip()
 
         Flips the rule's tile
 
@@ -180,15 +223,19 @@ Ruleset
         :return: self for function chaining
         :rtype: ruleset
 
+        .. helptext:: gets the flip of the rule
+
     .. lua:method:: collision(mode)
 
-        Set the collision mode of the rule's tile
+        Sets the collision mode of the rule's tile
 
         :param mode: The enum of the collision
         :type mode: enum
 
         :return: self for function chaining
         :rtype: tile
+
+        .. helptext:: sets the collision mode of the rule's tile
 
     .. lua:method:: delete()
 
@@ -197,6 +244,8 @@ Ruleset
         :return: self for function chaining
         :rtype: tile
 
+        .. helptext:: deletes the currently selected rule from the ruleset
+
     .. lua:method:: clear()
 
         Clears all rules from the ruleset
@@ -204,10 +253,13 @@ Ruleset
         :return: self for function chaining
         :rtype: tile
 
+        .. helptext:: clears the ruleset
+
     .. lua:attribute:: count: number
 
         Gets the number of rules in ruleset
 
+        .. helptext:: the amount of rules
     
 Tileset
 #######
@@ -233,15 +285,19 @@ Tileset
         :return: The newly created tile
         :rtype: tile
 
+        .. helptext:: create a tile in the tileset
+
     .. lua:method:: [index] (tileId)
 
-        Select tile from tileset using its id
+        Selects a tile from tileset using its id
 
         :param tileId: The id of the tile.
         :type tileId: integer
 
         :return: Selected tile
         :rtype: tile
+
+        .. helptext:: selects a tile from tileset using its id
 
     .. lua:method:: [index] (tileName)
 
@@ -253,6 +309,8 @@ Tileset
         :return: Selected tile
         :rtype: tile
 
+        .. helptext:: selects a tile from tileset using its name
+
     .. lua:method:: clear()
 
         Clears all tiles from the tileset
@@ -260,9 +318,13 @@ Tileset
         :return: self for function chaining
         :rtype: tile
 
+        .. helptext:: clears the tileset
+
     .. lua:attribute:: count: number
 
         Gets the number of rules in ruleset
+
+        .. helptext:: the amount of tiles in the tileset
 
 Tilemap
 #######
@@ -278,7 +340,7 @@ Tilemap
 
     .. lua:method:: layer(layerName)
 
-        Creates layer in the tilemap
+        Creates a layer in the tilemap
 
         :param layerName: Name of the layer in this tilemap
         :type layerName: string
@@ -286,9 +348,11 @@ Tilemap
         :return: The newly created layer
         :rtype: layer
 
+        .. helptext:: creates a layer in the tilemap
+
     .. lua:method:: [index] (layerName)
 
-        Select layer from tilemap using its name
+        Gets a layer from tilemap using its name
 
         :param layerName: The name of the layer
         :type layerName: string
@@ -296,17 +360,25 @@ Tilemap
         :return: Selected layer
         :rtype: layer
 
+        .. helptext:: gets a layer from tilemap using its name
+
     .. lua:method:: draw()
 
-        Draw all the layers of the tilemap
+        Draws all the layers of the tilemap
+
+        .. helptext:: draws all the layers of the tilemap
 
     .. lua:attribute:: world2d: world2d
 
         Gets/sets the physics world.
 
+        .. helptext:: gets/sets the physics world.
+
     .. lua:attribute:: tileset: tileset
 
         Gets/sets the tileset.
+
+        .. helptext:: Gets/sets the physics world.
 
 Layer
 #####
@@ -324,11 +396,17 @@ Layer
 
     .. lua:attribute:: id: number
 
-    .. lua:attribute:: id: name
+        .. helptext:: the layer's identifier
+
+    .. lua:attribute:: name: string
+
+        .. helptext:: the layer's name
 
     .. lua:attribute:: offset: vec3
         
-        Adjust the position of tilemap drawing
+        Adjusts the position of tilemap
+
+        .. helptext:: adjusts the position of tilemap
 
     .. lua:method:: origin()
 
@@ -337,20 +415,26 @@ Layer
         :return: The x, y, and z of the origin
         :rtype: number, number, number
 
+        .. helptext:: position of bottom left tile
+
     .. lua:method:: size()
 
-        Size of the tilemap from min position to max position
+        Size of the tilemap
 
         :return: The x, y, and z of the size
         :rtype: number, number, number
+
+        .. helptext:: size of the tilemap
 
     .. lua:method:: clear()
 
         Clears all tiles from the layer
 
+        .. helptext:: clears the layer
+
     .. lua:method:: get(xPos, yPos)
 
-        Get the tileID at this position
+        Gets the tileID at this position
 
         :param xPos: The x position of the tile
         :type xPos: number (integer)
@@ -360,11 +444,13 @@ Layer
         :return: The tileId at that position along with it's tileset
         :rtype: number, tileset
 
-        `If tile position does not exist then returns` ``tile.invalidID`` 
+        .. note:: If tile position does not exist then returns 0 
+
+        .. helptext:: gets the tile id at this position
 
     .. lua:method:: set(xPos, yPos, tileID|theTile)
 
-        set the tile at this position
+        Sets the tile at this position
 
         :param xPos: The x position of the tile
         :type xPos: number (integer)
@@ -372,10 +458,14 @@ Layer
         :type yPos: number (integer)
         :param tileID|theTile: Can take in a tileID or the tile itself
         :type tileID|theTile: number | tile
+
+        .. helptext:: gets the tile id at this position
     
     .. lua:method:: draw()
 
-        Draw this layer
+        Draws this layer
+
+        .. helptext:: draws this layer
 
     .. lua:method:: fill(xPos, yPos, tileID|theTile)
 
@@ -383,6 +473,8 @@ Layer
 
         :param tileID|theTile: Can take in a tileID or the tile itself
         :type tileID|theTile: number | tile
+
+        .. helptext:: fills the tilemap with this tile
 
     .. lua:method:: resize(xSize, ySize)
 
@@ -393,16 +485,20 @@ Layer
         :param ySize: The new height of the layer
         :type ySize: number
 
+        .. helptext:: resizes the layer to the new size
+
     .. lua:method:: visit(callback)
 
-        Goes through all the position of the the layers and calls this function. The callback function's input takes x, y, z, and tileID (the tile at that position)
+        Iterates through all the positions of the the layers and calls this function. The callback function's input takes x, y, z, and tileID (the tile at that position)
 
         :param callback: The function that will be call each position: function(x, y, z, tileID, tileset)
         :type callback:  function(number, number, number, number, tileset)
 
+        .. helptext:: iterates over all the positions of the the layers
+
     .. lua:method:: worldToTile(xPos, yPos)
 
-        Get the tile position from the world's position
+        Gets the tile position from the world's position
 
         :param xPos: The x position of the world
         :type xPos: number (integer)
@@ -411,10 +507,12 @@ Layer
 
         :return: returns the tile position from world space
         :rtype: number, number
+
+        .. helptext:: gets the tile position from the world's position
     
     .. lua:method:: tileToWorld(xPos, yPos)
 
-        Get the world position from the tiles's position
+        Gets the world position from the tiles's position
 
         :param xPos: The x position of the tile in layer
         :type xPos: number (integer)
@@ -424,7 +522,11 @@ Layer
         :return: returns the world position from tile space
         :rtype: number, number
 
+        .. helptext:: gets the world position from the tiles's position
+
     .. lua:method:: bounds()
 
         :return: returns bounds of the layer
         :rtype: bounds.aabb
+
+        .. helptext:: the bound of the layer

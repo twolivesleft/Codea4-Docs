@@ -291,6 +291,8 @@ Text
 
 .. lua:function:: textGlyphBounds(str, pos[, size])
 
+   .. helptext:: gets the bound of the glyph
+
    (Experimental subject to change) Gets the bound each characters in a text
 
    :param str: The text to query
