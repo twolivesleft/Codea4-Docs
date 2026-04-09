@@ -289,6 +289,26 @@ Text
    :return: The ``width`` and ``height`` of the text 
    :rtype: number, number
 
+.. lua:function:: textGlyphBounds(str, pos[, size])
+
+   .. helptext:: gets the bound of the glyph
+
+   (Experimental subject to change) Gets the bound each characters in a text
+
+   :param str: The text to query
+   :type str: string
+   :param pos: The position of the textbox
+   :type width: vec2
+   :param size: The size of the textbox
+   :type width: vec2
+   :return: The ``width`` and ``height`` of the text 
+   :rtype: glyphBounds
+
+      * ``x`` - x pos of glyph
+      * ``y`` - y pos of glyph
+      * ``width`` - width of glyph
+      * ``height`` - height of glyph
+
 Gizmos
 ######
 
@@ -296,11 +316,124 @@ Gizmos are useful for drawing shapes in 2D/3D space for debugging and editing
 
 .. lua:module:: gizmos
 
-.. lua:function:: line(x1, y1, z1, x2, y2, z2)
+.. lua:function:: line(point1 , point2)
 
    Draws a 3D antialiased line
 
+   :param point1: First point of line
+   :type point1: vec3
+   :param point2: Second point of line
+   :type point2: vec3
+   
    .. helptext:: draw a line between two points
+
+.. lua:function:: box(pos, size)
+
+   Draws a 3D antialiased cube
+
+   :param pos: Position of the box
+   :type pos: vec3
+   :param size: Size of the box
+   :type size: vec3
+   
+   .. helptext:: draws a gizmo box
+
+.. lua:function:: sphere(pos,[ radius = 1, segments = 32])
+
+   Draws a 3D antialiased sphere
+
+   :param pos: Position of the sphere
+   :type pos: vec3
+   :param radius: Radius of the sphere
+   :type radius: number
+   :param segments: Number of subdivisions that make up the sphere
+   :type segments: number
+   
+   .. helptext:: draws a gizmo sphere
+
+.. lua:function:: circlePlane(pos, normal,[ radius = 1, segments = 32, startAngle = 0, endAngle = 360])
+
+   Draws a 3D antialiased circle plane
+
+   :param pos: Position of the circle
+   :type pos: vec3
+   :param normal: Normal direction of the circle
+   :type normal: vec3
+   :param radius: Radius of the circle
+   :type radius: number
+   :param segments: Number of subdivisions that make up the circle
+   :type segments: number
+   :param startAngle: Start degree of the circle
+   :type startAngle: number
+   :param endAngle: End degree of the circle
+   :type endAngle: number
+   
+   .. helptext:: draws a gizmo circle plane
+
+.. lua:function:: cylinder(pos,[ radius = 1, height = 1, segments = 32])
+
+   Draws a 3D antialiased cylinder
+
+   :param pos: Position of the cylinder
+   :type pos: vec3
+   :param radius: Radius of the cylinder
+   :type radius: number
+   :param height: Height of the cylinder
+   :type height: number
+   :param segments: Number of subdivisions that make up the cylinder
+   :type segments: number
+   
+   .. helptext:: draws a gizmo cylinder
+
+.. lua:function:: capsule(pos,[ radius = 1, height = 1, segments = 32])
+
+   Draws a 3D antialiased capsule
+
+   :param pos: Position of the capsule
+   :type pos: vec3
+   :param radius: Radius of the capsule
+   :type radius: number
+   :param height: Height of the capsule
+   :type height: number
+   :param segments: Number of subdivisions that make up the capsule
+   :type segments: number
+   
+   .. helptext:: draws a gizmo capsule
+
+.. lua:function:: polyline(points,[ closeShape = false])
+
+   Draws a 3D antialiased polyline
+
+   :param points: Table of points (vec3) the represent the poly line
+   :type points: table
+   :param radius: Should the line be closed (polygon)
+   :type radius: boolean
+   
+   .. helptext:: draw a gizmo polyline with multiple points
+
+.. lua:function:: mesh(mesh)
+
+   Draws a 3D antialiased mesh
+
+   :param mesh: The mesh object to draw
+   :type mesh: mesh
+   
+   .. helptext:: draws a gizmo mesh
+
+.. lua:function:: icon(camera, iconSprite, pos, size)
+
+   Draws a image in 3D shape facing the camera
+
+   :param camera: The camera object
+   :type camera: camera
+   :param iconSprite: The image to be drawn
+   :type iconSprite: image
+   :param pos: The position of the image in 3D space
+   :type pos: vec3
+   :param size: The size of the image in 3D space
+   :type size: number
+   
+   .. helptext:: draws a icon in world space facing camera
 
 Color Space
 ###########

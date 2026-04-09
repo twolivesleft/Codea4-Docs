@@ -183,6 +183,101 @@ Image
 
       .. helptext:: generate irradiance data into a target image
 
+   .. lua:method:: setPixel(xPos, yPos, pixelColor)
+
+      Sets an inputed position to a new color
+
+      :param xPos: The x position of the image
+      :type xPos: integer
+      :param yPos: The y position of the image
+      :type yPos: integer
+      :param pixelColor: The color to change the pixel to
+      :type pixelColor: color
+
+      .. helptext:: sets an inputed position to a new color
+
+   .. lua:method:: setValue(xPos, yPos, r, g, b, a)
+
+      Same as set pixel but the inputted color value are from 0 to 1
+
+      :param xPos: The x position of the image
+      :type xPos: integer
+      :param yPos: The y position of the image
+      :type yPos: integer
+
+      .. helptext:: sets an inputed position to a new color using value from 0 to 1
+
+   .. lua:method:: setForEach(loopingFunction)
+
+      Loop over each pixel of the image and set its color value (0 to 1)
+
+      :param loopingFunction: The function to loop over
+      :type loopingFunction: function
+
+      .. code-block:: lua
+         :caption: How to set the pixels of an image
+
+         img = image(255, 255)
+
+         img:setForEach(function(x, y)
+            return math.random(), math.random(), math.random(), 1
+         end)
+
+         img:apply() 
+
+      .. helptext:: loops over every pixel of the image and output a color value
+
+   .. lua:method:: apply()
+
+      Applys all the colors that were set
+
+      .. helptext:: applys all the colors that were set
+
+   .. lua:method:: readback([immediately = true, includeMips = false])
+
+      Allows the user to get the image's color data
+
+      :param immediately: Whether the image should allow reading immediately
+      :type immediately: boolean
+      :param includeMips: Whether the mip maps should be included
+      :type includeMips: boolean
+
+      .. code-block:: lua
+         :caption: How to read the pixel values of an image
+
+         -- img is a image
+
+         img:readback() -- allows reading the pixels of the image
+         local pixelColor = color(img:getPixel(200, 200))
+
+      .. helptext:: allows the user to get the image's color data
+
+   .. lua:method:: getPixel(xPos, yPos)
+
+      Gets the color at the inputted position (0 to 255)
+
+      :param xPos: The x position of the image
+      :type xPos: integer
+      :param yPos: The y position of the image
+      :type yPos: integer
+      :return: The colors at the inputted position (r, g, b, a) (0 to 255)
+      :rtype: number, number, number, number
+
+      .. helptext:: gets the color at the inputted position
+
+   .. lua:method:: getValue(xPos, yPos)
+
+      Gets the color values at the inputted position (0 to 1)
+
+      :param xPos: The x position of the image
+      :type xPos: integer
+      :param yPos: The y position of the image
+      :type yPos: integer
+      :return: The color values at the inputted position (r, g, b, a) (0 to 1)
+      :rtype: number, number, number, number
+
+      .. helptext:: gets the color values at the inputted position
+
 Image Formats
 -------------
 
