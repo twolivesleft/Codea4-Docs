@@ -233,7 +233,7 @@ class LuaClass:
         return f"{self.name} [{self.module}]\n\t{self.description}"
 
     def to_dict(self):
-        return {
+        d = {
             'name': self.name,
             'kind': 'class',
             'description': self.description,
@@ -243,9 +243,11 @@ class LuaClass:
             'parameters': [param.to_dict() for param in self.parameters],
             'examples': self.examples,
             'group': self.group,
-            'members': [members.to_dict() for members in self.members],
-            'visibility': self.visibility
+            'members': [members.to_dict() for members in self.members]
         }
+        if self.visibility is not None:
+            d['visibility'] = self.visibility
+        return d
     
 class LuaParameter:
     def __init__(self, name, type_hint=None, optional=False, description=None, default=None):
@@ -322,7 +324,7 @@ class LuaFunction:
         return f"{self.name}\n\tDescription: {self.description}\n\tParameters:\n\t{parameter_str}\n\tReturns:\n\t{returns_str}"
 
     def to_dict(self):
-        return {
+        d = {
             'name': self.name,
             'kind': self.type,
             'module': self.module,
@@ -332,9 +334,11 @@ class LuaFunction:
             'syntax': self.syntax,
             'group': self.group,
             'examples': self.examples,
-            'visibility': self.visibility,
             'returns': [r.to_dict() for r in self.returns]
         }
+        if self.visibility is not None:
+            d['visibility'] = self.visibility
+        return d
 
 
 class LuaAttribute:
@@ -432,7 +436,7 @@ class LuaAttribute:
         return f"{self.name}: {self.type} [default = {self.default_value}]\n\t{self.description}"
 
     def to_dict(self):
-        return {
+        d = {
             'name': self.name,
             'kind': self.kind,
             'module': self.module,
@@ -442,9 +446,11 @@ class LuaAttribute:
             'group': self.group,
             'defaultValue': self.default_value,
             'description': self.description,
-            'helptext': self.helptext,
-            'visibility': self.visibility
+            'helptext': self.helptext
         }
+        if self.visibility is not None:
+            d['visibility'] = self.visibility
+        return d
 
 
 class LuaOverview:
