@@ -32,6 +32,13 @@ class DocutilsUtils:
         if helptext_node:
             return helptext_node.attributes['text']
         return None
+
+    @staticmethod
+    def extract_visibility(node):
+        visibility_node = next((child for child in node.traverse() if child.tagname == 'visibility'), None)
+        if visibility_node:
+            return visibility_node.attributes['value']
+        return None
     
     @staticmethod
     def extract_module(node):
@@ -196,7 +203,7 @@ class LuaModule:
         }
 
 class LuaClass:
-    def __init__(self, node=None, group=None, name=None, description=None, module=None, helptext=None, syntax=None, parameters=None, examples=None):
+    def __init__(self, node=None, group=None, name=None, description=None, module=None, helptext=None, syntax=None, parameters=None, examples=None, visibility=None):
         if node:
             # Initialize from a node
             self.name = DocutilsUtils.extract_name(node)
@@ -205,7 +212,8 @@ class LuaClass:
             self.module = DocutilsUtils.extract_module(node)
             self.syntax = DocutilsUtils.extract_syntax(node)
             self.parameters = DocutilsUtils.extract_parameters(node, True)
-            self.examples = DocutilsUtils.extract_code_samples(node)            
+            self.examples = DocutilsUtils.extract_code_samples(node)
+            self.visibility = DocutilsUtils.extract_visibility(node)
             self.group = group
         else:
             # Initialize from provided parameters
@@ -216,6 +224,7 @@ class LuaClass:
             self.syntax = syntax
             self.parameters = parameters if parameters else []
             self.examples = examples if examples else []
+            self.visibility = visibility
             self.group = group
 
         self.members = []
@@ -224,7 +233,7 @@ class LuaClass:
         return f"{self.name} [{self.module}]\n\t{self.description}"
 
     def to_dict(self):
-        return {
+        d = {
             'name': self.name,
             'kind': 'class',
             'description': self.description,
@@ -236,6 +245,9 @@ class LuaClass:
             'group': self.group,
             'members': [members.to_dict() for members in self.members]
         }
+        if self.visibility is not None:
+            d['visibility'] = self.visibility
+        return d
     
 class LuaParameter:
     def __init__(self, name, type_hint=None, optional=False, description=None, default=None):
@@ -282,8 +294,9 @@ class LuaFunction:
         self.parameters = DocutilsUtils.extract_parameters(node)
         self.group = group
         self.syntax = DocutilsUtils.extract_syntax(node)
-        self.examples = DocutilsUtils.extract_code_samples(node)        
-        self.returns = self.extract_returns(node)        
+        self.examples = DocutilsUtils.extract_code_samples(node)
+        self.visibility = DocutilsUtils.extract_visibility(node)
+        self.returns = self.extract_returns(node)
         self.type = type
 
     def extract_returns(self, node):
@@ -311,7 +324,7 @@ class LuaFunction:
         return f"{self.name}\n\tDescription: {self.description}\n\tParameters:\n\t{parameter_str}\n\tReturns:\n\t{returns_str}"
 
     def to_dict(self):
-        return {
+        d = {
             'name': self.name,
             'kind': self.type,
             'module': self.module,
@@ -320,22 +333,26 @@ class LuaFunction:
             'parameters': [p.to_dict() for p in self.parameters],
             'syntax': self.syntax,
             'group': self.group,
-            'examples': self.examples,            
+            'examples': self.examples,
             'returns': [r.to_dict() for r in self.returns]
         }
+        if self.visibility is not None:
+            d['visibility'] = self.visibility
+        return d
 
 
 class LuaAttribute:
-    def __init__(self, node=None, kind=None, group=None, name=None, type=None, module=None, description=None, helptext=None, syntax=None, examples=None):
+    def __init__(self, node=None, kind=None, group=None, name=None, type=None, module=None, description=None, helptext=None, syntax=None, examples=None, visibility=None):
         if node:
             # Initialize from a node
             self.name = DocutilsUtils.extract_name(node)
             self.module = DocutilsUtils.extract_module(node)
             self.syntax = DocutilsUtils.extract_syntax(node)
-            self.examples = DocutilsUtils.extract_code_samples(node)            
+            self.examples = DocutilsUtils.extract_code_samples(node)
             self.type = self.extract_type(node)
             self.description = DocutilsUtils.extract_description(node)
             self.helptext = DocutilsUtils.extract_helptext(node)
+            self.visibility = DocutilsUtils.extract_visibility(node)
             self.kind = kind
             self.group = group
             self.default_value = None  # Initializing default value
@@ -349,6 +366,7 @@ class LuaAttribute:
             self.examples = examples
             self.helptext = helptext
             self.default_value = None
+            self.visibility = visibility
             self.group = group
             self.kind = kind if kind else 'attribute'
 
@@ -418,18 +436,21 @@ class LuaAttribute:
         return f"{self.name}: {self.type} [default = {self.default_value}]\n\t{self.description}"
 
     def to_dict(self):
-        return {
+        d = {
             'name': self.name,
             'kind': self.kind,
             'module': self.module,
             'syntax': self.syntax,
-            'examples': self.examples,            
+            'examples': self.examples,
             'type': self.type,
             'group': self.group,
             'defaultValue': self.default_value,
             'description': self.description,
             'helptext': self.helptext
         }
+        if self.visibility is not None:
+            d['visibility'] = self.visibility
+        return d
 
 
 class LuaOverview:
