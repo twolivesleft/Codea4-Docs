@@ -839,73 +839,73 @@ Mouse
 
    The current horizontal position of the pointer in screen coordinates
 
-   .. helptext:: get the current x position of the mouse
+   .. helptext:: x position of the mouse
 
 .. lua:attribute:: y: number
 
    The current vertical position of the pointer in screen coordinates
 
-   .. helptext:: get the current y position of the mouse
+   .. helptext:: y position of the mouse
 
 .. lua:attribute:: pos: vec2
 
    The current position of the pointer as a ``vec2``
 
-   .. helptext:: get the current position of the mouse
+   .. helptext:: position of the mouse
 
 .. lua:attribute:: dx: number
 
    The horizontal movement of the pointer since the last frame
 
-   .. helptext:: get the mouse delta x since the last frame
+   .. helptext:: change in x since the last frame
 
 .. lua:attribute:: dy: number
 
    The vertical movement of the pointer since the last frame
 
-   .. helptext:: get the mouse delta y since the last frame
+   .. helptext:: change in y since the last frame
 
 .. lua:attribute:: delta: vec2
 
    The movement of the pointer since the last frame as a ``vec2``
 
-   .. helptext:: get the mouse delta since the last frame
+   .. helptext:: change in position since the last frame
 
 .. lua:attribute:: scroll: vec2
 
    The scroll wheel or trackpad scroll amount this frame
 
-   .. helptext:: get the mouse scroll amount this frame
+   .. helptext:: scroll amount this frame
 
 .. lua:attribute:: left: mouse.button
 
    The left mouse button
 
-   .. helptext:: get the left mouse button
+   .. helptext:: left mouse button
 
 .. lua:attribute:: middle: mouse.button
 
    The middle mouse button
 
-   .. helptext:: get the middle mouse button
+   .. helptext:: middle mouse button
 
 .. lua:attribute:: right: mouse.button
 
    The right mouse button
 
-   .. helptext:: get the right mouse button
+   .. helptext:: right mouse button
 
 .. lua:attribute:: active: boolean
 
    Whether a mouse or pointer device is currently connected
 
-   .. helptext:: get whether a mouse is connected
+   .. helptext:: whether a mouse is connected
 
 .. lua:attribute:: visible: boolean
 
    Gets or sets the visibility of the system pointer cursor
 
-   .. helptext:: get or set the visibility of the mouse cursor
+   .. helptext:: show or hide the mouse cursor
 
 .. lua:currentmodule:: None
 
@@ -917,10 +917,10 @@ Mouse
 
       Whether this button is currently held down
 
-      .. helptext:: get whether this mouse button is being pressed
+      .. helptext:: button is being pressed
 
    .. lua:attribute:: value: number
 
       The analog value of this button in the range 0.0 to 1.0
 
-      .. helptext:: get the analog value of this mouse button
+      .. helptext:: analog value of this button
