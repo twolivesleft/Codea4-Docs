@@ -911,6 +911,8 @@ Mouse
 
 .. lua:class:: mouse.button
 
+   .. visibility:: private
+
    Represents a single mouse button
 
    .. lua:attribute:: pressed: boolean

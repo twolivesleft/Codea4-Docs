@@ -35,7 +35,8 @@ extensions = [
     'luadomain',
     'sphinx_copybutton',
     'sphinx_toolbox.collapse',
-    'helptext'
+    'helptext',
+    'visibility'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
