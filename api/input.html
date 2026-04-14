@@ -1338,6 +1338,99 @@
 </dd></dl>
 
 </section>
+<section id="mouse">
+<h2>Mouse<a class="headerlink" href="#mouse" title="Link to this heading">¶</a></h2>
+<dl class="lua attribute" id="module-mouse">
+<dt class="sig sig-object lua" id="mouse.mouse.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#mouse.mouse.x" title="Link to this definition">¶</a></dt>
+<dd><p>The current horizontal position of the pointer in screen coordinates</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#mouse.mouse.y" title="Link to this definition">¶</a></dt>
+<dd><p>The current vertical position of the pointer in screen coordinates</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#mouse.mouse.pos" title="Link to this definition">¶</a></dt>
+<dd><p>The current position of the pointer as a <code class="docutils literal notranslate"><span class="pre">vec2</span></code></p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.dx">
+<span class="sig-name descname"><span class="pre">dx</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#mouse.mouse.dx" title="Link to this definition">¶</a></dt>
+<dd><p>The horizontal movement of the pointer since the last frame</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.dy">
+<span class="sig-name descname"><span class="pre">dy</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#mouse.mouse.dy" title="Link to this definition">¶</a></dt>
+<dd><p>The vertical movement of the pointer since the last frame</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.delta">
+<span class="sig-name descname"><span class="pre">delta</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#mouse.mouse.delta" title="Link to this definition">¶</a></dt>
+<dd><p>The movement of the pointer since the last frame as a <code class="docutils literal notranslate"><span class="pre">vec2</span></code></p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.scroll">
+<span class="sig-name descname"><span class="pre">scroll</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#mouse.mouse.scroll" title="Link to this definition">¶</a></dt>
+<dd><p>The scroll wheel or trackpad scroll amount this frame</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.left">
+<span class="sig-name descname"><span class="pre">left</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mouse.button</span><a class="headerlink" href="#mouse.mouse.left" title="Link to this definition">¶</a></dt>
+<dd><p>The left mouse button</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.middle">
+<span class="sig-name descname"><span class="pre">middle</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mouse.button</span><a class="headerlink" href="#mouse.mouse.middle" title="Link to this definition">¶</a></dt>
+<dd><p>The middle mouse button</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.right">
+<span class="sig-name descname"><span class="pre">right</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mouse.button</span><a class="headerlink" href="#mouse.mouse.right" title="Link to this definition">¶</a></dt>
+<dd><p>The right mouse button</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.active">
+<span class="sig-name descname"><span class="pre">active</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#mouse.mouse.active" title="Link to this definition">¶</a></dt>
+<dd><p>Whether a mouse or pointer device is currently connected</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.mouse.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#mouse.mouse.visible" title="Link to this definition">¶</a></dt>
+<dd><p>Gets or sets the visibility of the system pointer cursor</p>
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="mouse.button">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">mouse.button</span></span><a class="headerlink" href="#mouse.button" title="Link to this definition">¶</a></dt>
+<dd><p>Represents a single mouse button</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.button.pressed">
+<span class="sig-name descname"><span class="pre">pressed</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#mouse.button.pressed" title="Link to this definition">¶</a></dt>
+<dd><p>Whether this button is currently held down</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="mouse.button.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#mouse.button.value" title="Link to this definition">¶</a></dt>
+<dd><p>The analog value of this button in the range 0.0 to 1.0</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 </section>
 
         </article>
@@ -1403,6 +1496,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#gamepad">Gamepad</a></li>
+<li><a class="reference internal" href="#mouse">Mouse</a></li>
 </ul>
 </li>
 </ul>

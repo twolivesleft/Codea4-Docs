@@ -829,3 +829,98 @@ Gamepad
       .. lua:attribute:: down: boolean
 
          .. helptext:: get if the directional pad is moved down
+
+Mouse
+#####
+
+.. lua:module:: mouse
+
+.. lua:attribute:: x: number
+
+   The current horizontal position of the pointer in screen coordinates
+
+   .. helptext:: x position of the mouse
+
+.. lua:attribute:: y: number
+
+   The current vertical position of the pointer in screen coordinates
+
+   .. helptext:: y position of the mouse
+
+.. lua:attribute:: pos: vec2
+
+   The current position of the pointer as a ``vec2``
+
+   .. helptext:: position of the mouse
+
+.. lua:attribute:: dx: number
+
+   The horizontal movement of the pointer since the last frame
+
+   .. helptext:: change in x since the last frame
+
+.. lua:attribute:: dy: number
+
+   The vertical movement of the pointer since the last frame
+
+   .. helptext:: change in y since the last frame
+
+.. lua:attribute:: delta: vec2
+
+   The movement of the pointer since the last frame as a ``vec2``
+
+   .. helptext:: change in position since the last frame
+
+.. lua:attribute:: scroll: vec2
+
+   The scroll wheel or trackpad scroll amount this frame
+
+   .. helptext:: scroll amount this frame
+
+.. lua:attribute:: left: mouse.button
+
+   The left mouse button
+
+   .. helptext:: left mouse button
+
+.. lua:attribute:: middle: mouse.button
+
+   The middle mouse button
+
+   .. helptext:: middle mouse button
+
+.. lua:attribute:: right: mouse.button
+
+   The right mouse button
+
+   .. helptext:: right mouse button
+
+.. lua:attribute:: active: boolean
+
+   Whether a mouse or pointer device is currently connected
+
+   .. helptext:: whether a mouse is connected
+
+.. lua:attribute:: visible: boolean
+
+   Gets or sets the visibility of the system pointer cursor
+
+   .. helptext:: show or hide the mouse cursor
+
+.. lua:currentmodule:: None
+
+.. lua:class:: mouse.button
+
+   Represents a single mouse button
+
+   .. lua:attribute:: pressed: boolean
+
+      Whether this button is currently held down
+
+      .. helptext:: button is being pressed
+
+   .. lua:attribute:: value: number
+
+      The analog value of this button in the range 0.0 to 1.0
+
+      .. helptext:: analog value of this button
