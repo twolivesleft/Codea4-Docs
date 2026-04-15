@@ -907,7 +907,7 @@ Mouse
 
    .. helptext:: show or hide the mouse cursor
 
-.. lua:class:: mouse.button
+.. lua:class:: button
 
    .. visibility:: private
 
