@@ -1,5 +1,8 @@
+pick
+====
+
 Picking Assets
-==============
+##############
 
 The pick API allows bringing up the native document (or photo) picker to pick assets from the files or photo library.
 
@@ -24,7 +27,7 @@ Images are always copied to the project's assets and cannot be loaded as referen
     .. helptext:: open the document picker to pick an asset
 
 Picking Specific Types
-======================
+######################
 
 .. lua:staticmethod:: pick.image()
 
@@ -117,7 +120,7 @@ Picking Specific Types
     .. helptext:: open the document picker to pick an audio asset
 
 Advanced Usage
-==============
+##############
 
 .. lua:function:: pick(...)
 
@@ -154,7 +157,7 @@ Advanced Usage
     .. helptext:: picker options table
 
 Picking by Reference
---------------------
+####################
 
 When using ``pick.option.reference``, the picked asset is not copied to the project's assets and instead points to the original file.
 

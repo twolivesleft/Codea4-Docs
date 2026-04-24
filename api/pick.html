@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="viewer" href="viewer.html" /><link rel="prev" title="physics3d" href="physics3d.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>Picking Assets - Codea 4.0 documentation</title>
+        <title>pick - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -207,9 +207,7 @@
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Picking Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#picking-specific-types">Picking Specific Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#advanced-usage">Advanced Usage</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
@@ -242,20 +240,22 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="picking-assets">
-<h1>Picking Assets<a class="headerlink" href="#picking-assets" title="Link to this heading">¶</a></h1>
+          <section id="pick">
+<h1>pick<a class="headerlink" href="#pick" title="Link to this heading">¶</a></h1>
+<section id="picking-assets">
+<h2>Picking Assets<a class="headerlink" href="#picking-assets" title="Link to this heading">¶</a></h2>
 <p>The pick API allows bringing up the native document (or photo) picker to pick assets from the files or photo library.</p>
 <p>By default, documents are always copied to your project’s assets unless pick.option.reference is used.</p>
 <p>Images are always copied to the project’s assets and cannot be loaded as references.</p>
 <dl class="lua function">
-<dt class="sig sig-object lua" id="pick">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Opens the document picker to pick a single asset and convert it to its corresponding Codea asset type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -275,7 +275,7 @@
 
 </section>
 <section id="picking-specific-types">
-<h1>Picking Specific Types<a class="headerlink" href="#picking-specific-types" title="Link to this heading">¶</a></h1>
+<h2>Picking Specific Types<a class="headerlink" href="#picking-specific-types" title="Link to this heading">¶</a></h2>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="pick.image">
 <em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">pick.</span></span><span class="sig-name descname"><span class="pre">image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.image" title="Link to this definition">¶</a></dt>
@@ -391,7 +391,7 @@
 
 </section>
 <section id="advanced-usage">
-<h1>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Link to this heading">¶</a></h1>
+<h2>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Link to this heading">¶</a></h2>
 <dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
@@ -424,6 +424,7 @@
 </ul>
 </dd></dl>
 
+</section>
 <section id="picking-by-reference">
 <h2>Picking by Reference<a class="headerlink" href="#picking-by-reference" title="Link to this heading">¶</a></h2>
 <p>When using <code class="docutils literal notranslate"><span class="pre">pick.option.reference</span></code>, the picked asset is not copied to the project’s assets and instead points to the original file.</p>
@@ -489,8 +490,30 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">pick</a><ul>
+<li><a class="reference internal" href="#picking-assets">Picking Assets</a></li>
+<li><a class="reference internal" href="#picking-specific-types">Picking Specific Types</a></li>
+<li><a class="reference internal" href="#advanced-usage">Advanced Usage</a></li>
+<li><a class="reference internal" href="#picking-by-reference">Picking by Reference</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

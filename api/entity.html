@@ -207,9 +207,7 @@
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pick.html">Picking Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pick.html#picking-specific-types">Picking Specific Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pick.html#advanced-usage">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
@@ -255,7 +253,8 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">entity</span></span></dt>
 <dd><p>A scene entity, created using <a class="reference internal" href="scene.html#scene.entity" title="scene.entity"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">scene.entity()</span></code></a> that exists as part of the scene hierarchy. Entity behaviour and visuals are customised by addings various types of components or assets, such as <code class="xref lua lua-class docutils literal notranslate"><span class="pre">sprite.slice</span></code>, <code class="xref lua lua-class docutils literal notranslate"><span class="pre">camera</span></code> and <a class="reference internal" href="#entity.mesh" title="entity.mesh"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">mesh</span></code></a></p>
 <p>There are shortcut properties to attach some common components, while others are built-in (such as transforms, names and relationships)</p>
-<p><strong>General</strong></p>
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.active">
 <span class="sig-name descname"><span class="pre">active</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#entity.active" title="Link to this definition">¶</a></dt>
@@ -348,7 +347,9 @@
 </div>
 </dd></dl>
 
-<p><strong>Lifecycle</strong></p>
+</section>
+<section id="lifecycle">
+<h2>Lifecycle<a class="headerlink" href="#lifecycle" title="Link to this heading">¶</a></h2>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="entity.destroy">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">delay</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#entity.destroy" title="Link to this definition">¶</a></dt>
@@ -376,7 +377,9 @@
 </div>
 </details></dd></dl>
 
-<p><strong>Components</strong></p>
+</section>
+<section id="components">
+<h2>Components<a class="headerlink" href="#components" title="Link to this heading">¶</a></h2>
 <dl class="lua method">
 <dt class="sig sig-object lua" id="entity.add">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">component</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#entity.add" title="Link to this definition">¶</a></dt>
@@ -480,7 +483,9 @@
 </dl>
 </dd></dl>
 
-<p><strong>Relationships</strong></p>
+</section>
+<section id="relationships">
+<h2>Relationships<a class="headerlink" href="#relationships" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.parent">
 <span class="sig-name descname"><span class="pre">parent</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">entity</span><a class="headerlink" href="#entity.parent" title="Link to this definition">¶</a></dt>
@@ -558,7 +563,9 @@
 <p><em>Note this may result in an entity’s parent changing to make it the sibling or another entity</em></p>
 </dd></dl>
 
-<p><strong>Transform</strong></p>
+</section>
+<section id="transform">
+<h2>Transform<a class="headerlink" href="#transform" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.position">
 <span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#entity.position" title="Link to this definition">¶</a></dt>
@@ -724,7 +731,9 @@
 <p>Also supports <code class="docutils literal notranslate"><span class="pre">vec2</span></code> and <code class="docutils literal notranslate"><span class="pre">vec3</span></code> parameters</p>
 </dd></dl>
 
-<p><strong>Sprite Properties</strong></p>
+</section>
+<section id="sprite-properties">
+<h2>Sprite Properties<a class="headerlink" href="#sprite-properties" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.sprite">
 <span class="sig-name descname"><span class="pre">sprite</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">image.slice</span><a class="headerlink" href="#entity.sprite" title="Link to this definition">¶</a></dt>
@@ -755,7 +764,9 @@
 <dd><p>Flips the sprite on the y-axis</p>
 </dd></dl>
 
-<p><strong>Mesh Properties</strong></p>
+</section>
+<section id="mesh-properties">
+<h2>Mesh Properties<a class="headerlink" href="#mesh-properties" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.mesh">
 <span class="sig-name descname"><span class="pre">mesh</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mesh</span><a class="headerlink" href="#entity.mesh" title="Link to this definition">¶</a></dt>
@@ -768,7 +779,9 @@
 <dd><p>The material attached to this entity (used in conjunction with meshes/sprites)</p>
 </dd></dl>
 
-<p><strong>UI Properties / Methods</strong></p>
+</section>
+<section id="ui-properties-methods">
+<h2>UI Properties / Methods<a class="headerlink" href="#ui-properties-methods" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.size">
 <span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#entity.size" title="Link to this definition">¶</a></dt>
@@ -813,7 +826,9 @@
 <dd><p>When enabled, clips drawing to within the bounds of the UI element</p>
 </dd></dl>
 
-<p><strong>Physics2D Properties</strong></p>
+</section>
+<section id="physics2d-properties">
+<h2>Physics2D Properties<a class="headerlink" href="#physics2d-properties" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.body2d">
 <span class="sig-name descname"><span class="pre">body2d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics2d.body</span><a class="headerlink" href="#entity.body2d" title="Link to this definition">¶</a></dt>
@@ -838,7 +853,9 @@
 <dd><p>All attached 2D physics joints</p>
 </dd></dl>
 
-<p><strong>Physics3D Properties</strong></p>
+</section>
+<section id="physics3d-properties">
+<h2>Physics3D Properties<a class="headerlink" href="#physics3d-properties" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.body3d">
 <span class="sig-name descname"><span class="pre">body3d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">physics3d.body</span><a class="headerlink" href="#entity.body3d" title="Link to this definition">¶</a></dt>
@@ -863,7 +880,9 @@
 <dd><p>All attached 3D physics joints</p>
 </dd></dl>
 
-<p><strong>Lifecycle Callbacks</strong></p>
+</section>
+<section id="lifecycle-callbacks">
+<h2>Lifecycle Callbacks<a class="headerlink" href="#lifecycle-callbacks" title="Link to this heading">¶</a></h2>
 <p>A series of handy callbacks that can be set which will be invoked automatically by scene systems</p>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.created">
@@ -895,7 +914,9 @@
 <dd><p>Callback for the <cite>destroyed()</cite> event, which is called right before the entity is destroyed</p>
 </dd></dl>
 
-<p><strong>Physics Callbacks</strong></p>
+</section>
+<section id="physics-callbacks">
+<h2>Physics Callbacks<a class="headerlink" href="#physics-callbacks" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.collisionBegan2d">
 <span class="sig-name descname"><span class="pre">collisionBegan2d</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.collisionBegan2d" title="Link to this definition">¶</a></dt>
@@ -908,7 +929,9 @@
 <dd><p>Callback for the <code class="docutils literal notranslate"><span class="pre">collisionBegan3d(contact)</span></code> event, which is called when a collision occurs with a <cite>physics3d.body</cite> attached to this entity</p>
 </dd></dl>
 
-<p><strong>Simulation Callbacks</strong></p>
+</section>
+<section id="simulation-callbacks">
+<h2>Simulation Callbacks<a class="headerlink" href="#simulation-callbacks" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.update">
 <span class="sig-name descname"><span class="pre">update</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.update" title="Link to this definition">¶</a></dt>
@@ -921,7 +944,9 @@
 <dd><p>Callback for the <code class="docutils literal notranslate"><span class="pre">fixedUpdate(dt)</span></code> event, which is called on all active entities once per fixed update (called a fixed number of times per second). The <code class="docutils literal notranslate"><span class="pre">dt</span></code> parameter passes the fixed delta time of the enclosing scene</p>
 </dd></dl>
 
-<p><strong>Interaction Callbacks</strong></p>
+</section>
+<section id="interaction-callbacks">
+<h2>Interaction Callbacks<a class="headerlink" href="#interaction-callbacks" title="Link to this heading">¶</a></h2>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="entity.touched">
 <span class="sig-name descname"><span class="pre">touched</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function</span><a class="headerlink" href="#entity.touched" title="Link to this definition">¶</a></dt>
@@ -935,6 +960,7 @@
 <dd><p>Enables hit testing for the <code class="docutils literal notranslate"><span class="pre">touched(touch)</span></code> event, which will filter touches based on collision checks using attached physics components on the main camera</p>
 </dd></dl>
 
+</section>
 </dd></dl>
 
 </section>
