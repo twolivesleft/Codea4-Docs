@@ -1,5 +1,5 @@
-pick
-====
+Picking Assets
+==============
 
 The pick API allows bringing up the native document (or photo) picker to pick assets from the files or photo library.
 
@@ -10,7 +10,7 @@ Images are always copied to the project's assets and cannot be loaded as referen
 .. lua:function:: pick()
 
     Opens the document picker to pick a single asset and convert it to its corresponding Codea asset type.
-    
+
     :return: The picked asset
     :rtype: any
 
@@ -21,129 +21,103 @@ Images are always copied to the project's assets and cannot be loaded as referen
             print(pickedAsset)
         end
 
-   .. helptext:: open the document picker to pick an asset
+    .. helptext:: open the document picker to pick an asset
 
-.. lua:class:: pick
+Picking Specific Types
+======================
 
-    .. lua:staticmethod:: pick.image()
+.. lua:staticmethod:: pick.image()
 
-        Opens the document picker to pick an image or PDF asset.
-        
-        :return: The picked image or PDF asset
-        :rtype: image
+    Opens the document picker to pick an image or PDF asset.
 
-        .. code-block:: lua
+    :return: The picked image or PDF asset
+    :rtype: image
 
-            myImage = pick.image()
-            ...
-            sprite(myImage, WIDTH/2, HEIGHT/2)
+    .. code-block:: lua
 
-       .. helptext:: open the document picker to pick an image
+        myImage = pick.image()
+        ...
+        sprite(myImage, WIDTH/2, HEIGHT/2)
 
-    .. lua:staticmethod:: pick.table()
+    .. helptext:: open the document picker to pick an image
 
-        Opens the document picker to pick a JSON asset and convert it to a table.
-        
-        :return: The picked asset converted to a table
-        :rtype: table
+.. lua:staticmethod:: pick.table()
 
-        .. code-block:: lua
-            
-            myTable = pick.table()
-            ...
-            print(myTable["key"])
+    Opens the document picker to pick a JSON asset and convert it to a table.
 
-       .. helptext:: open the document picker to pick a JSON asset as table
+    :return: The picked asset converted to a table
+    :rtype: table
 
-    .. lua:staticmethod:: pick.text()
+    .. code-block:: lua
 
-        Opens the document picker to pick a text asset.
-        
-        :return: The text content of the picked asset
-        :rtype: string
+        myTable = pick.table()
+        ...
+        print(myTable["key"])
 
-        .. code-block:: lua
+    .. helptext:: open the document picker to pick a JSON asset as table
 
-            myText = pick.text()
-            ...
-            text(myText, WIDTH/2, HEIGHT/2)
+.. lua:staticmethod:: pick.text()
 
-       .. helptext:: open the document picker to pick a text asset
+    Opens the document picker to pick a text asset.
 
-    .. lua:staticmethod:: pick.asset()
+    :return: The text content of the picked asset
+    :rtype: string
 
-        Opens the document picker to pick an asset and return its asset key.
-        
-        :return: The picked asset key
-        :rtype: asset.key
+    .. code-block:: lua
 
-        .. code-block:: lua
+        myText = pick.text()
+        ...
+        text(myText, WIDTH/2, HEIGHT/2)
 
-            myAssetKey = pick.asset()
-            ...
-            print(myAssetKey.type)
+    .. helptext:: open the document picker to pick a text asset
 
-       .. helptext:: open the document picker to pick an asset key
+.. lua:staticmethod:: pick.asset()
 
-    .. lua:staticmethod:: pick.photo()
+    Opens the document picker to pick an asset and return its asset key.
 
-        Opens the photo picker to pick a single photo from the photo library.
+    :return: The picked asset key
+    :rtype: asset.key
 
-        This is a different picker than the document picker, and only allows picking a single photo at a time.
-        
-        :return: The picked photo as an image asset
-        :rtype: image
+    .. code-block:: lua
 
-        .. code-block:: lua
-            
-            myPhoto = pick.photo()
-            ...
-            sprite(myPhoto, WIDTH/2, HEIGHT/2)
+        myAssetKey = pick.asset()
+        ...
+        print(myAssetKey.type)
 
-       .. helptext:: open the photo picker to pick a photo
+    .. helptext:: open the document picker to pick an asset key
 
-    .. lua:staticmethod:: pick.sound()
+.. lua:staticmethod:: pick.photo()
 
-        Opens the document picker to pick an audio asset (sound or music).
-        
-        :return: The picked audio asset
-        :rtype: sound.source
+    Opens the photo picker to pick a single photo from the photo library.
 
-        .. code-block:: lua
+    This is a different picker than the document picker, and only allows picking a single photo at a time.
 
-            sound.play(pick.sound())
+    :return: The picked photo as an image asset
+    :rtype: image
 
-       .. helptext:: open the document picker to pick an audio asset
+    .. code-block:: lua
 
-    .. lua:staticmethod:: pick.image(...)
-                          pick.table(...)
-                          pick.text(...)
-                          pick.asset(...)
-                          pick.photo(...)
-                          pick.sound(...)
+        myPhoto = pick.photo()
+        ...
+        sprite(myPhoto, WIDTH/2, HEIGHT/2)
 
-        Pick assets with the specified UTType strings, options and callback function.
+    .. helptext:: open the photo picker to pick a photo
 
-        See ``pick(...)`` below for more information.
+.. lua:staticmethod:: pick.sound()
 
-       .. helptext:: pick assets with specified types and options
+    Opens the document picker to pick an audio asset (sound or music).
 
-    .. lua:attribute:: option
+    :return: The picked audio asset
+    :rtype: sound.source
 
-        A table containing the following options:
+    .. code-block:: lua
 
-        - ``text`` - Text asset
-        - ``json`` - JSON asset
-        - ``sound`` - Audio asset (sound or music)
-        - ``pdf`` - PDF asset
-        - ``image`` - Image or PDF asset, defined as { "public.image", "com.adobe.pdf" }
-        - ``table`` - JSON asset converted to a table, defined as { pick.option.json, pick.option.decodeTable }
-        - ``multiple`` - Enable multiple asset selection
-        - ``assetKey`` - Return the asset key instead of the asset content
-        - ``decodeTable`` - Decode the picked asset as a table (only for json assets)
-        - ``reference`` - Do not copy the asset to the project's assets, instead reference the original file
+        sound.play(pick.sound())
 
-       .. helptext:: an option value for the picker
+    .. helptext:: open the document picker to pick an audio asset
+
+Advanced Usage
+==============
 
 .. lua:function:: pick(...)
 
@@ -154,18 +128,35 @@ Images are always copied to the project's assets and cannot be loaded as referen
     When a callback function is provided, the function becomes asynchronous and the picked asset is passed to the callback function.
 
     .. code-block:: lua
-        
+
         -- Pick multiple assets of type yaml or image
         pick("public.yaml", pick.option.image, pick.option.multiple, function(multipleAssets)
             print("Picked " .. #multipleAssets .. " assets")
-        })
+        end)
 
-   .. helptext:: pick assets with specified types and options
+    .. helptext:: pick assets with specified types and options
 
-pick.option.reference
----------------------
+.. lua:attribute:: pick.option: table
 
-When using pick.option.reference, the picked asset is not copied to the project's assets and instead points to the original file.
+    A table containing the following options:
+
+    - ``text`` - Text asset
+    - ``json`` - JSON asset
+    - ``sound`` - Audio asset (sound or music)
+    - ``pdf`` - PDF asset
+    - ``image`` - Image or PDF asset, defined as ``{ "public.image", "com.adobe.pdf" }``
+    - ``table`` - JSON asset converted to a table, defined as ``{ pick.option.json, pick.option.decodeTable }``
+    - ``multiple`` - Enable multiple asset selection
+    - ``assetKey`` - Return the asset key instead of the asset content
+    - ``decodeTable`` - Decode the picked asset as a table (only for json assets)
+    - ``reference`` - Do not copy the asset to the project's assets, instead reference the original file
+
+    .. helptext:: picker options table
+
+Picking by Reference
+--------------------
+
+When using ``pick.option.reference``, the picked asset is not copied to the project's assets and instead points to the original file.
 
 This allows you to make updates to the original file.
 
@@ -175,17 +166,15 @@ If you need to store the path, you must save and read bookmarks using ``assetKey
 
 Bookmarks can be removed using ``assets.removeBookmark(name)``.
 
-.. collapse:: Pick a reference and store a bookmark
+.. code-block:: lua
 
-    .. code-block:: lua
+    local assetKey = pick.asset(pick.option.reference)
+    if assetKey then
+        assetKey:saveBookmark("myBookmark")
+    end
 
-        local assetKey = pick.asset(pick.option.reference)
-        if assetKey then
-            assetKey:saveBookmark("myBookmark")
-        end
-
-        -- On subsequent runs, read the bookmark
-        local assetKey = assets.readBookmark("myBookmark")
-        if assetKey then
-            print(assetKey.path)
-        end
+    -- On subsequent runs, read the bookmark
+    local assetKey = assets.readBookmark("myBookmark")
+    if assetKey then
+        print(assetKey.path)
+    end

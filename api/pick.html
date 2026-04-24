@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="viewer" href="viewer.html" /><link rel="prev" title="physics3d" href="physics3d.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>pick - Codea 4.0 documentation</title>
+        <title>Picking Assets - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -207,7 +207,9 @@
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">pick</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Picking Assets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#picking-specific-types">Picking Specific Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#advanced-usage">Advanced Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
@@ -240,28 +242,27 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="pick">
-<h1>pick<a class="headerlink" href="#pick" title="Link to this heading">¶</a></h1>
+          <section id="picking-assets">
+<h1>Picking Assets<a class="headerlink" href="#picking-assets" title="Link to this heading">¶</a></h1>
 <p>The pick API allows bringing up the native document (or photo) picker to pick assets from the files or photo library.</p>
 <p>By default, documents are always copied to your project’s assets unless pick.option.reference is used.</p>
 <p>Images are always copied to the project’s assets and cannot be loaded as references.</p>
 <dl class="lua function">
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><blockquote>
-<div><p>Opens the document picker to pick a single asset and convert it to its corresponding Codea asset type.</p>
+<dt class="sig sig-object lua" id="pick">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick" title="Link to this definition">¶</a></dt>
+<dd><p>Opens the document picker to pick a single asset and convert it to its corresponding Codea asset type.</p>
 <dl class="field-list simple">
-<dt class="field-odd">return<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The picked asset</p>
 </dd>
-<dt class="field-even">rtype<span class="colon">:</span></dt>
-<dd class="field-even"><p>any</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">any</span></code></span></p>
 </dd>
 </dl>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">pickedAsset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pick</span><span class="p">()</span>
@@ -270,23 +271,21 @@
 <span class="kr">end</span>
 </pre></div>
 </div>
-</div></blockquote>
 </dd></dl>
 
-<dl class="lua class">
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">pick</span></span></dt>
-<dd><dl class="lua staticmethod">
+</section>
+<section id="picking-specific-types">
+<h1>Picking Specific Types<a class="headerlink" href="#picking-specific-types" title="Link to this heading">¶</a></h1>
+<dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="pick.image">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.image" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Opens the document picker to pick an image or PDF asset.</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">pick.</span></span><span class="sig-name descname"><span class="pre">image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.image" title="Link to this definition">¶</a></dt>
+<dd><p>Opens the document picker to pick an image or PDF asset.</p>
 <dl class="field-list simple">
-<dt class="field-odd">return<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The picked image or PDF asset</p>
 </dd>
-<dt class="field-even">rtype<span class="colon">:</span></dt>
-<dd class="field-even"><p>image</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><a class="reference internal" href="#pick.image" title="pick.image"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></a></span></p>
 </dd>
 </dl>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">myImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">image</span><span class="p">()</span>
@@ -294,20 +293,18 @@
 <span class="nf">sprite</span><span class="p">(</span><span class="nv">myImage</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="pick.table">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.table" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Opens the document picker to pick a JSON asset and convert it to a table.</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">pick.</span></span><span class="sig-name descname"><span class="pre">table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.table" title="Link to this definition">¶</a></dt>
+<dd><p>Opens the document picker to pick a JSON asset and convert it to a table.</p>
 <dl class="field-list simple">
-<dt class="field-odd">return<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The picked asset converted to a table</p>
 </dd>
-<dt class="field-even">rtype<span class="colon">:</span></dt>
-<dd class="field-even"><p>table</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><a class="reference internal" href="lua.html#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
 </dd>
 </dl>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">myTable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">table</span><span class="p">()</span>
@@ -315,20 +312,18 @@
 <span class="nb">print</span><span class="p">(</span><span class="nv">myTable</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-</div></blockquote>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="pick.text">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.text" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Opens the document picker to pick a text asset.</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">pick.</span></span><span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.text" title="Link to this definition">¶</a></dt>
+<dd><p>Opens the document picker to pick a text asset.</p>
 <dl class="field-list simple">
-<dt class="field-odd">return<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The text content of the picked asset</p>
 </dd>
-<dt class="field-even">rtype<span class="colon">:</span></dt>
-<dd class="field-even"><p>string</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
 </dd>
 </dl>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">myText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
@@ -336,20 +331,18 @@
 <span class="nf">text</span><span class="p">(</span><span class="nv">myText</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="pick.asset">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">asset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.asset" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Opens the document picker to pick an asset and return its asset key.</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">pick.</span></span><span class="sig-name descname"><span class="pre">asset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.asset" title="Link to this definition">¶</a></dt>
+<dd><p>Opens the document picker to pick an asset and return its asset key.</p>
 <dl class="field-list simple">
-<dt class="field-odd">return<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The picked asset key</p>
 </dd>
-<dt class="field-even">rtype<span class="colon">:</span></dt>
-<dd class="field-even"><p>asset.key</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">asset.key</span></code></span></p>
 </dd>
 </dl>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">myAssetKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">asset</span><span class="p">()</span>
@@ -357,21 +350,19 @@
 <span class="nb">print</span><span class="p">(</span><span class="nv">myAssetKey</span><span class="p">.</span><span class="py">type</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="pick.photo">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">photo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.photo" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Opens the photo picker to pick a single photo from the photo library.</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">pick.</span></span><span class="sig-name descname"><span class="pre">photo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.photo" title="Link to this definition">¶</a></dt>
+<dd><p>Opens the photo picker to pick a single photo from the photo library.</p>
 <p>This is a different picker than the document picker, and only allows picking a single photo at a time.</p>
 <dl class="field-list simple">
-<dt class="field-odd">return<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The picked photo as an image asset</p>
 </dd>
-<dt class="field-even">rtype<span class="colon">:</span></dt>
-<dd class="field-even"><p>image</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><a class="reference internal" href="#pick.image" title="pick.image"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></a></span></p>
 </dd>
 </dl>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">myPhoto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">photo</span><span class="p">()</span>
@@ -379,94 +370,68 @@
 <span class="nf">sprite</span><span class="p">(</span><span class="nv">myPhoto</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="pick.sound">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">sound</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.sound" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Opens the document picker to pick an audio asset (sound or music).</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">pick.</span></span><span class="sig-name descname"><span class="pre">sound</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.sound" title="Link to this definition">¶</a></dt>
+<dd><p>Opens the document picker to pick an audio asset (sound or music).</p>
 <dl class="field-list simple">
-<dt class="field-odd">return<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The picked audio asset</p>
 </dd>
-<dt class="field-even">rtype<span class="colon">:</span></dt>
-<dd class="field-even"><p>sound.source</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><a class="reference internal" href="sound.html#sound.source" title="sound.source"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">sound.source</span></code></a></span></p>
 </dd>
 </dl>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">sound</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">pick</span><span class="p">.</span><span class="nf">sound</span><span class="p">())</span>
 </pre></div>
 </div>
-</div></blockquote>
 </dd></dl>
 
-<dl class="lua staticmethod">
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">photo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
-<dt class="sig sig-object lua">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">sound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
-<dd><blockquote>
-<div><p>Pick assets with the specified UTType strings, options and callback function.</p>
-<p>See <code class="docutils literal notranslate"><span class="pre">pick(...)</span></code> below for more information.</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="pick.option">
-<span class="sig-name descname"><span class="pre">option</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">None</span><a class="headerlink" href="#pick.option" title="Link to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>A table containing the following options:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - Text asset</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">json</span></code> - JSON asset</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sound</span></code> - Audio asset (sound or music)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pdf</span></code> - PDF asset</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Image or PDF asset, defined as { “public.image”, “com.adobe.pdf” }</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">table</span></code> - JSON asset converted to a table, defined as { pick.option.json, pick.option.decodeTable }</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">multiple</span></code> - Enable multiple asset selection</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">assetKey</span></code> - Return the asset key instead of the asset content</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">decodeTable</span></code> - Decode the picked asset as a table (only for json assets)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code> - Do not copy the asset to the project’s assets, instead reference the original file</p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-</dd></dl>
-
+</section>
+<section id="advanced-usage">
+<h1>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Link to this heading">¶</a></h1>
 <dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span></dt>
-<dd><blockquote>
-<div><p>Pick assets with the specified UTType strings, options and callback function.</p>
+<dd><p>Pick assets with the specified UTType strings, options and callback function.</p>
 <p>The order of types, options and callback is not important, though we recommend passing the callback last for readability.</p>
 <p>When a callback function is provided, the function becomes asynchronous and the picked asset is passed to the callback function.</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Pick multiple assets of type yaml or image</span>
 <span class="nf">pick</span><span class="p">(</span><span class="s2">&quot;public.yaml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">image</span><span class="p">,</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">multiple</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">multipleAssets</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Picked &quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="o">#</span><span class="nv">multipleAssets</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot; assets&quot;</span><span class="p">)</span>
-<span class="p">})</span>
+<span class="kr">end</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 </dd></dl>
 
-<section id="pick-option-reference">
-<h2>pick.option.reference<a class="headerlink" href="#pick-option-reference" title="Link to this heading">¶</a></h2>
-<p>When using pick.option.reference, the picked asset is not copied to the project’s assets and instead points to the original file.</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pick.option">
+<span class="sig-name descname"><span class="pre">pick.option</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#pick.option" title="Link to this definition">¶</a></dt>
+<dd><p>A table containing the following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - Text asset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">json</span></code> - JSON asset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sound</span></code> - Audio asset (sound or music)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdf</span></code> - PDF asset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span></code> - Image or PDF asset, defined as <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;public.image&quot;,</span> <span class="pre">&quot;com.adobe.pdf&quot;</span> <span class="pre">}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">table</span></code> - JSON asset converted to a table, defined as <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">pick.option.json,</span> <span class="pre">pick.option.decodeTable</span> <span class="pre">}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiple</span></code> - Enable multiple asset selection</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assetKey</span></code> - Return the asset key instead of the asset content</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decodeTable</span></code> - Decode the picked asset as a table (only for json assets)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code> - Do not copy the asset to the project’s assets, instead reference the original file</p></li>
+</ul>
+</dd></dl>
+
+<section id="picking-by-reference">
+<h2>Picking by Reference<a class="headerlink" href="#picking-by-reference" title="Link to this heading">¶</a></h2>
+<p>When using <code class="docutils literal notranslate"><span class="pre">pick.option.reference</span></code>, the picked asset is not copied to the project’s assets and instead points to the original file.</p>
 <p>This allows you to make updates to the original file.</p>
 <p>However, you cannot store the path to the file (e.g. using your <code class="docutils literal notranslate"><span class="pre">assetKey.path</span></code>) as the path is not guaranteed to be the same on subsequent runs.</p>
 <p>If you need to store the path, you must save and read bookmarks using <code class="docutils literal notranslate"><span class="pre">assetKey:saveBookmark(name)</span></code> and <code class="docutils literal notranslate"><span class="pre">assets.readBookmark(name)</span></code>.</p>
 <p>Bookmarks can be removed using <code class="docutils literal notranslate"><span class="pre">assets.removeBookmark(name)</span></code>.</p>
-<details class="summary-pick-a-reference-and-store-a-bookmark">
-<summary>Pick a reference and store a bookmark</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">assetKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">asset</span><span class="p">(</span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">reference</span><span class="p">)</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">assetKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">asset</span><span class="p">(</span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">reference</span><span class="p">)</span>
 <span class="kr">if</span><span class="w"> </span><span class="nv">assetKey</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">    </span><span class="nv">assetKey</span><span class="p">:</span><span class="nf">saveBookmark</span><span class="p">(</span><span class="s2">&quot;myBookmark&quot;</span><span class="p">)</span>
 <span class="kr">end</span>
@@ -478,7 +443,7 @@
 <span class="kr">end</span>
 </pre></div>
 </div>
-</details></section>
+</section>
 </section>
 
         </article>
@@ -524,27 +489,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">pick</a><ul>
-<li><a class="reference internal" href="#pick-option-reference">pick.option.reference</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
