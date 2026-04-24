@@ -13,18 +13,33 @@ class DocutilsUtils:
         if not desc_content:
             return None
 
-        paragraphs = [child for child in desc_content.children if child.tagname == 'paragraph']
-        description_parts = []
-        for paragraph in paragraphs:
-            paragraph_text = []
-            for child in paragraph.children:
-                if isinstance(child, nodes.literal):
-                    paragraph_text.append(f"`{child.astext()}`")
-                else:
-                    paragraph_text.append(child.astext())
-            description_parts.append(''.join(paragraph_text))
+        parts = []
+        for child in desc_content.children:
+            if child.tagname == 'paragraph':
+                inline_text = []
+                for item in child.children:
+                    if isinstance(item, nodes.literal):
+                        inline_text.append(f"`{item.astext()}`")
+                    else:
+                        inline_text.append(item.astext())
+                parts.append(''.join(inline_text))
+            elif child.tagname == 'bullet_list':
+                list_lines = []
+                for list_item in child.children:
+                    if list_item.tagname == 'list_item':
+                        para = list_item.next_node(condition=lambda n: n.tagname == 'paragraph')
+                        if para:
+                            item_text = []
+                            for item in para.children:
+                                if isinstance(item, nodes.literal):
+                                    item_text.append(f"`{item.astext()}`")
+                                else:
+                                    item_text.append(item.astext())
+                            list_lines.append('- ' + ''.join(item_text))
+                if list_lines:
+                    parts.append('\n'.join(list_lines))
 
-        return '\n\n'.join(description_parts)
+        return '\n\n'.join(parts) if parts else None
     
     @staticmethod
     def extract_helptext(node):
@@ -43,12 +58,15 @@ class DocutilsUtils:
     @staticmethod
     def extract_module(node):
         signature_node = next((child for child in node.traverse() if child.tagname == 'desc_signature'), None)
-        # Check if the node directly contains a 'module' attribute
-        if 'module' in signature_node.attributes:
-            return signature_node.attributes['module']
-
-        # Return None or a default if no module attribute is found
-        return None  
+        if signature_node is None:
+            return None
+        module = signature_node.attributes.get('module')
+        if module:
+            return module
+        # Fall back to the class attribute so that top-level dotted staticmethods
+        # like pick.image() get module="pick" from the parsed class prefix.
+        class_name = signature_node.attributes.get('class')
+        return class_name if class_name else None
     
     @staticmethod
     def extract_parameters(node, isClass = False):

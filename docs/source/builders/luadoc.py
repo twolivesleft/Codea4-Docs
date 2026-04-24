@@ -66,11 +66,11 @@ class LuaJSONVisitor(nodes.NodeVisitor):
 
     def depart_section(self, node):
         self.flush_content()
-        
+
     def flush_content(self):
         if self.current_section_content:
             self.entries.append(LuaOverview(self.current_section_content, self.current_group))
-            self.current_section_content = []        
+            self.current_section_content = []
 
     def visit_text(self, node):
         pass
