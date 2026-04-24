@@ -54,7 +54,7 @@ class LuaJSONVisitor(nodes.NodeVisitor):
 
     def visit_paragraph(self, node):
         if isinstance(node.parent, section) and not self.has_desc_ancestor(node):
-            self.current_section_content.append(OverviewContent(node.astext(), OverviewContentKind.TEXT))
+            self.current_section_content.append(OverviewContent(DocutilsUtils.markdown_children(node), OverviewContentKind.TEXT))
 
     def visit_literal_block(self, node):
         if isinstance(node.parent, section) and not self.has_desc_ancestor(node):

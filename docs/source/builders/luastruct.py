@@ -3,6 +3,26 @@ from enum import Enum
 
 class DocutilsUtils:
     @staticmethod
+    def markdown_text(node):
+        if isinstance(node, nodes.Text):
+            return node.astext()
+        if isinstance(node, nodes.literal):
+            return f"`{node.astext()}`"
+        if isinstance(node, nodes.strong):
+            return f"**{DocutilsUtils.markdown_children(node)}**"
+        if isinstance(node, nodes.emphasis):
+            return f"*{DocutilsUtils.markdown_children(node)}*"
+        if isinstance(node, nodes.reference):
+            text = DocutilsUtils.markdown_children(node)
+            refuri = node.attributes.get('refuri')
+            return f"[{text}]({refuri})" if refuri else text
+        return DocutilsUtils.markdown_children(node) if node.children else node.astext()
+    
+    @staticmethod
+    def markdown_children(node):
+        return ''.join(DocutilsUtils.markdown_text(child) for child in node.children)
+    
+    @staticmethod
     def extract_name(node):
         name_node = next((child for child in node.traverse() if child.tagname == 'desc_name'), None)
         return name_node.astext() if name_node else None
@@ -16,26 +36,14 @@ class DocutilsUtils:
         parts = []
         for child in desc_content.children:
             if child.tagname == 'paragraph':
-                inline_text = []
-                for item in child.children:
-                    if isinstance(item, nodes.literal):
-                        inline_text.append(f"`{item.astext()}`")
-                    else:
-                        inline_text.append(item.astext())
-                parts.append(''.join(inline_text))
+                parts.append(DocutilsUtils.markdown_children(child))
             elif child.tagname == 'bullet_list':
                 list_lines = []
                 for list_item in child.children:
                     if list_item.tagname == 'list_item':
                         para = list_item.next_node(condition=lambda n: n.tagname == 'paragraph')
                         if para:
-                            item_text = []
-                            for item in para.children:
-                                if isinstance(item, nodes.literal):
-                                    item_text.append(f"`{item.astext()}`")
-                                else:
-                                    item_text.append(item.astext())
-                            list_lines.append('- ' + ''.join(item_text))
+                            list_lines.append('- ' + DocutilsUtils.markdown_children(para))
                 if list_lines:
                     parts.append('\n'.join(list_lines))
 
@@ -190,13 +198,7 @@ class DocutilsUtils:
         paragraphs = [child for child in desc_content.children if child.tagname == 'paragraph']
         overview_parts = []
         for paragraph in paragraphs:
-            paragraph_text = []
-            for child in paragraph.children:
-                if isinstance(child, nodes.literal):
-                    paragraph_text.append(f"`{child.astext()}`")
-                else:
-                    paragraph_text.append(child.astext())
-            overview_parts.append(''.join(paragraph_text))
+            overview_parts.append(DocutilsUtils.markdown_children(paragraph))
 
         return '\n\n'.join(overview_parts)  
 

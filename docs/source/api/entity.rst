@@ -7,7 +7,8 @@ entity
 
    There are shortcut properties to attach some common components, while others are built-in (such as transforms, names and relationships)
 
-   **General**
+   General
+   #######
 
    .. lua:attribute:: active: boolean
 
@@ -50,7 +51,8 @@ entity
 
       .. helptext:: get or set the name of this entity
 
-   **Lifecycle**
+   Lifecycle
+   #########
 
    .. lua:method:: destroy([delay])
 
@@ -63,7 +65,8 @@ entity
 
       .. helptext:: mark this entity for destruction
 
-   **Components**
+   Components
+   ##########
 
    .. lua:method:: add(component, ...)
 
@@ -153,7 +156,8 @@ entity
 
       .. helptext:: dispatch a method call to this entity and its components
 
-   **Relationships**
+   Relationships
+   #############
 
    .. lua:attribute:: parent: entity
 
@@ -227,7 +231,8 @@ entity
 
       .. helptext:: move this entity after another in the hierarchy
 
-   **Transform**
+   Transform
+   #########
 
    .. lua:attribute:: position: vec3
 
@@ -387,7 +392,8 @@ entity
 
       .. helptext:: translate this entity in local space
 
-   **Sprite Properties**
+   Sprite Properties
+   #################
 
    .. lua:attribute:: sprite: image.slice
 
@@ -419,7 +425,8 @@ entity
 
       .. helptext:: get or set whether the sprite is flipped on y
 
-   **Mesh Properties**
+   Mesh Properties
+   ################
 
    .. lua:attribute:: mesh: mesh
 
@@ -433,7 +440,8 @@ entity
 
       .. helptext:: get or set the material attached to this entity
 
-   **UI Properties / Methods**
+   UI Properties / Methods
+   #######################
 
    .. lua:attribute:: size: vec2
 
@@ -479,7 +487,8 @@ entity
 
       .. helptext:: get or set whether clipping is enabled
 
-   **Physics2D Properties**
+   Physics2D Properties
+   ####################
 
    .. lua:attribute:: body2d: physics2d.body
 
@@ -505,7 +514,8 @@ entity
 
       .. helptext:: get all attached 2D physics joints
 
-   **Physics3D Properties**
+   Physics3D Properties
+   ####################
 
    .. lua:attribute:: body3d: physics3d.body
 
@@ -531,7 +541,8 @@ entity
 
       .. helptext:: get all attached 3D physics joints
 
-   **Lifecycle Callbacks**
+   Lifecycle Callbacks
+   ###################
 
    A series of handy callbacks that can be set which will be invoked automatically by scene systems
 
@@ -566,7 +577,8 @@ entity
 
       .. helptext:: callback invoked before this entity is destroyed
 
-   **Physics Callbacks**
+   Physics Callbacks
+   #################
 
    .. lua:attribute:: collisionBegan2d: function
 
@@ -580,7 +592,8 @@ entity
 
       .. helptext:: callback invoked when a 3D collision begins
 
-   **Simulation Callbacks**
+   Simulation Callbacks
+   ####################
 
    .. lua:attribute:: update: function
 
@@ -595,7 +608,8 @@ entity
       .. helptext:: callback invoked once per fixed update
 
 
-   **Interaction Callbacks**
+   Interaction Callbacks
+   #####################
 
    .. lua:attribute:: touched: function
 
