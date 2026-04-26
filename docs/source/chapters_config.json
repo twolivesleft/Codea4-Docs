@@ -1,0 +1,86 @@
+[
+  {
+    "id": "Graphics",
+    "title": "Graphics",
+    "subtitle": "Drawing shapes, images and styles in 2D and 3D",
+    "icon": "ChapterIconGraphics",
+    "entries": ["manual/drawing", "api/graphics", "api/style", "api/color", "api/image"]
+  },
+  {
+    "id": "Scenes",
+    "title": "Scenes & Entities",
+    "subtitle": "Creating and managing 3D scenes, entities and cameras",
+    "icon": "ChapterIconCraft",
+    "entries": ["manual/scenes", "api/scene", "api/entity", "api/camera", "api/light"]
+  },
+  {
+    "id": "Shaders",
+    "title": "Shaders & Meshes",
+    "subtitle": "3D mesh rendering, materials and GPU shaders",
+    "icon": "ChapterIconShaders",
+    "entries": ["manual/shaders", "api/mesh", "api/material", "api/shader", "api/gpu_noise_lib"]
+  },
+  {
+    "id": "Physics",
+    "title": "Physics",
+    "subtitle": "Dynamic motion with forces, joints and collisions",
+    "icon": "ChapterIconPhysics",
+    "entries": ["manual/physics2d", "api/physics2d", "manual/physics3d", "api/physics3d"]
+  },
+  {
+    "id": "Input",
+    "title": "Input",
+    "subtitle": "Responding to touches, keyboard and device motion",
+    "icon": "ChapterIconTouch",
+    "entries": ["manual/input", "api/input", "api/motion"]
+  },
+  {
+    "id": "Sounds",
+    "title": "Sound",
+    "subtitle": "Playing and generating audio and sound effects",
+    "icon": "ChapterIconSounds",
+    "entries": ["manual/sound", "api/sound"]
+  },
+  {
+    "id": "Storage",
+    "title": "Storage & Assets",
+    "subtitle": "Managing files, assets and persistent data",
+    "icon": "ChapterIconStorage",
+    "entries": ["manual/assets", "manual/file_operations", "api/file", "api/storage", "api/pick"]
+  },
+  {
+    "id": "Vector",
+    "title": "Math & Types",
+    "subtitle": "Vector, matrix and mathematical types",
+    "icon": "ChapterIconVector",
+    "entries": ["api/math_types", "api/matrix"]
+  },
+  {
+    "id": "Display",
+    "title": "UI & Viewer",
+    "subtitle": "User interface components and display settings",
+    "icon": "ChapterIconParameters",
+    "entries": ["api/ui", "api/viewer", "api/device", "api/inspector"]
+  },
+  {
+    "id": "Animation",
+    "title": "Animation",
+    "subtitle": "Animating values and objects using tweens",
+    "icon": "ChapterIconAnimation",
+    "entries": ["api/tween"]
+  },
+  {
+    "id": "Lua",
+    "title": "Lua Language",
+    "subtitle": "Tables, strings, math and Objective-C bridge",
+    "icon": "ChapterIconLua",
+    "entries": ["api/lua", "api/string", "api/require", "api/objc", "api/pasteboard"]
+  },
+  {
+    "id": "Codea",
+    "title": "Codea",
+    "subtitle": "How Codea works — setup, draw, callbacks and lifecycle",
+    "icon": "ChapterIconDisplay",
+    "entries": ["manual/codea", "manual/codea_3x"]
+  }
+]

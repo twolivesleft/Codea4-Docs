@@ -35,12 +35,35 @@ class LuaJSONBuilder(Builder):
         with open(path, 'w') as f:
             json.dump(data, f, indent=2)
 
+    def finish(self):
+        config_path = os.path.join(self.env.srcdir, 'chapters_config.json')
+        if not os.path.exists(config_path):
+            return
+        with open(config_path, 'r') as f:
+            chapters_config = json.load(f)
+        chapters_out = []
+        for chapter in chapters_config:
+            chapters_out.append({
+                'id': chapter['id'],
+                'title': chapter['title'],
+                'subtitle': chapter['subtitle'],
+                'icon': chapter.get('icon'),
+                'sources': [f"{e}.json" for e in chapter.get('entries', [])]
+            })
+        out_path = os.path.join(self.outdir, 'chapters.json')
+        print(f"Writing chapters index to {out_path}")
+        with open(out_path, 'w') as f:
+            json.dump(chapters_out, f, indent=2)
+
 class LuaJSONVisitor(nodes.NodeVisitor):
     def __init__(self, builder, doc):
         super().__init__(doc)
         self.entries = []
         self.class_stack = []
-        self.current_group = None
+        self.document_group = None   # top-level (file) title
+        self.section_group = None    # level-2 section title — used as group for sub-section overviews
+        self.current_group = None    # current group for API entries
+        self.current_name = None     # subsection title — used as name for overview entries
         self.current_section_content = []
 
     def has_desc_ancestor(self, node):
@@ -60,16 +83,49 @@ class LuaJSONVisitor(nodes.NodeVisitor):
         if isinstance(node.parent, section) and not self.has_desc_ancestor(node):
             self.current_section_content.append(OverviewContent(node.astext(), OverviewContentKind.CODE))
 
+    def visit_table(self, node):
+        if isinstance(node.parent, section) and not self.has_desc_ancestor(node):
+            title, header, rows = DocutilsUtils.extract_table(node)
+            self.current_section_content.append(OverviewContent({'title': title, 'header': header, 'rows': rows}, OverviewContentKind.TABLE))
+        raise nodes.SkipNode
+
     def visit_title(self, node):
         self.flush_content()
-        self.current_group = node.astext()
+        title_text = node.astext()
+        parent = node.parent
+        grandparent = parent.parent if parent else None
+        great_grandparent = grandparent.parent if grandparent else None
+
+        is_top_level = isinstance(grandparent, nodes.document) if parent else False
+        is_level2 = (isinstance(grandparent, nodes.section) and
+                     isinstance(great_grandparent, nodes.document)) if parent else False
+
+        if is_top_level:
+            self.document_group = title_text
+            self.section_group = None
+            self.current_name = None
+        elif is_level2:
+            self.section_group = title_text
+            self.current_name = None
+        else:
+            self.current_name = title_text
+        self.current_group = title_text
 
     def depart_section(self, node):
         self.flush_content()
 
     def flush_content(self):
         if self.current_section_content:
-            self.entries.append(LuaOverview(self.current_section_content, self.current_group))
+            if self.current_name is None:
+                # Content directly under a level-2 section (no sub-section entered yet).
+                # Group under the document title; name the overview after the section itself.
+                group = self.document_group or self.current_group
+                name = self.section_group
+            else:
+                # Content under a level-3+ sub-section — use the level-2 section as the group.
+                group = self.section_group or self.document_group or self.current_group
+                name = self.current_name
+            self.entries.append(LuaOverview(self.current_section_content, group, name))
             self.current_section_content = []
 
     def visit_text(self, node):

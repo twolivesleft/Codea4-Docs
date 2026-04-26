@@ -91,31 +91,40 @@ class DocutilsUtils:
                     if field_name and field_name.astext() == "Parameters":
                         field_body = field.next_node(condition=lambda n: n.tagname == 'field_body')
                         if field_body:
+                            # Sphinx renders multiple params as bullet_list, single param as paragraph
                             bullet_list = field_body.next_node(condition=lambda n: n.tagname == 'bullet_list')
+                            param_paragraphs = []
                             if bullet_list:
                                 for list_item in bullet_list.children:
-                                    param_name_node = list_item.next_node(condition=lambda n: n.tagname == 'literal_strong')
-                                    param_description_nodes = list_item.next_node(condition=lambda n: n.tagname == 'paragraph')
+                                    para = list_item.next_node(condition=lambda n: n.tagname == 'paragraph')
+                                    if para:
+                                        param_paragraphs.append(para)
+                            else:
+                                # Single parameter: field_body contains the paragraph directly
+                                for child in field_body.children:
+                                    if child.tagname == 'paragraph':
+                                        param_paragraphs.append(child)
 
-                                    if param_name_node and param_description_nodes:
-                                        param_name = param_name_node.astext().split('=')[0].strip()  # Handle default values here if specified
-                                        default_value = param_name_node.astext().split('=')[1].strip() if '=' in param_name_node.astext() else None
-                                        # Extract the type if available within parenthesis
-                                        param_type = None
-                                        description_text = param_description_nodes.astext()
+                            for param_description_nodes in param_paragraphs:
+                                param_name_node = param_description_nodes.next_node(condition=lambda n: n.tagname == 'literal_strong')
+                                if param_name_node and param_description_nodes:
+                                    param_name = param_name_node.astext().split('=')[0].strip()
+                                    default_value = param_name_node.astext().split('=')[1].strip() if '=' in param_name_node.astext() else None
+                                    param_type = None
+                                    description_text = param_description_nodes.astext()
 
-                                        if ('(' in description_text and ')' in description_text):
-                                            start = description_text.find('(') + 1
-                                            end = description_text.find(')')
-                                            param_type = description_text[start:end]
-                                            
-                                        # Description often follows the type enclosed in dash
-                                        param_description = description_text.split('–')[-1].strip()
-                                        param_details[param_name] = {
-                                            'type': param_type,
-                                            'description': param_description,
-                                            'default': default_value
-                                        }        
+                                    if ('(' in description_text and ')' in description_text):
+                                        start = description_text.find('(') + 1
+                                        end = description_text.find(')')
+                                        param_type = description_text[start:end]
+
+                                    # Description follows the type, after the em-dash separator
+                                    param_description = description_text.split('–')[-1].strip()
+                                    param_details[param_name] = {
+                                        'type': param_type,
+                                        'description': param_description,
+                                        'default': default_value
+                                    }        
 
         if param_list and isClass == False:
             for child in param_list.children:
@@ -174,7 +183,7 @@ class DocutilsUtils:
                     'code': code
                 })
 
-        # Uncaptioned code blocks (plain .. code-block:: lua) appear as bare literal_block nodes
+        # Uncaptioned code blocks and collapsible sections inside desc_content
         desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
         if desc_content:
             for child in desc_content.children:
@@ -186,9 +195,46 @@ class DocutilsUtils:
                             'title': '',
                             'code': code
                         })
+                elif child.__class__.__name__ == 'CollapseNode':
+                    # Collapsible section (.. collapse:: Title) — use the label as the sample title
+                    title = getattr(child, 'label', None) or 'Example'
+                    for literal in child.traverse(condition=lambda n: n.tagname == 'literal_block'):
+                        code = literal.astext()
+                        if code not in seen_code:
+                            seen_code.add(code)
+                            code_samples.append({
+                                'title': title,
+                                'code': code
+                            })
 
         return code_samples
     
+    @staticmethod
+    def extract_table(node):
+        title = None
+        header = []
+        rows = []
+
+        title_node = next((child for child in node.children if child.tagname == 'title'), None)
+        if title_node:
+            title = title_node.astext()
+
+        tgroup = next((child for child in node.traverse() if child.tagname == 'tgroup'), None)
+        if tgroup:
+            thead = next((child for child in tgroup.children if child.tagname == 'thead'), None)
+            if thead:
+                header_row = next((child for child in thead.children if child.tagname == 'row'), None)
+                if header_row:
+                    header = [entry.astext() for entry in header_row.children if entry.tagname == 'entry']
+
+            tbody = next((child for child in tgroup.children if child.tagname == 'tbody'), None)
+            if tbody:
+                for row in tbody.children:
+                    if row.tagname == 'row':
+                        rows.append([entry.astext() for entry in row.children if entry.tagname == 'entry'])
+
+        return title, header, rows
+
     @staticmethod
     def extract_overview(node):
         desc_content = next((child for child in node.children if child.tagname == 'desc_content'), None)
@@ -369,13 +415,14 @@ class LuaAttribute:
             self.module = DocutilsUtils.extract_module(node)
             self.syntax = DocutilsUtils.extract_syntax(node)
             self.examples = DocutilsUtils.extract_code_samples(node)
+            self.readonly = False
+            self.default_value = None
             self.type = self.extract_type(node)
             self.description = DocutilsUtils.extract_description(node)
             self.helptext = DocutilsUtils.extract_helptext(node)
             self.visibility = DocutilsUtils.extract_visibility(node)
             self.kind = kind
             self.group = group
-            self.default_value = None  # Initializing default value
         else:
             # Initialize from provided parameters
             self.name = name
@@ -386,23 +433,25 @@ class LuaAttribute:
             self.examples = examples
             self.helptext = helptext
             self.default_value = None
+            self.readonly = False
             self.visibility = visibility
             self.group = group
             self.kind = kind if kind else 'attribute'
 
     def extract_type(self, node):
-        # Finds the first 'desc_type' element and extracts its text, along with any default value if specified.
+        # Finds the first 'desc_type' element and extracts its text, stripping bracket qualifiers.
         type_node = next((child for child in node.traverse() if child.tagname == 'desc_type'), None)
         if type_node:
             type_text = type_node.astext()
-            # Check for default value pattern in the type text
-            if '[' in type_text and 'default' in type_text:
-                # Extract the type up to the '['
+            if '[' in type_text:
                 type_name = type_text[:type_text.find('[')].strip()
-                # Extract default value after 'default ='
-                default_start = type_text.find('default =') + len('default =')
-                default_end = type_text.find(']', default_start)
-                self.default_value = type_text[default_start:default_end].strip()
+                bracket_content = type_text[type_text.find('[')+1:type_text.find(']')].strip().lower()
+                if 'readonly' in bracket_content:
+                    self.readonly = True
+                if 'default =' in bracket_content:
+                    default_start = type_text.find('default =') + len('default =')
+                    default_end = type_text.find(']', default_start)
+                    self.default_value = type_text[default_start:default_end].strip()
                 return type_name
             return type_text
         return None
@@ -465,6 +514,7 @@ class LuaAttribute:
             'type': self.type,
             'group': self.group,
             'defaultValue': self.default_value,
+            'readonly': self.readonly,
             'description': self.description,
             'helptext': self.helptext
         }
@@ -474,9 +524,10 @@ class LuaAttribute:
 
 
 class LuaOverview:
-    def __init__(self, content, group=None):
+    def __init__(self, content, group=None, name=None):
         self.content = content
         self.group = group
+        self.name = name  # section title; group is the document/file title
 
     def __str__(self):
         return f"Overview\n\t{self.content}"
@@ -485,12 +536,14 @@ class LuaOverview:
         return {
             'kind': 'overview',
             'content': [c.to_dict() for c in self.content],
-            'group': self.group
+            'group': self.group,
+            'name': self.name
         }
 
 class OverviewContentKind(Enum):
     TEXT = "text"
     CODE = "code"
+    TABLE = "table"
 
 # Class to represent either code block or text content
 class OverviewContent:

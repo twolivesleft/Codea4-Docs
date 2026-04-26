@@ -483,6 +483,31 @@ Clipping
 Stencil
 #######
 
+.. lua:function:: stencil(state)
+               stencil()
+
+   Sets/gets the current stencil state for both front and back faces
+
+   .. helptext:: set the stencil state for front and back faces
+
+.. lua:function:: stencil(front, back)
+
+   Sets the current stencil state for front and back faces separately
+
+   .. helptext:: set separate stencil states for front and back faces
+
+Using Stencils
+**************
+
+A stencil state is configured using a table with the following properties:
+
+* ``reference``
+* ``condition``
+* ``readMask``
+* ``pass``
+* ``fail``
+* ``zfail``
+
 .. code-block:: lua
    :caption: A simple mask effect using stencils
 
@@ -490,19 +515,19 @@ Stencil
       background(40, 40, 50)
 
       -- When a pixel is drawn write 1 to the stencil buffer
-      style.stencil 
-      { 
-         reference = 1, 
-         pass = STENCIL_OP_REPLACE 
+      style.stencil
+      {
+         reference = 1,
+         pass = STENCIL_OP_REPLACE
       }
-      
-      -- Use opacity clip to only draw pixels when alpha is great than .99
+
+      -- Use opacity clip to only draw pixels when alpha is greater than .99
       style.opacityClip(0.99)
       style.blend(DISABLED) -- no blending needed
       matrix.push().transform2d(CurrentTouch.x, CurrentTouch.y, 1, 1, time.elapsed * 50)
       sprite(asset.builtin.Cargo_Bot.Codea_Icon, 0, 0, 400)
       matrix.pop()
-      
+
       style.blend(NORMAL)
       style.noOpacityClip()
       -- Only draw if stencil is equal to one using the equal test condition
@@ -511,40 +536,11 @@ Stencil
          reference = 1,
          condition = STENCIL_TEST_EQUAL
       }
-      -- This sets the line thickness
       sprite(asset.builtin.SpaceCute.Beetle_Ship, WIDTH/2, HEIGHT/2, 400)
    end
 
-Stencils are configured using a table with the following properties:
-
-* ``reference``
-* ``condition``
-* ``readMask``
-* ``pass``
-* ``fail`` 
-* ``zfail`` 
-
-.. lua:function:: stencil(state)
-                  stencil()
-
-   Sets/gets the current stencil state for both front and back faces
-
-   .. helptext:: set the stencil state for front and back faces
-
-.. lua:function:: stencil(front, back)
-
-   Sets/gets the current stencil state for both front and back faces
-
-   .. helptext:: set separate stencil states for front and back faces
-
-
-
-Constants - Stencil
-*******************
-
-Used by drawing commands and shaders to control stencil operations
-
-**Stencil Test (conditions)**
+Stencil Test
+************
 
 .. lua:attribute:: STENCIL_TEST_LESS: const
 
@@ -571,7 +567,8 @@ Used by drawing commands and shaders to control stencil operations
 
    .. helptext:: always stencil test constant
 
-**Stencil Operations (pass, fail, zfail)**
+Stencil Operations
+******************
 
 .. lua:attribute:: STENCIL_OP_ZERO: const
 
