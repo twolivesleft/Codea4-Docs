@@ -53,7 +53,7 @@
     "title": "Math & Types",
     "subtitle": "Vector, matrix and mathematical types",
     "icon": "ChapterIconVector",
-    "entries": ["api/math_types", "api/matrix"]
+    "entries": ["manual/vectors", "api/math_types", "api/matrix"]
   },
   {
     "id": "Display",
