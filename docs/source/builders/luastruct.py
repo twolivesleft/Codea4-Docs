@@ -62,6 +62,28 @@ class DocutilsUtils:
         if visibility_node:
             return visibility_node.attributes['value']
         return None
+
+    @staticmethod
+    def extract_editor(node):
+        editor_node = next((child for child in node.traverse() if child.tagname == 'editor'), None)
+        if editor_node:
+            return {
+                'roles': editor_node.attributes['roles']
+            }
+        return None
+
+    @staticmethod
+    def extract_symbol(node):
+        symbol_node = next((child for child in node.traverse() if child.tagname == 'symbol'), None)
+        if symbol_node:
+            symbol = {
+                'types': symbol_node.attributes['types']
+            }
+            group = symbol_node.attributes.get('group')
+            if group:
+                symbol['group'] = group
+            return symbol
+        return None
     
     @staticmethod
     def extract_module(node):
@@ -269,7 +291,7 @@ class LuaModule:
         }
 
 class LuaClass:
-    def __init__(self, node=None, group=None, name=None, description=None, module=None, helptext=None, syntax=None, parameters=None, examples=None, visibility=None):
+    def __init__(self, node=None, group=None, name=None, description=None, module=None, helptext=None, syntax=None, parameters=None, examples=None, visibility=None, editor=None, symbol=None):
         if node:
             # Initialize from a node
             self.name = DocutilsUtils.extract_name(node)
@@ -280,6 +302,8 @@ class LuaClass:
             self.parameters = DocutilsUtils.extract_parameters(node, True)
             self.examples = DocutilsUtils.extract_code_samples(node)
             self.visibility = DocutilsUtils.extract_visibility(node)
+            self.editor = DocutilsUtils.extract_editor(node)
+            self.symbol = DocutilsUtils.extract_symbol(node) or symbol
             self.group = group
         else:
             # Initialize from provided parameters
@@ -291,6 +315,8 @@ class LuaClass:
             self.parameters = parameters if parameters else []
             self.examples = examples if examples else []
             self.visibility = visibility
+            self.editor = editor
+            self.symbol = symbol
             self.group = group
 
         self.members = []
@@ -313,6 +339,10 @@ class LuaClass:
         }
         if self.visibility is not None:
             d['visibility'] = self.visibility
+        if self.editor is not None:
+            d['editor'] = self.editor
+        if self.symbol is not None:
+            d['symbol'] = self.symbol
         return d
     
 class LuaParameter:
@@ -352,7 +382,7 @@ class LuaReturn:
         }
 
 class LuaFunction:
-    def __init__(self, node, type, group=None):
+    def __init__(self, node, type, group=None, symbol=None):
         self.name = DocutilsUtils.extract_name(node)
         self.module = DocutilsUtils.extract_module(node)
         self.description = DocutilsUtils.extract_description(node)
@@ -362,6 +392,8 @@ class LuaFunction:
         self.syntax = DocutilsUtils.extract_syntax(node)
         self.examples = DocutilsUtils.extract_code_samples(node)
         self.visibility = DocutilsUtils.extract_visibility(node)
+        self.editor = DocutilsUtils.extract_editor(node)
+        self.symbol = DocutilsUtils.extract_symbol(node) or symbol
         self.returns = self.extract_returns(node)
         self.type = type
 
@@ -404,11 +436,15 @@ class LuaFunction:
         }
         if self.visibility is not None:
             d['visibility'] = self.visibility
+        if self.editor is not None:
+            d['editor'] = self.editor
+        if self.symbol is not None:
+            d['symbol'] = self.symbol
         return d
 
 
 class LuaAttribute:
-    def __init__(self, node=None, kind=None, group=None, name=None, type=None, module=None, description=None, helptext=None, syntax=None, examples=None, visibility=None):
+    def __init__(self, node=None, kind=None, group=None, name=None, type=None, module=None, description=None, helptext=None, syntax=None, examples=None, visibility=None, editor=None, symbol=None):
         if node:
             # Initialize from a node
             self.name = DocutilsUtils.extract_name(node)
@@ -421,6 +457,8 @@ class LuaAttribute:
             self.description = DocutilsUtils.extract_description(node)
             self.helptext = DocutilsUtils.extract_helptext(node)
             self.visibility = DocutilsUtils.extract_visibility(node)
+            self.editor = DocutilsUtils.extract_editor(node)
+            self.symbol = DocutilsUtils.extract_symbol(node) or symbol
             self.kind = kind
             self.group = group
         else:
@@ -435,6 +473,8 @@ class LuaAttribute:
             self.default_value = None
             self.readonly = False
             self.visibility = visibility
+            self.editor = editor
+            self.symbol = symbol
             self.group = group
             self.kind = kind if kind else 'attribute'
 
@@ -520,6 +560,10 @@ class LuaAttribute:
         }
         if self.visibility is not None:
             d['visibility'] = self.visibility
+        if self.editor is not None:
+            d['editor'] = self.editor
+        if self.symbol is not None:
+            d['symbol'] = self.symbol
         return d
 
 

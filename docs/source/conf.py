@@ -36,7 +36,9 @@ extensions = [
     'sphinx_copybutton',
     'sphinx_toolbox.collapse',
     'helptext',
-    'visibility'
+    'visibility',
+    'editor',
+    'codeasymbol'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -68,4 +70,3 @@ html_favicon = 'images/favicon.ico'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-

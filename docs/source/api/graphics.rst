@@ -11,6 +11,7 @@ Background
    Clears the current context with solid color, can also be used to set image backgrounds when combined with :lua:func:`context.push`
 
    .. helptext:: set the background color, image or shader
+   .. editor:: color
 
 .. lua:function:: background(cubeImage, [mipLevel = 0])
 
@@ -146,11 +147,13 @@ Sprites
    Draws a sprite using an asset - :lua:class:`image`, :lua:class:`asset.key` or :lua:class:`sprite.slice`
 
    .. helptext:: draw a sprite or image
+   .. editor:: sprite
 
 
 .. lua:function:: sprite(shader, x, y, w, h)
 
    .. helptext:: draw using a shader
+   .. editor:: shader
 
 
 Text
@@ -161,6 +164,7 @@ Text
    Draws one or more lines of text based on the current style. Use the optional width and height parameters to draw a fixed size text box with line wrapping enabled
 
    .. helptext:: draw text at a location
+   .. editor:: text
 
    - *Text Color* with :lua:func:`style.fill`
    - *Text Outline* with :lua:func:`style.stroke`

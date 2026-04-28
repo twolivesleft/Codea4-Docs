@@ -5,6 +5,8 @@ sound
 
 The sound module provides a way to play and manage sound effects and background music
 
+.. lua:currentmodule:: None
+
 .. lua:attribute:: SOUND_COIN: const
 
    Procedural coin sound preset (SFXR)
@@ -46,6 +48,8 @@ The sound module provides a way to play and manage sound effects and background 
    Procedural blip sound preset (SFXR)
 
    .. helptext:: blip sound effect constant
+
+.. lua:currentmodule:: sound
 
 .. lua:staticmethod:: play(preset[, seed])
 

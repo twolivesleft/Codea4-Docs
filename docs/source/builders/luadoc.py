@@ -65,6 +65,9 @@ class LuaJSONVisitor(nodes.NodeVisitor):
         self.current_group = None    # current group for API entries
         self.current_name = None     # subsection title — used as name for overview entries
         self.current_section_content = []
+        self.current_symbol = None
+        self.symbol_stack = []
+        self.desc_symbol_stack = []
 
     def has_desc_ancestor(self, node):
         """Walk up parent chain to check for desc ancestors"""
@@ -74,6 +77,9 @@ class LuaJSONVisitor(nodes.NodeVisitor):
                 return True
             current = current.parent
         return False
+
+    def visit_section(self, node):
+        self.symbol_stack.append(self.current_symbol)
 
     def visit_paragraph(self, node):
         if isinstance(node.parent, section) and not self.has_desc_ancestor(node):
@@ -113,6 +119,10 @@ class LuaJSONVisitor(nodes.NodeVisitor):
 
     def depart_section(self, node):
         self.flush_content()
+        self.current_symbol = self.symbol_stack.pop() if self.symbol_stack else None
+
+    def extract_symbol(self, node):
+        return DocutilsUtils.extract_symbol(node)
 
     def flush_content(self):
         if self.current_section_content:
@@ -138,24 +148,38 @@ class LuaJSONVisitor(nodes.NodeVisitor):
         if hasattr(node, 'attributes'):
             objtype = node.attributes.get('objtype')          
 
+            if getattr(node, 'tagname', None) == 'symbol' and not self.has_desc_ancestor(node):
+                self.current_symbol = {
+                    'types': node.attributes['types']
+                }
+                group = node.attributes.get('group')
+                if group:
+                    self.current_symbol['group'] = group
+                return
+
             # Flush content before any Lua object
             if objtype:
                 self.flush_content()
+                symbol = self.extract_symbol(node) or self.current_symbol
+                self.desc_symbol_stack.append(self.current_symbol)
+                self.current_symbol = symbol
+            else:
+                symbol = self.current_symbol
 
             if objtype == 'method':
-                method = LuaFunction(node, 'method', self.current_group)
+                method = LuaFunction(node, 'method', self.current_group, symbol)
                 self.add_to_current_scope(method)
 
             elif objtype == 'class':
-                cls = LuaClass(node, self.current_group)
+                cls = LuaClass(node, self.current_group, symbol=symbol)
                 self.add_to_current_scope(cls)
                 self.class_stack.append(cls)
 
             elif objtype == 'function':
-                self.entries.append(LuaFunction(node, 'function', self.current_group))
+                self.entries.append(LuaFunction(node, 'function', self.current_group, symbol))
 
             elif objtype == 'attribute' or objtype == 'classattribute':
-                attribute = LuaAttribute(node, objtype, self.current_group)
+                attribute = LuaAttribute(node, objtype, self.current_group, symbol=symbol)
                 self.add_to_current_scope(attribute)
 
                 # Check if this attribute should create an anonymous LuaClass
@@ -164,7 +188,7 @@ class LuaJSONVisitor(nodes.NodeVisitor):
                         lua_class_name = f"table#{attribute.module}#{attribute.name}"
                     else:
                         lua_class_name = f"table#{attribute.name}"
-                    lua_class = LuaClass(name=lua_class_name, description=attribute.description, module=attribute.module, group=self.current_group)
+                    lua_class = LuaClass(name=lua_class_name, description=attribute.description, module=attribute.module, group=self.current_group, symbol=symbol)
                     fields = attribute.extract_fields(node)
 
                     if fields:
@@ -175,16 +199,18 @@ class LuaJSONVisitor(nodes.NodeVisitor):
                         attribute.type = lua_class.name
 
             elif objtype == 'classattribute':
-                self.add_to_current_scope(LuaAttribute(node, objtype, self.current_group))
+                self.add_to_current_scope(LuaAttribute(node, objtype, self.current_group, symbol=symbol))
 
             elif objtype == 'staticmethod':
-                method = LuaFunction(node, 'staticmethod', self.current_group)
+                method = LuaFunction(node, 'staticmethod', self.current_group, symbol)
                 self.add_to_current_scope(method)
 
     def unknown_departure(self, node):  
         if hasattr(node, 'attributes'):            
             if node.attributes.get('objtype') == 'class':
                 self.class_stack.pop()
+            if node.attributes.get('objtype') and self.desc_symbol_stack:
+                self.current_symbol = self.desc_symbol_stack.pop()
 
     def generic_visit(self, node):
         pass
@@ -210,4 +236,3 @@ def get_attributes(obj):
     # and also not any of the built-in Python attributes (typically named with double underscores).
     attributes = inspect.getmembers(obj, lambda a: not(inspect.isroutine(a)))
     return [a for a in attributes if not (a[0].startswith('__') and a[0].endswith('__'))]
-

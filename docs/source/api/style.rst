@@ -52,6 +52,7 @@ General
    Sets/gets the fill color for use in vector drawing operations
 
    .. helptext:: set the fill color
+   .. editor:: color
 
 .. lua:function:: noFill()
 
@@ -64,12 +65,14 @@ General
    Gets the current stroke color for use in vector drawing operations
 
    .. helptext:: get the stroke color
+   .. editor:: color
    
 .. lua:function:: stroke(color)
 
    Sets the stroke color to the specified color, or a grayscale value
 
    .. helptext:: set the stroke color
+   .. editor:: color
 
    :param color: The color to set the stroke to, or a grayscale value
    :type color: color or number
@@ -82,6 +85,7 @@ General
    :param number alpha: The alpha value to set the stroke to
 
    .. helptext:: set the stroke color
+   .. editor:: color
 
 .. lua:function:: stroke(red, green, blue)
 
@@ -92,6 +96,7 @@ General
    :param number blue: The blue value to set the stroke to
 
    .. helptext:: set the stroke color
+   .. editor:: color
 
 .. lua:function:: stroke(red, green, blue, alpha)
 
@@ -103,6 +108,7 @@ General
    :param number alpha: The alpha value to set the stroke to
 
    .. helptext:: set the stroke color
+   .. editor:: color
 
 .. lua:function:: noStroke()
 
@@ -115,12 +121,14 @@ General
    Sets the tint color for use with :lua:func:`sprite` and :lua:meth:`mesh.draw`
 
    .. helptext:: set the tint color for images drawn with sprite()
+   .. editor:: color
 
 .. lua:function:: tint() -> r, g, b, a
 
    Gets the current tint color
 
    .. helptext:: get the tint color
+   .. editor:: color
 
 .. lua:function:: pixelScaling(scale)
 
@@ -189,6 +197,8 @@ General
 Constants - Shape Mode
 **********************
 
+.. lua:currentmodule:: None
+
 .. lua:attribute:: CORNER: const
 
    .. helptext:: corner rect mode constant
@@ -207,6 +217,8 @@ Constants - Shape Mode
 .. lua:attribute:: RADIUS: const
 
    .. helptext:: radius mode constant
+
+.. lua:currentmodule:: style
 
 .. lua:function:: sortOrder(order)
 
@@ -280,6 +292,8 @@ Functions
 
 Constants - Blend Modes
 ***********************
+
+.. lua:currentmodule:: None
 
 .. lua:attribute:: NORMAL: const
 
@@ -449,6 +463,8 @@ Constants - Blend Factors
 
    .. helptext:: source alpha saturate blend factor constant
 
+.. lua:currentmodule:: style
+
 Viewport
 ########
 
@@ -542,6 +558,8 @@ A stencil state is configured using a table with the following properties:
 Stencil Test
 ************
 
+.. lua:currentmodule:: None
+
 .. lua:attribute:: STENCIL_TEST_LESS: const
 
    .. helptext:: less-than stencil test constant
@@ -595,6 +613,8 @@ Stencil Operations
 
    .. helptext:: invert stencil operation constant
 
+.. lua:currentmodule:: style
+
 Text Style
 ##########
 
@@ -613,37 +633,60 @@ Text Style
 Constants - Text
 ****************
 
+.. lua:currentmodule:: None
+
 .. lua:attribute:: LEFT: const
+
+   .. symbol:: const
+      :group: text-alignment
 
    .. helptext:: left alignment constant
 
 
 .. lua:attribute:: CENTER: const
 
+   .. symbol:: const
+      :group: text-alignment
+
    .. helptext:: center mode constant
 
 
 .. lua:attribute:: RIGHT: const
+
+   .. symbol:: const
+      :group: text-alignment
 
    .. helptext:: right alignment constant
 
 
 .. lua:attribute:: TOP: const
 
+   .. symbol:: const
+      :group: text-alignment
+
    .. helptext:: top alignment constant
 
 
 .. lua:attribute:: MIDDLE: const
+
+   .. symbol:: const
+      :group: text-alignment
 
    .. helptext:: middle alignment constant
 
 
 .. lua:attribute:: BOTTOM: const
 
+   .. symbol:: const
+      :group: text-alignment
+
    .. helptext:: bottom alignment constant
 
 
 .. lua:attribute:: BASELINE: const
+
+   .. symbol:: const
+      :group: text-alignment
 
    .. helptext:: baseline alignment constant
 

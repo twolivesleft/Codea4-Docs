@@ -39,6 +39,7 @@ require
         require(asset.documents.MyOtherLibrary.MyOtherFeature)
 
    .. helptext:: import a Lua file from an asset key
+   .. editor:: import
 
 .. lua:class:: require
 
