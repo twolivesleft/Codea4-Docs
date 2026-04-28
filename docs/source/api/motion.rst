@@ -1,12 +1,9 @@
-Motion Overview
-===============
+Motion
+======
       
 Exposes Core Motion functionalities such as accessing the device's accelerometer, gyroscope, and magnetometer data.
 
 Tracking of motion metrics can impact performance and battery drain. Use this feature judiciously to avoid negatively affecting the user experience.
-
-Motion
-======
 
 .. lua:module:: motion
 
