@@ -1,6 +1,8 @@
 from docutils import nodes
 from enum import Enum
 
+_UNSET = object()
+
 class DocutilsUtils:
     @staticmethod
     def markdown_text(node):
@@ -324,6 +326,11 @@ class LuaClass:
     def __str__(self):
         return f"{self.name} [{self.module}]\n\t{self.description}"
 
+    def full_name(self):
+        if self.module:
+            return f"{self.module}.{self.name}"
+        return self.name
+
     def to_dict(self):
         d = {
             'name': self.name,
@@ -386,7 +393,7 @@ class LuaReturn:
         return d
 
 class LuaFunction:
-    def __init__(self, node, type, group=None, symbol=None):
+    def __init__(self, node, type, group=None, symbol=None, name=_UNSET, module=_UNSET, returns=None):
         self.name = DocutilsUtils.extract_name(node)
         self.module = DocutilsUtils.extract_module(node)
         self.description = DocutilsUtils.extract_description(node)
@@ -400,6 +407,12 @@ class LuaFunction:
         self.symbol = DocutilsUtils.extract_symbol(node) or symbol
         self.returns = self.extract_returns(node)
         self.type = type
+        if name is not _UNSET:
+            self.name = name
+        if module is not _UNSET:
+            self.module = module
+        if returns is not None:
+            self.returns = returns
 
     def parse_return_type(self, type_text):
         if '$' not in type_text:

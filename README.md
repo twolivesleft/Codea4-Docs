@@ -108,6 +108,48 @@ autocomplete and type lookup, and `displayType` for Reference display. The
 private class is authored explicitly so function arguments and returned table
 fields can differ.
 
+### Constructors
+
+Document constructors as a `lua:staticmethod` nested inside the class, using the
+same callable name as the class. The `luadoc` builder treats same-name nested
+staticmethods as constructors and emits `kind: "constructor"` in JSON, so Codea
+can show constructor rows and infer constructor return types without implying a
+`Type.Type()` API.
+
+```rst
+.. lua:class:: mesh
+
+   .. lua:staticmethod:: mesh([submeshCount])
+
+      Create an empty mesh.
+```
+
+For module-scoped and dotted classes, keep the constructor signature aligned
+with the public call:
+
+```rst
+.. lua:module:: physics2d
+
+.. lua:class:: world
+
+   .. lua:staticmethod:: world()
+```
+
+```rst
+.. lua:class:: gesture.tap
+
+   .. lua:staticmethod:: gesture.tap(callback)
+```
+
+Rules:
+
+- Use same-name nested staticmethods only for constructors.
+- Do not document a true static method with the same name as its type.
+- Repeat the same constructor staticmethod with different signatures to document
+  overloads.
+- Continue using ordinary `lua:staticmethod` entries for real static factories,
+  such as `mesh.sphere`, `image.cube`, and `shader.compute`.
+
 ### Symbol Annotations
 
 Use `.. symbol::` for syntax-highlighting classifications. Symbol annotations

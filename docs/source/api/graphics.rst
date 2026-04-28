@@ -6,12 +6,31 @@ graphics commands
 Background
 ##########
 
-.. lua:function:: background(<color>)
+.. lua:function:: background(red, green, blue, alpha)
 
    Clears the current context with solid color, can also be used to set image backgrounds when combined with :lua:func:`context.push`
 
-   .. helptext:: set the background color, image or shader
+   :param red: The red component of the color (0-255)
+   :type red: number
+   :param green: The green component of the color (0-255)
+   :type green: number
+   :param blue: The blue component of the color (0-255)
+   :type blue: number
+   :param alpha: The alpha component of the color (0-255)
+   :type alpha: number
+
+   .. helptext:: set the background color
    .. editor:: color
+
+.. lua:function:: background(color)
+
+   Clears the current context with solid color, can also be used to set image backgrounds when combined with :lua:func:`context.push`
+
+   :param color: The color to set the background to
+   :type color: color
+
+   .. helptext:: set the background color
+   .. editor:: color      
 
 .. lua:function:: background(cubeImage, [mipLevel = 0])
 
@@ -20,11 +39,16 @@ Background
    .. helptext:: clear the background with a cube image
 
    :param cubeImage: The image to clear the background with
+   :type cubeImage: image
    :param mipLevel: The mip level of the image to use, useful for displaying pre-blurred image mips, such as those calculated using :lua:meth:`image.generateIrradiance`
+   :type mipLevel: number
 
 .. lua:function:: background(shader)
 
    Clears the current background using a custom shader
+
+   :param shader: The shader to use when clearing the background, should be a shader that is compatible with sprite rendering (i.e. uses the same vertex attributes)
+   :type shader: shader
 
    .. helptext:: clear the background with a shader
 
@@ -41,6 +65,15 @@ A set of graphics functions which are so commonly used they are in the global na
 .. lua:function:: line(x1, y1, x2, y2)
 
    Draws 2D line from the start point (x1, y1) to the end point (x2, y2) based on the current style:
+
+   :param x1: the x coordinate of the start point
+   :type x1: number
+   :param y1: the y coordinate of the start point
+   :type y1: number
+   :param x2: the x coordinate of the end point
+   :type x2: number
+   :param y2: the y coordinate of the end point
+   :type y2: number
 
    - *Color* with :lua:func:`style.stroke`
    - *Width* with :lua:func:`style.strokeWidth`

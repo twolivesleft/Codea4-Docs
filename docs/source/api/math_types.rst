@@ -219,12 +219,11 @@ Math
 
 .. lua:class:: vec3
 
-   .. lua:staticmethod:: vec3(x)
-                         vec3(x, y, z)
+   .. lua:staticmethod:: vec3(x, y, z)
 
-      Create a new ``vec3`` by setting all components to the same value, or each one individually
+      Create a new ``vec3`` by setting each component individually
 
-      :param x: The x component (also used for y and z when called with a single argument)
+      :param x: The x component
       :type x: number
       :param y: The y component
       :type y: number
@@ -232,6 +231,17 @@ Math
       :type z: number
 
       .. helptext:: create a new vec3
+
+   .. lua:staticmethod:: vec3()
+
+      Create a new ``vec3`` by setting all components to zero
+
+   .. lua:staticmethod:: vec3(v)
+
+      Create a new ``vec3`` by setting all components to the same value
+
+      :param v: The x, y and z values
+      :type v: number         
 
    .. lua:staticmethod:: min(v1, v2)
 

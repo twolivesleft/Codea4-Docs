@@ -208,7 +208,20 @@ class LuaJSONVisitor(nodes.NodeVisitor):
                 self.add_to_current_scope(LuaAttribute(node, objtype, self.current_group, symbol=symbol))
 
             elif objtype == 'staticmethod':
-                method = LuaFunction(node, 'staticmethod', self.current_group, symbol)
+                if self.is_constructor_node(node):
+                    current_class = self.class_stack[-1]
+                    parsed = LuaFunction(node, 'constructor', self.current_group, symbol)
+                    method = LuaFunction(
+                        node,
+                        'constructor',
+                        self.current_group,
+                        symbol,
+                        name=current_class.name,
+                        module=current_class.module,
+                        returns=parsed.returns or [LuaReturn(type_hint=current_class.full_name())]
+                    )
+                else:
+                    method = LuaFunction(node, 'staticmethod', self.current_group, symbol)
                 self.add_to_current_scope(method)
 
     def unknown_departure(self, node):  
@@ -229,6 +242,14 @@ class LuaJSONVisitor(nodes.NodeVisitor):
             self.class_stack[-1].members.append(element)
         else:
             self.entries.append(element)
+
+    def is_constructor_node(self, node):
+        if not self.class_stack:
+            return False
+
+        method_name = DocutilsUtils.extract_name(node)
+        class_name = self.class_stack[-1].name
+        return method_name == class_name.split('.')[-1]
 
 def setup(app):
     app.add_builder(LuaJSONBuilder)
