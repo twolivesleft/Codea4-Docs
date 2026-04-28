@@ -32,6 +32,17 @@ Motion
    - ``motion.referenceFrame.XMagneticNorthZVertical``: The X-axis points toward the magnetic north and the Z-axis is vertical.
    - ``motion.referenceFrame.XTrueNorthZVertical``: The X-axis points toward the true north and the Z-axis is vertical.
 
+.. lua:attribute:: referenceFrame: table
+
+   Reference frame constants for motion tracking.
+
+   .. helptext:: motion reference frame constants
+
+   :param const XArbitraryZVertical: The X-axis is arbitrary and the Z-axis is vertical.
+   :param const XArbitraryCorrectedZVertical: The X-axis is arbitrary and the Z-axis is vertical. If available, the magnetometer will be used to correct for accumulated yaw errors.
+   :param const XMagneticNorthZVertical: The X-axis points toward the magnetic north and the Z-axis is vertical.
+   :param const XTrueNorthZVertical: The X-axis points toward the true north and the Z-axis is vertical.
+
 .. lua:function:: stop()
 
    Stop tracking motion metrics and set autoStart to false.
@@ -64,17 +75,15 @@ Motion
 
    .. helptext:: current rotation rate
 
-.. lua:attribute:: sensorLocation: integer
+.. lua:attribute:: sensorLocation: table
 
-   The location of the device's sensors.
+   Sensor location constants.
 
-   .. helptext:: location of the motion sensors
+   .. helptext:: motion sensor location constants
 
-   The value can be one of the following:
-
-   - ``motion.sensorLocation.default``: The location of the device's sensors is the default one.
-   - ``motion.sensorLocation.headphoneLeft``: The device's sensors are located near the left headphone.
-   - ``motion.sensorLocation.headphoneRight``: The device's sensors are located near the right headphone.
+   :param const default: The location of the device's sensors is the default one.
+   :param const headphoneLeft: The device's sensors are located near the left headphone.
+   :param const headphoneRight: The device's sensors are located near the right headphone.
 
 .. lua:attribute:: heading: number
 
@@ -85,7 +94,7 @@ Motion
 Device Orientation
 ==================
 
-.. lua:class:: attitude
+.. lua:attribute:: attitude: table
 
    Represents a measurement of your device attitude. This orientation of a body relative to a given frame of reference.
 
@@ -93,68 +102,32 @@ Device Orientation
 
    The value can be one of the following ``motion.referenceFrame.XArbitraryZVertical``, ``motion.referenceFrame.XArbitraryCorrectedZVertical``, ``motion.referenceFrame.XMagneticNorthZVertical``, ``motion.referenceFrame.XTrueNorthZVertical``.
 
-   :param pitch: The pitch of the device, in radians.
-   :type pitch: number
-
-   :param yaw: The yaw of the device, in radians.
-   :type yaw: number
-
-   :param roll: The roll of the device, in radians.
-   :type roll: number   
-
-   :param rotationMatrix: The rotation matrix that describes the device's orientation.
-   :type rotationMatrix: mat3x3
-
-   :param quaternion: The quaternion that describes the device's orientation.
-   :type quaternion: quat
-
-   :param referenceFrame: The reference frame in which motion metrics are tracked.
-   :type referenceFrame: integer      
-
-   .. lua:attribute:: XArbitraryZVertical: integer
-
-      The X-axis is arbitrary and the Z-axis is vertical.
-
-      .. helptext:: arbitrary x axis, vertical z reference frame
-
-   .. lua:attribute:: XArbitraryCorrectedZVertical: integer
-
-      The X-axis is arbitrary and the Z-axis is vertical. The system will attempt to correct for the device's orientation.
-
-      .. helptext:: corrected arbitrary x axis, vertical z reference frame
-
-   .. lua:attribute:: XMagneticNorthZVertical: integer
-      
-      The X-axis points toward the magnetic north and the Z-axis is vertical.
-
-      .. helptext:: magnetic north x axis, vertical z reference frame
-
-   .. lua:attribute:: XTrueNorthZVertical: integer
-      
-      The X-axis points toward the true north and the Z-axis is vertical.
-
-      .. helptext:: true north x axis, vertical z reference frame
+   :param number pitch: The pitch of the device, in radians.
+   :param number yaw: The yaw of the device, in radians.
+   :param number roll: The roll of the device, in radians.
+   :param mat3x3 rotationMatrix: The rotation matrix that describes the device's orientation.
+   :param quat quaternion: The quaternion that describes the device's orientation.
+   :param integer referenceFrame: The reference frame in which motion metrics are tracked.
 
 Magnetic Field Data
 ===================
 
-.. lua:class:: magnetic
+.. lua:attribute:: magnetic: table
 
-   .. lua:attribute:: field: vec3
+   Magnetic field data.
 
-      The magnetic field vector in the device's reference frame.
+   .. helptext:: current magnetic field data
 
-      .. helptext:: get the magnetic field vector
-   
-   .. lua:attribute:: accuracy: integer
+   :param vec3 field: The magnetic field vector in the device's reference frame.
+   :param integer accuracy: The accuracy of the magnetic field data.
 
-      The accuracy of the magnetic field data.
+.. lua:attribute:: magneticAccuracy: table
 
-      The value can be one of the following:
+   Magnetic field accuracy constants.
 
-      - ``motion.magneticAccuracy.uncalibrated``: The magnetic field data is uncalibrated.
-      - ``motion.magneticAccuracy.low``: The magnetic field data is of low accuracy.
-      - ``motion.magneticAccuracy.medium``: The magnetic field data is of medium accuracy.
-      - ``motion.magneticAccuracy.high``: The magnetic field data is of high accuracy.
+   .. helptext:: magnetic field accuracy constants
 
-      .. helptext:: get the magnetic field accuracy
+   :param const uncalibrated: The magnetic field data is uncalibrated.
+   :param const low: The magnetic field data is of low accuracy.
+   :param const medium: The magnetic field data is of medium accuracy.
+   :param const high: The magnetic field data is of high accuracy.
