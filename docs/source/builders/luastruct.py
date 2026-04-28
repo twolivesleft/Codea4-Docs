@@ -368,18 +368,22 @@ class LuaParameter:
         }
     
 class LuaReturn:
-    def __init__(self, type_hint=None, description=None):
+    def __init__(self, type_hint=None, description=None, display_type=None):
         self.type_hint = type_hint
         self.description = description
+        self.display_type = display_type
 
     def __str__(self):
         return f"Returns `{self.type_hint}`\n\t{self.description}"
 
     def to_dict(self):
-        return {
+        d = {
             'type': self.type_hint,
             'description': self.description
         }
+        if self.display_type is not None:
+            d['displayType'] = self.display_type
+        return d
 
 class LuaFunction:
     def __init__(self, node, type, group=None, symbol=None):
@@ -397,6 +401,19 @@ class LuaFunction:
         self.returns = self.extract_returns(node)
         self.type = type
 
+    def parse_return_type(self, type_text):
+        if '$' not in type_text:
+            return type_text, None
+
+        display_type, lookup_type = type_text.split('$', 1)
+        display_type = display_type.strip()
+        lookup_type = lookup_type.strip()
+
+        if lookup_type.startswith('private.') and self.module:
+            lookup_type = f"{self.module}.{lookup_type}"
+
+        return lookup_type, display_type
+
     def extract_returns(self, node):
         returns = []
         return_nodes = node.next_node(condition=lambda n: n.tagname == 'field_list')
@@ -409,11 +426,13 @@ class LuaFunction:
                     # We assume there's an <inline> tag wrapping the type description
                     for para in field.traverse(nodes.paragraph):
                         type_text = ''.join([n.astext() for n in para.traverse() if isinstance(n, nodes.Text)])
+                        type_hint, display_type = self.parse_return_type(type_text)
                         if returns:
-                            returns[0].type_hint = type_text  # Assuming only one return entry is common
+                            returns[0].type_hint = type_hint  # Assuming only one return entry is common
+                            returns[0].display_type = display_type
                         else:
                             # In case the return type is specified before the description
-                            returns.append(LuaReturn(type_hint=type_text))
+                            returns.append(LuaReturn(type_hint=type_hint, display_type=display_type))
         return returns
 
     def __str__(self):
@@ -444,7 +463,7 @@ class LuaFunction:
 
 
 class LuaAttribute:
-    def __init__(self, node=None, kind=None, group=None, name=None, type=None, module=None, description=None, helptext=None, syntax=None, examples=None, visibility=None, editor=None, symbol=None):
+    def __init__(self, node=None, kind=None, group=None, name=None, type=None, module=None, description=None, helptext=None, syntax=None, examples=None, visibility=None, editor=None, symbol=None, display_type=None):
         if node:
             # Initialize from a node
             self.name = DocutilsUtils.extract_name(node)
@@ -461,6 +480,7 @@ class LuaAttribute:
             self.symbol = DocutilsUtils.extract_symbol(node) or symbol
             self.kind = kind
             self.group = group
+            self.display_type = None
         else:
             # Initialize from provided parameters
             self.name = name
@@ -477,6 +497,7 @@ class LuaAttribute:
             self.symbol = symbol
             self.group = group
             self.kind = kind if kind else 'attribute'
+            self.display_type = display_type
 
     def extract_type(self, node):
         # Finds the first 'desc_type' element and extracts its text, stripping bracket qualifiers.
@@ -560,6 +581,8 @@ class LuaAttribute:
         }
         if self.visibility is not None:
             d['visibility'] = self.visibility
+        if self.display_type is not None:
+            d['displayType'] = self.display_type
         if self.editor is not None:
             d['editor'] = self.editor
         if self.symbol is not None:

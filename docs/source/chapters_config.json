@@ -1,5 +1,12 @@
 [
   {
+    "id": "Codea",
+    "title": "Getting Started",
+    "subtitle": "How Codea works — setup, draw, callbacks and lifecycle",
+    "icon": "ChapterIconDisplay",
+    "entries": ["manual/codea", "manual/codea_3x"]
+  },  
+  {
     "id": "Graphics",
     "title": "Graphics",
     "subtitle": "Drawing shapes, images and styles in 2D and 3D",
@@ -21,19 +28,33 @@
     "entries": ["manual/shaders", "api/mesh", "api/material", "api/shader", "api/gpu_noise_lib"]
   },
   {
-    "id": "Physics",
-    "title": "Physics",
-    "subtitle": "Dynamic motion with forces, joints and collisions",
+    "id": "Physics2D",
+    "title": "Physics 2D",
+    "subtitle": "Dynamic motion with forces, joints and collisions in 2D",
     "icon": "ChapterIconPhysics",
-    "entries": ["manual/physics2d", "api/physics2d", "manual/physics3d", "api/physics3d"]
+    "entries": ["manual/physics2d", "api/physics2d"]
+  },
+  {
+    "id": "Physics3D",
+    "title": "Physics 3D",
+    "subtitle": "Dynamic motion with forces, joints and collisions in 3D",
+    "icon": "ChapterIconPhysics",
+    "entries": ["manual/physics3d", "api/physics3d"]
   },
   {
     "id": "Input",
-    "title": "Input",
-    "subtitle": "Responding to touches, keyboard and device motion",
+    "title": "Touches & Input",
+    "subtitle": "Responding to touches, keyboard and mouse",
     "icon": "ChapterIconTouch",
-    "entries": ["manual/input", "api/input", "api/motion"]
+    "entries": ["manual/input", "api/input"]
   },
+  {
+    "id": "Motion",
+    "title": "Device Motion",
+    "subtitle": "Responding to device motion",
+    "icon": "ChapterIconAccelerometer",
+    "entries": ["api/motion"]
+  },  
   {
     "id": "Sounds",
     "title": "Sound",
@@ -50,17 +71,17 @@
   },
   {
     "id": "Vector",
-    "title": "Math & Types",
+    "title": "Vector Math",
     "subtitle": "Vector, matrix and mathematical types",
     "icon": "ChapterIconVector",
     "entries": ["manual/vectors", "api/math_types", "api/matrix"]
   },
   {
     "id": "Display",
-    "title": "UI & Viewer",
+    "title": "Display & Viewer",
     "subtitle": "User interface components and display settings",
     "icon": "ChapterIconParameters",
-    "entries": ["api/ui", "api/viewer", "api/device", "api/inspector"]
+    "entries": ["api/viewer", "api/device", "api/inspector", "api/ui"]
   },
   {
     "id": "Animation",
@@ -71,16 +92,16 @@
   },
   {
     "id": "Lua",
-    "title": "Lua Language",
-    "subtitle": "Tables, strings, math and Objective-C bridge",
+    "title": "Lua",
+    "subtitle": "Tables, strings, and math",
     "icon": "ChapterIconLua",
-    "entries": ["api/lua", "api/string", "api/require", "api/objc", "api/pasteboard"]
+    "entries": ["api/lua", "api/string", "api/require", "api/pasteboard"]
   },
   {
-    "id": "Codea",
-    "title": "Codea",
-    "subtitle": "How Codea works — setup, draw, callbacks and lifecycle",
-    "icon": "ChapterIconDisplay",
-    "entries": ["manual/codea", "manual/codea_3x"]
+    "id": "ObjC",
+    "title": "Objective-C",
+    "subtitle": "Interfacing with Objective-C code",
+    "icon": "ChapterIconObjC",
+    "entries": ["api/objc"]
   }
 ]

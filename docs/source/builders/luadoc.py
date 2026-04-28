@@ -176,27 +176,33 @@ class LuaJSONVisitor(nodes.NodeVisitor):
                 self.class_stack.append(cls)
 
             elif objtype == 'function':
-                self.entries.append(LuaFunction(node, 'function', self.current_group, symbol))
+                function = LuaFunction(node, 'function', self.current_group, symbol)
+                self.entries.append(function)
 
             elif objtype == 'attribute' or objtype == 'classattribute':
                 attribute = LuaAttribute(node, objtype, self.current_group, symbol=symbol)
                 self.add_to_current_scope(attribute)
 
-                # Check if this attribute should create an anonymous LuaClass
+                # A table attribute with documented fields represents a structural
+                # table type for Codea's autocomplete. Keep the public attribute
+                # display type as `table`, but point lookup at a private module-
+                # scoped class that carries the field metadata.
                 if attribute.type == 'table':
                     if attribute.module:
-                        lua_class_name = f"table#{attribute.module}#{attribute.name}"
+                        lua_class_name = f"private.{attribute.name}"
+                        lookup_type = f"{attribute.module}.{lua_class_name}"
                     else:
-                        lua_class_name = f"table#{attribute.name}"
-                    lua_class = LuaClass(name=lua_class_name, description=attribute.description, module=attribute.module, group=self.current_group, symbol=symbol)
+                        lua_class_name = f"private.{attribute.name}"
+                        lookup_type = lua_class_name
+                    lua_class = LuaClass(name=lua_class_name, description=attribute.description, module=attribute.module, group=self.current_group, visibility='private', symbol=symbol)
                     fields = attribute.extract_fields(node)
 
                     if fields:
                         for field in fields:
                             lua_class.members.append(field)
                         self.add_to_current_scope(lua_class)
-                        # Update the attribute's type to refer to this new anonymous class
-                        attribute.type = lua_class.name
+                        attribute.type = lookup_type
+                        attribute.display_type = 'table'
 
             elif objtype == 'classattribute':
                 self.add_to_current_scope(LuaAttribute(node, objtype, self.current_group, symbol=symbol))
@@ -223,7 +229,6 @@ class LuaJSONVisitor(nodes.NodeVisitor):
             self.class_stack[-1].members.append(element)
         else:
             self.entries.append(element)
-
 
 def setup(app):
     app.add_builder(LuaJSONBuilder)

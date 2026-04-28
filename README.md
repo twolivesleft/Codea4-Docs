@@ -66,6 +66,48 @@ Constants
 Here `style.fill` is namespaced, `LEFT` is global, and later functions return to
 the `style` namespace.
 
+### Structural Table Return Types
+
+Use `:rtype: table$private.<name>` when a function returns a generic Lua table
+but Codea should understand the specific fields of that returned table for
+tooling. Text before `$` is the documentation-facing type. Text after `$` is the
+lookup type. `private.<name>` is module-relative, so inside an `objc` module it
+becomes `objc.private.<name>` in Codea's JSON.
+
+```rst
+.. lua:module:: objc
+
+.. lua:function:: insets(top, left, bottom, right)
+
+   Create a UIEdgeInsets.
+
+   :param top: top value of the UIEdgeInsets
+   :type top: number
+   :param left: left value of the UIEdgeInsets
+   :type left: number
+   :param bottom: bottom value of the UIEdgeInsets
+   :type bottom: number
+   :param right: right value of the UIEdgeInsets
+   :type right: number
+   :return: The UIEdgeInsets struct.
+   :rtype: table$private.insets
+
+.. lua:class:: private.insets
+
+   .. visibility:: private
+
+   .. lua:attribute:: top: number
+   .. lua:attribute:: left: number
+   .. lua:attribute:: bottom: number
+   .. lua:attribute:: right: number
+```
+
+The `luadoc` builder emits the return metadata as `type:
+"objc.private.insets"` and `displayType: "table"`. Codea uses `type` for
+autocomplete and type lookup, and `displayType` for Reference display. The
+private class is authored explicitly so function arguments and returned table
+fields can differ.
+
 ### Symbol Annotations
 
 Use `.. symbol::` for syntax-highlighting classifications. Symbol annotations
