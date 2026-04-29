@@ -132,8 +132,10 @@ class DocutilsUtils:
                             for param_description_nodes in param_paragraphs:
                                 param_name_node = param_description_nodes.next_node(condition=lambda n: n.tagname == 'literal_strong')
                                 if param_name_node and param_description_nodes:
-                                    param_name = param_name_node.astext().split('=')[0].strip()
-                                    default_value = param_name_node.astext().split('=')[1].strip() if '=' in param_name_node.astext() else None
+                                    param_text = param_name_node.astext()
+                                    param_parts = param_text.split('=', 1)
+                                    param_name = param_parts[0].strip()
+                                    default_value = param_parts[1].strip() if len(param_parts) > 1 else None
                                     param_type = None
                                     description_text = param_description_nodes.astext()
 
@@ -154,8 +156,10 @@ class DocutilsUtils:
             for child in param_list.children:
                 if child.tagname == 'desc_parameter' or child.tagname == 'desc_optional':
                     for param_node in child.children:
-                        param_name = param_node.astext().split('=')[0].strip()
-                        default_value = param_node.astext().split('=')[1].strip() if '=' in param_node.astext() else None
+                        param_text = param_node.astext()
+                        param_parts = param_text.split('=', 1)
+                        param_name = param_parts[0].strip()
+                        default_value = param_parts[1].strip() if len(param_parts) > 1 else None
                         optional = child.tagname == 'desc_optional'
                         param_info = param_details.get(param_name, {})
                         params.append(LuaParameter(name=param_name,
@@ -548,10 +552,12 @@ class LuaAttribute:
                         
                         if param_name_node and param_description_node:
                             # Extract the parameter name
-                            param_name = param_name_node.astext().split('=')[0].strip()
+                            param_text = param_name_node.astext()
+                            param_parts = param_text.split('=', 1)
+                            param_name = param_parts[0].strip()
                             
                             # Handle default values if specified
-                            default_value = param_name_node.astext().split('=')[1].strip() if '=' in param_name_node.astext() else None
+                            default_value = param_parts[1].strip() if len(param_parts) > 1 else None
                             
                             # Extract the type from the description if available within parenthesis
                             param_type = None
