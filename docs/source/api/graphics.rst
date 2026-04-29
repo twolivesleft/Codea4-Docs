@@ -145,11 +145,17 @@ A set of graphics functions which are so commonly used they are in the global na
    Draws a 2D arc with a given origin, radius and start, end angles + direction
 
    :param x: x coordinate of the arc origin
+   :type x: number
    :param y: y coordinate of the arc origin
+   :type y: number
    :param radius: the radius arc
+   :type radius: number
    :param startAngle: the start angle of the arc (in degrees)
+   :type startAngle: number
    :param endAngle: the end angle of the arc (in degrees)
+   :type endAngle: number
    :param dir: the direction of the arc, 1 or clockwise, -1 for anti-clockwise
+   :type dir: integer
 
    .. helptext:: draw a 2D arc
 
@@ -160,15 +166,50 @@ A set of graphics functions which are so commonly used they are in the global na
 
    .. helptext:: draw a circle or oval
 
-.. lua:function:: rect(x, y, w, h)
-                  rect(x, y, w, h, r)
-                  rect(x, y, w, h, r1, r2, r3, r4)
+.. lua:function:: rect(x, y, w, h, [radius = 0])
 
    Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on :lua:func:`style.shapeMode`
 
-   Additional arguments allow for rounded corners (either all one radius or four separate radii)
+   Optional parameter ``radius`` specified the corner radius
+
+   :param x: the x coordinate of the rectangle
+   :type x: number
+   :param y: the y coordinate of the rectangle
+   :type y: number
+   :param w: the width of the rectangle
+   :type w: number
+   :param h: the height of the rectangle
+   :type h: number
+   :param radius: the radius of the rounded corners
+   :type radius: number
 
    .. helptext:: draw a rectangle
+
+.. lua:function:: rect(x, y, w, h, r1, r2, r3, r4)
+
+   Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on :lua:func:`style.shapeMode`
+
+   The corner radius of each corner can be set independently using the additional parameters r1, r2, r3 and r4
+
+   :param x: the x coordinate of the rectangle
+   :type x: number
+   :param y: the y coordinate of the rectangle
+   :type y: number
+   :param w: the width of the rectangle
+   :type w: number
+   :param h: the height of the rectangle
+   :type h: number
+   :param r1: the radius of the top-left corner
+   :type r1: number
+   :param r2: the radius of the top-right corner
+   :type r2: number
+   :param r3: the radius of the bottom-right corner
+   :type r3: number
+   :param r4: the radius of the bottom-left corner
+   :type r4: number
+
+   .. helptext:: draw a rectangle with rounded corners      
+
 
 Sprites
 #######
