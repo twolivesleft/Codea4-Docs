@@ -18,8 +18,7 @@ function setup()
     -- Load an image atlas    
     local adventure = asset.builtin.Pixel_Adventure
     slime = image.read(adventure.Enemies.Slime.."/Idle-Run (44x30).png")
-    slime.sampler.u = image.clamp
-    slime.sampler.v = image.clamp
+    slime.wrap = image.wrap.clamp
     
     -- Slice up the atlas using the sprite cell size
     -- Individual slices can be accessed with atlas[i]

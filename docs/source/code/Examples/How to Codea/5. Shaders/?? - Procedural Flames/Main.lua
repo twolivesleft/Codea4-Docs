@@ -232,8 +232,8 @@ function setup()
     
     trails = shader.read(asset.Trails)
     trailEffect = shader.read(asset.Trail_Effect_Baked)
-    trailEffect._gradient1.sampler.u = image.clamp
-    trailEffect._gradient.sampler.u = image.clamp
+    trailEffect._gradient1.sampler.u = image.wrap.clamp
+    trailEffect._gradient.sampler.u = image.wrap.clamp
     --trailEffect._gradient = trailEffect._gradient
     
     
