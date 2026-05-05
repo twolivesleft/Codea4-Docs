@@ -1,0 +1,107 @@
+[
+  {
+    "id": "Codea",
+    "title": "Getting Started",
+    "subtitle": "How Codea works — setup, draw, callbacks and lifecycle",
+    "icon": "ChapterIconDisplay",
+    "entries": ["manual/codea", "manual/codea_3x"]
+  },  
+  {
+    "id": "Graphics",
+    "title": "Graphics",
+    "subtitle": "Drawing shapes, images and styles in 2D and 3D",
+    "icon": "ChapterIconGraphics",
+    "entries": ["manual/drawing", "api/graphics", "api/style", "api/color", "api/image"]
+  },
+  {
+    "id": "Scenes",
+    "title": "Scenes & Entities",
+    "subtitle": "Creating and managing 3D scenes, entities and cameras",
+    "icon": "ChapterIconCraft",
+    "entries": ["manual/scenes", "api/scene", "api/entity", "api/camera", "api/light"]
+  },
+  {
+    "id": "Shaders",
+    "title": "Shaders & Meshes",
+    "subtitle": "3D mesh rendering, materials and GPU shaders",
+    "icon": "ChapterIconShaders",
+    "entries": ["manual/shaders", "api/mesh", "api/material", "api/shader", "api/gpu_noise_lib"]
+  },
+  {
+    "id": "Physics2D",
+    "title": "Physics 2D",
+    "subtitle": "Dynamic motion with forces, joints and collisions in 2D",
+    "icon": "ChapterIconPhysics",
+    "entries": ["manual/physics2d", "api/physics2d"]
+  },
+  {
+    "id": "Physics3D",
+    "title": "Physics 3D",
+    "subtitle": "Dynamic motion with forces, joints and collisions in 3D",
+    "icon": "ChapterIconPhysics",
+    "entries": ["manual/physics3d", "api/physics3d"]
+  },
+  {
+    "id": "Input",
+    "title": "Touches & Input",
+    "subtitle": "Responding to touches, keyboard and mouse",
+    "icon": "ChapterIconTouch",
+    "entries": ["manual/input", "api/input"]
+  },
+  {
+    "id": "Motion",
+    "title": "Device Motion",
+    "subtitle": "Responding to device motion",
+    "icon": "ChapterIconAccelerometer",
+    "entries": ["api/motion"]
+  },  
+  {
+    "id": "Sounds",
+    "title": "Sound",
+    "subtitle": "Playing and generating audio and sound effects",
+    "icon": "ChapterIconSounds",
+    "entries": ["manual/sound", "api/sound"]
+  },
+  {
+    "id": "Storage",
+    "title": "Storage & Assets",
+    "subtitle": "Managing files, assets and persistent data",
+    "icon": "ChapterIconStorage",
+    "entries": ["manual/assets", "manual/file_operations", "api/file", "api/storage", "api/pick"]
+  },
+  {
+    "id": "Vector",
+    "title": "Vector Math",
+    "subtitle": "Vector, matrix and mathematical types",
+    "icon": "ChapterIconVector",
+    "entries": ["manual/vectors", "api/math_types", "api/matrix"]
+  },
+  {
+    "id": "Display",
+    "title": "Display & Viewer",
+    "subtitle": "User interface components and display settings",
+    "icon": "ChapterIconParameters",
+    "entries": ["api/viewer", "api/device", "api/inspector", "api/ui"]
+  },
+  {
+    "id": "Animation",
+    "title": "Animation",
+    "subtitle": "Animating values and objects using tweens",
+    "icon": "ChapterIconAnimation",
+    "entries": ["api/tween"]
+  },
+  {
+    "id": "Lua",
+    "title": "Lua",
+    "subtitle": "Tables, strings, and math",
+    "icon": "ChapterIconLua",
+    "entries": ["api/lua", "api/string", "api/require", "api/pasteboard"]
+  },
+  {
+    "id": "ObjC",
+    "title": "Objective-C",
+    "subtitle": "Interfacing with Objective-C code",
+    "icon": "ChapterIconObjC",
+    "entries": ["api/objc"]
+  }
+]

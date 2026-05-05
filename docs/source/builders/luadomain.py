@@ -39,17 +39,50 @@ lua_sig_re = re.compile(
           ''', re.VERBOSE)
 
 
+def _split_top_level_args(arg_list: str) -> List[str]:
+    arguments = []
+    start = 0
+    stack = []
+    quote = None
+    escaped = False
+    pairs = {')': '(', '}': '{'}
+
+    for index, char in enumerate(arg_list):
+        if quote:
+            if escaped:
+                escaped = False
+            elif char == '\\':
+                escaped = True
+            elif char == quote:
+                quote = None
+            continue
+
+        if char in ('"', "'"):
+            quote = char
+        elif char in '({':
+            stack.append(char)
+        elif char in pairs:
+            if stack and stack[-1] == pairs[char]:
+                stack.pop()
+        elif char == ',' and not stack:
+            arguments.append(arg_list[start:index].strip())
+            start = index + 1
+
+    arguments.append(arg_list[start:].strip())
+    return arguments
+
+
 def _pseudo_parse_arglist(sig_node: addnodes.desc_signature, arg_list: str) -> None:
     """"Parse" a list of arguments separated by commas.
 
     Arguments can have "optional" annotations given by enclosing them in
-    brackets.  Currently, this will split at any comma, even if it's inside a
-    string literal (e.g. default argument value).
+    brackets. Commas inside nested delimiters or quoted strings are preserved,
+    so defaults like ``vec3(1, 1, 1)`` remain part of one argument.
     """
     param_list = addnodes.desc_parameterlist()
     stack = [param_list]
     try:
-        for argument in arg_list.split(','):
+        for argument in _split_top_level_args(arg_list):
             argument = argument.strip()
             ends_open = ends_close = 0
             while argument.startswith('['):

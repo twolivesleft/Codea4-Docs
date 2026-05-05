@@ -14,6 +14,219 @@ make html
 
 The output lands in `docs/build/html/`.
 
+## API Authoring Requirements
+
+The API `.rst` files are used by Codea as structured editor metadata, not only as
+rendered documentation. The `luadoc` build emits JSON that Codea consumes for
+Reference, autocomplete, syntax highlighting, and editor affordances.
+
+### Module Namespacing
+
+Use Sphinx's Lua module context as the source of truth for namespacing.
+
+```rst
+.. lua:module:: pasteboard
+
+.. lua:attribute:: name: string
+```
+
+This emits `name` with `module: "pasteboard"`, so Codea treats the symbol as
+`pasteboard.name`. Reference UI should display the qualified name for module
+members.
+
+Rules:
+
+- Use `.. lua:module:: name` once when introducing and documenting a module.
+- Use `.. lua:currentmodule:: name` to return to an existing module context
+  without creating another module entry.
+- Use `.. lua:currentmodule:: None` before globals in a file that previously set
+  a module context.
+- Do not rely on section headings to imply namespacing. The current Lua module
+  context is the authoritative signal.
+
+For mixed files, be explicit:
+
+```rst
+.. lua:module:: style
+
+.. lua:function:: fill(<color>)
+
+Constants
+*********
+
+.. lua:currentmodule:: None
+
+.. lua:attribute:: LEFT: const
+
+.. lua:currentmodule:: style
+
+.. lua:function:: textAlign(align)
+```
+
+Here `style.fill` is namespaced, `LEFT` is global, and later functions return to
+the `style` namespace.
+
+### Structural Table Return Types
+
+Use `:rtype: table$private.<name>` when a function returns a generic Lua table
+but Codea should understand the specific fields of that returned table for
+tooling. Text before `$` is the documentation-facing type. Text after `$` is the
+lookup type. `private.<name>` is module-relative, so inside an `objc` module it
+becomes `objc.private.<name>` in Codea's JSON.
+
+```rst
+.. lua:module:: objc
+
+.. lua:function:: insets(top, left, bottom, right)
+
+   Create a UIEdgeInsets.
+
+   :param top: top value of the UIEdgeInsets
+   :type top: number
+   :param left: left value of the UIEdgeInsets
+   :type left: number
+   :param bottom: bottom value of the UIEdgeInsets
+   :type bottom: number
+   :param right: right value of the UIEdgeInsets
+   :type right: number
+   :return: The UIEdgeInsets struct.
+   :rtype: table$private.insets
+
+.. lua:class:: private.insets
+
+   .. visibility:: private
+
+   .. lua:attribute:: top: number
+   .. lua:attribute:: left: number
+   .. lua:attribute:: bottom: number
+   .. lua:attribute:: right: number
+```
+
+The `luadoc` builder emits the return metadata as `type:
+"objc.private.insets"` and `displayType: "table"`. Codea uses `type` for
+autocomplete and type lookup, and `displayType` for Reference display. The
+private class is authored explicitly so function arguments and returned table
+fields can differ.
+
+### Constructors
+
+Document constructors as a `lua:staticmethod` nested inside the class, using the
+same callable name as the class. The `luadoc` builder treats same-name nested
+staticmethods as constructors and emits `kind: "constructor"` in JSON, so Codea
+can show constructor rows and infer constructor return types without implying a
+`Type.Type()` API.
+
+```rst
+.. lua:class:: mesh
+
+   .. lua:staticmethod:: mesh([submeshCount])
+
+      Create an empty mesh.
+```
+
+For module-scoped and dotted classes, keep the constructor signature aligned
+with the public call:
+
+```rst
+.. lua:module:: physics2d
+
+.. lua:class:: world
+
+   .. lua:staticmethod:: world()
+```
+
+```rst
+.. lua:class:: gesture.tap
+
+   .. lua:staticmethod:: gesture.tap(callback)
+```
+
+Rules:
+
+- Use same-name nested staticmethods only for constructors.
+- Do not document a true static method with the same name as its type.
+- Repeat the same constructor staticmethod with different signatures to document
+  overloads.
+- Continue using ordinary `lua:staticmethod` entries for real static factories,
+  such as `mesh.sphere`, `image.cube`, and `shader.compute`.
+
+### Symbol Annotations
+
+Use `.. symbol::` for syntax-highlighting classifications. Symbol annotations
+are inherited by descendant API entries until a more-specific `.. symbol::`
+replaces them.
+
+Supported symbol types:
+
+- `api-call`: Codea API call highlighting. This is the default for docs-derived
+  functions when no symbol metadata is present.
+- `lua-api`: Lua standard library highlighting.
+- `const`: Constant highlighting. This maps to Codea's existing constant symbol
+  type.
+
+Examples:
+
+```rst
+.. symbol:: lua-api
+
+.. lua:function:: print(...)
+
+.. lua:attribute:: pi: const
+
+   .. symbol:: lua-api const
+```
+
+```rst
+.. lua:attribute:: STANDARD: const
+
+   .. symbol:: const
+      :group: viewer-mode
+```
+
+The optional `:group:` value is emitted as `symbol.group`. Codea can use this to
+identify replaceable symbol sets, such as viewer modes, text alignment values,
+bit masks, or other related constants.
+
+Use symbol annotations for semantic coloring and symbol-map behavior. Do not use
+them for popover/editor UI features.
+
+### Editor Annotations
+
+Use `.. editor::` for editor affordances only. These roles are emitted as editor
+metadata and mapped by Codea to existing `LuaSymbolType` affordance flags.
+
+Supported roles include:
+
+- `color`: color picker affordance
+- `sprite`: sprite/image asset affordance
+- `text`: text/font-related affordance
+- `import`: asset import affordance, for APIs such as `require`
+- `sound`: sound asset affordance
+- `music`: music asset affordance
+- `font`: font picker affordance
+- `shader`: shader affordance
+- `model`: model asset affordance
+
+Example:
+
+```rst
+.. lua:function:: fill(<color>)
+
+   Sets the fill color.
+
+   .. editor:: color
+```
+
+This lets Codea derive `style.fill` as both an API call and a color API call, so
+the editor can apply the correct highlighting and show the color interaction.
+
+Keep editor roles separate from symbol classifications:
+
+- Use `.. symbol:: lua-api` for Lua API coloring.
+- Use `.. symbol:: const` for constant coloring.
+- Use `.. editor:: color`, `sprite`, `import`, etc. only when tapping or editing
+  the symbol should expose a special editor interaction.
+
 ## Scripts
 
 ### `scripts/check_helptexts.py`

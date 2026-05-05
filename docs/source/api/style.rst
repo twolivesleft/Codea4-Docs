@@ -14,11 +14,17 @@ General
 
    Push the current style onto the stack
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: push the current style onto the stack
 
 .. lua:function:: push(style)
 
    Push a specific style onto the stack
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    .. helptext:: push a style onto the stack
 
@@ -26,11 +32,17 @@ General
 
    Pop the current style from the stack, restoring the previous style
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: pop the current style from the stack
 
 .. lua:function:: reset()
 
    Reset the current style to defaults. Use this to restore the default style
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    .. helptext:: reset the style to defaults
 
@@ -44,69 +56,105 @@ General
 
    Sets the current style from a graphicsStyle object
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: set the current style
 
-.. lua:function:: fill(<color>)
-                  fill() -> r, g, b, a
+.. lua:function:: fill(color)
 
-   Sets/gets the fill color for use in vector drawing operations
+   Sets the fill color for use in vector drawing operations
 
    .. helptext:: set the fill color
+   .. editor:: color
+
+   :returns: The style table, for chaining.
+   :rtype: style
+
+.. lua:function:: fill() -> r, g, b, a
+
+   Gets the current fill color for use in vector drawing operations
+
+   .. helptext:: get the fill color
+   .. editor:: color
 
 .. lua:function:: noFill()
 
    Disables fill
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: clear the fill color
+   
+.. lua:function:: stroke(color)
+
+   Sets the stroke color to the specified color, or a grayscale value
+
+   :returns: The style table, for chaining.
+   :rtype: style
+
+   .. helptext:: set the stroke color
+   .. editor:: color
+
+   :param color: The color to set the stroke to, or a grayscale value
+   :type color: color or number   
+
+.. lua:function:: stroke(gray, alpha)
+
+   Sets the stroke color to the specified grayscale value and alpha
+
+   :returns: The style table, for chaining.
+   :rtype: style
+
+   :param number gray: The grayscale value to set the stroke to
+   :param number alpha: The alpha value to set the stroke to
+
+   .. helptext:: set the stroke color
+   .. editor:: color
+
+.. lua:function:: stroke(red, green, blue)
+
+   Sets the stroke color to the specified red, green, and blue values
+
+   :returns: The style table, for chaining.
+   :rtype: style
+
+   :param number red: The red value to set the stroke to
+   :param number green: The green value to set the stroke to
+   :param number blue: The blue value to set the stroke to
+
+   .. helptext:: set the stroke color
+   .. editor:: color
+
+.. lua:function:: stroke(red, green, blue, alpha)
+
+   Sets the stroke color to the specified red, green, blue, and alpha values
+
+   :returns: The style table, for chaining.
+   :rtype: style
+
+   :param number red: The red value to set the stroke to
+   :param number green: The green value to set the stroke to
+   :param number blue: The blue value to set the stroke to
+   :param number alpha: The alpha value to set the stroke to
+
+   .. helptext:: set the stroke color
+   .. editor:: color
 
 .. lua:function:: stroke()
 
    Gets the current stroke color for use in vector drawing operations
 
    .. helptext:: get the stroke color
-   
-.. lua:function:: stroke(color)
-
-   Sets the stroke color to the specified color, or a grayscale value
-
-   .. helptext:: set the stroke color
-
-   :param color: The color to set the stroke to, or a grayscale value
-   :type color: color or number
-
-.. lua:function:: stroke(gray, alpha)
-
-   Sets the stroke color to the specified grayscale value and alpha
-
-   :param number gray: The grayscale value to set the stroke to
-   :param number alpha: The alpha value to set the stroke to
-
-   .. helptext:: set the stroke color
-
-.. lua:function:: stroke(red, green, blue)
-
-   Sets the stroke color to the specified red, green, and blue values
-
-   :param number red: The red value to set the stroke to
-   :param number green: The green value to set the stroke to
-   :param number blue: The blue value to set the stroke to
-
-   .. helptext:: set the stroke color
-
-.. lua:function:: stroke(red, green, blue, alpha)
-
-   Sets the stroke color to the specified red, green, blue, and alpha values
-
-   :param number red: The red value to set the stroke to
-   :param number green: The green value to set the stroke to
-   :param number blue: The blue value to set the stroke to
-   :param number alpha: The alpha value to set the stroke to
-
-   .. helptext:: set the stroke color
+   .. editor:: color      
 
 .. lua:function:: noStroke()
 
    Disables stroke
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    .. helptext:: clear the stroke color
 
@@ -114,17 +162,25 @@ General
 
    Sets the tint color for use with :lua:func:`sprite` and :lua:meth:`mesh.draw`
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: set the tint color for images drawn with sprite()
+   .. editor:: color
 
 .. lua:function:: tint() -> r, g, b, a
 
    Gets the current tint color
 
    .. helptext:: get the tint color
+   .. editor:: color
 
 .. lua:function:: pixelScaling(scale)
 
    Sets/gets the scale of a sprite when rendering
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    :param number scale: the scaling factor of the sprite image
 
@@ -133,6 +189,9 @@ General
 .. lua:function:: strokeWidth(width)
 
    Sets the stroke width for use in vector drawing operations
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    .. helptext:: set the width of outlines
 
@@ -145,6 +204,9 @@ General
 .. lua:function:: lineCap(mode)
 
    Sets the current line cap mode, used by :lua:`line`, :lua:`polyline` and :lua:`shape`
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    - :lua:attr:`ROUND`
    - :lua:attr:`SQUARE`
@@ -162,6 +224,9 @@ General
 
    Sets the current line join mode, used by :lua:`polyline`, :lua:`polygon` and :lua:`shape` when joining multiple line segments
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    - :lua:attr:`ROUND`
    - :lua:attr:`MITER`
    - :lua:attr:`BEVEL`
@@ -175,9 +240,11 @@ General
    .. helptext:: get the current line join style
 
 .. lua:function:: shapeMode(mode)
-                  shapeMode() -> enum
 
-   Sets/gets the current shape mode, used by :lua:`rect`, :lua:`ellipse` and :lua:`sprite`
+   Sets the current shape mode, used by :lua:`rect`, :lua:`ellipse` and :lua:`sprite`
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    - :lua:attr:`CENTER` - Draw shapes from the center and size using width/height
    - :lua:attr:`CORNERS` - Draw shapes by specifying the two opposite corners
@@ -186,8 +253,16 @@ General
 
    .. helptext:: set the drawing origin for rect() and ellipse()
 
+.. lua:function:: shapeMode() -> enum
+
+   Gets the current shape mode
+
+   .. helptext:: get the drawing origin for rect() and ellipse()
+
 Constants - Shape Mode
 **********************
+
+.. lua:currentmodule:: None
 
 .. lua:attribute:: CORNER: const
 
@@ -208,7 +283,12 @@ Constants - Shape Mode
 
    .. helptext:: radius mode constant
 
+.. lua:currentmodule:: style
+
 .. lua:function:: sortOrder(order)
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    .. helptext:: set the sort order for drawing
 
@@ -221,6 +301,9 @@ Functions
 .. lua:function:: blend(mode)
 
    Sets the current blend mode to one of the available presets. Blending composites pixels onto the current drawing context based on source and destination color and alpha values
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    .. helptext:: set the blend mode for drawing
 
@@ -235,11 +318,17 @@ Functions
 
    Sets a custom blend mode for both rgb and alpha components using ``src`` (source) and ``dst`` destination blending factors
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: set a custom blend mode
 
 .. lua:function:: blend(src, dst, srcAlpha, dstAlpha)
 
    Sets a custom blend mode with separate blending factors for both rgb and alpha components
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    .. helptext:: set a custom blend mode with separate alpha factors
 
@@ -252,6 +341,9 @@ Functions
 .. lua:function:: blendFunc(func)
 
    Sets the same blend function for both rgb and alpha components (the default is :lua:`EQUATION_ADD`) which determines how source and destination parts of the blending equation are combined
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    - :lua:`EQUATION_ADD` - Add (default)
       :math:`R = R_s*k_s+R_d*k_d`
@@ -270,6 +362,9 @@ Functions
 
    Sets separate blend functions for rgb and alpha components
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: set separate blend equation functions for rgb and alpha
 
 .. lua:function:: blendFunc() -> func, alphaFunc
@@ -280,6 +375,8 @@ Functions
 
 Constants - Blend Modes
 ***********************
+
+.. lua:currentmodule:: None
 
 .. lua:attribute:: NORMAL: const
 
@@ -449,12 +546,17 @@ Constants - Blend Factors
 
    .. helptext:: source alpha saturate blend factor constant
 
+.. lua:currentmodule:: style
+
 Viewport
 ########
 
 .. lua:function:: viewRect(x, y, w, h)
 
    Sets the viewport of the renderer
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    :param number x: The x position of the viewport
    :param number y: The y position of the viewport
@@ -472,16 +574,58 @@ Clipping
 
    *Note: the clipping rectangle is effected by the current matrix transform*
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: setup a clipping region on the screen
 
 .. lua:function:: noClip()
 
    Disables clipping
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: disable clipping
 
 Stencil
 #######
+
+.. lua:function:: stencil(state)
+
+   Sets the current stencil state for both front and back faces
+
+   :returns: The style table, for chaining.
+   :rtype: style
+
+   .. helptext:: set the stencil state for front and back faces
+
+.. lua:function:: stencil()
+
+   Gets the current stencil state for both front and back faces
+
+   .. helptext:: get the stencil state for front and back faces
+
+.. lua:function:: stencil(front, back)
+
+   Sets the current stencil state for front and back faces separately
+
+   :returns: The style table, for chaining.
+   :rtype: style
+
+   .. helptext:: set separate stencil states for front and back faces
+
+Using Stencils
+**************
+
+A stencil state is configured using a table with the following properties:
+
+* ``reference``
+* ``condition``
+* ``readMask``
+* ``pass``
+* ``fail``
+* ``zfail``
 
 .. code-block:: lua
    :caption: A simple mask effect using stencils
@@ -490,19 +634,19 @@ Stencil
       background(40, 40, 50)
 
       -- When a pixel is drawn write 1 to the stencil buffer
-      style.stencil 
-      { 
-         reference = 1, 
-         pass = STENCIL_OP_REPLACE 
+      style.stencil
+      {
+         reference = 1,
+         pass = STENCIL_OP_REPLACE
       }
-      
-      -- Use opacity clip to only draw pixels when alpha is great than .99
+
+      -- Use opacity clip to only draw pixels when alpha is greater than .99
       style.opacityClip(0.99)
       style.blend(DISABLED) -- no blending needed
       matrix.push().transform2d(CurrentTouch.x, CurrentTouch.y, 1, 1, time.elapsed * 50)
       sprite(asset.builtin.Cargo_Bot.Codea_Icon, 0, 0, 400)
       matrix.pop()
-      
+
       style.blend(NORMAL)
       style.noOpacityClip()
       -- Only draw if stencil is equal to one using the equal test condition
@@ -511,40 +655,13 @@ Stencil
          reference = 1,
          condition = STENCIL_TEST_EQUAL
       }
-      -- This sets the line thickness
       sprite(asset.builtin.SpaceCute.Beetle_Ship, WIDTH/2, HEIGHT/2, 400)
    end
 
-Stencils are configured using a table with the following properties:
+Stencil Test
+************
 
-* ``reference``
-* ``condition``
-* ``readMask``
-* ``pass``
-* ``fail`` 
-* ``zfail`` 
-
-.. lua:function:: stencil(state)
-                  stencil()
-
-   Sets/gets the current stencil state for both front and back faces
-
-   .. helptext:: set the stencil state for front and back faces
-
-.. lua:function:: stencil(front, back)
-
-   Sets/gets the current stencil state for both front and back faces
-
-   .. helptext:: set separate stencil states for front and back faces
-
-
-
-Constants - Stencil
-*******************
-
-Used by drawing commands and shaders to control stencil operations
-
-**Stencil Test (conditions)**
+.. lua:currentmodule:: None
 
 .. lua:attribute:: STENCIL_TEST_LESS: const
 
@@ -571,7 +688,8 @@ Used by drawing commands and shaders to control stencil operations
 
    .. helptext:: always stencil test constant
 
-**Stencil Operations (pass, fail, zfail)**
+Stencil Operations
+******************
 
 .. lua:attribute:: STENCIL_OP_ZERO: const
 
@@ -598,55 +716,89 @@ Used by drawing commands and shaders to control stencil operations
 
    .. helptext:: invert stencil operation constant
 
+.. lua:currentmodule:: style
+
 Text Style
 ##########
 
 .. lua:function:: fontSize(size)
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: set the font size for text()
 
 .. lua:function:: textAlign(align)
 
+   :returns: The style table, for chaining.
+   :rtype: style
+
    .. helptext:: set alignment for text()
 
 .. lua:function:: textStyle(style)
+
+   :returns: The style table, for chaining.
+   :rtype: style
 
    .. helptext:: set the style for text()
 
 Constants - Text
 ****************
 
+.. lua:currentmodule:: None
+
 .. lua:attribute:: LEFT: const
+
+   .. symbol:: const
+      :group: text-alignment
 
    .. helptext:: left alignment constant
 
 
 .. lua:attribute:: CENTER: const
 
+   .. symbol:: const
+      :group: text-alignment
+
    .. helptext:: center mode constant
 
 
 .. lua:attribute:: RIGHT: const
+
+   .. symbol:: const
+      :group: text-alignment
 
    .. helptext:: right alignment constant
 
 
 .. lua:attribute:: TOP: const
 
+   .. symbol:: const
+      :group: text-alignment
+
    .. helptext:: top alignment constant
 
 
 .. lua:attribute:: MIDDLE: const
+
+   .. symbol:: const
+      :group: text-alignment
 
    .. helptext:: middle alignment constant
 
 
 .. lua:attribute:: BOTTOM: const
 
+   .. symbol:: const
+      :group: text-alignment
+
    .. helptext:: bottom alignment constant
 
 
 .. lua:attribute:: BASELINE: const
+
+   .. symbol:: const
+      :group: text-alignment
 
    .. helptext:: baseline alignment constant
 

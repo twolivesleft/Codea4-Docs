@@ -36,6 +36,7 @@ Codea 4
    manual/physics3d
    manual/scenes
    manual/shaders
+   manual/vectors
 
 .. toctree::
    :maxdepth: 2

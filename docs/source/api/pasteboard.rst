@@ -1,7 +1,7 @@
-pasteboard
+Pasteboard
 ==========
       
-Exposes pasteboard functionnalities to copy and paste strings, images, colors and URLs.
+Copy and paste strings, images, colors and URLs.
 
 To minimize unnecessary notifications when accessing pasteboard data from other applications,
 first call ``hasStrings``, ``hasImages``, ``hasColors`` or ``hasURLs`` to check if the desired
