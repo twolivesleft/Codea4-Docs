@@ -166,16 +166,17 @@
 <li class="toctree-l1"><a class="reference internal" href="manual/assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
@@ -188,20 +189,19 @@
 <li class="toctree-l1"><a class="reference internal" href="api/string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics3d.html">physics3d</a></li>
@@ -246,7 +246,7 @@
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#J"><strong>J</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#J"><strong>J</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a> | <a href="#Z"><strong>Z</strong></a></div>
 </section>
 <section id="A" class="genindex-section">
   <h2>A</h2>
@@ -270,9 +270,13 @@
         </ul></li>
         <li><a href="api/mesh.html#mesh.addElement">addElement() (mesh method)</a>
 </li>
+        <li><a href="api/style.html#ADDITIVE">ADDITIVE (attribute)</a>
+</li>
         <li><a href="api/mesh.html#mesh.addRect">addRect() (mesh method)</a>
 </li>
         <li><a href="api/objc.html#objc.affineTransform">affineTransform() (in module objc)</a>
+</li>
+        <li><a href="api/viewer.html#viewer.alert">alert() (in module viewer)</a>
 </li>
         <li><a href="api/image.html#image.slice.anchor">anchor() (image.slice method)</a>, <a href="api/image.html#image.slice.anchor">[1]</a>
 </li>
@@ -286,10 +290,10 @@
           <li><a href="api/shader.html#indexBuffer.append">(indexBuffer method)</a>
 </li>
         </ul></li>
-        <li><a href="api/camera.html#camera.apply">apply() (camera method)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/camera.html#camera.apply">apply() (camera method)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.body.applyAngularImpulse">applyAngularImpulse() (physics2d.body method)</a>
 
         <ul>
@@ -328,8 +332,6 @@
 </li>
         <li><a href="api/image.html#atlas.atlas">atlas() (atlas static method)</a>
 </li>
-        <li><a href="api/motion.html#motion.attitude">attitude (class in motion)</a>
-</li>
     </ul></td>
   </tr></table>
 </section>
@@ -338,9 +340,15 @@
   <h2>B</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/graphics.html#background">background() (built-in function)</a>, <a href="api/graphics.html#background">[1]</a>, <a href="api/graphics.html#background">[2]</a>
+        <li><a href="api/style.html#BACKGROUND">BACKGROUND (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#background">background() (built-in function)</a>, <a href="api/graphics.html#background">[1]</a>, <a href="api/graphics.html#background">[2]</a>, <a href="api/graphics.html#background">[3]</a>
 </li>
         <li><a href="api/physics3d.html#physics3d.ballSocket">ballSocket (class in physics3d)</a>
+</li>
+        <li><a href="api/style.html#BASELINE">BASELINE (attribute)</a>
+</li>
+        <li><a href="api/style.html#BEVEL">BEVEL (attribute)</a>
 </li>
         <li><a href="api/graphics.html#bezier">bezier() (built-in function)</a>, <a href="api/graphics.html#bezier">[1]</a>
 </li>
@@ -360,8 +368,20 @@
           <li><a href="api/physics3d.html#physics3d.world.body">(physics3d.world method)</a>
 </li>
         </ul></li>
+        <li><a href="api/style.html#BOTTOM">BOTTOM (attribute)</a>
+</li>
         <li><a href="api/math_types.html#module-bounds">bounds (module)</a>
 </li>
+        <li><a href="api/math_types.html#bounds.bounds.aabb.center">bounds.bounds.aabb.center (attribute)</a>
+</li>
+        <li><a href="api/math_types.html#bounds.bounds.aabb.max">bounds.bounds.aabb.max (attribute)</a>
+</li>
+        <li><a href="api/math_types.html#bounds.bounds.aabb.min">bounds.bounds.aabb.min (attribute)</a>
+</li>
+        <li><a href="api/math_types.html#bounds.bounds.aabb.size">bounds.bounds.aabb.size (attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.box">box (class in physics2d)</a>
 
         <ul>
@@ -376,8 +396,6 @@
           <li><a href="api/physics3d.html#physics3d.body.box">(physics3d.body method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/shader.html#buffer">buffer (built-in class)</a>
 </li>
         <li><a href="api/shader.html#buffer.buffer">buffer() (buffer static method)</a>
@@ -454,6 +472,8 @@
           <li><a href="api/physics3d.html#physics3d.body.capsule">(physics3d.body method)</a>
 </li>
         </ul></li>
+        <li><a href="api/style.html#CENTER">CENTER (attribute)</a>, <a href="api/style.html#CENTER">[1]</a>
+</li>
         <li><a href="api/entity.html#entity.child">child() (entity method)</a>
 </li>
         <li><a href="api/entity.html#entity.childAt">childAt() (entity method)</a>
@@ -484,6 +504,8 @@
         </ul></li>
         <li><a href="api/style.html#style.clip">clip() (in module style)</a>
 </li>
+        <li><a href="api/viewer.html#viewer.close">close() (in module viewer)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.collider">collider (class in physics2d)</a>
 
         <ul>
@@ -492,8 +514,6 @@
         </ul></li>
         <li><a href="api/color.html#color">color (built-in class)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/color.html#color.color">color() (color static method)</a>
 
         <ul>
@@ -506,6 +526,8 @@
 </li>
         <li><a href="api/color.html#color.b">color.b (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/color.html#color.black">color.black (attribute)</a>
 </li>
         <li><a href="api/color.html#color.blue">color.blue (attribute)</a>
@@ -531,6 +553,20 @@
         <li><a href="api/color.html#color.white">color.white (attribute)</a>
 </li>
         <li><a href="api/color.html#color.yellow">color.yellow (attribute)</a>
+</li>
+        <li><a href="api/style.html#COLOR_MASK_ALPHA">COLOR_MASK_ALPHA (attribute)</a>
+</li>
+        <li><a href="api/style.html#COLOR_MASK_BLUE">COLOR_MASK_BLUE (attribute)</a>
+</li>
+        <li><a href="api/style.html#COLOR_MASK_GREEN">COLOR_MASK_GREEN (attribute)</a>
+</li>
+        <li><a href="api/style.html#COLOR_MASK_NONE">COLOR_MASK_NONE (attribute)</a>
+</li>
+        <li><a href="api/style.html#COLOR_MASK_RED">COLOR_MASK_RED (attribute)</a>
+</li>
+        <li><a href="api/style.html#COLOR_MASK_RGB">COLOR_MASK_RGB (attribute)</a>
+</li>
+        <li><a href="api/style.html#COLOR_MASK_RGBA">COLOR_MASK_RGBA (attribute)</a>
 </li>
         <li><a href="api/graphics.html#colorspace">colorspace() (built-in function)</a>
 </li>
@@ -558,6 +594,10 @@
 </li>
         <li><a href="api/file.html#file.copy">copy() (in module file)</a>
 </li>
+        <li><a href="api/style.html#CORNER">CORNER (attribute)</a>
+</li>
+        <li><a href="api/style.html#CORNERS">CORNERS (attribute)</a>
+</li>
         <li><a href="api/math_types.html#vec2.cross">cross() (vec2 method)</a>
 
         <ul>
@@ -565,6 +605,12 @@
 </li>
         </ul></li>
         <li><a href="api/image.html#image.cube">cube() (image static method)</a>, <a href="api/image.html#image.cube">[1]</a>, <a href="api/image.html#image.cube">[2]</a>
+</li>
+        <li><a href="api/style.html#CULL_FACE_BACK">CULL_FACE_BACK (attribute)</a>
+</li>
+        <li><a href="api/style.html#CULL_FACE_FRONT">CULL_FACE_FRONT (attribute)</a>
+</li>
+        <li><a href="api/style.html#CULL_FACE_NONE">CULL_FACE_NONE (attribute)</a>
 </li>
         <li><a href="api/physics3d.html#physics3d.cylinder">cylinder (class in physics3d)</a>
 </li>
@@ -585,6 +631,24 @@
         <li><a href="api/objc.html#objc.delegate">delegate() (in module objc)</a>
 </li>
         <li><a href="api/storage.html#storage.delete">delete() (in module storage)</a>
+</li>
+        <li><a href="api/style.html#DEPTH_FUNC_EQUAL">DEPTH_FUNC_EQUAL (attribute)</a>
+</li>
+        <li><a href="api/style.html#DEPTH_FUNC_GREATER">DEPTH_FUNC_GREATER (attribute)</a>
+</li>
+        <li><a href="api/style.html#DEPTH_FUNC_GREATER_EQUAL">DEPTH_FUNC_GREATER_EQUAL (attribute)</a>
+</li>
+        <li><a href="api/style.html#DEPTH_FUNC_LESS">DEPTH_FUNC_LESS (attribute)</a>
+</li>
+        <li><a href="api/style.html#DEPTH_FUNC_LESS_EQUAL">DEPTH_FUNC_LESS_EQUAL (attribute)</a>
+</li>
+        <li><a href="api/style.html#DEPTH_FUNC_NEVER">DEPTH_FUNC_NEVER (attribute)</a>
+</li>
+        <li><a href="api/style.html#DEPTH_FUNC_NOT_EQUAL">DEPTH_FUNC_NOT_EQUAL (attribute)</a>
+</li>
+        <li><a href="api/style.html#DEPTH_WRITE_DISABLED">DEPTH_WRITE_DISABLED (attribute)</a>
+</li>
+        <li><a href="api/style.html#DEPTH_WRITE_ENABLED">DEPTH_WRITE_ENABLED (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.destroy">destroy() (entity method)</a>
 
@@ -628,14 +692,14 @@
 </li>
         <li><a href="api/input.html#directionalPad">directionalPad (built-in class)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#directionalPad.dir">directionalPad.dir (attribute)</a>
 </li>
         <li><a href="api/input.html#directionalPad.down">directionalPad.down (attribute)</a>
 </li>
         <li><a href="api/input.html#directionalPad.left">directionalPad.left (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#directionalPad.pressing">directionalPad.pressing (attribute)</a>
 </li>
         <li><a href="api/input.html#directionalPad.right">directionalPad.right (attribute)</a>
@@ -645,6 +709,8 @@
         <li><a href="api/input.html#directionalPad.x">directionalPad.x (attribute)</a>
 </li>
         <li><a href="api/input.html#directionalPad.y">directionalPad.y (attribute)</a>
+</li>
+        <li><a href="api/style.html#DISABLED">DISABLED (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.disk">disk() (mesh static method)</a>
 </li>
@@ -697,6 +763,10 @@
 </li>
         </ul></li>
         <li><a href="api/mesh.html#mesh.drawIndirect">drawIndirect() (mesh method)</a>
+</li>
+        <li><a href="api/style.html#DST_ALPHA">DST_ALPHA (attribute)</a>
+</li>
+        <li><a href="api/style.html#DST_COLOR">DST_COLOR (attribute)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -770,14 +840,14 @@
 </li>
         <li><a href="api/entity.html#entity.id">entity.id (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/entity.html#entity.joints2d">entity.joints2d (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.joints3d">entity.joints3d (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.material">entity.material (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/entity.html#entity.mesh">entity.mesh (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.name">entity.name (attribute)</a>
@@ -834,6 +904,16 @@
 </li>
         <li><a href="api/entity.html#entity.z">entity.z (attribute)</a>
 </li>
+        <li><a href="api/style.html#EQUATION_ADD">EQUATION_ADD (attribute)</a>
+</li>
+        <li><a href="api/style.html#EQUATION_MAX">EQUATION_MAX (attribute)</a>
+</li>
+        <li><a href="api/style.html#EQUATION_MIN">EQUATION_MIN (attribute)</a>
+</li>
+        <li><a href="api/style.html#EQUATION_REVSUB">EQUATION_REVSUB (attribute)</a>
+</li>
+        <li><a href="api/style.html#EQUATION_SUB">EQUATION_SUB (attribute)</a>
+</li>
         <li><a href="api/math_types.html#quat.eulerAngles">eulerAngles() (quat static method)</a>
 </li>
         <li><a href="api/file.html#file.exists">exists() (in module file)</a>
@@ -848,7 +928,7 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/file.html#module-file">file (module)</a>
 </li>
-        <li><a href="api/style.html#style.fill">fill() (in module style)</a>
+        <li><a href="api/style.html#style.fill">fill() (in module style)</a>, <a href="api/style.html#style.fill">[1]</a>
 </li>
         <li><a href="api/entity.html#entity.findChild">findChild() (entity method)</a>
 </li>
@@ -856,17 +936,21 @@
 </li>
         <li><a href="api/image.html#image.slice.flip">flip() (image.slice method)</a>, <a href="api/image.html#image.slice.flip">[1]</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/storage.html#storage.flush">flush() (in module storage)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/style.html#style.fontSize">fontSize() (in module style)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.friction">friction (class in physics2d)</a>
 </li>
         <li><a href="api/color.html#color.fromHSV">fromHSV() (color static method)</a>
 </li>
-        <li><a href="api/math_types.html#quat.fromToRotate">fromToRotate() (quat static method)</a>
+        <li><a href="api/math_types.html#quat.fromToRotation">fromToRotation() (quat static method)</a>
+</li>
+        <li><a href="api/viewer.html#FULLSCREEN">FULLSCREEN (attribute)</a>
+</li>
+        <li><a href="api/viewer.html#FULLSCREEN_NO_BUTTONS">FULLSCREEN_NO_BUTTONS (attribute)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -1068,10 +1152,10 @@
 </li>
         <li><a href="api/image.html#image.slice">image.slice (built-in class)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.slice.atlas">image.slice.atlas (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.slice.image">image.slice.image (attribute)</a>
 </li>
         <li><a href="api/image.html#image.smooth">image.smooth (attribute)</a>
@@ -1083,6 +1167,8 @@
         <li><a href="api/shader.html#indexBuffer">indexBuffer (built-in class)</a>
 </li>
         <li><a href="api/shader.html#indexBuffer.indexBuffer">indexBuffer() (indexBuffer static method)</a>
+</li>
+        <li><a href="api/objc.html#objc.insets">insets() (in module objc)</a>
 </li>
         <li><a href="api/objc.html#objc.inspect">inspect() (in module objc)</a>
 </li>
@@ -1101,6 +1187,8 @@
         <li><a href="api/entity.html#entity.inverseTransformDirection">inverseTransformDirection() (entity method)</a>
 </li>
         <li><a href="api/entity.html#entity.inverseTransformPoint">inverseTransformPoint() (entity method)</a>
+</li>
+        <li><a href="api/lua.html#ipairs">ipairs() (built-in function)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -1336,6 +1424,10 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/ui.html#ui.label">label (class in ui)</a>
 </li>
+        <li><a href="api/style.html#LEFT">LEFT (attribute)</a>
+</li>
+        <li><a href="api/viewer.html#LEGACY">LEGACY (attribute)</a>
+</li>
         <li><a href="api/math_types.html#vec2.lerp">lerp() (vec2 method)</a>
 
         <ul>
@@ -1356,6 +1448,8 @@
 </li>
         <li><a href="api/light.html#light.type">light.type (attribute)</a>
 </li>
+        <li><a href="api/style.html#LIGHTEN">LIGHTEN (attribute)</a>
+</li>
         <li><a href="api/graphics.html#line">line() (built-in function)</a>, <a href="api/graphics.html#line">[1]</a>
 
         <ul>
@@ -1365,6 +1459,8 @@
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/color.html#color.linear">linear() (color method)</a>
+</li>
+        <li><a href="api/style.html#LINEAR_BURN">LINEAR_BURN (attribute)</a>
 </li>
         <li><a href="api/style.html#style.lineCap">lineCap() (in module style)</a>, <a href="api/style.html#style.lineCap">[1]</a>
 </li>
@@ -1400,8 +1496,6 @@
   <h2>M</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/motion.html#motion.magnetic">magnetic (class in motion)</a>
-</li>
         <li><a href="api/math_types.html#mat2">mat2 (built-in class)</a>
 </li>
         <li><a href="api/math_types.html#mat2.mat2">mat2() (mat2 static method)</a>
@@ -1417,6 +1511,72 @@
         <li><a href="api/material.html#material">material (built-in class)</a>
 </li>
         <li><a href="api/material.html#material.material">material() (material static method)</a>
+</li>
+        <li><a href="api/lua.html#math.abs">math.abs() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.acos">math.acos() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.asin">math.asin() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.atan">math.atan() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.ceil">math.ceil() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.cos">math.cos() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.cosh">math.cosh() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.deg">math.deg() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.exp">math.exp() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.floor">math.floor() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.fmod">math.fmod() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.frexp">math.frexp() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.huge">math.huge (attribute)</a>
+</li>
+        <li><a href="api/lua.html#math.ldexp">math.ldexp() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.log">math.log() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.log10">math.log10() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.max">math.max() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.maxinteger">math.maxinteger (attribute)</a>
+</li>
+        <li><a href="api/lua.html#math.min">math.min() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.mininteger">math.mininteger (attribute)</a>
+</li>
+        <li><a href="api/lua.html#math.modf">math.modf() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.pi">math.pi (attribute)</a>
+</li>
+        <li><a href="api/lua.html#math.rad">math.rad() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.random">math.random() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.randomseed">math.randomseed() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.sin">math.sin() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.sinh">math.sinh() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.sqrt">math.sqrt() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.tan">math.tan() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.tanh">math.tanh() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.tointeger">math.tointeger() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.type">math.type() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#math.ult">math.ult() (built-in function)</a>
 </li>
         <li><a href="api/matrix.html#module-matrix">matrix (module)</a>
 </li>
@@ -1450,6 +1610,8 @@
 </li>
         <li><a href="api/mesh.html#mesh.indices">mesh.indices (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.material">mesh.material (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.normals">mesh.normals (attribute)</a>
@@ -1474,6 +1636,8 @@
 </li>
         <li><a href="api/mesh.html#mesh.vertices">mesh.vertices (attribute)</a>
 </li>
+        <li><a href="api/style.html#MIDDLE">MIDDLE (attribute)</a>
+</li>
         <li><a href="api/math_types.html#vec2.min">min() (vec2 static method)</a>
 
         <ul>
@@ -1482,13 +1646,15 @@
           <li><a href="api/math_types.html#vec4.min">(vec4 static method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/style.html#MITER">MITER (attribute)</a>
+</li>
         <li><a href="api/color.html#color.mix">mix() (color static method)</a>
 </li>
         <li><a href="api/file.html#file.mkdir">mkdir() (in module file)</a>
 </li>
         <li><a href="api/matrix.html#matrix.model">model() (in module matrix)</a>, <a href="api/matrix.html#matrix.model">[1]</a>
+</li>
+        <li><a href="api/viewer.html#MODERN">MODERN (attribute)</a>
 </li>
         <li><a href="api/input.html#key.modifiers">modifiers() (in module key)</a>
 </li>
@@ -1498,13 +1664,7 @@
 </li>
         <li><a href="api/motion.html#motion.motion.acceleration">motion.motion.acceleration (attribute)</a>
 </li>
-        <li><a href="api/motion.html#motion.motion.attitude.XArbitraryCorrectedZVertical">motion.motion.attitude.XArbitraryCorrectedZVertical (attribute)</a>
-</li>
-        <li><a href="api/motion.html#motion.motion.attitude.XArbitraryZVertical">motion.motion.attitude.XArbitraryZVertical (attribute)</a>
-</li>
-        <li><a href="api/motion.html#motion.motion.attitude.XMagneticNorthZVertical">motion.motion.attitude.XMagneticNorthZVertical (attribute)</a>
-</li>
-        <li><a href="api/motion.html#motion.motion.attitude.XTrueNorthZVertical">motion.motion.attitude.XTrueNorthZVertical (attribute)</a>
+        <li><a href="api/motion.html#motion.motion.attitude">motion.motion.attitude (attribute)</a>
 </li>
         <li><a href="api/motion.html#motion.motion.autoStart">motion.motion.autoStart (attribute)</a>
 </li>
@@ -1512,9 +1672,11 @@
 </li>
         <li><a href="api/motion.html#motion.motion.heading">motion.motion.heading (attribute)</a>
 </li>
-        <li><a href="api/motion.html#motion.motion.magnetic.accuracy">motion.motion.magnetic.accuracy (attribute)</a>
+        <li><a href="api/motion.html#motion.motion.magnetic">motion.motion.magnetic (attribute)</a>
 </li>
-        <li><a href="api/motion.html#motion.motion.magnetic.field">motion.motion.magnetic.field (attribute)</a>
+        <li><a href="api/motion.html#motion.motion.magneticAccuracy">motion.motion.magneticAccuracy (attribute)</a>
+</li>
+        <li><a href="api/motion.html#motion.motion.referenceFrame">motion.motion.referenceFrame (attribute)</a>
 </li>
         <li><a href="api/motion.html#motion.motion.rotationRate">motion.motion.rotationRate (attribute)</a>
 </li>
@@ -1560,6 +1722,8 @@
 </li>
         <li><a href="api/entity.html#entity.moveBefore">moveBefore() (entity method)</a>
 </li>
+        <li><a href="api/style.html#MULTIPLY">MULTIPLY (attribute)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -1575,6 +1739,8 @@
         <li><a href="api/style.html#style.noClip">noClip() (in module style)</a>
 </li>
         <li><a href="api/style.html#style.noFill">noFill() (in module style)</a>
+</li>
+        <li><a href="api/style.html#NORMAL">NORMAL (attribute)</a>
 </li>
         <li><a href="api/image.html#image.slice.normal">normal() (image.slice method)</a>
 
@@ -1622,17 +1788,33 @@
 </li>
         <li><a href="api/objc.html#objc.objc.info">objc.objc.info (attribute)</a>
 </li>
-        <li><a href="api/objc.html#objc.objc.insets">objc.objc.insets (attribute)</a>
+        <li><a href="api/objc.html#objc.objc.private.insets.bottom">objc.objc.private.insets.bottom (attribute)</a>
+</li>
+        <li><a href="api/objc.html#objc.objc.private.insets.left">objc.objc.private.insets.left (attribute)</a>
+</li>
+        <li><a href="api/objc.html#objc.objc.private.insets.right">objc.objc.private.insets.right (attribute)</a>
+</li>
+        <li><a href="api/objc.html#objc.objc.private.insets.top">objc.objc.private.insets.top (attribute)</a>
 </li>
         <li><a href="api/objc.html#objc.objc.viewer">objc.objc.viewer (attribute)</a>
 </li>
         <li><a href="api/tween.html#tween.onComplete">onComplete() (tween method)</a>
+</li>
+        <li><a href="api/style.html#ONE">ONE (attribute)</a>
+</li>
+        <li><a href="api/style.html#ONE_MINUS_DST_ALPHA">ONE_MINUS_DST_ALPHA (attribute)</a>
+</li>
+        <li><a href="api/style.html#ONE_MINUS_SRC_ALPHA">ONE_MINUS_SRC_ALPHA (attribute)</a>
+</li>
+        <li><a href="api/style.html#ONE_MINUS_SRC_COLOR">ONE_MINUS_SRC_COLOR (attribute)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/tween.html#tween.onSeek">onSeek() (tween method)</a>
 </li>
         <li><a href="api/tween.html#tween.onStep">onStep() (tween method)</a>, <a href="api/tween.html#tween.onStep">[1]</a>
+</li>
+        <li><a href="api/style.html#OPAQUE">OPAQUE (attribute)</a>
 </li>
         <li><a href="api/math_types.html#mat4.orbit">orbit() (mat4 static method)</a>, <a href="api/math_types.html#mat4.orbit">[1]</a>
 </li>
@@ -1644,7 +1826,19 @@
           <li><a href="api/math_types.html#mat4.ortho">(mat4 static method)</a>
 </li>
         </ul></li>
+        <li><a href="api/lua.html#os.clock">os.clock() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#os.date">os.date() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#os.difftime">os.difftime() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#os.setlocale">os.setlocale() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#os.time">os.time() (built-in function)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.world.overlapBox">overlapBox() (physics2d.world method)</a>
+</li>
+        <li><a href="api/style.html#OVERLAY">OVERLAY (attribute)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -1655,6 +1849,8 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/image.html#image.slice.padding">padding() (image.slice method)</a>, <a href="api/image.html#image.slice.padding">[1]</a>, <a href="api/image.html#image.slice.padding">[2]</a>
+</li>
+        <li><a href="api/lua.html#pairs">pairs() (built-in function)</a>
 </li>
         <li><a href="api/input.html#gesture.pan.gesture.pan">pan() (gesture.pan.gesture static method)</a>
 </li>
@@ -1816,10 +2012,10 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.referenceAngle">physics2d.physics2d.hinge.referenceAngle (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.speed">physics2d.physics2d.hinge.speed (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.upperLimit">physics2d.physics2d.hinge.upperLimit (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.useLimit">physics2d.physics2d.hinge.useLimit (attribute)</a>
@@ -1968,7 +2164,15 @@
         </ul></li>
         <li><a href="api/mesh.html#mesh.position">position() (mesh method)</a>, <a href="api/mesh.html#mesh.position">[1]</a>
 </li>
+        <li><a href="api/style.html#PREMULTIPLIED">PREMULTIPLIED (attribute)</a>
+</li>
         <li><a href="api/input.html#key.pressing">pressing() (in module key)</a>
+</li>
+        <li><a href="api/lua.html#print">print() (built-in function)</a>
+</li>
+        <li><a href="api/objc.html#objc.private.insets">private.insets (class in objc)</a>
+</li>
+        <li><a href="api/style.html#PROJECT">PROJECT (attribute)</a>
 </li>
         <li><a href="api/matrix.html#matrix.projection">projection() (in module matrix)</a>, <a href="api/matrix.html#matrix.projection">[1]</a>
 </li>
@@ -2024,6 +2228,8 @@
   <h2>R</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/style.html#RADIUS">RADIUS (attribute)</a>
+</li>
         <li><a href="api/objc.html#objc.range">range() (in module objc)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.world.raycast">raycast() (physics2d.world method)</a>
@@ -2054,7 +2260,7 @@
           <li><a href="api/shader.html#shader.read">(shader static method)</a>
 </li>
         </ul></li>
-        <li><a href="api/graphics.html#rect">rect() (built-in function)</a>
+        <li><a href="api/graphics.html#rect">rect() (built-in function)</a>, <a href="api/graphics.html#rect">[1]</a>
 
         <ul>
           <li><a href="api/image.html#image.slice.rect">(image.slice method)</a>, <a href="api/image.html#image.slice.rect">[1]</a>
@@ -2086,10 +2292,10 @@
           <li><a href="api/file.html#file.remove">(in module file)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/file.html#file.rename">rename() (in module file)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/require.html#require">require (built-in class)</a>
 </li>
         <li><a href="api/require.html#require">require() (built-in function)</a>
@@ -2107,6 +2313,8 @@
         <ul>
           <li><a href="api/shader.html#bufferLayout.resize">(bufferLayout method)</a>
 </li>
+          <li><a href="api/viewer.html#viewer.resize">(in module viewer)</a>
+</li>
           <li><a href="api/shader.html#indexBuffer.resize">(indexBuffer method)</a>
 </li>
         </ul></li>
@@ -2114,7 +2322,13 @@
 </li>
         <li><a href="api/mesh.html#mesh.resizeVertices">resizeVertices() (mesh method)</a>
 </li>
-        <li><a href="api/tween.html#tween.restart">restart() (tween method)</a>
+        <li><a href="api/viewer.html#viewer.restart">restart() (in module viewer)</a>
+
+        <ul>
+          <li><a href="api/tween.html#tween.restart">(tween method)</a>
+</li>
+        </ul></li>
+        <li><a href="api/style.html#RIGHT">RIGHT (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.rope">rope (class in physics2d)</a>
 </li>
@@ -2131,6 +2345,8 @@
         <li><a href="api/math_types.html#vec2.rotate90">rotate90() (vec2 method)</a>
 </li>
         <li><a href="api/input.html#gesture.rotation.gesture.rotation">rotation() (gesture.rotation.gesture static method)</a>
+</li>
+        <li><a href="api/style.html#ROUND">ROUND (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.roundedBox">roundedBox() (mesh static method)</a>
 </li>
@@ -2200,15 +2416,19 @@
 </li>
         <li><a href="api/scene.html#scene.world3d">scene.world3d (attribute)</a>
 </li>
+        <li><a href="api/style.html#SCREEN">SCREEN (attribute)</a>
+</li>
         <li><a href="api/camera.html#camera.screenToWorld">screenToWorld() (camera method)</a>
 </li>
         <li><a href="api/tween.html#tween.seek">seek() (tween method)</a>
 </li>
         <li><a href="api/objc.html#objc.selector">selector() (in module objc)</a>
 </li>
-        <li><a href="api/inspector.html#inspector.set">set() (in module inspector)</a>
+        <li><a href="api/math_types.html#bounds.aabb.set">set() (bounds.aabb method)</a>
 
         <ul>
+          <li><a href="api/inspector.html#inspector.set">(in module inspector)</a>
+</li>
           <li><a href="api/objc.html#objc.set">(in module objc)</a>
 </li>
           <li><a href="api/style.html#style.set">(in module style)</a>
@@ -2250,7 +2470,9 @@
 </li>
         <li><a href="api/light.html#shadowOptions.size">shadowOptions.size (attribute)</a>
 </li>
-        <li><a href="api/style.html#style.shapeMode">shapeMode() (in module style)</a>
+        <li><a href="api/style.html#style.shapeMode">shapeMode() (in module style)</a>, <a href="api/style.html#style.shapeMode">[1]</a>
+</li>
+        <li><a href="api/viewer.html#viewer.share">share() (in module viewer)</a>
 </li>
         <li><a href="api/objc.html#objc.size">size() (in module objc)</a>
 </li>
@@ -2263,6 +2485,8 @@
 </li>
         </ul></li>
         <li><a href="api/physics2d.html#physics2d.body.slider">slider() (physics2d.body method)</a>
+</li>
+        <li><a href="api/viewer.html#viewer.snapshot">snapshot() (in module viewer)</a>
 </li>
         <li><a href="api/style.html#style.sortOrder">sortOrder() (in module style)</a>
 </li>
@@ -2280,25 +2504,27 @@
 </li>
         <li><a href="api/sound.html#sound.sound.instance.volume">sound.sound.instance.volume (attribute)</a>
 </li>
-        <li><a href="api/sound.html#sound.sound.SOUND_BLIP">sound.sound.SOUND_BLIP (attribute)</a>
-</li>
-        <li><a href="api/sound.html#sound.sound.SOUND_COIN">sound.sound.SOUND_COIN (attribute)</a>
-</li>
-        <li><a href="api/sound.html#sound.sound.SOUND_EXPLOSION">sound.sound.SOUND_EXPLOSION (attribute)</a>
-</li>
-        <li><a href="api/sound.html#sound.sound.SOUND_HURT">sound.sound.SOUND_HURT (attribute)</a>
-</li>
-        <li><a href="api/sound.html#sound.sound.SOUND_JUMP">sound.sound.SOUND_JUMP (attribute)</a>
-</li>
-        <li><a href="api/sound.html#sound.sound.SOUND_LASER">sound.sound.SOUND_LASER (attribute)</a>
-</li>
-        <li><a href="api/sound.html#sound.sound.SOUND_POWERUP">sound.sound.SOUND_POWERUP (attribute)</a>
-</li>
         <li><a href="api/sound.html#sound.sound.source.length">sound.sound.source.length (attribute)</a>
 </li>
         <li><a href="api/sound.html#sound.sound.source.loop">sound.sound.source.loop (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/sound.html#sound.sound.source.volume">sound.sound.source.volume (attribute)</a>
+</li>
+        <li><a href="api/sound.html#SOUND_BLIP">SOUND_BLIP (attribute)</a>
+</li>
+        <li><a href="api/sound.html#SOUND_COIN">SOUND_COIN (attribute)</a>
+</li>
+        <li><a href="api/sound.html#SOUND_EXPLOSION">SOUND_EXPLOSION (attribute)</a>
+</li>
+        <li><a href="api/sound.html#SOUND_HURT">SOUND_HURT (attribute)</a>
+</li>
+        <li><a href="api/sound.html#SOUND_JUMP">SOUND_JUMP (attribute)</a>
+</li>
+        <li><a href="api/sound.html#SOUND_LASER">SOUND_LASER (attribute)</a>
+</li>
+        <li><a href="api/sound.html#SOUND_POWERUP">SOUND_POWERUP (attribute)</a>
 </li>
         <li><a href="api/sound.html#sound.source">source (class in sound)</a>
 </li>
@@ -2316,9 +2542,51 @@
 </li>
         <li><a href="api/graphics.html#sprite">sprite() (built-in function)</a>, <a href="api/graphics.html#sprite">[1]</a>
 </li>
+        <li><a href="api/style.html#SQUARE">SQUARE (attribute)</a>
+</li>
+        <li><a href="api/style.html#SRC_ALPHA">SRC_ALPHA (attribute)</a>
+</li>
+        <li><a href="api/style.html#SRC_ALPHA_SATURATE">SRC_ALPHA_SATURATE (attribute)</a>
+</li>
+        <li><a href="api/style.html#SRC_COLOR">SRC_COLOR (attribute)</a>
+</li>
+        <li><a href="api/viewer.html#STANDARD">STANDARD (attribute)</a>
+</li>
         <li><a href="api/motion.html#motion.start">start() (in module motion)</a>
 </li>
-        <li><a href="api/style.html#style.stencil">stencil() (in module style)</a>, <a href="api/style.html#style.stencil">[1]</a>
+        <li><a href="api/style.html#style.stencil">stencil() (in module style)</a>, <a href="api/style.html#style.stencil">[1]</a>, <a href="api/style.html#style.stencil">[2]</a>
+</li>
+        <li><a href="api/style.html#STENCIL_OP_DECREMENT">STENCIL_OP_DECREMENT (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_OP_DECREMENT_WRAP">STENCIL_OP_DECREMENT_WRAP (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_OP_INCREMENT">STENCIL_OP_INCREMENT (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_OP_INCREMENT_WRAP">STENCIL_OP_INCREMENT_WRAP (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_OP_INVERT">STENCIL_OP_INVERT (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_OP_KEEP">STENCIL_OP_KEEP (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_OP_REPLACE">STENCIL_OP_REPLACE (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_OP_ZERO">STENCIL_OP_ZERO (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_TEST_ALWAYS">STENCIL_TEST_ALWAYS (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_TEST_EQUAL">STENCIL_TEST_EQUAL (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_TEST_GEQUAL">STENCIL_TEST_GEQUAL (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_TEST_GREATER">STENCIL_TEST_GREATER (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_TEST_LEQUAL">STENCIL_TEST_LEQUAL (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_TEST_LESS">STENCIL_TEST_LESS (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_TEST_NEVER">STENCIL_TEST_NEVER (attribute)</a>
+</li>
+        <li><a href="api/style.html#STENCIL_TEST_NOTEQUAL">STENCIL_TEST_NOTEQUAL (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.world.step">step() (physics2d.world method)</a>
 
@@ -2332,8 +2600,6 @@
           <li><a href="api/sound.html#sound.instance.stop">(sound.instance method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/storage.html#module-storage">storage (module)</a>
 </li>
         <li><a href="api/storage.html#storage">storage() (built-in function)</a>
@@ -2346,165 +2612,45 @@
 </li>
         <li><a href="api/objc.html#objc.string">string() (in module objc)</a>
 </li>
+        <li><a href="api/lua.html#string.byte">string.byte() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.char">string.char() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.dump">string.dump() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.find">string.find() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.format">string.format() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.gmatch">string.gmatch() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.gsub">string.gsub() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.len">string.len() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.lower">string.lower() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.match">string.match() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.pack">string.pack() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.packsize">string.packsize() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.rep">string.rep() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.reverse">string.reverse() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.sub">string.sub() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.unpack">string.unpack() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#string.upper">string.upper() (built-in function)</a>
+</li>
         <li><a href="api/style.html#style.stroke">stroke() (in module style)</a>, <a href="api/style.html#style.stroke">[1]</a>, <a href="api/style.html#style.stroke">[2]</a>, <a href="api/style.html#style.stroke">[3]</a>, <a href="api/style.html#style.stroke">[4]</a>
 </li>
         <li><a href="api/style.html#style.strokeWidth">strokeWidth() (in module style)</a>, <a href="api/style.html#style.strokeWidth">[1]</a>
 </li>
         <li><a href="api/style.html#module-style">style (module)</a>
-</li>
-        <li><a href="api/style.html#style.style.ADDITIVE">style.style.ADDITIVE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.BACKGROUND">style.style.BACKGROUND (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.BASELINE">style.style.BASELINE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.BEVEL">style.style.BEVEL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.BOTTOM">style.style.BOTTOM (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.CENTER">style.style.CENTER (attribute)</a>, <a href="api/style.html#style.style.CENTER">[1]</a>
-</li>
-        <li><a href="api/style.html#style.style.COLOR_MASK_ALPHA">style.style.COLOR_MASK_ALPHA (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.COLOR_MASK_BLUE">style.style.COLOR_MASK_BLUE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.COLOR_MASK_GREEN">style.style.COLOR_MASK_GREEN (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.COLOR_MASK_NONE">style.style.COLOR_MASK_NONE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.COLOR_MASK_RED">style.style.COLOR_MASK_RED (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.COLOR_MASK_RGB">style.style.COLOR_MASK_RGB (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.COLOR_MASK_RGBA">style.style.COLOR_MASK_RGBA (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.CORNER">style.style.CORNER (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.CORNERS">style.style.CORNERS (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.CULL_FACE_BACK">style.style.CULL_FACE_BACK (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.CULL_FACE_FRONT">style.style.CULL_FACE_FRONT (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.CULL_FACE_NONE">style.style.CULL_FACE_NONE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DEPTH_FUNC_EQUAL">style.style.DEPTH_FUNC_EQUAL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DEPTH_FUNC_GREATER">style.style.DEPTH_FUNC_GREATER (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DEPTH_FUNC_GREATER_EQUAL">style.style.DEPTH_FUNC_GREATER_EQUAL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DEPTH_FUNC_LESS">style.style.DEPTH_FUNC_LESS (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DEPTH_FUNC_LESS_EQUAL">style.style.DEPTH_FUNC_LESS_EQUAL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DEPTH_FUNC_NEVER">style.style.DEPTH_FUNC_NEVER (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DEPTH_FUNC_NOT_EQUAL">style.style.DEPTH_FUNC_NOT_EQUAL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DEPTH_WRITE_DISABLED">style.style.DEPTH_WRITE_DISABLED (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DEPTH_WRITE_ENABLED">style.style.DEPTH_WRITE_ENABLED (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DISABLED">style.style.DISABLED (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DST_ALPHA">style.style.DST_ALPHA (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.DST_COLOR">style.style.DST_COLOR (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.EQUATION_ADD">style.style.EQUATION_ADD (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.EQUATION_MAX">style.style.EQUATION_MAX (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.EQUATION_MIN">style.style.EQUATION_MIN (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.EQUATION_REVSUB">style.style.EQUATION_REVSUB (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.EQUATION_SUB">style.style.EQUATION_SUB (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.LEFT">style.style.LEFT (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.LIGHTEN">style.style.LIGHTEN (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.LINEAR_BURN">style.style.LINEAR_BURN (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.MIDDLE">style.style.MIDDLE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.MITER">style.style.MITER (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.MULTIPLY">style.style.MULTIPLY (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.NORMAL">style.style.NORMAL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.ONE">style.style.ONE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.ONE_MINUS_DST_ALPHA">style.style.ONE_MINUS_DST_ALPHA (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.ONE_MINUS_SRC_ALPHA">style.style.ONE_MINUS_SRC_ALPHA (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.ONE_MINUS_SRC_COLOR">style.style.ONE_MINUS_SRC_COLOR (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.OPAQUE">style.style.OPAQUE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.OVERLAY">style.style.OVERLAY (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.PREMULTIPLIED">style.style.PREMULTIPLIED (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.PROJECT">style.style.PROJECT (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.RADIUS">style.style.RADIUS (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.RIGHT">style.style.RIGHT (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.ROUND">style.style.ROUND (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.SCREEN">style.style.SCREEN (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.SQUARE">style.style.SQUARE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.SRC_ALPHA">style.style.SRC_ALPHA (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.SRC_ALPHA_SATURATE">style.style.SRC_ALPHA_SATURATE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.SRC_COLOR">style.style.SRC_COLOR (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_OP_DECREMENT">style.style.STENCIL_OP_DECREMENT (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_OP_DECREMENT_WRAP">style.style.STENCIL_OP_DECREMENT_WRAP (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_OP_INCREMENT">style.style.STENCIL_OP_INCREMENT (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_OP_INCREMENT_WRAP">style.style.STENCIL_OP_INCREMENT_WRAP (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_OP_INVERT">style.style.STENCIL_OP_INVERT (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_OP_KEEP">style.style.STENCIL_OP_KEEP (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_OP_REPLACE">style.style.STENCIL_OP_REPLACE (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_OP_ZERO">style.style.STENCIL_OP_ZERO (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_TEST_ALWAYS">style.style.STENCIL_TEST_ALWAYS (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_TEST_EQUAL">style.style.STENCIL_TEST_EQUAL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_TEST_GEQUAL">style.style.STENCIL_TEST_GEQUAL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_TEST_GREATER">style.style.STENCIL_TEST_GREATER (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_TEST_LEQUAL">style.style.STENCIL_TEST_LEQUAL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_TEST_LESS">style.style.STENCIL_TEST_LESS (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_TEST_NEVER">style.style.STENCIL_TEST_NEVER (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.STENCIL_TEST_NOTEQUAL">style.style.STENCIL_TEST_NOTEQUAL (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.TOP">style.style.TOP (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.TRANSPARENT">style.style.TRANSPARENT (attribute)</a>
-</li>
-        <li><a href="api/style.html#style.style.ZERO">style.style.ZERO (attribute)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -2514,11 +2660,21 @@
   <h2>T</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/lua.html#table">table (built-in class)</a>
-</li>
         <li><a href="api/pick.html#pick.table">table() (pick static method)</a>
 </li>
-        <li><a href="api/lua.html#table.flatten">table.flatten() (built-in function)</a>
+        <li><a href="api/lua.html#table.concat">table.concat() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#table.insert">table.insert() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#table.move">table.move() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#table.pack">table.pack() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#table.remove">table.remove() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#table.sort">table.sort() (built-in function)</a>
+</li>
+        <li><a href="api/lua.html#table.unpack">table.unpack() (built-in function)</a>
 </li>
         <li><a href="api/input.html#gesture.tap.gesture.tap">tap() (gesture.tap.gesture static method)</a>
 </li>
@@ -2544,6 +2700,8 @@
 </li>
         <li><a href="api/tween.html#tween.to">to() (tween method)</a>
 </li>
+        <li><a href="api/style.html#TOP">TOP (attribute)</a>
+</li>
         <li><a href="api/mesh.html#mesh.torus">torus() (mesh static method)</a>
 </li>
         <li><a href="api/mesh.html#mesh.torusKnot">torusKnot() (mesh static method)</a>
@@ -2564,12 +2722,12 @@
 </li>
         <li><a href="api/input.html#touch.id">touch.id (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#touch.maxForce">touch.maxForce (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.pos">touch.pos (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#touch.precisePos">touch.precisePos (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.precisePrevPos">touch.precisePrevPos (attribute)</a>
@@ -2602,12 +2760,16 @@
 </li>
         <li><a href="api/entity.html#entity.transformPoint">transformPoint() (entity method)</a>
 </li>
-        <li><a href="api/entity.html#entity.translate">translate() (entity method)</a>
+        <li><a href="api/math_types.html#bounds.aabb.translate">translate() (bounds.aabb method)</a>
 
         <ul>
+          <li><a href="api/entity.html#entity.translate">(entity method)</a>
+</li>
           <li><a href="api/matrix.html#matrix.translate">(in module matrix)</a>
 </li>
         </ul></li>
+        <li><a href="api/style.html#TRANSPARENT">TRANSPARENT (attribute)</a>
+</li>
         <li><a href="api/math_types.html#mat2.transpose">transpose() (mat2 method)</a>
 
         <ul>
@@ -2625,8 +2787,6 @@
         <li><a href="api/tween.html#tween.progress">tween.progress (attribute)</a>
 </li>
         <li><a href="api/tween.html#tween.target">tween.target (attribute)</a>
-</li>
-        <li><a href="api/lua.html#typeof">typeof() (built-in function)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -2708,7 +2868,7 @@
 </li>
         <li><a href="api/math_types.html#vec3">vec3 (built-in class)</a>
 </li>
-        <li><a href="api/math_types.html#vec3.vec3">vec3() (vec3 static method)</a>
+        <li><a href="api/math_types.html#vec3.vec3">vec3() (vec3 static method)</a>, <a href="api/math_types.html#vec3.vec3">[1]</a>, <a href="api/math_types.html#vec3.vec3">[2]</a>
 </li>
         <li><a href="api/math_types.html#vec3.length">vec3.length (attribute)</a>
 </li>
@@ -2728,8 +2888,6 @@
 </li>
         <li><a href="api/math_types.html#vec4.length2">vec4.length2 (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/math_types.html#vec4.w">vec4.w (attribute)</a>
 </li>
         <li><a href="api/math_types.html#vec4.x">vec4.x (attribute)</a>
@@ -2738,6 +2896,8 @@
 </li>
         <li><a href="api/math_types.html#vec4.z">vec4.z (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/objc.html#objc.vector">vector() (in module objc)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.body.velocityAtLocalPoint">velocityAtLocalPoint() (physics2d.body method)</a>
@@ -2756,11 +2916,27 @@
 </li>
         <li><a href="api/viewer.html#module-viewer">viewer (module)</a>
 </li>
+        <li><a href="api/viewer.html#viewer.viewer.displayStats">viewer.viewer.displayStats (attribute)</a>
+</li>
+        <li><a href="api/viewer.html#viewer.viewer.drawOnRequest">viewer.viewer.drawOnRequest (attribute)</a>
+</li>
+        <li><a href="api/viewer.html#viewer.viewer.framerate">viewer.viewer.framerate (attribute)</a>
+</li>
+        <li><a href="api/viewer.html#viewer.viewer.isPresenting">viewer.viewer.isPresenting (attribute)</a>
+</li>
         <li><a href="api/viewer.html#viewer.viewer.mode">viewer.viewer.mode (attribute)</a>
 </li>
         <li><a href="api/viewer.html#viewer.viewer.paused">viewer.viewer.paused (attribute)</a>
 </li>
+        <li><a href="api/viewer.html#viewer.viewer.pointerLocked">viewer.viewer.pointerLocked (attribute)</a>
+</li>
+        <li><a href="api/viewer.html#viewer.viewer.runtime">viewer.viewer.runtime (attribute)</a>
+</li>
         <li><a href="api/viewer.html#viewer.viewer.safeArea">viewer.viewer.safeArea (attribute)</a>
+</li>
+        <li><a href="api/viewer.html#viewer.viewer.showWarnings">viewer.viewer.showWarnings (attribute)</a>
+</li>
+        <li><a href="api/viewer.html#viewer.viewer.uniformResizing">viewer.viewer.uniformResizing (attribute)</a>
 </li>
         <li><a href="api/style.html#style.viewRect">viewRect() (in module style)</a>
 </li>
@@ -2814,6 +2990,16 @@
           <li><a href="api/physics3d.html#physics3d.body.worldVector">(physics3d.body method)</a>
 </li>
         </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="Z" class="genindex-section">
+  <h2>Z</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/style.html#ZERO">ZERO (attribute)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>

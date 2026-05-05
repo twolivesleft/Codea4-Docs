@@ -168,16 +168,17 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics3d.html">physics3d</a></li>
@@ -250,12 +250,83 @@
 <h1>Assets<a class="headerlink" href="#assets" title="Link to this heading">¶</a></h1>
 <section id="assets-in-codea">
 <h2>Assets in Codea<a class="headerlink" href="#assets-in-codea" title="Link to this heading">¶</a></h2>
+<p>Assets are files — images, sounds, 3D models, text, JSON — stored in your project or in Codea’s built-in libraries. You access them through <em>asset keys</em>, which are Lua values that represent a path within a specific asset library.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Load an image from the built-in Codea assets</span>
+<span class="nv">myImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readImage</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">.</span><span class="py">Codea_Dark</span><span class="p">)</span>
+
+<span class="c1">-- Load from your own project</span>
+<span class="nv">myImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readImage</span><span class="p">(</span><span class="nv">asset</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;MySprite.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="asset-keys">
 <h2>Asset Keys<a class="headerlink" href="#asset-keys" title="Link to this heading">¶</a></h2>
+<p>An asset key is a pointer to a file in a specific asset library. Asset keys look like table fields but are resolved by Codea into full file paths at runtime.</p>
+<p>The main asset libraries are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">asset</span></code> — files in your current project</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">asset.documents</span></code> — your personal Documents folder</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">asset.builtin</span></code> — read-only Codea built-in assets (sprites, sounds, shaders)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">asset.icloud</span></code> — iCloud Drive documents (when signed in)</p></li>
+</ul>
+<p>You can navigate sub-folders using dot notation or the <code class="docutils literal notranslate"><span class="pre">..</span></code> operator:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Dot notation (for known names)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">.</span><span class="py">Codea_Dark</span>
+
+<span class="c1">-- Concatenation (for dynamic names)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MySprite.png&quot;</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">filename</span>
+
+<span class="c1">-- Combine paths</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;Saves/Level1.json&quot;</span>
+</pre></div>
+</div>
 </section>
 <section id="loading-and-saving-assets">
 <h2>Loading and Saving Assets<a class="headerlink" href="#loading-and-saving-assets" title="Link to this heading">¶</a></h2>
+<p>Use the standard reading functions with asset keys instead of file path strings:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Images</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readImage</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">.</span><span class="py">Codea_Dark</span><span class="p">)</span>
+<span class="nf">saveImage</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;Screenshot.png&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">img</span><span class="p">)</span>
+
+<span class="c1">-- Text</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readLocalData</span><span class="p">(</span><span class="s2">&quot;highscore&quot;</span><span class="p">)</span>
+<span class="nf">saveLocalData</span><span class="p">(</span><span class="s2">&quot;highscore&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1">-- JSON via the pick API</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">table</span><span class="p">()</span><span class="w">   </span><span class="c1">-- opens document picker, returns a table</span>
+</pre></div>
+</div>
+<p>Asset keys also work with the <a class="reference internal" href="../api/file.html#module-file" title="file"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">file</span></code></a> module for copying, moving, and deleting files.</p>
+</section>
+<section id="working-with-asset-packs">
+<h2>Working with Asset Packs<a class="headerlink" href="#working-with-asset-packs" title="Link to this heading">¶</a></h2>
+<p>Asset packs are folders that group related files together. You can inspect what’s inside a pack using <code class="docutils literal notranslate"><span class="pre">pairs()</span></code>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- List all built-in Cargo Bot assets</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">name</span><span class="p">,</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">name</span><span class="p">,</span><span class="w"> </span><span class="nv">key</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>You can create your own packs by creating subfolders inside your project.</p>
+</section>
+<section id="bookmarks-references">
+<h2>Bookmarks (References)<a class="headerlink" href="#bookmarks-references" title="Link to this heading">¶</a></h2>
+<p>When you pick a file from outside your project using <code class="docutils literal notranslate"><span class="pre">pick.option.reference</span></code>, you receive an asset key that points to the original file. Because the file path may change between sessions, you must save a <em>bookmark</em> to reliably access it later:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Pick a file by reference and save a bookmark</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">asset</span><span class="p">(</span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">reference</span><span class="p">)</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">key</span><span class="p">:</span><span class="nf">saveBookmark</span><span class="p">(</span><span class="s2">&quot;myConfig&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="c1">-- On a later run, restore the bookmark</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">assets</span><span class="p">.</span><span class="nf">readBookmark</span><span class="p">(</span><span class="s2">&quot;myConfig&quot;</span><span class="p">)</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="nv">key</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Remove bookmarks when they’re no longer needed with <code class="docutils literal notranslate"><span class="pre">assets.removeBookmark(&quot;myConfig&quot;)</span></code>.</p>
 </section>
 </section>
 
@@ -318,6 +389,8 @@
 <li><a class="reference internal" href="#assets-in-codea">Assets in Codea</a></li>
 <li><a class="reference internal" href="#asset-keys">Asset Keys</a></li>
 <li><a class="reference internal" href="#loading-and-saving-assets">Loading and Saving Assets</a></li>
+<li><a class="reference internal" href="#working-with-asset-packs">Working with Asset Packs</a></li>
+<li><a class="reference internal" href="#bookmarks-references">Bookmarks (References)</a></li>
 </ul>
 </li>
 </ul>

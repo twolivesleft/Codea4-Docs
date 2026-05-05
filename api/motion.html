@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="require" href="require.html" /><link rel="prev" title="ui" href="ui.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>Motion Overview - Codea 4.0 documentation</title>
+        <title>Motion - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#motion">Motion</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
@@ -246,13 +246,10 @@
           </label>
         </div>
         <article role="main">
-          <section id="motion-overview">
-<h1>Motion Overview<a class="headerlink" href="#motion-overview" title="Link to this heading">¶</a></h1>
+          <section id="motion">
+<h1>Motion<a class="headerlink" href="#motion" title="Link to this heading">¶</a></h1>
 <p>Exposes Core Motion functionalities such as accessing the device’s accelerometer, gyroscope, and magnetometer data.</p>
 <p>Tracking of motion metrics can impact performance and battery drain. Use this feature judiciously to avoid negatively affecting the user experience.</p>
-</section>
-<section id="motion">
-<h1>Motion<a class="headerlink" href="#motion" title="Link to this heading">¶</a></h1>
 <dl class="lua attribute" id="module-motion">
 <dt class="sig sig-object lua" id="motion.motion.autoStart">
 <span class="sig-name descname"><span class="pre">autoStart</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#motion.motion.autoStart" title="Link to this definition">¶</a></dt>
@@ -275,6 +272,22 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XMagneticNorthZVertical</span></code>: The X-axis points toward the magnetic north and the Z-axis is vertical.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XTrueNorthZVertical</span></code>: The X-axis points toward the true north and the Z-axis is vertical.</p></li>
 </ul>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="motion.motion.referenceFrame">
+<span class="sig-name descname"><span class="pre">referenceFrame</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#motion.motion.referenceFrame" title="Link to this definition">¶</a></dt>
+<dd><p>Reference frame constants for motion tracking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>XArbitraryZVertical</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The X-axis is arbitrary and the Z-axis is vertical.</p></li>
+<li><p><strong>XArbitraryCorrectedZVertical</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The X-axis is arbitrary and the Z-axis is vertical. If available, the magnetometer will be used to correct for accumulated yaw errors.</p></li>
+<li><p><strong>XMagneticNorthZVertical</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The X-axis points toward the magnetic north and the Z-axis is vertical.</p></li>
+<li><p><strong>XTrueNorthZVertical</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The X-axis points toward the true north and the Z-axis is vertical.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua function">
@@ -310,14 +323,17 @@
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="motion.motion.sensorLocation">
-<span class="sig-name descname"><span class="pre">sensorLocation</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.sensorLocation" title="Link to this definition">¶</a></dt>
-<dd><p>The location of the device’s sensors.</p>
-<p>The value can be one of the following:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.sensorLocation.default</span></code>: The location of the device’s sensors is the default one.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.sensorLocation.headphoneLeft</span></code>: The device’s sensors are located near the left headphone.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.sensorLocation.headphoneRight</span></code>: The device’s sensors are located near the right headphone.</p></li>
+<span class="sig-name descname"><span class="pre">sensorLocation</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#motion.motion.sensorLocation" title="Link to this definition">¶</a></dt>
+<dd><p>Sensor location constants.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The location of the device’s sensors is the default one.</p></li>
+<li><p><strong>headphoneLeft</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The device’s sensors are located near the left headphone.</p></li>
+<li><p><strong>headphoneRight</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The device’s sensors are located near the right headphone.</p></li>
 </ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -329,9 +345,9 @@
 </section>
 <section id="device-orientation">
 <h1>Device Orientation<a class="headerlink" href="#device-orientation" title="Link to this heading">¶</a></h1>
-<dl class="lua class">
-<dt class="sig sig-object lua" id="motion.attitude">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">motion.</span></span><span class="sig-name descname"><span class="pre">attitude</span></span><a class="headerlink" href="#motion.attitude" title="Link to this definition">¶</a></dt>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="motion.motion.attitude">
+<span class="sig-name descname"><span class="pre">attitude</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#motion.motion.attitude" title="Link to this definition">¶</a></dt>
 <dd><p>Represents a measurement of your device attitude. This orientation of a body relative to a given frame of reference.</p>
 <p>You can set <code class="docutils literal notranslate"><span class="pre">motion.attitude.referenceFrame</span></code> to specify the frame of reference in which the attitude is expressed.</p>
 <p>The value can be one of the following <code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XArbitraryZVertical</span></code>, <code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XArbitraryCorrectedZVertical</span></code>, <code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XMagneticNorthZVertical</span></code>, <code class="docutils literal notranslate"><span class="pre">motion.referenceFrame.XTrueNorthZVertical</span></code>.</p>
@@ -347,57 +363,39 @@
 </ul>
 </dd>
 </dl>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.XArbitraryZVertical">
-<span class="sig-name descname"><span class="pre">XArbitraryZVertical</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.attitude.XArbitraryZVertical" title="Link to this definition">¶</a></dt>
-<dd><p>The X-axis is arbitrary and the Z-axis is vertical.</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.XArbitraryCorrectedZVertical">
-<span class="sig-name descname"><span class="pre">XArbitraryCorrectedZVertical</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.attitude.XArbitraryCorrectedZVertical" title="Link to this definition">¶</a></dt>
-<dd><p>The X-axis is arbitrary and the Z-axis is vertical. The system will attempt to correct for the device’s orientation.</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.XMagneticNorthZVertical">
-<span class="sig-name descname"><span class="pre">XMagneticNorthZVertical</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.attitude.XMagneticNorthZVertical" title="Link to this definition">¶</a></dt>
-<dd><p>The X-axis points toward the magnetic north and the Z-axis is vertical.</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.attitude.XTrueNorthZVertical">
-<span class="sig-name descname"><span class="pre">XTrueNorthZVertical</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.attitude.XTrueNorthZVertical" title="Link to this definition">¶</a></dt>
-<dd><p>The X-axis points toward the true north and the Z-axis is vertical.</p>
-</dd></dl>
-
 </dd></dl>
 
 </section>
 <section id="magnetic-field-data">
 <h1>Magnetic Field Data<a class="headerlink" href="#magnetic-field-data" title="Link to this heading">¶</a></h1>
-<dl class="lua class">
-<dt class="sig sig-object lua" id="motion.magnetic">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">motion.</span></span><span class="sig-name descname"><span class="pre">magnetic</span></span><a class="headerlink" href="#motion.magnetic" title="Link to this definition">¶</a></dt>
-<dd><dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.magnetic.field">
-<span class="sig-name descname"><span class="pre">field</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#motion.motion.magnetic.field" title="Link to this definition">¶</a></dt>
-<dd><p>The magnetic field vector in the device’s reference frame.</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="motion.motion.magnetic">
+<span class="sig-name descname"><span class="pre">magnetic</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#motion.motion.magnetic" title="Link to this definition">¶</a></dt>
+<dd><p>Magnetic field data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The magnetic field vector in the device’s reference frame.</p></li>
+<li><p><strong>accuracy</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The accuracy of the magnetic field data.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="motion.motion.magnetic.accuracy">
-<span class="sig-name descname"><span class="pre">accuracy</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#motion.motion.magnetic.accuracy" title="Link to this definition">¶</a></dt>
-<dd><p>The accuracy of the magnetic field data.</p>
-<p>The value can be one of the following:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.magneticAccuracy.uncalibrated</span></code>: The magnetic field data is uncalibrated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.magneticAccuracy.low</span></code>: The magnetic field data is of low accuracy.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.magneticAccuracy.medium</span></code>: The magnetic field data is of medium accuracy.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">motion.magneticAccuracy.high</span></code>: The magnetic field data is of high accuracy.</p></li>
+<dt class="sig sig-object lua" id="motion.motion.magneticAccuracy">
+<span class="sig-name descname"><span class="pre">magneticAccuracy</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#motion.motion.magneticAccuracy" title="Link to this definition">¶</a></dt>
+<dd><p>Magnetic field accuracy constants.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uncalibrated</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The magnetic field data is uncalibrated.</p></li>
+<li><p><strong>low</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The magnetic field data is of low accuracy.</p></li>
+<li><p><strong>medium</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The magnetic field data is of medium accuracy.</p></li>
+<li><p><strong>high</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">const</span></code></span>) – The magnetic field data is of high accuracy.</p></li>
 </ul>
-</dd></dl>
-
+</dd>
+</dl>
 </dd></dl>
 
 </section>

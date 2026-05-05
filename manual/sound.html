@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics3d.html">physics3d</a></li>
@@ -240,7 +240,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -248,6 +248,84 @@
         <article role="main">
           <section id="sound">
 <h1>Sound<a class="headerlink" href="#sound" title="Link to this heading">¶</a></h1>
+<section id="sound-in-codea">
+<h2>Sound in Codea<a class="headerlink" href="#sound-in-codea" title="Link to this heading">¶</a></h2>
+<p>Codea’s <a class="reference internal" href="../api/sound.html#module-sound" title="sound"><code class="xref lua lua-mod docutils literal notranslate"><span class="pre">sound</span></code></a> module lets you play audio files, synthesise sound effects procedurally, and control playback.</p>
+</section>
+<section id="playing-audio-files">
+<h2>Playing Audio Files<a class="headerlink" href="#playing-audio-files" title="Link to this heading">¶</a></h2>
+<p>Play a file from the project or built-in assets with <code class="docutils literal notranslate"><span class="pre">sound.play</span></code>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Play a built-in sound</span>
+<span class="nv">sound</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">A_Spaceship</span><span class="p">.</span><span class="py">Laser_Shoot</span><span class="p">)</span>
+
+<span class="c1">-- Play a project sound and control it</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sound</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">asset</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;music.mp3&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nv">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="p">})</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sound.play</span></code> returns a <code class="docutils literal notranslate"><span class="pre">sound.source</span></code> that lets you control the audio after it starts:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sound</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">asset</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;music.mp3&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">})</span>
+
+<span class="c1">-- Pause and resume</span>
+<span class="nv">src</span><span class="p">:</span><span class="nf">pause</span><span class="p">()</span>
+<span class="nv">src</span><span class="p">:</span><span class="nf">play</span><span class="p">()</span>
+
+<span class="c1">-- Adjust volume and pitch at runtime</span>
+<span class="nv">src</span><span class="p">.</span><span class="py">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span>
+<span class="nv">src</span><span class="p">.</span><span class="py">pitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.2</span>
+
+<span class="c1">-- Stop completely</span>
+<span class="nv">src</span><span class="p">:</span><span class="nf">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="loading-vs-playing">
+<h2>Loading vs Playing<a class="headerlink" href="#loading-vs-playing" title="Link to this heading">¶</a></h2>
+<p>For sounds you play frequently (like a gun shot), load the source once in <code class="docutils literal notranslate"><span class="pre">setup()</span></code> and call <code class="docutils literal notranslate"><span class="pre">play()</span></code> on it:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">shootSound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sound</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">A_Spaceship</span><span class="p">.</span><span class="py">Laser_Shoot</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">key</span><span class="p">.</span><span class="py">space</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">shootSound</span><span class="p">:</span><span class="nf">play</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">sound.load</span></code> is more efficient than calling <code class="docutils literal notranslate"><span class="pre">sound.play</span></code> every frame because the audio data is decoded once.</p>
+</section>
+<section id="procedural-sound">
+<h2>Procedural Sound<a class="headerlink" href="#procedural-sound" title="Link to this heading">¶</a></h2>
+<p>Generate synthesised sounds at runtime without any audio file using <code class="docutils literal notranslate"><span class="pre">sound.synthesize</span></code>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- A retro blip sound</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">blip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sound</span><span class="p">.</span><span class="nf">synthesize</span><span class="p">({</span>
+<span class="w">    </span><span class="nv">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">SINE</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">startFreq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">endFreq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">880</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">sustainTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">decayTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.8</span>
+<span class="p">})</span>
+<span class="nv">blip</span><span class="p">:</span><span class="nf">play</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Parameters let you shape the sound’s frequency envelope, waveform, and timing.</p>
+</section>
+<section id="background-music">
+<h2>Background Music<a class="headerlink" href="#background-music" title="Link to this heading">¶</a></h2>
+<p>For longer music tracks, use <code class="docutils literal notranslate"><span class="pre">sound.play</span></code> with <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">loop</span> <span class="pre">=</span> <span class="pre">true</span> <span class="pre">}</span></code>. Keep a reference to stop or fade it:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">music</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sound</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">asset</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;background.mp3&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nv">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.4</span><span class="w"> </span><span class="p">})</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">cleanup</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">music</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">music</span><span class="p">:</span><span class="nf">stop</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -293,8 +371,31 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Sound</a><ul>
+<li><a class="reference internal" href="#sound-in-codea">Sound in Codea</a></li>
+<li><a class="reference internal" href="#playing-audio-files">Playing Audio Files</a></li>
+<li><a class="reference internal" href="#loading-vs-playing">Loading vs Playing</a></li>
+<li><a class="reference internal" href="#procedural-sound">Procedural Sound</a></li>
+<li><a class="reference internal" href="#background-music">Background Music</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

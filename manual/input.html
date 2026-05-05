@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="2D Physics (Box 2D)" href="physics2d.html" /><link rel="prev" title="File Operations" href="file_operations.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="2D Physics (Box2D)" href="physics2d.html" /><link rel="prev" title="File Operations" href="file_operations.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>Input - Codea 4.0 documentation</title>
@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_operations.html">File Operations</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics3d.html">physics3d</a></li>
@@ -250,18 +250,96 @@
 <h1>Input<a class="headerlink" href="#input" title="Link to this heading">¶</a></h1>
 <section id="input-in-codea">
 <h2>Input in Codea<a class="headerlink" href="#input-in-codea" title="Link to this heading">¶</a></h2>
+<p>Codea provides a unified input system that handles touch, mouse, keyboard, and device motion across iOS and macOS. The main entry point is the <code class="xref lua lua-mod docutils literal notranslate"><span class="pre">input</span></code> module, which exposes current input state each frame.</p>
+<p>All input state is sampled once per frame at the start of <code class="docutils literal notranslate"><span class="pre">draw()</span></code>. You can read it synchronously without callbacks.</p>
 </section>
 <section id="touches">
 <h2>Touches<a class="headerlink" href="#touches" title="Link to this heading">¶</a></h2>
+<p>Touches represent screen contacts (fingers on iOS, mouse clicks on macOS). Use <code class="docutils literal notranslate"><span class="pre">input.touches</span></code> to get all current active touches:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">id</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">input</span><span class="p">.</span><span class="py">touches</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">circle</span><span class="p">(</span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Each touch object provides:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.x</span></code>, <code class="docutils literal notranslate"><span class="pre">touch.y</span></code> — current position</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.prevX</span></code>, <code class="docutils literal notranslate"><span class="pre">touch.prevY</span></code> — previous frame position</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.deltaX</span></code>, <code class="docutils literal notranslate"><span class="pre">touch.deltaY</span></code> — movement since last frame</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.began</span></code>, <code class="docutils literal notranslate"><span class="pre">touch.moving</span></code>, <code class="docutils literal notranslate"><span class="pre">touch.ended</span></code> — phase booleans</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.tapCount</span></code> — number of taps</p></li>
+</ul>
+<p>For callback-based touch handling, define the global <code class="docutils literal notranslate"><span class="pre">touched(touch)</span></code> function or set <code class="docutils literal notranslate"><span class="pre">entity.touched</span></code> on an entity:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">began</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Touch started at&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 <section id="key-presses">
 <h2>Key Presses<a class="headerlink" href="#key-presses" title="Link to this heading">¶</a></h2>
+<p>Read keyboard state via <code class="docutils literal notranslate"><span class="pre">input.key</span></code>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">key</span><span class="p">.</span><span class="py">w</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">key</span><span class="p">.</span><span class="py">up</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">player</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">player</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">speed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">DeltaTime</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">key</span><span class="p">.</span><span class="py">s</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">key</span><span class="p">.</span><span class="py">down</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">player</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">player</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">speed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">DeltaTime</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Check if any key is pressed with <code class="docutils literal notranslate"><span class="pre">input.key.pressed</span></code> (returns true while any key is held). Special key names include <code class="docutils literal notranslate"><span class="pre">space</span></code>, <code class="docutils literal notranslate"><span class="pre">return</span></code>, <code class="docutils literal notranslate"><span class="pre">backspace</span></code>, <code class="docutils literal notranslate"><span class="pre">up</span></code>, <code class="docutils literal notranslate"><span class="pre">down</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">shift</span></code>, <code class="docutils literal notranslate"><span class="pre">ctrl</span></code>, <code class="docutils literal notranslate"><span class="pre">alt</span></code>, and <code class="docutils literal notranslate"><span class="pre">cmd</span></code>.</p>
+<p>For text input, read the current text from <code class="docutils literal notranslate"><span class="pre">input.keyboard.text</span></code> and clear it each frame:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">inputBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="o">#</span><span class="nv">input</span><span class="p">.</span><span class="py">keyboard</span><span class="p">.</span><span class="py">text</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">inputBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">inputBuffer</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">keyboard</span><span class="p">.</span><span class="py">text</span>
+<span class="w">        </span><span class="nv">input</span><span class="p">.</span><span class="py">keyboard</span><span class="p">.</span><span class="py">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 <section id="trackpad">
 <h2>Trackpad<a class="headerlink" href="#trackpad" title="Link to this heading">¶</a></h2>
+<p>On macOS, the trackpad provides precise cursor input. Use <code class="docutils literal notranslate"><span class="pre">input.mouse</span></code> to read mouse / trackpad state:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- Cursor position</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">mouse</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">mouse</span><span class="p">.</span><span class="py">y</span>
+
+<span class="w">    </span><span class="c1">-- Button state</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">mouse</span><span class="p">.</span><span class="py">left</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="c1">-- left button held</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- Scroll delta</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">scrollY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">mouse</span><span class="p">.</span><span class="py">scroll</span><span class="p">.</span><span class="py">y</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 <section id="hover">
 <h2>Hover<a class="headerlink" href="#hover" title="Link to this heading">¶</a></h2>
+<p>Detect when the pointer hovers over a region without clicking:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">hovered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">mouse</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">mouse</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">150</span>
+<span class="w">                 </span><span class="ow">and</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">mouse</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">input</span><span class="p">.</span><span class="py">mouse</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">150</span>
+
+<span class="w">    </span><span class="nf">fill</span><span class="p">(</span><span class="nv">hovered</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">color</span><span class="p">.</span><span class="py">yellow</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">color</span><span class="p">.</span><span class="py">white</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Entity-based input systems (with <code class="docutils literal notranslate"><span class="pre">entity.hitTest</span> <span class="pre">=</span> <span class="pre">true</span></code>) automatically handle spatial hover and touch testing using attached collider shapes, removing the need for manual bounds checks.</p>
 </section>
 </section>
 
@@ -275,7 +353,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">2D Physics (Box 2D)</div>
+                <div class="title">2D Physics (Box2D)</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="manual/assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="api/string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics3d.html">physics3d</a></li>
@@ -302,11 +302,20 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#lighting">Lighting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="manual/sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/sound.html">Sound</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/sound.html#sound-in-codea">Sound in Codea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/sound.html#playing-audio-files">Playing Audio Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/sound.html#loading-vs-playing">Loading vs Playing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/sound.html#procedural-sound">Procedural Sound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/sound.html#background-music">Background Music</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="manual/assets.html">Assets</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual/assets.html#assets-in-codea">Assets in Codea</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/assets.html#asset-keys">Asset Keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/assets.html#loading-and-saving-assets">Loading and Saving Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/assets.html#working-with-asset-packs">Working with Asset Packs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/assets.html#bookmarks-references">Bookmarks (References)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/file_operations.html">File Operations</a><ul>
@@ -326,22 +335,32 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/input.html#hover">Hover</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box 2D)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box2D)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#d-physics-in-codea">2D Physics in Codea</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#creating-physics-worlds">Creating Physics Worlds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#using-physics-with-entities">Using Physics with Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#collision-shapes">Collision Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#collision-callbacks">Collision Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#sensors">Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#forces-and-impulses">Forces and Impulses</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics3d.html">3D Physics (Bullet 3D)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics3d.html#d-physics-in-codea">3D Physics in Codea</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics3d.html#creating-physics-worlds">Creating Physics Worlds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics3d.html#using-physics-with-entities">Using Physics with Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/physics3d.html#collision-shapes">Collision Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/physics3d.html#collision-callbacks">Collision Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/physics3d.html#forces-and-impulses">Forces and Impulses</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/scenes.html">Scenes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual/scenes.html#scenes-in-codea">Scenes in Codea</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/scenes.html#creating-scenes">Creating Scenes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/scenes.html#entities">Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/scenes.html#components">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/scenes.html#the-scene-camera">The Scene Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/scenes.html#lifecycle-callbacks">Lifecycle Callbacks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/shaders.html">Shaders and Materials</a><ul>
@@ -354,18 +373,35 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/shaders.html#the-standard-shader">The Standard Shader</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="manual/vectors.html">Using Vectors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/vectors.html#moving-along-a-vector">Moving Along a Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/vectors.html#rotating-vectors">Rotating Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/vectors.html#dot-product-field-of-view">Dot Product — Field of View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/vectors.html#smooth-following-with-lerp">Smooth Following with Lerp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/vectors.html#reflecting-vectors-bouncing-ball">Reflecting Vectors — Bouncing Ball</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/vectors.html#proximity-detection">Proximity Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/vectors.html#vector-swizzling">Vector Swizzling</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/math_types.html">math types</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/lua.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lua.html#language">Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lua.html#tables">Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lua.html#strings">Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lua.html#math">Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lua.html#date-and-time">Date and Time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/math_types.html">Math</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/math_types.html#d-vectors">2D Vectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/math_types.html#id1">3D Vectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/math_types.html#id2">4D Vectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/math_types.html#vector-swizzling">Vector Swizzling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/math_types.html#quaternions">Quaternions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/math_types.html#x2-matrix">2x2 Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/math_types.html#x3-matrix">3x3 Matrix</a></li>
@@ -431,7 +467,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/camera.html">camera</a></li>
@@ -441,8 +477,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/require.html">require</a><ul>
@@ -452,7 +487,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics2d.html">physics2d</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/physics2d.html#simulation">Simulation</a></li>

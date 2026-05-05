@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
@@ -293,28 +293,80 @@
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.directional">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">directional</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">direction</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#light.directional" title="Link to this definition">¶</a></dt>
-<dd><p>Create a new directional light</p>
+<dd><p>Create a new directional light. Directional lights simulate a distant light source (like the sun) that casts parallel rays in a given direction and supports shadow mapping.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>direction</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The direction vector the light casts in world space, defaults to <code class="docutils literal notranslate"><span class="pre">vec3(0,</span> <span class="pre">-1,</span> <span class="pre">0)</span></code></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new directional light</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">light</span></code></span></p>
+</dd>
+</dl>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">sun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;sun&quot;</span><span class="p">)</span>
+<span class="nv">sunLight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sun</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">light</span><span class="p">.</span><span class="nf">directional</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)))</span>
+<span class="nv">sunLight</span><span class="p">.</span><span class="py">castShadows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.point">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">point</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">position</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#light.point" title="Link to this definition">¶</a></dt>
-<dd><p>Create a new positional light</p>
-<p><em>note: currently not supported by the renderer</em></p>
+<dd><p>Create a new positional point light that radiates in all directions from a given position.</p>
+<p><em>Note: point lights are not currently supported by the renderer</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>position</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The world-space position of the light source, defaults to the origin</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new point light</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">light</span></code></span></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.spot">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">spot</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">position</span></em>, <em class="sig-param"><span class="pre">direction</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#light.spot" title="Link to this definition">¶</a></dt>
-<dd><p>Create a new positional light</p>
-<p><em>note: currently not supported by the renderer</em></p>
+<dd><p>Create a new spot light that emits a cone of light from a position toward a direction.</p>
+<p><em>Note: spot lights are not currently supported by the renderer</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The world-space position of the light source, defaults to the origin</p></li>
+<li><p><strong>direction</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The direction the cone points in world space, defaults to <code class="docutils literal notranslate"><span class="pre">vec3(0,</span> <span class="pre">-1,</span> <span class="pre">0)</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new spot light</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">light</span></code></span></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="light.push">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">light</span></em><span class="sig-paren">)</span><a class="headerlink" href="#light.push" title="Link to this definition">¶</a></dt>
-<dd><p>Pushes a light source onto the rendering stack</p>
-<p>This will apply basic lighting to 3D objects with lit materials after the light has been pushed but will not support advanced features such as shadows</p>
+<dd><p>Pushes a light source onto the immediate mode rendering stack.</p>
+<p>This applies basic lighting to 3D objects with lit materials for all subsequent draw calls until <code class="docutils literal notranslate"><span class="pre">light.pop()</span></code> is called. Immediate mode lighting does not support advanced features such as shadows — use scene-based lights for those.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>light</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">light</span></code></span>) – The light to push onto the rendering stack</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The same light for chaining</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">light</span></code></span></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua staticmethod">

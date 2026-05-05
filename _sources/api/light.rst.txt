@@ -43,31 +43,63 @@ Casts a light source onto the 3D environment. Can be used with basic immediate m
 
    .. lua:staticmethod:: light.directional([direction])
 
-      Create a new directional light
+      Create a new directional light. Directional lights simulate a distant light source (like the sun) that casts parallel rays in a given direction and supports shadow mapping.
+
+      :param direction: The direction vector the light casts in world space, defaults to ``vec3(0, -1, 0)``
+      :type direction: vec3
+
+      :return: A new directional light
+      :rtype: light
+
+      .. code-block:: lua
+
+         sun = scn:entity("sun")
+         sunLight = sun:add(light.directional(vec3(0, -1, 0)))
+         sunLight.castShadows = true
 
       .. helptext:: create a new directional light
 
    .. lua:staticmethod:: light.point([position])
 
-      Create a new positional light
+      Create a new positional point light that radiates in all directions from a given position.
 
-      *note: currently not supported by the renderer*
+      *Note: point lights are not currently supported by the renderer*
+
+      :param position: The world-space position of the light source, defaults to the origin
+      :type position: vec3
+
+      :return: A new point light
+      :rtype: light
 
       .. helptext:: create a new point light
 
    .. lua:staticmethod:: light.spot([position, direction])
 
-      Create a new positional light
+      Create a new spot light that emits a cone of light from a position toward a direction.
 
-      *note: currently not supported by the renderer*
+      *Note: spot lights are not currently supported by the renderer*
+
+      :param position: The world-space position of the light source, defaults to the origin
+      :type position: vec3
+      :param direction: The direction the cone points in world space, defaults to ``vec3(0, -1, 0)``
+      :type direction: vec3
+
+      :return: A new spot light
+      :rtype: light
 
       .. helptext:: create a new spot light
 
    .. lua:staticmethod:: light.push(light)
 
-      Pushes a light source onto the rendering stack
-      
-      This will apply basic lighting to 3D objects with lit materials after the light has been pushed but will not support advanced features such as shadows
+      Pushes a light source onto the immediate mode rendering stack.
+
+      This applies basic lighting to 3D objects with lit materials for all subsequent draw calls until ``light.pop()`` is called. Immediate mode lighting does not support advanced features such as shadows — use scene-based lights for those.
+
+      :param light: The light to push onto the rendering stack
+      :type light: light
+
+      :return: The same light for chaining
+      :rtype: light
 
       .. helptext:: push a light source onto the rendering stack
 

@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
@@ -253,8 +253,29 @@
 <h2>Background<a class="headerlink" href="#background" title="Link to this heading">¶</a></h2>
 <dl class="lua function">
 <dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">&lt;color&gt;</span></em><span class="sig-paren">)</span></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">red</span></em>, <em class="sig-param"><span class="pre">green</span></em>, <em class="sig-param"><span class="pre">blue</span></em>, <em class="sig-param"><span class="pre">alpha</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Clears the current context with solid color, can also be used to set image backgrounds when combined with <a class="reference internal" href="#context.push" title="context.push"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">context.push()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>red</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The red component of the color (0-255)</p></li>
+<li><p><strong>green</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The green component of the color (0-255)</p></li>
+<li><p><strong>blue</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The blue component of the color (0-255)</p></li>
+<li><p><strong>alpha</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The alpha component of the color (0-255)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Clears the current context with solid color, can also be used to set image backgrounds when combined with <a class="reference internal" href="#context.push" title="context.push"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">context.push()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – The color to set the background to</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua function">
@@ -264,8 +285,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cubeImage</strong> – The image to clear the background with</p></li>
-<li><p><strong>mipLevel</strong> – The mip level of the image to use, useful for displaying pre-blurred image mips, such as those calculated using <a class="reference internal" href="image.html#image.generateIrradiance" title="image.generateIrradiance"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">image.generateIrradiance()</span></code></a></p></li>
+<li><p><strong>cubeImage</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></span>) – The image to clear the background with</p></li>
+<li><p><strong>mipLevel</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The mip level of the image to use, useful for displaying pre-blurred image mips, such as those calculated using <a class="reference internal" href="image.html#image.generateIrradiance" title="image.generateIrradiance"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">image.generateIrradiance()</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -275,6 +296,11 @@
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">background</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shader</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Clears the current background using a custom shader</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>shader</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">shader</span></code></span>) – The shader to use when clearing the background, should be a shader that is compatible with sprite rendering (i.e. uses the same vertex attributes)</p>
+</dd>
+</dl>
 <details class="summary-example">
 <summary>Example</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
 <span class="w">    </span><span class="c1">-- Create a custom background shader</span>
@@ -365,14 +391,24 @@
 <dt class="sig sig-object lua" id="line">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x1</span></em>, <em class="sig-param"><span class="pre">y1</span></em>, <em class="sig-param"><span class="pre">x2</span></em>, <em class="sig-param"><span class="pre">y2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#line" title="Link to this definition">¶</a></dt>
 <dd><p>Draws 2D line from the start point (x1, y1) to the end point (x2, y2) based on the current style:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the x coordinate of the start point</p></li>
+<li><p><strong>y1</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the y coordinate of the start point</p></li>
+<li><p><strong>x2</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the x coordinate of the end point</p></li>
+<li><p><strong>y2</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the y coordinate of the end point</p></li>
+</ul>
+</dd>
+</dl>
 <ul class="simple">
 <li><p><em>Color</em> with <a class="reference internal" href="style.html#style.stroke" title="style.stroke"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.stroke()</span></code></a></p></li>
 <li><p><em>Width</em> with <a class="reference internal" href="style.html#style.strokeWidth" title="style.strokeWidth"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.strokeWidth()</span></code></a></p></li>
 <li><dl class="simple">
 <dt><em>End Caps</em> with <code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.lineCapMode()</span></code></dt><dd><ul>
-<li><p><a class="reference internal" href="../_images/example_lineCap_SQUARE.png"><img alt="square_cap" src="../_images/example_lineCap_SQUARE.png" style="width: 100px;" /></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">SQUARE</span></code></p></li>
-<li><p><a class="reference internal" href="../_images/example_lineCap_PROJECT.png"><img alt="project_cap" src="../_images/example_lineCap_PROJECT.png" style="width: 100px;" /></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">PROJECT</span></code></p></li>
-<li><p><a class="reference internal" href="../_images/example_lineCap_ROUND.png"><img alt="round_cap" src="../_images/example_lineCap_ROUND.png" style="width: 100px;" /></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineCap_SQUARE.png"><img alt="square_cap" src="../_images/example_lineCap_SQUARE.png" style="width: 100px;" /></a> <a class="reference internal" href="style.html#SQUARE" title="SQUARE"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">SQUARE</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineCap_PROJECT.png"><img alt="project_cap" src="../_images/example_lineCap_PROJECT.png" style="width: 100px;" /></a> <a class="reference internal" href="style.html#PROJECT" title="PROJECT"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">PROJECT</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineCap_ROUND.png"><img alt="round_cap" src="../_images/example_lineCap_ROUND.png" style="width: 100px;" /></a> <a class="reference internal" href="style.html#ROUND" title="ROUND"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -396,9 +432,9 @@
 <li><p><em>End Caps</em> with <a class="reference internal" href="style.html#style.lineCap" title="style.lineCap"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.lineCap()</span></code></a></p></li>
 <li><dl class="simple">
 <dt><em>Line Joins</em> with <a class="reference internal" href="style.html#style.lineJoin" title="style.lineJoin"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.lineJoin()</span></code></a></dt><dd><ul>
-<li><p><a class="reference internal" href="../_images/example_lineJoin_ROUND.png"><img alt="round_join" src="../_images/example_lineJoin_ROUND.png" style="width: 100px;" /></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></p></li>
-<li><p><a class="reference internal" href="../_images/example_lineJoin_MITER.png"><img alt="miter_join" src="../_images/example_lineJoin_MITER.png" style="width: 100px;" /></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">MITER</span></code></p></li>
-<li><p><a class="reference internal" href="../_images/example_lineJoin_BEVEL.png"><img alt="bevel_join" src="../_images/example_lineJoin_BEVEL.png" style="width: 100px;" /></a> <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">BEVEL</span></code></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineJoin_ROUND.png"><img alt="round_join" src="../_images/example_lineJoin_ROUND.png" style="width: 100px;" /></a> <a class="reference internal" href="style.html#ROUND" title="ROUND"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">ROUND</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineJoin_MITER.png"><img alt="miter_join" src="../_images/example_lineJoin_MITER.png" style="width: 100px;" /></a> <a class="reference internal" href="style.html#MITER" title="MITER"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">MITER</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_images/example_lineJoin_BEVEL.png"><img alt="bevel_join" src="../_images/example_lineJoin_BEVEL.png" style="width: 100px;" /></a> <a class="reference internal" href="style.html#BEVEL" title="BEVEL"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">BEVEL</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -431,12 +467,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> – x coordinate of the arc origin</p></li>
-<li><p><strong>y</strong> – y coordinate of the arc origin</p></li>
-<li><p><strong>radius</strong> – the radius arc</p></li>
-<li><p><strong>startAngle</strong> – the start angle of the arc (in degrees)</p></li>
-<li><p><strong>endAngle</strong> – the end angle of the arc (in degrees)</p></li>
-<li><p><strong>dir</strong> – the direction of the arc, 1 or clockwise, -1 for anti-clockwise</p></li>
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – x coordinate of the arc origin</p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – y coordinate of the arc origin</p></li>
+<li><p><strong>radius</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the radius arc</p></li>
+<li><p><strong>startAngle</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the start angle of the arc (in degrees)</p></li>
+<li><p><strong>endAngle</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the end angle of the arc (in degrees)</p></li>
+<li><p><strong>dir</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – the direction of the arc, 1 or clockwise, -1 for anti-clockwise</p></li>
 </ul>
 </dd>
 </dl>
@@ -452,13 +488,41 @@
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="rect">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rect" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object lua">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em>, <em class="sig-param"><span class="pre">r</span></em><span class="sig-paren">)</span></dt>
+<em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">radius</span> <span class="pre">=</span> <span class="pre">0</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#rect" title="Link to this definition">¶</a></dt>
+<dd><p>Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on <a class="reference internal" href="style.html#style.shapeMode" title="style.shapeMode"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.shapeMode()</span></code></a></p>
+<p>Optional parameter <code class="docutils literal notranslate"><span class="pre">radius</span></code> specified the corner radius</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the x coordinate of the rectangle</p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the y coordinate of the rectangle</p></li>
+<li><p><strong>w</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the width of the rectangle</p></li>
+<li><p><strong>h</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the height of the rectangle</p></li>
+<li><p><strong>radius</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the radius of the rounded corners</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
 <dt class="sig sig-object lua">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">w</span></em>, <em class="sig-param"><span class="pre">h</span></em>, <em class="sig-param"><span class="pre">r1</span></em>, <em class="sig-param"><span class="pre">r2</span></em>, <em class="sig-param"><span class="pre">r3</span></em>, <em class="sig-param"><span class="pre">r4</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on <a class="reference internal" href="style.html#style.shapeMode" title="style.shapeMode"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.shapeMode()</span></code></a></p>
-<p>Additional arguments allow for rounded corners (either all one radius or four separate radii)</p>
+<p>The corner radius of each corner can be set independently using the additional parameters r1, r2, r3 and r4</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the x coordinate of the rectangle</p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the y coordinate of the rectangle</p></li>
+<li><p><strong>w</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the width of the rectangle</p></li>
+<li><p><strong>h</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the height of the rectangle</p></li>
+<li><p><strong>r1</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the radius of the top-left corner</p></li>
+<li><p><strong>r2</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the radius of the top-right corner</p></li>
+<li><p><strong>r3</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the radius of the bottom-right corner</p></li>
+<li><p><strong>r4</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – the radius of the bottom-left corner</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

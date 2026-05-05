@@ -6,11 +6,31 @@ graphics commands
 Background
 ##########
 
-.. lua:function:: background(<color>)
+.. lua:function:: background(red, green, blue, alpha)
 
    Clears the current context with solid color, can also be used to set image backgrounds when combined with :lua:func:`context.push`
 
-   .. helptext:: set the background color, image or shader
+   :param red: The red component of the color (0-255)
+   :type red: number
+   :param green: The green component of the color (0-255)
+   :type green: number
+   :param blue: The blue component of the color (0-255)
+   :type blue: number
+   :param alpha: The alpha component of the color (0-255)
+   :type alpha: number
+
+   .. helptext:: set the background color
+   .. editor:: color
+
+.. lua:function:: background(color)
+
+   Clears the current context with solid color, can also be used to set image backgrounds when combined with :lua:func:`context.push`
+
+   :param color: The color to set the background to
+   :type color: color
+
+   .. helptext:: set the background color
+   .. editor:: color      
 
 .. lua:function:: background(cubeImage, [mipLevel = 0])
 
@@ -19,11 +39,16 @@ Background
    .. helptext:: clear the background with a cube image
 
    :param cubeImage: The image to clear the background with
+   :type cubeImage: image
    :param mipLevel: The mip level of the image to use, useful for displaying pre-blurred image mips, such as those calculated using :lua:meth:`image.generateIrradiance`
+   :type mipLevel: number
 
 .. lua:function:: background(shader)
 
    Clears the current background using a custom shader
+
+   :param shader: The shader to use when clearing the background, should be a shader that is compatible with sprite rendering (i.e. uses the same vertex attributes)
+   :type shader: shader
 
    .. helptext:: clear the background with a shader
 
@@ -40,6 +65,15 @@ A set of graphics functions which are so commonly used they are in the global na
 .. lua:function:: line(x1, y1, x2, y2)
 
    Draws 2D line from the start point (x1, y1) to the end point (x2, y2) based on the current style:
+
+   :param x1: the x coordinate of the start point
+   :type x1: number
+   :param y1: the y coordinate of the start point
+   :type y1: number
+   :param x2: the x coordinate of the end point
+   :type x2: number
+   :param y2: the y coordinate of the end point
+   :type y2: number
 
    - *Color* with :lua:func:`style.stroke`
    - *Width* with :lua:func:`style.strokeWidth`
@@ -111,11 +145,17 @@ A set of graphics functions which are so commonly used they are in the global na
    Draws a 2D arc with a given origin, radius and start, end angles + direction
 
    :param x: x coordinate of the arc origin
+   :type x: number
    :param y: y coordinate of the arc origin
+   :type y: number
    :param radius: the radius arc
+   :type radius: number
    :param startAngle: the start angle of the arc (in degrees)
+   :type startAngle: number
    :param endAngle: the end angle of the arc (in degrees)
+   :type endAngle: number
    :param dir: the direction of the arc, 1 or clockwise, -1 for anti-clockwise
+   :type dir: integer
 
    .. helptext:: draw a 2D arc
 
@@ -126,15 +166,50 @@ A set of graphics functions which are so commonly used they are in the global na
 
    .. helptext:: draw a circle or oval
 
-.. lua:function:: rect(x, y, w, h)
-                  rect(x, y, w, h, r)
-                  rect(x, y, w, h, r1, r2, r3, r4)
+.. lua:function:: rect(x, y, w, h, [radius = 0])
 
    Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on :lua:func:`style.shapeMode`
 
-   Additional arguments allow for rounded corners (either all one radius or four separate radii)
+   Optional parameter ``radius`` specified the corner radius
+
+   :param x: the x coordinate of the rectangle
+   :type x: number
+   :param y: the y coordinate of the rectangle
+   :type y: number
+   :param w: the width of the rectangle
+   :type w: number
+   :param h: the height of the rectangle
+   :type h: number
+   :param radius: the radius of the rounded corners
+   :type radius: number
 
    .. helptext:: draw a rectangle
+
+.. lua:function:: rect(x, y, w, h, r1, r2, r3, r4)
+
+   Draws a rectangle with a given origin point and width / height, origin and sizing behaviour depends on :lua:func:`style.shapeMode`
+
+   The corner radius of each corner can be set independently using the additional parameters r1, r2, r3 and r4
+
+   :param x: the x coordinate of the rectangle
+   :type x: number
+   :param y: the y coordinate of the rectangle
+   :type y: number
+   :param w: the width of the rectangle
+   :type w: number
+   :param h: the height of the rectangle
+   :type h: number
+   :param r1: the radius of the top-left corner
+   :type r1: number
+   :param r2: the radius of the top-right corner
+   :type r2: number
+   :param r3: the radius of the bottom-right corner
+   :type r3: number
+   :param r4: the radius of the bottom-left corner
+   :type r4: number
+
+   .. helptext:: draw a rectangle with rounded corners      
+
 
 Sprites
 #######
@@ -146,11 +221,13 @@ Sprites
    Draws a sprite using an asset - :lua:class:`image`, :lua:class:`asset.key` or :lua:class:`sprite.slice`
 
    .. helptext:: draw a sprite or image
+   .. editor:: sprite
 
 
 .. lua:function:: sprite(shader, x, y, w, h)
 
    .. helptext:: draw using a shader
+   .. editor:: shader
 
 
 Text
@@ -161,6 +238,7 @@ Text
    Draws one or more lines of text based on the current style. Use the optional width and height parameters to draw a fixed size text box with line wrapping enabled
 
    .. helptext:: draw text at a location
+   .. editor:: text
 
    - *Text Color* with :lua:func:`style.fill`
    - *Text Outline* with :lua:func:`style.stroke`

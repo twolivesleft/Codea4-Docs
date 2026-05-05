@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="3D Physics (Bullet 3D)" href="physics3d.html" /><link rel="prev" title="Input" href="input.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>2D Physics (Box 2D) - Codea 4.0 documentation</title>
+        <title>2D Physics (Box2D) - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">Input</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics3d.html">physics3d</a></li>
@@ -246,16 +246,129 @@
           </label>
         </div>
         <article role="main">
-          <section id="d-physics-box-2d">
-<h1>2D Physics (Box 2D)<a class="headerlink" href="#d-physics-box-2d" title="Link to this heading">¶</a></h1>
+          <section id="d-physics-box2d">
+<h1>2D Physics (Box2D)<a class="headerlink" href="#d-physics-box2d" title="Link to this heading">¶</a></h1>
 <section id="d-physics-in-codea">
 <h2>2D Physics in Codea<a class="headerlink" href="#d-physics-in-codea" title="Link to this heading">¶</a></h2>
+<p>Codea’s 2D physics system is built on Box2D. It simulates rigid body dynamics with forces, joints, sensors, and collision callbacks in the XY plane.</p>
+<p>2D physics can be used standalone with <code class="docutils literal notranslate"><span class="pre">physics2d.world</span></code>, or integrated with the scene system using entity components.</p>
 </section>
 <section id="creating-physics-worlds">
 <h2>Creating Physics Worlds<a class="headerlink" href="#creating-physics-worlds" title="Link to this heading">¶</a></h2>
+<p>A standalone 2D physics world lets you manage the simulation and draw using the immediate mode API:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">world</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">world</span><span class="p">.</span><span class="py">gravity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">9.8</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Static ground</span>
+<span class="w">    </span><span class="nv">ground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">world</span><span class="p">:</span><span class="nf">body</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">STATIC</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">ground</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">box</span><span class="p">(</span><span class="nv">WIDTH</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">ground</span><span class="p">.</span><span class="py">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Dynamic circle</span>
+<span class="w">    </span><span class="nv">ball</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">world</span><span class="p">:</span><span class="nf">body</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">DYNAMIC</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">circle</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">.</span><span class="py">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">world</span><span class="p">:</span><span class="nf">update</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">circle</span><span class="p">(</span><span class="nv">ball</span><span class="p">.</span><span class="py">position</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">ball</span><span class="p">.</span><span class="py">position</span><span class="p">.</span><span class="py">y</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Body types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">physics2d.STATIC</span></code> — immovable, acts as ground or walls</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physics2d.DYNAMIC</span></code> — moved by forces and gravity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physics2d.KINEMATIC</span></code> — moved manually, pushes dynamic bodies</p></li>
+</ul>
 </section>
 <section id="using-physics-with-entities">
 <h2>Using Physics with Entities<a class="headerlink" href="#using-physics-with-entities" title="Link to this heading">¶</a></h2>
+<p>Attach 2D physics components to scene entities for automatic simulation:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">scn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Set up a 2D canvas camera</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;camera&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">cam</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="py">rigs</span><span class="p">.</span><span class="py">canvas</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Ground</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">ground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;ground&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">ground</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">body</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">STATIC</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">ground</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">box</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">ground</span><span class="p">.</span><span class="py">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Ball</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">ball</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;ball&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">.</span><span class="py">sprite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Blocks</span><span class="p">.</span><span class="py">Yellow_Circle</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">body</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">DYNAMIC</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">circle</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">.</span><span class="py">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+<section id="collision-shapes">
+<h2>Collision Shapes<a class="headerlink" href="#collision-shapes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">physics2d.circle(radius)</span></code> — circular collider</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physics2d.box(width,</span> <span class="pre">height)</span></code> — rectangular collider</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physics2d.polygon(vertices)</span></code> — arbitrary convex polygon, vertices as a table of vec2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physics2d.chain(vertices,</span> <span class="pre">loop)</span></code> — open or closed chain of line segments (STATIC only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physics2d.edge(start,</span> <span class="pre">end)</span></code> — single line segment (STATIC only)</p></li>
+</ul>
+</section>
+<section id="collision-callbacks">
+<h2>Collision Callbacks<a class="headerlink" href="#collision-callbacks" title="Link to this heading">¶</a></h2>
+<p>React to collisions through entity callbacks:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">ball</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="nv">ball</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">body</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">DYNAMIC</span><span class="p">))</span>
+<span class="nv">ball</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">circle</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+
+<span class="nv">ball</span><span class="p">.</span><span class="py">collisionBegan2d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">contact</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Collision with impulse:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">contact</span><span class="p">.</span><span class="py">normalImpulse</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+<section id="sensors">
+<h2>Sensors<a class="headerlink" href="#sensors" title="Link to this heading">¶</a></h2>
+<p>Sensors detect overlaps without generating collision responses:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;trigger&quot;</span><span class="p">)</span>
+<span class="nv">trigger</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">body</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">STATIC</span><span class="p">))</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">trigger</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+<span class="nv">col</span><span class="p">.</span><span class="py">isSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="nv">trigger</span><span class="p">.</span><span class="py">collisionBegan2d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">contact</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Something entered the trigger zone&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+<section id="forces-and-impulses">
+<h2>Forces and Impulses<a class="headerlink" href="#forces-and-impulses" title="Link to this heading">¶</a></h2>
+<p>Control dynamic bodies with forces and impulses:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ent</span><span class="p">:</span><span class="nf">get</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">body</span><span class="p">)</span>
+
+<span class="c1">-- Push upward continuously (apply in update)</span>
+<span class="nv">body</span><span class="p">:</span><span class="nf">applyForce</span><span class="p">(</span><span class="nf">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">))</span>
+
+<span class="c1">-- Instant kick</span>
+<span class="nv">body</span><span class="p">:</span><span class="nf">applyImpulse</span><span class="p">(</span><span class="nf">vec2</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1">-- Set velocity directly</span>
+<span class="nv">body</span><span class="p">.</span><span class="py">linearVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -314,10 +427,14 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">2D Physics (Box 2D)</a><ul>
+<li><a class="reference internal" href="#">2D Physics (Box2D)</a><ul>
 <li><a class="reference internal" href="#d-physics-in-codea">2D Physics in Codea</a></li>
 <li><a class="reference internal" href="#creating-physics-worlds">Creating Physics Worlds</a></li>
 <li><a class="reference internal" href="#using-physics-with-entities">Using Physics with Entities</a></li>
+<li><a class="reference internal" href="#collision-shapes">Collision Shapes</a></li>
+<li><a class="reference internal" href="#collision-callbacks">Collision Callbacks</a></li>
+<li><a class="reference internal" href="#sensors">Sensors</a></li>
+<li><a class="reference internal" href="#forces-and-impulses">Forces and Impulses</a></li>
 </ul>
 </li>
 </ul>

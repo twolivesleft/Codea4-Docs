@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics3d.html">physics3d</a></li>
@@ -248,17 +248,115 @@
         <article role="main">
           <section id="scenes">
 <h1>Scenes<a class="headerlink" href="#scenes" title="Link to this heading">¶</a></h1>
-<p>Codea features a high-level scene system that automates and integrates many
-systems together, such as rendering physics and input.</p>
-<p>Scenes can be saved and loaded</p>
 <section id="scenes-in-codea">
 <h2>Scenes in Codea<a class="headerlink" href="#scenes-in-codea" title="Link to this heading">¶</a></h2>
+<p>The <code class="xref lua lua-class docutils literal notranslate"><span class="pre">scene</span></code> system is the modern, high-level way to build 3D (and 2D) experiences in Codea. A scene manages a hierarchy of <code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code> objects, each of which can have components — meshes, physics bodies, cameras, lights, custom Lua classes — attached to them.</p>
+<p>Unlike the immediate-mode drawing API (<code class="docutils literal notranslate"><span class="pre">sprite</span></code>, <code class="docutils literal notranslate"><span class="pre">rect</span></code>, etc.), scenes automatically handle the update loop, render pass, and physics simulation for you.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">scn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Camera entity</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;camera&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">cam</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">cam</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="py">rigs</span><span class="p">.</span><span class="py">orbit</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">cam</span><span class="p">.</span><span class="py">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">10</span>
+
+<span class="w">    </span><span class="c1">-- A sphere</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">sphere</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;sphere&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">sphere</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c1">-- Make this the active scene</span>
+<span class="w">    </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 <section id="creating-scenes">
 <h2>Creating Scenes<a class="headerlink" href="#creating-scenes" title="Link to this heading">¶</a></h2>
+<p>Create a new scene by calling <code class="xref lua lua-class docutils literal notranslate"><span class="pre">scene</span></code> as a constructor. Assign it to <code class="docutils literal notranslate"><span class="pre">scene.main</span></code> to start rendering it each frame.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">scn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scene</span><span class="p">()</span>
+<span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span>
+</pre></div>
+</div>
+<p>You can have multiple scenes and switch between them by reassigning <code class="docutils literal notranslate"><span class="pre">scene.main</span></code>.</p>
 </section>
 <section id="entities">
 <h2>Entities<a class="headerlink" href="#entities" title="Link to this heading">¶</a></h2>
+<p>Entities are the basic building blocks of a scene. They have a transform (position, rotation, scale) and can hold any number of components.</p>
+<p>Create entities with <code class="docutils literal notranslate"><span class="pre">scene:entity()</span></code>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Named entity (accessible by name later)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">ball</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;ball&quot;</span><span class="p">)</span>
+
+<span class="c1">-- Access by name</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">scn</span><span class="p">.</span><span class="py">ball</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Child entities are created under an existing entity and inherit its transform:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">arm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;arm&quot;</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">hand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">arm</span><span class="p">:</span><span class="nf">child</span><span class="p">(</span><span class="s2">&quot;hand&quot;</span><span class="p">)</span>
+<span class="nv">hand</span><span class="p">.</span><span class="py">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">  </span><span class="c1">-- 2 units ahead of the arm&#39;s local origin</span>
+</pre></div>
+</div>
+</section>
+<section id="components">
+<h2>Components<a class="headerlink" href="#components" title="Link to this heading">¶</a></h2>
+<p>Components add behaviour to entities. Attach them with <a class="reference internal" href="../api/entity.html#entity.add" title="entity.add"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">entity.add()</span></code></a>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">sphere</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;sphere&quot;</span><span class="p">)</span>
+
+<span class="c1">-- Add a mesh</span>
+<span class="nv">sphere</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1">-- Add a lit material</span>
+<span class="nv">sphere</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">material</span><span class="p">.</span><span class="nf">lit</span><span class="p">()</span>
+
+<span class="c1">-- Add a 3D physics body</span>
+<span class="nv">sphere</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics3d</span><span class="p">.</span><span class="nf">body</span><span class="p">(</span><span class="nv">physics3d</span><span class="p">.</span><span class="py">DYNAMIC</span><span class="p">))</span>
+<span class="nv">sphere</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics3d</span><span class="p">.</span><span class="nf">sphere</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Custom Lua classes are also valid components:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">Rotator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="s2">&quot;Rotator&quot;</span><span class="p">)</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nc">Rotator</span><span class="p">:</span><span class="nf">update</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">entity</span><span class="p">.</span><span class="py">ry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">entity</span><span class="p">.</span><span class="py">ry</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">90</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">cube</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="nv">cube</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">mesh</span><span class="p">.</span><span class="nf">box</span><span class="p">())</span>
+<span class="nv">cube</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">Rotator</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="the-scene-camera">
+<h2>The Scene Camera<a class="headerlink" href="#the-scene-camera" title="Link to this heading">¶</a></h2>
+<p>Every scene needs at least one camera entity with a <code class="xref lua lua-class docutils literal notranslate"><span class="pre">camera</span></code> component attached:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">&quot;camera&quot;</span><span class="p">)</span>
+<span class="nv">cam</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="nf">perspective</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span><span class="w">   </span><span class="c1">-- 60° field of view</span>
+<span class="nv">cam</span><span class="p">.</span><span class="py">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="w">                        </span><span class="c1">-- Pull back 5 units</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">camera.rigs.orbit</span></code> to add an interactive orbit controller that works with mouse and touch:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">cam</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="py">rigs</span><span class="p">.</span><span class="py">orbit</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="lifecycle-callbacks">
+<h2>Lifecycle Callbacks<a class="headerlink" href="#lifecycle-callbacks" title="Link to this heading">¶</a></h2>
+<p>Entities respond to lifecycle callbacks that mirror Codea’s global callbacks. Define them as properties or override them in Lua component classes:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">ent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+
+<span class="nv">ent</span><span class="p">.</span><span class="py">update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">ent</span><span class="p">.</span><span class="py">ry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ent</span><span class="p">.</span><span class="py">ry</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">45</span>
+<span class="kr">end</span>
+
+<span class="nv">ent</span><span class="p">.</span><span class="py">touched</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">began</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">ent</span><span class="p">:</span><span class="nf">destroy</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">-- capture the touch</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -321,6 +419,9 @@ systems together, such as rendering physics and input.</p>
 <li><a class="reference internal" href="#scenes-in-codea">Scenes in Codea</a></li>
 <li><a class="reference internal" href="#creating-scenes">Creating Scenes</a></li>
 <li><a class="reference internal" href="#entities">Entities</a></li>
+<li><a class="reference internal" href="#components">Components</a></li>
+<li><a class="reference internal" href="#the-scene-camera">The Scene Camera</a></li>
+<li><a class="reference internal" href="#lifecycle-callbacks">Lifecycle Callbacks</a></li>
 </ul>
 </li>
 </ul>

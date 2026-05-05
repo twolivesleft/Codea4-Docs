@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
@@ -248,33 +248,106 @@
         <article role="main">
           <section id="module-viewer">
 <span id="viewer"></span><h1>viewer<a class="headerlink" href="#module-viewer" title="Link to this heading">¶</a></h1>
-<p>Exposes viewer properties common to both the legacy and modern runtimes.</p>
+<p>Controls the Codea viewer and exposes display mode, runtime, presentation, and screen layout state.</p>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="viewer.viewer.mode">
 <span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#viewer.viewer.mode" title="Link to this definition">¶</a></dt>
-<dd><p>The display mode of the viewer. You can use this to render your games and simulations in fullscreen mode, fullscreen mode without buttons, or the standard mode. The standard mode includes a sidebar with your output and parameters, as well as buttons to control project execution.</p>
-<p>Values:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">STANDARD</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FULLSCREEN</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FULLSCREEN_NO_BUTTONS</span></code></p></li>
-</ul>
-</div></blockquote>
+<dd><p>Changes the display mode of the viewer. Use this to render your games and simulations in fullscreen mode, fullscreen mode without buttons, or standard mode. Standard mode includes the sidebar with output and parameters, plus controls for project execution.</p>
+<dl class="field-list">
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">viewer</span><span class="p">.</span><span class="py">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">STANDARD</span>
+<span class="nv">viewer</span><span class="p">.</span><span class="py">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">FULLSCREEN</span>
+<span class="nv">viewer</span><span class="p">.</span><span class="py">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">FULLSCREEN_NO_BUTTONS</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.framerate">
+<span class="sig-name descname"><span class="pre">framerate</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#viewer.viewer.framerate" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the preferred framerate of the viewer. You can set this to <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">15</span></code>, <code class="docutils literal notranslate"><span class="pre">30</span></code>, <code class="docutils literal notranslate"><span class="pre">60</span></code> or <code class="docutils literal notranslate"><span class="pre">120</span></code>. The value <code class="docutils literal notranslate"><span class="pre">0</span></code> uses the maximum framerate of your device.</p>
+<p>Note that this sets the preferred framerate. If the framerate cannot be maintained, it may drop below your preferred setting to the next lower value.</p>
+<dl class="field-list">
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">viewer</span><span class="p">.</span><span class="py">framerate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.pointerLocked">
+<span class="sig-name descname"><span class="pre">pointerLocked</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#viewer.viewer.pointerLocked" title="Link to this definition">¶</a></dt>
+<dd><p>Setting this property to <code class="docutils literal notranslate"><span class="pre">true</span></code> indicates the renderer’s preference to lock the pointer, although the system may not honor the request. For the system to consider locking the pointer, the viewer must be running fullscreen on your device.</p>
+<dl class="field-list">
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">viewer</span><span class="p">.</span><span class="py">pointerLocked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.runtime">
+<span class="sig-name descname"><span class="pre">runtime</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span> <span class="pre">[readonly]</span><a class="headerlink" href="#viewer.viewer.runtime" title="Link to this definition">¶</a></dt>
+<dd><p>The active runtime type, either <code class="docutils literal notranslate"><span class="pre">LEGACY</span></code> or <code class="docutils literal notranslate"><span class="pre">MODERN</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">if</span><span class="w"> </span><span class="nv">viewer</span><span class="p">.</span><span class="py">runtime</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">viewer</span><span class="p">.</span><span class="py">MODERN</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="viewer.viewer.safeArea">
 <span class="sig-name descname"><span class="pre">safeArea</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#viewer.viewer.safeArea" title="Link to this definition">¶</a></dt>
-<dd><p>A UIEdgeInsets object with the current safe area insets of the viewer, which can be accessed using <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.top</span></code>, <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.left</span></code>, and <code class="docutils literal notranslate"><span class="pre">viewer.safeArea.right</span></code></p>
-<dl class="field-list simple">
+<dd><p>A table specifying the current safe area insets of the viewer. Use these values to avoid rendering important visible or interactive content under system interface areas.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>top</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The top inset of the safe area.</p></li>
-<li><p><strong>bottom</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The bottom inset of the safe area.</p></li>
 <li><p><strong>left</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The left inset of the safe area.</p></li>
+<li><p><strong>bottom</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The bottom inset of the safe area.</p></li>
 <li><p><strong>right</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The right inset of the safe area.</p></li>
 </ul>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nv">viewer</span><span class="p">.</span><span class="py">safeArea</span><span class="p">.</span><span class="py">bottom</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.uniformResizing">
+<span class="sig-name descname"><span class="pre">uniformResizing</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#viewer.viewer.uniformResizing" title="Link to this definition">¶</a></dt>
+<dd><p>Controls whether the viewer preserves a uniform resizing behavior when the view changes size. This is only supported on platforms where the viewer is resizable.</p>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="viewer.resize">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">viewer.</span></span><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#viewer.resize" title="Link to this definition">¶</a></dt>
+<dd><p>Resizes the viewer to the specified width and height. This is only supported on platforms where the viewer is resizable.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The new viewer width.</p></li>
+<li><p><strong>height</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The new viewer height.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">viewer</span><span class="p">.</span><span class="nf">resize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -283,6 +356,150 @@
 <dt class="sig sig-object lua" id="viewer.viewer.paused">
 <span class="sig-name descname"><span class="pre">paused</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#viewer.viewer.paused" title="Link to this definition">¶</a></dt>
 <dd><p>A boolean value that indicates whether the viewer is paused.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.displayStats">
+<span class="sig-name descname"><span class="pre">displayStats</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#viewer.viewer.displayStats" title="Link to this definition">¶</a></dt>
+<dd><p>Controls whether runtime statistics are displayed in the viewer.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.drawOnRequest">
+<span class="sig-name descname"><span class="pre">drawOnRequest</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#viewer.viewer.drawOnRequest" title="Link to this definition">¶</a></dt>
+<dd><p>Controls whether the viewer draws only when a redraw is requested.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.showWarnings">
+<span class="sig-name descname"><span class="pre">showWarnings</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#viewer.viewer.showWarnings" title="Link to this definition">¶</a></dt>
+<dd><p>Determines whether warnings should be displayed in the viewer. For example, warnings will be printed when using deprecated Codea APIs.</p>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="viewer.close">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">viewer.</span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#viewer.close" title="Link to this definition">¶</a></dt>
+<dd><p>Closes the viewer and returns to the editor. Calling <code class="docutils literal notranslate"><span class="pre">viewer.close()</span></code> is functionally the same as pressing the on-screen Back button.</p>
+<dl class="field-list">
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">viewer</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="viewer.restart">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">viewer.</span></span><span class="sig-name descname"><span class="pre">restart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#viewer.restart" title="Link to this definition">¶</a></dt>
+<dd><p>Restarts the viewer, starting your project again. Calling <code class="docutils literal notranslate"><span class="pre">viewer.restart()</span></code> is functionally the same as pressing the on-screen Restart button.</p>
+<dl class="field-list">
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">viewer</span><span class="p">.</span><span class="nf">restart</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="viewer.snapshot">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">viewer.</span></span><span class="sig-name descname"><span class="pre">snapshot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#viewer.snapshot" title="Link to this definition">¶</a></dt>
+<dd><p>Captures the rendered contents of the viewer and returns them as an <code class="docutils literal notranslate"><span class="pre">image</span></code>. This captures the rendered scene and does not include the sidebar UI.</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The rendered viewer contents.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></span></p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">viewer</span><span class="p">.</span><span class="nf">snapshot</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="viewer.alert">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">viewer.</span></span><span class="sig-name descname"><span class="pre">alert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">message</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">title</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#viewer.alert" title="Link to this definition">¶</a></dt>
+<dd><p>Shows a system alert. The <code class="docutils literal notranslate"><span class="pre">message</span></code> parameter specifies the message to display. The optional <code class="docutils literal notranslate"><span class="pre">title</span></code> parameter provides the title of the alert. If no title is specified, <code class="docutils literal notranslate"><span class="pre">&quot;Alert&quot;</span></code> is used.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – Message to display.</p></li>
+<li><p><strong>title</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – Alert title.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">viewer</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="nv">viewer</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Title&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="viewer.share">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">viewer.</span></span><span class="sig-name descname"><span class="pre">share</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#viewer.share" title="Link to this definition">¶</a></dt>
+<dd><p>Shows a system share view for an image, string, or table of shareable items. This allows you to share content to a third-party service, save it to your device, or copy it to the pasteboard.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span> <span class="pre">|</span> <span class="pre">string</span> <span class="pre">|</span> <span class="pre">table</span></code></span>) – Content to share.</p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">viewer</span><span class="p">.</span><span class="nf">share</span><span class="p">(</span><span class="nv">viewer</span><span class="p">.</span><span class="nf">snapshot</span><span class="p">())</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="viewer.viewer.isPresenting">
+<span class="sig-name descname"><span class="pre">isPresenting</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span> <span class="pre">[readonly]</span><a class="headerlink" href="#viewer.viewer.isPresenting" title="Link to this definition">¶</a></dt>
+<dd><p>Returns whether the viewer is presenting an alert, share sheet, or another view that obscures the viewer.</p>
+<dl class="field-list">
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">viewer</span><span class="p">.</span><span class="py">isPresenting</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">viewer</span><span class="p">.</span><span class="nf">alert</span><span class="p">(</span><span class="s2">&quot;Ready&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="STANDARD">
+<span class="sig-name descname"><span class="pre">STANDARD</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#STANDARD" title="Link to this definition">¶</a></dt>
+<dd><p>Standard display mode. The output and parameters panes are visible, and the Back, Pause, Play and Reset buttons are shown.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="FULLSCREEN">
+<span class="sig-name descname"><span class="pre">FULLSCREEN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#FULLSCREEN" title="Link to this definition">¶</a></dt>
+<dd><p>Fullscreen display mode. An exit fullscreen button remains visible.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="FULLSCREEN_NO_BUTTONS">
+<span class="sig-name descname"><span class="pre">FULLSCREEN_NO_BUTTONS</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#FULLSCREEN_NO_BUTTONS" title="Link to this definition">¶</a></dt>
+<dd><p>Fullscreen display mode with all buttons hidden. Use <code class="docutils literal notranslate"><span class="pre">viewer.close()</span></code> if your project needs an explicit way to leave the viewer.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="LEGACY">
+<span class="sig-name descname"><span class="pre">LEGACY</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#LEGACY" title="Link to this definition">¶</a></dt>
+<dd><p>Legacy runtime identifier.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="MODERN">
+<span class="sig-name descname"><span class="pre">MODERN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#MODERN" title="Link to this definition">¶</a></dt>
+<dd><p>Modern runtime identifier.</p>
 </dd></dl>
 
 </section>

@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="math types" href="math_types.html" /><link rel="prev" title="Introduction" href="../api.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Math" href="math_types.html" /><link rel="prev" title="Introduction" href="../api.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>lua - Codea 4.0 documentation</title>
@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sound.html">sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
@@ -240,7 +240,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -248,67 +248,1672 @@
         <article role="main">
           <section id="lua">
 <h1>lua<a class="headerlink" href="#lua" title="Link to this heading">¶</a></h1>
-<p><strong>Global Functions</strong></p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<section id="for-loops-overview">
+<h3>For Loops Overview<a class="headerlink" href="#for-loops-overview" title="Link to this heading">¶</a></h3>
+<p>You can use <strong>for loops</strong> in Lua to iterate over arrays and tables, performing tasks for each element.</p>
+<p>This example simply iterates i over the values 1 to 10</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Iterate from 1 to 10</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>This example uses the <cite>ipairs</cite> function to sequentially iterate over a table. Note that ipairs only works on tables that have sequential elements beginning at 1.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Iterate over an array named &#39;arr&#39;</span>
+<span class="nv">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">arr</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;arr[&quot;</span><span class="o">..</span><span class="nv">i</span><span class="o">..</span><span class="s2">&quot;] = &quot;</span><span class="o">..</span><span class="nv">v</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="c1">-- Prints:</span>
+<span class="c1">--  arr[1] = 3</span>
+<span class="c1">--  arr[2] = 2</span>
+<span class="c1">--  arr[3] = 1</span>
+</pre></div>
+</div>
+<p>This example uses <cite>pairs</cite> to iterate over all the key/value pairs in a table, unlike <cite>ipairs</cite> the keys do not have to be integral values, and can be anything.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Iterate over a table named &#39;tab&#39;</span>
+<span class="nv">tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kr">for</span><span class="w"> </span><span class="nv">key</span><span class="p">,</span><span class="nv">value</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">tab</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;tab.&quot;</span><span class="o">..</span><span class="nv">key</span><span class="o">..</span><span class="s2">&quot; = &quot;</span><span class="o">..</span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="c1">-- Prints:</span>
+<span class="c1">--  tab.y = string</span>
+<span class="c1">--  tab.x = 3</span>
+<span class="c1">--  tab.z = 1</span>
+</pre></div>
+</div>
+</section>
+<section id="conditionals-overview">
+<h3>Conditionals Overview<a class="headerlink" href="#conditionals-overview" title="Link to this heading">¶</a></h3>
+<p>Use <strong>conditionals</strong> to test for a particular circumstance and then branch your code appropriately. See the examples below.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Check if x is equal to 10</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x equals 10&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="c1">-- else and elseif</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is 10&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">elseif</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is 5&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">else</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is something else: &quot;</span><span class="o">..</span><span class="nv">x</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="c1">-- Checking multiple values</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is 10 and y is less than 5&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">elseif</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is 5 or y is 3&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">else</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is &quot;</span><span class="o">..</span><span class="nv">x</span><span class="o">..</span><span class="s2">&quot; and y is &quot;</span><span class="o">..</span><span class="nv">y</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+<section id="while-loops-overview">
+<h3>While Loops Overview<a class="headerlink" href="#while-loops-overview" title="Link to this heading">¶</a></h3>
+<p>Use while and repeat loops to repeat code until a condition is true. While loops are used when you can’t predict the number of times a loop will iterate, such as when reading input from a file or testing for a key press.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- simple while loop. The condition is evaluated at the beginning of the loop. The loop will never get executed if the condition is false at the beginning of the loop.</span>
+<span class="kr">while</span><span class="w"> </span><span class="nv">i</span><span class="o">&lt;=</span><span class="mi">5</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="nv">i</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">i</span><span class="o">=</span><span class="nv">i</span><span class="o">+</span><span class="mi">1</span>
+<span class="kr">end</span>
+
+<span class="c1">-- repeat loop. The condition is evaluated at the end of the loop, so the code always gets executed at least once</span>
+<span class="kr">repeat</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="nv">i</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">i</span><span class="o">=</span><span class="nv">i</span><span class="o">+</span><span class="mi">1</span>
+<span class="kr">until</span><span class="w"> </span><span class="nv">i</span><span class="o">&gt;</span><span class="mi">5</span>
+
+<span class="c1">-- break statement: break exits a loop and continues program flow with the statement immediately following the end or until condition</span>
+<span class="kr">while</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="nv">i</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">i</span><span class="o">=</span><span class="nv">i</span><span class="o">+</span><span class="mi">1</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="nv">i</span><span class="o">&gt;</span><span class="mi">5</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">      </span><span class="kr">break</span>
+<span class="w">  </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+<section id="annotations-overview">
+<h3>Annotations Overview<a class="headerlink" href="#annotations-overview" title="Link to this heading">¶</a></h3>
+<p>Annotations can be used to indicate the type of a variable to Codea, giving you better auto-completion support.</p>
+<p>To write a code annotation, start a comment with three dashes (<cite>—</cite>). Codea will look at the next line of code to try and auto-complete your comment if it is an assignement or function definition. You can also manually write annotations anywhere in your code following the format <cite>— variableName: variableType</cite>.</p>
+<p>When using annotations for Objective-C types, this will add Objective-C properties and methods auto-completion to your variables.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- method annotation</span>
+<span class="c1">--- makeBox Creates a box body</span>
+<span class="c1">--- pos: vec2, bottom-left position of the box</span>
+<span class="c1">--- size: vec2, size of the box</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">createBoxBody</span><span class="p">(</span><span class="nv">pos</span><span class="p">,</span><span class="w"> </span><span class="nv">size</span><span class="p">)</span>
+
+<span class="c1">-- variable annotation</span>
+<span class="c1">--- textView: objc.UITextView</span>
+<span class="nv">textView</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">UITextView</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="language">
+<h2>Language<a class="headerlink" href="#language" title="Link to this heading">¶</a></h2>
 <dl class="lua function">
-<dt class="sig sig-object lua" id="typeof">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">typeof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">o</span></em><span class="sig-paren">)</span><a class="headerlink" href="#typeof" title="Link to this definition">¶</a></dt>
-<dd><p>Returns a user-friendly string representation of the type of the object.</p>
-<dl class="field-list simple">
+<dt class="sig sig-object lua" id="print">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#print" title="Link to this definition">¶</a></dt>
+<dd><p>Prints values to the output console.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>o</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">any</span></code></span>) – The object to check</p>
+<dd class="field-odd"><p><strong>...</strong> – values to print</p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="ipairs">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">ipairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">table</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipairs" title="Link to this definition">¶</a></dt>
+<dd><p><cite>ipairs</cite> can be used to iterate over a table sequentially, starting from the index 1 and continuing until the first integer key absent from the table. Returns three values: an iterator function, the table, and 0.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>table</strong> – table to iterate over</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The type of the object</p>
+<dd class="field-even"><p>Returns three values: an iterator function, the table, and 0</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="kr">do</span><span class="w"> </span><span class="nv">body</span><span class="w"> </span><span class="kr">end</span>
+
+<span class="c1">-- This will iterate over the pairs:</span>
+<span class="c1">--   (1,t[1]), (2,t[2]), ...</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="pairs">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">pairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">table</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pairs" title="Link to this definition">¶</a></dt>
+<dd><p><cite>pairs</cite> can be used to iterate over a tables key-value pairs. Returns three values: the next function, the table t, and nil.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>table</strong> – table to iterate over</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns three values: the next function, the table t, and nil</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span><span class="w"> </span><span class="nv">k</span><span class="p">,</span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="kr">do</span><span class="w"> </span><span class="nv">body</span><span class="w"> </span><span class="kr">end</span>
+
+<span class="c1">-- This will iterate over all key-value</span>
+<span class="c1">-- pairs in table t</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="tables">
+<h2>Tables<a class="headerlink" href="#tables" title="Link to this heading">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="table.concat">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">table.</span></span><span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">table</span></em>, <em class="sig-param"><span class="pre">sep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#table.concat" title="Link to this definition">¶</a></dt>
+<dd><p>Given an array where all elements are strings or numbers, returns <cite>table[i]..sep..table[i+1] … sep..table[j]</cite>. The default value for <cite>sep</cite> is the empty string, the default for <cite>i</cite> is 1, and the default for <cite>j</cite> is the length of the table. If <cite>i</cite> is greater than <cite>j</cite>, returns the empty string.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> – table to concatenate</p></li>
+<li><p><strong>sep</strong> – separator string</p></li>
+<li><p><strong>i</strong> – int, starting index to concatenate from</p></li>
+<li><p><strong>j</strong> – int, ending index</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string of the elements in <cite>table</cite> concatenated with each other, separated by <cite>sep</cite></p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
 </dd>
-</dl>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">SomeClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="s2">&quot;SomeClass&quot;</span><span class="p">)</span>
-<span class="nv">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">SomeClass</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nv">SomeClass</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;class&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nv">c</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;SomeClass&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;string&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;number&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;vec3&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">mat3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;mat3&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">quat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;quat&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;color&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nf">image</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)))</span><span class="w"> </span><span class="c1">-- prints &quot;image&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nv">scene</span><span class="p">.</span><span class="nf">default3d</span><span class="p">()))</span><span class="w"> </span><span class="c1">-- prints &quot;scene&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nf">typeof</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">.</span><span class="py">Claw_Arm</span><span class="p">))</span><span class="w"> </span><span class="c1">-- prints &quot;assetKey&quot;</span>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">table.concat</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">table.concat</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="p">,</span><span class="w"> </span><span class="nv">sep</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">table.concat</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="p">,</span><span class="w"> </span><span class="nv">sep</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">table.concat</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="p">,</span><span class="w"> </span><span class="nv">sep</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">j</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
+</dd>
+</dl>
 </dd></dl>
 
-<p><strong>Table Extensions</strong></p>
-<dl class="lua class">
-<dt class="sig sig-object lua" id="table">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">table</span></span><a class="headerlink" href="#table" title="Link to this definition">¶</a></dt>
-<dd><p>The following are extensions to the Lua table class.</p>
 <dl class="lua function">
-<dt class="sig sig-object lua" id="table.flatten">
-<em class="property"> </em><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#table.flatten" title="Link to this definition">¶</a></dt>
-<dd><p>Flattens a table into a single array.</p>
-<dl class="field-list simple">
+<dt class="sig sig-object lua" id="table.move">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">table.</span></span><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">a1</span></em>, <em class="sig-param"><span class="pre">f</span></em>, <em class="sig-param"><span class="pre">e</span></em>, <em class="sig-param"><span class="pre">t</span></em>, <em class="sig-param"><span class="pre">a2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#table.move" title="Link to this definition">¶</a></dt>
+<dd><p>Moves elements from table <cite>a1</cite> into table <cite>a2</cite>. This function performs the equivalent to the multiple assignment: a2[t], … = a1[f], …, a1[e]. The default value for <cite>a2</cite> is <cite>a1</cite>. The destination range can overlap with the source range. Index <cite>f</cite> must be positive.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>t</strong> (<span><a class="reference internal" href="#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span>) – The table to flatten</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a1</strong> – table to move elements from</p></li>
+<li><p><strong>f</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – starting index in table to move from</p></li>
+<li><p><strong>e</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – ending index in table to move from</p></li>
+<li><p><strong>t</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – starting index in table to move into</p></li>
+<li><p><strong>a2</strong> – table to move elements into (defaults to <cite>a1</cite>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">table.move</span><span class="p">(</span><span class="w"> </span><span class="nv">a1</span><span class="p">,</span><span class="w"> </span><span class="nv">f</span><span class="p">,</span><span class="w"> </span><span class="nv">e</span><span class="p">,</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">table.move</span><span class="p">(</span><span class="w"> </span><span class="nv">a1</span><span class="p">,</span><span class="w"> </span><span class="nv">f</span><span class="p">,</span><span class="w"> </span><span class="nv">e</span><span class="p">,</span><span class="w"> </span><span class="nv">t</span><span class="p">,</span><span class="w"> </span><span class="nv">a2</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="table.insert">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">table.</span></span><span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">table</span></em>, <em class="sig-param"><span class="pre">pos</span></em>, <em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#table.insert" title="Link to this definition">¶</a></dt>
+<dd><p>Inserts element <cite>value</cite> at position <cite>pos</cite> in <cite>table</cite>, shifting up other elements to open space, if necessary. The default value for <cite>pos</cite> is n+1, where n is the length of the table, so that a call <cite>table.insert(t,x)</cite> inserts x at the end of table t.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> – table to insert into</p></li>
+<li><p><strong>pos</strong> – int, position to inset</p></li>
+<li><p><strong>value</strong> – value to insert</p></li>
+</ul>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">table.insert</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">table.insert</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="p">,</span><span class="w"> </span><span class="nv">pos</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="table.remove">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">table.</span></span><span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">table</span></em>, <em class="sig-param"><span class="pre">pos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#table.remove" title="Link to this definition">¶</a></dt>
+<dd><p>Removes from <cite>table</cite> the element at position <cite>pos</cite>, shifting down other elements to close the space, if necessary. Returns the value of the removed element. The default value for <cite>pos</cite> is n, where n is the length of the table, so that a call <cite>table.remove(t)</cite> removes the last element of table t.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> – table to insert into</p></li>
+<li><p><strong>pos</strong> – int, position of value to remove</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A flattened array</p>
+<dd class="field-even"><p>Value of the removed element</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span><a class="reference internal" href="#table" title="table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
-</dd>
-</dl>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">}}}</span>
-<span class="nb">print</span><span class="p">(</span><span class="nv">table</span><span class="p">.</span><span class="nf">flatten</span><span class="p">(</span><span class="nv">t</span><span class="p">))</span><span class="w"> </span><span class="c1">-- {1, 2, 3, 4, 5, 6}</span>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">table.remove</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">table.remove</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="p">,</span><span class="w"> </span><span class="nv">pos</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
+</dd>
+</dl>
 </dd></dl>
 
+<dl class="lua function">
+<dt class="sig sig-object lua" id="table.pack">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">table.</span></span><span class="sig-name descname"><span class="pre">pack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#table.pack" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a new table with all parameters stored into keys 1, 2, etc. and with a field “n” with the total number of parameters. Note that the resulting table may not be a sequence.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>...</strong> – arguments to pack into table</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>table with all parameters packed</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">table.pack</span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
 </dd></dl>
 
+<dl class="lua function">
+<dt class="sig sig-object lua" id="table.unpack">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">table.</span></span><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#table.unpack" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the elements from the given list.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>list</strong> – list to unpack</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>elements unpacked from list</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">table.unpack</span><span class="p">(</span><span class="w"> </span><span class="nv">list</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="table.sort">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">table.</span></span><span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">table</span></em><span class="sig-paren">)</span><a class="headerlink" href="#table.sort" title="Link to this definition">¶</a></dt>
+<dd><p>Sorts table elements in a given order, in-place, from <cite>table[1]</cite> to <cite>table[n]</cite>, where n is the length of the table. If <cite>comp</cite> is given, then it must be a function that receives two table elements and returns true when the first is less than the second (so that <cite>not comp(a[i+1],a[i]</cite>) will be true after the sort). If <cite>comp</cite> is not given, then the standard Lua operator &lt; is used instead.</p>
+<p>The sort algorithm is not stable; that is, elements considered equal by the given order may have their relative positions changed by the sort.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> – the table to sort</p></li>
+<li><p><strong>comp</strong> – a function that receives two table elements and returns true when the first is less than the second</p></li>
+</ul>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">table.sort</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">table.sort</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="p">,</span><span class="w"> </span><span class="nv">comp</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="strings">
+<h2>Strings<a class="headerlink" href="#strings" title="Link to this heading">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.byte">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">byte</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em>, <em class="sig-param"><span class="pre">i</span></em>, <em class="sig-param"><span class="pre">j</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.byte" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the internal numerical codes of the characters s[i], s[i+1], …, s[j]. The default value for <cite>i</cite> is 1; the default value for <cite>j</cite> is <cite>i</cite>. These indices are corrected following the same rules of <cite>string.sub</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – string to use</p></li>
+<li><p><strong>i</strong> – first index, defaults to 1</p></li>
+<li><p><strong>j</strong> – last index, defaults to <cite>i</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The internal numerical codes for characters s[i] up to s[j]</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.byte</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">string.byte</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">string.byte</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">j</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.char">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">char</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.char" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a string with length equal to the number of arguments, in which each character has the internal numerical code equal to its corresponding argument.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>...</strong> – a variable number of numerical codes</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String composed of characters equal to the numerical codes used as arguments</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.char</span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.dump">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">function</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.dump" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a string containing a binary representation (a <em>binary chunk</em>) of the given function, so that a later <cite>load</cite> on this string returns a copy of the function (with new upvalues). If <cite>strip</cite> is a true value, the binary representation is created without debug information about the function (local variable names, lines, etc).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> – a function to convert to binary string</p></li>
+<li><p><strong>strip</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">boolean</span></code></span>) – whether to strip debug information</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Binary string representation of the specified function</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.dump</span><span class="p">(</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="err">)</span>
+<span class="nc">string</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="w"> </span><span class="kr">function</span><span class="err">,</span><span class="w"> </span><span class="nf">strip</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.find">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em>, <em class="sig-param"><span class="pre">pattern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.find" title="Link to this definition">¶</a></dt>
+<dd><p>Looks for the first match of <cite>pattern</cite> in the string <cite>s</cite>. If it finds a match, then <cite>string.find()</cite> returns the indices of <cite>s</cite> where the occurrence starts and ends; otherwise, it returns <cite>nil</cite>. A third, optional numerical argument <cite>init</cite> specifies where to start the search, its default value is 1 and can be negative. A value of <cite>true</cite> as the fourth optional argument <cite>plain</cite> turns off the pattern matching facilities so the function performs a plain “find substring” operation, with no characters in <cite>pattern</cite> being considered “magic.” Note that if <cite>plain</cite> is given, then <cite>init</cite> must be given as well.</p>
+<p>If the pattern has captures, then in a successful match the captured values are also returned, after the two indices.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – string to search in</p></li>
+<li><p><strong>pattern</strong> – pattern to look for</p></li>
+<li><p><strong>init</strong> – starting character in string to search from, default is 1</p></li>
+<li><p><strong>plain</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">boolean</span></code></span>) – perform a plain substring search</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The start and end indices of the match, or <cite>nil</cite> if no match. If the pattern has captures then captured values are also returned after the indices</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.find</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">pattern</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">string.find</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">pattern</span><span class="p">,</span><span class="w"> </span><span class="nv">init</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">string.find</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">pattern</span><span class="p">,</span><span class="w"> </span><span class="nv">init</span><span class="p">,</span><span class="w"> </span><span class="nv">plain</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.format">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">formatstring</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.format" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a formatted version of its variable arguments following the description given in the first argument, which must be a string. The format string follows the same rules as the <cite>printf</cite> family of standard C functions. The only difference are that the options/modifiers <cite>*, 1, L, n, p</cite> and <cite>h</cite> are not supported and that there is an extra option <cite>q</cite>. The <cite>q</cite> option formats a string in a form suitable to be safely read back by the Lua interpreter, for example all double quotes, newlines, embedded zeros and backslashes will be escaped when written.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>formatstring</strong> – string defining the format</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A formatted string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.format</span><span class="p">(</span><span class="w"> </span><span class="nv">formatstring</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.len">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">len</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.len" title="Link to this definition">¶</a></dt>
+<dd><p>Receives a string and returns its length. The empty string “” has length 0.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> – get the length of this string</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Length of string <cite>s</cite></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.len</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.gmatch">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">gmatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em>, <em class="sig-param"><span class="pre">pattern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.gmatch" title="Link to this definition">¶</a></dt>
+<dd><p>Returns an iterator function that, each time it is called, returns the next captures from pattern (see <strong>Patterns Overview</strong>) over the string s. If pattern specifies no captures, then the whole match is produced in each call.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – string to search</p></li>
+<li><p><strong>pattern</strong> – pattern to match</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Iterator function over matches of <cite>pattern</cite> within the string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.gmatch</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">pattern</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.gsub">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">gsub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em>, <em class="sig-param"><span class="pre">pattern</span></em>, <em class="sig-param"><span class="pre">repl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.gsub" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a copy of <cite>s</cite> in which all (or the first <cite>n</cite>, if given) occurrences of the <cite>pattern</cite> (see <strong>Patterns Overview</strong>) have been replaced by a replacement string specified by <cite>repl</cite>, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. The name gsub comes from <em>Global SUBstitution</em>.</p>
+<p>If <cite>repl</cite> is a string, then its value is used for replacement. The character <cite>%</cite> works as an escape character: any sequence in <cite>repl</cite> of the form <cite>%d</cite>, with <cite>d</cite> between 1 and 9, stands for the value of the <cite>d</cite>-th captured substring. The sequence <cite>%0</cite> stands for the whole match. The sequence <cite>%%</cite> stands for a single <cite>%</cite>.</p>
+<p>If <cite>repl</cite> is a table, then the table is queried for every match, using the first capture as the key.</p>
+<p>If <cite>repl</cite> is a function, then this function is called every time a match occurs, with all captured substrings passed as arguments, in order.</p>
+<p>In any case, if the pattern specifies no captures, then it behaves as if the whole pattern was inside a capture.</p>
+<p>If the value returned by the table query or by the function call is a string or a number, then it is used as the replacement string; otherwise, if it is false or nil, then there is no replacement (that is, the original match is kept in the string).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – string to substitute</p></li>
+<li><p><strong>pattern</strong> – pattern to match</p></li>
+<li><p><strong>repl</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – table or function, replacement parameter</p></li>
+<li><p><strong>n</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – number of occurrences to match (all if not specified)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns a copy of <cite>s</cite> with substitutions made, as well as the number of matches</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.gsub</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">pattern</span><span class="p">,</span><span class="w"> </span><span class="nv">repl</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">string.gsub</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">pattern</span><span class="p">,</span><span class="w"> </span><span class="nv">repl</span><span class="p">,</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.lower">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">lower</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.lower" title="Link to this definition">¶</a></dt>
+<dd><p>Receives a string and returns a copy of this string with all uppercase letters changed to lowercase. All other characters are left unchanged.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> – get a lowercase version of this string</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lowercase version of string <cite>s</cite></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.lower</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.upper">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">upper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.upper" title="Link to this definition">¶</a></dt>
+<dd><p>Receives a string and returns a copy of this string with all lowercase letters changed to uppercase. All other characters are left unchanged.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> – get an uppercase version of this string</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Uppercase version of string <cite>s</cite></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.upper</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.match">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em>, <em class="sig-param"><span class="pre">pattern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.match" title="Link to this definition">¶</a></dt>
+<dd><p>Looks for the first match of <cite>pattern</cite> in the string <cite>s</cite>. If it finds one then <cite>string.match()</cite> returns the captures from the pattern, otherwise it returns <cite>nil</cite>. If <cite>pattern</cite> specifies no captures, then the whole match is returned. A third optional numerical argument <cite>init</cite> specifies where to start the search. Its default is 1 and can be negative.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – string to search</p></li>
+<li><p><strong>pattern</strong> – pattern to match</p></li>
+<li><p><strong>init</strong> – starting location in string</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Captures from the first match of <cite>pattern</cite> in string <cite>s</cite>, or <cite>nil</cite> if none were found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.match</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">pattern</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">string.match</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">pattern</span><span class="p">,</span><span class="w"> </span><span class="nv">init</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.rep">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">rep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em>, <em class="sig-param"><span class="pre">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.rep" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a string that is the concatenation of <cite>n</cite> copies of the string <cite>s</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – string to replicate</p></li>
+<li><p><strong>n</strong> – int, number of times to replicate the string</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><cite>n</cite> concatenations of string <cite>s</cite></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.rep</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.reverse">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">reverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.reverse" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the string <cite>s</cite> reversed.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> – string to reverse</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><cite>s</cite> reversed</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.reverse</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.sub">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">sub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s</span></em>, <em class="sig-param"><span class="pre">i</span></em>, <em class="sig-param"><span class="pre">j</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.sub" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the substring of <cite>s</cite> that starts at <cite>i</cite> and continues until <cite>j</cite>; <cite>i</cite> and <cite>j</cite> can be negative. If <cite>j</cite> is absent, then it is assumed to be equal to -1 (which is the same as the string length). In particular, the call <cite>string.sub(s,1,j)</cite> returns a prefix of <cite>s</cite> with length <cite>j</cite>, and string.sub(s, -i) returns a suffix of <cite>s</cite> with length <cite>i</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – find substring of this string</p></li>
+<li><p><strong>i</strong> – int, starting index</p></li>
+<li><p><strong>j</strong> – int, ending index</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Substring of string <cite>s</cite></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.sub</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">string.sub</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">j</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.pack">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">pack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fmt</span></em>, <em class="sig-param"><span class="pre">v1</span></em>, <em class="sig-param"><span class="pre">v2</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.pack" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a binary string containing the values <cite>v1</cite>, <cite>v2</cite>, etc. packed (that is, serialized in binary form) according to the format string <cite>fmt</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fmt</strong> – format string specifying binary format</p></li>
+<li><p><strong>...</strong> – arguments to pack</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Values packed into binary string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.pack</span><span class="p">(</span><span class="w"> </span><span class="nv">fmt</span><span class="p">,</span><span class="w"> </span><span class="nv">v1</span><span class="p">,</span><span class="w"> </span><span class="nv">v2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.packsize">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">packsize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fmt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.packsize" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the size of a string resulting from <cite>string.pack</cite> with the given format. The format string cannot have the variable-length options ‘s’ or ‘z’</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fmt</strong> – format string specifying binary format</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Size of string packed with the given format</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.packsize</span><span class="p">(</span><span class="w"> </span><span class="nv">fmt</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="string.unpack">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">string.</span></span><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fmt</span></em>, <em class="sig-param"><span class="pre">s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#string.unpack" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the values packed in string <cite>s</cite> according to the format string <cite>fmt</cite>. An optional pos marks where to start reading in <cite>s</cite> (default is 1). After the read values, this function also returns the index of the first unread byte in <cite>s</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fmt</strong> – format string specifying binary format</p></li>
+<li><p><strong>s</strong> – string to unpack</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The values packed in <cite>s</cite></p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">string.unpack</span><span class="p">(</span><span class="w"> </span><span class="nv">fmt</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">string.unpack</span><span class="p">(</span><span class="w"> </span><span class="nv">fmt</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">pos</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="patterns-overview">
+<h3>Patterns Overview<a class="headerlink" href="#patterns-overview" title="Link to this heading">¶</a></h3>
+<p>Patterns in Lua are described by regular strings, which are interpreted as patterns by the
+pattern-matching functions <cite>string.find</cite>, <cite>string.gmatch</cite>, <cite>string.gsub</cite>, and <cite>string.match</cite>.
+This section describes the syntax and the meaning (that is, what they match) of these strings.</p>
+<p><strong>Character Class</strong></p>
+<p>A character class is used to represent a set of characters. The following combinations are
+allowed in describing a character class:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">where</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">magic</span><span class="w"> </span><span class="nv">characters</span>
+<span class="w"> </span><span class="o">^</span><span class="err">$</span><span class="p">()</span><span class="o">%</span><span class="p">.[]</span><span class="o">*+-</span><span class="err">?</span><span class="p">)</span><span class="w"> </span><span class="nv">represents</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">x</span>
+<span class="w"> </span><span class="nv">itself</span><span class="p">.</span>
+<span class="p">.:</span><span class="w"> </span><span class="err">(</span><span class="py">a</span><span class="w"> </span><span class="nv">dot</span><span class="p">)</span><span class="w"> </span><span class="nv">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">characters</span><span class="p">.</span>
+<span class="err">%</span><span class="py">a</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">letters</span><span class="p">.</span>
+<span class="err">%</span><span class="py">c</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">control</span><span class="w"> </span><span class="nv">characters</span><span class="p">.</span>
+<span class="err">%</span><span class="py">d</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">digits</span><span class="p">.</span>
+<span class="err">%</span><span class="py">g</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">printable</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="nv">except</span><span class="w"> </span><span class="nv">space</span><span class="p">.</span>
+<span class="err">%</span><span class="py">l</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">lowercase</span><span class="w"> </span><span class="nv">letters</span><span class="p">.</span>
+<span class="err">%</span><span class="py">p</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">punctuation</span><span class="w"> </span><span class="nv">characters</span><span class="p">.</span>
+<span class="err">%</span><span class="py">s</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">space</span><span class="w"> </span><span class="nv">characters</span><span class="p">.</span>
+<span class="err">%</span><span class="py">u</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">uppercase</span><span class="w"> </span><span class="nv">letters</span><span class="p">.</span>
+<span class="err">%</span><span class="py">w</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">alphanumeric</span><span class="w"> </span><span class="nv">characters</span><span class="p">.</span>
+<span class="err">%</span><span class="py">x</span><span class="p">:</span><span class="w"> </span><span class="py">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">hexadecimal</span><span class="w"> </span><span class="nv">digits</span><span class="p">.</span>
+<span class="err">%</span><span class="py">x</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">where</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">any</span><span class="w"> </span><span class="nv">non</span><span class="o">-</span><span class="nv">alphanumeric</span><span class="w"> </span><span class="nv">character</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">represents</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">x</span><span class="p">.</span>
+<span class="w">  </span><span class="py">This</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">standard</span><span class="w"> </span><span class="nv">way</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">escape</span>
+<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">magic</span><span class="w"> </span><span class="nv">characters</span><span class="p">.</span><span class="w"> </span><span class="py">Any</span><span class="w"> </span><span class="nv">non</span><span class="o">-</span><span class="nv">alphanumeric</span>
+<span class="w">  </span><span class="nf">character</span><span class="w"> </span><span class="p">(</span><span class="nv">including</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">punctuations</span><span class="p">,</span><span class="w"> </span><span class="nv">even</span>
+<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">non</span><span class="o">-</span><span class="nv">magical</span><span class="p">)</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">preceded</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="s1">&#39;%&#39;</span>
+<span class="w">  </span><span class="nv">when</span><span class="w"> </span><span class="nv">used</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">represent</span><span class="w"> </span><span class="nv">itself</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">pattern</span><span class="p">.</span>
+<span class="err">[</span><span class="py">set</span><span class="p">]:</span><span class="w"> </span><span class="nv">represents</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">which</span><span class="w"> </span><span class="nv">is</span>
+<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">union</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">set</span><span class="p">.</span>
+<span class="w">  </span><span class="py">A</span><span class="w"> </span><span class="nv">range</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">specified</span>
+<span class="w">  </span><span class="nv">by</span><span class="w"> </span><span class="nv">separating</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="kr">end</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span>
+<span class="w">  </span><span class="nv">range</span><span class="p">,</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">ascending</span><span class="w"> </span><span class="nv">order</span><span class="p">,</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">.</span>
+<span class="w">  </span><span class="nv">All</span><span class="w"> </span><span class="nv">classes</span><span class="w"> </span><span class="o">%</span><span class="nv">x</span><span class="w"> </span><span class="nv">described</span><span class="w"> </span><span class="nv">above</span><span class="w"> </span><span class="nv">can</span>
+<span class="w">  </span><span class="nv">also</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">used</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">components</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">set</span><span class="p">.</span>
+<span class="w">  </span><span class="py">All</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">represent</span>
+<span class="w">  </span><span class="nv">themselves</span><span class="p">.</span><span class="w"> </span><span class="py">For</span><span class="w"> </span><span class="nv">example</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">%</span><span class="nv">w_</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="ow">or</span><span class="w"> </span><span class="p">[</span><span class="nv">_</span><span class="o">%</span><span class="nv">w</span><span class="p">])</span>
+<span class="w">  </span><span class="nv">represents</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">alphanumeric</span><span class="w"> </span><span class="nv">characters</span>
+<span class="w">  </span><span class="nv">plus</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">underscore</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="nv">represents</span>
+<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">octal</span><span class="w"> </span><span class="nv">digits</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">7</span><span class="o">%</span><span class="nv">l</span><span class="o">%-</span><span class="p">]</span><span class="w"> </span><span class="nv">represents</span>
+<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">octal</span><span class="w"> </span><span class="nv">digits</span><span class="w"> </span><span class="nv">plus</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">lowercase</span><span class="w"> </span><span class="nv">letters</span>
+<span class="w">  </span><span class="nv">plus</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="nv">character</span><span class="p">.</span>
+<span class="err">[^</span><span class="py">set</span><span class="p">]:</span><span class="w"> </span><span class="nv">represents</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">complement</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">set</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">where</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">interpreted</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">above</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>For all classes represented by single letters (%a, %c, etc.), the corresponding uppercase
+letter represents the complement of the class. For instance, %S represents all non-space characters.</p>
+<p>The definitions of letter, space, and other character groups depend on the current locale.
+In particular, the class [a-z] may not be equivalent to %l.</p>
+<p><strong>Pattern Item</strong></p>
+<p>A pattern item can be:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="p">,</span><span class="w"> </span><span class="nv">which</span><span class="w"> </span><span class="nv">matches</span>
+<span class="nv">any</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">;</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+<span class="nv">which</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">zero</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">repetitions</span>
+<span class="nv">of</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="w"> </span><span class="py">These</span>
+<span class="nv">repetition</span><span class="w"> </span><span class="nv">items</span><span class="w"> </span><span class="nv">will</span><span class="w"> </span><span class="nv">always</span><span class="w"> </span><span class="nv">match</span>
+<span class="nv">the</span><span class="w"> </span><span class="nv">longest</span><span class="w"> </span><span class="nv">possible</span><span class="w"> </span><span class="nv">sequence</span><span class="p">;</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">&#39;+&#39;</span><span class="p">,</span>
+<span class="nv">which</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">repetitions</span><span class="w"> </span><span class="nv">of</span>
+<span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="w"> </span><span class="py">These</span><span class="w"> </span><span class="nv">repetition</span>
+<span class="nv">items</span><span class="w"> </span><span class="nv">will</span><span class="w"> </span><span class="nv">always</span><span class="w"> </span><span class="nv">match</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">longest</span>
+<span class="nv">possible</span><span class="w"> </span><span class="nv">sequence</span><span class="p">;</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+<span class="nv">which</span><span class="w"> </span><span class="nv">also</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">zero</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">repetitions</span>
+<span class="nv">of</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="w"> </span><span class="py">Unlike</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+<span class="nv">these</span><span class="w"> </span><span class="nv">repetition</span><span class="w"> </span><span class="nv">items</span><span class="w"> </span><span class="nv">will</span><span class="w"> </span><span class="nv">always</span><span class="w"> </span><span class="nv">match</span>
+<span class="nv">the</span><span class="w"> </span><span class="nv">shortest</span><span class="w"> </span><span class="nv">possible</span><span class="w"> </span><span class="nv">sequence</span><span class="p">;</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
+<span class="nv">which</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">zero</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">occurrence</span><span class="w"> </span><span class="nv">of</span>
+<span class="nv">a</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="w"> </span><span class="py">It</span><span class="w"> </span><span class="nv">always</span>
+<span class="nv">matches</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">occurrence</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">possible</span><span class="p">;</span>
+<span class="o">-</span><span class="w"> </span><span class="o">%</span><span class="nv">n</span><span class="p">,</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="nv">between</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="nv">such</span><span class="w"> </span><span class="nv">item</span>
+<span class="nv">matches</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">substring</span><span class="w"> </span><span class="nv">equal</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">n</span><span class="o">-</span><span class="nv">th</span>
+<span class="nv">captured</span><span class="w"> </span><span class="nf">string</span><span class="w"> </span><span class="p">(</span><span class="nv">see</span><span class="w"> </span><span class="nv">below</span><span class="p">);</span>
+<span class="o">-</span><span class="w"> </span><span class="o">%</span><span class="nv">bxy</span><span class="p">,</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">two</span><span class="w"> </span><span class="nv">distinct</span>
+<span class="nv">characters</span><span class="p">;</span><span class="w"> </span><span class="nv">such</span><span class="w"> </span><span class="nv">item</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">strings</span>
+<span class="nv">that</span><span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="kr">end</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span>
+<span class="ow">and</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">balanced</span><span class="p">.</span>
+<span class="py">This</span><span class="w"> </span><span class="nv">means</span><span class="w"> </span><span class="nv">that</span><span class="p">,</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">reads</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">string</span>
+<span class="nv">from</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">right</span><span class="p">,</span><span class="w"> </span><span class="nv">counting</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">x</span>
+<span class="ow">and</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">ending</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">first</span>
+<span class="nv">y</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="nv">reaches</span><span class="w"> </span><span class="mf">0.</span>
+<span class="nv">For</span><span class="w"> </span><span class="nv">instance</span><span class="p">,</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">item</span><span class="w"> </span><span class="o">%</span><span class="nf">b</span><span class="p">()</span><span class="w"> </span><span class="nv">matches</span>
+<span class="nv">expressions</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">balanced</span><span class="w"> </span><span class="nv">parentheses</span><span class="p">.</span>
+<span class="err">-</span><span class="w"> </span><span class="err">%</span><span class="py">f</span><span class="p">[</span><span class="nv">set</span><span class="p">],</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">frontier</span><span class="w"> </span><span class="nv">pattern</span><span class="p">;</span><span class="w"> </span><span class="nv">such</span><span class="w"> </span><span class="nv">item</span>
+<span class="nv">matches</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">empty</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="nv">at</span><span class="w"> </span><span class="nv">any</span><span class="w"> </span><span class="nv">position</span>
+<span class="nv">such</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nb">next</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">belongs</span><span class="w"> </span><span class="nv">to</span>
+<span class="nv">set</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">previous</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">does</span><span class="w"> </span><span class="ow">not</span>
+<span class="nv">belong</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">set</span><span class="p">.</span><span class="w"> </span><span class="py">The</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">interpreted</span>
+<span class="nv">as</span><span class="w"> </span><span class="nv">previously</span><span class="w"> </span><span class="nv">described</span><span class="p">.</span><span class="w"> </span><span class="py">The</span><span class="w"> </span><span class="nv">beginning</span>
+<span class="ow">and</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="kr">end</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">subject</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">handled</span>
+<span class="nv">as</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">they</span><span class="w"> </span><span class="nv">were</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">.</span>
+</pre></div>
+</div>
+<p><strong>Pattern</strong></p>
+<p>A pattern is a sequence of pattern items. A caret ‘^’ at the beginning of a pattern anchors the match at the
+beginning of the subject string. A ‘$’ at the end of a pattern anchors the match at the end of the subject string.
+At other positions, ‘^’ and ‘$’ have no special meaning and represent themselves.</p>
+<p><strong>Captures</strong></p>
+<p>A pattern can contain sub-patterns enclosed in parentheses; they describe captures. When a match succeeds,
+the substrings of the subject string that match captures are stored (captured) for future use.
+Captures are numbered according to their left parentheses. For instance, in the pattern “(a*(.)%w(%s*))”,
+the part of the string matching “a*(.)%w(%s*)” is stored as the first capture
+(and therefore has number 1); the character matching “.” is captured with number 2,
+and the part matching “%s*” has number 3.</p>
+<p>As a special case, the empty capture () captures the current string position (a number).
+For instance, if we apply the pattern “()aa()” on the string “flaaap”, there will be two captures: 3 and 5.</p>
+</section>
+</section>
+<section id="math">
+<h2>Math<a class="headerlink" href="#math" title="Link to this heading">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.abs">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.abs" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the absolute value of <cite>value</cite>. For example, <cite>math.abs(-5)</cite> returns 5.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, the number to get the absolute value of</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The absolute value of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.abs</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.acos">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">acos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.acos" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the arc cosine of <cite>value</cite> in radians</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the arc cosine of this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The arc cosine of value in radians</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.acos</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.asin">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">asin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.asin" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the arc sine of <cite>value</cite> in radians</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the arc sine of this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The arc sine of value in radians</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.asin</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.atan">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">atan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.atan" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the arc tangent of y/x (in radians), using the signs of both arguments to find the quadrant of the result. It also handles correctly the case of x being zero</p>
+<p>The default value for x is 1, so that the call math.atan(y) returns the arc tangent of y</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – numerator for arc tangent</p></li>
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – denominator for arc tangent (defaults to 1)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The arc tangent of y/x in radians</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.atan</span><span class="p">(</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">math.atan</span><span class="p">(</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.ceil">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">ceil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.ceil" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the smallest integer larger than or equal to <cite>value</cite>. This rounds a number up to the nearest integer. For example, <cite>math.ceil(5.2)</cite> returns 6.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the smallest integer larger than or equal to this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The smallest integer larger than or equal to value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.ceil</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.cos">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">cos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.cos" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the cosine of <cite>value</cite> (assumed to be in radians).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the cosine of this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cosine of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.cos</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.cosh">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">cosh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.cosh" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns hyperbolic cosine of <cite>value</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the hyperbolic cosine of this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hyperbolic cosine of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.cosh</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.deg">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">deg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.deg" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the angle specified by <cite>value</cite> (given in radians) in degrees.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, angle in radians to convert to degrees</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Angle specified by value (in radians) in degrees</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.deg</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.rad">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">rad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.rad" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the angle specified by <cite>value</cite> (given in degrees) in radians.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, angle in degrees to convert to radians</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Angle specified by value (in degrees) in radians</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.rad</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.exp">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.exp" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns <strong>e</strong> raised to <cite>value</cite></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, exponent of e</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>e raised to the power of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.exp</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.floor">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">floor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.floor" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the largest integer smaller than or equal to <cite>value</cite>. This rounds a number down to the nearest integer. For example, <cite>math.floorTh(5.7)</cite> returns 5.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the largest integer smaller than or equal to this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The largest integer smaller than or equal to value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.floor</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.fmod">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">fmod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.fmod" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the remainder of the division of <cite>x</cite> by <cite>y</cite> that rounds the quotient towards zero.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – int or float</p></li>
+<li><p><strong>y</strong> – int or float</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The remainder of the division of x by y</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.fmod</span><span class="p">(</span><span class="w"> </span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.frexp">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">frexp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.frexp" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns m and e such that <cite>value</cite> = m2^e, e is an integer and the absolute value of m is in the range [0.5, 1) (or zero when x is zero).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>m and e such that value = m2^e, e is an integer and the absolute value of m is in the range [0.5, 1) (or zero when x is zero).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.frexp</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.ldexp">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">ldexp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">m</span></em>, <em class="sig-param"><span class="pre">e</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.ldexp" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns m2^e (e should be an integer)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> – int or float</p></li>
+<li><p><strong>e</strong> – int</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>m2^e</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.ldexp</span><span class="p">(</span><span class="w"> </span><span class="nv">m</span><span class="p">,</span><span class="w"> </span><span class="nv">e</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.log">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.log" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the natural logarithm of <cite>value</cite></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the natural logarithm of this value</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The natural logarithm of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.log</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.log10">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">log10</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.log10" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the base-10 logarithm of <cite>value</cite></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the base-10 logarithm of this value</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The base-10 logarithm of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">math</span><span class="p">.</span><span class="nf">log10</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.max">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.max" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns maximum value among its arguments.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – any comparable value</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The maximum value among its arguments</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.max</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.min">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.min" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns minimum value among its arguments.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – any comparable value</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The minimum value among its arguments</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.min</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.modf">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">modf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.modf" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns two numbers, the integral part of <cite>value</cite> and the fractional part of <cite>value</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Two numbers, the integral part of value and the fractional part of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.modf</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.random">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#math.random" title="Link to this definition">¶</a></dt>
+<dd><p>When called without arguments, <cite>math.random()</cite> returns a uniform pseudo-random real number in the range [0, 1). When called with an integer number <cite>maximum</cite>, <cite>math.random()</cite> returns a uniform pseudo-random integer in the range [1, maximum]. When called with two integer numbers, <cite>minimum</cite> and <cite>maximum</cite>, <cite>math.random()</cite> returns a uniform pseudo-random integer in the range [minimum, maximum].</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minimum</strong> – int, minimum value of returned pseudo-random number</p></li>
+<li><p><strong>maximum</strong> – int, maximum value of returned pseudo-random number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A uniform pseudo-random real number or integer (depending on parameters)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.random</span><span class="p">()</span>
+<span class="nb">math.random</span><span class="p">(</span><span class="w"> </span><span class="nv">maximum</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">math.random</span><span class="p">(</span><span class="w"> </span><span class="nv">minimum</span><span class="p">,</span><span class="w"> </span><span class="nv">maximum</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.randomseed">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">randomseed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.randomseed" title="Link to this definition">¶</a></dt>
+<dd><p>Sets value as the “seed” for the pseudo-random number generator. Equal seeds produce equal sequences of numbers.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int, seed of the pseudo-random number generator</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A uniform pseudo-random real number or integer (depending on parameters)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.randomseed</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.sin">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">sin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.sin" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the sine of <cite>value</cite> (assumed to be in radians).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the sine of this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sine of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.sin</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.sinh">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">sinh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.sinh" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns hyperbolic sine of <cite>value</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the hyperbolic sine of this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hyperbolic sine of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.sinh</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.tan">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">tan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.tan" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns the tangent of <cite>value</cite> (assumed to be in radians).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the tangent of this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tangent of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.tan</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.tanh">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">tanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.tanh" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns hyperbolic tangent of <cite>value</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the hyperbolic tangent of this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hyperbolic tangent of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.tanh</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.sqrt">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">sqrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.sqrt" title="Link to this definition">¶</a></dt>
+<dd><p>This function computes the square root of <cite>value</cite>. You can also use the expression <cite>value^0.5</cite> to compute this value.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, compute the square root of this number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Square root of value</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.sqrt</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.tointeger">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">tointeger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.tointeger" title="Link to this definition">¶</a></dt>
+<dd><p>If <cite>value</cite> is convertible to an integer, returns that integer. Otherwise returns <strong>nil</strong>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – float, value to convert to integer</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><cite>value</cite> converted to an integer, or nil</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.tointeger</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.type">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.type" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns “integer” if <cite>value</cite> is an integer, “float” if it is a float, or <strong>nil</strong> if <cite>value</cite> is not a number.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – int or float, get the type of this value</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>“integer” or “float”</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.type</span><span class="p">(</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="math.ult">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">ult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">m</span></em>, <em class="sig-param"><span class="pre">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.ult" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns a boolean, true if integer <cite>m</cite> is below integer <cite>n</cite> when they are compared as unsigned integers.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – value for m</p></li>
+<li><p><strong>n</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – value for n</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if <cite>m</cite> is below integer <cite>n</cite> when compared as unsigned</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">boolean</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.ult</span><span class="p">(</span><span class="w"> </span><span class="nv">m</span><span class="p">,</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="math.huge">
+<span class="sig-name descname"><span class="pre">math.huge</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#math.huge" title="Link to this definition">¶</a></dt>
+<dd><p>A value larger than or equal to any other numerical value.</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A value larger than or equal to any other numerical value</p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.huge</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="math.pi">
+<span class="sig-name descname"><span class="pre">math.pi</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#math.pi" title="Link to this definition">¶</a></dt>
+<dd><p>The value of <strong>pi</strong>.</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Value of pi</p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.pi</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="math.maxinteger">
+<span class="sig-name descname"><span class="pre">math.maxinteger</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#math.maxinteger" title="Link to this definition">¶</a></dt>
+<dd><p>Specifies an integer with the maximum value for an integer</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Maximum value for an integer</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.maxinteger</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="math.mininteger">
+<span class="sig-name descname"><span class="pre">math.mininteger</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#math.mininteger" title="Link to this definition">¶</a></dt>
+<dd><p>Specifies an integer with the minimum value for an integer</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Minimum value for an integer</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">math.mininteger</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="date-and-time">
+<h2>Date and Time<a class="headerlink" href="#date-and-time" title="Link to this heading">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="os.clock">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">clock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#os.clock" title="Link to this definition">¶</a></dt>
+<dd><p>Returns an approximation of the amount in seconds of CPU time used by the program.</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Approximation of the amount in seconds of CPU time used by the program.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span></p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">os.clock</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="os.difftime">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">difftime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">t2</span></em>, <em class="sig-param"><span class="pre">t1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.difftime" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the number of seconds from time <cite>t1</cite> to time <cite>t2</cite>. In POSIX, Windows, and some other systems, this value is exactly <cite>t2-t1</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t2</strong> – Ending time</p></li>
+<li><p><strong>t1</strong> – Starting time</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of seconds from time <cite>t1</cite> to time <cite>t2</cite>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">os.difftime</span><span class="p">(</span><span class="w"> </span><span class="nv">t2</span><span class="p">,</span><span class="w"> </span><span class="nv">t1</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="os.date">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">format</span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.date" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a string or a table containing the date and time, formatted according to the given string <cite>format</cite>.</p>
+<p>If the <cite>time</cite> argument is present, this is the time to be formatted (see the <cite>os.time</cite> function for a description of this value). Otherwise, <cite>date</cite> formats the current time.</p>
+<p>If format starts with ‘!’, then the date is formatted in Coordinated Universal Time. After this optional character, if format is the string <code class="docutils literal notranslate"><span class="pre">*t</span></code>, then date returns a table with the following fields: year (four digits), month (1–12), day (1–31), hour (0–23), min (0–59), sec (0–61), wday (weekday, Sunday is 1), yday (day of the year), and isdst (daylight saving flag, a boolean).</p>
+<p>If <cite>format</cite> is not <code class="docutils literal notranslate"><span class="pre">*t</span></code>, then <cite>date</cite> returns the date as a string, formatted according to the same rules as the C function <cite>strftime</cite>.</p>
+<p>When called without arguments, date returns a reasonable date and time representation that depends on the host system and on the current locale (that is, <cite>os.date()</cite> is equivalent to <cite>os.date(‘%c’)</cite>).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> – String used to format the returned date</p></li>
+<li><p><strong>time</strong> – If the time argument is present, this is the time to be formatted (see the os.time function for a description of this value).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string or a table containing the date and time.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">os.date</span><span class="p">()</span>
+<span class="nb">os.date</span><span class="p">(</span><span class="w"> </span><span class="nv">format</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">os.date</span><span class="p">(</span><span class="w"> </span><span class="nv">format</span><span class="p">,</span><span class="w"> </span><span class="nv">time</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="os.setlocale">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">setlocale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">locale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.setlocale" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the current locale of the program. <cite>locale</cite> is a string specifying a locale; <cite>category</cite> is an optional string describing which category to change: “all”, “collate”, “ctype”, “monetary”, “numeric”, or “time”; the default category is “all”. The function returns the name of the new locale, or nil if the request cannot be honored.</p>
+<p>If <cite>locale</cite> is the empty string, the current locale is set to an implementation-defined native locale. If <cite>locale</cite> is the string “C”, the current locale is set to the standard C locale.</p>
+<p>When called with <cite>nil</cite> as the first argument, this function only returns the name of the current locale for the given category.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locale</strong> – String specifying a locale, can be nil or the empty string.</p></li>
+<li><p><strong>category</strong> – String specifying a category to set, can be “all”, “collate”, “ctype”, “monetary”, “numeric”, or “time”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>When called with <cite>nil</cite> for the first argument, returns the name of the current locale for the given category.</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">os.setlocale</span><span class="p">(</span><span class="w"> </span><span class="nv">locale</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">os.setlocale</span><span class="p">(</span><span class="w"> </span><span class="nv">locale</span><span class="p">,</span><span class="w"> </span><span class="nv">category</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="os.time">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#os.time" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the current time when called without arguments, or a time representing the date and time specified by the given table. This table must have fields <cite>year</cite>, <cite>month</cite>, and <cite>day</cite>, and may have fields <cite>hour</cite>, <cite>min</cite>, <cite>sec</cite>, and <cite>isdst</cite> (for a description of these fields, see the os.date function).</p>
+<p>The returned value is a number, whose meaning depends on your system. In POSIX, Windows, and some other systems, this number counts the number of seconds since some given start time (the “epoch”). In other systems, the meaning is not specified, and the number returned by <cite>time</cite> can be used only as an argument to <cite>date</cite> and <cite>difftime</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>table</strong> – This table must have fields <cite>year</cite>, <cite>month</cite>, and <cite>day</cite>, and may have fields <cite>hour</cite>, <cite>min</cite>, <cite>sec</cite>, and <cite>isdst</cite></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A number, whose meaning depends on your system. In POSIX, Windows, and some other systems, this number counts the number of seconds since some given start time (the “epoch”). In other systems, the meaning is not specified, and the number returned by <cite>time</cite> can be used only as an argument to <cite>date</cite> and <cite>difftime</cite>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span></p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">os.time</span><span class="p">()</span>
+<span class="nb">os.time</span><span class="p">(</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 
         </article>
@@ -321,7 +1926,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">math types</div>
+                <div class="title">Math</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -354,8 +1959,41 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">lua</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a><ul>
+<li><a class="reference internal" href="#for-loops-overview">For Loops Overview</a></li>
+<li><a class="reference internal" href="#conditionals-overview">Conditionals Overview</a></li>
+<li><a class="reference internal" href="#while-loops-overview">While Loops Overview</a></li>
+<li><a class="reference internal" href="#annotations-overview">Annotations Overview</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#language">Language</a></li>
+<li><a class="reference internal" href="#tables">Tables</a></li>
+<li><a class="reference internal" href="#strings">Strings</a><ul>
+<li><a class="reference internal" href="#patterns-overview">Patterns Overview</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#math">Math</a></li>
+<li><a class="reference internal" href="#date-and-time">Date and Time</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="scene" href="scene.html" /><link rel="prev" title="material" href="material.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
-        <title>sound - Codea 4.0 documentation</title>
+        <title>Sound - Codea 4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -168,16 +168,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/assets.html">Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/file_operations.html">File Operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box 2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math_types.html">math types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
@@ -190,20 +191,19 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">sound</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Sound</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motion.html#motion">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
 <li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">Pasteboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
@@ -247,50 +247,8 @@
         </div>
         <article role="main">
           <section id="sound">
-<h1>sound<a class="headerlink" href="#sound" title="Link to this heading">¶</a></h1>
+<h1>Sound<a class="headerlink" href="#sound" title="Link to this heading">¶</a></h1>
 <p id="module-sound">The sound module provides a way to play and manage sound effects and background music</p>
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="sound.sound.SOUND_COIN">
-<span class="sig-name descname"><span class="pre">SOUND_COIN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_COIN" title="Link to this definition">¶</a></dt>
-<dd><p>Procedural coin sound preset (SFXR)</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="sound.sound.SOUND_LASER">
-<span class="sig-name descname"><span class="pre">SOUND_LASER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_LASER" title="Link to this definition">¶</a></dt>
-<dd><p>Procedural laser sound preset (SFXR)</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="sound.sound.SOUND_EXPLOSION">
-<span class="sig-name descname"><span class="pre">SOUND_EXPLOSION</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_EXPLOSION" title="Link to this definition">¶</a></dt>
-<dd><p>Procedural explosion sound preset (SFXR)</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="sound.sound.SOUND_POWERUP">
-<span class="sig-name descname"><span class="pre">SOUND_POWERUP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_POWERUP" title="Link to this definition">¶</a></dt>
-<dd><p>Procedural powerup sound preset (SFXR)</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="sound.sound.SOUND_HURT">
-<span class="sig-name descname"><span class="pre">SOUND_HURT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_HURT" title="Link to this definition">¶</a></dt>
-<dd><p>Procedural hurt sound preset (SFXR)</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="sound.sound.SOUND_JUMP">
-<span class="sig-name descname"><span class="pre">SOUND_JUMP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_JUMP" title="Link to this definition">¶</a></dt>
-<dd><p>Procedural jump sound preset (SFXR)</p>
-</dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="sound.sound.SOUND_BLIP">
-<span class="sig-name descname"><span class="pre">SOUND_BLIP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#sound.sound.SOUND_BLIP" title="Link to this definition">¶</a></dt>
-<dd><p>Procedural blip sound preset (SFXR)</p>
-</dd></dl>
-
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="sound.play">
 <em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">sound.</span></span><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">preset</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">seed</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sound.play" title="Link to this definition">¶</a></dt>
@@ -445,6 +403,48 @@
 <dd><p>Stop the sound instance from playing</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="SOUND_COIN">
+<span class="sig-name descname"><span class="pre">SOUND_COIN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#SOUND_COIN" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural coin sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="SOUND_LASER">
+<span class="sig-name descname"><span class="pre">SOUND_LASER</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#SOUND_LASER" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural laser sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="SOUND_EXPLOSION">
+<span class="sig-name descname"><span class="pre">SOUND_EXPLOSION</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#SOUND_EXPLOSION" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural explosion sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="SOUND_POWERUP">
+<span class="sig-name descname"><span class="pre">SOUND_POWERUP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#SOUND_POWERUP" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural powerup sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="SOUND_HURT">
+<span class="sig-name descname"><span class="pre">SOUND_HURT</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#SOUND_HURT" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural hurt sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="SOUND_JUMP">
+<span class="sig-name descname"><span class="pre">SOUND_JUMP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#SOUND_JUMP" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural jump sound preset (SFXR)</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="SOUND_BLIP">
+<span class="sig-name descname"><span class="pre">SOUND_BLIP</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#SOUND_BLIP" title="Link to this definition">¶</a></dt>
+<dd><p>Procedural blip sound preset (SFXR)</p>
 </dd></dl>
 
 </section>

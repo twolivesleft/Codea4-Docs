@@ -368,7 +368,7 @@ Some Codea types will be converted to corresponding Objective types automaticall
         
                 isStandalone = objc.info.bundleIdentifier ~= "com.twolivesleft.Codify"
 
-.. lua:attribute:: insets: table
+.. lua:function:: insets(top, left, bottom, right)
 
         Create a UIEdgeInsets.
 
@@ -383,12 +383,33 @@ Some Codea types will be converted to corresponding Objective types automaticall
         :param right: right value of the UIEdgeInsets
         :type right: number
         :return: The UIEdgeInsets struct.
-        :rtype: table
+        :rtype: table$private.insets
+
         :syntax:
         
             .. code-block:: lua
         
                 objc.insets(top, left, bottom, right)
+
+.. lua:class:: private.insets
+
+    .. visibility:: private
+
+    .. lua:attribute:: top: number
+
+        top value of the UIEdgeInsets
+
+    .. lua:attribute:: left: number
+
+        left value of the UIEdgeInsets
+
+    .. lua:attribute:: bottom: number
+
+        bottom value of the UIEdgeInsets
+
+    .. lua:attribute:: right: number
+
+        right value of the UIEdgeInsets
 
 .. lua:function:: log(message)
 
