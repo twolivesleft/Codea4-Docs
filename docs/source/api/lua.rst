@@ -884,18 +884,6 @@ Math
 
          math.log( value )
 
-.. lua:function:: math.log10( value )
-
-   This function returns the base-10 logarithm of `value`
-
-   :param value: int or float, compute the base-10 logarithm of this value
-   :return: The base-10 logarithm of value
-   :syntax:
-
-      .. code-block:: lua
-
-         math.log10( value )
-
 .. lua:function:: math.max( value, ... )
 
    This function returns maximum value among its arguments.
