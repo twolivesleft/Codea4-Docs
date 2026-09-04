@@ -147,6 +147,69 @@ Language
 
          print( ... )
 
+.. lua:function:: warn( msg, ... )
+
+   Emits a warning to the output console, composed by concatenating all its arguments
+   (which must be strings). Warnings appear alongside ``print`` output, marked as
+   warnings.
+
+   .. helptext:: emit a warning to the output console
+
+   A one-piece message starting with ``@`` is a *control message*: it changes how the
+   warning system behaves instead of being displayed. Codea recognizes four:
+
+   .. list-table::
+      :header-rows: 1
+      :widths: 22 78
+
+      * - Control message
+        - Effect
+      * - ``"@off"``
+        - Stop emitting warnings.
+      * - ``"@on"``
+        - Resume emitting warnings.
+      * - ``"@once"``
+        - Emit each distinct message only the first time it occurs. This is the default.
+      * - ``"@always"``
+        - Emit every warning, including repeats.
+
+   Codea differs from standard Lua in two ways, both chosen so that warnings behave the
+   way they always have in Codea:
+
+   - Warnings are **on** by default, so there is no need to call ``warn( "@on" )``
+     before your first warning.
+   - Repeated messages are suppressed by default, as if ``warn( "@once" )`` were already
+     in effect. This keeps a warning inside ``draw()`` from flooding the console. Use
+     ``warn( "@always" )`` when you want every occurrence.
+
+   Unknown control messages are ignored. A control message must be a single argument, so
+   ``warn( "@of", "f" )`` emits a warning reading ``@off`` rather than turning warnings
+   off.
+
+   :param msg: the warning message, or one of the control messages above
+   :param ...: additional strings, concatenated onto ``msg``
+   :syntax:
+
+      .. code-block:: lua
+
+         warn( "player health is negative" )
+
+         -- Repeats are suppressed by default, so this shows a single warning
+         for i = 1, 100 do
+             warn( "this appears only once" )
+         end
+
+         -- Opt in to seeing every occurrence
+         warn( "@always" )
+         warn( "@once" )
+
+         warn( "@off" )
+         warn( "this is not shown" )
+         warn( "@on" )
+
+         -- Arguments are concatenated, so this emits one warning reading "x = 42"
+         warn( "x = ", tostring( 42 ) )
+
 .. lua:function:: ipairs( table )
 
    `ipairs` can be used to iterate over a table sequentially, starting from the index 1 and continuing until the first integer key absent from the table. Returns three values: an iterator function, the table, and 0.

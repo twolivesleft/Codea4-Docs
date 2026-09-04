@@ -310,7 +310,7 @@ update the contents of the screen</p>
 <span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">-- 2D drawing after matrix.pop() uses the default screen projection</span>
-<span class="w">    </span><span class="nf">text</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">text</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>
@@ -360,18 +360,18 @@ update the contents of the screen</p>
 <h2>Text<a class="headerlink" href="#text" title="Link to this heading">¶</a></h2>
 <p>Use <code class="xref lua lua-func docutils literal notranslate"><span class="pre">text()</span></code> to draw strings to the screen. Text color is set with <a class="reference internal" href="../api/style.html#style.fill" title="style.fill"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.fill()</span></code></a>:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">32</span><span class="p">).</span><span class="nf">textAlign</span><span class="p">(</span><span class="nv">CENTER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">MIDDLE</span><span class="p">)</span>
-<span class="nf">text</span><span class="p">(</span><span class="s2">&quot;Hello, Codea!&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"Hello, Codea!"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Emojis require native rendering</strong></p>
 <p>By default Codea uses its own text renderer, which does not support emoji characters (they appear as empty boxes). To render emojis, enable native text rendering with <code class="docutils literal notranslate"><span class="pre">TEXT_NATIVE</span></code>:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Emojis render as boxes with the default renderer</span>
-<span class="nf">text</span><span class="p">(</span><span class="s2">&quot;Broken: 🎉 🚀 ❤️&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"Broken: 🎉 🚀 ❤️"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
 
 <span class="c1">-- Enable native rendering to display emojis correctly</span>
 <span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">textStyle</span><span class="p">(</span><span class="nv">TEXT_NATIVE</span><span class="p">)</span>
-<span class="nf">text</span><span class="p">(</span><span class="s2">&quot;Working: 🎉 🚀 ❤️&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"Working: 🎉 🚀 ❤️"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -470,7 +470,7 @@ update the contents of the screen</p>
 <span class="w">        </span><span class="nf">vec3</span><span class="p">(</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="o">-</span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">,</span><span class="w"> </span><span class="nv">s</span><span class="p">),</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">-- Map each corner&#39;s position to an RGB color</span>
+<span class="w">    </span><span class="c1">-- Map each corner's position to an RGB color</span>
 <span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">posToColor</span><span class="p">(</span><span class="nv">p</span><span class="p">)</span>
 <span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span>
 <span class="w">            </span><span class="nb">math.floor</span><span class="p">((</span><span class="nv">p</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">s</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nv">s</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">),</span>
@@ -496,7 +496,7 @@ update the contents of the screen</p>
 <span class="w">        </span><span class="kr">end</span>
 <span class="w">    </span><span class="kr">end</span>
 
-<span class="w">    </span><span class="c1">-- Use &#39;vertices&#39; (not &#39;positions&#39;) so indices are set automatically</span>
+<span class="w">    </span><span class="c1">-- Use 'vertices' (not 'positions') so indices are set automatically</span>
 <span class="w">    </span><span class="nv">cubeMesh</span><span class="p">.</span><span class="py">vertices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">verts</span>
 <span class="w">    </span><span class="nv">cubeMesh</span><span class="p">.</span><span class="py">colors</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">cols</span>
 

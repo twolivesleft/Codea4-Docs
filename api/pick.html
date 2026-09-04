@@ -309,7 +309,7 @@
 </dl>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">myTable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">table</span><span class="p">()</span>
 <span class="p">...</span>
-<span class="nb">print</span><span class="p">(</span><span class="nv">myTable</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">myTable</span><span class="p">[</span><span class="s2">"key"</span><span class="p">])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -399,8 +399,8 @@
 <p>The order of types, options and callback is not important, though we recommend passing the callback last for readability.</p>
 <p>When a callback function is provided, the function becomes asynchronous and the picked asset is passed to the callback function.</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Pick multiple assets of type yaml or image</span>
-<span class="nf">pick</span><span class="p">(</span><span class="s2">&quot;public.yaml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">image</span><span class="p">,</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">multiple</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">multipleAssets</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Picked &quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="o">#</span><span class="nv">multipleAssets</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot; assets&quot;</span><span class="p">)</span>
+<span class="nf">pick</span><span class="p">(</span><span class="s2">"public.yaml"</span><span class="p">,</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">image</span><span class="p">,</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">multiple</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">multipleAssets</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Picked "</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="o">#</span><span class="nv">multipleAssets</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">" assets"</span><span class="p">)</span>
 <span class="kr">end</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -434,11 +434,11 @@
 <p>Bookmarks can be removed using <code class="docutils literal notranslate"><span class="pre">assets.removeBookmark(name)</span></code>.</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">assetKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">asset</span><span class="p">(</span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">reference</span><span class="p">)</span>
 <span class="kr">if</span><span class="w"> </span><span class="nv">assetKey</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">assetKey</span><span class="p">:</span><span class="nf">saveBookmark</span><span class="p">(</span><span class="s2">&quot;myBookmark&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">assetKey</span><span class="p">:</span><span class="nf">saveBookmark</span><span class="p">(</span><span class="s2">"myBookmark"</span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="c1">-- On subsequent runs, read the bookmark</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">assetKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">assets</span><span class="p">.</span><span class="nf">readBookmark</span><span class="p">(</span><span class="s2">&quot;myBookmark&quot;</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">assetKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">assets</span><span class="p">.</span><span class="nf">readBookmark</span><span class="p">(</span><span class="s2">"myBookmark"</span><span class="p">)</span>
 <span class="kr">if</span><span class="w"> </span><span class="nv">assetKey</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">assetKey</span><span class="p">.</span><span class="py">path</span><span class="p">)</span>
 <span class="kr">end</span>

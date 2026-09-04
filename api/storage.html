@@ -280,8 +280,8 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">boolean</span></code></span></p>
 </dd>
 </dl>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">if</span><span class="w"> </span><span class="nv">storage</span><span class="p">:</span><span class="nf">has</span><span class="p">(</span><span class="s2">&quot;playerName&quot;</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Player name saved&quot;</span><span class="p">)</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">if</span><span class="w"> </span><span class="nv">storage</span><span class="p">:</span><span class="nf">has</span><span class="p">(</span><span class="s2">"playerName"</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Player name saved"</span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>
@@ -296,7 +296,7 @@
 <dd class="field-odd"><p><strong>key</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – Key to remove</p>
 </dd>
 </dl>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">storage</span><span class="p">:</span><span class="nf">delete</span><span class="p">(</span><span class="s2">&quot;tutorialSeen&quot;</span><span class="p">)</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">storage</span><span class="p">:</span><span class="nf">delete</span><span class="p">(</span><span class="s2">"tutorialSeen"</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -371,8 +371,8 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 </dl>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">prefs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">storage</span><span class="p">:</span><span class="nf">namespace</span><span class="p">(</span><span class="s2">&quot;prefs&quot;</span><span class="p">)</span>
-<span class="nv">prefs</span><span class="p">.</span><span class="py">audioMuted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1">-- stored as &quot;prefs.audioMuted&quot;</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">prefs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">storage</span><span class="p">:</span><span class="nf">namespace</span><span class="p">(</span><span class="s2">"prefs"</span><span class="p">)</span>
+<span class="nv">prefs</span><span class="p">.</span><span class="py">audioMuted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1">-- stored as "prefs.audioMuted"</span>
 <span class="nb">print</span><span class="p">(</span><span class="nv">prefs</span><span class="p">.</span><span class="py">audioMuted</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -442,16 +442,16 @@
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span></p>
 </dd>
 </dl>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">settings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">storage</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">globalPrefs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">storage</span><span class="p">(</span><span class="s2">&quot;prefs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;global&quot;</span><span class="p">)</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">settings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">storage</span><span class="p">(</span><span class="s2">"settings"</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">globalPrefs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">storage</span><span class="p">(</span><span class="s2">"prefs"</span><span class="p">,</span><span class="w"> </span><span class="s2">"global"</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <p><strong>Usage Patterns</strong></p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Separate storage for different systems</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">prefs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">storage</span><span class="p">:</span><span class="nf">namespace</span><span class="p">(</span><span class="s2">&quot;prefs&quot;</span><span class="p">)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">storage</span><span class="p">:</span><span class="nf">namespace</span><span class="p">(</span><span class="s2">&quot;stats&quot;</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">prefs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">storage</span><span class="p">:</span><span class="nf">namespace</span><span class="p">(</span><span class="s2">"prefs"</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">storage</span><span class="p">:</span><span class="nf">namespace</span><span class="p">(</span><span class="s2">"stats"</span><span class="p">)</span>
 
 <span class="nv">prefs</span><span class="p">.</span><span class="py">musicEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="nv">stats</span><span class="p">.</span><span class="py">gamesPlayed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span>
@@ -461,7 +461,7 @@
 <span class="kd">local</span><span class="w"> </span><span class="nv">globalStore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">storage</span><span class="p">.</span><span class="py">global</span>
 
 <span class="nv">projectStore</span><span class="p">.</span><span class="py">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
-<span class="nv">globalStore</span><span class="p">.</span><span class="py">unlocked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;sword&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;shield&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="nv">globalStore</span><span class="p">.</span><span class="py">unlocked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"sword"</span><span class="p">,</span><span class="w"> </span><span class="s2">"shield"</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Notes</strong></p>

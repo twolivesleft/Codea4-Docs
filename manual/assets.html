@@ -255,7 +255,7 @@
 <span class="nv">myImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readImage</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">.</span><span class="py">Codea_Dark</span><span class="p">)</span>
 
 <span class="c1">-- Load from your own project</span>
-<span class="nv">myImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readImage</span><span class="p">(</span><span class="nv">asset</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;MySprite.png&quot;</span><span class="p">)</span>
+<span class="nv">myImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readImage</span><span class="p">(</span><span class="nv">asset</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">"MySprite.png"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -274,11 +274,11 @@
 <span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">.</span><span class="py">Codea_Dark</span>
 
 <span class="c1">-- Concatenation (for dynamic names)</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MySprite.png&quot;</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MySprite.png"</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nv">filename</span>
 
 <span class="c1">-- Combine paths</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;Saves/Level1.json&quot;</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">"Saves/Level1.json"</span>
 </pre></div>
 </div>
 </section>
@@ -287,11 +287,11 @@
 <p>Use the standard reading functions with asset keys instead of file path strings:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Images</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readImage</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Cargo_Bot</span><span class="p">.</span><span class="py">Codea_Dark</span><span class="p">)</span>
-<span class="nf">saveImage</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;Screenshot.png&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">img</span><span class="p">)</span>
+<span class="nf">saveImage</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">"Screenshot.png"</span><span class="p">,</span><span class="w"> </span><span class="nv">img</span><span class="p">)</span>
 
 <span class="c1">-- Text</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readLocalData</span><span class="p">(</span><span class="s2">&quot;highscore&quot;</span><span class="p">)</span>
-<span class="nf">saveLocalData</span><span class="p">(</span><span class="s2">&quot;highscore&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readLocalData</span><span class="p">(</span><span class="s2">"highscore"</span><span class="p">)</span>
+<span class="nf">saveLocalData</span><span class="p">(</span><span class="s2">"highscore"</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
 
 <span class="c1">-- JSON via the pick API</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">table</span><span class="p">()</span><span class="w">   </span><span class="c1">-- opens document picker, returns a table</span>
@@ -316,11 +316,11 @@
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Pick a file by reference and save a bookmark</span>
 <span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">asset</span><span class="p">(</span><span class="nv">pick</span><span class="p">.</span><span class="py">option</span><span class="p">.</span><span class="py">reference</span><span class="p">)</span>
 <span class="kr">if</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nv">key</span><span class="p">:</span><span class="nf">saveBookmark</span><span class="p">(</span><span class="s2">&quot;myConfig&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">key</span><span class="p">:</span><span class="nf">saveBookmark</span><span class="p">(</span><span class="s2">"myConfig"</span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="c1">-- On a later run, restore the bookmark</span>
-<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">assets</span><span class="p">.</span><span class="nf">readBookmark</span><span class="p">(</span><span class="s2">&quot;myConfig&quot;</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">assets</span><span class="p">.</span><span class="nf">readBookmark</span><span class="p">(</span><span class="s2">"myConfig"</span><span class="p">)</span>
 <span class="kr">if</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="nv">key</span><span class="p">)</span>
 <span class="kr">end</span>

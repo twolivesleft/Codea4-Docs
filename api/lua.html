@@ -261,11 +261,11 @@
 </pre></div>
 </div>
 <p>This example uses the <cite>ipairs</cite> function to sequentially iterate over a table. Note that ipairs only works on tables that have sequential elements beginning at 1.</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Iterate over an array named &#39;arr&#39;</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Iterate over an array named 'arr'</span>
 <span class="nv">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
 
 <span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">arr</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;arr[&quot;</span><span class="o">..</span><span class="nv">i</span><span class="o">..</span><span class="s2">&quot;] = &quot;</span><span class="o">..</span><span class="nv">v</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">"arr["</span><span class="o">..</span><span class="nv">i</span><span class="o">..</span><span class="s2">"] = "</span><span class="o">..</span><span class="nv">v</span><span class="w"> </span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="c1">-- Prints:</span>
@@ -275,11 +275,11 @@
 </pre></div>
 </div>
 <p>This example uses <cite>pairs</cite> to iterate over all the key/value pairs in a table, unlike <cite>ipairs</cite> the keys do not have to be integral values, and can be anything.</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Iterate over a table named &#39;tab&#39;</span>
-<span class="nv">tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Iterate over a table named 'tab'</span>
+<span class="nv">tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
 
 <span class="kr">for</span><span class="w"> </span><span class="nv">key</span><span class="p">,</span><span class="nv">value</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">tab</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;tab.&quot;</span><span class="o">..</span><span class="nv">key</span><span class="o">..</span><span class="s2">&quot; = &quot;</span><span class="o">..</span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">"tab."</span><span class="o">..</span><span class="nv">key</span><span class="o">..</span><span class="s2">" = "</span><span class="o">..</span><span class="nv">value</span><span class="w"> </span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="c1">-- Prints:</span>
@@ -294,25 +294,25 @@
 <p>Use <strong>conditionals</strong> to test for a particular circumstance and then branch your code appropriately. See the examples below.</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Check if x is equal to 10</span>
 <span class="kr">if</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x equals 10&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">"x equals 10"</span><span class="w"> </span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="c1">-- else and elseif</span>
 <span class="kr">if</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is 10&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">"x is 10"</span><span class="w"> </span><span class="p">)</span>
 <span class="kr">elseif</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is 5&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">"x is 5"</span><span class="w"> </span><span class="p">)</span>
 <span class="kr">else</span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is something else: &quot;</span><span class="o">..</span><span class="nv">x</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">"x is something else: "</span><span class="o">..</span><span class="nv">x</span><span class="w"> </span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="c1">-- Checking multiple values</span>
 <span class="kr">if</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is 10 and y is less than 5&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">"x is 10 and y is less than 5"</span><span class="w"> </span><span class="p">)</span>
 <span class="kr">elseif</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is 5 or y is 3&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">"x is 5 or y is 3"</span><span class="w"> </span><span class="p">)</span>
 <span class="kr">else</span>
-<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;x is &quot;</span><span class="o">..</span><span class="nv">x</span><span class="o">..</span><span class="s2">&quot; and y is &quot;</span><span class="o">..</span><span class="nv">y</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="s2">"x is "</span><span class="o">..</span><span class="nv">x</span><span class="o">..</span><span class="s2">" and y is "</span><span class="o">..</span><span class="nv">y</span><span class="w"> </span><span class="p">)</span>
 <span class="kr">end</span>
 </pre></div>
 </div>
@@ -373,6 +373,84 @@
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="warn">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">warn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">msg</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#warn" title="Link to this definition">¶</a></dt>
+<dd><p>Emits a warning to the output console, composed by concatenating all its arguments
+(which must be strings). Warnings appear alongside <code class="docutils literal notranslate"><span class="pre">print</span></code> output, marked as
+warnings.</p>
+<p>A one-piece message starting with <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is a <em>control message</em>: it changes how the
+warning system behaves instead of being displayed. Codea recognizes four:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22.0%" />
+<col style="width: 78.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Control message</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;&#64;off&quot;</span></code></p></td>
+<td><p>Stop emitting warnings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;&#64;on&quot;</span></code></p></td>
+<td><p>Resume emitting warnings.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;&#64;once&quot;</span></code></p></td>
+<td><p>Emit each distinct message only the first time it occurs. This is the default.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;&#64;always&quot;</span></code></p></td>
+<td><p>Emit every warning, including repeats.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Codea differs from standard Lua in two ways, both chosen so that warnings behave the
+way they always have in Codea:</p>
+<ul class="simple">
+<li><p>Warnings are <strong>on</strong> by default, so there is no need to call <code class="docutils literal notranslate"><span class="pre">warn(</span> <span class="pre">&quot;&#64;on&quot;</span> <span class="pre">)</span></code>
+before your first warning.</p></li>
+<li><p>Repeated messages are suppressed by default, as if <code class="docutils literal notranslate"><span class="pre">warn(</span> <span class="pre">&quot;&#64;once&quot;</span> <span class="pre">)</span></code> were already
+in effect. This keeps a warning inside <code class="docutils literal notranslate"><span class="pre">draw()</span></code> from flooding the console. Use
+<code class="docutils literal notranslate"><span class="pre">warn(</span> <span class="pre">&quot;&#64;always&quot;</span> <span class="pre">)</span></code> when you want every occurrence.</p></li>
+</ul>
+<p>Unknown control messages are ignored. A control message must be a single argument, so
+<code class="docutils literal notranslate"><span class="pre">warn(</span> <span class="pre">&quot;&#64;of&quot;,</span> <span class="pre">&quot;f&quot;</span> <span class="pre">)</span></code> emits a warning reading <code class="docutils literal notranslate"><span class="pre">&#64;off</span></code> rather than turning warnings
+off.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> – the warning message, or one of the control messages above</p></li>
+<li><p><strong>...</strong> – additional strings, concatenated onto <code class="docutils literal notranslate"><span class="pre">msg</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nb">warn</span><span class="p">(</span><span class="w"> </span><span class="s2">"player health is negative"</span><span class="w"> </span><span class="p">)</span>
+
+<span class="c1">-- Repeats are suppressed by default, so this shows a single warning</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">    </span><span class="nb">warn</span><span class="p">(</span><span class="w"> </span><span class="s2">"this appears only once"</span><span class="w"> </span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="c1">-- Opt in to seeing every occurrence</span>
+<span class="nb">warn</span><span class="p">(</span><span class="w"> </span><span class="s2">"@always"</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">warn</span><span class="p">(</span><span class="w"> </span><span class="s2">"@once"</span><span class="w"> </span><span class="p">)</span>
+
+<span class="nb">warn</span><span class="p">(</span><span class="w"> </span><span class="s2">"@off"</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">warn</span><span class="p">(</span><span class="w"> </span><span class="s2">"this is not shown"</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">warn</span><span class="p">(</span><span class="w"> </span><span class="s2">"@on"</span><span class="w"> </span><span class="p">)</span>
+
+<span class="c1">-- Arguments are concatenated, so this emits one warning reading "x = 42"</span>
+<span class="nb">warn</span><span class="p">(</span><span class="w"> </span><span class="s2">"x = "</span><span class="p">,</span><span class="w"> </span><span class="nb">tostring</span><span class="p">(</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -1035,13 +1113,13 @@ allowed in describing a character class:</p>
 <span class="w">  </span><span class="py">This</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">standard</span><span class="w"> </span><span class="nv">way</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">escape</span>
 <span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">magic</span><span class="w"> </span><span class="nv">characters</span><span class="p">.</span><span class="w"> </span><span class="py">Any</span><span class="w"> </span><span class="nv">non</span><span class="o">-</span><span class="nv">alphanumeric</span>
 <span class="w">  </span><span class="nf">character</span><span class="w"> </span><span class="p">(</span><span class="nv">including</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">punctuations</span><span class="p">,</span><span class="w"> </span><span class="nv">even</span>
-<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">non</span><span class="o">-</span><span class="nv">magical</span><span class="p">)</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">preceded</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="s1">&#39;%&#39;</span>
+<span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">non</span><span class="o">-</span><span class="nv">magical</span><span class="p">)</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">preceded</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="s1">'%'</span>
 <span class="w">  </span><span class="nv">when</span><span class="w"> </span><span class="nv">used</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">represent</span><span class="w"> </span><span class="nv">itself</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">pattern</span><span class="p">.</span>
 <span class="err">[</span><span class="py">set</span><span class="p">]:</span><span class="w"> </span><span class="nv">represents</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">which</span><span class="w"> </span><span class="nv">is</span>
 <span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">union</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">set</span><span class="p">.</span>
 <span class="w">  </span><span class="py">A</span><span class="w"> </span><span class="nv">range</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">specified</span>
 <span class="w">  </span><span class="nv">by</span><span class="w"> </span><span class="nv">separating</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="kr">end</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span>
-<span class="w">  </span><span class="nv">range</span><span class="p">,</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">ascending</span><span class="w"> </span><span class="nv">order</span><span class="p">,</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">.</span>
+<span class="w">  </span><span class="nv">range</span><span class="p">,</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">ascending</span><span class="w"> </span><span class="nv">order</span><span class="p">,</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="s1">'-'</span><span class="p">.</span>
 <span class="w">  </span><span class="nv">All</span><span class="w"> </span><span class="nv">classes</span><span class="w"> </span><span class="o">%</span><span class="nv">x</span><span class="w"> </span><span class="nv">described</span><span class="w"> </span><span class="nv">above</span><span class="w"> </span><span class="nv">can</span>
 <span class="w">  </span><span class="nv">also</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">used</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">components</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">set</span><span class="p">.</span>
 <span class="w">  </span><span class="py">All</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">represent</span>
@@ -1050,7 +1128,7 @@ allowed in describing a character class:</p>
 <span class="w">  </span><span class="nv">plus</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">underscore</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="nv">represents</span>
 <span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">octal</span><span class="w"> </span><span class="nv">digits</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">7</span><span class="o">%</span><span class="nv">l</span><span class="o">%-</span><span class="p">]</span><span class="w"> </span><span class="nv">represents</span>
 <span class="w">  </span><span class="nv">the</span><span class="w"> </span><span class="nv">octal</span><span class="w"> </span><span class="nv">digits</span><span class="w"> </span><span class="nv">plus</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">lowercase</span><span class="w"> </span><span class="nv">letters</span>
-<span class="w">  </span><span class="nv">plus</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="nv">character</span><span class="p">.</span>
+<span class="w">  </span><span class="nv">plus</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="s1">'-'</span><span class="w"> </span><span class="nv">character</span><span class="p">.</span>
 <span class="err">[^</span><span class="py">set</span><span class="p">]:</span><span class="w"> </span><span class="nv">represents</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">complement</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">set</span><span class="p">,</span>
 <span class="w">  </span><span class="nv">where</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">interpreted</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">above</span><span class="p">.</span>
 </pre></div>
@@ -1063,22 +1141,22 @@ In particular, the class [a-z] may not be equivalent to %l.</p>
 <p>A pattern item can be:</p>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="p">,</span><span class="w"> </span><span class="nv">which</span><span class="w"> </span><span class="nv">matches</span>
 <span class="nv">any</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">;</span>
-<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">'*'</span><span class="p">,</span>
 <span class="nv">which</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">zero</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">repetitions</span>
 <span class="nv">of</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="w"> </span><span class="py">These</span>
 <span class="nv">repetition</span><span class="w"> </span><span class="nv">items</span><span class="w"> </span><span class="nv">will</span><span class="w"> </span><span class="nv">always</span><span class="w"> </span><span class="nv">match</span>
 <span class="nv">the</span><span class="w"> </span><span class="nv">longest</span><span class="w"> </span><span class="nv">possible</span><span class="w"> </span><span class="nv">sequence</span><span class="p">;</span>
-<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">&#39;+&#39;</span><span class="p">,</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">'+'</span><span class="p">,</span>
 <span class="nv">which</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">repetitions</span><span class="w"> </span><span class="nv">of</span>
 <span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="w"> </span><span class="py">These</span><span class="w"> </span><span class="nv">repetition</span>
 <span class="nv">items</span><span class="w"> </span><span class="nv">will</span><span class="w"> </span><span class="nv">always</span><span class="w"> </span><span class="nv">match</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">longest</span>
 <span class="nv">possible</span><span class="w"> </span><span class="nv">sequence</span><span class="p">;</span>
-<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">'-'</span><span class="p">,</span>
 <span class="nv">which</span><span class="w"> </span><span class="nv">also</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">zero</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">repetitions</span>
-<span class="nv">of</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="w"> </span><span class="py">Unlike</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+<span class="nv">of</span><span class="w"> </span><span class="nv">characters</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="w"> </span><span class="py">Unlike</span><span class="w"> </span><span class="s1">'*'</span><span class="p">,</span>
 <span class="nv">these</span><span class="w"> </span><span class="nv">repetition</span><span class="w"> </span><span class="nv">items</span><span class="w"> </span><span class="nv">will</span><span class="w"> </span><span class="nv">always</span><span class="w"> </span><span class="nv">match</span>
 <span class="nv">the</span><span class="w"> </span><span class="nv">shortest</span><span class="w"> </span><span class="nv">possible</span><span class="w"> </span><span class="nv">sequence</span><span class="p">;</span>
-<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">single</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">followed</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="s1">'?'</span><span class="p">,</span>
 <span class="nv">which</span><span class="w"> </span><span class="nv">matches</span><span class="w"> </span><span class="nv">zero</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">occurrence</span><span class="w"> </span><span class="nv">of</span>
 <span class="nv">a</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="w"> </span><span class="py">It</span><span class="w"> </span><span class="nv">always</span>
 <span class="nv">matches</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">occurrence</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">possible</span><span class="p">;</span>
@@ -1102,7 +1180,7 @@ In particular, the class [a-z] may not be equivalent to %l.</p>
 <span class="nv">belong</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">set</span><span class="p">.</span><span class="w"> </span><span class="py">The</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">interpreted</span>
 <span class="nv">as</span><span class="w"> </span><span class="nv">previously</span><span class="w"> </span><span class="nv">described</span><span class="p">.</span><span class="w"> </span><span class="py">The</span><span class="w"> </span><span class="nv">beginning</span>
 <span class="ow">and</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="kr">end</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">subject</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">handled</span>
-<span class="nv">as</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">they</span><span class="w"> </span><span class="nv">were</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">.</span>
+<span class="nv">as</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">they</span><span class="w"> </span><span class="nv">were</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="s1">'</span><span class="se">\0</span><span class="s1">'</span><span class="p">.</span>
 </pre></div>
 </div>
 <p><strong>Pattern</strong></p>
