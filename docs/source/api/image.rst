@@ -99,7 +99,7 @@ Image
 
       .. helptext:: save an image asset to the filesystem
 
-   .. lua:staticmethod:: image.symbol(name, [options...])
+   .. lua:staticmethod:: image.symbol(name, ...)
 
       Create an image from an SF Symbol. Returns ``nil`` if no symbol of that
       name exists.
@@ -117,7 +117,7 @@ Image
 
       :param name: The SF Symbol name, e.g. ``"globe"`` or ``"cloud.sun.fill"``
       :type name: string
-      :rtype: image
+      :rtype: image or nil
 
       .. helptext:: create an image from an SF Symbol
 
