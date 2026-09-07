@@ -84,6 +84,46 @@ Some Codea types will be converted to corresponding Objective types automaticall
     --- uiTextView: objc.UITextView
     uiTextView:setContentOffset_(vec2(0, 100))
 
+Conversions also happen in the other direction: a ``UIImage`` or ``UIColor``
+returned from a native method arrives in Lua as a Codea ``image`` or ``color``.
+
+**Disabling automatic conversion**
+
+Because the conversion happens on the way into Lua, a returned ``UIImage`` has
+already become a Codea ``image`` and can no longer be configured. Set
+``objc.automaticBridging`` to ``false`` to receive the native object instead.
+
+..  code-block:: lua
+
+    objc.automaticBridging = false
+
+    local native = objc.UIImage:systemImageNamed_("globe")
+    native = native:imageWithTintColor_(color(255, 0, 0))
+
+    objc.automaticBridging = true
+
+    img = objc.bridge(native)   -- convert it now
+
+``objc.bridge(value)`` performs the conversion explicitly, whatever the current
+setting is.
+
+Prefer ``objc.withoutBridging(f)``, which restores the previous setting
+afterwards — including when ``f`` raises an error, where a bare flag would stay
+switched off for the rest of the session.
+
+..  code-block:: lua
+
+    img = objc.withoutBridging(function()
+        local native = objc.UIImage:systemImageNamed_("globe")
+        native = native:imageWithTintColor_(color(255, 0, 0))
+        return objc.bridge(native)
+    end)
+
+.. note::
+
+   For SF Symbols specifically, prefer :lua:func:`image.symbol`, which needs no
+   ``objc`` at all.
+
 **Examples**
 
 .. collapse:: Change the screen brightness to 50%
@@ -301,6 +341,64 @@ Some Codea types will be converted to corresponding Objective types automaticall
         .. code-block:: lua
 
             objc.string("Text")
+
+.. lua:attribute:: automaticBridging: boolean
+
+    Whether values crossing from Objective-C into Lua are converted to their Codea
+    equivalents. Defaults to ``true``.
+
+    .. helptext:: whether ObjC values are converted to Codea types
+
+    While ``false``, a ``UIImage`` or ``UIColor`` returned from a native call
+    arrives as the wrapped Objective-C object instead of a Codea ``image`` or
+    ``color``, so it can still be configured. Prefer :lua:func:`objc.withoutBridging`
+    over setting this directly — an error raised while it is ``false`` would leave
+    it switched off for the rest of the session.
+
+    :syntax:
+
+        .. code-block:: lua
+
+            objc.automaticBridging = false
+
+.. lua:function:: withoutBridging(body)
+
+    Runs ``body`` with :lua:attr:`objc.automaticBridging` disabled, restoring the
+    previous setting afterwards — including when ``body`` raises an error.
+
+    .. helptext:: run a function without automatic ObjC conversion
+
+    Returns whatever ``body`` returns.
+
+    :param body: The function to run with bridging disabled.
+    :type body: function
+    :syntax:
+
+        .. code-block:: lua
+
+            img = objc.withoutBridging(function()
+                local native = objc.UIImage:systemImageNamed_("globe")
+                native = native:imageWithTintColor_(color(255, 0, 0))
+                return objc.bridge(native)
+            end)
+
+.. lua:function:: bridge(value)
+
+    Converts an Objective-C value to its Codea equivalent, whatever the current
+    :lua:attr:`objc.automaticBridging` setting is.
+
+    .. helptext:: convert an ObjC value to a Codea type
+
+    Used to convert a native object once it has been configured. Values with no
+    Codea equivalent are returned unchanged.
+
+    :param value: The Objective-C value to convert.
+    :return: The Codea equivalent, or the value unchanged.
+    :syntax:
+
+        .. code-block:: lua
+
+            img = objc.bridge(native)
 
 .. lua:attribute:: enum: table
     
