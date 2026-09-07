@@ -342,6 +342,64 @@ switched off for the rest of the session.
 
             objc.string("Text")
 
+.. lua:attribute:: automaticBridging: boolean
+
+    Whether values crossing from Objective-C into Lua are converted to their Codea
+    equivalents. Defaults to ``true``.
+
+    .. helptext:: whether ObjC values are converted to Codea types
+
+    While ``false``, a ``UIImage`` or ``UIColor`` returned from a native call
+    arrives as the wrapped Objective-C object instead of a Codea ``image`` or
+    ``color``, so it can still be configured. Prefer :lua:func:`objc.withoutBridging`
+    over setting this directly — an error raised while it is ``false`` would leave
+    it switched off for the rest of the session.
+
+    :syntax:
+
+        .. code-block:: lua
+
+            objc.automaticBridging = false
+
+.. lua:function:: withoutBridging(body)
+
+    Runs ``body`` with :lua:attr:`objc.automaticBridging` disabled, restoring the
+    previous setting afterwards — including when ``body`` raises an error.
+
+    .. helptext:: run a function without automatic ObjC conversion
+
+    Returns whatever ``body`` returns.
+
+    :param body: The function to run with bridging disabled.
+    :type body: function
+    :syntax:
+
+        .. code-block:: lua
+
+            img = objc.withoutBridging(function()
+                local native = objc.UIImage:systemImageNamed_("globe")
+                native = native:imageWithTintColor_(color(255, 0, 0))
+                return objc.bridge(native)
+            end)
+
+.. lua:function:: bridge(value)
+
+    Converts an Objective-C value to its Codea equivalent, whatever the current
+    :lua:attr:`objc.automaticBridging` setting is.
+
+    .. helptext:: convert an ObjC value to a Codea type
+
+    Used to convert a native object once it has been configured. Values with no
+    Codea equivalent are returned unchanged.
+
+    :param value: The Objective-C value to convert.
+    :return: The Codea equivalent, or the value unchanged.
+    :syntax:
+
+        .. code-block:: lua
+
+            img = objc.bridge(native)
+
 .. lua:attribute:: enum: table
     
         Exposes native Objective-C enumerations.
