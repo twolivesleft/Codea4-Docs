@@ -359,6 +359,114 @@
 </dl>
 </dd></dl>
 
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="image.symbol">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.symbol" title="Link to this definition">¶</a></dt>
+<dd><p>Create an image from an SF Symbol. Returns <code class="docutils literal notranslate"><span class="pre">nil</span></code> if no symbol of that
+name exists.</p>
+<p>A monochrome symbol is rendered <strong>white</strong>, so it can be recoloured at draw
+time with <code class="xref lua lua-func docutils literal notranslate"><span class="pre">tint()</span></code>. Pass a colour to bake one in instead. Symbols
+drawn with <code class="docutils literal notranslate"><span class="pre">image.symbol.multicolor</span></code>, <code class="docutils literal notranslate"><span class="pre">image.symbol.hierarchical</span></code> or
+<code class="docutils literal notranslate"><span class="pre">image.symbol.palette</span></code> carry their own colours — draw those with
+<code class="docutils literal notranslate"><span class="pre">tint(255)</span></code>, since <code class="docutils literal notranslate"><span class="pre">tint</span></code> multiplies.</p>
+<p>Options may be given in any order after the name. A flag is passed as-is
+(<code class="docutils literal notranslate"><span class="pre">image.symbol.multicolor</span></code>, <code class="docutils literal notranslate"><span class="pre">image.symbol.weight.bold</span></code>); an option that
+carries values is called with them (<code class="docutils literal notranslate"><span class="pre">image.symbol.variable(0.5)</span></code>). A bare
+number is the point size, and a colour tints a monochrome symbol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The SF Symbol name, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;globe&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;cloud.sun.fill&quot;</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span> <span class="pre">or</span> <span class="pre">nil</span></code></span></p>
+</dd>
+</dl>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Using SF Symbols</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- white by default, so tint() works</span>
+<span class="w">    </span><span class="nv">globe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">symbol</span><span class="p">(</span><span class="s2">"globe"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- or bake a colour in</span>
+<span class="w">    </span><span class="nv">warning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">symbol</span><span class="p">(</span><span class="s2">"exclamationmark.triangle.fill"</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c1">-- the symbol's own colours</span>
+<span class="w">    </span><span class="nv">weather</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">symbol</span><span class="p">(</span><span class="s2">"cloud.sun.fill"</span><span class="p">,</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="py">symbol</span><span class="p">.</span><span class="py">multicolor</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- a fill level from 0 to 1</span>
+<span class="w">    </span><span class="nv">signal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">symbol</span><span class="p">(</span><span class="s2">"wifi"</span><span class="p">,</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="py">symbol</span><span class="p">.</span><span class="nf">variable</span><span class="p">(</span><span class="mf">0.66</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c1">-- larger and heavier</span>
+<span class="w">    </span><span class="nv">gauge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">symbol</span><span class="p">(</span><span class="s2">"gauge"</span><span class="p">,</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="py">symbol</span><span class="p">.</span><span class="py">weight</span><span class="p">.</span><span class="py">bold</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nf">tint</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">globe</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nf">tint</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w">               </span><span class="c1">-- do not tint a multicolour symbol</span>
+<span class="w">    </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">weather</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Symbol names are provided by the operating system, and Apple adds new
+symbols with each release. Browse the available names — and the version
+each was introduced in — with Apple’s SF Symbols app.</p>
+</div>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua">
+<span class="sig-name descname"><span class="pre">symbol</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span></dt>
+<dd><p>A table containing the rendering modes for <a class="reference internal" href="#image.symbol" title="image.symbol"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">image.symbol()</span></code></a>, and the
+<code class="docutils literal notranslate"><span class="pre">weight</span></code> and <code class="docutils literal notranslate"><span class="pre">scale</span></code> sub-tables below. Options may be passed in any order
+after the symbol name.</p>
+<p>Flags, passed as-is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">monochrome</span></code> - A single colour (the default), rendered white so it can be recoloured with <code class="xref lua lua-func docutils literal notranslate"><span class="pre">tint()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multicolor</span></code> - The symbol’s own intrinsic colours</p></li>
+</ul>
+<p>Options that carry values, called with them:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hierarchical(color)</span></code> - One colour applied at several opacities, preserving the symbol’s depth</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">palette(color,</span> <span class="pre">...)</span></code> - Two or three explicit colours, applied in order</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">variable(value)</span></code> - A fill level from 0 to 1, for symbols that support variable rendering such as <code class="docutils literal notranslate"><span class="pre">wifi</span></code>, <code class="docutils literal notranslate"><span class="pre">speaker.wave.3.fill</span></code> and <code class="docutils literal notranslate"><span class="pre">battery.100</span></code>. Symbols without it ignore the value.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.symbol.weight">
+<span class="sig-name descname"><span class="pre">symbol.weight</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#image.symbol.weight" title="Link to this definition">¶</a></dt>
+<dd><p>A table containing the stroke weights for <a class="reference internal" href="#image.symbol" title="image.symbol"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">image.symbol()</span></code></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ultralight</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">light</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">regular</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">semibold</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bold</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">heavy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">black</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.symbol.scale">
+<span class="sig-name descname"><span class="pre">symbol.scale</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#image.symbol.scale" title="Link to this definition">¶</a></dt>
+<dd><p>A table containing the symbol scales for <a class="reference internal" href="#image.symbol" title="image.symbol"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">image.symbol()</span></code></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">small</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">large</span></code></p></li>
+</ul>
+</dd></dl>
+
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.width">
 <span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.width" title="Link to this definition">¶</a></dt>
@@ -461,9 +569,9 @@
 <section id="image-formats">
 <h2>Image Formats<a class="headerlink" href="#image-formats" title="Link to this heading">¶</a></h2>
 <p>Here is a list of all currently available image formats</p>
-<div class="table-wrapper colwidths-given docutils container" id="id2">
-<table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Available Image Formats</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<div class="table-wrapper colwidths-given docutils container" id="id3">
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Available Image Formats</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 37.5%" />
 <col style="width: 25.0%" />
@@ -802,8 +910,8 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">image.slice</span></span><a class="headerlink" href="#image.slice" title="Link to this definition">¶</a></dt>
 <dd><p>A configurable slice of an image. Use with <code class="docutils literal notranslate"><span class="pre">sprite()</span></code> for drawing a portion of an sprite sheet image for more efficient 2D rendering (as opposed to a large number of independ images)</p>
 <p>Create slices using an existing image via the <code class="docutils literal notranslate"><span class="pre">image.slice</span></code> property. Slices can be configured using a fluent syntax, allowing for rotation, flipping and 9-patch stretching among other things</p>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">Creating slices</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Creating slices</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
 <span class="w">   </span><span class="nv">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">UI</span><span class="p">.</span><span class="py">Grey_Button_10</span><span class="p">)</span>
 

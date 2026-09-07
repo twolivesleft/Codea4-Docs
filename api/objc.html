@@ -310,6 +310,39 @@
 <span class="nv">uiTextView</span><span class="p">:</span><span class="nf">setContentOffset_</span><span class="p">(</span><span class="nf">vec2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
+<p>Conversions also happen in the other direction: a <code class="docutils literal notranslate"><span class="pre">UIImage</span></code> or <code class="docutils literal notranslate"><span class="pre">UIColor</span></code>
+returned from a native method arrives in Lua as a Codea <code class="docutils literal notranslate"><span class="pre">image</span></code> or <code class="docutils literal notranslate"><span class="pre">color</span></code>.</p>
+<p><strong>Disabling automatic conversion</strong></p>
+<p>Because the conversion happens on the way into Lua, a returned <code class="docutils literal notranslate"><span class="pre">UIImage</span></code> has
+already become a Codea <code class="docutils literal notranslate"><span class="pre">image</span></code> and can no longer be configured. Set
+<code class="docutils literal notranslate"><span class="pre">objc.automaticBridging</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code> to receive the native object instead.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="py">automaticBridging</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">UIImage</span><span class="p">:</span><span class="nf">systemImageNamed_</span><span class="p">(</span><span class="s2">"globe"</span><span class="p">)</span>
+<span class="nv">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">native</span><span class="p">:</span><span class="nf">imageWithTintColor_</span><span class="p">(</span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+
+<span class="nv">objc</span><span class="p">.</span><span class="py">automaticBridging</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">bridge</span><span class="p">(</span><span class="nv">native</span><span class="p">)</span><span class="w">   </span><span class="c1">-- convert it now</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">objc.bridge(value)</span></code> performs the conversion explicitly, whatever the current
+setting is.</p>
+<p>Prefer <code class="docutils literal notranslate"><span class="pre">objc.withoutBridging(f)</span></code>, which restores the previous setting
+afterwards — including when <code class="docutils literal notranslate"><span class="pre">f</span></code> raises an error, where a bare flag would stay
+switched off for the rest of the session.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">withoutBridging</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">UIImage</span><span class="p">:</span><span class="nf">systemImageNamed_</span><span class="p">(</span><span class="s2">"globe"</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">native</span><span class="p">:</span><span class="nf">imageWithTintColor_</span><span class="p">(</span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">bridge</span><span class="p">(</span><span class="nv">native</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For SF Symbols specifically, prefer <a class="reference internal" href="image.html#image.symbol" title="image.symbol"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">image.symbol()</span></code></a>, which needs no
+<code class="docutils literal notranslate"><span class="pre">objc</span></code> at all.</p>
+</div>
 <p><strong>Examples</strong></p>
 <details class="summary-change-the-screen-brightness-to-50">
 <summary>Change the screen brightness to 50%</summary><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="py">UIScreen</span><span class="p">.</span><span class="py">mainScreen</span><span class="p">.</span><span class="py">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
@@ -531,6 +564,69 @@
 </dd>
 <dt class="field-even">Syntax<span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="nf">string</span><span class="p">(</span><span class="s2">"Text"</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="objc.objc.automaticBridging">
+<span class="sig-name descname"><span class="pre">automaticBridging</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#objc.objc.automaticBridging" title="Link to this definition">¶</a></dt>
+<dd><p>Whether values crossing from Objective-C into Lua are converted to their Codea
+equivalents. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>While <code class="docutils literal notranslate"><span class="pre">false</span></code>, a <code class="docutils literal notranslate"><span class="pre">UIImage</span></code> or <code class="docutils literal notranslate"><span class="pre">UIColor</span></code> returned from a native call
+arrives as the wrapped Objective-C object instead of a Codea <code class="docutils literal notranslate"><span class="pre">image</span></code> or
+<code class="docutils literal notranslate"><span class="pre">color</span></code>, so it can still be configured. Prefer <a class="reference internal" href="#objc.withoutBridging" title="objc.withoutBridging"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">objc.withoutBridging()</span></code></a>
+over setting this directly — an error raised while it is <code class="docutils literal notranslate"><span class="pre">false</span></code> would leave
+it switched off for the rest of the session.</p>
+<dl class="field-list">
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">objc</span><span class="p">.</span><span class="py">automaticBridging</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="objc.withoutBridging">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">withoutBridging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">body</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.withoutBridging" title="Link to this definition">¶</a></dt>
+<dd><p>Runs <code class="docutils literal notranslate"><span class="pre">body</span></code> with <a class="reference internal" href="#objc.objc.automaticBridging" title="objc.objc.automaticBridging"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">objc.automaticBridging</span></code></a> disabled, restoring the
+previous setting afterwards — including when <code class="docutils literal notranslate"><span class="pre">body</span></code> raises an error.</p>
+<p>Returns whatever <code class="docutils literal notranslate"><span class="pre">body</span></code> returns.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">function</span></code></span>) – The function to run with bridging disabled.</p>
+</dd>
+<dt class="field-even">Syntax<span class="colon">:</span></dt>
+<dd class="field-even"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">withoutBridging</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="py">UIImage</span><span class="p">:</span><span class="nf">systemImageNamed_</span><span class="p">(</span><span class="s2">"globe"</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">native</span><span class="p">:</span><span class="nf">imageWithTintColor_</span><span class="p">(</span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">bridge</span><span class="p">(</span><span class="nv">native</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="objc.bridge">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">objc.</span></span><span class="sig-name descname"><span class="pre">bridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#objc.bridge" title="Link to this definition">¶</a></dt>
+<dd><p>Converts an Objective-C value to its Codea equivalent, whatever the current
+<a class="reference internal" href="#objc.objc.automaticBridging" title="objc.objc.automaticBridging"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">objc.automaticBridging</span></code></a> setting is.</p>
+<p>Used to convert a native object once it has been configured. Values with no
+Codea equivalent are returned unchanged.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – The Objective-C value to convert.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Codea equivalent, or the value unchanged.</p>
+</dd>
+<dt class="field-odd">Syntax<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">objc</span><span class="p">.</span><span class="nf">bridge</span><span class="p">(</span><span class="nv">native</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
