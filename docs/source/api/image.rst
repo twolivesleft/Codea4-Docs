@@ -99,6 +99,109 @@ Image
 
       .. helptext:: save an image asset to the filesystem
 
+   .. lua:staticmethod:: image.symbol(name, [options...])
+
+      Create an image from an SF Symbol. Returns ``nil`` if no symbol of that
+      name exists.
+
+      A monochrome symbol is rendered **white**, so it can be recoloured at draw
+      time with :lua:func:`tint`. Pass a colour to bake one in instead. Symbols
+      drawn with ``image.symbol.multicolor``, ``image.symbol.hierarchical`` or
+      ``image.symbol.palette`` carry their own colours — draw those with
+      ``tint(255)``, since ``tint`` multiplies.
+
+      Options may be given in any order after the name. A flag is passed as-is
+      (``image.symbol.multicolor``, ``image.symbol.weight.bold``); an option that
+      carries values is called with them (``image.symbol.variable(0.5)``). A bare
+      number is the point size, and a colour tints a monochrome symbol.
+
+      :param name: The SF Symbol name, e.g. ``"globe"`` or ``"cloud.sun.fill"``
+      :type name: string
+      :rtype: image
+
+      .. helptext:: create an image from an SF Symbol
+
+      .. code-block:: lua
+         :caption: Using SF Symbols
+
+         function setup()
+             -- white by default, so tint() works
+             globe = image.symbol("globe")
+
+             -- or bake a colour in
+             warning = image.symbol("exclamationmark.triangle.fill", color(255, 200, 0))
+
+             -- the symbol's own colours
+             weather = image.symbol("cloud.sun.fill", image.symbol.multicolor)
+
+             -- a fill level from 0 to 1
+             signal = image.symbol("wifi", image.symbol.variable(0.66))
+
+             -- larger and heavier
+             gauge = image.symbol("gauge", image.symbol.weight.bold, 64)
+         end
+
+         function draw()
+             background(40)
+
+             tint(255, 0, 0)
+             sprite(globe, WIDTH/2, HEIGHT/2)
+
+             tint(255)               -- do not tint a multicolour symbol
+             sprite(weather, WIDTH/2, HEIGHT/2 - 100)
+         end
+
+      .. note::
+
+         Symbol names are provided by the operating system, and Apple adds new
+         symbols with each release. Browse the available names — and the version
+         each was introduced in — with Apple's SF Symbols app.
+
+   .. lua:attribute:: symbol: table
+
+      A table containing the rendering modes for :lua:func:`image.symbol`, and the
+      ``weight`` and ``scale`` sub-tables below. Options may be passed in any order
+      after the symbol name.
+
+      Flags, passed as-is:
+
+      - ``monochrome`` - A single colour (the default), rendered white so it can be recoloured with :lua:func:`tint`
+      - ``multicolor`` - The symbol's own intrinsic colours
+
+      Options that carry values, called with them:
+
+      - ``hierarchical(color)`` - One colour applied at several opacities, preserving the symbol's depth
+      - ``palette(color, ...)`` - Two or three explicit colours, applied in order
+      - ``variable(value)`` - A fill level from 0 to 1, for symbols that support variable rendering such as ``wifi``, ``speaker.wave.3.fill`` and ``battery.100``. Symbols without it ignore the value.
+
+      .. helptext:: symbol rendering modes
+
+   .. lua:attribute:: symbol.weight: table
+
+      A table containing the stroke weights for :lua:func:`image.symbol`:
+
+      - ``ultralight``
+      - ``thin``
+      - ``light``
+      - ``regular``
+      - ``medium``
+      - ``semibold``
+      - ``bold``
+      - ``heavy``
+      - ``black``
+
+      .. helptext:: symbol stroke weights
+
+   .. lua:attribute:: symbol.scale: table
+
+      A table containing the symbol scales for :lua:func:`image.symbol`:
+
+      - ``small``
+      - ``medium``
+      - ``large``
+
+      .. helptext:: symbol scales
+
    .. lua:attribute:: width: integer
 
       The width of the image in pixels
