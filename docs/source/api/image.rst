@@ -120,6 +120,7 @@ Image
       :rtype: image or nil
 
       .. helptext:: create an image from an SF Symbol
+      .. editor:: symbol
 
       .. code-block:: lua
          :caption: Using SF Symbols

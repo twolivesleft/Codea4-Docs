@@ -206,6 +206,7 @@ Supported roles include:
 - `font`: font picker affordance
 - `shader`: shader affordance
 - `model`: model asset affordance
+- `symbol`: SF Symbol picker affordance, for `image.symbol`
 
 Example:
 
