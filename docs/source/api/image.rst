@@ -239,6 +239,12 @@ Image
 
       .. helptext:: get whether this image is a cube map
 
+   .. lua:attribute:: isVolume: boolean
+
+      Whether this image is a volume image or not
+
+      .. helptext:: get whether this image is a volume image
+
    .. lua:attribute:: numMips: integer
 
       The number of mips this image has
