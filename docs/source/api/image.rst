@@ -233,17 +233,15 @@ Image
 
       .. helptext:: get whether this image has mip mapping
 
-   .. lua:attribute:: cubeMap: boolean
+   .. lua:attribute:: type: imageType
 
-      Whether this image is a cube or not
+      The type of this image:
 
-      .. helptext:: get whether this image is a cube map
+      - ``image.type.texture`` - a 2D image
+      - ``image.type.cube`` - a cube image, created with :lua:func:`image.cube`
+      - ``image.type.volume`` - a volume image, created with :lua:func:`image.volume`
 
-   .. lua:attribute:: isVolume: boolean
-
-      Whether this image is a volume image or not
-
-      .. helptext:: get whether this image is a volume image
+      .. helptext:: get the type of this image
 
    .. lua:attribute:: numMips: integer
 
