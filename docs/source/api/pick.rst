@@ -215,7 +215,7 @@ Image Playground needs a device with Apple Intelligence turned on. Check ``pick.
     - ``personalization`` - whether people from the photo library can appear, one of ``pick.playground.personalization``
     - ``variety`` - how different the results are from each other, one of ``pick.playground.variety``
     - ``strategy`` - whether to edit ``source`` or make something new from it, one of ``pick.playground.strategy``
-    - ``size`` - a ``vec2``. Image Playground makes the closest size it can
+    - ``size`` - a ``vec2`` giving the shape you want. Image Playground picks the closest shape it supports, such as square or 16:9, and makes the image at its own resolution for that shape, often larger than ``size``
 
     .. note::
 
