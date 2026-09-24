@@ -445,6 +445,139 @@
 </pre></div>
 </div>
 </section>
+<section id="generating-images">
+<h2>Generating Images<a class="headerlink" href="#generating-images" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pick.playground</span></code> brings up Image Playground so you can describe an image, choose a style and pick one of the results. Like the other pickers, it waits for the user and returns the image, or returns right away when you give it a callback.</p>
+<p>The chosen image is copied to your project’s assets, like <code class="docutils literal notranslate"><span class="pre">pick.photo</span></code>.</p>
+<p>Image Playground needs a device with Apple Intelligence turned on. Check <code class="docutils literal notranslate"><span class="pre">pick.playground.available</span></code> before offering it.</p>
+<dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="pick.playground">
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">pick.</span></span><span class="sig-name descname"><span class="pre">playground</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">concepts</span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="pre">options</span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="pre">callback</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pick.playground" title="Link to this definition">¶</a></dt>
+<dd><p>Opens Image Playground and returns the image the user chose, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if they cancelled.</p>
+<p>Arguments can be passed in any order. A string is used as a concept, a short description such as <code class="docutils literal notranslate"><span class="pre">&quot;a</span> <span class="pre">red</span> <span class="pre">panda</span> <span class="pre">astronaut&quot;</span></code>. <code class="docutils literal notranslate"><span class="pre">pick.option.assetKey</span></code> returns the asset key instead of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concepts</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – A short description to start with</p></li>
+<li><p><strong>options</strong> (<span><a class="reference internal" href="#pick.table" title="pick.table"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span>) – A table of the settings below</p></li>
+<li><p><strong>callback</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">function</span></code></span>) – Called with the chosen image. Makes the call asynchronous</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The chosen image, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if cancelled</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#pick.image" title="pick.image"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></a></span></p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">options</span></code> can contain:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">concepts</span></code> - a string, or a table of concepts (see below)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> - an <code class="docutils literal notranslate"><span class="pre">image</span></code> or <code class="docutils literal notranslate"><span class="pre">asset.key</span></code> to start from</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">style</span></code> - the style selected when Image Playground opens, one of <code class="docutils literal notranslate"><span class="pre">pick.playground.style</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">any</span></code> where available</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">styles</span></code> - a table of the styles the user can choose from</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">personalization</span></code> - whether people from the photo library can appear, one of <code class="docutils literal notranslate"><span class="pre">pick.playground.personalization</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">variety</span></code> - how different the results are from each other, one of <code class="docutils literal notranslate"><span class="pre">pick.playground.variety</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strategy</span></code> - whether to edit <code class="docutils literal notranslate"><span class="pre">source</span></code> or make something new from it, one of <code class="docutils literal notranslate"><span class="pre">pick.playground.strategy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - a <code class="docutils literal notranslate"><span class="pre">vec2</span></code> giving the shape you want. Image Playground picks the closest shape it supports, such as square or 16:9, and makes the image at its own resolution for that shape, often larger than <code class="docutils literal notranslate"><span class="pre">size</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">variety</span></code> needs iOS 26.4. <code class="docutils literal notranslate"><span class="pre">strategy</span></code>, <code class="docutils literal notranslate"><span class="pre">size</span></code> and the <code class="docutils literal notranslate"><span class="pre">any</span></code> style need iOS 27. On older versions they are ignored with a warning.</p>
+</div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">ENDED</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">playground</span><span class="p">.</span><span class="py">available</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">pick</span><span class="p">.</span><span class="nf">playground</span><span class="p">(</span><span class="s2">"a lighthouse in a storm"</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">img</span><span class="p">)</span>
+<span class="w">            </span><span class="kr">if</span><span class="w"> </span><span class="nv">img</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">                </span><span class="nv">picture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">img</span>
+<span class="w">            </span><span class="kr">end</span>
+<span class="w">        </span><span class="kr">end</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Turning a photo into a sketch</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">photo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="nf">photo</span><span class="p">()</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">playground</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">photo</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">playground</span><span class="p">.</span><span class="py">strategy</span><span class="p">.</span><span class="py">edit</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">playground</span><span class="p">.</span><span class="py">style</span><span class="p">.</span><span class="py">sketch</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">styles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">pick</span><span class="p">.</span><span class="py">playground</span><span class="p">.</span><span class="py">style</span><span class="p">.</span><span class="py">sketch</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pick.playground.available">
+<span class="sig-name descname"><span class="pre">pick.playground.available</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#pick.playground.available" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if Image Playground can be shown on this device</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pick.playground.style">
+<span class="sig-name descname"><span class="pre">pick.playground.style</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#pick.playground.style" title="Link to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">any</span></code> - lets Image Playground choose (iOS 27)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">animation</span></code> - 3D animated look</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">illustration</span></code> - flat, bold illustration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sketch</span></code> - hand-drawn sketch</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">emoji</span></code> - emoji-like look</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">external</span></code> - an external provider such as ChatGPT, if the user has turned one on (iOS 26)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pick.playground.personalization">
+<span class="sig-name descname"><span class="pre">pick.playground.personalization</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#pick.playground.personalization" title="Link to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">automatic</span></code> - let Image Playground decide</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code> - allow people from the photo library</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disabled</span></code> - never suggest people from the photo library</p></li>
+</ul>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pick.playground.variety">
+<span class="sig-name descname"><span class="pre">pick.playground.variety</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#pick.playground.variety" title="Link to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">automatic</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code>, <code class="docutils literal notranslate"><span class="pre">low</span></code> (iOS 26.4)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="pick.playground.strategy">
+<span class="sig-name descname"><span class="pre">pick.playground.strategy</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#pick.playground.strategy" title="Link to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">automatic</span></code> - let Image Playground decide</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">edit</span></code> - change the source image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generate</span></code> - make a new image based on it</p></li>
+</ul>
+<p>Requires iOS 27</p>
+</dd></dl>
+
+</section>
+<section id="concepts">
+<h2>Concepts<a class="headerlink" href="#concepts" title="Link to this heading">¶</a></h2>
+<p>A concept can be a short string, a longer piece of text, or an image.</p>
+<ul class="simple">
+<li><p>A string is used as it is</p></li>
+<li><p>A table with <code class="docutils literal notranslate"><span class="pre">text</span></code> and an optional <code class="docutils literal notranslate"><span class="pre">title</span></code> lets Image Playground pick out the key ideas from a story or a note</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">image</span></code> or <code class="docutils literal notranslate"><span class="pre">asset.key</span></code> is used as a visual idea</p></li>
+</ul>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">pick</span><span class="p">.</span><span class="py">playground</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">concepts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"watercolor"</span><span class="p">,</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">storyText</span><span class="p">,</span><span class="w"> </span><span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Lost Kite"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="p">.</span><span class="py">Kite</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -507,6 +640,8 @@
 <li><a class="reference internal" href="#picking-specific-types">Picking Specific Types</a></li>
 <li><a class="reference internal" href="#advanced-usage">Advanced Usage</a></li>
 <li><a class="reference internal" href="#picking-by-reference">Picking by Reference</a></li>
+<li><a class="reference internal" href="#generating-images">Generating Images</a></li>
+<li><a class="reference internal" href="#concepts">Concepts</a></li>
 </ul>
 </li>
 </ul>
