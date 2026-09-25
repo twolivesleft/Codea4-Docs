@@ -95,7 +95,7 @@ A set of graphics functions which are so commonly used they are in the global na
 
 .. lua:function:: line(x, y)
 
-   Variation of line command used as part of shape drawing
+   Adds a straight segment from the last point to (x, y), when called inside :lua:func:`shape`
 
    .. helptext:: draw a line between two points
 
@@ -136,9 +136,52 @@ A set of graphics functions which are so commonly used they are in the global na
 
 .. lua:function:: bezier(cx1, cy1, cx2, cy2, x2, y2)
 
-   Variation of bezier command used as part of shape drawing
+   Adds a curved segment from the last point to (x2, y2), when called inside :lua:func:`shape`
 
    .. helptext:: draw a bezier curve segment
+
+.. lua:function:: shape(x, y, [closed = true], func)
+
+   Draws a shape from a path that starts at (x, y) and is built by the drawing commands called inside ``func``. The shape is filled and outlined using the current style
+
+   Inside ``func``, use :lua:func:`line(x, y) <line>` and :lua:func:`bezier(cx1, cy1, cx2, cy2, x2, y2) <bezier>` to add segments from the last point. Commands such as :lua:func:`rect` and :lua:func:`ellipse` add separate outlines to the shape. An outline inside another one cuts a hole in it
+
+   :param x: the x coordinate of the first point
+   :type x: number
+   :param y: the y coordinate of the first point
+   :type y: number
+   :param closed: whether to join the last point back to the first and fill the shape. An open shape is only outlined
+   :type closed: boolean
+   :param func: a function that builds the shape
+   :type func: function
+
+   .. code-block:: lua
+      :caption: A speech bubble with a hole
+
+      function draw()
+          background(40, 40, 50)
+          style.fill(255, 200, 50).stroke(220, 120, 30).strokeWidth(4)
+
+          shape(200, 300, function()
+              -- The tail
+              line(250, 300)
+              line(220, 230)
+              line(300, 300)
+
+              line(500, 300)
+              bezier(560, 300, 560, 450, 500, 450)
+              line(200, 450)
+              bezier(140, 450, 140, 300, 200, 300)
+
+              -- This outline cuts a hole in the bubble
+              ellipse(350, 375, 60, 60)
+          end)
+      end
+
+   .. image:: /images/example_shape.png
+      :width: 300
+
+   .. helptext:: draw a shape from lines and curves
 
 .. lua:function:: arc(x, y, radius, startAngle, endAngle, dir)
 
