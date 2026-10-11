@@ -57,6 +57,7 @@ Codea 4
    api/gpu_noise_lib
    api/material
    api/sound
+   api/mic
    api/scene
    api/entity
    api/camera

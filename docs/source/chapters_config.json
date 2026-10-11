@@ -60,7 +60,7 @@
     "title": "Sound",
     "subtitle": "Playing and generating audio and sound effects",
     "icon": "ChapterIconSounds",
-    "entries": ["manual/sound", "api/sound"]
+    "entries": ["manual/sound", "api/sound", "api/mic"]
   },
   {
     "id": "Storage",
