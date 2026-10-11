@@ -190,6 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/gpu_noise_lib.html">GPU Noise Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/material.html">material</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/mic.html">Microphone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/scene.html">scene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/entity.html">entity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/camera.html">camera</a></li>
@@ -1618,10 +1619,10 @@
 </li>
         <li><a href="api/mesh.html#mesh.material">mesh.material (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.normals">mesh.normals (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.positions">mesh.positions (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.root">mesh.root (attribute)</a>
@@ -1641,6 +1642,12 @@
         <li><a href="api/mesh.html#mesh.vertexCount">mesh.vertexCount (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.vertices">mesh.vertices (attribute)</a>
+</li>
+        <li><a href="api/mic.html#module-mic">mic (module)</a>
+</li>
+        <li><a href="api/mic.html#mic.mic.amplitude">mic.mic.amplitude (attribute)</a>
+</li>
+        <li><a href="api/mic.html#mic.mic.frequency">mic.mic.frequency (attribute)</a>
 </li>
         <li><a href="api/style.html#MIDDLE">MIDDLE (attribute)</a>
 </li>
@@ -2530,10 +2537,10 @@
 </li>
         <li><a href="api/sound.html#sound.sound.source.loop">sound.sound.source.loop (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/sound.html#sound.sound.source.volume">sound.sound.source.volume (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/sound.html#SOUND_BLIP">SOUND_BLIP (attribute)</a>
 </li>
         <li><a href="api/sound.html#SOUND_COIN">SOUND_COIN (attribute)</a>
@@ -2574,8 +2581,12 @@
 </li>
         <li><a href="api/viewer.html#STANDARD">STANDARD (attribute)</a>
 </li>
-        <li><a href="api/motion.html#motion.start">start() (in module motion)</a>
+        <li><a href="api/mic.html#mic.start">start() (in module mic)</a>
+
+        <ul>
+          <li><a href="api/motion.html#motion.start">(in module motion)</a>
 </li>
+        </ul></li>
         <li><a href="api/style.html#style.stencil">stencil() (in module style)</a>, <a href="api/style.html#style.stencil">[1]</a>, <a href="api/style.html#style.stencil">[2]</a>
 </li>
         <li><a href="api/style.html#STENCIL_OP_DECREMENT">STENCIL_OP_DECREMENT (attribute)</a>
@@ -2616,9 +2627,11 @@
           <li><a href="api/physics3d.html#physics3d.world.step">(physics3d.world method)</a>
 </li>
         </ul></li>
-        <li><a href="api/motion.html#motion.stop">stop() (in module motion)</a>
+        <li><a href="api/mic.html#mic.stop">stop() (in module mic)</a>
 
         <ul>
+          <li><a href="api/motion.html#motion.stop">(in module motion)</a>
+</li>
           <li><a href="api/sound.html#sound.instance.stop">(sound.instance method)</a>
 </li>
         </ul></li>
