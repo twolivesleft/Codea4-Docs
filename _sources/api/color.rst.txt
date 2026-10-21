@@ -48,15 +48,15 @@ color
 
       .. helptext:: get or set the alpha component
 
-   .. lua:method:: linear() -> color
+   .. lua:attribute:: linear: color [readonly]
 
-      Returns the color converted to linear space
+      This color converted to linear space
 
       .. helptext:: convert this color to linear space
    
-   .. lua:method:: gamma() -> color
+   .. lua:attribute:: gamma: color [readonly]
 
-      Returns the color converted to gamma space
+      This color converted to gamma space
 
       .. helptext:: convert this color to gamma space
 

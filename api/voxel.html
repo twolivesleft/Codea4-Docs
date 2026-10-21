@@ -1,0 +1,1151 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="pick" href="pick.html" /><link rel="prev" title="physics3d" href="physics3d.html" />
+
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
+        <title>voxel - Codea 4.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Codea 4.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/icon.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Codea 4.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/assets.html">Assets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/file_operations.html">File Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html#image">Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mic.html">Microphone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">Pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">voxel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hinge.html">hinge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="voxel">
+<h1>voxel<a class="headerlink" href="#voxel" title="Link to this heading">¶</a></h1>
+<p>Build worlds out of blocks. A voxel world is a component, add it to an entity and fill it with blocks such as grass, stone, water and glass</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">A small island</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">   </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="nf">default3d</span><span class="p">()</span>
+
+<span class="w">   </span><span class="c1">-- 2 x 1 x 2 chunks, each 16 x 128 x 16 blocks</span>
+<span class="w">   </span><span class="kd">local</span><span class="w"> </span><span class="nv">island</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">"island"</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">island</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">voxel</span><span class="p">.</span><span class="py">world</span><span class="p">,</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+
+<span class="w">   </span><span class="nv">world</span><span class="p">:</span><span class="nf">box</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">31</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">),</span><span class="w"> </span><span class="s2">"Water"</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">world</span><span class="p">:</span><span class="nf">sphere</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">),</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s2">"Sand"</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">world</span><span class="p">:</span><span class="nf">line</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">),</span><span class="w"> </span><span class="s2">"Wood"</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">world</span><span class="p">:</span><span class="nf">sphere</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">),</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s2">"Leaves"</span><span class="p">)</span>
+
+<span class="w">   </span><span class="nv">island</span><span class="p">.</span><span class="py">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">16</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">.</span><span class="py">camera</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="py">rigs</span><span class="p">.</span><span class="py">orbit</span><span class="p">).</span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<p>Blocks are addressed by integer coordinates local to the world, from <code class="docutils literal notranslate"><span class="pre">vec3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> up to (but not including) <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.world.size</span></code>. Each block fills the unit cube from its coordinate to its coordinate plus one. Coordinates can always be given as a <code class="docutils literal notranslate"><span class="pre">vec3</span></code> or as three numbers, and are rounded down to whole blocks</p>
+<p>Blocks are named by their type: a block name (<code class="docutils literal notranslate"><span class="pre">&quot;Stone&quot;</span></code>), a <a class="reference internal" href="#voxel.block" title="voxel.block"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.block</span></code></a> or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty space. Any block can also be given a tint color which multiplies its texture</p>
+<p>Changes are drawn on the next frame. The world is drawn by child entities of the world’s entity (one per chunk) which use the scene’s lighting and shadows</p>
+<p>Large worlds can be generated as they are explored. <a class="reference internal" href="#voxel.world.generate" title="voxel.world.generate"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">voxel.world.generate()</span></code></a> runs a function from one of your project’s tabs on background threads to fill each chunk as it comes within <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.world.viewDistance</span></code> of the camera, and unloads chunks again once they are far away</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Endless hills (Main tab)</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">   </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="nf">default3d</span><span class="p">()</span>
+
+<span class="w">   </span><span class="kd">local</span><span class="w"> </span><span class="nv">terrain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">"terrain"</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">terrain</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">voxel</span><span class="p">.</span><span class="py">world</span><span class="p">,</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">))</span>
+<span class="w">   </span><span class="nv">world</span><span class="p">.</span><span class="py">viewDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span>
+<span class="w">   </span><span class="nv">world</span><span class="p">:</span><span class="nf">generate</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">Hills</span><span class="p">,</span><span class="w"> </span><span class="s2">"hills"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">})</span>
+
+<span class="w">   </span><span class="c1">-- Look down on the middle of the world</span>
+<span class="w">   </span><span class="nv">terrain</span><span class="p">.</span><span class="py">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="o">-</span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">512</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">.</span><span class="py">camera</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="py">rigs</span><span class="p">.</span><span class="py">orbit</span><span class="p">).</span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Endless hills (Hills tab)</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">hills</span><span class="p">(</span><span class="nv">chunk</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">for</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">      </span><span class="kr">for</span><span class="w"> </span><span class="nv">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">z</span><span class="p">,</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">depth</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">         </span><span class="kd">local</span><span class="w"> </span><span class="nv">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="mi">40</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">noise</span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">params</span><span class="p">.</span><span class="py">height</span><span class="p">)</span>
+<span class="w">         </span><span class="nv">chunk</span><span class="p">:</span><span class="nf">box</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="p">,</span><span class="w"> </span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">top</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="p">,</span><span class="w"> </span><span class="s2">"Dirt"</span><span class="p">)</span>
+<span class="w">         </span><span class="nv">chunk</span><span class="p">:</span><span class="nf">set</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">top</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="p">,</span><span class="w"> </span><span class="s2">"Grass"</span><span class="p">)</span>
+<span class="w">      </span><span class="kr">end</span>
+<span class="w">   </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<p>Small voxel models, such as characters and props, are loaded from <code class="docutils literal notranslate"><span class="pre">.cvox</span></code> files (made with the Voxel Editor) or MagicaVoxel <code class="docutils literal notranslate"><span class="pre">.vox</span></code> files with <a class="reference internal" href="#voxel.model" title="voxel.model"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.model</span></code></a>. Each model is drawn with a regular mesh, which any number of entities can share</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">A row of frogs</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">   </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="nf">default3d</span><span class="p">()</span>
+
+<span class="w">   </span><span class="c1">-- Frog.cvox from the Froggy example</span>
+<span class="w">   </span><span class="kd">local</span><span class="w"> </span><span class="nv">frog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">voxel</span><span class="p">.</span><span class="nf">model</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">Frog</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c1">-- Models are one unit per voxel, scale them down to fit the scene</span>
+<span class="w">   </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">      </span><span class="kd">local</span><span class="w"> </span><span class="nv">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="w">      </span><span class="nv">e</span><span class="p">.</span><span class="py">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">frog</span><span class="p">.</span><span class="py">mesh</span>
+<span class="w">      </span><span class="nv">e</span><span class="p">.</span><span class="py">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">)</span>
+<span class="w">      </span><span class="nv">e</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.6</span>
+<span class="w">   </span><span class="kr">end</span>
+
+<span class="w">   </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">.</span><span class="py">camera</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">camera</span><span class="p">.</span><span class="py">rigs</span><span class="p">.</span><span class="py">orbit</span><span class="p">).</span><span class="nv">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<p>Worlds and models are drawn with the voxel material, a lit material that shows each block’s texture and tint. Its <code class="docutils literal notranslate"><span class="pre">roughness</span></code> (<code class="docutils literal notranslate"><span class="pre">0.9</span></code>), <code class="docutils literal notranslate"><span class="pre">metallic</span></code> (<code class="docutils literal notranslate"><span class="pre">0</span></code>), <code class="docutils literal notranslate"><span class="pre">reflectance</span></code> (<code class="docutils literal notranslate"><span class="pre">0.2</span></code>), <code class="docutils literal notranslate"><span class="pre">emissive</span></code> (<code class="docutils literal notranslate"><span class="pre">0</span></code>, how brightly blocks glow in their own color) and <code class="docutils literal notranslate"><span class="pre">occlusionStrength</span></code> (<code class="docutils literal notranslate"><span class="pre">0.45</span></code>, how dark the corners between blocks are) can be changed through <code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.world.material</span></code> or a model entity’s <code class="docutils literal notranslate"><span class="pre">material</span></code>. Block types can give their own <code class="docutils literal notranslate"><span class="pre">roughness</span></code>, <code class="docutils literal notranslate"><span class="pre">metallic</span></code> and <code class="docutils literal notranslate"><span class="pre">emissive</span></code>, which are used in place of the material’s</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Shiny blocks and glowing ones</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">.</span><span class="py">material</span><span class="p">.</span><span class="py">roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.6</span>
+
+<span class="nv">world</span><span class="p">.</span><span class="py">blocks</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="s2">"Gold Block"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">),</span><span class="w"> </span><span class="nv">metallic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.25</span><span class="w"> </span><span class="p">})</span>
+<span class="nv">world</span><span class="p">.</span><span class="py">blocks</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="s2">"Lava"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">texture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Blocks</span><span class="p">.</span><span class="py">Lava</span><span class="p">,</span><span class="w"> </span><span class="nv">emissive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>Worlds and models can use any other material too. Shaders read the voxels they draw with these functions, which are available whenever a lit or unlit shader draws a world or model (<code class="docutils literal notranslate"><span class="pre">HAS_VOXELS</span></code> is defined then)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vec4</span> <span class="pre">getVoxelColor()</span></code> - the block’s texture tinted by its color. It discards the see-through pixels of cutout blocks and premultiplies translucent colors by their alpha</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">getVoxelOcclusion()</span></code> - how open the corner of the block is, from <code class="docutils literal notranslate"><span class="pre">0</span></code> (hemmed in by neighbouring blocks) to <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">getVoxelRoughness(float</span> <span class="pre">fallback)</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">getVoxelMetallic(float</span> <span class="pre">fallback)</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">getVoxelEmissive(float</span> <span class="pre">fallback)</span></code> - the block type’s settings, or <code class="docutils literal notranslate"><span class="pre">fallback</span></code> for those it doesn’t give</p></li>
+</ul>
+<p>Cutout and translucent blocks are drawn with copies of a world’s material, which follow any changes made to it</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Blocks with stripes</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">stripes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span><span class="p">.</span><span class="nf">builder</span><span class="p">()</span>
+<span class="w">   </span><span class="p">:</span><span class="nf">lit</span><span class="p">()</span>
+<span class="w">   </span><span class="p">:</span><span class="nv">material</span>
+<span class="w">   </span><span class="s">[[</span>
+<span class="s">      #if defined(HAS_VOXELS)</span>
+<span class="s">      vec4 color = getVoxelColor();</span>
+<span class="s">      float stripe = step(0.5, fract(getWorldPosition().y * 2.0));</span>
+<span class="s">      color.rgb *= mix(0.4, 1.0, stripe) * mix(0.5, 1.0, getVoxelOcclusion());</span>
+<span class="s">      material.baseColor = color;</span>
+<span class="s">      material.roughness = getVoxelRoughness(0.8);</span>
+<span class="s">      material.metallic = getVoxelMetallic(0.0);</span>
+<span class="s">      material.emissive = vec4(color.rgb * getVoxelEmissive(0.0), 0.0);</span>
+<span class="s">      #endif</span>
+<span class="s">   ]]</span>
+<span class="w">   </span><span class="p">:</span><span class="nf">build</span><span class="p">()</span>
+
+<span class="nv">world</span><span class="p">.</span><span class="py">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">material</span><span class="p">(</span><span class="nv">stripes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<dl class="lua class" id="module-voxel">
+<dt class="sig sig-object lua" id="voxel.world">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">voxel.</span></span><span class="sig-name descname"><span class="pre">world</span></span><a class="headerlink" href="#voxel.world" title="Link to this definition">¶</a></dt>
+<dd><p>A fixed size grid of blocks, divided into chunks</p>
+<p>Create a world by adding it to an entity with <code class="docutils literal notranslate"><span class="pre">entity:add(voxel.world,</span> <span class="pre">sizeInChunks[,</span> <span class="pre">chunkSize])</span></code>. The world is made of <code class="docutils literal notranslate"><span class="pre">sizeInChunks</span></code> chunks, each <code class="docutils literal notranslate"><span class="pre">chunkSize</span></code> blocks in size (<code class="docutils literal notranslate"><span class="pre">vec3(16,</span> <span class="pre">128,</span> <span class="pre">16)</span></code> by default). It starts out empty, with the standard blocks available in <a class="reference internal" href="#voxel.voxel.world.blocks" title="voxel.voxel.world.blocks"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.world.blocks</span></code></a></p>
+<p>Moving, rotating or scaling the entity moves, rotates or scales the world</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">terrain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">"terrain"</span><span class="p">)</span>
+<span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">terrain</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">voxel</span><span class="p">.</span><span class="py">world</span><span class="p">,</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
+
+<span class="c1">-- Smaller chunks for a 32 x 32 x 32 world</span>
+<span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">terrain</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">voxel</span><span class="p">.</span><span class="py">world</span><span class="p">,</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">))</span>
+
+<span class="c1">-- Get the world back from its entity later</span>
+<span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">terrain</span><span class="p">:</span><span class="nf">get</span><span class="p">(</span><span class="nv">voxel</span><span class="p">.</span><span class="py">world</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.world.size">
+<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.world.size" title="Link to this definition">¶</a></dt>
+<dd><p>The size of the world in blocks</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.world.chunkSize">
+<span class="sig-name descname"><span class="pre">chunkSize</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.world.chunkSize" title="Link to this definition">¶</a></dt>
+<dd><p>The size of each chunk in blocks</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.world.blocks">
+<span class="sig-name descname"><span class="pre">blocks</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">voxel.blocks</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.world.blocks" title="Link to this definition">¶</a></dt>
+<dd><p>The block types that can be used in this world</p>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.get">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">coord</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.get" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the block at a coordinate</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">block</span><span class="p">,</span><span class="w"> </span><span class="nv">tint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">world</span><span class="p">:</span><span class="nf">get</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">block</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">   </span><span class="nb">print</span><span class="p">(</span><span class="nv">block</span><span class="p">.</span><span class="py">name</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>coord</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The coordinate of the block (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The block type and its tint, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if the block is empty or outside of the world</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.block,</span> <span class="pre">color</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.set">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">coord</span></em>, <em class="sig-param"><span class="pre">block</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tint</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.set" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the block at a coordinate. Coordinates outside of the world are ignored</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">:</span><span class="nf">set</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s2">"Stone"</span><span class="p">)</span>
+<span class="nv">world</span><span class="p">:</span><span class="nf">set</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">),</span><span class="w"> </span><span class="s2">"Solid"</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+<span class="nv">world</span><span class="p">:</span><span class="nf">set</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="c1">-- remove a block</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The coordinate of the block (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p></li>
+<li><p><strong>block</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The block name, block type or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty</p></li>
+<li><p><strong>tint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – A color to multiply the block’s texture by</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.box">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">min</span></em>, <em class="sig-param"><span class="pre">max</span></em>, <em class="sig-param"><span class="pre">block</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tint</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.box" title="Link to this definition">¶</a></dt>
+<dd><p>Fills every block between two corners, including the corners themselves</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- A 10 x 1 x 10 floor of grass</span>
+<span class="nv">world</span><span class="p">:</span><span class="nf">box</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">),</span><span class="w"> </span><span class="s2">"Grass"</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – One corner of the box (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p></li>
+<li><p><strong>max</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The opposite corner of the box (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p></li>
+<li><p><strong>block</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The block name, block type or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty</p></li>
+<li><p><strong>tint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – A color to multiply the block’s texture by</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.sphere">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">sphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">center</span></em>, <em class="sig-param"><span class="pre">radius</span></em>, <em class="sig-param"><span class="pre">block</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tint</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.sphere" title="Link to this definition">¶</a></dt>
+<dd><p>Fills every block within <code class="docutils literal notranslate"><span class="pre">radius</span></code> blocks of <code class="docutils literal notranslate"><span class="pre">center</span></code></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">:</span><span class="nf">sphere</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">),</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s2">"Stone"</span><span class="p">)</span>
+<span class="nv">world</span><span class="p">:</span><span class="nf">sphere</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">),</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="c1">-- hollow it out</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>center</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The center of the sphere (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p></li>
+<li><p><strong>radius</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The radius of the sphere in blocks</p></li>
+<li><p><strong>block</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The block name, block type or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty</p></li>
+<li><p><strong>tint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – A color to multiply the block’s texture by</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.line">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">start</span></em>, <em class="sig-param"><span class="pre">end</span></em>, <em class="sig-param"><span class="pre">block</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tint</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.line" title="Link to this definition">¶</a></dt>
+<dd><p>Fills a line of blocks from <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">end</span></code>, including both ends</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">:</span><span class="nf">line</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="s2">"Planks"</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The first block of the line (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p></li>
+<li><p><strong>end</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The last block of the line (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p></li>
+<li><p><strong>block</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The block name, block type or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty</p></li>
+<li><p><strong>tint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – A color to multiply the block’s texture by</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.world.viewDistance">
+<span class="sig-name descname"><span class="pre">viewDistance</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#voxel.voxel.world.viewDistance" title="Link to this definition">¶</a></dt>
+<dd><p>How far (in blocks) from the <a class="reference internal" href="#voxel.voxel.world.focus" title="voxel.voxel.world.focus"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.world.focus</span></code></a> chunks are generated and drawn when the world has a generator. Chunks a little further away than this are unloaded. Defaults to <code class="docutils literal notranslate"><span class="pre">128</span></code></p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.world.focus">
+<span class="sig-name descname"><span class="pre">focus</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#voxel.voxel.world.focus" title="Link to this definition">¶</a></dt>
+<dd><p>The point (in scene space) that chunks are generated around, such as the position of a player. When <code class="docutils literal notranslate"><span class="pre">nil</span></code> (the default) the scene’s camera is used</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.world.loading">
+<span class="sig-name descname"><span class="pre">loading</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.world.loading" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> while chunks within the view distance are still being generated or built, useful for showing a loading screen</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.world.material">
+<span class="sig-name descname"><span class="pre">material</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">material</span><a class="headerlink" href="#voxel.voxel.world.material" title="Link to this definition">¶</a></dt>
+<dd><p>The material blocks are drawn with, the voxel material unless it’s changed. Cutout and translucent blocks are drawn with copies of it, which follow any changes made to it. Set it to <code class="docutils literal notranslate"><span class="pre">nil</span></code> to go back to a new voxel material</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">.</span><span class="py">material</span><span class="p">.</span><span class="py">roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.generate">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">tab</span></em>, <em class="sig-param"><span class="pre">functionName</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">params</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Fills the world using a generator function as chunks come within <a class="reference internal" href="#voxel.voxel.world.viewDistance" title="voxel.voxel.world.viewDistance"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.world.viewDistance</span></code></a> of the <a class="reference internal" href="#voxel.voxel.world.focus" title="voxel.voxel.world.focus"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.world.focus</span></code></a>. Chunks that move out of range are unloaded, unless they have been changed since they were generated. Calling <code class="docutils literal notranslate"><span class="pre">generate</span></code> again replaces the generator and starts generating from scratch</p>
+<p>The function is called with a <a class="reference internal" href="#voxel.chunk" title="voxel.chunk"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.chunk</span></code></a> to fill, on background threads so the game keeps running smoothly while the world is generated. Each thread runs the code from <code class="docutils literal notranslate"><span class="pre">tab</span></code> in its own Lua environment, so the function can use the code in that tab, the standard <code class="docutils literal notranslate"><span class="pre">math</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code> and <code class="docutils literal notranslate"><span class="pre">table</span></code> libraries, <code class="docutils literal notranslate"><span class="pre">noise</span></code>, <code class="docutils literal notranslate"><span class="pre">hash</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code> and <code class="docutils literal notranslate"><span class="pre">print</span></code>, but not globals or functions from your other tabs. Anything else it needs is passed in through <code class="docutils literal notranslate"><span class="pre">params</span></code>, which is copied and available to the generator as the global <code class="docutils literal notranslate"><span class="pre">params</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">math.random</span></code> is seeded for each chunk from its position (and <code class="docutils literal notranslate"><span class="pre">params.seed</span></code> when it is set), so a world generates the same way every time</p>
+<p><code class="docutils literal notranslate"><span class="pre">hash(x[,</span> <span class="pre">y[,</span> <span class="pre">z]])</span></code> gives a number from <code class="docutils literal notranslate"><span class="pre">0</span></code> up to <code class="docutils literal notranslate"><span class="pre">1</span></code> for a position, which is always the same for that position (and <code class="docutils literal notranslate"><span class="pre">params.seed</span></code>), whichever chunk asks for it. Neighbouring chunks can use it to agree on things that cross the edges between them, where <code class="docutils literal notranslate"><span class="pre">math.random</span></code> would give each chunk different numbers. Coordinates are rounded down to whole numbers, and neighbouring positions give unrelated numbers (use <code class="docutils literal notranslate"><span class="pre">noise</span></code> for numbers that change smoothly). Give it an extra coordinate for more than one number at a position</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- One tree in some 16 x 16 block cells, placed the same way by every chunk that asks</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">treeIn</span><span class="p">(</span><span class="nv">cx</span><span class="p">,</span><span class="w"> </span><span class="nv">cz</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">if</span><span class="w"> </span><span class="nf">hash</span><span class="p">(</span><span class="nv">cx</span><span class="p">,</span><span class="w"> </span><span class="nv">cz</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.4</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="kr">end</span>
+<span class="w">   </span><span class="kd">local</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">cx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nf">hash</span><span class="p">(</span><span class="nv">cx</span><span class="p">,</span><span class="w"> </span><span class="nv">cz</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span>
+<span class="w">   </span><span class="kd">local</span><span class="w"> </span><span class="nv">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">cz</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nf">hash</span><span class="p">(</span><span class="nv">cx</span><span class="p">,</span><span class="w"> </span><span class="nv">cz</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">return</span><span class="w"> </span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Blocks can only be changed in chunks that have been generated, changes elsewhere are ignored</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">:</span><span class="nf">generate</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">Generation</span><span class="p">,</span><span class="w"> </span><span class="s2">"generateTerrain"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="nv">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+<span class="w">   </span><span class="nv">rivers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tab</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">asset</span></code></span>) – The project tab containing the generator, such as <code class="docutils literal notranslate"><span class="pre">asset.Generation</span></code></p></li>
+<li><p><strong>functionName</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The name of the function in that tab to call for each chunk</p></li>
+<li><p><strong>params</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span>) – Values for the generator. Only numbers, strings, booleans and tables of these can be passed</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.clear">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.clear" title="Link to this definition">¶</a></dt>
+<dd><p>Removes every block from the world, and stops generating</p>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.place">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">place</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">model</span></em>, <em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">block</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.place" title="Link to this definition">¶</a></dt>
+<dd><p>Copies a <a class="reference internal" href="#voxel.model" title="voxel.model"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.model</span></code></a> into the world as blocks of one type, each tinted with its voxel’s color. The model’s voxel <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> goes at <code class="docutils literal notranslate"><span class="pre">origin</span></code>, and its empty voxels leave the world as it is. Placing with a <code class="docutils literal notranslate"><span class="pre">nil</span></code> block removes the blocks the model covers instead</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">house</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">voxel</span><span class="p">.</span><span class="nf">model</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">House</span><span class="p">)</span>
+<span class="nv">world</span><span class="p">:</span><span class="nf">place</span><span class="p">(</span><span class="nv">house</span><span class="p">,</span><span class="w"> </span><span class="nf">vec3</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">),</span><span class="w"> </span><span class="s2">"Planks"</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<span><a class="reference internal" href="#voxel.model" title="voxel.model"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.model</span></code></a></span>) – The model to place</p></li>
+<li><p><strong>origin</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – Where the model’s first voxel goes (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p></li>
+<li><p><strong>block</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The block name or <a class="reference internal" href="#voxel.block" title="voxel.block"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.block</span></code></a> to build the model from, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> to remove blocks</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.save">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.save" title="Link to this definition">¶</a></dt>
+<dd><p>Saves the world’s blocks to a <code class="docutils literal notranslate"><span class="pre">.cvox</span></code> file</p>
+<p>A generated world only saves the chunks that have been changed since they were generated, as its generator can make the rest again. This keeps saves small, even for very large worlds</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">:</span><span class="nf">save</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">"MyWorld.cvox"</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>asset</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">asset</span></code></span>) – Where to save the world, ending in <code class="docutils literal notranslate"><span class="pre">.cvox</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.load">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.load" title="Link to this definition">¶</a></dt>
+<dd><p>Replaces the world’s blocks with those in a file saved by <a class="reference internal" href="#voxel.world.save" title="voxel.world.save"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">voxel.world.save()</span></code></a></p>
+<p>Blocks are matched to the world’s block types by name. A block type the world doesn’t have yet is added without a texture, and can be given one afterwards with <a class="reference internal" href="#voxel.blocks.add" title="voxel.blocks.add"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">voxel.blocks.add()</span></code></a>. The world must have the same chunk size as the one that was saved. Chunks beyond the world’s size are left out</p>
+<p>To load a generated world, call <a class="reference internal" href="#voxel.world.generate" title="voxel.world.generate"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">voxel.world.generate()</span></code></a> first and then <code class="docutils literal notranslate"><span class="pre">load</span></code>. Chunks in the file replace the generated ones, and the generator goes on making the rest</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">:</span><span class="nf">generate</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">Generation</span><span class="p">,</span><span class="w"> </span><span class="s2">"generateTerrain"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="p">})</span>
+<span class="nv">world</span><span class="p">:</span><span class="nf">load</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="p">.</span><span class="py">MyWorld</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>asset</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">asset</span></code></span>) – The <code class="docutils literal notranslate"><span class="pre">.cvox</span></code> file to load</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.world.raycast">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">raycast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">direction</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">distance</span> <span class="pre">=</span> <span class="pre">1000</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.world.raycast" title="Link to this definition">¶</a></dt>
+<dd><p>Finds the first block along a ray. The ray is in scene space (the same space as <a class="reference internal" href="camera.html#camera.screenToRay" title="camera.screenToRay"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">camera.screenToRay()</span></code></a>), so it works however the world’s entity is moved, rotated or scaled</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">ended</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">      </span><span class="kd">local</span><span class="w"> </span><span class="nv">origin</span><span class="p">,</span><span class="w"> </span><span class="nv">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">.</span><span class="py">camera</span><span class="p">:</span><span class="nf">get</span><span class="p">(</span><span class="nv">camera</span><span class="p">):</span><span class="nf">screenToRay</span><span class="p">(</span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="w">      </span><span class="kd">local</span><span class="w"> </span><span class="nv">hit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">world</span><span class="p">:</span><span class="nf">raycast</span><span class="p">(</span><span class="nv">origin</span><span class="p">,</span><span class="w"> </span><span class="nv">dir</span><span class="p">)</span>
+<span class="w">      </span><span class="kr">if</span><span class="w"> </span><span class="nv">hit</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">         </span><span class="c1">-- Place a block on the face that was touched</span>
+<span class="w">         </span><span class="nv">world</span><span class="p">:</span><span class="nf">set</span><span class="p">(</span><span class="nv">hit</span><span class="p">.</span><span class="py">coord</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">hit</span><span class="p">.</span><span class="py">normal</span><span class="p">,</span><span class="w"> </span><span class="s2">"Glass"</span><span class="p">)</span>
+<span class="w">      </span><span class="kr">end</span>
+<span class="w">   </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>origin</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The start of the ray</p></li>
+<li><p><strong>direction</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The direction of the ray</p></li>
+<li><p><strong>distance</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The maximum distance to search</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The block that was hit, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if no block was found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#voxel.hit" title="voxel.hit"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.hit</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="voxel.hit">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">voxel.</span></span><span class="sig-name descname"><span class="pre">hit</span></span><a class="headerlink" href="#voxel.hit" title="Link to this definition">¶</a></dt>
+<dd><p>The result of <a class="reference internal" href="#voxel.world.raycast" title="voxel.world.raycast"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">voxel.world.raycast()</span></code></a></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.hit.coord">
+<span class="sig-name descname"><span class="pre">coord</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#voxel.voxel.hit.coord" title="Link to this definition">¶</a></dt>
+<dd><p>The coordinate of the block that was hit</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.hit.normal">
+<span class="sig-name descname"><span class="pre">normal</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#voxel.voxel.hit.normal" title="Link to this definition">¶</a></dt>
+<dd><p>The direction of the face that was hit, such as <code class="docutils literal notranslate"><span class="pre">vec3(0,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> for the top of a block. <code class="docutils literal notranslate"><span class="pre">coord</span> <span class="pre">+</span> <span class="pre">normal</span></code> is the empty space in front of that face. <code class="docutils literal notranslate"><span class="pre">vec3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> when the ray starts inside a block</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.hit.block">
+<span class="sig-name descname"><span class="pre">block</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">voxel.block</span><a class="headerlink" href="#voxel.voxel.hit.block" title="Link to this definition">¶</a></dt>
+<dd><p>The type of block that was hit</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.hit.color">
+<span class="sig-name descname"><span class="pre">color</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">color</span><a class="headerlink" href="#voxel.voxel.hit.color" title="Link to this definition">¶</a></dt>
+<dd><p>The tint of the block that was hit</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.hit.point">
+<span class="sig-name descname"><span class="pre">point</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span><a class="headerlink" href="#voxel.voxel.hit.point" title="Link to this definition">¶</a></dt>
+<dd><p>The point where the ray hit the block, in scene space</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.hit.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#voxel.voxel.hit.distance" title="Link to this definition">¶</a></dt>
+<dd><p>The distance from the ray’s origin to <code class="docutils literal notranslate"><span class="pre">point</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="voxel.chunk">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">voxel.</span></span><span class="sig-name descname"><span class="pre">chunk</span></span><a class="headerlink" href="#voxel.chunk" title="Link to this definition">¶</a></dt>
+<dd><p>A chunk of the world being filled by a generator function (see <a class="reference internal" href="#voxel.world.generate" title="voxel.world.generate"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">voxel.world.generate()</span></code></a>). Coordinates are world block coordinates, the same as <a class="reference internal" href="#voxel.world.set" title="voxel.world.set"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">voxel.world.set()</span></code></a>, and anything outside of the chunk is ignored. Blocks are given by name or id, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty, and can be followed by a tint color like the world’s own functions. Coordinates are given as numbers, as <code class="docutils literal notranslate"><span class="pre">vec3</span></code> isn’t available to generators</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">generateTerrain</span><span class="p">(</span><span class="nv">chunk</span><span class="p">)</span>
+<span class="w">   </span><span class="c1">-- A layer of stone at the bottom of every chunk</span>
+<span class="w">   </span><span class="nv">chunk</span><span class="p">:</span><span class="nf">box</span><span class="p">(</span><span class="nv">chunk</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">z</span><span class="p">,</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">chunk</span><span class="p">.</span><span class="py">depth</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"Stone"</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.chunk.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.chunk.x" title="Link to this definition">¶</a></dt>
+<dd><p>The x coordinate of the first block in the chunk</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.chunk.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.chunk.y" title="Link to this definition">¶</a></dt>
+<dd><p>The y coordinate of the first block in the chunk</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.chunk.z">
+<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.chunk.z" title="Link to this definition">¶</a></dt>
+<dd><p>The z coordinate of the first block in the chunk</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.chunk.width">
+<span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.chunk.width" title="Link to this definition">¶</a></dt>
+<dd><p>The size of the chunk along the x axis</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.chunk.height">
+<span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.chunk.height" title="Link to this definition">¶</a></dt>
+<dd><p>The size of the chunk along the y axis</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.chunk.depth">
+<span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.chunk.depth" title="Link to this definition">¶</a></dt>
+<dd><p>The size of the chunk along the z axis</p>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.chunk.get">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.chunk.get" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the name and tint of a block in the chunk</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The block name and its tint, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if the block is empty or outside of the chunk</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string,</span> <span class="pre">color</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.chunk.set">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em>, <em class="sig-param"><span class="pre">block</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tint</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.chunk.set" title="Link to this definition">¶</a></dt>
+<dd><p>Sets a block in the chunk</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The block name or id, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty</p></li>
+<li><p><strong>tint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – A color to tint the block with</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.chunk.box">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x1</span></em>, <em class="sig-param"><span class="pre">y1</span></em>, <em class="sig-param"><span class="pre">z1</span></em>, <em class="sig-param"><span class="pre">x2</span></em>, <em class="sig-param"><span class="pre">y2</span></em>, <em class="sig-param"><span class="pre">z2</span></em>, <em class="sig-param"><span class="pre">block</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tint</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.chunk.box" title="Link to this definition">¶</a></dt>
+<dd><p>Fills every block between two corners, including the corners themselves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The block name or id, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty</p></li>
+<li><p><strong>tint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – A color to tint the blocks with</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.chunk.sphere">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">sphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">z</span></em>, <em class="sig-param"><span class="pre">radius</span></em>, <em class="sig-param"><span class="pre">block</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tint</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.chunk.sphere" title="Link to this definition">¶</a></dt>
+<dd><p>Fills every block within <code class="docutils literal notranslate"><span class="pre">radius</span></code> blocks of a center block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The block name or id, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty</p></li>
+<li><p><strong>tint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – A color to tint the blocks with</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.chunk.line">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x1</span></em>, <em class="sig-param"><span class="pre">y1</span></em>, <em class="sig-param"><span class="pre">z1</span></em>, <em class="sig-param"><span class="pre">x2</span></em>, <em class="sig-param"><span class="pre">y2</span></em>, <em class="sig-param"><span class="pre">z2</span></em>, <em class="sig-param"><span class="pre">block</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tint</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.chunk.line" title="Link to this definition">¶</a></dt>
+<dd><p>Fills a line of blocks between two blocks, including the ends</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The block name or id, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty</p></li>
+<li><p><strong>tint</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – A color to tint the blocks with</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="voxel.blocks">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">voxel.</span></span><span class="sig-name descname"><span class="pre">blocks</span></span><a class="headerlink" href="#voxel.blocks" title="Link to this definition">¶</a></dt>
+<dd><p>The block types available to a world. Every world starts with the standard blocks below, which use textures from the builtin <code class="docutils literal notranslate"><span class="pre">Blocks</span></code> asset pack</p>
+<p><code class="docutils literal notranslate"><span class="pre">Grass</span></code>, <code class="docutils literal notranslate"><span class="pre">Dirt</span></code>, <code class="docutils literal notranslate"><span class="pre">Sand</span></code>, <code class="docutils literal notranslate"><span class="pre">Stone</span></code>, <code class="docutils literal notranslate"><span class="pre">Gravel</span></code>, <code class="docutils literal notranslate"><span class="pre">Snow</span></code>, <code class="docutils literal notranslate"><span class="pre">Ice</span></code>, <code class="docutils literal notranslate"><span class="pre">Bedrock</span></code>, <code class="docutils literal notranslate"><span class="pre">Water</span></code>, <code class="docutils literal notranslate"><span class="pre">Glass</span></code>, <code class="docutils literal notranslate"><span class="pre">Glass</span> <span class="pre">Frame</span></code>, <code class="docutils literal notranslate"><span class="pre">Red</span> <span class="pre">Brick</span></code>, <code class="docutils literal notranslate"><span class="pre">Brick</span></code>, <code class="docutils literal notranslate"><span class="pre">Coal</span> <span class="pre">Ore</span></code>, <code class="docutils literal notranslate"><span class="pre">Gold</span> <span class="pre">Ore</span></code>, <code class="docutils literal notranslate"><span class="pre">Diamond</span> <span class="pre">Ore</span></code>, <code class="docutils literal notranslate"><span class="pre">Redstone</span> <span class="pre">Ore</span></code>, <code class="docutils literal notranslate"><span class="pre">Planks</span></code>, <code class="docutils literal notranslate"><span class="pre">Wood</span></code>, <code class="docutils literal notranslate"><span class="pre">Leaves</span></code>, <code class="docutils literal notranslate"><span class="pre">Crafting</span> <span class="pre">Table</span></code> and <code class="docutils literal notranslate"><span class="pre">Solid</span></code> (plain white, use it with a tint)</p>
+<p>Block types can be looked up by name, <code class="docutils literal notranslate"><span class="pre">world.blocks.Stone</span></code> or <code class="docutils literal notranslate"><span class="pre">world.blocks[&quot;Glass</span> <span class="pre">Frame&quot;]</span></code></p>
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.blocks.add">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">definition</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.blocks.add" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a new block type, or changes the existing type with the same name. The definition table can contain:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">texture</span></code> - an image asset used for every face, or a table of assets by face</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> - a tint for every face, or a table of colors by face</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">translucent</span></code> - <code class="docutils literal notranslate"><span class="pre">true</span></code> for blended blocks like water and glass. Faces between translucent blocks of the same type are hidden</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cutout</span></code> - <code class="docutils literal notranslate"><span class="pre">true</span></code> for blocks with see-through holes like leaves, where pixels with less than half alpha are not drawn</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">roughness</span></code> and <code class="docutils literal notranslate"><span class="pre">metallic</span></code> - from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>, used in place of the world material’s</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">emissive</span></code> - how brightly the block glows in its own color, from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">8</span></code>, used in place of the world material’s</p></li>
+</ul>
+<p>Faces are named <code class="docutils literal notranslate"><span class="pre">all</span></code>, <code class="docutils literal notranslate"><span class="pre">sides</span></code>, <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">north</span></code>, <code class="docutils literal notranslate"><span class="pre">south</span></code>, <code class="docutils literal notranslate"><span class="pre">east</span></code> and <code class="docutils literal notranslate"><span class="pre">west</span></code> (most specific wins). Blocks without a texture are plain white, tinted by their color</p>
+<p>Any other values in the definition become custom properties of the block type</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">.</span><span class="py">blocks</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="s2">"Cactus"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="nv">texture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">sides</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Blocks</span><span class="p">.</span><span class="py">Cactus_Side</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Blocks</span><span class="p">.</span><span class="py">Cactus_Top</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">bottom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Blocks</span><span class="p">.</span><span class="py">Cactus_Inside</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nv">canDig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">})</span>
+
+<span class="nv">world</span><span class="p">.</span><span class="py">blocks</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="s2">"Tinted Glass"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="nv">texture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">Blocks</span><span class="p">.</span><span class="py">Glass</span><span class="p">,</span>
+<span class="w">   </span><span class="nv">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">),</span>
+<span class="w">   </span><span class="nv">translucent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The name of the block type</p></li>
+<li><p><strong>definition</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></span>) – How the block looks, along with any custom properties</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The block type</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#voxel.block" title="voxel.block"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.block</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.blocks.get">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.blocks.get" title="Link to this definition">¶</a></dt>
+<dd><p>Gets a block type by name or id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – The name or id of the block type</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The block type, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if there isn’t one</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#voxel.block" title="voxel.block"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.block</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.blocks.all">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.blocks.all" title="Link to this definition">¶</a></dt>
+<dd><p>Gets every block type, in the order they were added</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">block</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">world</span><span class="p">.</span><span class="py">blocks</span><span class="p">:</span><span class="nf">all</span><span class="p">())</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">   </span><span class="nb">print</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">block</span><span class="p">.</span><span class="py">name</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of block types</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><a class="reference internal" href="#voxel.block" title="voxel.block"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">table</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.blocks.clear">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.blocks.clear" title="Link to this definition">¶</a></dt>
+<dd><p>Removes every block type, including the standard blocks. Blocks already in the world using a removed type are no longer drawn</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="voxel.block">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">voxel.</span></span><span class="sig-name descname"><span class="pre">block</span></span><a class="headerlink" href="#voxel.block" title="Link to this definition">¶</a></dt>
+<dd><p>A type of block, such as <code class="docutils literal notranslate"><span class="pre">Grass</span></code> or <code class="docutils literal notranslate"><span class="pre">Water</span></code></p>
+<p>Custom values can be stored on a block type, either in its definition or by setting them directly</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">world</span><span class="p">.</span><span class="py">blocks</span><span class="p">.</span><span class="py">Bedrock</span><span class="p">.</span><span class="py">canDig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">hit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">world</span><span class="p">:</span><span class="nf">raycast</span><span class="p">(</span><span class="nv">origin</span><span class="p">,</span><span class="w"> </span><span class="nv">dir</span><span class="p">)</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">hit</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">hit</span><span class="p">.</span><span class="py">block</span><span class="p">.</span><span class="py">canDig</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">   </span><span class="nv">world</span><span class="p">:</span><span class="nf">set</span><span class="p">(</span><span class="nv">hit</span><span class="p">.</span><span class="py">coord</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.block.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.block.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of this block type</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.block.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.block.id" title="Link to this definition">¶</a></dt>
+<dd><p>A number identifying this block type within its world</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.block.translucent">
+<span class="sig-name descname"><span class="pre">translucent</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.block.translucent" title="Link to this definition">¶</a></dt>
+<dd><p>Whether this block type is blended, like water and glass</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.block.cutout">
+<span class="sig-name descname"><span class="pre">cutout</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.block.cutout" title="Link to this definition">¶</a></dt>
+<dd><p>Whether this block type has see-through holes, like leaves</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.block.roughness">
+<span class="sig-name descname"><span class="pre">roughness</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#voxel.voxel.block.roughness" title="Link to this definition">¶</a></dt>
+<dd><p>The roughness of this block type, from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> to use the world material’s</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.block.metallic">
+<span class="sig-name descname"><span class="pre">metallic</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#voxel.voxel.block.metallic" title="Link to this definition">¶</a></dt>
+<dd><p>How metallic this block type is, from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> to use the world material’s</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.block.emissive">
+<span class="sig-name descname"><span class="pre">emissive</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#voxel.voxel.block.emissive" title="Link to this definition">¶</a></dt>
+<dd><p>How brightly this block type glows in its own color, from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">8</span></code>, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> to use the world material’s</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="lua class">
+<dt class="sig sig-object lua" id="voxel.model">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">voxel.</span></span><span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#voxel.model" title="Link to this definition">¶</a></dt>
+<dd><p>A small grid of colored voxels drawn as a single mesh, for things like characters, vehicles and props</p>
+<p>Load a model from a <code class="docutils literal notranslate"><span class="pre">.cvox</span></code> or MagicaVoxel <code class="docutils literal notranslate"><span class="pre">.vox</span></code> file with <code class="docutils literal notranslate"><span class="pre">voxel.model(asset.Name)</span></code>, or make an empty one with <code class="docutils literal notranslate"><span class="pre">voxel.model(size)</span></code>. Voxels are addressed by integer coordinates from <code class="docutils literal notranslate"><span class="pre">vec3(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> up to (but not including) <a class="reference internal" href="#voxel.voxel.model.size" title="voxel.voxel.model.size"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.model.size</span></code></a>, and each one is either empty or filled with a color</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">voxel</span><span class="p">.</span><span class="nf">model</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">Car</span><span class="p">)</span>
+
+<span class="c1">-- An empty model with a red voxel in its corner</span>
+<span class="nv">gem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">voxel</span><span class="p">.</span><span class="nf">model</span><span class="p">(</span><span class="nf">vec3</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span>
+<span class="nv">gem</span><span class="p">:</span><span class="nf">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>MagicaVoxel scenes with several objects are combined into one model, using their positions and rotations. Hidden objects and layers are left out, and MagicaVoxel’s z-up axes are turned to match Codea’s y-up</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.model.size">
+<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec3</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.model.size" title="Link to this definition">¶</a></dt>
+<dd><p>The size of the model in voxels</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="voxel.voxel.model.mesh">
+<span class="sig-name descname"><span class="pre">mesh</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mesh</span> <span class="pre">[readonly]</span><a class="headerlink" href="#voxel.voxel.model.mesh" title="Link to this definition">¶</a></dt>
+<dd><p>A mesh that draws the model, with one unit per voxel and its origin at the corner of voxel <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>. Faces between neighbouring voxels are left out and corners are shaded by ambient occlusion, like a <a class="reference internal" href="#voxel.world" title="voxel.world"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.world</span></code></a>. It’s drawn with a new voxel material, or any other material given to its entity</p>
+<p>The same mesh is returned until the model changes, so it can be shared by many entities. Changing a voxel makes a new mesh the next time this is read, entities already using the old mesh keep showing it</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="nv">tree</span><span class="p">.</span><span class="py">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">treeModel</span><span class="p">.</span><span class="py">mesh</span>
+
+<span class="c1">-- Centered on the entity, standing on its origin</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">bounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">treeModel</span><span class="p">.</span><span class="py">mesh</span><span class="p">.</span><span class="py">bounds</span>
+<span class="nv">tree</span><span class="p">.</span><span class="py">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nf">vec3</span><span class="p">(</span><span class="nv">bounds</span><span class="p">.</span><span class="py">center</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">bounds</span><span class="p">.</span><span class="py">min</span><span class="p">.</span><span class="py">y</span><span class="p">,</span><span class="w"> </span><span class="nv">bounds</span><span class="p">.</span><span class="py">center</span><span class="p">.</span><span class="py">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.model.get">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">coord</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.model.get" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the color of a voxel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>coord</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The coordinate of the voxel (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The voxel’s color, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if it is empty or outside of the model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.model.set">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">coord</span></em>, <em class="sig-param"><span class="pre">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.model.set" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the color of a voxel, or empties it. Coordinates outside of the model are ignored</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span><span class="p">:</span><span class="nf">set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+<span class="nv">model</span><span class="p">:</span><span class="nf">set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="c1">-- remove a voxel</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The coordinate of the voxel (or <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>)</p></li>
+<li><p><strong>color</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – The voxel’s color, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> for empty</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.model.copy">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#voxel.model.copy" title="Link to this definition">¶</a></dt>
+<dd><p>Makes a copy of the model. Changing either one leaves the other as it is, which makes copies useful for undo in an editor. The copy shares the model’s <a class="reference internal" href="#voxel.voxel.model.mesh" title="voxel.voxel.model.mesh"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.model.mesh</span></code></a> until one of them changes, so a copy made after the mesh is read can be shown again without being meshed</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- After each edit</span>
+<span class="nb">table.insert</span><span class="p">(</span><span class="nv">undoSteps</span><span class="p">,</span><span class="w"> </span><span class="nv">model</span><span class="p">:</span><span class="nf">copy</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new model with the same size and voxels</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><a class="reference internal" href="#voxel.model" title="voxel.model"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.model</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.model.assign">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">assign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.model.assign" title="Link to this definition">¶</a></dt>
+<dd><p>Replaces the model’s size and voxels with another model’s, leaving the other model as it is. Entities keep showing the old mesh until they’re given <a class="reference internal" href="#voxel.voxel.model.mesh" title="voxel.voxel.model.mesh"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">voxel.model.mesh</span></code></a> again</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Undo, back to the previous step</span>
+<span class="nb">table.remove</span><span class="p">(</span><span class="nv">undoSteps</span><span class="p">)</span>
+<span class="nv">model</span><span class="p">:</span><span class="nf">assign</span><span class="p">(</span><span class="nv">undoSteps</span><span class="p">[</span><span class="o">#</span><span class="nv">undoSteps</span><span class="p">])</span>
+<span class="nv">entity</span><span class="p">.</span><span class="py">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">model</span><span class="p">.</span><span class="py">mesh</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<span><a class="reference internal" href="#voxel.model" title="voxel.model"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">voxel.model</span></code></a></span>) – The model to copy from</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="voxel.model.save">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">asset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#voxel.model.save" title="Link to this definition">¶</a></dt>
+<dd><p>Saves the model to a file. The file’s extension picks the format: <code class="docutils literal notranslate"><span class="pre">.cvox</span></code> for the Voxel Editor, or <code class="docutils literal notranslate"><span class="pre">.vox</span></code> for MagicaVoxel. MagicaVoxel files can hold at most 255 different colors and 256 voxels in each dimension, larger or more colorful models can be saved as <code class="docutils literal notranslate"><span class="pre">.cvox</span></code></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">gem</span><span class="p">:</span><span class="nf">save</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">documents</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">"Gem.vox"</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>asset</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">asset</span></code></span>) – Where to save the model, ending in <code class="docutils literal notranslate"><span class="pre">.cvox</span></code> or <code class="docutils literal notranslate"><span class="pre">.vox</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="pick.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">pick</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="physics3d.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">physics3d</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021, John Millard
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

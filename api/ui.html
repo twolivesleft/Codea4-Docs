@@ -161,7 +161,6 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/codea_3x.html">Migration from Codea 3.x</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
@@ -182,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
@@ -208,8 +208,10 @@
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="voxel.html">voxel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hinge.html">hinge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
@@ -331,6 +333,13 @@
 </dd></dl>
 
 <dl class="lua attribute">
+<dt class="sig sig-object lua" id="ui.ui.label.font">
+<span class="sig-name descname"><span class="pre">font</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#ui.ui.label.font" title="Link to this definition">¶</a></dt>
+<dd><p>Optional system font name. Use a face such as <code class="docutils literal notranslate"><span class="pre">&quot;Helvetica-Bold&quot;</span></code> for a bold
+label. When omitted, the label uses the current style font.</p>
+</dd></dl>
+
+<dl class="lua attribute">
 <dt class="sig sig-object lua" id="ui.ui.label.fontSize">
 <span class="sig-name descname"><span class="pre">fontSize</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#ui.ui.label.fontSize" title="Link to this definition">¶</a></dt>
 <dd><p>The label’s font size</p>
@@ -343,9 +352,10 @@
 </dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="ui.ui.label.style">
-<span class="sig-name descname"><span class="pre">style</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">flags</span><a class="headerlink" href="#ui.ui.label.style" title="Link to this definition">¶</a></dt>
-<dd><p>The label’s text style</p>
+<dt class="sig sig-object lua" id="ui.ui.label.textRenderer">
+<span class="sig-name descname"><span class="pre">textRenderer</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#ui.ui.label.textRenderer" title="Link to this definition">¶</a></dt>
+<dd><p>The label’s renderer: <code class="docutils literal notranslate"><span class="pre">style.native</span></code> (the default) or <code class="docutils literal notranslate"><span class="pre">style.atlas</span></code>.
+Atlas labels interpret tags; native labels support color emoji.</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -355,9 +365,9 @@
 </dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="ui.ui.label.shadowSoftner">
-<span class="sig-name descname"><span class="pre">shadowSoftner</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#ui.ui.label.shadowSoftner" title="Link to this definition">¶</a></dt>
-<dd><p>The softness of the labels text shadow</p>
+<dt class="sig sig-object lua" id="ui.ui.label.shadowRadius">
+<span class="sig-name descname"><span class="pre">shadowRadius</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#ui.ui.label.shadowRadius" title="Link to this definition">¶</a></dt>
+<dd><p>The blur radius of the label’s text shadow, in points</p>
 </dd></dl>
 
 </dd></dl>

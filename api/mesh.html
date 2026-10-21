@@ -161,7 +161,6 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/codea_3x.html">Migration from Codea 3.x</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
@@ -182,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
@@ -208,8 +208,10 @@
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="voxel.html">voxel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hinge.html">hinge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
@@ -355,14 +357,12 @@
 <dt class="sig sig-object lua" id="mesh.vertexCount">
 <span class="sig-name descname"><span class="pre">vertexCount</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#mesh.vertexCount" title="Link to this definition">¶</a></dt>
 <dd><p>The total number of vertices in the currently selected sub-mesh</p>
-<p><em>3.x compatiblity note: This was originally called</em> <code class="docutils literal notranslate"><span class="pre">count</span></code></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="mesh.indexCount">
 <span class="sig-name descname"><span class="pre">indexCount</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#mesh.indexCount" title="Link to this definition">¶</a></dt>
 <dd><p>The total number of indices in the currently selected sub-mesh</p>
-<p><em>3.x compatiblity note: meshes originally did not contain indices and therefore did not have an index count</em></p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -410,14 +410,12 @@
 <dt class="sig sig-object lua" id="mesh.vertices">
 <span class="sig-name descname"><span class="pre">vertices</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;vec2|vec3&gt;</span><a class="headerlink" href="#mesh.vertices" title="Link to this definition">¶</a></dt>
 <dd><p>Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices. This is the preferred way to assign geometry for manually-built meshes because it automatically populates a sequential index buffer matching the vertex order, making the mesh immediately drawable.</p>
-<p><em>3.x compatiblity note: works the same as the original vertices property</em></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="mesh.texCoords">
 <span class="sig-name descname"><span class="pre">texCoords</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;vec2&gt;</span><a class="headerlink" href="#mesh.texCoords" title="Link to this definition">¶</a></dt>
 <dd><p>Gets/sets the uvs of the mesh vertices</p>
-<p><em>3.x compatiblity note: works the same as the uvs property for the sake of backwards compatiblity</em></p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -596,12 +594,12 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mesh.box">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">box</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">size</span> <span class="pre">=</span> <span class="pre">vec3(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">vec3(8,</span> <span class="pre">8,</span> <span class="pre">8)</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.box" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">box</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">halfSize</span> <span class="pre">=</span> <span class="pre">vec3(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">vec3(8,</span> <span class="pre">8,</span> <span class="pre">8)</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.box" title="Link to this definition">¶</a></dt>
 <dd><p>Rectangular box centered at origin aligned along the x, y and z axis</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – Half of the side length in x, y and z directions</p></li>
+<li><p><strong>halfSize</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – Half of the side length in x, y and z directions</p></li>
 <li><p><strong>segments</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The number of segments in x, y and z directions</p></li>
 </ul>
 </dd>
@@ -610,13 +608,13 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mesh.roundedBox">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">roundedBox</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">radius</span> <span class="pre">=</span> <span class="pre">0.25</span></em>, <em class="sig-param"><span class="pre">size</span> <span class="pre">=</span> <span class="pre">vec3(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></em>, <em class="sig-param"><span class="pre">slices</span> <span class="pre">=</span> <span class="pre">4</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">vec3(8,</span> <span class="pre">8,</span> <span class="pre">8)</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.roundedBox" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">roundedBox</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">radius</span> <span class="pre">=</span> <span class="pre">0.25</span></em>, <em class="sig-param"><span class="pre">halfSize</span> <span class="pre">=</span> <span class="pre">vec3(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></em>, <em class="sig-param"><span class="pre">slices</span> <span class="pre">=</span> <span class="pre">4</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">vec3(8,</span> <span class="pre">8,</span> <span class="pre">8)</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.roundedBox" title="Link to this definition">¶</a></dt>
 <dd><p>Rectangular box with rounded edges centered at origin aligned along the x, y and z axis</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>radius</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The corner radius of the rounded edges</p></li>
-<li><p><strong>size</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – Half of the side length in x, y and z directions</p></li>
+<li><p><strong>halfSize</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – Half of the side length in x, y and z directions</p></li>
 <li><p><strong>slices</strong> – The number of subdivisions in the rounded edges / corners</p></li>
 <li><p><strong>segments</strong> (<span><a class="reference internal" href="math_types.html#vec3" title="vec3"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3</span></code></a></span>) – The number of segments in x, y and z directions</p></li>
 </ul>
@@ -626,13 +624,13 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mesh.cone">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">cone</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">radius</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">size</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">slices</span> <span class="pre">=</span> <span class="pre">32</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">8</span></em>, <em class="sig-param"><span class="pre">rings</span> <span class="pre">=</span> <span class="pre">4</span></em>, <em class="sig-param"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">sweep</span> <span class="pre">=</span> <span class="pre">360</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.cone" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">cone</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">radius</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">halfLength</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">slices</span> <span class="pre">=</span> <span class="pre">32</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">8</span></em>, <em class="sig-param"><span class="pre">rings</span> <span class="pre">=</span> <span class="pre">4</span></em>, <em class="sig-param"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">sweep</span> <span class="pre">=</span> <span class="pre">360</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.cone" title="Link to this definition">¶</a></dt>
 <dd><p>A cone with a cap centered at origin pointing towards positive y-axis</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>radius</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Radius of the flat (negative z) end along the xz-plane</p></li>
-<li><p><strong>size</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Half of the length of the cone along the y-axis</p></li>
+<li><p><strong>halfLength</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Half of the length of the cone along the y-axis</p></li>
 <li><p><strong>slices</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – Number of subdivisions around the y-axis</p></li>
 <li><p><strong>segments</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – Number of subdivisions along the y-axis</p></li>
 <li><p><strong>rings</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – Number of subdivisions of the cap</p></li>
@@ -645,13 +643,13 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mesh.cylinder">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">cylinder</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">radius</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">size</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">slices</span> <span class="pre">=</span> <span class="pre">32</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">8</span></em>, <em class="sig-param"><span class="pre">rings</span> <span class="pre">=</span> <span class="pre">4</span></em>, <em class="sig-param"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">sweep</span> <span class="pre">=</span> <span class="pre">360</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.cylinder" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">cylinder</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">radius</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">halfLength</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">slices</span> <span class="pre">=</span> <span class="pre">32</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">8</span></em>, <em class="sig-param"><span class="pre">rings</span> <span class="pre">=</span> <span class="pre">4</span></em>, <em class="sig-param"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">sweep</span> <span class="pre">=</span> <span class="pre">360</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.cylinder" title="Link to this definition">¶</a></dt>
 <dd><p>Capped cylinder centered at origin aligned along the y-axis</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>radius</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Radius of the flat (negative z) end along the xz-plane</p></li>
-<li><p><strong>size</strong> – Half of the length of the cylinder along the y-axis</p></li>
+<li><p><strong>halfLength</strong> – Half of the length of the cylinder along the y-axis</p></li>
 <li><p><strong>slices</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – Number of subdivisions around the y-axis</p></li>
 <li><p><strong>segments</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Number of subdivisions along the y-axis</p></li>
 <li><p><strong>rings</strong> – Number of subdivisions of the cap</p></li>
@@ -664,13 +662,13 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mesh.capsule">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">capsule</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">radius</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">size</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">slices</span> <span class="pre">=</span> <span class="pre">32</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">8</span></em>, <em class="sig-param"><span class="pre">rings</span> <span class="pre">=</span> <span class="pre">4</span></em>, <em class="sig-param"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">sweep</span> <span class="pre">=</span> <span class="pre">360</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.capsule" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">capsule</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">radius</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">halfLength</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">slices</span> <span class="pre">=</span> <span class="pre">32</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">8</span></em>, <em class="sig-param"><span class="pre">rings</span> <span class="pre">=</span> <span class="pre">4</span></em>, <em class="sig-param"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">sweep</span> <span class="pre">=</span> <span class="pre">360</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.capsule" title="Link to this definition">¶</a></dt>
 <dd><p>Capsule centered at origin aligned along the y-axis</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>radius</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Radius of the capsule along the xz-plane</p></li>
-<li><p><strong>size</strong> – Half of the length capsule along the y-axis</p></li>
+<li><p><strong>halfLength</strong> – Half of the length capsule along the y-axis</p></li>
 <li><p><strong>slices</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – Number of subdivisions around the y-axis</p></li>
 <li><p><strong>segments</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Number of subdivisions along the z-axis</p></li>
 <li><p><strong>rings</strong> – Number of subdivisions on the caps</p></li>
@@ -701,12 +699,12 @@
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="mesh.plane">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">plane</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">size</span> <span class="pre">=</span> <span class="pre">vec2(1,</span> <span class="pre">1)</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">vec2(8,</span> <span class="pre">8)</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.plane" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">plane</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">halfSize</span> <span class="pre">=</span> <span class="pre">vec2(1,</span> <span class="pre">1)</span></em>, <em class="sig-param"><span class="pre">segments</span> <span class="pre">=</span> <span class="pre">vec2(8,</span> <span class="pre">8)</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mesh.plane" title="Link to this definition">¶</a></dt>
 <dd><p>A flat plane centered at the origin on the xy-plane</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<span><a class="reference internal" href="math_types.html#vec2" title="vec2"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></a></span>) – Half of the side length in x and z direction</p></li>
+<li><p><strong>halfSize</strong> (<span><a class="reference internal" href="math_types.html#vec2" title="vec2"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></a></span>) – Half of the side length in x and z direction</p></li>
 <li><p><strong>segments</strong> (<span><a class="reference internal" href="math_types.html#vec2" title="vec2"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec2</span></code></a></span>) – Number of subdivisions in the x and z directions</p></li>
 </ul>
 </dd>

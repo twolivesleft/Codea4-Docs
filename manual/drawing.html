@@ -161,7 +161,6 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="codea_3x.html">Migration from Codea 3.x</a></li>
 <li class="toctree-l1"><a class="reference internal" href="codea.html">How Codea Works</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
@@ -182,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/image.html">Images Overview</a></li>
@@ -208,8 +208,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/voxel.html">voxel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/hinge.html">hinge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/storage.html">storage</a></li>
@@ -359,27 +361,140 @@ update the contents of the screen</p>
 </section>
 <section id="text">
 <h2>Text<a class="headerlink" href="#text" title="Link to this heading">¶</a></h2>
-<p>Use <code class="xref lua lua-func docutils literal notranslate"><span class="pre">text()</span></code> to draw strings to the screen. Text color is set with <a class="reference internal" href="../api/style.html#style.fill" title="style.fill"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.fill()</span></code></a>:</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">32</span><span class="p">).</span><span class="nf">textAlign</span><span class="p">(</span><span class="nv">CENTER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">MIDDLE</span><span class="p">)</span>
-<span class="nf">text</span><span class="p">(</span><span class="s2">"Hello, Codea!"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<p>Draw text on the screen with <code class="xref lua lua-func docutils literal notranslate"><span class="pre">text()</span></code>, followed by its horizontal and vertical
+position. Put the call in <code class="docutils literal notranslate"><span class="pre">draw()</span></code> so the message appears every frame:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">text</span><span class="p">(</span><span class="s2">"Hello, Codea!"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>The bottom-left corner of the screen is <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>. Increase <code class="docutils literal notranslate"><span class="pre">x</span></code> to move text to
+the right, or <code class="docutils literal notranslate"><span class="pre">y</span></code> to move it up. <code class="docutils literal notranslate"><span class="pre">WIDTH/2,</span> <span class="pre">HEIGHT/2</span></code> is the center of the screen.</p>
+<p><strong>Size, color, and font</strong></p>
+<p>Set these before drawing your text. The following examples belong inside
+<code class="docutils literal notranslate"><span class="pre">draw()</span></code> too:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">font</span><span class="p">(</span><span class="s2">"Arial-BoldMT"</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"You win! 🎉"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">fontSize</span></code> to control the size in points, <code class="docutils literal notranslate"><span class="pre">fill</span></code> to set the color, and <code class="docutils literal notranslate"><span class="pre">font</span></code>
+to choose a font face.</p>
+<p><strong>Positioning and multiple lines</strong></p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">style.textMode</span></code> to choose which part of a message sits at the coordinates
+you give to <code class="docutils literal notranslate"><span class="pre">text</span></code>. <code class="docutils literal notranslate"><span class="pre">CORNER</span></code> places the lower-left corner there, which is handy
+for a score near the edge of the screen:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">textMode</span><span class="p">(</span><span class="nv">CORNER</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"Score: 120"</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">CENTER</span></code> places the center of the whole message at that point:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">textMode</span><span class="p">(</span><span class="nv">CENTER</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"Level complete!"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To center your text at a point, set both horizontal and vertical alignment:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">textAlign</span><span class="p">(</span><span class="nv">CENTER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">MIDDLE</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"Level complete!</span><span class="se">\n</span><span class="s2">Tap to continue"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">\n</span></code> to start a new line. For a longer message, set the wrap width with <cite>textWrapWidth</cite> to wrap the text:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nf">text</span><span class="p">(</span><span class="s2">"Explore the island and find three hidden keys before sunset."</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also supply a height to align text within a box. See
+<a class="reference internal" href="../api/style.html#style.textAlign" title="style.textAlign"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">style.textAlign()</span></code></a> for the available alignments and their positioning rules.</p>
+<p><strong>Measuring text</strong></p>
+<p>Use <a class="reference internal" href="../api/graphics.html#textSize" title="textSize"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">textSize()</span></code></a> when you need to leave room for a label or place another
+message below it. Set the font and size before measuring, just as you would before
+drawing:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">textAlign</span><span class="p">(</span><span class="nv">CENTER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">MIDDLE</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Score: 120"</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">width</span><span class="p">,</span><span class="w"> </span><span class="nv">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">textSize</span><span class="p">(</span><span class="nv">message</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="nv">message</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"Best: 200"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For wrapped text, pass the same width to <code class="docutils literal notranslate"><span class="pre">textSize</span></code> and <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p>
+<p>To align different fonts along the same baseline, use <a class="reference internal" href="../api/font.html#font.metrics" title="font.metrics"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">font.metrics()</span></code></a>.
+It returns measurements such as ascent, descent, and capital-letter height for
+the current font and size. These describe the font rather than a particular
+message.</p>
+<p><strong>Making text stand out</strong></p>
+<p>A shadow helps a label remain readable over a busy background:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">textShadow</span><span class="p">(</span><span class="nf">color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">),</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"Ready?"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The color controls its tint and opacity, <code class="docutils literal notranslate"><span class="pre">offset</span></code> moves it relative to the text,
+and <code class="docutils literal notranslate"><span class="pre">radius</span></code> controls the blur. A radius of zero gives a sharp shadow.
+Use <code class="docutils literal notranslate"><span class="pre">style.noTextShadow()</span></code> to turn the shadow off. To change the appearance of
+just one label, surround its settings and drawing calls with <code class="docutils literal notranslate"><span class="pre">style.push()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">style.pop()</span></code>. That restores the settings used by the rest of your drawing.
+Text settings reset each frame, so keep them inside <code class="docutils literal notranslate"><span class="pre">draw()</span></code>.</p>
+<p><strong>Formatting parts of a message</strong></p>
+<p>Tags let you make individual words bold, italic, or a different color. You must use the atlas text renderer by calling
+<code class="docutils literal notranslate"><span class="pre">style.textRenderer(style.atlas)</span></code> before drawing tagged text:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">()</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">textRenderer</span><span class="p">(</span><span class="nv">style</span><span class="p">.</span><span class="py">atlas</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s1">'Find the &lt;b&gt;key&lt;/b&gt; to open the &lt;fill color="red"&gt;red door&lt;/fill&gt;.'</span><span class="p">,</span>
+<span class="w">     </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Emojis require native rendering</strong></p>
-<p>By default Codea uses its own text renderer, which does not support emoji characters (they appear as empty boxes). To render emojis, enable native text rendering with <code class="docutils literal notranslate"><span class="pre">TEXT_NATIVE</span></code>:</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Emojis render as boxes with the default renderer</span>
-<span class="nf">text</span><span class="p">(</span><span class="s2">"Broken: 🎉 🚀 ❤️"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;b&gt;...&lt;/b&gt;</span></code> makes a span bold, <code class="docutils literal notranslate"><span class="pre">&lt;i&gt;...&lt;/i&gt;</span></code> makes it italic, and
+<code class="docutils literal notranslate"><span class="pre">&lt;fill</span> <span class="pre">color=&quot;red&quot;&gt;...&lt;/fill&gt;</span></code> changes its color. Close each tag after the words
+it should affect. Atlas text also supports decorations such as underlines:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">()</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">textRenderer</span><span class="p">(</span><span class="nv">style</span><span class="p">.</span><span class="py">atlas</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">textUnderline</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="s2">"Next chapter"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A decoration’s color enables it; set its alpha to zero to turn it off, for example
+<code class="docutils literal notranslate"><span class="pre">style.textUnderline(255,</span> <span class="pre">0)</span></code>.</p>
+<p><strong>Animating letters</strong></p>
+<p>When using atlas text, you can define your own tags for effects such as waving letters. Register the tag
+in <code class="docutils literal notranslate"><span class="pre">setup()</span></code>, then use it in the text you draw:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">text</span><span class="p">.</span><span class="py">style</span><span class="p">.</span><span class="py">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">tag</span><span class="p">,</span><span class="w"> </span><span class="nv">format</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">format</span><span class="p">.</span><span class="py">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">str</span><span class="p">,</span><span class="w"> </span><span class="nv">index</span><span class="p">,</span><span class="w"> </span><span class="nv">letter</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">letter</span><span class="p">.</span><span class="py">offsetY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.sin</span><span class="p">(</span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">index</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
 
-<span class="c1">-- Enable native rendering to display emojis correctly</span>
-<span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">textStyle</span><span class="p">(</span><span class="nv">TEXT_NATIVE</span><span class="p">)</span>
-<span class="nf">text</span><span class="p">(</span><span class="s2">"Working: 🎉 🚀 ❤️"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-<span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">textRenderer</span><span class="p">(</span><span class="nv">style</span><span class="p">.</span><span class="py">atlas</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">text</span><span class="p">(</span><span class="s2">"&lt;wave&gt;Hello!&lt;/wave&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="kr">end</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">TEXT_NATIVE</span></code> uses the system font renderer, so other <code class="docutils literal notranslate"><span class="pre">textStyle</span></code> flags (bold, italic, rich text, etc.) are ignored while it is active.</p>
-</div>
+<p>The callback adjusts each letter’s position. You can also change its color or
+opacity. See <a class="reference internal" href="../api/graphics.html#text.style" title="text.style"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">text.style</span></code></a> for custom tags and <a class="reference internal" href="../api/graphics.html#glyphModifier" title="glyphModifier"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">glyphModifier</span></code></a>
+for the per-letter controls.</p>
+<p><strong>Choosing native or atlas text</strong></p>
+<p>Most labels, scores, paragraphs, and emoji can use the default, <code class="docutils literal notranslate"><span class="pre">style.native</span></code>.
+Choose <code class="docutils literal notranslate"><span class="pre">style.atlas</span></code> when you want tags, underlines, or animated-letter effects.
+Atlas text does not support color emoji, so keep emoji labels on native rendering.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">style.textRenderer(style.native)</span></code> to switch back. You can mix both in a frame;
+<code class="docutils literal notranslate"><span class="pre">style.push()</span></code> and <code class="docutils literal notranslate"><span class="pre">style.pop()</span></code> are useful for keeping each label’s settings
+local. Remember that your style and renderer choices apply to <code class="docutils literal notranslate"><span class="pre">textSize</span></code>, so measure and draw with the same
+settings.</p>
+<p>See <a class="reference internal" href="../api/style.html"><span class="doc">style</span></a> for individual text settings and <a class="reference internal" href="../api/graphics.html"><span class="doc">graphics commands</span></a> for
+drawing, measurement, and custom effects.</p>
 </section>
 <section id="images-and-sprites">
 <h2>Images and Sprites<a class="headerlink" href="#images-and-sprites" title="Link to this heading">¶</a></h2>

@@ -161,7 +161,6 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/codea_3x.html">Migration from Codea 3.x</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
@@ -182,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
@@ -208,8 +208,10 @@
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="voxel.html">voxel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hinge.html">hinge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
@@ -256,6 +258,7 @@
 <p>Materials can also be saved/loaded, although they will need to access to the original shader asset</p>
 <p><strong>The Standard Material</strong></p>
 <p>The standard material is built on the standard uber-shader, providing a convenient all purpose material</p>
+<p>Color properties take ordinary colors, the same as <code class="docutils literal notranslate"><span class="pre">style.fill</span></code> and <code class="docutils literal notranslate"><span class="pre">color(...)</span></code> everywhere else in Codea, and are converted for lighting automatically. Reading a color property gives back the color that was set</p>
 <div class="table-wrapper colwidths-given docutils container" id="id1">
 <table class="docutils align-default" id="id1">
 <caption><span class="caption-text">Standard Material Properties</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
@@ -289,12 +292,12 @@
 <td><p>Current tint mode: <code class="docutils literal notranslate"><span class="pre">TINT_NONE</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_OPAQUE</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_TRANSPARENT</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_ADD</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_MULTIPLY</span></code>, <code class="docutils literal notranslate"><span class="pre">TINT_SCREEN</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tintColor</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code> (linear color)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
 <td><p>All</p></td>
 <td><p>Tint color overlay blended using <code class="docutils literal notranslate"><span class="pre">tintBlend</span></code> mode</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code> (srgb color)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
 <td><p>All</p></td>
 <td><p>Diffuse albedo color of the surface</p></td>
 </tr>
@@ -304,7 +307,7 @@
 <td><p>Diffuse albedo color texture map</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">emissive</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code> (srgb hdr color)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
 <td><p>All</p></td>
 <td><p>Emissive color of the surface (can be more than 1)</p></td>
 </tr>

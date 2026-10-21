@@ -159,7 +159,6 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manual/codea_3x.html">Migration from Codea 3.x</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/sound.html">Sound</a></li>
@@ -180,6 +179,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/image.html">Images Overview</a></li>
@@ -206,8 +206,10 @@
 <li class="toctree-l1"><a class="reference internal" href="api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/voxel.html">voxel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/hinge.html">hinge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/storage.html">storage</a></li>
@@ -268,6 +270,8 @@
         <ul>
           <li><a href="api/inspector.html#inspector.add">(in module inspector)</a>
 </li>
+          <li><a href="api/voxel.html#voxel.blocks.add">(voxel.blocks method)</a>
+</li>
         </ul></li>
         <li><a href="api/mesh.html#mesh.addElement">addElement() (mesh method)</a>
 </li>
@@ -278,6 +282,8 @@
         <li><a href="api/objc.html#objc.affineTransform">affineTransform() (in module objc)</a>
 </li>
         <li><a href="api/viewer.html#viewer.alert">alert() (in module viewer)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.blocks.all">all() (voxel.blocks method)</a>
 </li>
         <li><a href="api/image.html#image.slice.anchor">anchor() (image.slice method)</a>, <a href="api/image.html#image.slice.anchor">[1]</a>
 </li>
@@ -327,6 +333,8 @@
           <li><a href="api/pick.html#pick.asset">(pick static method)</a>
 </li>
         </ul></li>
+        <li><a href="api/voxel.html#voxel.model.assign">assign() (voxel.model method)</a>
+</li>
         <li><a href="api/objc.html#objc.async">async() (in module objc)</a>
 </li>
         <li><a href="api/image.html#atlas">atlas (built-in class)</a>
@@ -356,6 +364,10 @@
         <li><a href="api/style.html#style.blend">blend() (in module style)</a>, <a href="api/style.html#style.blend">[1]</a>, <a href="api/style.html#style.blend">[2]</a>, <a href="api/style.html#style.blend">[3]</a>
 </li>
         <li><a href="api/style.html#style.blendFunc">blendFunc() (in module style)</a>, <a href="api/style.html#style.blendFunc">[1]</a>, <a href="api/style.html#style.blendFunc">[2]</a>
+</li>
+        <li><a href="api/voxel.html#voxel.block">block (class in voxel)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.blocks">blocks (class in voxel)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.body">body (class in physics2d)</a>
 
@@ -395,6 +407,10 @@
           <li><a href="api/physics2d.html#physics2d.body.box">(physics2d.body method)</a>
 </li>
           <li><a href="api/physics3d.html#physics3d.body.box">(physics3d.body method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.chunk.box">(voxel.chunk method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.world.box">(voxel.world method)</a>
 </li>
         </ul></li>
         <li><a href="api/objc.html#objc.bridge">bridge() (in module objc)</a>
@@ -481,6 +497,8 @@
 </li>
         <li><a href="api/entity.html#entity.childAt">childAt() (entity method)</a>
 </li>
+        <li><a href="api/voxel.html#voxel.chunk">chunk (class in voxel)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.circle">circle (class in physics2d)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.body.circle">circle() (physics2d.body method)</a>
@@ -503,6 +521,10 @@
           <li><a href="api/light.html#light.clear">(light static method)</a>
 </li>
           <li><a href="api/mesh.html#mesh.clear">(mesh method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.blocks.clear">(voxel.blocks method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.world.clear">(voxel.world method)</a>
 </li>
         </ul></li>
         <li><a href="api/style.html#style.clip">clip() (in module style)</a>
@@ -541,11 +563,15 @@
 </li>
         <li><a href="api/color.html#color.g">color.g (attribute)</a>
 </li>
+        <li><a href="api/color.html#color.gamma">color.gamma (attribute)</a>
+</li>
         <li><a href="api/color.html#color.gray">color.gray (attribute)</a>
 </li>
         <li><a href="api/color.html#color.green">color.green (attribute)</a>
 </li>
         <li><a href="api/color.html#color.grey">color.grey (attribute)</a>
+</li>
+        <li><a href="api/color.html#color.linear">color.linear (attribute)</a>
 </li>
         <li><a href="api/color.html#color.magenta">color.magenta (attribute)</a>
 </li>
@@ -596,7 +622,11 @@
         <li><a href="api/graphics.html#module-context">context (module)</a>
 </li>
         <li><a href="api/file.html#file.copy">copy() (in module file)</a>
+
+        <ul>
+          <li><a href="api/voxel.html#voxel.model.copy">(voxel.model method)</a>
 </li>
+        </ul></li>
         <li><a href="api/style.html#CORNER">CORNER (attribute)</a>
 </li>
         <li><a href="api/style.html#CORNERS">CORNERS (attribute)</a>
@@ -941,9 +971,29 @@
 </li>
         <li><a href="api/storage.html#storage.flush">flush() (in module storage)</a>
 </li>
+        <li><a href="api/font.html#module-font">font (module)</a>
+</li>
+        <li><a href="api/style.html#style.font">font() (in module style)</a>, <a href="api/style.html#style.font">[1]</a>
+</li>
+        <li><a href="api/font.html#font.font.private.metrics.ascent">font.font.private.metrics.ascent (attribute)</a>
+</li>
+        <li><a href="api/font.html#font.font.private.metrics.capHeight">font.font.private.metrics.capHeight (attribute)</a>
+</li>
+        <li><a href="api/font.html#font.font.private.metrics.descent">font.font.private.metrics.descent (attribute)</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/style.html#style.fontSize">fontSize() (in module style)</a>
+        <li><a href="api/font.html#font.font.private.metrics.leading">font.font.private.metrics.leading (attribute)</a>
+</li>
+        <li><a href="api/font.html#font.font.private.metrics.size">font.font.private.metrics.size (attribute)</a>
+</li>
+        <li><a href="api/font.html#font.font.private.metrics.underlinePosition">font.font.private.metrics.underlinePosition (attribute)</a>
+</li>
+        <li><a href="api/font.html#font.font.private.metrics.underlineThickness">font.font.private.metrics.underlineThickness (attribute)</a>
+</li>
+        <li><a href="api/font.html#font.font.private.metrics.xHeight">font.font.private.metrics.xHeight (attribute)</a>
+</li>
+        <li><a href="api/style.html#style.fontSize">fontSize() (in module style)</a>, <a href="api/style.html#style.fontSize">[1]</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.friction">friction (class in physics2d)</a>
 </li>
@@ -1017,12 +1067,10 @@
 </li>
         <li><a href="api/input.html#gamepad.y">gamepad.y (attribute)</a>
 </li>
-        <li><a href="api/color.html#color.gamma">gamma() (color method)</a>
-</li>
         <li><a href="api/physics2d.html#physics2d.gear">gear (class in physics2d)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/voxel.html#voxel.world.generate">generate() (voxel.world method)</a>
+</li>
         <li><a href="api/image.html#image.generateIrradiance">generateIrradiance() (image method)</a>, <a href="api/image.html#image.generateIrradiance">[1]</a>
 </li>
         <li><a href="api/sound.html#sound.generator">generator() (in module sound)</a>
@@ -1033,6 +1081,8 @@
 </li>
         <li><a href="api/input.html#gesture.delta">gesture.delta (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#gesture.location">gesture.location (attribute)</a>
 </li>
         <li><a href="api/input.html#gesture.pan">gesture.pan (built-in class)</a>
@@ -1072,6 +1122,14 @@
         <ul>
           <li><a href="api/style.html#style.get">(in module style)</a>
 </li>
+          <li><a href="api/voxel.html#voxel.blocks.get">(voxel.blocks method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.chunk.get">(voxel.chunk method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.model.get">(voxel.model method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.world.get">(voxel.world method)</a>
+</li>
         </ul></li>
         <li><a href="api/physics2d.html#physics2d.joint.getReactionForce">getReactionForce() (physics2d.joint method)</a>
 </li>
@@ -1080,6 +1138,18 @@
         <li><a href="api/graphics.html#module-gizmos">gizmos (module)</a>
 </li>
         <li><a href="api/storage.html#storage.globalStore">globalStore() (in module storage)</a>
+</li>
+        <li><a href="api/graphics.html#glyphBounds">glyphBounds() (built-in function)</a>
+</li>
+        <li><a href="api/graphics.html#glyphModifier">glyphModifier (built-in class)</a>
+</li>
+        <li><a href="api/graphics.html#glyphModifier.alpha">glyphModifier.alpha (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#glyphModifier.color">glyphModifier.color (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#glyphModifier.offsetX">glyphModifier.offsetX (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#glyphModifier.offsetY">glyphModifier.offsetY (attribute)</a>
 </li>
         <li><a href="api/color.html#color.grayscale">grayscale() (color method)</a>
 </li>
@@ -1102,15 +1172,23 @@
         <ul>
           <li><a href="api/physics3d.html#physics3d.hinge">(class in physics3d)</a>
 </li>
+          <li><a href="api/hinge.html#module-hinge">(module)</a>
+</li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.body.hinge">hinge() (physics2d.body method)</a>
 
         <ul>
           <li><a href="api/physics3d.html#physics3d.body.hinge">(physics3d.body method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/hinge.html#hinge.hinge.angle">hinge.hinge.angle (attribute)</a>
+</li>
+        <li><a href="api/hinge.html#hingeChanged">hingeChanged() (built-in function)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.hit">hit (class in voxel)</a>
+</li>
         <li><a href="api/ui.html#ui.hstack">hstack (class in ui)</a>
 </li>
         <li><a href="api/color.html#color.hsv">hsv() (color method)</a>
@@ -1464,11 +1542,13 @@
         <ul>
           <li><a href="api/graphics.html#gizmos.line">(in module gizmos)</a>
 </li>
+          <li><a href="api/voxel.html#voxel.chunk.line">(voxel.chunk method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.world.line">(voxel.world method)</a>
+</li>
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/color.html#color.linear">linear() (color method)</a>
-</li>
         <li><a href="api/style.html#LINEAR_BURN">LINEAR_BURN (attribute)</a>
 </li>
         <li><a href="api/style.html#style.lineCap">lineCap() (in module style)</a>, <a href="api/style.html#style.lineCap">[1]</a>
@@ -1476,6 +1556,8 @@
         <li><a href="api/style.html#style.lineJoin">lineJoin() (in module style)</a>, <a href="api/style.html#style.lineJoin">[1]</a>
 </li>
         <li><a href="api/material.html#material.lit">lit() (material static method)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.world.load">load() (voxel.world method)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.body.localPoint">localPoint() (physics2d.body method)</a>
 
@@ -1621,10 +1703,10 @@
 </li>
         <li><a href="api/mesh.html#mesh.normals">mesh.normals (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.positions">mesh.positions (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.root">mesh.root (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.shader">mesh.shader (attribute)</a>
@@ -1642,6 +1724,8 @@
         <li><a href="api/mesh.html#mesh.vertexCount">mesh.vertexCount (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.vertices">mesh.vertices (attribute)</a>
+</li>
+        <li><a href="api/font.html#font.metrics">metrics() (in module font)</a>
 </li>
         <li><a href="api/mic.html#module-mic">mic (module)</a>
 </li>
@@ -1664,6 +1748,8 @@
         <li><a href="api/color.html#color.mix">mix() (color static method)</a>
 </li>
         <li><a href="api/file.html#file.mkdir">mkdir() (in module file)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.model">model (class in voxel)</a>
 </li>
         <li><a href="api/matrix.html#matrix.model">model() (in module matrix)</a>, <a href="api/matrix.html#matrix.model">[1]</a>
 </li>
@@ -1784,6 +1870,14 @@
 </li>
         </ul></li>
         <li><a href="api/style.html#style.noStroke">noStroke() (in module style)</a>
+</li>
+        <li><a href="api/style.html#style.noTextShadow">noTextShadow() (in module style)</a>
+
+        <ul>
+          <li><a href="api/graphics.html#textFormatting.noTextShadow">(textFormatting method)</a>
+</li>
+        </ul></li>
+        <li><a href="api/graphics.html#textTag.number">number() (textTag method)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -2035,10 +2129,10 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.hinge.useMotor">physics2d.physics2d.hinge.useMotor (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorA">physics2d.physics2d.joint.anchorA (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorB">physics2d.physics2d.joint.anchorB (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.collideConnected">physics2d.physics2d.joint.collideConnected (attribute)</a>
@@ -2147,6 +2241,8 @@
 </li>
         <li><a href="api/style.html#style.pixelScaling">pixelScaling() (in module style)</a>
 </li>
+        <li><a href="api/voxel.html#voxel.world.place">place() (voxel.world method)</a>
+</li>
         <li><a href="api/mesh.html#mesh.plane">plane() (mesh static method)</a>
 </li>
         <li><a href="api/sound.html#sound.play">play() (in module sound)</a>, <a href="api/sound.html#sound.play">[1]</a>, <a href="api/sound.html#sound.play">[2]</a>
@@ -2198,6 +2294,8 @@
         <li><a href="api/lua.html#print">print() (built-in function)</a>
 </li>
         <li><a href="api/objc.html#objc.private.insets">private.insets (class in objc)</a>
+</li>
+        <li><a href="api/font.html#font.private.metrics">private.metrics (class in font)</a>
 </li>
         <li><a href="api/style.html#PROJECT">PROJECT (attribute)</a>
 </li>
@@ -2264,6 +2362,8 @@
         <ul>
           <li><a href="api/physics3d.html#physics3d.world.raycast">(physics3d.world method)</a>
 </li>
+          <li><a href="api/voxel.html#voxel.world.raycast">(voxel.world method)</a>
+</li>
         </ul></li>
         <li><a href="api/physics2d.html#physics2d.rayHit">rayHit (class in physics2d)</a>
 
@@ -2319,10 +2419,10 @@
           <li><a href="api/file.html#file.remove">(in module file)</a>
 </li>
         </ul></li>
-        <li><a href="api/file.html#file.rename">rename() (in module file)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/file.html#file.rename">rename() (in module file)</a>
+</li>
         <li><a href="api/require.html#require">require (built-in class)</a>
 </li>
         <li><a href="api/require.html#require">require() (built-in function)</a>
@@ -2416,6 +2516,10 @@
 </li>
           <li><a href="api/scene.html#scene.save">(scene static method)</a>
 </li>
+          <li><a href="api/voxel.html#voxel.model.save">(voxel.model method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.world.save">(voxel.world method)</a>
+</li>
         </ul></li>
         <li><a href="api/matrix.html#matrix.scale">scale() (in module matrix)</a>
 </li>
@@ -2445,6 +2549,8 @@
 </li>
         <li><a href="api/style.html#SCREEN">SCREEN (attribute)</a>
 </li>
+        <li><a href="api/camera.html#camera.screenToRay">screenToRay() (camera method)</a>
+</li>
         <li><a href="api/camera.html#camera.screenToWorld">screenToWorld() (camera method)</a>
 </li>
         <li><a href="api/tween.html#tween.seek">seek() (tween method)</a>
@@ -2459,6 +2565,12 @@
           <li><a href="api/objc.html#objc.set">(in module objc)</a>
 </li>
           <li><a href="api/style.html#style.set">(in module style)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.chunk.set">(voxel.chunk method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.model.set">(voxel.model method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.world.set">(voxel.world method)</a>
 </li>
         </ul></li>
         <li><a href="api/shader.html#shader.setOption">setOption() (shader method)</a>
@@ -2537,10 +2649,10 @@
 </li>
         <li><a href="api/sound.html#sound.sound.source.loop">sound.sound.source.loop (attribute)</a>
 </li>
-        <li><a href="api/sound.html#sound.sound.source.volume">sound.sound.source.volume (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/sound.html#sound.sound.source.volume">sound.sound.source.volume (attribute)</a>
+</li>
         <li><a href="api/sound.html#SOUND_BLIP">SOUND_BLIP (attribute)</a>
 </li>
         <li><a href="api/sound.html#SOUND_COIN">SOUND_COIN (attribute)</a>
@@ -2563,6 +2675,10 @@
 
         <ul>
           <li><a href="api/physics3d.html#physics3d.body.sphere">(physics3d.body method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.chunk.sphere">(voxel.chunk method)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.world.sphere">(voxel.world method)</a>
 </li>
         </ul></li>
         <li><a href="api/physics3d.html#physics3d.world.sphereCast">sphereCast() (physics3d.world method)</a>
@@ -2643,6 +2759,8 @@
 </li>
         <li><a href="api/storage.html#storage.storage.storage.project">storage.storage.storage.project (attribute)</a>
 </li>
+        <li><a href="api/style.html#STRETCH">STRETCH (attribute)</a>
+</li>
         <li><a href="api/string.html#module-string">string (module)</a>
 </li>
         <li><a href="api/objc.html#objc.string">string() (in module objc)</a>
@@ -2687,6 +2805,10 @@
 </li>
         <li><a href="api/style.html#module-style">style (module)</a>
 </li>
+        <li><a href="api/style.html#style.style.atlas">style.style.atlas (attribute)</a>
+</li>
+        <li><a href="api/style.html#style.style.native">style.style.native (attribute)</a>
+</li>
         <li><a href="api/image.html#image.symbol">symbol() (image static method)</a>
 </li>
     </ul></td>
@@ -2725,14 +2847,70 @@
           <li><a href="api/pick.html#pick.text">(pick static method)</a>
 </li>
         </ul></li>
-        <li><a href="api/style.html#style.textAlign">textAlign() (in module style)</a>
+        <li><a href="api/graphics.html#text.style">text.style (attribute)</a>
 </li>
+        <li><a href="api/style.html#style.textAlign">textAlign() (in module style)</a>, <a href="api/style.html#style.textAlign">[1]</a>
+</li>
+        <li><a href="api/style.html#style.textBackground">textBackground() (in module style)</a>, <a href="api/style.html#style.textBackground">[1]</a>
+</li>
+        <li><a href="api/graphics.html#textBounds">textBounds() (built-in function)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting">textFormatting (built-in class)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.callback">textFormatting.callback (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.fillColor">textFormatting.fillColor (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.fontName">textFormatting.fontName (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.fontSize">textFormatting.fontSize (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.strokeColor">textFormatting.strokeColor (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.strokeWidth">textFormatting.strokeWidth (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.textAlign">textFormatting.textAlign (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.textBackground">textFormatting.textBackground (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.textOverline">textFormatting.textOverline (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.textStrikeThrough">textFormatting.textStrikeThrough (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textFormatting.textUnderline">textFormatting.textUnderline (attribute)</a>
+</li>
+        <li><a href="api/graphics.html#textLineHeight">textLineHeight() (built-in function)</a>
+</li>
+        <li><a href="api/style.html#style.textMode">textMode() (in module style)</a>, <a href="api/style.html#style.textMode">[1]</a>
+</li>
+        <li><a href="api/style.html#style.textOverline">textOverline() (in module style)</a>, <a href="api/style.html#style.textOverline">[1]</a>
+</li>
+        <li><a href="api/graphics.html#textRenderer">textRenderer() (built-in function)</a>, <a href="api/graphics.html#textRenderer">[1]</a>
+
+        <ul>
+          <li><a href="api/style.html#style.textRenderer">(in module style)</a>, <a href="api/style.html#style.textRenderer">[1]</a>
+</li>
+        </ul></li>
+        <li><a href="api/style.html#style.textShadow">textShadow() (in module style)</a>, <a href="api/style.html#style.textShadow">[1]</a>
+
+        <ul>
+          <li><a href="api/graphics.html#textFormatting.textShadow">(textFormatting method)</a>, <a href="api/graphics.html#textFormatting.textShadow">[1]</a>
+</li>
+        </ul></li>
         <li><a href="api/graphics.html#textSize">textSize() (built-in function)</a>
 </li>
-        <li><a href="api/style.html#style.textStyle">textStyle() (in module style)</a>
+        <li><a href="api/style.html#style.textStrikeThrough">textStrikeThrough() (in module style)</a>, <a href="api/style.html#style.textStrikeThrough">[1]</a>
+</li>
+        <li><a href="api/graphics.html#textTag">textTag (built-in class)</a>
+</li>
+        <li><a href="api/style.html#style.textUnderline">textUnderline() (in module style)</a>, <a href="api/style.html#style.textUnderline">[1]</a>
+</li>
+        <li><a href="api/style.html#style.textWrapWidth">textWrapWidth() (in module style)</a>, <a href="api/style.html#style.textWrapWidth">[1]</a>
 </li>
         <li><a href="api/tween.html#tween.time">time() (tween method)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/style.html#style.tint">tint() (in module style)</a>, <a href="api/style.html#style.tint">[1]</a>
 </li>
         <li><a href="api/tween.html#tween.to">to() (tween method)</a>
@@ -2759,8 +2937,6 @@
 </li>
         <li><a href="api/input.html#touch.id">touch.id (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#touch.maxForce">touch.maxForce (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.pos">touch.pos (attribute)</a>
@@ -2851,17 +3027,19 @@
 </li>
         <li><a href="api/ui.html#ui.ui.label.color">ui.ui.label.color (attribute)</a>
 </li>
+        <li><a href="api/ui.html#ui.ui.label.font">ui.ui.label.font (attribute)</a>
+</li>
         <li><a href="api/ui.html#ui.ui.label.fontSize">ui.ui.label.fontSize (attribute)</a>
 </li>
         <li><a href="api/ui.html#ui.ui.label.shadowOffset">ui.ui.label.shadowOffset (attribute)</a>
 </li>
-        <li><a href="api/ui.html#ui.ui.label.shadowSoftner">ui.ui.label.shadowSoftner (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/ui.html#ui.ui.label.style">ui.ui.label.style (attribute)</a>
+        <li><a href="api/ui.html#ui.ui.label.shadowRadius">ui.ui.label.shadowRadius (attribute)</a>
 </li>
         <li><a href="api/ui.html#ui.ui.label.text">ui.ui.label.text (attribute)</a>
+</li>
+        <li><a href="api/ui.html#ui.ui.label.textRenderer">ui.ui.label.textRenderer (attribute)</a>
 </li>
         <li><a href="api/ui.html#ui.ui.vstack.padding">ui.ui.vstack.padding (attribute)</a>
 </li>
@@ -2933,8 +3111,6 @@
 </li>
         <li><a href="api/math_types.html#vec4.z">vec4.z (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/objc.html#objc.vector">vector() (in module objc)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.body.velocityAtLocalPoint">velocityAtLocalPoint() (physics2d.body method)</a>
@@ -2969,6 +3145,8 @@
 </li>
         <li><a href="api/viewer.html#viewer.viewer.runtime">viewer.viewer.runtime (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/viewer.html#viewer.viewer.safeArea">viewer.viewer.safeArea (attribute)</a>
 </li>
         <li><a href="api/viewer.html#viewer.viewer.showWarnings">viewer.viewer.showWarnings (attribute)</a>
@@ -2978,6 +3156,64 @@
         <li><a href="api/style.html#style.viewRect">viewRect() (in module style)</a>
 </li>
         <li><a href="api/image.html#image.volume">volume() (image static method)</a>
+</li>
+        <li><a href="api/voxel.html#module-voxel">voxel (module)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.block.cutout">voxel.voxel.block.cutout (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.block.emissive">voxel.voxel.block.emissive (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.block.id">voxel.voxel.block.id (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.block.metallic">voxel.voxel.block.metallic (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.block.name">voxel.voxel.block.name (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.block.roughness">voxel.voxel.block.roughness (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.block.translucent">voxel.voxel.block.translucent (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.chunk.depth">voxel.voxel.chunk.depth (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.chunk.height">voxel.voxel.chunk.height (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.chunk.width">voxel.voxel.chunk.width (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.chunk.x">voxel.voxel.chunk.x (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.chunk.y">voxel.voxel.chunk.y (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.chunk.z">voxel.voxel.chunk.z (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.hit.block">voxel.voxel.hit.block (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.hit.color">voxel.voxel.hit.color (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.hit.coord">voxel.voxel.hit.coord (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.hit.distance">voxel.voxel.hit.distance (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.hit.normal">voxel.voxel.hit.normal (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.hit.point">voxel.voxel.hit.point (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.model.mesh">voxel.voxel.model.mesh (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.model.size">voxel.voxel.model.size (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.world.blocks">voxel.voxel.world.blocks (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.world.chunkSize">voxel.voxel.world.chunkSize (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.world.focus">voxel.voxel.world.focus (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.world.loading">voxel.voxel.world.loading (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.world.material">voxel.voxel.world.material (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.world.size">voxel.voxel.world.size (attribute)</a>
+</li>
+        <li><a href="api/voxel.html#voxel.voxel.world.viewDistance">voxel.voxel.world.viewDistance (attribute)</a>
 </li>
         <li><a href="api/ui.html#ui.vstack">vstack (class in ui)</a>
 </li>
@@ -3007,6 +3243,8 @@
 
         <ul>
           <li><a href="api/physics3d.html#physics3d.world">(class in physics3d)</a>
+</li>
+          <li><a href="api/voxel.html#voxel.world">(class in voxel)</a>
 </li>
         </ul></li>
     </ul></td>

@@ -138,31 +138,179 @@ See :doc:`/api/graphics` for a complete list of vector drawing functions
 Text
 ----
 
-Use :lua:func:`text` to draw strings to the screen. Text color is set with :lua:func:`style.fill`:
+Draw text on the screen with :lua:func:`text`, followed by its horizontal and vertical
+position. Put the call in ``draw()`` so the message appears every frame:
 
 .. code-block:: lua
 
-   style.push().fill(255).fontSize(32).textAlign(CENTER | MIDDLE)
-   text("Hello, Codea!", WIDTH/2, HEIGHT/2)
-   style.pop()
+   function draw()
+       background(30)
+       text("Hello, Codea!", WIDTH/2, HEIGHT/2)
+   end
 
-**Emojis require native rendering**
+The bottom-left corner of the screen is ``(0, 0)``. Increase ``x`` to move text to
+the right, or ``y`` to move it up. ``WIDTH/2, HEIGHT/2`` is the center of the screen.
 
-By default Codea uses its own text renderer, which does not support emoji characters (they appear as empty boxes). To render emojis, enable native text rendering with ``TEXT_NATIVE``:
+**Size, color, and font**
+
+Set these before drawing your text. The following examples belong inside
+``draw()`` too:
 
 .. code-block:: lua
 
-   -- Emojis render as boxes with the default renderer
-   text("Broken: 🎉 🚀 ❤️", WIDTH/2, HEIGHT/2 + 60)
+   style.fontSize(40)
+   style.fill(255, 210, 80)
+   style.font("Arial-BoldMT")
+   text("You win! 🎉", WIDTH/2, HEIGHT/2)
 
-   -- Enable native rendering to display emojis correctly
-   style.push().textStyle(TEXT_NATIVE)
-   text("Working: 🎉 🚀 ❤️", WIDTH/2, HEIGHT/2)
+Use ``fontSize`` to control the size in points, ``fill`` to set the color, and ``font``
+to choose a font face.
+
+**Positioning and multiple lines**
+
+Use ``style.textMode`` to choose which part of a message sits at the coordinates
+you give to ``text``. ``CORNER`` places the lower-left corner there, which is handy
+for a score near the edge of the screen:
+
+.. code-block:: lua
+
+   style.fontSize(32)
+   style.textMode(CORNER)
+   text("Score: 120", 40, 40)
+
+``CENTER`` places the center of the whole message at that point:
+
+.. code-block:: lua
+
+   style.textMode(CENTER)
+   text("Level complete!", WIDTH/2, HEIGHT/2)
+
+To center your text at a point, set both horizontal and vertical alignment:
+
+.. code-block:: lua
+
+   style.fontSize(32)
+   style.textAlign(CENTER | MIDDLE)
+   text("Level complete!\nTap to continue", WIDTH/2, HEIGHT/2)
+
+You can use ``\n`` to start a new line. For a longer message, set the wrap width with `textWrapWidth` to wrap the text:
+
+.. code-block:: lua
+
+   text("Explore the island and find three hidden keys before sunset.",
+        40, HEIGHT/2, WIDTH - 80)
+
+You can also supply a height to align text within a box. See
+:lua:func:`style.textAlign` for the available alignments and their positioning rules.
+
+**Measuring text**
+
+Use :lua:func:`textSize` when you need to leave room for a label or place another
+message below it. Set the font and size before measuring, just as you would before
+drawing:
+
+.. code-block:: lua
+
+   style.fontSize(32)
+   style.textAlign(CENTER | MIDDLE)
+   local message = "Score: 120"
+   local width, height = textSize(message)
+   text(message, WIDTH/2, HEIGHT/2)
+   text("Best: 200", WIDTH/2, HEIGHT/2 - height - 12)
+
+For wrapped text, pass the same width to ``textSize`` and ``text``.
+
+To align different fonts along the same baseline, use :lua:func:`font.metrics`.
+It returns measurements such as ascent, descent, and capital-letter height for
+the current font and size. These describe the font rather than a particular
+message.
+
+**Making text stand out**
+
+A shadow helps a label remain readable over a busy background:
+
+.. code-block:: lua
+
+   style.fontSize(40)
+   style.fill(255)
+   style.textShadow(color(0, 0, 0, 180), vec2(2, -2), 3)
+   text("Ready?", WIDTH/2, HEIGHT/2)
+
+The color controls its tint and opacity, ``offset`` moves it relative to the text,
+and ``radius`` controls the blur. A radius of zero gives a sharp shadow.
+Use ``style.noTextShadow()`` to turn the shadow off. To change the appearance of
+just one label, surround its settings and drawing calls with ``style.push()`` and
+``style.pop()``. That restores the settings used by the rest of your drawing.
+Text settings reset each frame, so keep them inside ``draw()``.
+
+**Formatting parts of a message**
+
+Tags let you make individual words bold, italic, or a different color. You must use the atlas text renderer by calling
+``style.textRenderer(style.atlas)`` before drawing tagged text:
+
+.. code-block:: lua
+
+   style.push()
+   style.textRenderer(style.atlas)
+   style.fontSize(32)
+   text('Find the <b>key</b> to open the <fill color="red">red door</fill>.',
+        WIDTH/2, HEIGHT/2)
    style.pop()
 
-.. note::
+``<b>...</b>`` makes a span bold, ``<i>...</i>`` makes it italic, and
+``<fill color="red">...</fill>`` changes its color. Close each tag after the words
+it should affect. Atlas text also supports decorations such as underlines:
 
-   ``TEXT_NATIVE`` uses the system font renderer, so other ``textStyle`` flags (bold, italic, rich text, etc.) are ignored while it is active.
+.. code-block:: lua
+
+   style.push()
+   style.textRenderer(style.atlas)
+   style.textUnderline(255)
+   text("Next chapter", WIDTH/2, HEIGHT/2)
+   style.pop()
+
+A decoration's color enables it; set its alpha to zero to turn it off, for example
+``style.textUnderline(255, 0)``.
+
+**Animating letters**
+
+When using atlas text, you can define your own tags for effects such as waving letters. Register the tag
+in ``setup()``, then use it in the text you draw:
+
+.. code-block:: lua
+
+   function setup()
+       text.style.wave = function(tag, format)
+           format.callback = function(str, index, letter)
+               letter.offsetY = math.sin(time.elapsed * 5 + index) * 6
+           end
+       end
+   end
+
+   function draw()
+       background(30)
+       style.fontSize(40)
+       style.textRenderer(style.atlas)
+       text("<wave>Hello!</wave>", WIDTH/2, HEIGHT/2)
+   end
+
+The callback adjusts each letter's position. You can also change its color or
+opacity. See :lua:attr:`text.style` for custom tags and :lua:class:`glyphModifier`
+for the per-letter controls.
+
+**Choosing native or atlas text**
+
+Most labels, scores, paragraphs, and emoji can use the default, ``style.native``.
+Choose ``style.atlas`` when you want tags, underlines, or animated-letter effects.
+Atlas text does not support color emoji, so keep emoji labels on native rendering.
+
+Use ``style.textRenderer(style.native)`` to switch back. You can mix both in a frame;
+``style.push()`` and ``style.pop()`` are useful for keeping each label's settings
+local. Remember that your style and renderer choices apply to ``textSize``, so measure and draw with the same
+settings.
+
+See :doc:`/api/style` for individual text settings and :doc:`/api/graphics` for
+drawing, measurement, and custom effects.
 
 Images and Sprites
 ------------------

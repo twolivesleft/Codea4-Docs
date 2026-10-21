@@ -161,7 +161,6 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../manual/codea_3x.html">Migration from Codea 3.x</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
@@ -182,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
@@ -208,8 +208,10 @@
 <li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="voxel.html">voxel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hinge.html">hinge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
@@ -390,6 +392,26 @@
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number,</span> <span class="pre">number,</span> <span class="pre">number</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="camera.screenToRay">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">screenToRay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#camera.screenToRay" title="Link to this definition">¶</a></dt>
+<dd><p>Takes a 2D point on the screen (in points) and returns a ray that starts at the camera and points through that point into the scene. Use it with raycasts to find what is under a touch</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">   </span><span class="kd">local</span><span class="w"> </span><span class="nv">origin</span><span class="p">,</span><span class="w"> </span><span class="nv">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">.</span><span class="py">camera</span><span class="p">:</span><span class="nf">get</span><span class="p">(</span><span class="nv">camera</span><span class="p">):</span><span class="nf">screenToRay</span><span class="p">(</span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="w">   </span><span class="kd">local</span><span class="w"> </span><span class="nv">hit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="p">.</span><span class="py">world3d</span><span class="p">:</span><span class="nf">raycast</span><span class="p">(</span><span class="nv">origin</span><span class="p">,</span><span class="w"> </span><span class="nv">dir</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The origin of the ray and its direction (normalized)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">vec3,</span> <span class="pre">vec3</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>

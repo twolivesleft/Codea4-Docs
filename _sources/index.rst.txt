@@ -25,7 +25,6 @@ Codea 4
    :caption: Manual:
 
    manual
-   manual/codea_3x
    manual/codea
    manual/drawing
    manual/sound
@@ -48,6 +47,7 @@ Codea 4
    api/color
    api/graphics
    api/style
+   api/font
    api/matrix
    api/input
    api/image
@@ -71,8 +71,10 @@ Codea 4
    api/file
    api/physics2d
    api/physics3d
+   api/voxel
    api/pick
    api/viewer
+   api/hinge
    api/inspector
    api/device
    api/storage

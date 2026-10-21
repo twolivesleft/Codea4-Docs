@@ -161,7 +161,6 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manual/codea_3x.html">Migration from Codea 3.x</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/sound.html">Sound</a></li>
@@ -182,6 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/color.html">color</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/matrix.html">matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/input.html">input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/image.html">Images Overview</a></li>
@@ -208,8 +208,10 @@
 <li class="toctree-l1"><a class="reference internal" href="api/file.html">file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics2d.html">physics2d</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/voxel.html">voxel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/pick.html">pick</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/hinge.html">hinge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/storage.html">storage</a></li>
@@ -265,22 +267,6 @@
 <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manual/codea_3x.html">Migration from Codea 3.x</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#opengl-es-3-metal">OpenGL ES 3 -&gt; Metal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#drawing-commands">Drawing Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#asset-loading-saving">Asset Loading/Saving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#craft">Craft</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#scenes-and-entities">Scenes and Entities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#entities">Entities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#physics">Physics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#fluent-api-style-matrix-etc">Fluent API (style, matrix, etc…)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#feature-set-compatibility-table">Feature Set Compatibility Table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#time">Time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#matrix-and-vector-types">Matrix and Vector Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#d-coordinate-system">3D Coordinate System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual/codea_3x.html#mesh-vertices-vs-positions">Mesh: <code class="docutils literal notranslate"><span class="pre">vertices</span></code> vs <code class="docutils literal notranslate"><span class="pre">positions</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="manual/codea.html">How Codea Works</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual/codea.html#setup">setup()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/codea.html#draw">draw()</a></li>
@@ -435,6 +421,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api/style.html#constants-depth">Constants - Depth</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/matrix.html">matrix</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/matrix.html#general">General</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/matrix.html#transform">Transform</a></li>
@@ -498,6 +485,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/voxel.html">voxel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/pick.html">pick</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/pick.html#picking-assets">Picking Assets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/pick.html#picking-specific-types">Picking Specific Types</a></li>
@@ -508,6 +496,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/hinge.html">hinge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/inspector.html">inspector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/device.html">device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/storage.html">storage</a></li>
