@@ -18,7 +18,7 @@ function DialogueBox:created()
     textBox.x = 75
     local label = textBox:add(ui.label)
     label.text = "" -- words
-    label.style = TEXT_RICH
+    label.textRenderer = style.atlas
     label.shadow = color(32)
     label.shadowOffset = vec2(4, 4)
     

@@ -2,15 +2,15 @@ function setup()
     scene.main = scene.default3d()
     
     red = material.lit()
-    red.baseColor = color.red
+    red.color = color.red
     red.roughness = 1
 
     green = material.lit()
-    green.baseColor = color.green
+    green.color = color.green
     green.roughness = 1
 
     blue = material.lit()
-    blue.baseColor = color.blue
+    blue.color = color.blue
     blue.roughness = 1
     
     -- Create some sphere that orbit each other with parenting

@@ -205,6 +205,8 @@ General
 
    Sets the current line cap mode, used by :lua:`line`, :lua:`polyline` and :lua:`shape`
 
+   :param mode: ``ROUND``, ``SQUARE``, or ``PROJECT``.
+   :type mode: enum
    :returns: The style table, for chaining.
    :rtype: style
 
@@ -224,6 +226,8 @@ General
 
    Sets the current line join mode, used by :lua:`polyline`, :lua:`polygon` and :lua:`shape` when joining multiple line segments
 
+   :param mode: ``ROUND``, ``MITER``, or ``BEVEL``.
+   :type mode: enum
    :returns: The style table, for chaining.
    :rtype: style
 
@@ -243,6 +247,8 @@ General
 
    Sets the current shape mode, used by :lua:`rect`, :lua:`ellipse` and :lua:`sprite`
 
+   :param mode: ``CENTER``, ``CORNERS``, ``CORNER``, or ``RADIUS``.
+   :type mode: enum
    :returns: The style table, for chaining.
    :rtype: style
 
@@ -721,26 +727,302 @@ Stencil Operations
 Text Style
 ##########
 
-.. lua:function:: fontSize(size)
+Set the font, size, and alignment before calling :lua:func:`text`. Use
+:lua:func:`style.fill` for text color. For a step-by-step introduction, see the
+text examples in :doc:`/manual/drawing`.
 
+.. lua:function:: font(name)
+
+   Sets the font by its system font name. For bold or italic text, choose the corresponding font face, such as ``Arial-BoldMT``.
+
+   .. helptext:: set the font for text()
+   .. editor:: font
+
+   :param name: A system font name.
+   :type name: string
    :returns: The style table, for chaining.
    :rtype: style
+
+.. lua:function:: font()
+
+   Gets the current font name.
+
+   .. helptext:: get the font for text()
+   .. editor:: font
+
+   :returns: The current value.
+   :rtype: string
+
+.. lua:function:: fontSize(size)
+
+   Sets the font size in points. The default is 17.
 
    .. helptext:: set the font size for text()
 
-.. lua:function:: textAlign(align)
-
+   :param size: The font size in points.
+   :type size: number
    :returns: The style table, for chaining.
    :rtype: style
+
+.. lua:function:: fontSize()
+
+   Gets the current font size.
+
+   .. helptext:: get the font size for text()
+
+   :returns: The current value.
+   :rtype: number
+
+.. lua:function:: textAlign(align)
+
+   Sets text alignment. Combine a horizontal value (``LEFT``, ``CENTER``, ``RIGHT``) with a vertical value (``TOP``, ``MIDDLE``, ``BOTTOM``) using bitwise OR. In a text box, these align text within the box. Without a box, LEFT places text to the left of the draw position and RIGHT places it to the right; TOP places it above and BOTTOM below. CENTER and MIDDLE center it on that axis. The default is CENTER. Calling this setter selects alignment-based positioning. To position the whole text block with ``textMode``, set the alignment first, then call ``style.textMode()``.
 
    .. helptext:: set alignment for text()
 
-.. lua:function:: textStyle(style)
+   :param align: The alignment flags.
+   :type align: integer
+   :returns: The style table, for chaining.
+   :rtype: style
+
+.. lua:function:: textAlign()
+
+   Gets the current text alignment flags.
+
+   .. helptext:: get alignment for text()
+
+   :returns: The current value.
+   :rtype: integer
+
+.. lua:function:: textMode(mode)
+
+   Chooses what the coordinates passed to :lua:func:`text` represent. Use
+   ``CENTER`` to place the center of the whole message at that point, or ``CORNER``
+   to place its lower-left corner there. This applies to the entire text block,
+   including multiple lines. The stored mode defaults to ``CENTER``.
+
+   .. code-block:: lua
+
+      style.fontSize(32)
+      style.textMode(CORNER)
+      text("Score: 120", 40, 40)
+
+   For centered titles, use ``style.textMode(CENTER)`` and draw at
+   ``WIDTH/2, HEIGHT/2``. To also choose the alignment of lines within the block,
+   call ``style.textAlign()`` before ``style.textMode()``.
+
+   When width or height is supplied directly to ``text()``, the text is positioned
+   within that box using ``textAlign`` instead of ``textMode``.
+
+   .. helptext:: set how text coordinates position the whole message
+
+   :param mode: ``CENTER`` or ``CORNER``.
+   :type mode: enum
+   :returns: The selected mode (``CENTER`` or ``CORNER``).
+   :rtype: enum
+
+.. lua:function:: textMode()
+
+   Gets the current text positioning mode.
+
+   .. helptext:: get the text positioning mode
+
+   :returns: The current value.
+   :rtype: enum
+
+.. lua:function:: textWrapWidth(width)
+
+   Sets the maximum text width before words wrap onto another line. The width is in points and applies to both ``text()`` and ``textSize()`` when no explicit width is supplied. Use zero for no wrapping limit. Negative values are treated as zero. Set alignment before setting the wrapping width.
+
+   .. helptext:: set the maximum text width before wrapping
+
+   :param width: The wrapping width, or zero.
+   :type width: number
+   :returns: The resulting wrapping width.
+   :rtype: number
+
+.. lua:function:: textWrapWidth()
+
+   Gets the maximum text width before wrapping, or zero if there is no limit.
+
+   .. helptext:: get the maximum text width before wrapping
+
+   :returns: The current value.
+   :rtype: number
+
+.. lua:function:: textOverline(color)
+
+   Sets the overline color for atlas text. A nonzero alpha enables the decoration; alpha zero disables it. The default is transparent.
+
+   .. helptext:: set the overline color
+   .. editor:: color
+
+   :param color: A color or grayscale value from 0 to 255.
+   :type color: color or number
+   :returns: The style table, for chaining.
+   :rtype: style
+
+.. lua:function:: textOverline()
+
+   Gets the overline color components.
+
+   .. helptext:: get the overline color
+
+   :returns: Red, green, blue, and alpha components (0–255).
+   :rtype: number, number, number, number
+
+.. lua:function:: textUnderline(color)
+
+   Sets the underline color for atlas text. A nonzero alpha enables the decoration; alpha zero disables it. The default is transparent.
+
+   .. helptext:: set the underline color
+   .. editor:: color
+
+   :param color: A color or grayscale value from 0 to 255.
+   :type color: color or number
+   :returns: The style table, for chaining.
+   :rtype: style
+
+.. lua:function:: textUnderline()
+
+   Gets the underline color components.
+
+   .. helptext:: get the underline color
+
+   :returns: Red, green, blue, and alpha components (0–255).
+   :rtype: number, number, number, number
+
+.. lua:function:: textStrikeThrough(color)
+
+   Sets the strikethrough color for atlas text. A nonzero alpha enables the decoration; alpha zero disables it. The default is transparent.
+
+   .. helptext:: set the strikethrough color
+   .. editor:: color
+
+   :param color: A color or grayscale value from 0 to 255.
+   :type color: color or number
+   :returns: The style table, for chaining.
+   :rtype: style
+
+.. lua:function:: textStrikeThrough()
+
+   Gets the strikethrough color components.
+
+   .. helptext:: get the strikethrough color
+
+   :returns: Red, green, blue, and alpha components (0–255).
+   :rtype: number, number, number, number
+
+.. lua:function:: textBackground(color)
+
+   Sets the background color for atlas text. A nonzero alpha enables the decoration; alpha zero disables it. The default is transparent.
+
+   .. helptext:: set the text background color
+   .. editor:: color
+
+   :param color: A color or grayscale value from 0 to 255.
+   :type color: color or number
+   :returns: The style table, for chaining.
+   :rtype: style
+
+.. lua:function:: textBackground()
+
+   Gets the text background color components.
+
+   .. helptext:: get the text background color
+
+   :returns: Red, green, blue, and alpha components (0–255).
+   :rtype: number, number, number, number
+
+.. lua:function:: textShadow(color, offset, radius)
+
+   Adds a shadow behind text to help it stand out from the background.
+
+   Set the color, offset, and radius together. A transparent color disables the
+   shadow. The default is no shadow. Shadows do not change text measurements.
+
+   .. code-block:: lua
+
+      style.textShadow(color(0, 0, 0, 160), vec2(2, -2), 4)
+
+   .. helptext:: set text shadow color, offset, and blur radius
+   .. editor:: color
+
+   :param color: The shadow color, including opacity.
+   :type color: color
+   :param offset: The shadow displacement in points. Positive x moves right; positive y moves up.
+   :type offset: vec2
+   :param radius: The blur radius in points. Zero gives a sharp shadow; must be non-negative.
+   :type radius: number
+   :returns: The style table, for chaining.
+   :rtype: style
+
+.. lua:function:: textShadow()
+
+   Gets the shadow color, offset, and radius. A disabled shadow returns a
+   transparent color while retaining its offset and radius.
+
+   .. helptext:: get text shadow color, offset, and blur radius
+
+   :returns: The color, offset, and radius.
+   :rtype: color, vec2, number
+
+.. lua:function:: noTextShadow()
+
+   Disables the shadow by setting its opacity to zero.
+
+   .. helptext:: disable the text shadow
 
    :returns: The style table, for chaining.
    :rtype: style
 
-   .. helptext:: set the style for text()
+.. lua:function:: textRenderer(renderer)
+
+   Chooses the text features you want to use. Leave the default, ``style.native``,
+   for everyday text and emoji. Choose ``style.atlas`` for formatting tags,
+   decorations, or animated letters. Atlas text does not support color emoji.
+
+   Set this before drawing and measuring text. Settings reset each frame, so
+   select atlas inside ``draw()`` when using it every frame. ``style.push()`` and
+   ``style.pop()`` save and restore the selection. Also available as ``textRenderer``.
+
+   .. helptext:: select native or atlas text rendering
+
+   :param renderer: ``style.native`` or ``style.atlas``.
+   :type renderer: enum
+   :returns: The style table, for chaining.
+   :rtype: style
+
+.. lua:function:: textRenderer()
+
+   Gets the renderer shared by text drawing and measurement. Also available as the
+   global ``textRenderer()`` function.
+
+   .. helptext:: get the current text renderer
+
+   :returns: ``style.native`` or ``style.atlas``.
+   :rtype: enum
+
+.. lua:attribute:: native: string
+
+   The default choice for labels, paragraphs, and color emoji. Use
+   ``style.textRenderer(style.native)`` to return to it after drawing tagged text.
+   Tags such as ``<b>`` appear as ordinary text with this choice.
+
+   .. symbol:: const
+      :group: text-renderer
+
+   .. helptext:: native text renderer constant
+
+.. lua:attribute:: atlas: string
+
+   Choose this for formatting tags, decorations, and animated-letter effects:
+   ``style.textRenderer(style.atlas)``. Tags are interpreted automatically.
+   Color emoji are not supported.
+
+   .. symbol:: const
+      :group: text-renderer
+
+   .. helptext:: atlas text renderer constant
 
 Constants - Text
 ****************
@@ -802,6 +1084,20 @@ Constants - Text
 
    .. helptext:: baseline alignment constant
 
+
+Constants - Text Styles
+***********************
+
+.. lua:currentmodule:: None
+
+.. lua:attribute:: STRETCH: const
+
+   Reserved text alignment flag; stretching is not currently implemented.
+
+   .. symbol:: const
+      :group: text-alignment
+
+   .. helptext:: reserved text stretch alignment
 
 Constants - Style
 #################

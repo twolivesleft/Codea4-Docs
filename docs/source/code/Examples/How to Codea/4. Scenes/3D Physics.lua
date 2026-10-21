@@ -111,7 +111,7 @@ function setup()
     scn.sun:get(light).intensity = 5.0
 
     checkers = material.lit()
-    checkers.baseColorMap = image.read(asset.checkers)
+    checkers.map = image.read(asset.checkers)
     --checkers.metallic = 1.0
     --checkers.enableAnisotropy = true
     --checkers.anisotropy = 1.0
@@ -119,7 +119,7 @@ function setup()
     checkers.roughness = 0.5
 
     --checkers.blend = material.blendTransparent
-    --checkers.baseColor = color(255, 255, 255, 64)
+    --checkers.color = color(255, 255, 255, 64)
     for k,v in pairs(checkers.properties) do
         --print(v.name, v.type)
     end

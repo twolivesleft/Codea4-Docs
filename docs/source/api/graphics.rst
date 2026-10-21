@@ -276,130 +276,50 @@ Sprites
 Text
 ####
 
-.. lua:function:: text(str, x, y, [w, h])
+.. lua:currentmodule:: None
 
-   Draws one or more lines of text based on the current style. Use the optional width and height parameters to draw a fixed size text box with line wrapping enabled
+.. lua:function:: text(str, x, y[, w, h])
+
+   Draws text at ``x, y``. Call it inside ``draw()`` to show the text every frame.
+   Set :lua:func:`style.fontSize`, :lua:func:`style.font`, and :lua:func:`style.fill`
+   before drawing to choose its size, font, and color. Emoji work by default.
+
+   Use ``\n`` for a new line, or supply ``w`` to wrap a longer message. Add ``h``
+   to align the text within a box using :lua:func:`style.textAlign`. The box controls
+   layout; it does not clip text that extends beyond it. Numbers and other values
+   are converted to strings.
+
+   .. code-block:: lua
+
+      style.fontSize(32)
+      style.fill(255)
+      text("Score: 120", WIDTH/2, HEIGHT/2)
 
    .. helptext:: draw text at a location
    .. editor:: text
 
-   - *Text Color* with :lua:func:`style.fill`
-   - *Text Outline* with :lua:func:`style.stroke`
-   - *Text Outline Thickness* with :lua:func:`style.strokeWidth`
-   - *Text Alignment* with :lua:func:`style.textAlign`
-      - ``LEFT``
-      - ``CENTER``
-      - ``RIGHT``
-      - ``TOP``
-      - ``MIDDLE``
-      - ``BOTTOM``
-   - *Text Style* with :lua:func:`style.textStyle`
-      - ``TEXT_NORMAL``
+   See :doc:`/manual/drawing` for positioning, wrapping, shadows, and tagged-text
+   examples. For advanced per-letter effects, see :lua:attr:`text.style`.
 
-        - Renders the text normally
-
-      - ``TEXT_BACKGROUND``
-
-        - Renders a rectangle behind the text using the background color
-
-      - ``TEXT_UNDERLINE``
-
-        - Renders a line below the text
-        
-      - ``TEXT_OVERLINE``
-
-        - Renders a line above the text
-
-      - ``TEXT_STRIKE_THROUGH``
-
-        - Renders a line through the text
-
-      - ``TEXT_BOLD``
-
-        - Renders the text in bold
-
-      - ``TEXT_ITALICS``
-
-        - Renders the text in italics
-
-      - ``TEXT_RICH``
-
-        - Enables rich text, which parses xml tags within the supplied string to format individual characters.
-
-      - ``TEXT_UPPERCASE``
-
-        - Renders all text in uppercase
-
-      - ``TEXT_LOWERCASE``
-
-        - Renders all text in lowercase
-
-      - ``TEXT_NATIVE``
-
-        - Enables native text rendering, which uses the system font renderer to draw text and supports emojis. Note that other text styles are disabled while using the native renderer.
-
-   **Built-In Tags**
-
-   *Bold and Italic*
-
-   .. epigraph::
-
-      The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.
-
-      .. image:: /images/example_richText_bold_italic.png
-         :width: 512
-
-   *Custom Tags*
-
-   Custom tags can assigned using a callback function - ``text.style.myCustomTag = function(tag, format) ... end``
-
-   The ``tag`` parameter gives access to custom xml tag attributes
-
-   The ``format`` parameter gives access to text formatting options that can be adjusted per tag, derived from text styles in the ``style`` module
-
-   - ``textAlign``
-   - ``textStyle``
-   - ``fontSize``
-   - ``fontName``
-   - ``fillColor``
-   - ``strokeColor``
-   - ``strokeWidth``
-   - ``textOverline``
-   - ``textUnderline``
-   - ``textStrikeThrough``
-   - ``textBackground``
-   - ``textShadow``
-   - ``textShadowOffset``
-   - ``textShadowSoftner``
-   - ``callback``
-
-   The additional parameter ``callback`` is a special function used to modify individual glyphs (characters) when the text is rendered. The callback function has the following parameters:
-
-   - ``str`` - the string being drawn
-   - ``index`` - the index of the current glyph in the string
-   - ``mod`` - a reference to a glyphModifier object, used to modify the current glyph
-
-   A ``glyphModifier`` has the follwing properties:
-
-   - ``offsetX`` - the amount to offset the glyphs x position in pixels
-   - ``offsetY`` - the amount to offset the glyphs y position in pixels
-   - ``alpha`` - the alpha of the current glyph (0-255)
-   - ``color`` - the color the of the current glyph
-
-   .. collapse:: Example
-
-      .. literalinclude:: /code/Example_text_glyph_callback.codea/Main.lua
-         :language: lua
-
-   :param x: the x coordinate of the text
-   :param y: the x coordinate of the text
-   :param w: optional width of the text box
-   :param h: optional height of the text box
-   :param callback: a special glyph modifier callback
+   :param str: The value to draw (converted to a string).
+   :type str: any
+   :param x: The x coordinate of the text.
+   :type x: number
+   :param y: The y coordinate of the text.
+   :type y: number
+   :param w: Optional wrapping width in points; zero means unbounded.
+   :type w: number
+   :param h: Optional box height in points; zero means unbounded.
+   :type h: number
 
 .. lua:function:: textSize(str[, width])
 
-   Gets the size of a text being drawn
+   Measures text in points so you can reserve space for it or position nearby
+   content. Set the same font, size, and other text settings that you will use
+   when drawing. Supply ``width`` when measuring wrapped text.
+
+   The returned size does not depend on paragraph alignment. If you use
+   ``textWrapWidth``, that width applies when no explicit width is supplied.
 
    .. helptext:: get the width and height of the drawn string
 
@@ -407,8 +327,280 @@ Text
    :type str: string
    :param width: the width of the textbox
    :type width: number
-   :return: The ``width`` and ``height`` of the text 
+   :return: The ``width`` and ``height`` of the text
    :rtype: number, number
+
+
+.. lua:function:: textRenderer(renderer)
+
+   Alias of :lua:func:`style.textRenderer`. Use ``style.native`` for everyday text
+   and emoji, or ``style.atlas`` for tags, decorations, and animated letters.
+   Set this before drawing and measuring text.
+
+   .. helptext:: select native or atlas text rendering
+
+   :param renderer: ``style.native`` or ``style.atlas``.
+   :type renderer: enum
+   :returns: The style table, for chaining.
+   :rtype: style
+
+.. lua:function:: textRenderer()
+
+   Alias of :lua:func:`style.textRenderer`. Gets the current text renderer.
+
+   .. helptext:: get the current text renderer
+
+   :returns: ``style.native`` or ``style.atlas``.
+   :rtype: enum
+
+.. lua:function:: textLineHeight()
+
+   Gets the atlas font line height. This currently uses atlas metrics even when
+   ``style.native`` is selected. For native measurements, use :lua:func:`textSize`.
+
+   .. helptext:: get the atlas font line height
+
+   :return: The line height, or zero if the atlas font cannot be loaded.
+   :rtype: number
+
+.. lua:function:: textBounds(str, x, y)
+
+   Reserved API. Currently returns four zeros; bounds calculation is not implemented.
+   Use :lua:func:`textSize` for working width and height measurements.
+
+   .. helptext:: reserved text bounds query
+
+   :param str: The text to query.
+   :type str: string
+   :param x: The draw x coordinate.
+   :type x: number
+   :param y: The draw y coordinate.
+   :type y: number
+   :return: Four zeros (not implemented).
+   :rtype: number, number, number, number
+
+.. lua:function:: glyphBounds(str, x, y, index)
+
+   Reserved API. Currently returns four zeros; glyph bounds calculation is not implemented.
+
+   .. helptext:: reserved glyph bounds query
+
+   :param str: The text to query.
+   :type str: string
+   :param x: The draw x coordinate.
+   :type x: number
+   :param y: The draw y coordinate.
+   :type y: number
+   :param index: The one-based glyph index.
+   :type index: integer
+   :return: Four zeros (not implemented).
+   :rtype: number, number, number, number
+
+.. lua:attribute:: text.style: table
+
+   Defines reusable formatting and animation effects for tagged text. Register
+   your tags in ``setup()``. For example, give warning messages a consistent color:
+
+   .. code-block:: lua
+
+      text.style.warning = function(tag, format)
+          format.fillColor = color(255, 180, 40)
+          format.fontName = "Helvetica-Bold"
+      end
+
+   Then use the tag when drawing:
+
+   .. code-block:: lua
+
+      style.textRenderer(style.atlas)
+      text("<warning>Low fuel!</warning>", WIDTH/2, HEIGHT/2)
+
+   Each handler receives ``tag``, ``format``, and an optional ``index`` argument.
+   Read custom tag attributes through :lua:class:`textTag`, and change the span's
+   appearance through :lua:class:`textFormatting`. ``index`` is the zero-based
+   text index. Handlers are registered by assignment; the table does not return
+   previously registered handlers.
+
+   To animate individual letters, assign a function to ``format.callback``.
+   It receives the text, a one-based glyph index, and a :lua:class:`glyphModifier`.
+   Adjust the modifier's position, color, or opacity to make letters wave, shake,
+   or appear gradually. See :doc:`/manual/drawing` for a short wave example, or
+   explore the combined effects below.
+
+   .. collapse:: Example: waving, shaking, and revealing text
+
+      .. literalinclude:: /code/Example_text_glyph_callback.codea/Main.lua
+         :language: lua
+
+   .. helptext:: register custom rich-text tag handlers
+
+.. lua:class:: textTag
+
+   A tag supplied to a rich-text callback. Created by the renderer; no constructor.
+
+   .. lua:method:: number(name, default)
+
+      Reads a numeric XML attribute, returning the default if it is missing or invalid.
+
+      .. helptext:: get a numeric tag attribute
+
+      :param name: The attribute name.
+      :type name: string
+      :param default: The fallback value.
+      :type default: number
+      :return: The attribute value or fallback.
+      :rtype: number
+
+.. lua:class:: textFormatting
+
+   Mutable formatting supplied to a rich-text tag callback. Created by the renderer;
+   no constructor. Color values use :lua:class:`color` objects.
+
+   .. lua:attribute:: textAlign: integer
+
+      Text alignment flags.
+
+      .. helptext:: get or set textAlign
+
+   .. lua:attribute:: fontSize: number
+
+      Font size in points.
+
+      .. helptext:: get or set fontSize
+
+   .. lua:attribute:: fontName: string
+
+      Font name.
+
+      .. helptext:: get or set fontName
+
+   .. lua:attribute:: fillColor: color
+
+      Text fill color.
+
+      .. helptext:: get or set fillColor
+
+   .. lua:attribute:: strokeColor: color
+
+      Text outline color.
+
+      .. helptext:: get or set strokeColor
+
+   .. lua:attribute:: strokeWidth: number
+
+      Text outline width.
+
+      .. helptext:: get or set strokeWidth
+
+   .. lua:attribute:: textOverline: color
+
+      Overline color.
+
+      A nonzero alpha enables this decoration; zero disables it. The default is transparent.
+
+      .. helptext:: get or set textOverline
+
+   .. lua:attribute:: textUnderline: color
+
+      Underline color.
+
+      A nonzero alpha enables this decoration; zero disables it. The default is transparent.
+
+      .. helptext:: get or set textUnderline
+
+   .. lua:attribute:: textStrikeThrough: color
+
+      Strikethrough color.
+
+      A nonzero alpha enables this decoration; zero disables it. The default is transparent.
+
+      .. helptext:: get or set textStrikeThrough
+
+   .. lua:attribute:: textBackground: color
+
+      Background color.
+
+      A nonzero alpha enables this decoration; zero disables it. The default is transparent.
+
+      .. helptext:: get or set textBackground
+
+   .. lua:method:: textShadow(color, offset, radius)
+
+      Adds a shadow to this tagged span.
+
+      Set the color, offset, and radius together. A transparent color disables the
+      shadow. The default is no shadow. Shadows do not change text measurements.
+
+      .. code-block:: lua
+
+         format:textShadow(color(0, 0, 0, 160), vec2(2, -2), 4)
+
+      .. helptext:: set text shadow color, offset, and blur radius
+      .. editor:: color
+
+      :param color: The shadow color, including opacity.
+      :type color: color
+      :param offset: The shadow displacement in points. Positive x moves right; positive y moves up.
+      :type offset: vec2
+      :param radius: The blur radius in points. Zero gives a sharp shadow; must be non-negative.
+      :type radius: number
+      :returns: The formatting object, for chaining.
+      :rtype: textFormatting
+
+   .. lua:method:: textShadow()
+
+      Gets the shadow color, offset, and radius. A disabled shadow returns a
+      transparent color while retaining its offset and radius.
+
+      .. helptext:: get text shadow color, offset, and blur radius
+
+      :returns: The color, offset, and radius.
+      :rtype: color, vec2, number
+
+   .. lua:method:: noTextShadow()
+
+      Disables the shadow by setting its opacity to zero.
+
+      .. helptext:: disable the text shadow
+
+      :returns: The formatting object, for chaining.
+      :rtype: textFormatting
+
+   .. lua:attribute:: callback: function
+
+      Glyph callback: ``function(str, index, mod)``. The index is one-based and ``mod`` is a glyphModifier. Used only by atlas rich text.
+
+      .. helptext:: get or set callback
+
+.. lua:class:: glyphModifier
+
+   Mutable glyph data supplied to a formatting callback. Created by the renderer;
+   no constructor. Changes affect the current glyph in atlas rich text.
+
+   .. lua:attribute:: offsetX: number
+
+      Horizontal glyph offset in pixels.
+
+      .. helptext:: get or set glyph offsetX
+
+   .. lua:attribute:: offsetY: number
+
+      Vertical glyph offset in pixels.
+
+      .. helptext:: get or set glyph offsetY
+
+   .. lua:attribute:: alpha: number
+
+      Sets glyph opacity from 0 to 255. The getter currently returns 255, not the edited opacity.
+
+      .. helptext:: get or set glyph alpha
+
+   .. lua:attribute:: color: color
+
+      Sets glyph color. The getter currently returns a default color, not the edited glyph color.
+
+      .. helptext:: get or set glyph color
+
 
 Gizmos
 ######
