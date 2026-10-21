@@ -78,6 +78,7 @@ entity
          - ``camera.rigs.orbit``
          - ``camera.rigs.canvas``
          - ``physics3d.grabber``
+         - ``voxel.world``
       - assets
          - ``mesh``
          - ``image`` / ``image.slice``

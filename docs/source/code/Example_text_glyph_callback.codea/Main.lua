@@ -2,7 +2,7 @@ function setup()
     text.style.wave = function(tag, format)
         local height = tag:number("height", 2)                   
         format.fillColor = color.red
-        format.textStyle = format.textStyle | TEXT_ITALICS | TEXT_BOLD
+        format.fontName = "Helvetica-BoldOblique"
         format.callback = function(str, i, mod)
             mod.offsetY = mod.offsetY + math.sin(time.elapsed*5 + i) * height
         end
@@ -72,13 +72,13 @@ function draw()
     --matrix.transform3d(0, 0, 0, 0.1, 0.1, 0.1, 0, 0, 0)
         
     style.fill(255)
-    style.stroke(0).strokeWidth(5).textStyle(TEXT_RICH)
+    style.stroke(0).strokeWidth(5).textRenderer(style.atlas)
     --style.noStroke()
     style.textAlign(alignH[TextAlignH] | alignV[TextAlignV])
     
     local so = (CurrentTouch.pos - vec2(WIDTH/2, HEIGHT/2)) * 0.1
     
-    style.textShadow(0, 0, 0, 128).textShadowSoftner(10).textShadowOffset(so.x, so.y)
+    style.textShadow(color(0, 0, 0, 128), so, 10)
         
     -- Cache some locals for performance
     local len = str:len()

@@ -11,6 +11,8 @@ material
 
    The standard material is built on the standard uber-shader, providing a convenient all purpose material
 
+   Color properties take ordinary colors, the same as ``style.fill`` and ``color(...)`` everywhere else in Codea, and are converted for lighting automatically. Reading a color property gives back the color that was set
+
    .. list-table:: Standard Material Properties
       :widths: 25 20 10 45
       :header-rows: 1
@@ -32,11 +34,11 @@ material
         - All
         - Current tint mode: ``TINT_NONE``, ``TINT_OPAQUE``, ``TINT_TRANSPARENT``, ``TINT_ADD``, ``TINT_MULTIPLY``, ``TINT_SCREEN``
       * - ``tintColor``
-        - ``vec4`` (linear color)
+        - ``color``
         - All
         - Tint color overlay blended using ``tintBlend`` mode
       * - ``color``
-        - ``vec4`` (srgb color)
+        - ``color``
         - All
         - Diffuse albedo color of the surface
       * - ``map``
@@ -44,7 +46,7 @@ material
         - All
         - Diffuse albedo color texture map
       * - ``emissive``
-        - ``vec4`` (srgb hdr color)
+        - ``color``
         - All
         - Emissive color of the surface (can be more than 1)
       * - ``emissiveMap``

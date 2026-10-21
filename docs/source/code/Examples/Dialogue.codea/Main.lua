@@ -4,7 +4,7 @@ function setup()
     text.style.wave = function(tag, format)
         local height = tag:number("height", 2)                   
         format.fillColor = color.yellow
-        format.textStyle = format.textStyle | TEXT_ITALICS | TEXT_BOLD
+        format.fontName = "Helvetica-BoldOblique"
         format.callback = function(str, i, mod)
             mod.offsetY = mod.offsetY + math.sin(time.elapsed*5 + i) * height
         end

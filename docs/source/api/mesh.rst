@@ -115,7 +115,6 @@ mesh
 
       The total number of vertices in the currently selected sub-mesh
 
-      *3.x compatiblity note: This was originally called* ``count``
 
       .. helptext:: get the number of vertices
 
@@ -123,7 +122,6 @@ mesh
 
       The total number of indices in the currently selected sub-mesh
 
-      *3.x compatiblity note: meshes originally did not contain indices and therefore did not have an index count*
 
       .. helptext:: get the number of indices
 
@@ -173,7 +171,6 @@ mesh
 
       Gets/sets the positions of the mesh vertices while also ensuring that each set of three indices match their corresponding vertices. This is the preferred way to assign geometry for manually-built meshes because it automatically populates a sequential index buffer matching the vertex order, making the mesh immediately drawable.
 
-      *3.x compatiblity note: works the same as the original vertices property*
 
       .. helptext:: get or set the mesh vertices
 
@@ -181,7 +178,6 @@ mesh
 
       Gets/sets the uvs of the mesh vertices
 
-      *3.x compatiblity note: works the same as the uvs property for the sake of backwards compatiblity*
 
       .. helptext:: get or set the texture coordinates
 
@@ -349,25 +345,25 @@ mesh
 
       .. helptext:: generate an icosphere mesh
 
-   .. lua:staticmethod:: mesh.box([size = vec3(1, 1, 1), segments = vec3(8, 8, 8)])
+   .. lua:staticmethod:: mesh.box([halfSize = vec3(1, 1, 1), segments = vec3(8, 8, 8)])
 
       Rectangular box centered at origin aligned along the x, y and z axis
 
-      :param size: Half of the side length in x, y and z directions
-      :type size: vec3
+      :param halfSize: Half of the side length in x, y and z directions
+      :type halfSize: vec3
       :param segments: The number of segments in x, y and z directions
       :type segments: vec3
 
       .. helptext:: generate a box mesh
 
-   .. lua:staticmethod:: mesh.roundedBox([radius = 0.25, size = vec3(1, 1, 1), slices = 4, segments = vec3(8, 8, 8)])
+   .. lua:staticmethod:: mesh.roundedBox([radius = 0.25, halfSize = vec3(1, 1, 1), slices = 4, segments = vec3(8, 8, 8)])
 
       Rectangular box with rounded edges centered at origin aligned along the x, y and z axis
 
       :param radius: The corner radius of the rounded edges
       :type radius: number
-      :param size: Half of the side length in x, y and z directions
-      :type size: vec3
+      :param halfSize: Half of the side length in x, y and z directions
+      :type halfSize: vec3
       :param slices: The number of subdivisions in the rounded edges / corners
       :type slices:
       :param segments: The number of segments in x, y and z directions
@@ -375,14 +371,14 @@ mesh
 
       .. helptext:: generate a rounded box mesh
 
-   .. lua:staticmethod:: mesh.cone([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
+   .. lua:staticmethod:: mesh.cone([radius = 1, halfLength = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
 
       A cone with a cap centered at origin pointing towards positive y-axis
 
       :param radius: Radius of the flat (negative z) end along the xz-plane
       :type radius: number
-      :param size: Half of the length of the cone along the y-axis
-      :type size: number
+      :param halfLength: Half of the length of the cone along the y-axis
+      :type halfLength: number
       :param slices: Number of subdivisions around the y-axis
       :type slices: integer
       :param segments: Number of subdivisions along the y-axis
@@ -396,13 +392,13 @@ mesh
 
       .. helptext:: generate a cone mesh
 
-   .. lua:staticmethod:: mesh.cylinder([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
+   .. lua:staticmethod:: mesh.cylinder([radius = 1, halfLength = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
 
       Capped cylinder centered at origin aligned along the y-axis
 
       :param radius: Radius of the flat (negative z) end along the xz-plane
       :type radius: number
-      :param size: Half of the length of the cylinder along the y-axis
+      :param halfLength: Half of the length of the cylinder along the y-axis
       :type segments: number
       :param slices: Number of subdivisions around the y-axis
       :type slices: integer
@@ -417,13 +413,13 @@ mesh
 
       .. helptext:: generate a cylinder mesh
 
-   .. lua:staticmethod:: mesh.capsule([radius = 1, size = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
+   .. lua:staticmethod:: mesh.capsule([radius = 1, halfLength = 1, slices = 32, segments = 8, rings = 4, start = 0, sweep = 360])
 
       Capsule centered at origin aligned along the y-axis
 
       :param radius: Radius of the capsule along the xz-plane
       :type radius: number
-      :param size: Half of the length capsule along the y-axis
+      :param halfLength: Half of the length capsule along the y-axis
       :type segments: number
       :param slices: Number of subdivisions around the y-axis
       :type slices: integer
@@ -457,12 +453,12 @@ mesh
 
       .. helptext:: generate a disk mesh
 
-   .. lua:staticmethod:: mesh.plane([size = vec2(1, 1), segments = vec2(8, 8)])
+   .. lua:staticmethod:: mesh.plane([halfSize = vec2(1, 1), segments = vec2(8, 8)])
 
       A flat plane centered at the origin on the xy-plane
 
-      :param size: Half of the side length in x and z direction
-      :type size: vec2
+      :param halfSize: Half of the side length in x and z direction
+      :type halfSize: vec2
       :param segments: Number of subdivisions in the x and z directions
       :type segments: vec2
 

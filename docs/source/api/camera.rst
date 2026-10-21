@@ -130,6 +130,22 @@ camera
       :return: The point at screen position ``x``, ``y`` projected ``z`` units into the screen in world space
       :rtype: number, number, number
 
+   .. lua:method:: screenToRay(x, y)
+
+      Takes a 2D point on the screen (in points) and returns a ray that starts at the camera and points through that point into the scene. Use it with raycasts to find what is under a touch
+
+      .. code-block:: lua
+
+         function touched(touch)
+            local origin, dir = scene.main.camera:get(camera):screenToRay(touch.x, touch.y)
+            local hit = scene.main.world3d:raycast(origin, dir, 100)
+         end
+
+      .. helptext:: convert a screen point to a ray
+
+      :return: The origin of the ray and its direction (normalized)
+      :rtype: vec3, vec3
+
    .. lua:method:: worldToScreen(x, y, z)
 
       Takes a 3D point in world space and projects it onto screen coordinates (in points)

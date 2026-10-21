@@ -58,7 +58,7 @@ function scene:sphere(dynamic, radius, x, y, z)
     sphere:add(physics3d.body, dynamic and DYNAMIC or STATIC) --:sphere(0.5)
     sphere:add(physics3d.sphere, radius).rollingFriction = 0.1
     sphere.mesh = mesh.sphere(radius)    
-    sphere.meshMaterial = checkers
+    sphere.material = checkers
     return sphere
 end
 
@@ -68,7 +68,7 @@ function scene:capsule(dynamic, radius, height, x, y, z)
     sphere.scale = vec3(1,1,1)
     sphere:add(physics3d.body, dynamic and DYNAMIC or STATIC):capsule(radius, height)
     sphere.mesh = mesh.capsule(radius, height / 2)    
-    sphere.meshMaterial = checkers
+    sphere.material = checkers
     return sphere
 end
 
@@ -78,7 +78,7 @@ function scene:box(dynamic, sx, sy, sz, x, y, z)
     box:add(physics3d.body, dynamic and DYNAMIC or STATIC)
     box:add(physics3d.box, sx, sy, sz)
     box.mesh = mesh.box(sx, sy, sz)    
-    box.meshMaterial = checkers
+    box.material = checkers
     return box
 end
 
@@ -88,7 +88,7 @@ function entity:box(sx, sy, sz, x, y, z, rx, ry, rz)
     box.rotation = quat.eulerAngles(rx or 0, ry or 0, rz or 0)
     box:add(physics3d.box, sx, sy, sz)
     box.mesh = mesh.box(sx, sy, sz)    
-    box.meshMaterial = checkers
+    box.material = checkers
     return box
 end
 
@@ -98,7 +98,7 @@ function entity:capsule(radius, height, x, y, z, rx, ry, rz)
     box.rotation = quat.eulerAngles(rx or 0, ry or 0, rz or 0)
     box:add(physics3d.capsule, radius, height)
     box.mesh = mesh.capsule(radius, height / 2)    
-    box.meshMaterial = checkers
+    box.material = checkers
     return box
 end
 
@@ -106,7 +106,7 @@ function scene:convex(dynamic, msh, x, y, z, s)
     local teapot = scn:entity()
     teapot.position = vec3(x, y, z)
     teapot.mesh = msh
-    teapot.meshMaterial = checkers    
+    teapot.material = checkers    
     teapot:add(physics3d.body, dynamic and DYNAMIC or STATIC):mesh(teapot.mesh, true)
     s = s or 1.0
     teapot.scale = vec3(s,s,s)    
@@ -143,7 +143,7 @@ function setup()
     end)
     
     checkers = material.lit()
-    checkers.baseColorMap = image.read(asset.checkers)
+    checkers.map = image.read(asset.checkers)
     checkers.roughness = 0.5
             
     compound = scn:entity()

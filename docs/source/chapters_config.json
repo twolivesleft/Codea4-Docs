@@ -4,7 +4,7 @@
     "title": "Getting Started",
     "subtitle": "How Codea works — setup, draw, callbacks and lifecycle",
     "icon": "ChapterIconDisplay",
-    "entries": ["manual/codea", "manual/codea_3x"]
+    "entries": ["manual/codea"]
   },  
   {
     "id": "Graphics",
@@ -81,7 +81,7 @@
     "title": "Display & Viewer",
     "subtitle": "User interface components and display settings",
     "icon": "ChapterIconParameters",
-    "entries": ["api/viewer", "api/device", "api/inspector", "api/ui"]
+    "entries": ["api/viewer", "api/hinge", "api/device", "api/inspector", "api/ui"]
   },
   {
     "id": "Animation",

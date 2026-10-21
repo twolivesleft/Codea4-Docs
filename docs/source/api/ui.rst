@@ -90,6 +90,14 @@ A module for creating basic UI elements in scenes
 
       .. helptext:: get or set the label text color
 
+   .. lua:attribute:: font: string
+
+      Optional system font name. Use a face such as ``"Helvetica-Bold"`` for a bold
+      label. When omitted, the label uses the current style font.
+
+      .. helptext:: get or set the label font
+      .. editor:: font
+
    .. lua:attribute:: fontSize: number
 
       The label's font size
@@ -102,11 +110,12 @@ A module for creating basic UI elements in scenes
 
       .. helptext:: get or set the text alignment flags
 
-   .. lua:attribute:: style: flags
+   .. lua:attribute:: textRenderer: string
 
-      The label's text style
+      The label's renderer: ``style.native`` (the default) or ``style.atlas``.
+      Atlas labels interpret tags; native labels support color emoji.
 
-      .. helptext:: get or set the style flags or table
+      .. helptext:: get or set the label text renderer
 
    .. lua:attribute:: shadowOffset: vec2
 
@@ -114,11 +123,11 @@ A module for creating basic UI elements in scenes
 
       .. helptext:: get or set the text shadow offset
 
-   .. lua:attribute:: shadowSoftner: number
+   .. lua:attribute:: shadowRadius: number
 
-      The softness of the labels text shadow
+      The blur radius of the label's text shadow, in points
 
-      .. helptext:: get or set the text shadow softness
+      .. helptext:: get or set the text shadow blur radius
 
 .. lua:class:: image : component
 

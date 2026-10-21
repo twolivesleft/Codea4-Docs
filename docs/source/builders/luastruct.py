@@ -443,13 +443,27 @@ class LuaFunction:
                     # We assume there's an <inline> tag wrapping the type description
                     for para in field.traverse(nodes.paragraph):
                         type_text = ''.join([n.astext() for n in para.traverse() if isinstance(n, nodes.Text)])
-                        type_hint, display_type = self.parse_return_type(type_text)
-                        if returns:
-                            returns[0].type_hint = type_hint  # Assuming only one return entry is common
-                            returns[0].display_type = display_type
-                        else:
-                            # In case the return type is specified before the description
-                            returns.append(LuaReturn(type_hint=type_hint, display_type=display_type))
+                        # Lua returns multiple values, not a single type named
+                        # "number, number". Preserve commas within compound types.
+                        types = []
+                        depth = 0
+                        start = 0
+                        for index, char in enumerate(type_text):
+                            if char in '({[<':
+                                depth += 1
+                            elif char in ')}]>':
+                                depth = max(0, depth - 1)
+                            elif char == ',' and depth == 0:
+                                types.append(type_text[start:index].strip())
+                                start = index + 1
+                        types.append(type_text[start:].strip())
+                        for index, value in enumerate(types):
+                            type_hint, display_type = self.parse_return_type(value)
+                            if index < len(returns):
+                                returns[index].type_hint = type_hint
+                                returns[index].display_type = display_type
+                            else:
+                                returns.append(LuaReturn(type_hint=type_hint, display_type=display_type))
         return returns
 
     def __str__(self):
