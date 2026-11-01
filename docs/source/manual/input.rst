@@ -39,7 +39,7 @@ Each touch provides:
 - ``touch.x``, ``touch.y`` and ``touch.pos``, the current position
 - ``touch.prevX``, ``touch.prevY`` and ``touch.prevPos``, the position at the previous event
 - ``touch.deltaX``, ``touch.deltaY`` and ``touch.delta``, the movement since the previous event
-- ``touch.began``, ``touch.changed``, ``touch.ended`` and ``touch.cancelled``, which are true in the matching phase
+- ``touch.began``, ``touch.changed``, ``touch.ended`` and ``touch.cancelled``, which are true in the matching phase (``touch.moving`` is the same as ``touch.changed``)
 - ``touch.state``, the phase as one of ``BEGAN``, ``CHANGED``, ``ENDED`` or ``CANCELLED`` (``MOVING`` is the same value as ``CHANGED``)
 - ``touch.tapCount``, the number of quick taps in a row
 - ``touch.type``, one of ``touch.direct``, ``touch.indirect``, ``touch.pencil`` or ``touch.pointer``

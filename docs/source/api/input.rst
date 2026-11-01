@@ -41,6 +41,12 @@ Touches
 
       .. helptext:: check if this touch moved
 
+   .. lua:attribute:: moving: boolean
+
+      The same as ``changed``
+
+      .. helptext:: check if this touch moved
+
    .. lua:attribute:: ended: boolean
 
       ``true`` if the touch ended with this event
@@ -275,7 +281,13 @@ Gestures
 
    .. lua:attribute:: state: enum
 
-      The current state of the gesture
+      The current state of the gesture, using the same constants as touches:
+
+      * ``BEGAN`` - the gesture was recognized
+      * ``CHANGED`` - the gesture moved or changed
+      * ``ENDED`` - the gesture finished or was cancelled
+
+      A tap reports ``ENDED`` once it is recognized.
 
       .. helptext:: get the current state of this touch or gesture
 
@@ -317,7 +329,7 @@ Gestures
 
    .. lua:attribute:: rotationAngle: number 
 
-      The change in angle of a rotation gesture since the last update, in degrees
+      The change in angle of a rotation gesture since the last update, in degrees. Positive values are clockwise.
 
       .. helptext:: get the rotation angle of this gesture
 

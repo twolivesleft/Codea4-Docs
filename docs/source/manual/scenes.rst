@@ -121,13 +121,13 @@ Entities respond to lifecycle callbacks that mirror Codea's global callbacks. De
 
    local ent = scn:entity()
 
-   ent.update = function(dt)
-       ent.ry = ent.ry + dt * 45
+   function ent:update(dt)
+       self.ry = self.ry + dt * 45
    end
 
-   ent.touched = function(touch)
+   function ent:touched(touch)
        if touch.began then
-           ent:destroy()
+           self:destroy()
        end
        return true  -- capture the touch
    end
