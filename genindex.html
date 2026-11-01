@@ -357,6 +357,8 @@
 </li>
         <li><a href="api/style.html#BASELINE">BASELINE (attribute)</a>
 </li>
+        <li><a href="api/input.html#BEGAN">BEGAN (attribute)</a>
+</li>
         <li><a href="api/style.html#BEVEL">BEVEL (attribute)</a>
 </li>
         <li><a href="api/graphics.html#bezier">bezier() (built-in function)</a>, <a href="api/graphics.html#bezier">[1]</a>
@@ -393,14 +395,14 @@
 </li>
         <li><a href="api/math_types.html#bounds.bounds.aabb.size">bounds.bounds.aabb.size (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.box">box (class in physics2d)</a>
 
         <ul>
           <li><a href="api/physics3d.html#physics3d.box">(class in physics3d)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.box">box() (mesh static method)</a>
 
         <ul>
@@ -479,7 +481,13 @@
 </li>
         <li><a href="api/camera.html#camera.viewport">camera.viewport (attribute)</a>
 </li>
-        <li><a href="api/tween.html#tween.cancel">cancel() (tween method)</a>
+        <li><a href="api/input.html#touch.cancel">cancel() (touch method)</a>
+
+        <ul>
+          <li><a href="api/tween.html#tween.cancel">(tween method)</a>
+</li>
+        </ul></li>
+        <li><a href="api/input.html#CANCELLED">CANCELLED (attribute)</a>
 </li>
         <li><a href="api/ui.html#ui.canvas">canvas (class in ui)</a>
 </li>
@@ -492,6 +500,8 @@
 </li>
         </ul></li>
         <li><a href="api/style.html#CENTER">CENTER (attribute)</a>, <a href="api/style.html#CENTER">[1]</a>
+</li>
+        <li><a href="api/input.html#CHANGED">CHANGED (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.child">child() (entity method)</a>
 </li>
@@ -547,12 +557,12 @@
           <li><a href="api/mesh.html#mesh.color">(mesh method)</a>, <a href="api/mesh.html#mesh.color">[1]</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/color.html#color.a">color.a (attribute)</a>
 </li>
         <li><a href="api/color.html#color.b">color.b (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/color.html#color.black">color.black (attribute)</a>
 </li>
         <li><a href="api/color.html#color.blue">color.blue (attribute)</a>
@@ -723,17 +733,15 @@
 </li>
         <li><a href="api/light.html#light.directional">directional() (light static method)</a>
 </li>
-        <li><a href="api/input.html#directionalPad">directionalPad (built-in class)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/input.html#directionalPad">directionalPad (built-in class)</a>
+</li>
         <li><a href="api/input.html#directionalPad.dir">directionalPad.dir (attribute)</a>
 </li>
         <li><a href="api/input.html#directionalPad.down">directionalPad.down (attribute)</a>
 </li>
         <li><a href="api/input.html#directionalPad.left">directionalPad.left (attribute)</a>
-</li>
-        <li><a href="api/input.html#directionalPad.pressing">directionalPad.pressing (attribute)</a>
 </li>
         <li><a href="api/input.html#directionalPad.right">directionalPad.right (attribute)</a>
 </li>
@@ -813,6 +821,8 @@
 </li>
         <li><a href="api/graphics.html#ellipse">ellipse() (built-in function)</a>
 </li>
+        <li><a href="api/input.html#ENDED">ENDED (attribute)</a>
+</li>
         <li><a href="api/scene.html#scene.entities">entities() (scene method)</a>
 </li>
         <li><a href="api/entity.html#entity">entity (built-in class)</a>
@@ -877,10 +887,10 @@
 </li>
         <li><a href="api/entity.html#entity.joints3d">entity.joints3d (attribute)</a>
 </li>
-        <li><a href="api/entity.html#entity.material">entity.material (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/entity.html#entity.material">entity.material (attribute)</a>
+</li>
         <li><a href="api/entity.html#entity.mesh">entity.mesh (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.name">entity.name (attribute)</a>
@@ -1025,13 +1035,19 @@
 </li>
         <li><a href="api/input.html#gamepad.batteryState">gamepad.batteryState (attribute)</a>
 </li>
+        <li><a href="api/input.html#gamepad.charging">gamepad.charging (attribute)</a>
+</li>
         <li><a href="api/input.html#gamepad.connected">gamepad.connected (attribute)</a>
 </li>
         <li><a href="api/input.html#gamepad.current">gamepad.current (attribute)</a>
 </li>
+        <li><a href="api/input.html#gamepad.discharging">gamepad.discharging (attribute)</a>
+</li>
         <li><a href="api/input.html#gamepad.disconnected">gamepad.disconnected (attribute)</a>
 </li>
         <li><a href="api/input.html#gamepad.dpad">gamepad.dpad (attribute)</a>
+</li>
+        <li><a href="api/input.html#gamepad.full">gamepad.full (attribute)</a>
 </li>
         <li><a href="api/input.html#gamepad.home">gamepad.home (attribute)</a>
 </li>
@@ -1049,6 +1065,16 @@
 </li>
         <li><a href="api/input.html#gamepad.options">gamepad.options (attribute)</a>
 </li>
+        <li><a href="api/input.html#gamepad.player1">gamepad.player1 (attribute)</a>
+</li>
+        <li><a href="api/input.html#gamepad.player2">gamepad.player2 (attribute)</a>
+</li>
+        <li><a href="api/input.html#gamepad.player3">gamepad.player3 (attribute)</a>
+</li>
+        <li><a href="api/input.html#gamepad.player4">gamepad.player4 (attribute)</a>
+</li>
+        <li><a href="api/input.html#gamepad.playerIndex">gamepad.playerIndex (attribute)</a>
+</li>
         <li><a href="api/input.html#gamepad.rightShoulder">gamepad.rightShoulder (attribute)</a>
 </li>
         <li><a href="api/input.html#gamepad.rightStick">gamepad.rightStick (attribute)</a>
@@ -1060,6 +1086,12 @@
         <li><a href="api/input.html#gamepad.touchpadButton">gamepad.touchpadButton (attribute)</a>
 </li>
         <li><a href="api/input.html#gamepad.touchpadSurface">gamepad.touchpadSurface (attribute)</a>
+</li>
+        <li><a href="api/input.html#gamepad.unknown">gamepad.unknown (attribute)</a>
+</li>
+        <li><a href="api/input.html#gamepad.unset">gamepad.unset (attribute)</a>
+</li>
+        <li><a href="api/input.html#gamepad.vendorName">gamepad.vendorName (attribute)</a>
 </li>
         <li><a href="api/input.html#gamepad.virtual">gamepad.virtual (attribute)</a>
 </li>
@@ -1073,6 +1105,8 @@
 </li>
         <li><a href="api/image.html#image.generateIrradiance">generateIrradiance() (image method)</a>, <a href="api/image.html#image.generateIrradiance">[1]</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/sound.html#sound.generator">generator() (in module sound)</a>
 </li>
         <li><a href="api/physics3d.html#physics3d.generic">generic (class in physics3d)</a>
@@ -1081,17 +1115,19 @@
 </li>
         <li><a href="api/input.html#gesture.delta">gesture.delta (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#gesture.location">gesture.location (attribute)</a>
 </li>
         <li><a href="api/input.html#gesture.pan">gesture.pan (built-in class)</a>
 </li>
         <li><a href="api/input.html#gesture.pan.enabled">gesture.pan.enabled (attribute)</a>
 </li>
+        <li><a href="api/input.html#gesture.pan.group">gesture.pan.group (attribute)</a>
+</li>
         <li><a href="api/input.html#gesture.pinch">gesture.pinch (built-in class)</a>
 </li>
         <li><a href="api/input.html#gesture.pinch.enabled">gesture.pinch.enabled (attribute)</a>
+</li>
+        <li><a href="api/input.html#gesture.pinch.group">gesture.pinch.group (attribute)</a>
 </li>
         <li><a href="api/input.html#gesture.pinchDelta">gesture.pinchDelta (attribute)</a>
 </li>
@@ -1103,6 +1139,8 @@
 </li>
         <li><a href="api/input.html#gesture.rotation.enabled">gesture.rotation.enabled (attribute)</a>
 </li>
+        <li><a href="api/input.html#gesture.rotation.group">gesture.rotation.group (attribute)</a>
+</li>
         <li><a href="api/input.html#gesture.rotationAngle">gesture.rotationAngle (attribute)</a>
 </li>
         <li><a href="api/input.html#gesture.rotationVelocity">gesture.rotationVelocity (attribute)</a>
@@ -1112,6 +1150,8 @@
         <li><a href="api/input.html#gesture.tap">gesture.tap (built-in class)</a>
 </li>
         <li><a href="api/input.html#gesture.tap.enabled">gesture.tap.enabled (attribute)</a>
+</li>
+        <li><a href="api/input.html#gesture.tap.group">gesture.tap.group (attribute)</a>
 </li>
         <li><a href="api/input.html#gesture.touchCount">gesture.touchCount (attribute)</a>
 </li>
@@ -1399,10 +1439,10 @@
 </li>
         <li><a href="api/input.html#key.key.num1">key.key.num1 (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#key.key.num2">key.key.num2 (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#key.key.num3">key.key.num3 (attribute)</a>
 </li>
         <li><a href="api/input.html#key.key.num4">key.key.num4 (attribute)</a>
@@ -1448,6 +1488,12 @@
         <li><a href="api/input.html#key.key.period">key.key.period (attribute)</a>
 </li>
         <li><a href="api/input.html#key.key.plus">key.key.plus (attribute)</a>
+</li>
+        <li><a href="api/input.html#key.key.press.characters">key.key.press.characters (attribute)</a>
+</li>
+        <li><a href="api/input.html#key.key.press.keyCode">key.key.press.keyCode (attribute)</a>
+</li>
+        <li><a href="api/input.html#key.key.press.modifierFlags">key.key.press.modifierFlags (attribute)</a>
 </li>
         <li><a href="api/input.html#key.key.print">key.key.print (attribute)</a>
 </li>
@@ -1587,6 +1633,8 @@
   <h2>M</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/input.html#touch.makeExclusive">makeExclusive() (touch method)</a>
+</li>
         <li><a href="api/math_types.html#mat2">mat2 (built-in class)</a>
 </li>
         <li><a href="api/math_types.html#mat2.mat2">mat2() (mat2 static method)</a>
@@ -1820,6 +1868,8 @@
         <li><a href="api/entity.html#entity.moveAfter">moveAfter() (entity method)</a>
 </li>
         <li><a href="api/entity.html#entity.moveBefore">moveBefore() (entity method)</a>
+</li>
+        <li><a href="api/input.html#MOVING">MOVING (attribute)</a>
 </li>
         <li><a href="api/style.html#MULTIPLY">MULTIPLY (attribute)</a>
 </li>
@@ -2131,10 +2181,10 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorA">physics2d.physics2d.joint.anchorA (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorB">physics2d.physics2d.joint.anchorB (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.collideConnected">physics2d.physics2d.joint.collideConnected (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.destroyed">physics2d.physics2d.joint.destroyed (attribute)</a>
@@ -2288,6 +2338,8 @@
         <li><a href="api/mesh.html#mesh.position">position() (mesh method)</a>, <a href="api/mesh.html#mesh.position">[1]</a>
 </li>
         <li><a href="api/style.html#PREMULTIPLIED">PREMULTIPLIED (attribute)</a>
+</li>
+        <li><a href="api/input.html#key.press">press (class in key)</a>
 </li>
         <li><a href="api/input.html#key.pressing">pressing() (in module key)</a>
 </li>
@@ -2909,8 +2961,6 @@
 </li>
         <li><a href="api/tween.html#tween.time">time() (tween method)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/style.html#style.tint">tint() (in module style)</a>, <a href="api/style.html#style.tint">[1]</a>
 </li>
         <li><a href="api/tween.html#tween.to">to() (tween method)</a>
@@ -2923,9 +2973,19 @@
 </li>
         <li><a href="api/input.html#touch">touch (built-in class)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#touch.altitude">touch.altitude (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.azimuth">touch.azimuth (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.began">touch.began (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.cancelled">touch.cancelled (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.changed">touch.changed (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.current">touch.current (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.delta">touch.delta (attribute)</a>
 </li>
@@ -2933,11 +2993,23 @@
 </li>
         <li><a href="api/input.html#touch.deltaY">touch.deltaY (attribute)</a>
 </li>
+        <li><a href="api/input.html#touch.direct">touch.direct (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.ended">touch.ended (attribute)</a>
+</li>
         <li><a href="api/input.html#touch.force">touch.force (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.id">touch.id (attribute)</a>
 </li>
+        <li><a href="api/input.html#touch.indirect">touch.indirect (attribute)</a>
+</li>
         <li><a href="api/input.html#touch.maxForce">touch.maxForce (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.moving">touch.moving (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.pencil">touch.pencil (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.pointer">touch.pointer (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.pos">touch.pos (attribute)</a>
 </li>
@@ -2956,6 +3028,8 @@
         <li><a href="api/input.html#touch.radiusTolerance">touch.radiusTolerance (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.state">touch.state (attribute)</a>
+</li>
+        <li><a href="api/input.html#touch.tapCount">touch.tapCount (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.timestamp">touch.timestamp (attribute)</a>
 </li>

@@ -269,7 +269,7 @@ contains some global functions:</p>
 
 <span class="c1">-- Called when a touch is detected or updated</span>
 <span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
-<span class="w">   </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">began</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">moving</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">   </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">began</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">changed</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">      </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span>
 <span class="w">      </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span>
 <span class="w">   </span><span class="kr">end</span>
@@ -305,15 +305,46 @@ every time the screen is about to be redrawn</p>
 </section>
 <section id="keypressed-keypress">
 <h3>keyPressed(keyPress)<a class="headerlink" href="#keypressed-keypress" title="Link to this heading">¶</a></h3>
+<p>Called when a key on a hardware keyboard goes down. <code class="docutils literal notranslate"><span class="pre">keyPress.keyCode</span></code> identifies the key and <code class="docutils literal notranslate"><span class="pre">keyPress.characters</span></code> holds the text it typed. It is not called while a user interface text field has focus</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">keyPressed</span><span class="p">(</span><span class="nv">keyPress</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">if</span><span class="w"> </span><span class="nv">keyPress</span><span class="p">.</span><span class="py">keyCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">key</span><span class="p">.</span><span class="py">space</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">      </span><span class="nb">print</span><span class="p">(</span><span class="s2">"space"</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">else</span>
+<span class="w">      </span><span class="nb">print</span><span class="p">(</span><span class="s2">"typed"</span><span class="p">,</span><span class="w"> </span><span class="nv">keyPress</span><span class="p">.</span><span class="py">characters</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 <section id="keyreleased-keypress">
 <h3>keyReleased(keyPress)<a class="headerlink" href="#keyreleased-keypress" title="Link to this heading">¶</a></h3>
+<p>Called when a key on a hardware keyboard comes back up. It receives the same kind of <code class="docutils literal notranslate"><span class="pre">keyPress</span></code> as <code class="docutils literal notranslate"><span class="pre">keyPressed()</span></code></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">keyReleased</span><span class="p">(</span><span class="nv">keyPress</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">if</span><span class="w"> </span><span class="nv">keyPress</span><span class="p">.</span><span class="py">keyCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">key</span><span class="p">.</span><span class="py">space</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">      </span><span class="nb">print</span><span class="p">(</span><span class="s2">"space released"</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 <section id="scroll-gesture">
 <h3>scroll(gesture)<a class="headerlink" href="#scroll-gesture" title="Link to this heading">¶</a></h3>
+<p>Called when the user scrolls with a trackpad or mouse wheel. <code class="docutils literal notranslate"><span class="pre">gesture.delta</span></code> is the scroll movement since the last call and <code class="docutils literal notranslate"><span class="pre">gesture.location</span></code> is the pointer position</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">scroll</span><span class="p">(</span><span class="nv">gesture</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">gesture</span><span class="p">.</span><span class="py">delta</span><span class="p">.</span><span class="py">y</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 <section id="hover-gesture">
 <h3>hover(gesture)<a class="headerlink" href="#hover-gesture" title="Link to this heading">¶</a></h3>
+<p>Called when a mouse or trackpad pointer moves over the viewer with no button held. <code class="docutils literal notranslate"><span class="pre">gesture.location</span></code> is the pointer position</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">hover</span><span class="p">(</span><span class="nv">gesture</span><span class="p">)</span>
+<span class="w">   </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">gesture</span><span class="p">.</span><span class="py">location</span><span class="p">.</span><span class="py">x</span>
+<span class="w">   </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">gesture</span><span class="p">.</span><span class="py">location</span><span class="p">.</span><span class="py">y</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>

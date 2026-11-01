@@ -23,7 +23,7 @@ contains some global functions:
 
    -- Called when a touch is detected or updated
    function touched(touch)
-      if touch.began or touch.moving then
+      if touch.began or touch.changed then
          x = touch.x
          y = touch.y
       end
@@ -67,11 +67,50 @@ A special update function that is called a fixed number of times per second rega
 keyPressed(keyPress)
 ####################
 
+Called when a key on a hardware keyboard goes down. ``keyPress.keyCode`` identifies the key and ``keyPress.characters`` holds the text it typed. It is not called while a user interface text field has focus
+
+.. code-block:: lua
+
+   function keyPressed(keyPress)
+      if keyPress.keyCode == key.space then
+         print("space")
+      else
+         print("typed", keyPress.characters)
+      end
+   end
+
 keyReleased(keyPress)
 #####################
+
+Called when a key on a hardware keyboard comes back up. It receives the same kind of ``keyPress`` as ``keyPressed()``
+
+.. code-block:: lua
+
+   function keyReleased(keyPress)
+      if keyPress.keyCode == key.space then
+         print("space released")
+      end
+   end
 
 scroll(gesture)
 ###############
 
+Called when the user scrolls with a trackpad or mouse wheel. ``gesture.delta`` is the scroll movement since the last call and ``gesture.location`` is the pointer position
+
+.. code-block:: lua
+
+   function scroll(gesture)
+      y = y + gesture.delta.y
+   end
+
 hover(gesture)
 ###############
+
+Called when a mouse or trackpad pointer moves over the viewer with no button held. ``gesture.location`` is the pointer position
+
+.. code-block:: lua
+
+   function hover(gesture)
+      x = gesture.location.x
+      y = gesture.location.y
+   end

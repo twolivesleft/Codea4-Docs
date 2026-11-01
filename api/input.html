@@ -258,7 +258,7 @@
 <dl class="lua class">
 <dt class="sig sig-object lua" id="touch">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">touch</span></span><a class="headerlink" href="#touch" title="Link to this definition">¶</a></dt>
-<dd><p>Represents a single touch over time. Generated in response to touch events by the device in response to user interactions</p>
+<dd><p>Represents a single touch over time. Passed to the global <code class="docutils literal notranslate"><span class="pre">touched(touch)</span></code> function and to entity <code class="docutils literal notranslate"><span class="pre">touched</span></code> methods each time the touch begins, moves or ends</p>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="touch.id">
 <span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.id" title="Link to this definition">¶</a></dt>
@@ -270,11 +270,47 @@
 <span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#touch.state" title="Link to this definition">¶</a></dt>
 <dd><p>The current state of the touch, can be:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">BEGAN</span></code> - the touch began this frame</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MOVING</span></code> - the touch moved this frame</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ENDED</span></code> - the touch ended this frame</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> - the touch was cancelled (usually by another view or gesture recognizer)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BEGAN</span></code> - the touch began</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHANGED</span></code> - the touch moved (<code class="docutils literal notranslate"><span class="pre">MOVING</span></code> is the same value)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENDED</span></code> - the touch ended</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> - the touch was cancelled, usually by a gesture recognizer or the system</p></li>
 </ul>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.began">
+<span class="sig-name descname"><span class="pre">began</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#touch.began" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the touch began with this event</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.changed">
+<span class="sig-name descname"><span class="pre">changed</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#touch.changed" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the touch moved with this event</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.moving">
+<span class="sig-name descname"><span class="pre">moving</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#touch.moving" title="Link to this definition">¶</a></dt>
+<dd><p>The same as <code class="docutils literal notranslate"><span class="pre">changed</span></code></p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.ended">
+<span class="sig-name descname"><span class="pre">ended</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#touch.ended" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the touch ended with this event</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.cancelled">
+<span class="sig-name descname"><span class="pre">cancelled</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#touch.cancelled" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the touch was cancelled</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.tapCount">
+<span class="sig-name descname"><span class="pre">tapCount</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#touch.tapCount" title="Link to this definition">¶</a></dt>
+<dd><p>The number of quick taps in a row at this location, starting at 1</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -284,8 +320,8 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">touch.direct</span></code> - a touch resulting from direct contact with the screen</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">touch.indirect</span></code> - a touch that does not result from direct contact with the screen</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">touch.pencil</span></code> - a touch resulting from the pencil</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">touch.pointer</span></code> - a touch resulting from a button based device</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.pencil</span></code> - a touch from Apple Pencil</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">touch.pointer</span></code> - a click from a mouse or trackpad</p></li>
 </ul>
 </dd></dl>
 
@@ -316,13 +352,13 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="touch.deltaX">
 <span class="sig-name descname"><span class="pre">deltaX</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.deltaX" title="Link to this definition">¶</a></dt>
-<dd><p>The x position delta of the touch (in screen coordinates)</p>
+<dd><p>The change in x position since the previous event for this touch (in screen coordinates)</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="touch.deltaY">
 <span class="sig-name descname"><span class="pre">deltaY</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.deltaY" title="Link to this definition">¶</a></dt>
-<dd><p>The y position delta of the touch (in screen coordinates)</p>
+<dd><p>The change in y position since the previous event for this touch (in screen coordinates)</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -340,37 +376,37 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="touch.delta">
 <span class="sig-name descname"><span class="pre">delta</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#touch.delta" title="Link to this definition">¶</a></dt>
-<dd><p>The position delta of the touch (in screen coordinates) as a vector</p>
+<dd><p>The change in position since the previous event for this touch (in screen coordinates) as a vector</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="touch.force">
 <span class="sig-name descname"><span class="pre">force</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.force" title="Link to this definition">¶</a></dt>
-<dd><p>The amount of force being applied (only applies to pencil type touches)</p>
+<dd><p>The amount of force being applied, where <code class="docutils literal notranslate"><span class="pre">1</span></code> is an average touch. Reported for Apple Pencil and on devices with 3D Touch, otherwise <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="touch.maxForce">
 <span class="sig-name descname"><span class="pre">maxForce</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.maxForce" title="Link to this definition">¶</a></dt>
-<dd><p>The maximum amount of force that can be applied (only applies to pencil type touches)</p>
+<dd><p>The maximum possible value of <code class="docutils literal notranslate"><span class="pre">force</span></code></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="touch.timestamp">
 <span class="sig-name descname"><span class="pre">timestamp</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.timestamp" title="Link to this definition">¶</a></dt>
-<dd><p>The time when this touch event occured (only applies to pencil type touches)</p>
+<dd><p>The time when this touch event occurred, in seconds since the device started</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="touch.azimuth">
 <span class="sig-name descname"><span class="pre">azimuth</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.azimuth" title="Link to this definition">¶</a></dt>
-<dd><p>The azimuth angle of the pencil (only applies to pencil type touches)</p>
+<dd><p>The direction the pencil points across the screen, in radians (only applies to pencil type touches)</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="touch.altitude">
 <span class="sig-name descname"><span class="pre">altitude</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#touch.altitude" title="Link to this definition">¶</a></dt>
-<dd><p>The altitude angle of the pencil</p>
+<dd><p>The angle of the pencil above the screen, in radians. <code class="docutils literal notranslate"><span class="pre">0</span></code> is flat against the screen and <code class="docutils literal notranslate"><span class="pre">math.pi</span> <span class="pre">/</span> <span class="pre">2</span></code> is perpendicular to it (only applies to pencil type touches)</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -397,19 +433,109 @@
 <dd><p>The previous precise location of the touch (if available)</p>
 </dd></dl>
 
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.current">
+<span class="sig-name descname"><span class="pre">current</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">touch</span><a class="headerlink" href="#touch.current" title="Link to this definition">¶</a></dt>
+<dd><p>The first touch that is currently down. It keeps its last state after the touch ends, until a new touch begins. Read it as <code class="docutils literal notranslate"><span class="pre">touch.current</span></code></p>
 </dd></dl>
 
+<dl class="lua method">
+<dt class="sig sig-object lua" id="touch.cancel">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">scene</span></em><span class="sig-paren">)</span><a class="headerlink" href="#touch.cancel" title="Link to this definition">¶</a></dt>
+<dd><p>Cancels this touch for every entity in <code class="docutils literal notranslate"><span class="pre">scene</span></code> that holds it. Each of those entities receives the touch once more with the <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scene</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">scene</span></code></span>) – The scene whose entities hold the touch</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="touch.makeExclusive">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">makeExclusive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#touch.makeExclusive" title="Link to this definition">¶</a></dt>
+<dd><p>Gives this touch to <code class="docutils literal notranslate"><span class="pre">entity</span></code> alone. Other entities that hold the touch receive it with the <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> state. Does nothing if another entity already holds it exclusively</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entity</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">entity</span></code></span>) – The entity that keeps the touch</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.direct">
+<span class="sig-name descname"><span class="pre">direct</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#touch.direct" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.indirect">
+<span class="sig-name descname"><span class="pre">indirect</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#touch.indirect" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.pencil">
+<span class="sig-name descname"><span class="pre">pencil</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#touch.pencil" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="touch.pointer">
+<span class="sig-name descname"><span class="pre">pointer</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#touch.pointer" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<section id="constants-touch-state">
+<h3>Constants - Touch State<a class="headerlink" href="#constants-touch-state" title="Link to this heading">¶</a></h3>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="BEGAN">
+<span class="sig-name descname"><span class="pre">BEGAN</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#BEGAN" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="CHANGED">
+<span class="sig-name descname"><span class="pre">CHANGED</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#CHANGED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="MOVING">
+<span class="sig-name descname"><span class="pre">MOVING</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#MOVING" title="Link to this definition">¶</a></dt>
+<dd><p>The same value as <code class="docutils literal notranslate"><span class="pre">CHANGED</span></code></p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="ENDED">
+<span class="sig-name descname"><span class="pre">ENDED</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#ENDED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="CANCELLED">
+<span class="sig-name descname"><span class="pre">CANCELLED</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#CANCELLED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
 </section>
 <section id="gestures">
 <h2>Gestures<a class="headerlink" href="#gestures" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
 <dt class="sig sig-object lua" id="gesture">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture</span></span><a class="headerlink" href="#gesture" title="Link to this definition">¶</a></dt>
-<dd><p>Represents a single gesture event</p>
+<dd><p>Represents a single gesture event. Passed to gesture recognizer callbacks and to the global <code class="docutils literal notranslate"><span class="pre">hover(gesture)</span></code> and <code class="docutils literal notranslate"><span class="pre">scroll(gesture)</span></code> functions. Each kind of gesture fills in only the fields that apply to it:</p>
+<ul class="simple">
+<li><p>tap - <code class="docutils literal notranslate"><span class="pre">location</span></code></p></li>
+<li><p>pan and scroll - <code class="docutils literal notranslate"><span class="pre">location</span></code>, <code class="docutils literal notranslate"><span class="pre">translation</span></code>, <code class="docutils literal notranslate"><span class="pre">delta</span></code> and <code class="docutils literal notranslate"><span class="pre">touchCount</span></code></p></li>
+<li><p>pinch - <code class="docutils literal notranslate"><span class="pre">location</span></code>, <code class="docutils literal notranslate"><span class="pre">pinchScale</span></code>, <code class="docutils literal notranslate"><span class="pre">pinchDelta</span></code> and <code class="docutils literal notranslate"><span class="pre">pinchVelocity</span></code></p></li>
+<li><p>rotation - <code class="docutils literal notranslate"><span class="pre">location</span></code>, <code class="docutils literal notranslate"><span class="pre">rotationAngle</span></code> and <code class="docutils literal notranslate"><span class="pre">rotationVelocity</span></code></p></li>
+<li><p>hover - <code class="docutils literal notranslate"><span class="pre">location</span></code></p></li>
+</ul>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gesture.state">
 <span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#gesture.state" title="Link to this definition">¶</a></dt>
-<dd><p>The current state of the gesture</p>
+<dd><p>The current state of the gesture, using the same constants as touches:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BEGAN</span></code> - the gesture was recognized</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHANGED</span></code> - the gesture moved or changed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENDED</span></code> - the gesture finished or was cancelled</p></li>
+</ul>
+<p>A tap reports <code class="docutils literal notranslate"><span class="pre">ENDED</span></code> once it is recognized.</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -421,7 +547,7 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gesture.translation">
 <span class="sig-name descname"><span class="pre">translation</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#gesture.translation" title="Link to this definition">¶</a></dt>
-<dd><p>The translation of the gesture event relative to its starting location</p>
+<dd><p>The translation of the gesture event relative to its starting location, with positive <code class="docutils literal notranslate"><span class="pre">y</span></code> pointing up</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -439,25 +565,25 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gesture.pinchDelta">
 <span class="sig-name descname"><span class="pre">pinchDelta</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gesture.pinchDelta" title="Link to this definition">¶</a></dt>
-<dd><p>The delta of the pinch distance since last update</p>
+<dd><p>The ratio of the pinch scale to its value at the last update. Multiply a size by it to follow the pinch</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gesture.pinchVelocity">
 <span class="sig-name descname"><span class="pre">pinchVelocity</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gesture.pinchVelocity" title="Link to this definition">¶</a></dt>
-<dd><p>The current change in pinch distance over time</p>
+<dd><p>The rate of change of the pinch scale, in scale factor per second</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gesture.rotationAngle">
 <span class="sig-name descname"><span class="pre">rotationAngle</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gesture.rotationAngle" title="Link to this definition">¶</a></dt>
-<dd><p>The current angle of a rotation gesture relative to its’ starting angle</p>
+<dd><p>The change in angle of a rotation gesture since the last update, in degrees. Positive values are counter-clockwise, the same direction as <code class="docutils literal notranslate"><span class="pre">rotate()</span></code>.</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gesture.rotationVelocity">
 <span class="sig-name descname"><span class="pre">rotationVelocity</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gesture.rotationVelocity" title="Link to this definition">¶</a></dt>
-<dd><p>The current change in rotation angle over time</p>
+<dd><p>The rate of change of the rotation angle, in degrees per second</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -471,11 +597,20 @@
 <dl class="lua class">
 <dt class="sig sig-object lua" id="gesture.tap">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture.tap</span></span><a class="headerlink" href="#gesture.tap" title="Link to this definition">¶</a></dt>
-<dd><p>Tap gesture recognizer (using system gesture recognizer for implementation)</p>
+<dd><p>Tap gesture recognizer (using system gesture recognizer for implementation). The recognizer is removed when it is garbage collected, so keep a reference to it</p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="gesture.tap.gesture.tap">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">tap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">minTouches</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">maxTouches</span> <span class="pre">=</span> <span class="pre">1</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#gesture.tap.gesture.tap" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">tap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tapCount</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">touchCount</span> <span class="pre">=</span> <span class="pre">1</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#gesture.tap.gesture.tap" title="Link to this definition">¶</a></dt>
 <dd><p>Creates and registers a new tap gesture recognizer that will call <code class="docutils literal notranslate"><span class="pre">callback(gesture)</span></code> when recognized</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">function</span></code></span>) – The function to call with the gesture</p></li>
+<li><p><strong>tapCount</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The number of taps required, such as <code class="docutils literal notranslate"><span class="pre">2</span></code> for a double tap</p></li>
+<li><p><strong>touchCount</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The number of fingers required</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -484,16 +619,32 @@
 <dd><p>Enables/disables this gesture recognizer</p>
 </dd></dl>
 
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.tap.group">
+<span class="sig-name descname"><span class="pre">group</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[default</span> <span class="pre">=</span> <span class="pre">0]</span><a class="headerlink" href="#gesture.tap.group" title="Link to this definition">¶</a></dt>
+<dd><p>Recognizers that share the same non-zero group can recognize at the same time. A recognizer in group <code class="docutils literal notranslate"><span class="pre">0</span></code> does not run alongside others</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="gesture.pan">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture.pan</span></span><a class="headerlink" href="#gesture.pan" title="Link to this definition">¶</a></dt>
-<dd><p>Pan gesture recognizer (using system gesture recognizer for implementation)</p>
+<dd><p>Pan gesture recognizer (using system gesture recognizer for implementation). The recognizer is removed when it is garbage collected, so keep a reference to it</p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="gesture.pan.gesture.pan">
-<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">pan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">minTouches</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">maxTouches</span> <span class="pre">=</span> <span class="pre">1</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#gesture.pan.gesture.pan" title="Link to this definition">¶</a></dt>
-<dd><p>Creates and registers a new pan gesture recognizer that will call <code class="docutils literal notranslate"><span class="pre">callback(gesture)</span></code> when recognized</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">pan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">minTouches</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">maxTouches</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">trackpad</span> <span class="pre">=</span> <span class="pre">false</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#gesture.pan.gesture.pan" title="Link to this definition">¶</a></dt>
+<dd><p>Creates and registers a new pan gesture recognizer that will call <code class="docutils literal notranslate"><span class="pre">callback(gesture)</span></code> as the pan begins, moves and ends</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">function</span></code></span>) – The function to call with the gesture</p></li>
+<li><p><strong>minTouches</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The fewest fingers that can perform the pan</p></li>
+<li><p><strong>maxTouches</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The most fingers that can perform the pan</p></li>
+<li><p><strong>trackpad</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">boolean</span></code></span>) – Also recognize two finger trackpad scrolling as a pan</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -502,12 +653,18 @@
 <dd><p>Enables/disables this gesture recognizer</p>
 </dd></dl>
 
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.pan.group">
+<span class="sig-name descname"><span class="pre">group</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[default</span> <span class="pre">=</span> <span class="pre">0]</span><a class="headerlink" href="#gesture.pan.group" title="Link to this definition">¶</a></dt>
+<dd><p>Recognizers that share the same non-zero group can recognize at the same time. A recognizer in group <code class="docutils literal notranslate"><span class="pre">0</span></code> does not run alongside others</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="gesture.pinch">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture.pinch</span></span><a class="headerlink" href="#gesture.pinch" title="Link to this definition">¶</a></dt>
-<dd><p>Pinch gesture recognizer (using system gesture recognizer for implementation)</p>
+<dd><p>Pinch gesture recognizer (using system gesture recognizer for implementation). The recognizer is removed when it is garbage collected, so keep a reference to it</p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="gesture.pinch.gesture.pinch">
 <em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">pinch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gesture.pinch.gesture.pinch" title="Link to this definition">¶</a></dt>
@@ -520,12 +677,18 @@
 <dd><p>Enables/disables this gesture recognizer</p>
 </dd></dl>
 
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.pinch.group">
+<span class="sig-name descname"><span class="pre">group</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[default</span> <span class="pre">=</span> <span class="pre">0]</span><a class="headerlink" href="#gesture.pinch.group" title="Link to this definition">¶</a></dt>
+<dd><p>Recognizers that share the same non-zero group can recognize at the same time. A recognizer in group <code class="docutils literal notranslate"><span class="pre">0</span></code> does not run alongside others</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="gesture.rotation">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gesture.rotation</span></span><a class="headerlink" href="#gesture.rotation" title="Link to this definition">¶</a></dt>
-<dd><p>Rotation gesture recognizer (using system gesture recognizer for implementation)</p>
+<dd><p>Rotation gesture recognizer (using system gesture recognizer for implementation). The recognizer is removed when it is garbage collected, so keep a reference to it</p>
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="gesture.rotation.gesture.rotation">
 <em class="property"><span class="pre">static</span> </em><span class="sig-prename descclassname"><span class="pre">gesture.</span></span><span class="sig-name descname"><span class="pre">rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gesture.rotation.gesture.rotation" title="Link to this definition">¶</a></dt>
@@ -538,21 +701,28 @@
 <dd><p>Enables/disables this gesture recognizer</p>
 </dd></dl>
 
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gesture.rotation.group">
+<span class="sig-name descname"><span class="pre">group</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span> <span class="pre">[default</span> <span class="pre">=</span> <span class="pre">0]</span><a class="headerlink" href="#gesture.rotation.group" title="Link to this definition">¶</a></dt>
+<dd><p>Recognizers that share the same non-zero group can recognize at the same time. A recognizer in group <code class="docutils literal notranslate"><span class="pre">0</span></code> does not run alongside others</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
 <section id="keyboard">
 <h2>Keyboard<a class="headerlink" href="#keyboard" title="Link to this heading">¶</a></h2>
-<dl class="lua function" id="module-key">
+<p id="module-key">Functions and constants for reading a hardware keyboard. Key events also call the global <code class="docutils literal notranslate"><span class="pre">keyPressed(press)</span></code> and <code class="docutils literal notranslate"><span class="pre">keyReleased(press)</span></code> functions, except while a user interface text field has focus</p>
+<dl class="lua function">
 <dt class="sig sig-object lua" id="key.pressing">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">key.</span></span><span class="sig-name descname"><span class="pre">pressing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">keyCode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#key.pressing" title="Link to this definition">¶</a></dt>
-<dd><p>Queries whether the key is currently being pressed this frame</p>
+<dd><p>Queries whether the key is currently held down</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>keyCode</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">constant</span></code></span>) – The keyCode to query</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Is the key being pressed this frame</p>
+<dd class="field-even"><p>Is the key held down</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">boolean</span></code></span></p>
@@ -563,7 +733,7 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="key.wasPressed">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">key.</span></span><span class="sig-name descname"><span class="pre">wasPressed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">keyCode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#key.wasPressed" title="Link to this definition">¶</a></dt>
-<dd><p>Queries whether the key is was pressed down this frame</p>
+<dd><p>Queries whether the key went down since the previous frame</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>keyCode</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">constant</span></code></span>) – The keyCode to query</p>
@@ -580,7 +750,7 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="key.wasReleased">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">key.</span></span><span class="sig-name descname"><span class="pre">wasReleased</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">keyCode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#key.wasReleased" title="Link to this definition">¶</a></dt>
-<dd><p>Queries whether the supplied key code was released this frame</p>
+<dd><p>Queries whether the key came up since the previous frame</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>keyCode</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">constant</span></code></span>) – The keyCode to query</p>
@@ -604,13 +774,21 @@
 <li><p><a class="reference internal" href="#key.key.cmd" title="key.key.cmd"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.cmd</span></code></a></p></li>
 <li><p><a class="reference internal" href="#key.key.shift" title="key.key.shift"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">key.shift</span></code></a></p></li>
 </ul>
-<p>Use <cite>key.pressing(keyCode)</cite> to query individual keys such as <cite>key.leftAlt</cite>.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">key.pressing(keyCode)</span></code> to query individual keys such as <code class="docutils literal notranslate"><span class="pre">key.leftAlt</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The modifiers currently held</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lua function">
 <dt class="sig sig-object lua" id="key.modifiersPressed">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">key.</span></span><span class="sig-name descname"><span class="pre">modifiersPressed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">modifiers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#key.modifiersPressed" title="Link to this definition">¶</a></dt>
-<dd><p>Queries whether the supplied key modifiers are currently pressed</p>
+<dd><p>Queries whether all of the supplied key modifiers are currently held. Combine masks with <code class="docutils literal notranslate"><span class="pre">|</span></code>, as in <code class="docutils literal notranslate"><span class="pre">key.modifiersPressed(key.cmd</span> <span class="pre">|</span> <span class="pre">key.shift)</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>modifiers</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">constant</span></code></span>) – The key modifiers to query as a bit field</p>
@@ -624,6 +802,54 @@
 </dl>
 </dd></dl>
 
+<dl class="lua class">
+<dt class="sig sig-object lua" id="key.press">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">key.</span></span><span class="sig-name descname"><span class="pre">press</span></span><a class="headerlink" href="#key.press" title="Link to this definition">¶</a></dt>
+<dd><p>A single key event, passed to the global <code class="docutils literal notranslate"><span class="pre">keyPressed(press)</span></code> and <code class="docutils literal notranslate"><span class="pre">keyReleased(press)</span></code> functions</p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.press.keyCode">
+<span class="sig-name descname"><span class="pre">keyCode</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.press.keyCode" title="Link to this definition">¶</a></dt>
+<dd><p>The key, as one of the <code class="docutils literal notranslate"><span class="pre">key</span></code> key code constants such as <code class="docutils literal notranslate"><span class="pre">key.a</span></code> or <code class="docutils literal notranslate"><span class="pre">key.space</span></code></p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.press.modifierFlags">
+<span class="sig-name descname"><span class="pre">modifierFlags</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#key.key.press.modifierFlags" title="Link to this definition">¶</a></dt>
+<dd><p>The modifiers held during this key event, as a bit field of <code class="docutils literal notranslate"><span class="pre">key.alt</span></code>, <code class="docutils literal notranslate"><span class="pre">key.ctrl</span></code>, <code class="docutils literal notranslate"><span class="pre">key.cmd</span></code> and <code class="docutils literal notranslate"><span class="pre">key.shift</span></code></p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.press.characters">
+<span class="sig-name descname"><span class="pre">characters</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#key.key.press.characters" title="Link to this definition">¶</a></dt>
+<dd><p>The text produced by the key, taking modifiers such as shift into account</p>
+</dd></dl>
+
+</dd></dl>
+
+<section id="constants-modifiers">
+<h3>Constants - Modifiers<a class="headerlink" href="#constants-modifiers" title="Link to this heading">¶</a></h3>
+<p>These are bit masks for <a class="reference internal" href="#key.modifiers" title="key.modifiers"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">key.modifiers()</span></code></a>, <a class="reference internal" href="#key.modifiersPressed" title="key.modifiersPressed"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">key.modifiersPressed()</span></code></a> and <code class="docutils literal notranslate"><span class="pre">press.modifierFlags</span></code>. Each one covers both the left and right key. They are not key codes, so use <code class="docutils literal notranslate"><span class="pre">key.leftAlt</span></code> and similar with <a class="reference internal" href="#key.pressing" title="key.pressing"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">key.pressing()</span></code></a></p>
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.alt">
+<span class="sig-name descname"><span class="pre">alt</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.alt" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.ctrl">
+<span class="sig-name descname"><span class="pre">ctrl</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.ctrl" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.cmd">
+<span class="sig-name descname"><span class="pre">cmd</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.cmd" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="key.key.shift">
+<span class="sig-name descname"><span class="pre">shift</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.shift" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
 <section id="constants-key-codes">
 <h3>Constants - Key Codes<a class="headerlink" href="#constants-key-codes" title="Link to this heading">¶</a></h3>
 <dl class="lua attribute">
@@ -637,11 +863,6 @@
 <dd></dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="key.key.alt">
-<span class="sig-name descname"><span class="pre">alt</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.alt" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="lua attribute">
 <dt class="sig sig-object lua" id="key.key.leftCtrl">
 <span class="sig-name descname"><span class="pre">leftCtrl</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.leftCtrl" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -649,11 +870,6 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="key.key.rightCtrl">
 <span class="sig-name descname"><span class="pre">rightCtrl</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.rightCtrl" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="key.key.ctrl">
-<span class="sig-name descname"><span class="pre">ctrl</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.ctrl" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua attribute">
@@ -667,11 +883,6 @@
 <dd></dd></dl>
 
 <dl class="lua attribute">
-<dt class="sig sig-object lua" id="key.key.cmd">
-<span class="sig-name descname"><span class="pre">cmd</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.cmd" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="lua attribute">
 <dt class="sig sig-object lua" id="key.key.leftShift">
 <span class="sig-name descname"><span class="pre">leftShift</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.leftShift" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -679,11 +890,6 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="key.key.rightShift">
 <span class="sig-name descname"><span class="pre">rightShift</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.rightShift" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="lua attribute">
-<dt class="sig sig-object lua" id="key.key.shift">
-<span class="sig-name descname"><span class="pre">shift</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#key.key.shift" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua attribute">
@@ -1124,7 +1330,8 @@
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">gamepad</span></span></dt>
-<dd><dl class="lua attribute">
+<dd><p>A game controller. Read <code class="docutils literal notranslate"><span class="pre">gamepad.all</span></code>, <code class="docutils literal notranslate"><span class="pre">gamepad.current</span></code> and <code class="docutils literal notranslate"><span class="pre">gamepad.virtual</span></code> to get one</p>
+<dl class="lua attribute">
 <dt class="sig sig-object lua" id="gamepad.all">
 <span class="sig-name descname"><span class="pre">all</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table&lt;gamepad&gt;</span><a class="headerlink" href="#gamepad.all" title="Link to this definition">¶</a></dt>
 <dd><p>A list of all currently connected gamepads</p>
@@ -1133,19 +1340,19 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gamepad.current">
 <span class="sig-name descname"><span class="pre">current</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">gamepad</span><a class="headerlink" href="#gamepad.current" title="Link to this definition">¶</a></dt>
-<dd><p>The current main active gamepad (or nil if none connected)</p>
+<dd><p>The most recently used gamepad, or <code class="docutils literal notranslate"><span class="pre">nil</span></code> if none is connected</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gamepad.virtual">
 <span class="sig-name descname"><span class="pre">virtual</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">gamepad.virtualGamepad</span><a class="headerlink" href="#gamepad.virtual" title="Link to this definition">¶</a></dt>
-<dd><p>Gets or creates a virtual gamepad which will substitute on-screen controls if no controller is currently connected</p>
+<dd><p>Gets the on-screen gamepad, creating it on first use. It shows a stick at the bottom left and an <code class="docutils literal notranslate"><span class="pre">A</span></code> button at the bottom right, controlled by touch. While a controller is connected it is hidden and mirrors <code class="docutils literal notranslate"><span class="pre">gamepad.current</span></code></p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gamepad.connected">
 <span class="sig-name descname"><span class="pre">connected</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">function(gamepad)</span><a class="headerlink" href="#gamepad.connected" title="Link to this definition">¶</a></dt>
-<dd><p>Callback for when a gamepad is connected</p>
+<dd><p>Callback for when a gamepad is connected. Gamepads that are already connected when the project starts are listed in <code class="docutils literal notranslate"><span class="pre">gamepad.all</span></code> and do not trigger it</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -1181,7 +1388,8 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gamepad.dpad">
 <span class="sig-name descname"><span class="pre">dpad</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">gamepad.directionalPad</span><a class="headerlink" href="#gamepad.dpad" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The directional pad</p>
+</dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gamepad.leftStick">
@@ -1251,60 +1459,123 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gamepad.batteryLevel">
 <span class="sig-name descname"><span class="pre">batteryLevel</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#gamepad.batteryLevel" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The battery charge, from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+</dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gamepad.batteryState">
 <span class="sig-name descname"><span class="pre">batteryState</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.batteryState" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The battery state, one of <code class="docutils literal notranslate"><span class="pre">gamepad.charging</span></code>, <code class="docutils literal notranslate"><span class="pre">gamepad.discharging</span></code>, <code class="docutils literal notranslate"><span class="pre">gamepad.full</span></code> or <code class="docutils literal notranslate"><span class="pre">gamepad.unknown</span></code></p>
+</dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="gamepad.light">
 <span class="sig-name descname"><span class="pre">light</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">color</span><a class="headerlink" href="#gamepad.light" title="Link to this definition">¶</a></dt>
+<dd><p>The color of the controller’s light, on controllers that have one</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.playerIndex">
+<span class="sig-name descname"><span class="pre">playerIndex</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.playerIndex" title="Link to this definition">¶</a></dt>
+<dd><p>The player number shown on the controller, one of <code class="docutils literal notranslate"><span class="pre">gamepad.unset</span></code>, <code class="docutils literal notranslate"><span class="pre">gamepad.player1</span></code>, <code class="docutils literal notranslate"><span class="pre">gamepad.player2</span></code>, <code class="docutils literal notranslate"><span class="pre">gamepad.player3</span></code> or <code class="docutils literal notranslate"><span class="pre">gamepad.player4</span></code></p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.vendorName">
+<span class="sig-name descname"><span class="pre">vendorName</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#gamepad.vendorName" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the controller as reported by its maker</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.unset">
+<span class="sig-name descname"><span class="pre">unset</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.unset" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.player1">
+<span class="sig-name descname"><span class="pre">player1</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.player1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.player2">
+<span class="sig-name descname"><span class="pre">player2</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.player2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.player3">
+<span class="sig-name descname"><span class="pre">player3</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.player3" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.player4">
+<span class="sig-name descname"><span class="pre">player4</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.player4" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.charging">
+<span class="sig-name descname"><span class="pre">charging</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.charging" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.discharging">
+<span class="sig-name descname"><span class="pre">discharging</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.discharging" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.full">
+<span class="sig-name descname"><span class="pre">full</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.full" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="gamepad.unknown">
+<span class="sig-name descname"><span class="pre">unknown</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">const</span><a class="headerlink" href="#gamepad.unknown" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="button">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">button</span></span><a class="headerlink" href="#button" title="Link to this definition">¶</a></dt>
-<dd><dl class="lua attribute">
+<dd><p>A button or trigger on a gamepad</p>
+<dl class="lua attribute">
 <dt class="sig sig-object lua" id="button.pressing">
 <span class="sig-name descname"><span class="pre">pressing</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#button.pressing" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> while the button is held down</p>
+</dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="button.pressed">
 <span class="sig-name descname"><span class="pre">pressed</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#button.pressed" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> only in the frame the button went down</p>
+</dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="button.released">
 <span class="sig-name descname"><span class="pre">released</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#button.released" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> only in the frame the button came up</p>
+</dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="button.value">
 <span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#button.value" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>How far the button is pressed, from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>. Triggers report values in between</p>
+</dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="button.touching">
 <span class="sig-name descname"><span class="pre">touching</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#button.touching" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> while a finger rests on the button, on controllers that can sense it</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="lua class">
 <dt class="sig sig-object lua" id="directionalPad">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">directionalPad</span></span><a class="headerlink" href="#directionalPad" title="Link to this definition">¶</a></dt>
-<dd><dl class="lua attribute">
-<dt class="sig sig-object lua" id="directionalPad.pressing">
-<span class="sig-name descname"><span class="pre">pressing</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#directionalPad.pressing" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dd><p>A stick, directional pad or touchpad surface on a gamepad</p>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="directionalPad.dir">
 <span class="sig-name descname"><span class="pre">dir</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">vec2</span><a class="headerlink" href="#directionalPad.dir" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The direction, with each axis from <code class="docutils literal notranslate"><span class="pre">-1</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+</dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="directionalPad.x">
@@ -1343,16 +1614,17 @@
 </section>
 <section id="mouse">
 <h2>Mouse<a class="headerlink" href="#mouse" title="Link to this heading">¶</a></h2>
-<dl class="lua attribute" id="module-mouse">
+<p id="module-mouse">The pointer state on a Mac, or an iPad with a mouse or trackpad. The global <code class="docutils literal notranslate"><span class="pre">hover(gesture)</span></code> and <code class="docutils literal notranslate"><span class="pre">scroll(gesture)</span></code> functions are also called for pointer movement and scrolling</p>
+<dl class="lua attribute">
 <dt class="sig sig-object lua" id="mouse.mouse.x">
 <span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#mouse.mouse.x" title="Link to this definition">¶</a></dt>
-<dd><p>The current horizontal position of the pointer in screen coordinates</p>
+<dd><p>The current horizontal position of the pointer in screen coordinates. Updated while the pointer hovers over the viewer and while a button is held</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="mouse.mouse.y">
 <span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#mouse.mouse.y" title="Link to this definition">¶</a></dt>
-<dd><p>The current vertical position of the pointer in screen coordinates</p>
+<dd><p>The current vertical position of the pointer in screen coordinates. Updated while the pointer hovers over the viewer and while a button is held</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -1388,7 +1660,7 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="mouse.mouse.left">
 <span class="sig-name descname"><span class="pre">left</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">mouse.button</span><a class="headerlink" href="#mouse.mouse.left" title="Link to this definition">¶</a></dt>
-<dd><p>The left mouse button</p>
+<dd><p>The left mouse button. Trackpad clicks also count as the left button</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -1406,7 +1678,7 @@
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="mouse.mouse.active">
 <span class="sig-name descname"><span class="pre">active</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#mouse.mouse.active" title="Link to this definition">¶</a></dt>
-<dd><p>Whether a mouse or pointer device is currently connected</p>
+<dd><p>Whether a mouse or trackpad is currently connected</p>
 </dd></dl>
 
 <dl class="lua attribute">
@@ -1492,9 +1764,13 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">input</a><ul>
-<li><a class="reference internal" href="#touches">Touches</a></li>
+<li><a class="reference internal" href="#touches">Touches</a><ul>
+<li><a class="reference internal" href="#constants-touch-state">Constants - Touch State</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#gestures">Gestures</a></li>
 <li><a class="reference internal" href="#keyboard">Keyboard</a><ul>
+<li><a class="reference internal" href="#constants-modifiers">Constants - Modifiers</a></li>
 <li><a class="reference internal" href="#constants-key-codes">Constants - Key Codes</a></li>
 </ul>
 </li>
