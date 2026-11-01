@@ -329,7 +329,7 @@ Gestures
 
    .. lua:attribute:: rotationAngle: number 
 
-      The change in angle of a rotation gesture since the last update, in degrees. Positive values are clockwise.
+      The change in angle of a rotation gesture since the last update, in degrees. Positive values are counter-clockwise, the same direction as ``rotate()``.
 
       .. helptext:: get the rotation angle of this gesture
 
