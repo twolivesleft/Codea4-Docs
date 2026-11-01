@@ -122,7 +122,7 @@ A two finger pan moves the square, a pinch scales it, and a double tap resets it
 Keyboard
 --------
 
-Hardware keyboards are supported on iPhone, iPad and Mac. There is no on-screen keyboard API.
+Hardware keyboards are supported on iPhone, iPad and Mac. The on-screen keyboard is described below.
 
 Read key state from ``draw()`` with the :lua:mod:`key` functions. ``key.pressing`` is true while a key is held. ``key.wasPressed`` and ``key.wasReleased`` are true only in the frame where the key went down or came up.
 
@@ -175,6 +175,32 @@ Modifier keys are reported as a bit field. ``key.modifiersPressed(key.cmd)`` is 
        if press.keyCode == key.s and key.modifiersPressed(key.cmd | key.shift) then
            print("save as")
        end
+   end
+
+On-Screen Keyboard
+------------------
+
+Call ``keyboard.show()`` to bring up the on-screen keyboard and ``keyboard.hide()`` to put it away. ``keyboard.visible`` is true while it is on screen. Touching the screen does not dismiss it.
+
+What the player types collects in ``keyboard.text``, including autocorrected and pasted text and the characters of languages such as Korean, which are composed as they are typed. Each insertion also calls ``keyPressed``, so code written for a hardware keyboard keeps working.
+
+.. code-block:: lua
+
+   function setup()
+       keyboard.show()
+   end
+
+   function keyPressed(press)
+       if press.keyCode == key.enter then
+           print("You typed " .. keyboard.text)
+           keyboard.text = ""
+       end
+   end
+
+   function draw()
+       background(40)
+       style.fill(255)
+       text(keyboard.text, WIDTH/2, HEIGHT - 100)
    end
 
 Mouse and Trackpad
