@@ -1612,6 +1612,34 @@
 </dd></dl>
 
 </section>
+<section id="on-screen-keyboard">
+<h2>On-Screen Keyboard<a class="headerlink" href="#on-screen-keyboard" title="Link to this heading">¶</a></h2>
+<p id="module-keyboard">The on-screen keyboard. While it is shown, typing sets <a class="reference internal" href="#keyboard.keyboard.text" title="keyboard.keyboard.text"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">keyboard.text</span></code></a> and also calls the global <code class="docutils literal notranslate"><span class="pre">keyPressed(press)</span></code> and <code class="docutils literal notranslate"><span class="pre">keyReleased(press)</span></code> functions, one after the other, for each insertion. <code class="docutils literal notranslate"><span class="pre">press.characters</span></code> holds the inserted text and <code class="docutils literal notranslate"><span class="pre">press.keyCode</span></code> is set for letters, digits, space, return and backspace. A hardware keyboard types into the same text while the on-screen keyboard is shown.</p>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="keyboard.show">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">keyboard.</span></span><span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keyboard.show" title="Link to this definition">¶</a></dt>
+<dd><p>Shows the on-screen keyboard. It stays up when the screen is touched, until <a class="reference internal" href="#keyboard.hide" title="keyboard.hide"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">keyboard.hide()</span></code></a> is called</p>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="keyboard.hide">
+<em class="property"> </em><span class="sig-prename descclassname"><span class="pre">keyboard.</span></span><span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keyboard.hide" title="Link to this definition">¶</a></dt>
+<dd><p>Hides the on-screen keyboard</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="keyboard.keyboard.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#keyboard.keyboard.visible" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> while the on-screen keyboard is on screen. With a hardware keyboard attached, the system may not show it after <a class="reference internal" href="#keyboard.show" title="keyboard.show"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">keyboard.show()</span></code></a></p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="keyboard.keyboard.text">
+<span class="sig-name descname"><span class="pre">text</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">string</span><a class="headerlink" href="#keyboard.keyboard.text" title="Link to this definition">¶</a></dt>
+<dd><p>The text typed so far, including text from autocorrection, pasting, and characters still being composed in languages such as Korean or Japanese. Set it to replace the text, for example <code class="docutils literal notranslate"><span class="pre">keyboard.text</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span></code> to clear it</p>
+</dd></dl>
+
+</section>
 <section id="mouse">
 <h2>Mouse<a class="headerlink" href="#mouse" title="Link to this heading">¶</a></h2>
 <p id="module-mouse">The pointer state on a Mac, or an iPad with a mouse or trackpad. The global <code class="docutils literal notranslate"><span class="pre">hover(gesture)</span></code> and <code class="docutils literal notranslate"><span class="pre">scroll(gesture)</span></code> functions are also called for pointer movement and scrolling</p>
@@ -1775,6 +1803,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#gamepad">Gamepad</a></li>
+<li><a class="reference internal" href="#on-screen-keyboard">On-Screen Keyboard</a></li>
 <li><a class="reference internal" href="#mouse">Mouse</a></li>
 </ul>
 </li>
