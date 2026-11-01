@@ -1103,6 +1103,37 @@ Gamepad
 
          .. helptext:: get if the directional pad is moved down
 
+On-Screen Keyboard
+##################
+
+.. lua:module:: keyboard
+
+The on-screen keyboard. While it is shown, typing sets :lua:attr:`keyboard.text` and also calls the global ``keyPressed(press)`` and ``keyReleased(press)`` functions, one after the other, for each insertion. ``press.characters`` holds the inserted text and ``press.keyCode`` is set for letters, digits, space, return and backspace. A hardware keyboard types into the same text while the on-screen keyboard is shown.
+
+.. lua:function:: show()
+
+   Shows the on-screen keyboard. It stays up when the screen is touched, until :lua:func:`keyboard.hide` is called
+
+   .. helptext:: show the on-screen keyboard
+
+.. lua:function:: hide()
+
+   Hides the on-screen keyboard
+
+   .. helptext:: hide the on-screen keyboard
+
+.. lua:attribute:: visible: boolean
+
+   ``true`` while the on-screen keyboard is on screen. With a hardware keyboard attached, the system may not show it after :lua:func:`keyboard.show`
+
+   .. helptext:: check if the on-screen keyboard is showing
+
+.. lua:attribute:: text: string
+
+   The text typed so far, including text from autocorrection, pasting, and characters still being composed in languages such as Korean or Japanese. Set it to replace the text, for example ``keyboard.text = ""`` to clear it
+
+   .. helptext:: get or set the text typed on the on-screen keyboard
+
 Mouse
 #####
 
