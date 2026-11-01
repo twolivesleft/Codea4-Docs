@@ -10,7 +10,7 @@ Touches
 
 .. lua:class:: touch
 
-   Represents a single touch over time. Generated in response to touch events by the device in response to user interactions
+   Represents a single touch over time. Passed to the global ``touched(touch)`` function and to entity ``touched`` methods each time the touch begins, moves or ends
 
    .. lua:attribute:: id: number
 
@@ -22,12 +22,42 @@ Touches
 
       The current state of the touch, can be:
 
-      * ``BEGAN`` - the touch began this frame
-      * ``MOVING`` - the touch moved this frame
-      * ``ENDED`` - the touch ended this frame
-      * ``CANCELLED`` - the touch was cancelled (usually by another view or gesture recognizer)
+      * ``BEGAN`` - the touch began
+      * ``CHANGED`` - the touch moved (``MOVING`` is the same value)
+      * ``ENDED`` - the touch ended
+      * ``CANCELLED`` - the touch was cancelled, usually by a gesture recognizer or the system
 
       .. helptext:: get the current state of this touch or gesture
+
+   .. lua:attribute:: began: boolean
+
+      ``true`` if the touch began with this event
+
+      .. helptext:: check if this touch just began
+
+   .. lua:attribute:: changed: boolean
+
+      ``true`` if the touch moved with this event
+
+      .. helptext:: check if this touch moved
+
+   .. lua:attribute:: ended: boolean
+
+      ``true`` if the touch ended with this event
+
+      .. helptext:: check if this touch ended
+
+   .. lua:attribute:: cancelled: boolean
+
+      ``true`` if the touch was cancelled
+
+      .. helptext:: check if this touch was cancelled
+
+   .. lua:attribute:: tapCount: integer
+
+      The number of quick taps in a row at this location, starting at 1
+
+      .. helptext:: get the tap count of this touch
 
    .. lua:attribute:: type: enum 
 
@@ -35,8 +65,8 @@ Touches
 
       * ``touch.direct`` - a touch resulting from direct contact with the screen
       * ``touch.indirect`` - a touch that does not result from direct contact with the screen
-      * ``touch.pencil`` - a touch resulting from the pencil
-      * ``touch.pointer`` - a touch resulting from a button based device
+      * ``touch.pencil`` - a touch from Apple Pencil
+      * ``touch.pointer`` - a click from a mouse or trackpad
 
       .. helptext:: get the type of this touch
 
@@ -66,13 +96,13 @@ Touches
 
    .. lua:attribute:: deltaX: number
 
-      The x position delta of the touch (in screen coordinates)
+      The change in x position since the previous event for this touch (in screen coordinates)
 
       .. helptext:: get the delta x movement
 
    .. lua:attribute:: deltaY: number
 
-      The y position delta of the touch (in screen coordinates)
+      The change in y position since the previous event for this touch (in screen coordinates)
 
       .. helptext:: get the delta y movement
 
@@ -90,37 +120,37 @@ Touches
 
    .. lua:attribute:: delta: vec2
 
-      The position delta of the touch (in screen coordinates) as a vector
+      The change in position since the previous event for this touch (in screen coordinates) as a vector
 
       .. helptext:: get the delta movement
 
    .. lua:attribute:: force: number
 
-      The amount of force being applied (only applies to pencil type touches)
+      The amount of force being applied, where ``1`` is an average touch. Reported for Apple Pencil and on devices with 3D Touch, otherwise ``0``
 
       .. helptext:: get the force of this touch
 
    .. lua:attribute:: maxForce: number
 
-      The maximum amount of force that can be applied (only applies to pencil type touches)
+      The maximum possible value of ``force``
 
       .. helptext:: get the maximum force of this touch
 
    .. lua:attribute:: timestamp: number  
       
-      The time when this touch event occured (only applies to pencil type touches)
+      The time when this touch event occurred, in seconds since the device started
 
       .. helptext:: get the timestamp of this touch
 
    .. lua:attribute:: azimuth: number
 
-      The azimuth angle of the pencil (only applies to pencil type touches)
+      The direction the pencil points across the screen, in radians (only applies to pencil type touches)
 
       .. helptext:: get the azimuth angle of the stylus
         
    .. lua:attribute:: altitude: number
 
-      The altitude angle of the pencil
+      The angle of the pencil above the screen, in radians. ``0`` is flat against the screen and ``math.pi / 2`` is perpendicular to it (only applies to pencil type touches)
 
       .. helptext:: get the altitude angle of the stylus
 
@@ -148,12 +178,100 @@ Touches
 
       .. helptext:: get the precise previous position of this touch
 
+   .. lua:attribute:: current: touch
+
+      The first touch that is currently down. It keeps its last state after the touch ends, until a new touch begins. Read it as ``touch.current``
+
+      .. helptext:: get the current primary touch
+
+   .. lua:method:: cancel(scene)
+
+      Cancels this touch for every entity in ``scene`` that holds it. Each of those entities receives the touch once more with the ``CANCELLED`` state
+
+      .. helptext:: cancel this touch for a scene
+
+      :param scene: The scene whose entities hold the touch
+      :type scene: scene
+
+   .. lua:method:: makeExclusive(entity)
+
+      Gives this touch to ``entity`` alone. Other entities that hold the touch receive it with the ``CANCELLED`` state. Does nothing if another entity already holds it exclusively
+
+      .. helptext:: give this touch to one entity only
+
+      :param entity: The entity that keeps the touch
+      :type entity: entity
+
+   .. lua:attribute:: direct: const
+
+      .. helptext:: direct touch type constant
+
+   .. lua:attribute:: indirect: const
+
+      .. helptext:: indirect touch type constant
+
+   .. lua:attribute:: pencil: const
+
+      .. helptext:: pencil touch type constant
+
+   .. lua:attribute:: pointer: const
+
+      .. helptext:: pointer touch type constant
+
+Constants - Touch State
+***********************
+
+.. lua:currentmodule:: None
+
+.. lua:attribute:: BEGAN: const
+
+   .. symbol:: const
+      :group: touch-state
+
+   .. helptext:: touch began state constant
+
+.. lua:attribute:: CHANGED: const
+
+   .. symbol:: const
+      :group: touch-state
+
+   .. helptext:: touch moved state constant
+
+.. lua:attribute:: MOVING: const
+
+   The same value as ``CHANGED``
+
+   .. symbol:: const
+      :group: touch-state
+
+   .. helptext:: touch moved state constant
+
+.. lua:attribute:: ENDED: const
+
+   .. symbol:: const
+      :group: touch-state
+
+   .. helptext:: touch ended state constant
+
+.. lua:attribute:: CANCELLED: const
+
+   .. symbol:: const
+      :group: touch-state
+
+   .. helptext:: touch cancelled state constant
+
 Gestures
 ########
 
 .. lua:class:: gesture
 
-   Represents a single gesture event
+   Represents a single gesture event. Passed to gesture recognizer callbacks and to the global ``hover(gesture)`` and ``scroll(gesture)`` functions. Each kind of gesture fills in only the fields that apply to it:
+
+   * tap - ``location``
+   * pan and scroll - ``location``, ``translation``, ``delta`` and ``touchCount``
+   * pinch - ``location``, ``pinchScale``, ``pinchDelta`` and ``pinchVelocity``
+   * rotation - ``location``, ``rotationAngle`` and ``rotationVelocity``
+   * hover - ``location``
 
    .. lua:attribute:: state: enum
 
@@ -169,7 +287,7 @@ Gestures
 
    .. lua:attribute:: translation: vec2
 
-      The translation of the gesture event relative to its starting location
+      The translation of the gesture event relative to its starting location, with positive ``y`` pointing up
 
       .. helptext:: get the translation of this gesture or joint
 
@@ -187,25 +305,25 @@ Gestures
 
    .. lua:attribute:: pinchDelta: number
 
-      The delta of the pinch distance since last update
+      The ratio of the pinch scale to its value at the last update. Multiply a size by it to follow the pinch
 
       .. helptext:: get the pinch delta of this gesture
 
    .. lua:attribute:: pinchVelocity: number
 
-      The current change in pinch distance over time
+      The rate of change of the pinch scale, in scale factor per second
 
       .. helptext:: get the pinch velocity of this gesture
 
    .. lua:attribute:: rotationAngle: number 
 
-      The current angle of a rotation gesture relative to its' starting angle
+      The change in angle of a rotation gesture since the last update, in degrees
 
       .. helptext:: get the rotation angle of this gesture
 
    .. lua:attribute:: rotationVelocity: number
 
-      The current change in rotation angle over time
+      The rate of change of the rotation angle, in degrees per second
 
       .. helptext:: get the rotation velocity of this gesture
 
@@ -217,11 +335,18 @@ Gestures
 
 .. lua:class:: gesture.tap
 
-   Tap gesture recognizer (using system gesture recognizer for implementation)
+   Tap gesture recognizer (using system gesture recognizer for implementation). The recognizer is removed when it is garbage collected, so keep a reference to it
 
-   .. lua:staticmethod:: gesture.tap(callback[, minTouches = 1, maxTouches = 1])
+   .. lua:staticmethod:: gesture.tap(callback[, tapCount = 1, touchCount = 1])
 
       Creates and registers a new tap gesture recognizer that will call ``callback(gesture)`` when recognized
+
+      :param callback: The function to call with the gesture
+      :type callback: function
+      :param tapCount: The number of taps required, such as ``2`` for a double tap
+      :type tapCount: integer
+      :param touchCount: The number of fingers required
+      :type touchCount: integer
 
       .. helptext:: create a tap gesture recognizer
 
@@ -231,13 +356,28 @@ Gestures
 
       .. helptext:: whether the gesture recognizer is enabled
 
+   .. lua:attribute:: group: integer [default = 0]
+
+      Recognizers that share the same non-zero group can recognize at the same time. A recognizer in group ``0`` does not run alongside others
+
+      .. helptext:: set the group for simultaneous recognition
+
 .. lua:class:: gesture.pan
 
-   Pan gesture recognizer (using system gesture recognizer for implementation)
+   Pan gesture recognizer (using system gesture recognizer for implementation). The recognizer is removed when it is garbage collected, so keep a reference to it
 
-   .. lua:staticmethod:: gesture.pan(callback[, minTouches = 1, maxTouches = 1])
+   .. lua:staticmethod:: gesture.pan(callback[, minTouches = 1, maxTouches = 1, trackpad = false])
 
-      Creates and registers a new pan gesture recognizer that will call ``callback(gesture)`` when recognized
+      Creates and registers a new pan gesture recognizer that will call ``callback(gesture)`` as the pan begins, moves and ends
+
+      :param callback: The function to call with the gesture
+      :type callback: function
+      :param minTouches: The fewest fingers that can perform the pan
+      :type minTouches: integer
+      :param maxTouches: The most fingers that can perform the pan
+      :type maxTouches: integer
+      :param trackpad: Also recognize two finger trackpad scrolling as a pan
+      :type trackpad: boolean
 
       .. helptext:: create a pan gesture recognizer
 
@@ -247,10 +387,16 @@ Gestures
 
       .. helptext:: whether the gesture recognizer is enabled
 
+   .. lua:attribute:: group: integer [default = 0]
+
+      Recognizers that share the same non-zero group can recognize at the same time. A recognizer in group ``0`` does not run alongside others
+
+      .. helptext:: set the group for simultaneous recognition
+
 
 .. lua:class:: gesture.pinch
 
-   Pinch gesture recognizer (using system gesture recognizer for implementation)
+   Pinch gesture recognizer (using system gesture recognizer for implementation). The recognizer is removed when it is garbage collected, so keep a reference to it
 
    .. lua:staticmethod:: gesture.pinch(callback)
 
@@ -264,10 +410,16 @@ Gestures
 
       .. helptext:: whether the gesture recognizer is enabled
 
+   .. lua:attribute:: group: integer [default = 0]
+
+      Recognizers that share the same non-zero group can recognize at the same time. A recognizer in group ``0`` does not run alongside others
+
+      .. helptext:: set the group for simultaneous recognition
+
 
 .. lua:class:: gesture.rotation
 
-   Rotation gesture recognizer (using system gesture recognizer for implementation)
+   Rotation gesture recognizer (using system gesture recognizer for implementation). The recognizer is removed when it is garbage collected, so keep a reference to it
 
    .. lua:staticmethod:: gesture.rotation(callback)
       
@@ -281,26 +433,34 @@ Gestures
 
       .. helptext:: whether the gesture recognizer is enabled
 
+   .. lua:attribute:: group: integer [default = 0]
+
+      Recognizers that share the same non-zero group can recognize at the same time. A recognizer in group ``0`` does not run alongside others
+
+      .. helptext:: set the group for simultaneous recognition
+
 
 Keyboard
 ########
 
 .. lua:module:: key
 
+Functions and constants for reading a hardware keyboard. Key events also call the global ``keyPressed(press)`` and ``keyReleased(press)`` functions, except while a user interface text field has focus
+
 .. lua:function:: pressing(keyCode)
 
-   Queries whether the key is currently being pressed this frame
+   Queries whether the key is currently held down
 
    .. helptext:: check if a key is currently pressed
 
    :param keyCode: The keyCode to query
    :type keyCode: constant
-   :return: Is the key being pressed this frame
+   :return: Is the key held down
    :rtype: boolean
 
 .. lua:function:: wasPressed(keyCode)
 
-   Queries whether the key is was pressed down this frame
+   Queries whether the key went down since the previous frame
 
    .. helptext:: check if a key was pressed this frame
 
@@ -311,7 +471,7 @@ Keyboard
 
 .. lua:function:: wasReleased(keyCode)
 
-   Queries whether the supplied key code was released this frame
+   Queries whether the key came up since the previous frame
 
    .. helptext:: check if a key was released this frame
 
@@ -331,11 +491,14 @@ Keyboard
    - :lua:attr:`key.cmd`
    - :lua:attr:`key.shift`
 
-   Use `key.pressing(keyCode)` to query individual keys such as `key.leftAlt`.
+   Use ``key.pressing(keyCode)`` to query individual keys such as ``key.leftAlt``.
+
+   :return: The modifiers currently held
+   :rtype: integer
 
 .. lua:function:: modifiersPressed(modifiers)
 
-   Queries whether the supplied key modifiers are currently pressed
+   Queries whether all of the supplied key modifiers are currently held. Combine masks with ``|``, as in ``key.modifiersPressed(key.cmd | key.shift)``
 
    .. helptext:: check if keyboard modifiers are pressed
 
@@ -343,6 +506,46 @@ Keyboard
    :type modifiers: constant
    :return: Are the key modifiers currently pressed
    :rtype: boolean
+
+.. lua:class:: press
+
+   A single key event, passed to the global ``keyPressed(press)`` and ``keyReleased(press)`` functions
+
+   .. lua:attribute:: keyCode: const
+
+      The key, as one of the ``key`` key code constants such as ``key.a`` or ``key.space``
+
+      .. helptext:: get the key code of this key press
+
+   .. lua:attribute:: modifierFlags: integer
+
+      The modifiers held during this key event, as a bit field of ``key.alt``, ``key.ctrl``, ``key.cmd`` and ``key.shift``
+
+      .. helptext:: get the modifiers held for this key press
+
+   .. lua:attribute:: characters: string
+
+      The text produced by the key, taking modifiers such as shift into account
+
+      .. helptext:: get the text typed by this key press
+
+Constants - Modifiers
+*********************
+
+These are bit masks for :lua:func:`key.modifiers`, :lua:func:`key.modifiersPressed` and ``press.modifierFlags``. Each one covers both the left and right key. They are not key codes, so use ``key.leftAlt`` and similar with :lua:func:`key.pressing`
+
+.. lua:attribute:: alt: const
+
+   .. helptext:: alt modifier mask
+.. lua:attribute:: ctrl: const
+
+   .. helptext:: ctrl modifier mask
+.. lua:attribute:: cmd: const
+
+   .. helptext:: command modifier mask
+.. lua:attribute:: shift: const
+
+   .. helptext:: shift modifier mask
 
 Constants - Key Codes
 *********************
@@ -353,36 +556,24 @@ Constants - Key Codes
 .. lua:attribute:: rightAlt: const
 
    .. helptext:: right alt key constant
-.. lua:attribute:: alt: const
-
-   .. helptext:: alt key constant
 .. lua:attribute:: leftCtrl: const
 
    .. helptext:: left ctrl key constant
 .. lua:attribute:: rightCtrl: const
 
    .. helptext:: right ctrl key constant
-.. lua:attribute:: ctrl: const
-
-   .. helptext:: ctrl key constant
 .. lua:attribute:: leftCmd: const
 
    .. helptext:: left command key constant
 .. lua:attribute:: rightCmd: const
 
    .. helptext:: right command key constant
-.. lua:attribute:: cmd: const
-
-   .. helptext:: command key constant
 .. lua:attribute:: leftShift: const
 
    .. helptext:: left shift key constant
 .. lua:attribute:: rightShift: const
 
    .. helptext:: right shift key constant
-.. lua:attribute:: shift: const
-
-   .. helptext:: shift key constant
 .. lua:attribute:: esc: const
 
    .. helptext:: escape key constant
@@ -652,6 +843,8 @@ Gamepad
 
 .. lua:class:: gamepad
 
+   A game controller. Read ``gamepad.all``, ``gamepad.current`` and ``gamepad.virtual`` to get one
+
    .. lua:attribute:: all: table<gamepad>
 
       A list of all currently connected gamepads
@@ -660,19 +853,19 @@ Gamepad
 
    .. lua:attribute:: current: gamepad
 
-      The current main active gamepad (or nil if none connected)
+      The most recently used gamepad, or ``nil`` if none is connected
 
       .. helptext:: get the current active gamepad
 
    .. lua:attribute:: virtual: gamepad.virtualGamepad
 
-      Gets or creates a virtual gamepad which will substitute on-screen controls if no controller is currently connected
+      Gets the on-screen gamepad, creating it on first use. It shows a stick at the bottom left and an ``A`` button at the bottom right, controlled by touch. While a controller is connected it is hidden and mirrors ``gamepad.current``
 
       .. helptext:: get the virtual gamepad
 
    .. lua:attribute:: connected: function(gamepad)
 
-      Callback for when a gamepad is connected
+      Callback for when a gamepad is connected. Gamepads that are already connected when the project starts are listed in ``gamepad.all`` and do not trigger it
 
       .. helptext:: callback invoked when a gamepad connects
 
@@ -707,6 +900,8 @@ Gamepad
       .. helptext:: get the right trigger button
 
    .. lua:attribute:: dpad: gamepad.directionalPad
+
+      The directional pad
 
       .. helptext:: get the directional pad
 
@@ -764,45 +959,111 @@ Gamepad
 
    .. lua:attribute:: batteryLevel: number
 
+      The battery charge, from ``0`` to ``1``
+
       .. helptext:: get the battery level of the gamepad
 
    .. lua:attribute:: batteryState: const
+
+      The battery state, one of ``gamepad.charging``, ``gamepad.discharging``, ``gamepad.full`` or ``gamepad.unknown``
 
       .. helptext:: get the battery state of the gamepad
 
    .. lua:attribute:: light: color
 
+      The color of the controller's light, on controllers that have one
+
       .. helptext:: get or set the gamepad light color
+
+   .. lua:attribute:: playerIndex: const
+
+      The player number shown on the controller, one of ``gamepad.unset``, ``gamepad.player1``, ``gamepad.player2``, ``gamepad.player3`` or ``gamepad.player4``
+
+      .. helptext:: get or set the player index of the gamepad
+
+   .. lua:attribute:: vendorName: string
+
+      The name of the controller as reported by its maker
+
+      .. helptext:: get the vendor name of the gamepad
+
+   .. lua:attribute:: unset: const
+
+      .. helptext:: no player index constant
+
+   .. lua:attribute:: player1: const
+
+      .. helptext:: player 1 index constant
+
+   .. lua:attribute:: player2: const
+
+      .. helptext:: player 2 index constant
+
+   .. lua:attribute:: player3: const
+
+      .. helptext:: player 3 index constant
+
+   .. lua:attribute:: player4: const
+
+      .. helptext:: player 4 index constant
+
+   .. lua:attribute:: charging: const
+
+      .. helptext:: battery charging state constant
+
+   .. lua:attribute:: discharging: const
+
+      .. helptext:: battery discharging state constant
+
+   .. lua:attribute:: full: const
+
+      .. helptext:: battery full state constant
+
+   .. lua:attribute:: unknown: const
+
+      .. helptext:: battery unknown state constant
 
    .. lua:class:: button
 
+      A button or trigger on a gamepad
+
       .. lua:attribute:: pressing: boolean
+
+         ``true`` while the button is held down
 
          .. helptext:: get whether this button is being pressed
 
       .. lua:attribute:: pressed: boolean
 
+         ``true`` only in the frame the button went down
+
          .. helptext:: get whether this button was just pressed
 
       .. lua:attribute:: released: boolean
+
+         ``true`` only in the frame the button came up
 
          .. helptext:: get whether this button was just released
 
       .. lua:attribute:: value: number
 
+         How far the button is pressed, from ``0`` to ``1``. Triggers report values in between
+
          .. helptext:: get the analog value of this button
 
       .. lua:attribute:: touching: boolean
+
+         ``true`` while a finger rests on the button, on controllers that can sense it
 
          .. helptext:: get whether the touchpad is being touched
 
    .. lua:class:: directionalPad
 
-      .. lua:attribute:: pressing: boolean
-
-         .. helptext:: get whether this button is being pressed
+      A stick, directional pad or touchpad surface on a gamepad
 
       .. lua:attribute:: dir: vec2
+
+         The direction, with each axis from ``-1`` to ``1``
 
          .. helptext:: get the direction as a vec2
 
@@ -835,15 +1096,17 @@ Mouse
 
 .. lua:module:: mouse
 
+The pointer state on a Mac, or an iPad with a mouse or trackpad. The global ``hover(gesture)`` and ``scroll(gesture)`` functions are also called for pointer movement and scrolling
+
 .. lua:attribute:: x: number
 
-   The current horizontal position of the pointer in screen coordinates
+   The current horizontal position of the pointer in screen coordinates. Updated while the pointer hovers over the viewer and while a button is held
 
    .. helptext:: x position of the mouse
 
 .. lua:attribute:: y: number
 
-   The current vertical position of the pointer in screen coordinates
+   The current vertical position of the pointer in screen coordinates. Updated while the pointer hovers over the viewer and while a button is held
 
    .. helptext:: y position of the mouse
 
@@ -879,7 +1142,7 @@ Mouse
 
 .. lua:attribute:: left: mouse.button
 
-   The left mouse button
+   The left mouse button. Trackpad clicks also count as the left button
 
    .. helptext:: left mouse button
 
@@ -897,7 +1160,7 @@ Mouse
 
 .. lua:attribute:: active: boolean
 
-   Whether a mouse or pointer device is currently connected
+   Whether a mouse or trackpad is currently connected
 
    .. helptext:: whether a mouse is connected
 
