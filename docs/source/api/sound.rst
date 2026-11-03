@@ -9,7 +9,7 @@ The sound module provides a way to play and manage sound effects and background 
 
    Plays a preset procedural SFXR sound effect using a given ``preset`` and optional ``seed``
 
-   .. helptext:: play a procedural sound preset
+   .. helptext:: play a sound or procedural preset in 2D
 
    :rtype: sound.instance
 
@@ -17,7 +17,7 @@ The sound module provides a way to play and manage sound effects and background 
 
    Plays a ``sound.source`` in 2D, returning an active ``sound.instance`` object that can be adjusted, paused/resumed and stopped
 
-   .. helptext:: play a sound in 2D
+   .. helptext:: play a sound or procedural preset in 2D
 
    :rtype: sound.instance
 
@@ -25,7 +25,7 @@ The sound module provides a way to play and manage sound effects and background 
 
    Plays a sound using an asset key in 2D, returning an active ``sound.instance`` object that can be adjusted, paused/resumed and stopped
 
-   .. helptext:: play a sound in 2D
+   .. helptext:: play a sound or procedural preset in 2D
 
 .. lua:staticmethod:: play3d(source[, volume = 1, pitch = 1, paused = false])   
 

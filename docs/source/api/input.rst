@@ -1,7 +1,6 @@
 input
 =====
 
-*(module)*
 
 Module for accessing input devices such as touches, keyboard, mouse and gamepads
 

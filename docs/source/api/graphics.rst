@@ -1,7 +1,6 @@
-graphics commands
-=================
+Drawing Commands
+================
 
-*(global)*
 
 Background
 ##########
@@ -19,7 +18,7 @@ Background
    :param alpha: The alpha component of the color (0-255)
    :type alpha: number
 
-   .. helptext:: set the background color
+   .. helptext:: clear the background with a color, cube image or shader
    .. editor:: color
 
 .. lua:function:: background(color)
@@ -29,14 +28,14 @@ Background
    :param color: The color to set the background to
    :type color: color
 
-   .. helptext:: set the background color
+   .. helptext:: clear the background with a color, cube image or shader
    .. editor:: color      
 
 .. lua:function:: background(cubeImage, [mipLevel = 0])
 
    Clears the current background with the contents of a cube image, using the current camera settings to define eye direction
 
-   .. helptext:: clear the background with a cube image
+   .. helptext:: clear the background with a color, cube image or shader
 
    :param cubeImage: The image to clear the background with
    :type cubeImage: image
@@ -50,7 +49,7 @@ Background
    :param shader: The shader to use when clearing the background, should be a shader that is compatible with sprite rendering (i.e. uses the same vertex attributes)
    :type shader: shader
 
-   .. helptext:: clear the background with a shader
+   .. helptext:: clear the background with a color, cube image or shader
 
    .. collapse:: Example
 
@@ -59,8 +58,6 @@ Background
 
 Vector Graphics
 ###############
-
-A set of graphics functions which are so commonly used they are in the global namespace for convenience
 
 .. lua:function:: line(x1, y1, x2, y2)
 
@@ -77,7 +74,8 @@ A set of graphics functions which are so commonly used they are in the global na
 
    - *Color* with :lua:func:`style.stroke`
    - *Width* with :lua:func:`style.strokeWidth`
-   - *End Caps* with :lua:func:`style.lineCapMode`
+   - *End Caps* with :lua:func:`style.lineCap`
+
       - |square_cap| :lua:attr:`SQUARE`
       - |project_cap| :lua:attr:`PROJECT`
       - |round_cap| :lua:attr:`ROUND`
@@ -132,13 +130,13 @@ A set of graphics functions which are so commonly used they are in the global na
 
    Draw a quadratic bezier curve using four points based on the current style
 
-   .. helptext:: draw a cubic bezier curve
+   .. helptext:: draw a cubic bezier curve or curve segment
 
 .. lua:function:: bezier(cx1, cy1, cx2, cy2, x2, y2)
 
    Adds a curved segment from the last point to (x2, y2), when called inside :lua:func:`shape`
 
-   .. helptext:: draw a bezier curve segment
+   .. helptext:: draw a cubic bezier curve or curve segment
 
 .. lua:function:: shape(x, y, [closed = true], func)
 
@@ -226,7 +224,7 @@ A set of graphics functions which are so commonly used they are in the global na
    :param radius: the radius of the rounded corners
    :type radius: number
 
-   .. helptext:: draw a rectangle
+   .. helptext:: draw a rectangle with optional rounded corners
 
 .. lua:function:: rect(x, y, w, h, r1, r2, r3, r4)
 
@@ -251,7 +249,7 @@ A set of graphics functions which are so commonly used they are in the global na
    :param r4: the radius of the bottom-left corner
    :type r4: number
 
-   .. helptext:: draw a rectangle with rounded corners      
+   .. helptext:: draw a rectangle with optional rounded corners
 
 
 Sprites
@@ -263,13 +261,13 @@ Sprites
 
    Draws a sprite using an asset - :lua:class:`image`, :lua:class:`asset.key` or :lua:class:`sprite.slice`
 
-   .. helptext:: draw a sprite or image
+   .. helptext:: draw an image or shader
    .. editor:: sprite
 
 
 .. lua:function:: sprite(shader, x, y, w, h)
 
-   .. helptext:: draw using a shader
+   .. helptext:: draw an image or shader
    .. editor:: shader
 
 
@@ -605,13 +603,11 @@ Text
 Gizmos
 ######
 
-Gizmos are useful for drawing shapes in 2D/3D space for debugging and editing
-
 .. lua:module:: gizmos
 
 .. lua:function:: line(x1, y1, z1, x2, y2, z2)
 
-   Draws a 3D antialiased line
+   Draws a 3D antialiased line for debugging scene geometry or building editing tools.
 
    .. helptext:: draw a line between two points
 

@@ -25,6 +25,15 @@ Codea 4
    :caption: Manual:
 
    manual
+   manual/using_codea/project_browser
+   manual/using_codea/projects
+   manual/using_codea/collections
+   manual/using_codea/sharing
+   manual/using_codea/cloud
+   manual/using_codea/files
+   manual/using_codea/air_code
+   manual/using_codea/tools
+   manual/using_codea/settings
    manual/codea
    manual/drawing
    manual/sound
@@ -33,6 +42,10 @@ Codea 4
    manual/input
    manual/physics2d
    manual/physics3d
+   manual/camera_effects
+   manual/display
+   manual/animation
+   manual/native
    manual/scenes
    manual/shaders
    manual/vectors
@@ -42,6 +55,7 @@ Codea 4
    :caption: API:
 
    api
+   api/legacy
    api/lua
    api/math_types
    api/color

@@ -10,6 +10,11 @@ Simulation
 
    .. lua:staticmethod:: world()
 
+      A standalone world must be advanced explicitly in fixedUpdate(dt). This example adds a static floor, dynamic bodies, and touch-to-world conversion for spawning more boxes.
+
+      .. codea-example:: A standalone physics world
+         :project: code/Modern/Physics 01 - Basics.codea
+
       Create a new physics world
 
       .. helptext:: create a new 2D physics world

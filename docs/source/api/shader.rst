@@ -54,13 +54,13 @@ shader
 
       This is useful for fairly basic shaders
 
-      .. helptext:: create a shader from vertex and fragment sources
+      .. helptext:: create a shader from source or a shader definition
 
    .. lua:staticmethod:: shader(shaderDefinition)
 
       A more advanced form of shader creation, with many more options that can be tailored for specific use-cases
 
-      .. helptext:: create a shader from a shader definition
+      .. helptext:: create a shader from source or a shader definition
 
    .. lua:staticmethod:: compute(source)
 
@@ -78,7 +78,47 @@ shader
 
       .. helptext:: set a shader option
 
+   .. lua:method:: setImage(name, image[, mip = 0])
+
+      Bind an image to a declared image property for compute access. Its format must match the GLSL layout qualifier (for example, image.rgba16f with layout(rgba16f)). The mip index is zero-based. Read/write access comes from the GLSL readonly/writeonly qualifiers, not an additional Lua argument.
+
+      :param name: Name of the image property
+      :type name: string
+      :param image: Texture to bind
+      :type image: image
+      :param mip: Mipmap level to bind
+      :type mip: integer
+
+      .. helptext:: bind an image for compute access
+
+   .. lua:method:: setBuffer(name, buffer)
+
+      Bind a shader buffer to a declared buffer property. The Lua buffer layout must match the GLSL struct. With shader.builder():buffer{"Instance", "instances"}, the generated property is named "instancesBuffer".
+
+      :param name: Name of the buffer property
+      :type name: string
+      :param buffer: Buffer to bind
+      :type buffer: shader.buffer
+
+      .. helptext:: bind a buffer to a shader property
+
+   .. lua:method:: workgroupSize([passIndex = 0])
+
+      Return the local workgroup dimensions declared by NUM_THREADS() or shader.builder():threads(). The optional pass index is zero-based. Divide the number of elements by these dimensions and round up to calculate dispatch counts.
+
+      :param passIndex: Compute pass to inspect
+      :type passIndex: integer
+      :return: Local X, Y, and Z thread counts
+      :rtype: integer, integer, integer
+
+      .. helptext:: get the compute workgroup dimensions
+
    .. lua:method:: dispatch(wx, wy, wz)
+
+      Dispatch counts workgroups, not individual invocations. Divide the buffer length by the shader workgroup size and round up; check the index against instanceCount inside the shader. This example updates a shared buffer before drawing its instances.
+
+      .. codea-example:: Compute-driven particles
+         :project: code/Modern/Shader 09 - Particles.codea
 
       .. helptext:: dispatch this compute shader
 

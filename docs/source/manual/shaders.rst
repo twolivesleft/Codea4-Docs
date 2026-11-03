@@ -1,7 +1,7 @@
 Shaders and Materials
 =====================
 
-A special program that runs per vertex/pixel for drawing and compute operations on the GPU
+Shaders are programs that run on the GPU. Use a material shader to change how a surface looks, or a compute shader to update an image or many particle positions in parallel. The projects below move from reusable material chunks to complete GPU simulations.
 
 Codea shaders are written in GLSL (GL shading language)
 
@@ -21,14 +21,12 @@ In Codea shaders can be used in various places to customise rendering including 
 
    background(myShader)
 
-.
-
-   WARNING: Shaders live very close to the hardware and are much more likely to cause crashes or graphical corruption when things go wrong, you have been warned ;)
+Start with shader.builder() for materials. Use an explicit shader definition when you need a compute pass or control over vertex and fragment stages.
 
 Graphics Pipeline
 -----------------
 
-``TODO``
+A mesh supplies vertices and indices. The vertex shader transforms each vertex, then the GPU assembles triangles and interpolates values across them. The fragment shader produces a color for each covered pixel. Materials combine these shader programs with values such as colors and textures. Compute shaders run separately and can prepare images or buffers that later drawing commands consume.
 
 Vertex Shaders
 --------------
@@ -38,7 +36,7 @@ Each vertex within a mesh is passed to the GPU via the vertex processing stage, 
 Fragment Shaders
 ----------------
 
-After the vertex processing stage, the fragment processing stage begins. Primtives assembled from vertices, such as triangles, are drawn on to the framebuffer in a process known as rasterization. 
+After the vertex processing stage, the fragment processing stage begins. Primitives assembled from vertices, such as triangles, are drawn on to the framebuffer in a process known as rasterization.
 
 The fragment shader is able to calculate the final output of this stage (typically the color and/or depth of the fragment)
 
@@ -50,7 +48,7 @@ Compute shaders bypass the normal rasterisation stage, useful for more general p
 More info: https://www.khronos.org/opengl/wiki/Compute_Shader
 
 .. code-block:: lua
-   
+
    myComputeShader = shader.compute
    [[
       #version 430
@@ -68,26 +66,24 @@ Threading Model
 Workgroups
 """"""""""
 
-``NUM_THREADS(x, y, z)``
-
-``gl_GlobalInvocationID``
+``NUM_THREADS(x, y, z)`` declares the number of threads in each workgroup. ``gl_GlobalInvocationID`` identifies a thread across the entire dispatch. Threads in a workgroup can share memory and synchronize with barriers; independent workgroups must not rely on execution order.
 
 Dispatch
 """"""""
 
-``TODO``
+Call shader:workgroupSize() to read the local thread dimensions, then divide your image dimensions or buffer length by those sizes and round up. shader:dispatch() takes the number of workgroups. Test gl_GlobalInvocationID against the actual data dimensions inside the shader so extra invocations do not access past the end.
 
 Image Properties
 ^^^^^^^^^^^^^^^^
 
-``TODO``
+Declare an image2D property and bind an image with shader:setImage(). Use image.pixel(width, height, ...) for a simulation grid: image() uses display-scaled dimensions, whereas compute invocation IDs address physical texels. The GLSL layout format must match the image format, such as rgba16f. Use readonly for a previous state and writeonly for a next state. A simulation that reads neighbors needs two images: swap them after each dispatch, as in Reaction Diffusion below.
 
 Buffers
 ^^^^^^^
 
 Also known as SSBOs (Shader Storage Buffer Objects)
 
-``TODO``
+A shader.buffer holds structured data shared by compute and drawing shaders. Define a matching bufferLayout on the Lua side and a struct in GLSL. The Particles project stores one vec4 per instance: position in xy and velocity in zw. Its compute shader updates the data and its vertex shader reads it using gl_InstanceID.
 
 
 Shader Definitions
@@ -102,7 +98,7 @@ A shader definition is broken into several parts:
 
 * options - enable and disable specific parts of a shader
 * properties - values passed into the shader (via uniforms)
-* passes - one ore more passes that contain shader code and settings
+* passes - one or more passes that contain shader code and settings
 
    NOTE: shaders can either have an array of ``passes`` or a single ``pass``
 
@@ -110,25 +106,25 @@ A shader definition is broken into several parts:
 
    shdr = shader
    {
-      properties = 
+      properties =
       {
          {name, type, value, ...}
       },
 
-      options = 
+      options =
       {
          NAME = {default, options}
       },
 
-      passes = 
+      passes =
       {
-         {       
-            vertex = 
+         {
+            vertex =
             [[
                ...
             ]],
 
-            fragment = 
+            fragment =
             [[
                ...
             ]]
@@ -139,7 +135,7 @@ A shader definition is broken into several parts:
 Properties
 """"""""""
 
-Each property is a Lua table with the following form: 
+Each property is a Lua table with the following form:
 
 ``{<name>, <type>, <value>, ...}``
 
@@ -185,12 +181,12 @@ Options let you conditionally enable/disable chunks of shader code via the shade
 
 Options can be linked to specific properties or based complex conditions
 
-``TODO``
+A mesh supplies vertices and indices. The vertex shader transforms each vertex, then the GPU assembles triangles and interpolates values across them. The fragment shader produces a color for each covered pixel. Materials combine these shader programs with values such as colors and textures. Compute shaders run separately and can prepare images or buffers that later drawing commands consume.
 
 Passes
 """"""
 
-``TODO``
+A mesh supplies vertices and indices. The vertex shader transforms each vertex, then the GPU assembles triangles and interpolates values across them. The fragment shader produces a color for each covered pixel. Materials combine these shader programs with values such as colors and textures. Compute shaders run separately and can prepare images or buffers that later drawing commands consume.
 
 Materials
 ---------
@@ -219,33 +215,33 @@ Surface shaders are created using a shader definition with a ``shadingModel`` se
 
    surface = shader
    {
-      pass = 
-      {       
+      pass =
+      {
          shadingModel = "lit",
 
-         vertex = 
+         vertex =
          [[
-            void materialVertex(inout MaterialVertexInputs material) 
+            void materialVertex(inout MaterialVertexInputs material)
             {
             }
          ]],
 
-         material = 
+         material =
          [[
-            void material(inout MaterialInputs material) 
+            void material(inout MaterialInputs material)
             {
                prepareMaterial(material);
-      
+
                vec2 uv = getUV0();
                material.metallic = 1.0;
-               material.roughness = 
+               material.roughness =
                   mod(floor(uv.x * 20) + floor(uv.y * 10), 2)
                   * 0.5;
                material.baseColor = baseColor;
-            }                
+            }
          ]]
       }
-   
+
    }
 
 Shading Models
@@ -288,72 +284,124 @@ Some are only available in specific lighting models and expect values to be with
    * - ``reflectance``
      - ``float`` [0..1]
      - Lit
-     - 
+     -
    * - ``clearCoat``
      - ``float`` [0..1]
      - Lit
-     - 
+     -
    * - ``clearCoatRoughness``
      - ``float`` [0..1]
      - Lit
-     - 
+     -
    * - ``anisotropy``
      - ``float`` [-1..1]
      - Lit
-     - 
+     -
    * - ``anisotropyDirection``
      - ``vec3`` [0..1]
      - Lit
-     - 
+     -
    * - ``ambientOcclusion``
      - ``float`` [0..1]
      - Lit
-     - 
+     -
    * - ``normal``
      - ``vec3`` [0..1]
      - Lit
-     - 
+     -
    * - ``bentNormal``
      - ``vec3`` [0..1]
      - Lit
-     - 
+     -
    * - ``clearCoatNormal``
      - ``vec3`` [0..1]
      - Lit
-     - 
+     -
    * - ``emissive``
      - ``vec4`` [0..n]
      - Lit
-     - 
+     -
    * - ``postLightingColor``
      - ``vec4`` [0..1]
      - Lit
-     - 
+     -
    * - ``ior``
      - ``float`` [0..1]
      - Lit
-     - 
+     -
    * - ``transmission``
      - ``float`` [0..1]
      - Lit
-     - 
+     -
    * - ``absorption``
      - ``float`` [0..n]
      - Lit
-     - 
+     -
    * - ``microThickness``
      - ``float`` [0..n]
      - Lit
-     - 
+     -
    * - ``thickness``
      - ``float`` [0..n]
      - Lit
-     - 
+     -
 
 Shade Pro Integration
 ^^^^^^^^^^^^^^^^^^^^^
 
-``TODO``
+A mesh supplies vertices and indices. The vertex shader transforms each vertex, then the GPU assembles triangles and interpolates values across them. The fragment shader produces a color for each covered pixel. Materials combine these shader programs with values such as colors and textures. Compute shaders run separately and can prepare images or buffers that later drawing commands consume.
 
 Shader Builder
 ^^^^^^^^^^^^^^
+
+Simulating a grid with compute shaders
+--------------------------------------
+
+Drag across the grid to paint. The **Controls** panel selects the material, brush size, and whether the brush creates a continuing source. One texture holds the current state and another receives the next state; swapping them after dispatch avoids reading partially updated neighbors. The mesh displays that state using the bundled rock, water, and lava images.
+
+.. codea-example:: Simulating a grid with compute shaders
+   :project: code/Modern/Shader 06 - Sand Sim.codea
+
+Composing reusable shader chunks
+--------------------------------
+
+Orbit the sphere to inspect its raymarched marble and animated rim highlight. The ground combines a checkerboard, normal map, and moving cloud shadow. shader.chunk() packages reusable declarations and GLSL; shader.builder():add() combines them into a material. Start with the checkerboard chunk before experimenting with the more involved marble function.
+
+.. codea-example:: Composing reusable shader chunks
+   :project: code/Modern/Shader 07 - Materials.codea
+
+Updating neighboring pixels safely
+----------------------------------
+
+Touch the image to seed a reaction-diffusion pattern. Each compute dispatch reads the previous texture and writes a separate next texture, then swaps them. Neighbor reads clamp to the image boundary. The two-tab project separates input and display from the simulation class. Try changing feed and kill rates in ReactionDiffusion.lua to explore different patterns.
+
+.. codea-example:: Updating neighboring pixels safely
+   :project: code/Modern/Shader 08 - Reaction Diffusion.codea
+
+.. literalinclude:: /code/Modern/Shader 08 - Reaction Diffusion.codea/ReactionDiffusion.lua
+   :language: lua
+   :caption: ReactionDiffusion.lua — simulation, texture swapping, and visualization
+
+Sharing a GPU buffer between compute and drawing
+------------------------------------------------
+
+Ten thousand particles share one instance buffer. A compute shader changes position and velocity, then an instanced mesh reads that same buffer to draw every particle. Touch to move the selected attractor and use the parameters to adjust its range and strength. The compute shader checks instanceCount because the last workgroup can contain unused threads.
+
+.. codea-example:: Sharing a GPU buffer between compute and drawing
+   :project: code/Modern/Shader 09 - Particles.codea
+
+Animating instanced grass on terrain
+------------------------------------
+
+Orbit the terrain and use the parameters to change wind, blade shape, and colors. Terrain.lua creates a height map; Grass.lua uses it to place instances and bends their vertices using wind noise. Increase density gradually: doubling density creates four times as many blades. The project bundles the grass mesh and textures, and does not require the camera sensor.
+
+.. codea-example:: Animating instanced grass on terrain
+   :project: code/Modern/Shader 10 - Grass.codea
+
+.. literalinclude:: /code/Modern/Shader 10 - Grass.codea/Terrain.lua
+   :language: lua
+   :caption: Terrain.lua — generating and displaying the height map
+
+.. literalinclude:: /code/Modern/Shader 10 - Grass.codea/Grass.lua
+   :language: lua
+   :caption: Grass.lua — placing and animating instances

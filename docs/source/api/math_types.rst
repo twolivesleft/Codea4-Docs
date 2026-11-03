@@ -944,7 +944,7 @@ Quaternions
       :return: A view matrix looking from ``eye`` toward ``center``
       :rtype: mat4
 
-      .. helptext:: create a look-at view matrix
+      .. helptext:: build a look-at view transform
 
    .. lua:staticmethod:: lookAt(matrix, eye, center, up)
 
@@ -961,7 +961,7 @@ Quaternions
       :return: The transformed matrix
       :rtype: mat4
 
-      .. helptext:: apply a look-at transform to a matrix
+      .. helptext:: build a look-at view transform
 
    .. lua:staticmethod:: orbit(origin, distance, x, y)
 
@@ -978,7 +978,7 @@ Quaternions
       :return: An orbit view matrix
       :rtype: mat4
 
-      .. helptext:: create an orbit view matrix
+      .. helptext:: build an orbit view transform
 
    .. lua:staticmethod:: orbit(matrix, origin, distance, x, y)
 
@@ -997,7 +997,7 @@ Quaternions
       :return: The transformed matrix
       :rtype: mat4
 
-      .. helptext:: apply an orbit transform to a matrix
+      .. helptext:: build an orbit view transform
 
    .. lua:staticmethod:: ortho(left, right, top, bottom, [near, far])
 
@@ -1048,7 +1048,7 @@ Quaternions
       :return: A rotation matrix
       :rtype: mat4
 
-      .. helptext:: rotate the current transform
+      .. helptext:: rotate a matrix by an angle and axis
 
    .. lua:staticmethod:: rotate(matrix, angle, axis)
 
