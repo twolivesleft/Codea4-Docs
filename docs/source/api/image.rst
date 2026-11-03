@@ -311,6 +311,105 @@ Image
 
       .. helptext:: get the asset key for this image
 
+   .. lua:method:: setPixel(x, y, color)
+
+      Sets the colour of a pixel. ``x`` and ``y`` start at 1, from the bottom
+      left corner, and are in points like :lua:attr:`width` and :lua:attr:`height`,
+      so on an image made with :lua:func:`image` a point covers several pixels.
+      Use :lua:func:`image.pixel` to set each pixel on its own.
+
+      The change is made to the image's copy in memory. Call :lua:meth:`apply`
+      before drawing the image or saving it.
+
+      :param x: The x coordinate, from 1 to ``width``
+      :type x: integer
+      :param y: The y coordinate, from 1 to ``height``
+      :type y: integer
+      :param color: The colour to set
+      :type color: color
+
+      .. helptext:: set the colour of a pixel
+
+      .. code-block:: lua
+         :caption: Setting pixels
+
+         function setup()
+             img = image.pixel(4, 4)
+             img:setPixel(1, 1, color(255, 0, 0))     -- bottom left
+             img:setPixel(4, 4, 255, 255, 0, 255)     -- top right
+             img:apply()
+             img.filter = image.filter.point
+         end
+
+         function draw()
+             background(40)
+             sprite(img, WIDTH/2, HEIGHT/2, 200, 200)
+         end
+
+   .. lua:method:: setPixel(x, y, r, g, b, a)
+
+      Sets the colour of a pixel from its red, green, blue and alpha values,
+      from 0 to 255
+
+      :param x: The x coordinate, from 1 to ``width``
+      :type x: integer
+      :param y: The y coordinate, from 1 to ``height``
+      :type y: integer
+      :param r: The red value
+      :type r: number
+      :param g: The green value
+      :type g: number
+      :param b: The blue value
+      :type b: number
+      :param a: The alpha value
+      :type a: number
+
+      .. helptext:: set the colour of a pixel from its components
+
+   .. lua:method:: getPixel(x, y)
+
+      Returns the red, green, blue and alpha values of a pixel, from 0 to 255.
+      Coordinates are as in :lua:meth:`setPixel`.
+
+      This reads the image's copy in memory, which holds what was set with
+      :lua:meth:`setPixel`. A blank image reads as all zeros, and so does what
+      was drawn into the image until :lua:meth:`readback` copies it.
+
+      :param x: The x coordinate, from 1 to ``width``
+      :type x: integer
+      :param y: The y coordinate, from 1 to ``height``
+      :type y: integer
+      :return: The red, green, blue and alpha values
+      :rtype: number, number, number, number
+
+      .. helptext:: get the colour of a pixel
+
+      .. code-block:: lua
+         :caption: Reading a pixel
+
+         local img = image.pixel(2, 2)
+         img:setPixel(1, 1, color(255, 128, 0))
+         local r, g, b, a = img:getPixel(1, 1)
+         print(r, g, b, a) -- 255.0 128.0 0.0 255.0
+
+   .. lua:method:: apply()
+
+      Sends the pixels set with :lua:meth:`setPixel` to the image, so that they
+      show when it is drawn or saved
+
+      .. helptext:: apply the pixels set on this image
+
+   .. lua:method:: readback()
+
+      Copies what was drawn into the image back to its copy in memory, so that
+      :lua:meth:`getPixel` can read it. Waits until the copy is done.
+
+      Drawing is finished at the end of a frame: read back in a later frame
+      than the one that drew into the image, and for drawing done in ``setup()``,
+      from the second frame on.
+
+      .. helptext:: read back the pixels drawn into this image
+
    .. lua:method:: generateIrradiance(samples)
 
       Generates a guassian pyramid of pre-computed irradiance levels, used for image based lighting
