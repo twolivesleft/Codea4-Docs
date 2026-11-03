@@ -25,11 +25,16 @@ Image
 
       Create a blank 2D image (default format is `rgba`)
 
+      The size is in points, like ``WIDTH`` and ``HEIGHT``, so the image has
+      as many pixels per point as the screen: ``image(100, 100)`` is 300 by 300
+      pixels on a 3x display, and draws sharply at 100 by 100. Use
+      :lua:func:`image.pixel` for an image with an exact number of pixels.
+
       .. helptext:: create a new blank image
 
-      :param width: The width of the image
+      :param width: The width of the image in points
       :type width: integer
-      :param height: The height of the image
+      :param height: The height of the image in points
       :type height: integer
       :param hasMips: Enables mipmapping for this image
       :type hasMips: boolean
@@ -39,6 +44,43 @@ Image
       :type format: image format
       :param depthFormat: The image depth format
       :type depthFormat: depth format
+
+   .. lua:staticmethod:: image.pixel(width, height, [hasMips = false, numLayers = 1, format = image.rgba, depthFormat = none])
+
+      Create a blank 2D image of exactly ``width`` by ``height`` pixels,
+      whatever the display scale. Takes the same parameters as
+      :lua:func:`image`. Use it for pixel art, emulator screens and other
+      images where each pixel matters.
+
+      .. helptext:: create a new blank image in pixels
+
+      :param width: The width of the image in pixels
+      :type width: integer
+      :param height: The height of the image in pixels
+      :type height: integer
+      :param hasMips: Enables mipmapping for this image
+      :type hasMips: boolean
+      :param numLayers: The number of layers for this image
+      :type numLayers: integer
+      :param format: The image format
+      :type format: image format
+      :param depthFormat: The image depth format
+      :type depthFormat: depth format
+      :rtype: image
+
+      .. code-block:: lua
+         :caption: A pixel-exact screen
+
+         function setup()
+             -- 160 by 144 pixels on every device
+             screen = image.pixel(160, 144)
+             screen.filter = image.filter.point
+         end
+
+         function draw()
+             background(0)
+             sprite(screen, WIDTH/2, HEIGHT/2, 160 * 2, 144 * 2)
+         end
 
    .. lua:staticmethod:: image.cube(size)
 
@@ -205,15 +247,17 @@ Image
 
    .. lua:attribute:: width: integer
 
-      The width of the image in pixels
+      The width of the image in points. For an image made with
+      :lua:func:`image.pixel`, points and pixels are the same
 
-      .. helptext:: get the width of this image in pixels
+      .. helptext:: get the width of this image in points
 
    .. lua:attribute:: height: integer
 
-      The height of the image in pixels
+      The height of the image in points. For an image made with
+      :lua:func:`image.pixel`, points and pixels are the same
 
-      .. helptext:: get the height of this image in pixels
+      .. helptext:: get the height of this image in points
 
    .. lua:attribute:: depth: integer
 
