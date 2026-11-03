@@ -141,6 +141,16 @@ Image
 
       .. helptext:: save an image asset to the filesystem
 
+   .. lua:staticmethod:: image.dfg()
+
+      Creates a copy of the 64 by 64 lookup image (``rgba16f``) that Codea's
+      physically based lighting uses for image based lighting, for use in your
+      own shaders
+
+      :rtype: image
+
+      .. helptext:: create the lighting lookup image
+
    .. lua:staticmethod:: image.symbol(name, ...)
 
       Create an image from an SF Symbol. Returns ``nil`` if no symbol of that
@@ -305,6 +315,58 @@ Image
 
       .. helptext:: enable or disable smooth filtering
 
+   .. lua:attribute:: filter: integer
+
+      How this image is filtered when drawn larger or smaller than its size:
+
+      - ``image.filter.point`` - nearest pixel, for pixel art
+      - ``image.filter.linear`` - blends neighbouring pixels
+      - ``image.filter.default`` - follows ``style.filter``, the default
+
+      .. helptext:: get or set the filtering of this image
+
+   .. lua:attribute:: wrap: integer
+
+      How this image repeats when a mesh's texture coordinates go beyond 0 and 1:
+
+      - ``image.wrap.tile`` - repeats the image
+      - ``image.wrap.clamp`` - stretches the edge pixels
+      - ``image.wrap.mirror`` - repeats the image, flipping every other copy
+      - ``image.wrap.default`` - follows ``style.wrap``, the default
+
+      .. helptext:: get or set how this image repeats
+
+      .. code-block:: lua
+         :caption: Tiling an image on a mesh
+
+         function setup()
+             local checker = image.pixel(2, 2)
+             checker:setPixel(1, 1, color(255, 0, 0))
+             checker:setPixel(2, 2, color(255, 0, 0))
+             checker:setPixel(1, 2, color(255))
+             checker:setPixel(2, 1, color(255))
+             checker:apply()
+             checker.filter = image.filter.point
+             checker.wrap = image.wrap.tile
+
+             floor = mesh()
+             floor.texture = checker
+             -- texture coordinates from 0 to 3 show the image 3 times each way
+             floor:addRect(vec2(WIDTH/2, HEIGHT/2), vec2(300, 300), 0, vec4(0, 0, 3, 3))
+         end
+
+         function draw()
+             background(40)
+             floor:draw()
+         end
+
+   .. lua:attribute:: slice: image.slice
+
+      A new :lua:class:`image.slice` covering the whole image, to configure and
+      draw with ``sprite()``
+
+      .. helptext:: get a slice of this image
+
    .. lua:attribute:: key: assetKey
 
       The asset key for this image (if it has one)
@@ -391,6 +453,71 @@ Image
          img:setPixel(1, 1, color(255, 128, 0))
          local r, g, b, a = img:getPixel(1, 1)
          print(r, g, b, a) -- 255.0 128.0 0.0 255.0
+
+   .. lua:method:: setValue(x, y, r, g, b, a)
+
+      Sets a pixel from raw values, as the image stores them: 0 to 1 for most
+      formats, and any value for float formats such as ``image.rgba32f``.
+      Coordinates are as in :lua:meth:`setPixel`. Given a single value, sets
+      red, green and blue to it, with an alpha of 1
+
+      :param x: The x coordinate, from 1 to ``width``
+      :type x: integer
+      :param y: The y coordinate, from 1 to ``height``
+      :type y: integer
+      :param r: The red value, or the value for red, green and blue
+      :type r: number
+      :param g: The green value (optional)
+      :type g: number
+      :param b: The blue value (optional)
+      :type b: number
+      :param a: The alpha value (optional | default = 1)
+      :type a: number
+
+      .. helptext:: set the raw value of a pixel
+
+   .. lua:method:: getValue(x, y)
+
+      Returns the raw red, green, blue and alpha values of a pixel, as the
+      image stores them: 0 to 1 for most formats, and any value for float
+      formats. Coordinates are as in :lua:meth:`setPixel`
+
+      :param x: The x coordinate, from 1 to ``width``
+      :type x: integer
+      :param y: The y coordinate, from 1 to ``height``
+      :type y: integer
+      :return: The red, green, blue and alpha values
+      :rtype: number, number, number, number
+
+      .. helptext:: get the raw value of a pixel
+
+   .. lua:method:: setForEach(func)
+
+      Sets every pixel from a function, called with the coordinates of each
+      pixel, which returns its red, green, blue and alpha values as raw values,
+      0 to 1 for most formats. The function must return all four. Call
+      :lua:meth:`apply` afterwards to see the result
+
+      :param func: A function taking ``x`` and ``y`` and returning ``r, g, b, a``
+      :type func: function
+
+      .. helptext:: set every pixel from a function
+
+      .. code-block:: lua
+         :caption: A gradient
+
+         function setup()
+             gradient = image.pixel(64, 64)
+             gradient:setForEach(function(x, y)
+                 return x / 64, y / 64, 0, 1
+             end)
+             gradient:apply()
+         end
+
+         function draw()
+             background(40)
+             sprite(gradient, WIDTH/2, HEIGHT/2, 256, 256)
+         end
 
    .. lua:method:: apply()
 
