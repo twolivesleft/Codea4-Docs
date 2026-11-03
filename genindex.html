@@ -300,7 +300,11 @@
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/camera.html#camera.apply">apply() (camera method)</a>
+
+        <ul>
+          <li><a href="api/image.html#image.apply">(image method)</a>
 </li>
+        </ul></li>
         <li><a href="api/physics2d.html#physics2d.body.applyAngularImpulse">applyAngularImpulse() (physics2d.body method)</a>
 
         <ul>
@@ -733,10 +737,12 @@
 </li>
         <li><a href="api/device.html#device.device.systemVersion">device.device.systemVersion (attribute)</a>
 </li>
-        <li><a href="api/light.html#light.directional">directional() (light static method)</a>
+        <li><a href="api/image.html#image.dfg">dfg() (image static method)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/light.html#light.directional">directional() (light static method)</a>
+</li>
         <li><a href="api/input.html#directionalPad">directionalPad (built-in class)</a>
 </li>
         <li><a href="api/input.html#directionalPad.dir">directionalPad.dir (attribute)</a>
@@ -1107,10 +1113,10 @@
 </li>
         <li><a href="api/image.html#image.generateIrradiance">generateIrradiance() (image method)</a>, <a href="api/image.html#image.generateIrradiance">[1]</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/sound.html#sound.generator">generator() (in module sound)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics3d.html#physics3d.generic">generic (class in physics3d)</a>
 </li>
         <li><a href="api/input.html#gesture">gesture (built-in class)</a>
@@ -1173,9 +1179,13 @@
           <li><a href="api/voxel.html#voxel.world.get">(voxel.world method)</a>
 </li>
         </ul></li>
+        <li><a href="api/image.html#image.getPixel">getPixel() (image method)</a>
+</li>
         <li><a href="api/physics2d.html#physics2d.joint.getReactionForce">getReactionForce() (physics2d.joint method)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.joint.getReactionTorque">getReactionTorque() (physics2d.joint method)</a>
+</li>
+        <li><a href="api/image.html#image.getValue">getValue() (image method)</a>
 </li>
         <li><a href="api/graphics.html#module-gizmos">gizmos (module)</a>
 </li>
@@ -1261,6 +1271,8 @@
         </ul></li>
         <li><a href="api/image.html#image.depth">image.depth (attribute)</a>
 </li>
+        <li><a href="api/image.html#image.filter">image.filter (attribute)</a>
+</li>
         <li><a href="api/image.html#image.hasMips">image.hasMips (attribute)</a>
 </li>
         <li><a href="api/image.html#image.height">image.height (attribute)</a>
@@ -1273,18 +1285,22 @@
 </li>
         <li><a href="api/image.html#image.sampler">image.sampler (attribute)</a>
 </li>
-        <li><a href="api/image.html#image.slice">image.slice (built-in class)</a>
+        <li><a href="api/image.html#image.slice">image.slice (attribute)</a>
+
+        <ul>
+          <li><a href="api/image.html#image.slice">(built-in class)</a>
 </li>
+        </ul></li>
         <li><a href="api/image.html#image.slice.atlas">image.slice.atlas (attribute)</a>
 </li>
         <li><a href="api/image.html#image.slice.image">image.slice.image (attribute)</a>
 </li>
         <li><a href="api/image.html#image.smooth">image.smooth (attribute)</a>
 </li>
-        <li><a href="api/image.html#image.symbol">image.symbol (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/image.html#image.symbol">image.symbol (attribute)</a>
+</li>
         <li><a href="api/image.html#image.symbol.scale">image.symbol.scale (attribute)</a>
 </li>
         <li><a href="api/image.html#image.symbol.weight">image.symbol.weight (attribute)</a>
@@ -1292,6 +1308,8 @@
         <li><a href="api/image.html#image.type">image.type (attribute)</a>
 </li>
         <li><a href="api/image.html#image.width">image.width (attribute)</a>
+</li>
+        <li><a href="api/image.html#image.wrap">image.wrap (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.index">index() (mesh method)</a>, <a href="api/mesh.html#mesh.index">[1]</a>
 </li>
@@ -2451,6 +2469,8 @@
           <li><a href="api/shader.html#shader.read">(shader static method)</a>
 </li>
         </ul></li>
+        <li><a href="api/image.html#image.readback">readback() (image method)</a>
+</li>
         <li><a href="api/graphics.html#rect">rect() (built-in function)</a>, <a href="api/graphics.html#rect">[1]</a>
 
         <ul>
@@ -2639,13 +2659,19 @@
           <li><a href="api/voxel.html#voxel.world.set">(voxel.world method)</a>
 </li>
         </ul></li>
+        <li><a href="api/image.html#image.setForEach">setForEach() (image method)</a>
+</li>
         <li><a href="api/shader.html#shader.setOption">setOption() (shader method)</a>
+</li>
+        <li><a href="api/image.html#image.setPixel">setPixel() (image method)</a>, <a href="api/image.html#image.setPixel">[1]</a>
 </li>
         <li><a href="api/mesh.html#mesh.setRect">setRect() (mesh method)</a>
 </li>
         <li><a href="api/mesh.html#mesh.setRectColor">setRectColor() (mesh method)</a>
 </li>
         <li><a href="api/mesh.html#mesh.setRectTex">setRectTex() (mesh method)</a>
+</li>
+        <li><a href="api/image.html#image.setValue">setValue() (image method)</a>
 </li>
         <li><a href="api/image.html#atlas.setWithCellCount">setWithCellCount() (atlas method)</a>
 </li>
@@ -2713,10 +2739,10 @@
 </li>
         <li><a href="api/sound.html#sound.sound.instance.volume">sound.sound.instance.volume (attribute)</a>
 </li>
-        <li><a href="api/sound.html#sound.sound.source.length">sound.sound.source.length (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/sound.html#sound.sound.source.length">sound.sound.source.length (attribute)</a>
+</li>
         <li><a href="api/sound.html#sound.sound.source.loop">sound.sound.source.loop (attribute)</a>
 </li>
         <li><a href="api/sound.html#sound.sound.source.volume">sound.sound.source.volume (attribute)</a>

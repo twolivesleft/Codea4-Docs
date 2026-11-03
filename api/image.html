@@ -406,6 +406,19 @@ images where each pixel matters.</p>
 </dd></dl>
 
 <dl class="lua staticmethod">
+<dt class="sig sig-object lua" id="image.dfg">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">dfg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#image.dfg" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a copy of the 64 by 64 lookup image (<code class="docutils literal notranslate"><span class="pre">rgba16f</span></code>) that Codea’s
+physically based lighting uses for image based lighting, for use in your
+own shaders</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><a class="reference internal" href="#image.image" title="image.image"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="image.symbol">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.symbol" title="Link to this definition">¶</a></dt>
 <dd><p>Create an image from an SF Symbol. Returns <code class="docutils literal notranslate"><span class="pre">nil</span></code> if no symbol of that
@@ -575,9 +588,244 @@ after the symbol name.</p>
 </dd></dl>
 
 <dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.filter" title="Link to this definition">¶</a></dt>
+<dd><p>How this image is filtered when drawn larger or smaller than its size:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image.filter.point</span></code> - nearest pixel, for pixel art</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image.filter.linear</span></code> - blends neighbouring pixels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image.filter.default</span></code> - follows <code class="docutils literal notranslate"><span class="pre">style.filter</span></code>, the default</p></li>
+</ul>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.wrap">
+<span class="sig-name descname"><span class="pre">wrap</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.wrap" title="Link to this definition">¶</a></dt>
+<dd><p>How this image repeats when a mesh’s texture coordinates go beyond 0 and 1:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image.wrap.tile</span></code> - repeats the image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image.wrap.clamp</span></code> - stretches the edge pixels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image.wrap.mirror</span></code> - repeats the image, flipping every other copy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image.wrap.default</span></code> - follows <code class="docutils literal notranslate"><span class="pre">style.wrap</span></code>, the default</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Tiling an image on a mesh</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">checker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">pixel</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">checker</span><span class="p">:</span><span class="nf">setPixel</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">checker</span><span class="p">:</span><span class="nf">setPixel</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">checker</span><span class="p">:</span><span class="nf">setPixel</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">checker</span><span class="p">:</span><span class="nf">setPixel</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">checker</span><span class="p">:</span><span class="nf">apply</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">checker</span><span class="p">.</span><span class="py">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="py">filter</span><span class="p">.</span><span class="py">point</span>
+<span class="w">    </span><span class="nv">checker</span><span class="p">.</span><span class="py">wrap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="py">wrap</span><span class="p">.</span><span class="py">tile</span>
+
+<span class="w">    </span><span class="nv">floor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mesh</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">floor</span><span class="p">.</span><span class="py">texture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">checker</span>
+<span class="w">    </span><span class="c1">-- texture coordinates from 0 to 3 show the image 3 times each way</span>
+<span class="w">    </span><span class="nv">floor</span><span class="p">:</span><span class="nf">addRect</span><span class="p">(</span><span class="nf">vec2</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nf">vec4</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">floor</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="image.slice">
+<span class="sig-name descname"><span class="pre">slice</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">image.slice</span><a class="headerlink" href="#image.slice" title="Link to this definition">¶</a></dt>
+<dd><p>A new <a class="reference internal" href="#image.slice" title="image.slice"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image.slice</span></code></a> covering the whole image, to configure and
+draw with <code class="docutils literal notranslate"><span class="pre">sprite()</span></code></p>
+</dd></dl>
+
+<dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.key">
 <span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">assetKey</span><a class="headerlink" href="#image.key" title="Link to this definition">¶</a></dt>
 <dd><p>The asset key for this image (if it has one)</p>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.setPixel">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setPixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.setPixel" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the colour of a pixel. <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> start at 1, from the bottom
+left corner, and are in points like <a class="reference internal" href="#image.width" title="image.width"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">width</span></code></a> and <a class="reference internal" href="#image.height" title="image.height"><code class="xref lua lua-attr docutils literal notranslate"><span class="pre">height</span></code></a>,
+so on an image made with <a class="reference internal" href="#image.image" title="image.image"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">image()</span></code></a> a point covers several pixels.
+Use <a class="reference internal" href="#image.pixel" title="image.pixel"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">image.pixel()</span></code></a> to set each pixel on its own.</p>
+<p>The change is made to the image’s copy in memory. Call <a class="reference internal" href="#image.apply" title="image.apply"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">apply()</span></code></a>
+before drawing the image or saving it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The x coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">width</span></code></p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The y coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">height</span></code></p></li>
+<li><p><strong>color</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">color</span></code></span>) – The colour to set</p></li>
+</ul>
+</dd>
+</dl>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Setting pixels</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">pixel</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">img</span><span class="p">:</span><span class="nf">setPixel</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w">     </span><span class="c1">-- bottom left</span>
+<span class="w">    </span><span class="nv">img</span><span class="p">:</span><span class="nf">setPixel</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="w">     </span><span class="c1">-- top right</span>
+<span class="w">    </span><span class="nv">img</span><span class="p">:</span><span class="nf">apply</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">img</span><span class="p">.</span><span class="py">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="py">filter</span><span class="p">.</span><span class="py">point</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">img</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setPixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">r</span></em>, <em class="sig-param"><span class="pre">g</span></em>, <em class="sig-param"><span class="pre">b</span></em>, <em class="sig-param"><span class="pre">a</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the colour of a pixel from its red, green, blue and alpha values,
+from 0 to 255</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The x coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">width</span></code></p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The y coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">height</span></code></p></li>
+<li><p><strong>r</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The red value</p></li>
+<li><p><strong>g</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The green value</p></li>
+<li><p><strong>b</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The blue value</p></li>
+<li><p><strong>a</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The alpha value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.getPixel">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">getPixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.getPixel" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the red, green, blue and alpha values of a pixel, from 0 to 255.
+Coordinates are as in <a class="reference internal" href="#image.setPixel" title="image.setPixel"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">setPixel()</span></code></a>.</p>
+<p>This reads the image’s copy in memory, which holds what was set with
+<a class="reference internal" href="#image.setPixel" title="image.setPixel"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">setPixel()</span></code></a>. A blank image reads as all zeros, and so does what
+was drawn into the image until <a class="reference internal" href="#image.readback" title="image.readback"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">readback()</span></code></a> copies it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The x coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">width</span></code></p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The y coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">height</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The red, green, blue and alpha values</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number,</span> <span class="pre">number,</span> <span class="pre">number,</span> <span class="pre">number</span></code></span></p>
+</dd>
+</dl>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Reading a pixel</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">pixel</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nv">img</span><span class="p">:</span><span class="nf">setPixel</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">img</span><span class="p">:</span><span class="nf">getPixel</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 255.0 128.0 0.0 255.0</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.setValue">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em>, <em class="sig-param"><span class="pre">r</span></em>, <em class="sig-param"><span class="pre">g</span></em>, <em class="sig-param"><span class="pre">b</span></em>, <em class="sig-param"><span class="pre">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.setValue" title="Link to this definition">¶</a></dt>
+<dd><p>Sets a pixel from raw values, as the image stores them: 0 to 1 for most
+formats, and any value for float formats such as <code class="docutils literal notranslate"><span class="pre">image.rgba32f</span></code>.
+Coordinates are as in <a class="reference internal" href="#image.setPixel" title="image.setPixel"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">setPixel()</span></code></a>. Given a single value, sets
+red, green and blue to it, with an alpha of 1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The x coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">width</span></code></p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The y coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">height</span></code></p></li>
+<li><p><strong>r</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The red value, or the value for red, green and blue</p></li>
+<li><p><strong>g</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The green value (optional)</p></li>
+<li><p><strong>b</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The blue value (optional)</p></li>
+<li><p><strong>a</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – The alpha value (optional | default = 1)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.getValue">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">getValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.getValue" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the raw red, green, blue and alpha values of a pixel, as the
+image stores them: 0 to 1 for most formats, and any value for float
+formats. Coordinates are as in <a class="reference internal" href="#image.setPixel" title="image.setPixel"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">setPixel()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The x coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">width</span></code></p></li>
+<li><p><strong>y</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – The y coordinate, from 1 to <code class="docutils literal notranslate"><span class="pre">height</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The red, green, blue and alpha values</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number,</span> <span class="pre">number,</span> <span class="pre">number,</span> <span class="pre">number</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.setForEach">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setForEach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#image.setForEach" title="Link to this definition">¶</a></dt>
+<dd><p>Sets every pixel from a function, called with the coordinates of each
+pixel, which returns its red, green, blue and alpha values as raw values,
+0 to 1 for most formats. The function must return all four. Call
+<a class="reference internal" href="#image.apply" title="image.apply"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">apply()</span></code></a> afterwards to see the result</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>func</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">function</span></code></span>) – A function taking <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> and returning <code class="docutils literal notranslate"><span class="pre">r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a</span></code></p>
+</dd>
+</dl>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">A gradient</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">gradient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">pixel</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">gradient</span><span class="p">:</span><span class="nf">setForEach</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="kr">end</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">gradient</span><span class="p">:</span><span class="nf">apply</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">gradient</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">256</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.apply">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#image.apply" title="Link to this definition">¶</a></dt>
+<dd><p>Sends the pixels set with <a class="reference internal" href="#image.setPixel" title="image.setPixel"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">setPixel()</span></code></a> to the image, so that they
+show when it is drawn or saved</p>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="image.readback">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">readback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#image.readback" title="Link to this definition">¶</a></dt>
+<dd><p>Copies what was drawn into the image back to its copy in memory, so that
+<a class="reference internal" href="#image.getPixel" title="image.getPixel"><code class="xref lua lua-meth docutils literal notranslate"><span class="pre">getPixel()</span></code></a> can read it. Waits until the copy is done.</p>
+<p>Drawing is finished at the end of a frame: read back in a later frame
+than the one that drew into the image, and for drawing done in <code class="docutils literal notranslate"><span class="pre">setup()</span></code>,
+from the second frame on.</p>
 </dd></dl>
 
 <dl class="lua method">
@@ -622,9 +870,9 @@ after the symbol name.</p>
 <section id="image-formats">
 <h2>Image Formats<a class="headerlink" href="#image-formats" title="Link to this heading">¶</a></h2>
 <p>Here is a list of all currently available image formats</p>
-<div class="table-wrapper colwidths-given docutils container" id="id4">
-<table class="docutils align-default" id="id4">
-<caption><span class="caption-text">Available Image Formats</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<div class="table-wrapper colwidths-given docutils container" id="id8">
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Available Image Formats</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 37.5%" />
 <col style="width: 25.0%" />
@@ -959,12 +1207,12 @@ after the symbol name.</p>
 <section id="slices-and-atlases">
 <h2>Slices and Atlases<a class="headerlink" href="#slices-and-atlases" title="Link to this heading">¶</a></h2>
 <dl class="lua class">
-<dt class="sig sig-object lua" id="image.slice">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">image.slice</span></span><a class="headerlink" href="#image.slice" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object lua">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">image.slice</span></span></dt>
 <dd><p>A configurable slice of an image. Use with <code class="docutils literal notranslate"><span class="pre">sprite()</span></code> for drawing a portion of an sprite sheet image for more efficient 2D rendering (as opposed to a large number of independ images)</p>
 <p>Create slices using an existing image via the <code class="docutils literal notranslate"><span class="pre">image.slice</span></code> property. Slices can be configured using a fluent syntax, allowing for rotation, flipping and 9-patch stretching among other things</p>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">Creating slices</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Creating slices</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
 <span class="w">   </span><span class="nv">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">builtin</span><span class="p">.</span><span class="py">UI</span><span class="p">.</span><span class="py">Grey_Button_10</span><span class="p">)</span>
 
