@@ -298,6 +298,23 @@ Constants - Shape Mode
 
    .. helptext:: set the sort order for drawing
 
+.. lua:function:: depth(enabled)
+
+   Sets whether 2D drawing uses depth testing. When enabled, shapes, sprites and meshes drawn with the default 2D shader test against and write to the depth buffer, so they can be hidden behind or hide 3D geometry drawn in immediate mode. Defaults to ``false``, which draws 2D content in call order over anything already drawn. Has no effect on drawing inside a scene
+
+   :returns: The style table, for chaining.
+   :rtype: style
+
+   :param boolean enabled: whether 2D drawing uses depth testing
+
+   .. helptext:: enable depth testing for 2D drawing
+
+.. lua:function:: depth() -> boolean
+
+   Gets whether 2D drawing uses depth testing
+
+   .. helptext:: get whether 2D drawing uses depth testing
+
 Blending Style
 ##############
 

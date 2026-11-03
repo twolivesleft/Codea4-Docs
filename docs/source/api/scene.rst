@@ -112,6 +112,15 @@ scene
 
       .. helptext:: pixels per world unit
 
+   .. lua:attribute:: drawOrder: enum
+
+      How the scene orders its draws, which can be one of the following values:
+
+      * ``drawOrder.distance`` - draw opaque objects first, then transparent objects sorted back to front by distance from the camera (default)
+      * ``drawOrder.ordered`` - draw objects in the order they are submitted, without sorting by distance
+
+      .. helptext:: how the scene orders its draws
+
    .. lua:method:: entity([name])
 
       Creates a new blank :lua:class:`entity` with an optional name
