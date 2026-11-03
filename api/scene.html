@@ -391,6 +391,16 @@
 <dd><p>The amount of pixels that are in a grid unit</p>
 </dd></dl>
 
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="scene.drawOrder">
+<span class="sig-name descname"><span class="pre">drawOrder</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">enum</span><a class="headerlink" href="#scene.drawOrder" title="Link to this definition">¶</a></dt>
+<dd><p>How the scene orders its draws, which can be one of the following values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">drawOrder.distance</span></code> - draw opaque objects first, then transparent objects sorted back to front by distance from the camera (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drawOrder.ordered</span></code> - draw objects in the order they are submitted, without sorting by distance</p></li>
+</ul>
+</dd></dl>
+
 <dl class="lua method">
 <dt class="sig sig-object lua" id="scene.entity">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">entity</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">name</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#scene.entity" title="Link to this definition">¶</a></dt>
