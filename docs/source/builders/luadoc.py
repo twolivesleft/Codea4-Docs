@@ -88,6 +88,15 @@ class LuaJSONVisitor(nodes.NodeVisitor):
     def visit_literal_block(self, node):
         if isinstance(node.parent, section) and not self.has_desc_ancestor(node):
             self.current_section_content.append(OverviewContent(node.astext(), OverviewContentKind.CODE))
+        elif self.is_overview_collapse(node.parent) and not self.has_desc_ancestor(node):
+            # A collapsed example (.. collapse:: Title): its title, then its code
+            label = getattr(node.parent, 'label', None)
+            if label and node is node.parent.next_node(literal_block):
+                self.current_section_content.append(OverviewContent(f"*{label}*", OverviewContentKind.TEXT))
+            self.current_section_content.append(OverviewContent(node.astext(), OverviewContentKind.CODE))
+
+    def is_overview_collapse(self, node):
+        return node.__class__.__name__ == 'CollapseNode' and isinstance(node.parent, section)
 
     def visit_table(self, node):
         if isinstance(node.parent, section) and not self.has_desc_ancestor(node):
