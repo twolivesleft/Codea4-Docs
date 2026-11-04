@@ -6,6 +6,8 @@ _UNSET = object()
 class DocutilsUtils:
     @staticmethod
     def markdown_text(node):
+        if isinstance(node, nodes.image):
+            return ''
         if isinstance(node, nodes.Text):
             return node.astext()
         if isinstance(node, nodes.literal):
@@ -25,6 +27,37 @@ class DocutilsUtils:
         return ''.join(DocutilsUtils.markdown_text(child) for child in node.children)
     
     @staticmethod
+    def own_content(node):
+        """Descendants belonging to this API, excluding nested API declarations."""
+        for child in node.children:
+            if child.tagname in ('desc', 'substitution_definition'):
+                continue
+            yield child
+            yield from DocutilsUtils.own_content(child)
+
+    @staticmethod
+    def extract_deprecation(node):
+        for child in DocutilsUtils.own_content(node):
+            if child.tagname == 'versionmodified' and child.get('type') == 'deprecated':
+                return child.astext()
+        return None
+
+    @staticmethod
+    def extract_media(node):
+        media = []
+        for child in DocutilsUtils.own_content(node):
+            if isinstance(child, nodes.Element) and 'codea_media' in child:
+                media.append(child['codea_media'])
+            elif isinstance(child, nodes.image) and not (isinstance(child.parent, nodes.Element) and 'codea_media' in child.parent):
+                image = {'kind': 'image', 'source': child['uri'], 'alt': child.get('alt', '')}
+                if isinstance(child.parent, nodes.paragraph):
+                    caption = DocutilsUtils.markdown_children(child.parent).strip()
+                    if caption and len(caption) < 120:
+                        image['caption'] = caption
+                media.append(image)
+        return media
+
+    @staticmethod
     def extract_name(node):
         name_node = next((child for child in node.traverse() if child.tagname == 'desc_name'), None)
         return name_node.astext() if name_node else None
@@ -40,17 +73,26 @@ class DocutilsUtils:
             if child.tagname == 'paragraph':
                 parts.append(DocutilsUtils.markdown_children(child))
             elif child.tagname == 'bullet_list':
-                list_lines = []
-                for list_item in child.children:
-                    if list_item.tagname == 'list_item':
-                        para = list_item.next_node(condition=lambda n: n.tagname == 'paragraph')
-                        if para:
-                            list_lines.append('- ' + DocutilsUtils.markdown_children(para))
-                if list_lines:
-                    parts.append('\n'.join(list_lines))
+                parts.append(DocutilsUtils.markdown_list(child))
 
         return '\n\n'.join(parts) if parts else None
     
+    @staticmethod
+    def markdown_list(node, depth=0):
+        lines = []
+        def collect(current, level):
+            if isinstance(current, (nodes.paragraph, nodes.term)):
+                lines.append('  ' * level + '- ' + DocutilsUtils.markdown_children(current))
+            elif isinstance(current, nodes.bullet_list):
+                for item in current.children:
+                    collect(item, level + 1)
+            else:
+                for child in current.children:
+                    collect(child, level)
+        for item in node.children:
+            collect(item, depth)
+        return '\n'.join(lines)
+
     @staticmethod
     def extract_helptext(node):
         helptext_node = next((child for child in node.traverse() if child.tagname == 'helptext'), None)
@@ -196,11 +238,12 @@ class DocutilsUtils:
 
     @staticmethod
     def extract_code_samples(node):
-        code_samples = []
-        seen_code = set()
+        code_samples = [child['codea_example'] for child in DocutilsUtils.own_content(node)
+                        if isinstance(child, nodes.Element) and 'codea_example' in child]
+        seen_code = {sample['code'] for sample in code_samples}
 
         # Captioned code blocks (.. code-block:: with :caption:) are wrapped in a container
-        for container in node.traverse(condition=lambda n: n.tagname == 'container' and 'literal-block-wrapper' in n['classes']):
+        for container in (n for n in DocutilsUtils.own_content(node) if n.tagname == 'container' and 'literal-block-wrapper' in n['classes']):
             caption_node = container.next_node(condition=lambda n: n.tagname == 'caption')
             code_node = container.next_node(condition=lambda n: n.tagname == 'literal_block')
             if caption_node and code_node:
@@ -282,6 +325,8 @@ class LuaModule:
         self.description = DocutilsUtils.extract_description(node)
         self.helptext = DocutilsUtils.extract_helptext(node)
         self.examples = DocutilsUtils.extract_code_samples(node)
+        self.deprecation = DocutilsUtils.extract_deprecation(node)
+        self.media = DocutilsUtils.extract_media(node)
         self.group = group
 
     def __str__(self):
@@ -298,6 +343,8 @@ class LuaModule:
 
 class LuaClass:
     def __init__(self, node=None, group=None, name=None, description=None, module=None, helptext=None, syntax=None, parameters=None, examples=None, visibility=None, editor=None, symbol=None):
+        self.deprecation = DocutilsUtils.extract_deprecation(node) if node is not None else None
+        self.media = DocutilsUtils.extract_media(node) if node is not None else []
         if node:
             # Initialize from a node
             self.name = DocutilsUtils.extract_name(node)
@@ -354,6 +401,10 @@ class LuaClass:
             d['editor'] = self.editor
         if self.symbol is not None:
             d['symbol'] = self.symbol
+        if self.deprecation:
+            d['deprecation'] = self.deprecation
+        if self.media:
+            d['media'] = self.media
         return d
     
 class LuaParameter:
@@ -398,6 +449,8 @@ class LuaReturn:
 
 class LuaFunction:
     def __init__(self, node, type, group=None, symbol=None, name=_UNSET, module=_UNSET, returns=None):
+        self.deprecation = DocutilsUtils.extract_deprecation(node) if node is not None else None
+        self.media = DocutilsUtils.extract_media(node) if node is not None else []
         self.name = DocutilsUtils.extract_name(node)
         self.module = DocutilsUtils.extract_module(node)
         self.description = DocutilsUtils.extract_description(node)
@@ -490,11 +543,17 @@ class LuaFunction:
             d['editor'] = self.editor
         if self.symbol is not None:
             d['symbol'] = self.symbol
+        if self.deprecation:
+            d['deprecation'] = self.deprecation
+        if self.media:
+            d['media'] = self.media
         return d
 
 
 class LuaAttribute:
     def __init__(self, node=None, kind=None, group=None, name=None, type=None, module=None, description=None, helptext=None, syntax=None, examples=None, visibility=None, editor=None, symbol=None, display_type=None):
+        self.deprecation = DocutilsUtils.extract_deprecation(node) if node is not None else None
+        self.media = DocutilsUtils.extract_media(node) if node is not None else []
         if node:
             # Initialize from a node
             self.name = DocutilsUtils.extract_name(node)
@@ -620,6 +679,10 @@ class LuaAttribute:
             d['editor'] = self.editor
         if self.symbol is not None:
             d['symbol'] = self.symbol
+        if self.deprecation:
+            d['deprecation'] = self.deprecation
+        if self.media:
+            d['media'] = self.media
         return d
 
 
@@ -644,6 +707,8 @@ class OverviewContentKind(Enum):
     TEXT = "text"
     CODE = "code"
     TABLE = "table"
+    EXAMPLE = "example"
+    MEDIA = "media"
 
 # Class to represent either code block or text content
 class OverviewContent:

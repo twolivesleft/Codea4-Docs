@@ -16,6 +16,32 @@ Codea uses an hybrid-immediate mode drawing system, where various built-in funct
 
 These functions use the current render state, defined by the current style and matrix in use, which effects things like fill color and stroke color / width
 
+Try it: an animated circle
+--------------------------
+
+This complete project draws using the modern style API. Run it, then close the
+example to return to the reference. The circle follows elapsed time; its size
+and position adapt to the current view.
+
+.. codea-example:: Animated circle
+
+   function setup()
+   end
+
+   function draw()
+       background(24, 28, 38)
+       style.fill(100, 220, 200).noStroke()
+       local x = WIDTH * (0.5 + 0.25 * math.sin(time.elapsed))
+       ellipse(x, HEIGHT / 2, 80, 80)
+   end
+
+
+.. codea-media:: videos/animated-circle.mp4
+   :type: video
+   :playback: preview
+   :alt: A mint circle moving horizontally on a dark background
+   :caption: The animated circle example running. Press Run Example above to run it yourself.
+
 Style
 -----
 
@@ -455,3 +481,51 @@ Codea supports dynamic lighting via :doc:`/api/light`. Generated meshes (``mesh.
 
    .. literalinclude:: /code/Sphere 3D.codea/Main.lua
       :language: lua
+
+Drawing shapes and changing style
+---------------------------------
+
+Compare the columns: default drawing, a colored fill, and a fill with a white outline. Each row draws a different shape. style.reset() restores defaults, while rectMode(CENTER) makes the rectangles use the same placement convention as ellipses. Try changing the last four rectangle arguments to round each corner differently.
+
+.. codea-example:: Drawing shapes and changing style
+   :project: code/Modern/Basics 02 - Shapes.codea
+
+Building an orbit with nested transforms
+----------------------------------------
+
+This project uses one moving origin for the center, another for each satellite, and a third for its moons. Each matrix.push() is paired with matrix.pop(), so moving one moon does not displace the next satellite. Rotation uses time.elapsed rather than a frame counter. Try changing the two loop counts or orbit radii.
+
+.. codea-example:: Building an orbit with nested transforms
+   :project: code/Modern/Basics 03 - Matrix.codea
+
+Comparing blend modes
+---------------------
+
+Tap **Controls** and choose a blend mode or change either color. The overlapping circles show how source and destination colors combine; the two bundled images below demonstrate a maximum blend equation. Drawing order matters: the second circle is blended over the first.
+
+.. codea-example:: Comparing blend modes
+   :project: code/Modern/Basics 07 - Blending.codea
+
+Saving and restoring styles
+---------------------------
+
+The swatches reuse three saved styles: foreground, background, and label. style.get() captures the settings and style.set() restores them before each drawing operation. The grid adapts to the viewer width. Try replacing a named color with color(r, g, b, a), or changing one saved style to update every swatch.
+
+.. codea-example:: Saving and restoring styles
+   :project: code/Modern/Basics 09 - Colors.codea
+
+Interpolating vertex colors
+---------------------------
+
+Three vertices define a triangle and three colors define its corners. The renderer interpolates those colors across its surface. The project rebuilds vertices as the size parameter changes and rotates the drawing matrix over time. Use vertices to create sequential indices automatically; positions alone does not create a drawable triangle.
+
+.. codea-example:: Interpolating vertex colors
+   :project: code/Modern/Mesh 01 - Triangle.codea
+
+Turning a polygon into triangles
+--------------------------------
+
+Tap around the outline of a simple polygon, in boundary order. mesh.triangulate() returns the indices used to draw its triangles. The project keeps the original points for drawing handles and assigns a color to each new point. Avoid crossing edges: a list of arbitrary scattered points is not a polygon boundary.
+
+.. codea-example:: Turning a polygon into triangles
+   :project: code/Modern/Mesh 02 - Triangulate.codea

@@ -1,8 +1,25 @@
 # Codea Docs
 
+> **Source of truth:** documentation is maintained in the Codea app repository at
+> `Probe/Probe/Data/Carbide`. Make documentation changes there, then sync them
+> into this repository for web publication. This repository is a publishing mirror.
+>
+> This snapshot comes from Codea commit `ab381ac86fdf2f1111cd8b476c87fa6c0d0617c1`.
+> Generated app JSON is not committed here; the web workflow builds HTML from
+> `docs/source`. Pushing a branch builds an artifact; merging into `main` deploys
+> the website.
+
 **Codea** is a Lua-based engine and IDE for making games and simulations on iOS and macOS.
 
-This repository contains the API reference documentation for Codea 4, built with [Sphinx](https://www.sphinx-doc.org/).
+The authoritative API reference and usage guides for Codea 4 live in the Codea
+app repository at `Probe/Probe/Data/Carbide`, built with [Sphinx](https://www.sphinx-doc.org/).
+Make documentation changes in the app first, rebuild its bundled metadata, then
+sync the source, assets, and tests to `Codea4-Docs` for web publication. The web
+repository is a publishing mirror, not an independent authoring source.
+
+The November 2026 transition reconciled the web repository through `7d59279`
+into the app, preserving its newer image, input, and keyboard coverage alongside
+the app's guides, runnable examples, and media.
 
 ## Building the Docs
 
@@ -230,6 +247,51 @@ Keep editor roles separate from symbol classifications:
 
 ## Scripts
 
+### Text API documentation
+
+Keep text documentation in the existing chapters:
+
+- `docs/source/api/graphics.rst`: `text`, measurements, rich-text registration,
+  formatting callbacks, and glyph modifiers.
+- `docs/source/api/style.rst`: font and text-style getters/setters, positioning
+  and wrapping, shadows/decorations, and global text constants.
+- `docs/source/manual/drawing.rst`: introductory examples and renderer selection.
+
+Native text is the default; atlas examples select `style.textRenderer(style.atlas)`
+(or the global `textRenderer` alias). Atlas always parses tags; native strings are
+literal. Renderer constants `style.native` and `style.atlas` are string-valued and
+use `symbol:: const` with the `text-renderer` group. Keep both getter/setter
+signatures documented for the style member and global alias. Document unimplemented bindings as reserved
+rather than presenting placeholder return values as working features. Internal
+compatibility helpers such as `style._legacyTextAlign` are not public APIs.
+
+Add separate getter/setter signatures with accurate `:type:` and `:rtype:` fields.
+Fluent setters return `style`; the compatibility `textMode` and `textWrapWidth`
+setters return values. Use `helptext` on every callable, `editor:: font` on font
+selection, `editor:: color` on color setters, and `editor:: text` on text drawing.
+Alignment constants use `symbol:: const` with the `text-alignment` group.
+Functions receive API-call highlighting by default; editor roles are separate.
+
+Build both outputs when changing editor-facing documentation:
+
+```sh
+cd docs
+make html
+make luadoc
+```
+
+The app bundles `docs/build/luadoc`; inspect its JSON for module names, optional
+parameter names, return types, editor roles, and constant symbol groups. Generated
+JSON belongs alongside its RST source changes. Use a flat optional argument group
+such as `text(str, x, y[, w, h])`; the current metadata parser does not correctly
+extract parameter types from nested optional groups.
+
+Run metadata regression tests after rebuilding JSON:
+
+```sh
+python -m unittest discover -s docs/tests
+```
+
 ### `scripts/check_helptexts.py`
 
 Scans all `.rst` files under `docs/source/` and reports `lua:function` and `lua:method` directives that are missing a `.. helptext::` entry. These helptexts are used to provide short inline descriptions in the Codea IDE.
@@ -245,3 +307,161 @@ python3 scripts/check_helptexts.py > scripts/missing_helptexts.txt
 ```
 
 The report lists each missing helptext with an index, file path, line number, directive type, and function signature — making it easy to work through the list systematically.
+
+## Reference presentation
+
+`chapters_config.json` is the curated Probe chapter index. Every `api/*.rst`
+source must appear exactly once. The metadata tests check coverage. Manuals are
+reading guides: consecutive overview sections become one page with subheadings,
+prose, examples and media in source order. Avoid pages whose entire introduction
+is a category marker such as `(global)`; namespace/type information already
+belongs to the API metadata.
+
+### Deprecated APIs
+
+Use Sphinx's standard directive **inside the API declaration**:
+
+```rst
+.. lua:function:: readImage(assetKey)
+
+   Compatibility image loader.
+
+   .. deprecated:: 4.0
+      Use ``image.read(assetKey)`` instead.
+```
+
+The message is emitted as `deprecation` in JSON. Probe shows a Deprecated badge
+in lists and a notice in details. `ReferenceViewModel(includesDeprecated: false)`
+hides deprecated items (and descendants of deprecated types); the property can
+also be changed later. Filtering does not remove editor/autocomplete metadata.
+Document migration behavior, including unsupported stubs, rather than promising
+that the compatibility layer reproduces every legacy behavior.
+
+### Runnable examples
+
+Ordinary code blocks remain copyable snippets. Mark a **complete project** with
+`codea-example` to offer a Run Example button:
+
+```rst
+.. codea-example:: A circle
+
+   function setup()
+   end
+
+   function draw()
+       background(24, 28, 38)
+       style.fill(100, 220, 200).noStroke()
+       ellipse(WIDTH / 2, HEIGHT / 2, 80, 80)
+   end
+```
+
+For multiple tabs or project assets, add `:project: code/My Example.codea`.
+Paths are relative to `docs/source`; the builder copies the complete project
+into the documentation bundle. Optional `:poster: images/example.png` supplies a
+preview image. Run executes the project copy, or `Main.lua` containing the
+inline code if no project is provided. Keep projects self-contained. Only
+explicitly marked examples are executable; GLSL and partial Lua snippets are not.
+
+The current host is a dismissible sheet. ProbeKit accepts an example-controller
+factory and a `ReferenceExampleLifecycle` shutdown hook, keeping presentation
+independent of CarbideKit and allowing a future inline player. Probe Browser and
+Codea's modern reference install the Carbide example host. Dismissal cancels
+loading, shuts down rendering/audio and removes the temporary project.
+
+### Images and video
+
+Standard RST `image` directives are included in Probe output. For captions and
+video, use:
+
+```rst
+.. codea-media:: images/example_shape.png
+   :type: image
+   :alt: A filled shape with an outline
+   :caption: Fill and stroke can be configured independently.
+
+.. codea-media:: videos/drawing.mp4
+   :type: video
+   :alt: A circle moving across the screen
+   :caption: The example running in Codea.
+```
+
+Local paths resolve within `docs/source` and are copied into the generated
+bundle. HTTPS image/video URLs are also supported. Videos default to native playback controls. For short, silent illustrations,
+add `:playback: preview` to autoplay and loop without controls in the app and
+HTML. The app respects Reduce Motion by offering manual controls instead, and
+pauses playback when backgrounded or the page disappears. Keep recordings
+focused on the project canvas, without viewer chrome or internal product names. Supply useful
+alternative text and captions. Rebuild both `luadoc` and HTML after changes.
+
+### Hand-crafted modern examples
+
+`docs/source/code/Modern` contains documentation adaptations of the 17 projects
+from `feature/modern-examples` at `7f2da2161`. Their original teaching comments
+and author credits are retained. The documentation copies use modern touch
+access, local assets, sheet-friendly layouts and bounded default GPU workloads.
+The Touches skeleton is completed, the parameter demo focuses on controls, and
+reaction diffusion uses separate read/write textures. Compute grids use
+`image.pixel()` instead of display-scaled `image()` allocation, and image access
+is declared in GLSL rather than passed as an obsolete `setImage` argument. GPU particles omit the
+unused older Bloom helper; camera post-processing is covered in the Camera
+Effects guide. Runtime metadata lists every Lua tab in load order.
+
+A `codea-example` with only `:project:` displays that project's `Main.lua`
+automatically. Other tabs and assets are copied with the project for execution.
+Edit these source projects, then rebuild luadoc; generated copies are not the
+authoring source.
+
+Runnable projects expose their `parameter` controls through the viewer's Controls
+button, which appears only when the inspector has entries. Probe Browser includes
+Codea's default HDR environment for `scene.default3d()` lighting.
+
+### Guide sections and navigation audit
+
+Manuals default to the **Guides** section. To group a chapter's manuals into
+meaningful sections, put document metadata before the title:
+
+```rst
+:reference-section: Project Browser
+
+The project browser
+===================
+```
+
+Keep a guide as one readable page, with task-oriented subheadings. Add its path
+in both `index.rst` and the appropriate `chapters_config.json` entry. Using Codea
+is the first chapter, with three guides each in Project Browser, Sharing &
+Storage, and Tools & Settings. Screenshots in `images/using_codea` are actual
+Codea simulator captures; their captions describe controls without depending on
+a fixed toolbar position.
+
+The November 2026 audit counts the rendered Probe navigation (including module
+pages), rather than raw RST headings:
+
+| Chapter | Sections | Entries |
+| --- | ---: | ---: |
+| Using Codea | 3 | 9 |
+| Graphics | 35 | 304 |
+| Scenes & Entities | 20 | 219 |
+| Shaders & Meshes | 5 | 93 |
+| Physics 2D | 4 | 133 |
+| Physics 3D | 2 | 61 |
+| Input & Motion | 14 | 263 |
+| Sound | 3 | 34 |
+| Storage & Assets | 8 | 43 |
+| Vector Math | 13 | 136 |
+| Display & Viewer | 6 | 65 |
+| Animation | 2 | 25 |
+| Lua | 12 | 138 |
+| Objective-C | 2 | 26 |
+
+The former single-page Getting Started chapter is removed; **How Codea Works**
+now introduces Lua alongside its language reference. Physics 3D, Animation, and
+Objective-C retain a guide section and a substantial API section: their small
+section count does not represent thin content. No chapter contains just one
+entry, and no rendered section is empty. Small API sections remain when their
+names provide useful navigation to a distinct concept; avoid adding filler
+pages or merging unrelated APIs merely to increase section counts.
+
+`ReferenceNavigationAuditTests` checks these structural guarantees and the nine
+Using Codea guides. Existing metadata coverage tests ensure that reorganizing
+navigation does not drop API source files.

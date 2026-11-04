@@ -38,7 +38,8 @@ extensions = [
     'helptext',
     'visibility',
     'editor',
-    'codeasymbol'
+    'codeasymbol',
+    'referencecontent'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

@@ -1,14 +1,19 @@
 How Codea Works
 ===============
 
-Codea is primarily designed as a realtime graphical engine that uses callbacks to draw and update the screen
+Codea is primarily designed as a realtime graphical engine that uses callbacks to draw and update the screen.
+
+In this reference, **Run Example** opens a complete project in a dismissible viewer.
+Use **Show code** to inspect longer examples. Projects with adjustable parameters
+show a **Controls** button; changes there update the running project. Close the
+controls to return to the canvas, then use **Done** to return to the documentation.
 
 When you create a project you are given a basic template in ``Main.lua`` that
 contains some global functions:
 
 .. code-block:: lua
 
-   -- Called once at the beggining
+   -- Called once at the beginning
    function setup()
       x = WIDTH/2
       y = HEIGHT/2
@@ -114,3 +119,11 @@ Called when a mouse or trackpad pointer moves over the viewer with no button hel
       x = gesture.location.x
       y = gesture.location.y
    end
+
+Learning Lua by changing a program
+----------------------------------
+
+Start with setup(), which runs once, and draw(), which runs every frame. The commented project walks through strings, local and global variables, nil, and if/elseif/else. Its print output appears in Codea's console; this viewer also displays a greeting on the canvas. Try changing foo to choose a different branch.
+
+.. codea-example:: Learning Lua by changing a program
+   :project: code/Modern/Basics 01 - Hello Lua.codea

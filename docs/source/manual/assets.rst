@@ -94,3 +94,11 @@ When you pick a file from outside your project using ``pick.option.reference``, 
    end
 
 Remove bookmarks when they're no longer needed with ``assets.removeBookmark("myConfig")``.
+
+Drawing many sprites from one image
+-----------------------------------
+
+Create the image once in setup(), then draw it repeatedly at animated positions. This self-contained version generates its ring image with context.push()/pop(), so it works without an installed asset pack. Replace the generated image with image.read(asset.myImage) in your own project. A width without a height preserves the image aspect ratio.
+
+.. codea-example:: Drawing many sprites from one image
+   :project: code/Modern/Basics 05 - Sprites.codea

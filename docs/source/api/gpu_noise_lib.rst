@@ -31,7 +31,7 @@ An example using this library can be found `here`_
 Value Noises
 ------------
 
-.. image:: http://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg
+.. image:: https://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -58,7 +58,7 @@ Value Noises
     //
     float Value4D( vec4 P )
 
-.. image:: http://briansharpe.files.wordpress.com/2011/11/perlinsample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2011/11/perlinsample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -84,7 +84,7 @@ Value Noises
     //
     float Perlin4D( vec4 P )
 
-.. image:: http://briansharpe.files.wordpress.com/2011/11/valueperlinsample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2011/11/valueperlinsample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -105,7 +105,7 @@ Value Noises
     //
     float ValuePerlin3D( vec3 P, float blend_val )
 
-.. image:: http://briansharpe.files.wordpress.com/2011/12/cubistsample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2011/12/cubistsample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -133,7 +133,7 @@ Value Noises
 Cellular Noises
 ---------------
 
-.. image:: http://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -158,10 +158,10 @@ Cellular Noises
     //
     float Cellular3D(vec3 P)
 
-.. image:: http://briansharpe.files.wordpress.com/2011/12/polkadotsample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2011/12/polkadotsample.jpg
     :width: 200
 
-.. image:: http://briansharpe.files.wordpress.com/2012/01/polkaboxsample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2012/01/polkaboxsample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -195,7 +195,7 @@ Cellular Noises
                         float radius_high	)
 
 
-.. image:: http://briansharpe.files.wordpress.com/2011/12/starssample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2011/12/starssample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -216,7 +216,7 @@ Cellular Noises
 Simplex Noises
 --------------
 
-.. image:: http://briansharpe.files.wordpress.com/2012/01/simplexperlinsample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2012/01/simplexperlinsample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -231,7 +231,7 @@ Simplex Noises
     //
     float SimplexPerlin2D( vec2 P )
 
-.. image:: http://briansharpe.files.wordpress.com/2012/01/simplexpolkadotsample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2012/01/simplexpolkadotsample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -245,7 +245,7 @@ Simplex Noises
                                 float radius, 		//	radius range is 0.0->1.0
                                 float max_dimness )	//	the maximal dimness of a dot ( 0.0->1.0   0.0 = all dots bright,  1.0 = maximum variation )
 
-.. image:: http://briansharpe.files.wordpress.com/2012/01/simplexcellularsample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2012/01/simplexcellularsample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -296,7 +296,7 @@ Simplex Noises
 Hermite Noises
 --------------
 
-.. image:: http://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg
     :width: 200
 
 .. code-block:: glsl
@@ -315,7 +315,7 @@ Hermite Noises
     //
     float Hermite3D( vec3 P )
 
-.. image:: http://briansharpe.files.wordpress.com/2012/01/valuehermitesample.jpg
+.. image:: https://briansharpe.files.wordpress.com/2012/01/valuehermitesample.jpg
     :width: 200
 
 .. code-block:: glsl

@@ -1,7 +1,6 @@
 color
 =====
 
-*(class)*
 
 .. lua:class:: color
 
