@@ -1,7 +1,6 @@
 style
 =====
 
-*(module)*
 
 A module for setting the current drawing style used with various graphics functions in Codea, such as :lua:func:`line`
 
@@ -47,6 +46,11 @@ General
    .. helptext:: reset the style to defaults
 
 .. lua:function:: get()
+
+   Capture separate styles for the foreground, shadow, and label, then restore each before drawing. Changing a saved style updates every swatch that uses it.
+
+   .. codea-example:: Reusable swatch styles
+      :project: code/Modern/Basics 09 - Colors.codea
 
    Gets the current style as a graphicsStyle object, allowing styles to be saved and restored arbitrarily
 
@@ -328,7 +332,7 @@ Functions
    :returns: The style table, for chaining.
    :rtype: style
 
-   .. helptext:: set the blend mode for drawing
+   .. helptext:: set the blend mode or custom blend factors
 
    The default mode is :lua:`NORMAL` which applies standard alpha blended transparency with the following equation:
 
@@ -344,7 +348,7 @@ Functions
    :returns: The style table, for chaining.
    :rtype: style
 
-   .. helptext:: set a custom blend mode
+   .. helptext:: set the blend mode or custom blend factors
 
 .. lua:function:: blend(src, dst, srcAlpha, dstAlpha)
 
@@ -353,7 +357,7 @@ Functions
    :returns: The style table, for chaining.
    :rtype: style
 
-   .. helptext:: set a custom blend mode with separate alpha factors
+   .. helptext:: set the blend mode or custom blend factors
 
 .. lua:function:: blend() -> src, dst, srcAlpha, dstAlpha
 
@@ -379,7 +383,7 @@ Functions
    - :lua:`EQUATION_MAX` - Maximum (blend factors are ignored)
       :math:`R = max(R_s, R_d)`
 
-   .. helptext:: set the blend equation function
+   .. helptext:: set blend equations for color and alpha
 
 .. lua:function:: blendFunc(func, alphaFunc)
 
@@ -388,7 +392,7 @@ Functions
    :returns: The style table, for chaining.
    :rtype: style
 
-   .. helptext:: set separate blend equation functions for rgb and alpha
+   .. helptext:: set blend equations for color and alpha
 
 .. lua:function:: blendFunc() -> func, alphaFunc
 
@@ -621,7 +625,7 @@ Stencil
    :returns: The style table, for chaining.
    :rtype: style
 
-   .. helptext:: set the stencil state for front and back faces
+   .. helptext:: configure stencil states for front and back faces
 
 .. lua:function:: stencil()
 
@@ -636,7 +640,7 @@ Stencil
    :returns: The style table, for chaining.
    :rtype: style
 
-   .. helptext:: set separate stencil states for front and back faces
+   .. helptext:: configure stencil states for front and back faces
 
 Using Stencils
 **************

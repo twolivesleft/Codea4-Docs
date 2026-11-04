@@ -161,6 +161,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
@@ -169,6 +178,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
@@ -176,10 +189,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
@@ -251,7 +265,15 @@
         <article role="main">
           <section id="images-overview">
 <h1>Images Overview<a class="headerlink" href="#images-overview" title="Link to this heading">¶</a></h1>
-<p>Made of pixels and used by codea for drawing to the screen and texturing meshes</p>
+<p>Load images once in <code class="docutils literal notranslate"><span class="pre">setup()</span></code> and draw them with <code class="docutils literal notranslate"><span class="pre">sprite()</span></code> each frame.
+The same image can texture a mesh or serve as an offscreen drawing target.
+Use <code class="docutils literal notranslate"><span class="pre">image.read(assetKey)</span></code> for an existing asset and <code class="docutils literal notranslate"><span class="pre">image(width,</span> <span class="pre">height)</span></code>
+for an empty target. Pair <code class="docutils literal notranslate"><span class="pre">context.push(image)</span></code> with <code class="docutils literal notranslate"><span class="pre">context.pop()</span></code> when
+drawing into an image, then draw that image on screen.</p>
+<p>Choose the image format and mipmap settings when creating a target. Mipmaps
+help when a texture is viewed at smaller sizes; floating-point formats preserve
+values outside the usual color range for lighting and effects. The format and
+sampler sections below explain those choices.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Loading and drawing an image</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
 <div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
@@ -274,8 +296,8 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">image</span></span></dt>
 <dd><dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="image.image">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">hasMips</span> <span class="pre">=</span> <span class="pre">false</span></em>, <em class="sig-param"><span class="pre">numLayers</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">format</span> <span class="pre">=</span> <span class="pre">image.rgba</span></em>, <em class="sig-param"><span class="pre">depthFormat</span> <span class="pre">=</span> <span class="pre">none</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#image.image" title="Link to this definition">¶</a></dt>
-<dd><p>Create a blank 2D image (default format is <cite>rgba</cite>)</p>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">hasMips</span> <span class="pre">=</span> <span class="pre">false</span></em>, <em class="sig-param"><span class="pre">numLayers</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">format</span> <span class="pre">=</span> <span class="pre">image.rgba8</span></em>, <em class="sig-param"><span class="pre">depthFormat</span> <span class="pre">=</span> <span class="pre">none</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#image.image" title="Link to this definition">¶</a></dt>
+<dd><p>Create a blank 2D image in logical points (default format is <cite>rgba8</cite>). The backing texture is allocated at the display scale. Use image.pixel() when dimensions must match physical texels, such as a compute simulation grid.</p>
 <p>The size is in points, like <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> and <code class="docutils literal notranslate"><span class="pre">HEIGHT</span></code>, so the image has
 as many pixels per point as the screen: <code class="docutils literal notranslate"><span class="pre">image(100,</span> <span class="pre">100)</span></code> is 300 by 300
 pixels on a 3x display, and draws sharply at 100 by 100. Use
@@ -296,7 +318,7 @@ pixels on a 3x display, and draws sharply at 100 by 100. Use
 
 <dl class="lua staticmethod">
 <dt class="sig sig-object lua" id="image.pixel">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">hasMips</span> <span class="pre">=</span> <span class="pre">false</span></em>, <em class="sig-param"><span class="pre">numLayers</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">format</span> <span class="pre">=</span> <span class="pre">image.rgba</span></em>, <em class="sig-param"><span class="pre">depthFormat</span> <span class="pre">=</span> <span class="pre">none</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#image.pixel" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">width</span></em>, <em class="sig-param"><span class="pre">height</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">hasMips</span> <span class="pre">=</span> <span class="pre">false</span></em>, <em class="sig-param"><span class="pre">numLayers</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">format</span> <span class="pre">=</span> <span class="pre">image.rgba8</span></em>, <em class="sig-param"><span class="pre">depthFormat</span> <span class="pre">=</span> <span class="pre">none</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#image.pixel" title="Link to this definition">¶</a></dt>
 <dd><p>Create a blank 2D image of exactly <code class="docutils literal notranslate"><span class="pre">width</span></code> by <code class="docutils literal notranslate"><span class="pre">height</span></code> pixels,
 whatever the display scale. Takes the same parameters as
 <a class="reference internal" href="#image.image" title="image.image"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">image()</span></code></a>. Use it for pixel art, emulator screens and other
@@ -330,6 +352,14 @@ images where each pixel matters.</p>
 <span class="kr">end</span>
 </pre></div>
 </div>
+</div>
+<p>For compute data, use a floating-point format when needed and dispatch
+using the image dimensions and shader workgroup size.</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="nv">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">pixel</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">192</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="py">rgba32f</span><span class="p">)</span>
+<span class="nv">simulation</span><span class="p">:</span><span class="nf">setImage</span><span class="p">(</span><span class="s2">"imageOut"</span><span class="p">,</span><span class="w"> </span><span class="nv">state</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">wx</span><span class="p">,</span><span class="w"> </span><span class="nv">wy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">simulation</span><span class="p">:</span><span class="nf">workgroupSize</span><span class="p">()</span>
+<span class="nv">simulation</span><span class="p">:</span><span class="nf">dispatch</span><span class="p">(</span><span class="nb">math.ceil</span><span class="p">(</span><span class="nv">state</span><span class="p">.</span><span class="py">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">wx</span><span class="p">),</span><span class="w"> </span><span class="nb">math.ceil</span><span class="p">(</span><span class="nv">state</span><span class="p">.</span><span class="py">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">wy</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
 </div>
 </dd></dl>
 
@@ -529,15 +559,13 @@ after the symbol name.</p>
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.width">
 <span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.width" title="Link to this definition">¶</a></dt>
-<dd><p>The width of the image in points. For an image made with
-<a class="reference internal" href="#image.pixel" title="image.pixel"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">image.pixel()</span></code></a>, points and pixels are the same</p>
+<dd><p>The logical width of the image in points. For image.pixel(), points and physical texels are identical.</p>
 </dd></dl>
 
 <dl class="lua attribute">
 <dt class="sig sig-object lua" id="image.height">
 <span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">integer</span><a class="headerlink" href="#image.height" title="Link to this definition">¶</a></dt>
-<dd><p>The height of the image in points. For an image made with
-<a class="reference internal" href="#image.pixel" title="image.pixel"><code class="xref lua lua-func docutils literal notranslate"><span class="pre">image.pixel()</span></code></a>, points and pixels are the same</p>
+<dd><p>The logical height of the image in points. For image.pixel(), points and physical texels are identical.</p>
 </dd></dl>
 
 <dl class="lua attribute">

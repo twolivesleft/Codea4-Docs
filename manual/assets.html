@@ -161,6 +161,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
@@ -169,6 +178,10 @@
 <li class="toctree-l1"><a class="reference internal" href="input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vectors.html">Using Vectors</a></li>
@@ -176,10 +189,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/matrix.html">matrix</a></li>
@@ -331,6 +345,50 @@
 </div>
 <p>Remove bookmarks when they’re no longer needed with <code class="docutils literal notranslate"><span class="pre">assets.removeBookmark(&quot;myConfig&quot;)</span></code>.</p>
 </section>
+<section id="drawing-many-sprites-from-one-image">
+<h2>Drawing many sprites from one image<a class="headerlink" href="#drawing-many-sprites-from-one-image" title="Link to this heading">¶</a></h2>
+<p>Create the image once in setup(), then draw it repeatedly at animated positions. This self-contained version generates its ring image with context.push()/pop(), so it works without an installed asset pack. Replace the generated image with image.read(asset.myImage) in your own project. A width without a height preserves the image aspect ratio.</p>
+<div class="docutils container" id="id1">
+<p><span class="caption-text">Drawing many sprites from one image</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">icon</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">spr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sprite</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- Generate a local image so this example needs no installed asset packs.</span>
+<span class="w">    </span><span class="nv">icon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">image</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">context</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nv">icon</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">).</span><span class="nf">noStroke</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">56</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">context</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- The sprite command draws an image on the screen for us</span>
+
+<span class="w">    </span><span class="c1">-- Sprites can come from two different places:</span>
+<span class="w">    </span><span class="c1">-- Asset Keys, which are paths to assets on your device, including built-in assets, project assets and documents assets</span>
+<span class="w">    </span><span class="c1">-- Images, which are loaded or generated somewhere else in the code via image.read(key) or image(w,h)</span>
+
+<span class="w">    </span><span class="c1">-- The basic command is: sprite(imageOrAsset, x, y, w, h) where you specify the x and y position and optional width and height</span>
+<span class="w">    </span><span class="c1">-- Specifying only the width will scale the sprite's height correctly to match aspect ratio</span>
+<span class="w">    </span><span class="c1">--style.blend(DISABLED)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">icon</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">math.sin</span><span class="p">(</span><span class="nv">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">math.cos</span><span class="p">(</span><span class="nv">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</section>
 </section>
 
         </article>
@@ -394,6 +452,7 @@
 <li><a class="reference internal" href="#loading-and-saving-assets">Loading and Saving Assets</a></li>
 <li><a class="reference internal" href="#working-with-asset-packs">Working with Asset Packs</a></li>
 <li><a class="reference internal" href="#bookmarks-references">Bookmarks (References)</a></li>
+<li><a class="reference internal" href="#drawing-many-sprites-from-one-image">Drawing many sprites from one image</a></li>
 </ul>
 </li>
 </ul>

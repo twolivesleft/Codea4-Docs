@@ -1,7 +1,6 @@
 matrix
 ======
 
-*(module)*
 
 A module for setting the current matrices used with various graphics functions in Codea
 
@@ -68,6 +67,11 @@ Transform
 #########
 
 .. lua:function:: transform2d(x, y[, sx = 1, sy = 1, r = 0])
+
+   Combine translation, scale, and rotation relative to the current matrix. Save it before entering a child orbit and restore it afterwards so sibling objects remain independent.
+
+   .. codea-example:: Nested orbits
+      :project: code/Modern/Basics 03 - Matrix.codea
 
    Apply a generic 2D transform to the model matrix
 

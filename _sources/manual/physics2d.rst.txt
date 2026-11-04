@@ -133,3 +133,23 @@ Control dynamic bodies with forces and impulses:
 
    -- Set velocity directly
    body.linearVelocity = vec2(5, 0)
+
+Stepping a physics world yourself
+---------------------------------
+
+Watch a box and a circle fall onto a static floor, then tap to add boxes. fixedUpdate(dt) steps the simulation at a fixed rate. The orthographic camera maps physics units to screen coordinates, and screenToWorld() maps taps back into those units. world:draw() is a debug visualization; replace it with your own drawing when building a game.
+
+.. codea-example:: Stepping a physics world yourself
+   :project: code/Modern/Physics 01 - Basics.codea
+
+Combining bodies, joints, and scene callbacks
+---------------------------------------------
+
+The pink character combines a circular body, hinged legs, and eyes attached with distance joints. Touch either side to drive the legs; drag a body to pull it with the grabber component. collisionBegan2d() changes the expression and plays a sound. scene.main advances this scene automatically, so do not also step its world manually. Grabber.lua is bundled with the project.
+
+.. codea-example:: Combining bodies, joints, and scene callbacks
+   :project: code/Modern/Physics 02 - Scene.codea
+
+.. literalinclude:: /code/Modern/Physics 02 - Scene.codea/Grabber.lua
+   :language: lua
+   :caption: Grabber.lua — querying bodies and applying a spring-like force

@@ -161,6 +161,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
@@ -169,6 +178,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
@@ -176,10 +189,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
@@ -251,7 +265,6 @@
         <article role="main">
           <section id="camera">
 <h1>camera<a class="headerlink" href="#camera" title="Link to this heading">¶</a></h1>
-<p><em>(class)</em></p>
 <dl class="lua class">
 <dt class="sig sig-object lua">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">camera</span></span></dt>
@@ -428,6 +441,193 @@
 <dd class="field-even"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number,</span> <span class="pre">number,</span> <span class="pre">number</span></code></span></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.effectsEnabled">
+<span class="sig-name descname"><span class="pre">effectsEnabled</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">boolean</span><a class="headerlink" href="#camera.effectsEnabled" title="Link to this definition">¶</a></dt>
+<dd><p>Enable post-processing for this camera. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Set to
+<code class="docutils literal notranslate"><span class="pre">false</span></code> for a reflection or other secondary draw, then restore it.
+Settings and custom effects are retained while disabled. Effects are only
+used when the camera renders a scene; <code class="docutils literal notranslate"><span class="pre">cam:apply()</span></code> alone applies matrices.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.bloom">
+<span class="sig-name descname"><span class="pre">bloom</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span> <span class="pre">[readonly]</span><a class="headerlink" href="#camera.bloom" title="Link to this definition">¶</a></dt>
+<dd><p>Read-only settings object; change its fields rather than replacing it.
+Bloom spreads bright parts of the camera image into a glow. A strength of
+zero skips the bloom passes. The camera renders into a floating-point image
+before finishing, preserving brightness above white.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strength</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Glow amount; defaults to 0 (off). Start with 0.5 and increase to taste.</p></li>
+<li><p><strong>threshold</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Brightness cutoff; defaults to 0.9. Lower values include more of the picture.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.tiltShift">
+<span class="sig-name descname"><span class="pre">tiltShift</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span> <span class="pre">[readonly]</span><a class="headerlink" href="#camera.tiltShift" title="Link to this definition">¶</a></dt>
+<dd><p>Read-only settings object; change its fields rather than replacing it.
+Blur increases away from a sharp horizontal band. Coordinates for the band
+are fractions of the camera image height, measured from the bottom.
+A blur of zero skips tilt shift. This is an image-space effect, not a
+depth-of-field simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blur</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Maximum blur radius in points; defaults to 0 (off).</p></li>
+<li><p><strong>focus</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Vertical center of the sharp band; defaults to 0.5.</p></li>
+<li><p><strong>range</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Half-height of the sharp band; defaults to 0.12.</p></li>
+<li><p><strong>falloff</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number</span></code></span>) – Distance beyond the band over which blur reaches its maximum; defaults to 0.4.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.saturation">
+<span class="sig-name descname"><span class="pre">saturation</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.saturation" title="Link to this definition">¶</a></dt>
+<dd><p>Color saturation, default 1. Use 0 for grayscale, values between 0 and 1
+for muted color, and values above 1 for stronger color.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.vignette">
+<span class="sig-name descname"><span class="pre">vignette</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.vignette" title="Link to this definition">¶</a></dt>
+<dd><p>Darkening toward the image edges, default 0 (off). Start with a small
+positive value such as 0.2 and adjust for the image. Values are not clamped
+by the setter.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.grain">
+<span class="sig-name descname"><span class="pre">grain</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.grain" title="Link to this definition">¶</a></dt>
+<dd><p>Animated film-grain strength, default 0 (off). Small positive values such
+as 0.02 add subtle noise. Values are not clamped by the setter.</p>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="camera.addEffect">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">addEffect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#camera.addEffect" title="Link to this definition">¶</a></dt>
+<dd><p>Compile a fragment-shader body and append it to this camera’s custom
+effect chain. Returns the shader, which can be used to set uniforms or
+remove the effect later. Effects run in insertion order, after tilt shift,
+bloom and color grading. Intermediate custom-effect images are RGBA8;
+<code class="docutils literal notranslate"><span class="pre">scene</span></code> still provides the original floating-point camera image.</p>
+<p>The supplied body has <code class="docutils literal notranslate"><span class="pre">uv</span></code> (texture coordinates), <code class="docutils literal notranslate"><span class="pre">FragColor</span></code> (output),
+<code class="docutils literal notranslate"><span class="pre">source</span></code> (sampler2D containing the previous stage), <code class="docutils literal notranslate"><span class="pre">resolution</span></code>
+(vec4: pixel width, pixel height, inverse width, inverse height), and
+<code class="docutils literal notranslate"><span class="pre">time</span></code> (seconds) declared for it. Declare <code class="docutils literal notranslate"><span class="pre">uniform</span> <span class="pre">sampler2D</span> <span class="pre">scene;</span></code>
+to sample the camera image before any effects. Write all four components
+of <code class="docutils literal notranslate"><span class="pre">FragColor</span></code>, preserving alpha when compositing cameras.</p>
+<p>If the source contains <code class="docutils literal notranslate"><span class="pre">#version</span></code>, it is treated as a complete fragment
+shader: provide the declarations yourself. Effect passes disable depth
+testing and depth writes and manage their own blend state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>source</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – GLSL fragment body, or a complete fragment shader with a version declaration.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The appended effect shader.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">shader</span></code></span></p>
+</dd>
+</dl>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">cam</span><span class="p">:</span><span class="nf">addEffect</span><span class="p">([[</span>
+<span class="nv">uniform</span><span class="w"> </span><span class="nv">sampler2D</span><span class="w"> </span><span class="nv">scene</span><span class="p">;</span>
+<span class="nv">void</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">vec4</span><span class="w"> </span><span class="nv">processed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">texture</span><span class="p">(</span><span class="nv">source</span><span class="p">,</span><span class="w"> </span><span class="nv">uv</span><span class="p">);</span>
+<span class="w">    </span><span class="nv">vec4</span><span class="w"> </span><span class="nv">original</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">texture</span><span class="p">(</span><span class="nv">scene</span><span class="p">,</span><span class="w"> </span><span class="nv">uv</span><span class="p">);</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="nv">Keep</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">center</span><span class="w"> </span><span class="nv">sharp</span><span class="w"> </span><span class="kr">while</span><span class="w"> </span><span class="nv">retaining</span><span class="w"> </span><span class="nv">effects</span><span class="w"> </span><span class="nv">at</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">edges</span><span class="p">.</span>
+<span class="w">    </span><span class="py">float</span><span class="w"> </span><span class="nv">edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">smoothstep</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="nv">uv</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)));</span>
+<span class="w">    </span><span class="nv">FragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mix</span><span class="p">(</span><span class="nv">original</span><span class="p">,</span><span class="w"> </span><span class="nv">processed</span><span class="p">,</span><span class="w"> </span><span class="nv">edge</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">addEffect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">effect</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Append an existing shader and return it. It must render a full-screen
+image using the effect vertex layout and declare a <code class="docutils literal notranslate"><span class="pre">source</span></code> sampler.
+<code class="docutils literal notranslate"><span class="pre">resolution</span></code> and <code class="docutils literal notranslate"><span class="pre">scene</span></code> are supplied when declared. The shader
+returned by the source-string overload can be reused with another camera.
+Uniforms are shared when the same shader instance is reused.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>effect</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">shader</span></code></span>) – Full-screen effect shader.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The same shader instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">shader</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="camera.removeEffect">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">removeEffect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">effect</span></em><span class="sig-paren">)</span><a class="headerlink" href="#camera.removeEffect" title="Link to this definition">¶</a></dt>
+<dd><p>Remove every occurrence of this shader from this camera’s custom chain.
+Does nothing if it is absent. Built-in effect settings are unchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>effect</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">shader</span></code></span>) – Shader previously returned by <code class="docutils literal notranslate"><span class="pre">addEffect</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="camera.clearEffects">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clearEffects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#camera.clearEffects" title="Link to this definition">¶</a></dt>
+<dd><p>Remove all custom shaders from this camera. Bloom, tilt shift, saturation,
+vignette and grain settings are unchanged. Use <code class="docutils literal notranslate"><span class="pre">effectsEnabled</span> <span class="pre">=</span> <span class="pre">false</span></code>
+to bypass both built-in and custom effects without discarding settings.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.bloom.strength">
+<span class="sig-name descname"><span class="pre">bloom.strength</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.bloom.strength" title="Link to this definition">¶</a></dt>
+<dd><p>Glow amount, default 0 (off). Positive values add bloom.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.bloom.threshold">
+<span class="sig-name descname"><span class="pre">bloom.threshold</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.bloom.threshold" title="Link to this definition">¶</a></dt>
+<dd><p>Brightness cutoff for bloom, default 0.9. Lower values include more of the image.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.tiltShift.blur">
+<span class="sig-name descname"><span class="pre">tiltShift.blur</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.tiltShift.blur" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum blur radius in points, default 0 (off).</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.tiltShift.focus">
+<span class="sig-name descname"><span class="pre">tiltShift.focus</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.tiltShift.focus" title="Link to this definition">¶</a></dt>
+<dd><p>Center of the sharp band as a fraction of image height from the bottom, default 0.5.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.tiltShift.range">
+<span class="sig-name descname"><span class="pre">tiltShift.range</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.tiltShift.range" title="Link to this definition">¶</a></dt>
+<dd><p>Half-height of the sharp band as a fraction of image height, default 0.12.</p>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="camera.tiltShift.falloff">
+<span class="sig-name descname"><span class="pre">tiltShift.falloff</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#camera.tiltShift.falloff" title="Link to this definition">¶</a></dt>
+<dd><p>Distance outside the sharp band over which blur reaches its maximum, default 0.4.</p>
 </dd></dl>
 
 </dd></dl>

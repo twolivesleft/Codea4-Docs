@@ -161,6 +161,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
@@ -169,6 +178,10 @@
 <li class="toctree-l1"><a class="reference internal" href="input.html">Input</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vectors.html">Using Vectors</a></li>
@@ -176,10 +189,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/matrix.html">matrix</a></li>
@@ -373,6 +387,302 @@
 </pre></div>
 </div>
 </section>
+<section id="stepping-a-physics-world-yourself">
+<h2>Stepping a physics world yourself<a class="headerlink" href="#stepping-a-physics-world-yourself" title="Link to this heading">¶</a></h2>
+<p>Watch a box and a circle fall onto a static floor, then tap to add boxes. fixedUpdate(dt) steps the simulation at a fixed rate. The orthographic camera maps physics units to screen coordinates, and screenToWorld() maps taps back into those units. world:draw() is a debug visualization; replace it with your own drawing when building a game.</p>
+<div class="docutils container" id="id1">
+<p><span class="caption-text">Stepping a physics world yourself</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Physics in Codea</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- Create a 2D physics world</span>
+<span class="w">    </span><span class="nv">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">physics2d</span><span class="p">.</span><span class="nf">world</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Once you have a physics world you can start creating bodies, which represent our simulated objects</span>
+<span class="w">    </span><span class="c1">-- We can create 3 types of bodies:</span>
+<span class="w">    </span><span class="c1">-- static - an immovable object that stays in one place</span>
+<span class="w">    </span><span class="c1">-- dynamic - a dynamic object that moves and responds to gravity and collisions</span>
+<span class="w">    </span><span class="c1">-- kinematic - like a static object but it can also move, hitting other objects</span>
+
+<span class="w">    </span><span class="c1">-- Create a static floor for things to fall on and set position to 0, -5</span>
+<span class="w">    </span><span class="nv">floor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">world</span><span class="p">:</span><span class="nf">body</span><span class="p">(</span><span class="nv">STATIC</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- The box method attaches a box collider to our floor body (5 meters by 0.5 meters)</span>
+<span class="w">    </span><span class="nv">floor</span><span class="p">:</span><span class="nf">box</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Create a dynamic box to fall on our floor</span>
+<span class="w">    </span><span class="nv">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">world</span><span class="p">:</span><span class="nf">body</span><span class="p">(</span><span class="nv">DYNAMIC</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">body</span><span class="p">:</span><span class="nf">box</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">body2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">world</span><span class="p">:</span><span class="nf">body</span><span class="p">(</span><span class="nv">DYNAMIC</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">body2</span><span class="p">:</span><span class="nf">circle</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Create a 2D camera to scale the world (our physics world uses meters as units, rather than pixels)</span>
+<span class="w">    </span><span class="nv">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">camera</span><span class="p">.</span><span class="nf">ortho</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="c1">-- make the screen 20 units wide</span>
+<span class="kr">end</span>
+
+<span class="c1">-- The fixedUpdate function gets called a fixed number of times every second</span>
+<span class="c1">-- This is useful for physics simulations, keeping them stable</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">fixedUpdate</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">world</span><span class="p">:</span><span class="nf">step</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span><span class="w"> </span><span class="c1">-- advance the physics simulation by one frame</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Use our camera to scale the screen to the right units</span>
+<span class="w">    </span><span class="nv">cam</span><span class="p">:</span><span class="nf">apply</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- Draw the physics world (you can use your own shapes but this is just handy to get started quickly)</span>
+<span class="w">    </span><span class="nv">world</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- We can also use our camera to convert touches from the screen to our physics units</span>
+<span class="w">    </span><span class="c1">-- Using that we can spawn more physics shapes after each touch</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">BEGAN</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">cam</span><span class="p">:</span><span class="nf">apply</span><span class="p">()</span><span class="w"> </span><span class="c1">-- Apply the camera so we can convert to/from the physics units</span>
+<span class="w">        </span><span class="c1">-- Convert from touch coordinates to world coordinates</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">cam</span><span class="p">:</span><span class="nf">screenToWorld</span><span class="p">(</span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">-- Make a body at this x,y position</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">world</span><span class="p">:</span><span class="nf">body</span><span class="p">(</span><span class="nv">DYNAMIC</span><span class="p">,</span><span class="w"> </span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">body</span><span class="p">:</span><span class="nf">box</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="combining-bodies-joints-and-scene-callbacks">
+<h2>Combining bodies, joints, and scene callbacks<a class="headerlink" href="#combining-bodies-joints-and-scene-callbacks" title="Link to this heading">¶</a></h2>
+<p>The pink character combines a circular body, hinged legs, and eyes attached with distance joints. Touch either side to drive the legs; drag a body to pull it with the grabber component. collisionBegan2d() changes the expression and plays a sound. scene.main advances this scene automatically, so do not also step its world manually. Grabber.lua is bundled with the project.</p>
+<div class="docutils container" id="id2">
+<p><span class="caption-text">Combining bodies, joints, and scene callbacks</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- 2D Physics in Scenes</span>
+<span class="c1">--</span>
+<span class="c1">-- Adding a body to a scene entity will automatically enable</span>
+<span class="c1">-- physics for it. You can use callbacks to tap into various</span>
+<span class="c1">-- physics features, including hit tests (for touches) and</span>
+<span class="c1">-- collisions (to react to physical events)</span>
+
+<span class="c1">-- Create and attach an eyeball to something</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">eye</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">parent</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">eye</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">eye</span><span class="p">.</span><span class="py">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">parent</span>
+<span class="w">    </span><span class="nv">eye</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">x</span>
+<span class="w">    </span><span class="nv">eye</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">y</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">eye</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">body</span><span class="p">,</span><span class="w"> </span><span class="nv">DYNAMIC</span><span class="p">):</span><span class="nf">circle</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">c</span><span class="p">.</span><span class="py">sensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="w">    </span><span class="c1">-- Draw an eye shape on top of this rigidbody</span>
+<span class="w">    </span><span class="kr">function</span><span class="w"> </span><span class="nc">eye</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">reset</span><span class="p">().</span><span class="nf">translate</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">position</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">sortOrder</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">-- use sortOrder to draw in-front</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.45</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">scale</span><span class="p">(</span><span class="nb">math.sin</span><span class="p">(</span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.15</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="o">-</span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.3</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(.</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.08</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(.</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">eye</span><span class="p">.</span><span class="py">worldPosition</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">eye</span><span class="p">.</span><span class="py">body2d</span><span class="p">:</span><span class="nf">distance</span><span class="p">(</span><span class="nv">parent</span><span class="p">.</span><span class="py">body2d</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">y</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">j</span><span class="p">.</span><span class="py">minLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nv">j</span><span class="p">.</span><span class="py">maxLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.125</span>
+<span class="kr">end</span>
+
+<span class="c1">-- Create and attach a leg to something</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">leg</span><span class="p">(</span><span class="nv">name</span><span class="p">,</span><span class="w"> </span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">parent</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">leg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="nv">name</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">leg</span><span class="p">.</span><span class="py">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">parent</span>
+
+<span class="w">    </span><span class="kr">function</span><span class="w"> </span><span class="nc">leg</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">sortOrder</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="nf">rectMode</span><span class="p">(</span><span class="nv">CENTER</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mf">0.05</span><span class="p">).</span><span class="nf">fill</span><span class="p">(</span><span class="mi">221</span><span class="p">,</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w"> </span><span class="mi">142</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="nv">leg</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">x</span>
+<span class="w">    </span><span class="nv">leg</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">y</span>
+<span class="w">    </span><span class="nv">leg</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">body</span><span class="p">,</span><span class="w"> </span><span class="nv">DYNAMIC</span><span class="p">):</span><span class="nf">box</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">leg</span><span class="p">.</span><span class="py">worldPosition</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">leg</span><span class="p">.</span><span class="py">body2d</span><span class="p">:</span><span class="nf">hinge</span><span class="p">(</span><span class="nv">parent</span><span class="p">.</span><span class="py">body2d</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">p</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">j</span><span class="p">.</span><span class="py">useMotor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nv">j</span><span class="p">.</span><span class="py">motorSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nv">j</span><span class="p">.</span><span class="py">maxTorque</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
+
+<span class="w">    </span><span class="kr">function</span><span class="w"> </span><span class="nc">leg</span><span class="p">:</span><span class="nf">update</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">current</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">current</span><span class="p">.</span><span class="py">state</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="nv">ENDED</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="nv">j</span><span class="p">.</span><span class="py">motorSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span>
+<span class="w">        </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">current</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">current</span><span class="p">.</span><span class="py">state</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="nv">ENDED</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="nv">j</span><span class="p">.</span><span class="py">motorSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">        </span><span class="kr">else</span>
+<span class="w">            </span><span class="nv">j</span><span class="p">.</span><span class="py">motorSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- Create a default 2d scene</span>
+<span class="w">    </span><span class="nv">scn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scene</span><span class="p">.</span><span class="nf">default2d</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">scn</span><span class="p">.</span><span class="py">physics2d</span><span class="p">.</span><span class="py">debugDraw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="w">    </span><span class="nv">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">.</span><span class="py">camera</span><span class="p">:</span><span class="nf">get</span><span class="p">(</span><span class="nv">camera</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">cam</span><span class="p">.</span><span class="py">orthoSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">    </span><span class="nv">scn</span><span class="p">.</span><span class="py">camera</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="w">    </span><span class="kr">function</span><span class="w"> </span><span class="nc">scn</span><span class="p">.</span><span class="nc">camera</span><span class="p">:</span><span class="nf">update</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ball</span><span class="p">.</span><span class="py">position</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="nv">scn</span><span class="p">.</span><span class="py">camera</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">grabber</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">floor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s2">"floor"</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">floor</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">body</span><span class="p">,</span><span class="w"> </span><span class="nv">KINEMATIC</span><span class="p">):</span><span class="nf">box</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- New entity</span>
+<span class="w">    </span><span class="nv">ball</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">(</span><span class="s1">'ball'</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- Add a physics body and attach a circle collider to it</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">body</span><span class="p">,</span><span class="w"> </span><span class="nv">DYNAMIC</span><span class="p">):</span><span class="nf">circle</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">.</span><span class="py">body2d</span><span class="p">.</span><span class="py">fixedRotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">    </span><span class="c1">-- Custom entity property</span>
+<span class="w">    </span><span class="nv">ball</span><span class="p">.</span><span class="py">ouch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">    </span><span class="kr">function</span><span class="w"> </span><span class="nc">ball</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">sortOrder</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="c1">-- draw in front of physics objects</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mf">0.05</span><span class="p">).</span><span class="nf">fill</span><span class="p">(</span><span class="mi">221</span><span class="p">,</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w"> </span><span class="mi">142</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">-- Draw a different expression if recently hit something</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nb">math.abs</span><span class="p">(</span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">ouch</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="c1">-- :O</span>
+<span class="w">            </span><span class="nv">style</span><span class="p">.</span><span class="nf">noStroke</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">else</span>
+<span class="w">            </span><span class="c1">-- :)</span>
+<span class="w">            </span><span class="nv">style</span><span class="p">.</span><span class="nf">noFill</span><span class="p">().</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="w">            </span><span class="nf">line</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">end</span>
+
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- Respond to collision events</span>
+<span class="w">    </span><span class="kr">function</span><span class="w"> </span><span class="nc">ball</span><span class="p">:</span><span class="nf">collisionBegan2d</span><span class="p">(</span><span class="nv">hit</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">-- Play a sound and record when the hit happened</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nb">math.abs</span><span class="p">(</span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">ouch</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="nv">sound</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">SOUND_HURT</span><span class="p">,</span><span class="w"> </span><span class="nb">math.random</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">))</span>
+<span class="w">        </span><span class="kr">end</span>
+
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">ouch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- Attach all the body parts</span>
+<span class="w">    </span><span class="nf">eye</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">ball</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">eye</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">ball</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">leg</span><span class="p">(</span><span class="s2">"leftLeg"</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="nv">ball</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">leg</span><span class="p">(</span><span class="s2">"rightLeg"</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="nv">ball</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Create a concave 2D polygon (which is automatically decomposed into convex shapes)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nf">vec2</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">        </span><span class="nf">vec2</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">        </span><span class="nf">vec2</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">),</span>
+<span class="w">        </span><span class="nf">vec2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">),</span>
+<span class="w">        </span><span class="nf">vec2</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">        </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">        </span><span class="nf">vec2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">        </span><span class="nf">vec2</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nv">poly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span><span class="p">:</span><span class="nf">entity</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">poly</span><span class="p">.</span><span class="py">rz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">180</span>
+<span class="w">    </span><span class="nv">poly</span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">physics2d</span><span class="p">.</span><span class="py">body</span><span class="p">,</span><span class="w"> </span><span class="nv">DYNAMIC</span><span class="p">):</span><span class="nf">polygon</span><span class="p">(</span><span class="nv">points</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">poly</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+
+<span class="w">    </span><span class="nv">scene</span><span class="p">.</span><span class="py">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">scn</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Grabber.lua — querying bodies and applying a spring-like force</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- #######</span>
+<span class="c1">-- Grabber</span>
+<span class="c1">-- #######</span>
+<span class="c1">-- Add's a touch-based grabber to interact with physics objects</span>
+<span class="c1">-- Simply add to your scene camera:</span>
+<span class="c1">--     scn.camera:add(physics2d.grabber)</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">grabber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="s1">'grabber'</span><span class="p">)</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nc">grabber</span><span class="p">:</span><span class="nf">created</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">scene</span><span class="p">.</span><span class="py">world2d</span>
+<span class="w">    </span><span class="c1">-- Need the camera for translating touches to world space</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">entity</span><span class="p">:</span><span class="nf">get</span><span class="p">(</span><span class="nv">camera</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nc">grabber</span><span class="p">:</span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- Convert touches from screen to world space using the camera</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">wx</span><span class="p">,</span><span class="w"> </span><span class="nv">wy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">cam</span><span class="p">:</span><span class="nf">screenToWorld</span><span class="p">(</span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="nv">wx</span><span class="p">,</span><span class="w"> </span><span class="nv">wy</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">began</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="c1">-- Check for a hit when touches began</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">hit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">world</span><span class="p">:</span><span class="nf">queryBox</span><span class="p">(</span><span class="nv">point</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">-- Ensure the found body is dynamic</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">hit</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">hit</span><span class="p">.</span><span class="py">body</span><span class="p">.</span><span class="py">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">DYNAMIC</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">            </span><span class="c1">-- Keep track of it and the local point that was grabbed</span>
+<span class="w">            </span><span class="nv">self</span><span class="p">.</span><span class="py">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">hit</span><span class="p">.</span><span class="py">body</span>
+<span class="w">            </span><span class="nv">self</span><span class="p">.</span><span class="py">anchor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">body</span><span class="p">:</span><span class="nf">localPoint</span><span class="p">(</span><span class="nv">point</span><span class="p">)</span>
+<span class="w">            </span><span class="kr">return</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">moving</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">point</span>
+<span class="w">    </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">ended</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">anchor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="c1">-- Visualise the grabber force / anchor point</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">grabber</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">anchor</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">target</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">reset</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">noFill</span><span class="p">().</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mf">0.1</span><span class="p">).</span><span class="nf">sortOrder</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">wp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">body</span><span class="p">:</span><span class="nf">worldPoint</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">anchor</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">line</span><span class="p">(</span><span class="nv">wp</span><span class="p">,</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">target</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">noStroke</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">target</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nc">grabber</span><span class="p">:</span><span class="nf">fixedUpdate</span><span class="p">(</span><span class="nv">dt</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">anchor</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">target</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">wp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">body</span><span class="p">:</span><span class="nf">worldPoint</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">anchor</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">target</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">wp</span>
+<span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">body</span><span class="p">:</span><span class="nf">applyForce</span><span class="p">(</span><span class="nv">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">body</span><span class="p">:</span><span class="nf">velocityAtWorldPoint</span><span class="p">(</span><span class="nv">wp</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="nv">wp</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="nv">physics2d</span><span class="p">.</span><span class="py">grabber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">grabber</span>
+</pre></div>
+</div>
+</div>
+</section>
 </section>
 
         </article>
@@ -438,6 +748,8 @@
 <li><a class="reference internal" href="#collision-callbacks">Collision Callbacks</a></li>
 <li><a class="reference internal" href="#sensors">Sensors</a></li>
 <li><a class="reference internal" href="#forces-and-impulses">Forces and Impulses</a></li>
+<li><a class="reference internal" href="#stepping-a-physics-world-yourself">Stepping a physics world yourself</a></li>
+<li><a class="reference internal" href="#combining-bodies-joints-and-scene-callbacks">Combining bodies, joints, and scene callbacks</a></li>
 </ul>
 </li>
 </ul>

@@ -161,6 +161,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
@@ -169,6 +178,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
@@ -176,10 +189,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
@@ -329,9 +343,284 @@
 <dd></dd></dl>
 
 <dl class="lua method">
+<dt class="sig sig-object lua" id="shader.setImage">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">image</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">mip</span> <span class="pre">=</span> <span class="pre">0</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#shader.setImage" title="Link to this definition">¶</a></dt>
+<dd><p>Bind an image to a declared image property for compute access. Its format must match the GLSL layout qualifier (for example, image.rgba16f with layout(rgba16f)). The mip index is zero-based. Read/write access comes from the GLSL readonly/writeonly qualifiers, not an additional Lua argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – Name of the image property</p></li>
+<li><p><strong>image</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">image</span></code></span>) – Texture to bind</p></li>
+<li><p><strong>mip</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – Mipmap level to bind</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="shader.setBuffer">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">buffer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.setBuffer" title="Link to this definition">¶</a></dt>
+<dd><p>Bind a shader buffer to a declared buffer property. The Lua buffer layout must match the GLSL struct. With shader.builder():buffer{“Instance”, “instances”}, the generated property is named “instancesBuffer”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<span><a class="reference internal" href="string.html#module-string" title="string"><code class="xref lua lua-class docutils literal notranslate"><span class="pre">string</span></code></a></span>) – Name of the buffer property</p></li>
+<li><p><strong>buffer</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">shader.buffer</span></code></span>) – Buffer to bind</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
+<dt class="sig sig-object lua" id="shader.workgroupSize">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">workgroupSize</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">passIndex</span> <span class="pre">=</span> <span class="pre">0</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#shader.workgroupSize" title="Link to this definition">¶</a></dt>
+<dd><p>Return the local workgroup dimensions declared by NUM_THREADS() or shader.builder():threads(). The optional pass index is zero-based. Divide the number of elements by these dimensions and round up to calculate dispatch counts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>passIndex</strong> (<span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer</span></code></span>) – Compute pass to inspect</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Local X, Y, and Z thread counts</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">integer,</span> <span class="pre">integer,</span> <span class="pre">integer</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua method">
 <dt class="sig sig-object lua" id="shader.dispatch">
 <em class="property"> </em><span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">wx</span></em>, <em class="sig-param"><span class="pre">wy</span></em>, <em class="sig-param"><span class="pre">wz</span></em><span class="sig-paren">)</span><a class="headerlink" href="#shader.dispatch" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Dispatch counts workgroups, not individual invocations. Divide the buffer length by the shader workgroup size and round up; check the index against instanceCount inside the shader. This example updates a shared buffer before drawing its instances.</p>
+<div class="docutils container" id="id2">
+<p><span class="caption-text">Compute-driven particles</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Compute Shaders using shader.builder()</span>
+<span class="c1">-- Instanced sprites with curl-noise velocity field</span>
+
+<span class="c1">-- Use this function to perform your initial setup</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Create a reusable shader chunk for the instances buffer that looks like this in GLSL:</span>
+<span class="w">    </span><span class="c1">-- struct Instances</span>
+<span class="w">    </span><span class="c1">-- {</span>
+<span class="w">    </span><span class="c1">--    vec4 position; // (x, y, vx, vy) position and velocity</span>
+<span class="w">    </span><span class="c1">-- };</span>
+
+
+<span class="w">    </span><span class="nv">instancesChunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span><span class="p">.</span><span class="nf">chunk</span><span class="p">()</span>
+<span class="w">        </span><span class="p">:</span><span class="nv">struct</span><span class="p">{</span><span class="s2">"Instance"</span><span class="p">}</span>
+<span class="w">            </span><span class="p">:</span><span class="nf">vec4</span><span class="p">(</span><span class="s2">"position"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">:</span><span class="nf">done</span><span class="p">()</span>
+<span class="w">        </span><span class="p">:</span><span class="nv">buffer</span><span class="p">{</span><span class="s2">"Instance"</span><span class="p">,</span><span class="w"> </span><span class="s2">"instances"</span><span class="p">,</span><span class="w"> </span><span class="nv">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"readwrite"</span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">-- Create the instanced unlit sprite shader</span>
+<span class="w">    </span><span class="nv">instancing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span><span class="p">.</span><span class="nf">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">unlit</span><span class="p">()</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">instancesChunk</span><span class="p">)</span><span class="w"> </span><span class="c1">-- make instances buffer available to shader</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">cull</span><span class="p">(</span><span class="s2">"none"</span><span class="p">):</span><span class="nf">blend</span><span class="p">(</span><span class="s2">"additive"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">variable</span><span class="p">{</span><span class="s2">"posVel"</span><span class="p">}</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">vertex</span>
+<span class="w">    </span><span class="s">[[</span>
+<span class="s">        vec4 posVel = instances[gl_InstanceID].position;</span>
+<span class="s">        float speed = max(length(posVel.zw), 0.0001);</span>
+<span class="s">        vec2 x = posVel.zw;</span>
+<span class="s">        vec2 y = vec2(-x.y, x.x) / speed;</span>
+<span class="s">        // Matrix to rotate and stretch along velocity</span>
+<span class="s">        mat2 rot = mat2(x * 1, y);</span>
+
+<span class="s">        // Apply translation and rotation to particle</span>
+<span class="s">        material.worldPosition.xy = rot * material.worldPosition.xy + posVel.xy;</span>
+<span class="s">        material.posVel = posVel;</span>
+<span class="s">    ]]</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">func</span>
+<span class="w">    </span><span class="s">[[</span>
+<span class="s">        vec3 hueShift( vec3 color, float hueAdjust ){</span>
+
+<span class="s">            const vec3  kRGBToYPrime = vec3 (0.299, 0.587, 0.114);</span>
+<span class="s">            const vec3  kRGBToI      = vec3 (0.596, -0.275, -0.321);</span>
+<span class="s">            const vec3  kRGBToQ      = vec3 (0.212, -0.523, 0.311);</span>
+
+<span class="s">            const vec3  kYIQToR     = vec3 (1.0, 0.956, 0.621);</span>
+<span class="s">            const vec3  kYIQToG     = vec3 (1.0, -0.272, -0.647);</span>
+<span class="s">            const vec3  kYIQToB     = vec3 (1.0, -1.107, 1.704);</span>
+
+<span class="s">            float   YPrime  = dot (color, kRGBToYPrime);</span>
+<span class="s">            float   I       = dot (color, kRGBToI);</span>
+<span class="s">            float   Q       = dot (color, kRGBToQ);</span>
+<span class="s">            float   hue     = atan (Q, I);</span>
+<span class="s">            float   chroma  = sqrt (I * I + Q * Q);</span>
+
+<span class="s">            hue += hueAdjust;</span>
+
+<span class="s">            Q = chroma * sin (hue);</span>
+<span class="s">            I = chroma * cos (hue);</span>
+
+<span class="s">            vec3    yIQ   = vec3 (YPrime, I, Q);</span>
+
+<span class="s">            return vec3( dot (yIQ, kYIQToR), dot (yIQ, kYIQToG), dot (yIQ, kYIQToB) );</span>
+<span class="s">        }</span>
+<span class="s">    ]]</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">material</span>
+<span class="w">    </span><span class="s">[[</span>
+<span class="s">        vec4 posVel = vertex_posVel;</span>
+<span class="s">        material.baseColor = vec4(hueShift(vec3(0.2, 0.4, 0.3), length(posVel.zw)), 0.05);</span>
+<span class="s">    ]]</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">build</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Compute shader for updating the instances each frame</span>
+<span class="w">    </span><span class="nv">updatePositions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span><span class="p">.</span><span class="nf">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">add</span><span class="p">(</span><span class="nv">instancesChunk</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- GPU noise functions (see the GPU Noise reference)</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">include</span><span class="p">(</span><span class="s2">"codea/noise/noise.glsl"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">uint</span><span class="p">{</span><span class="s2">"instanceCount"</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">vec2</span><span class="p">{</span><span class="s2">"screenSize"</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="nv">WIDTH</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="p">)}</span>
+<span class="w">    </span><span class="c1">-- TODO: add support for uniform arrays to make this easier</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">vec4</span><span class="p">{</span><span class="s2">"attractorA"</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec4</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">)}</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">vec4</span><span class="p">{</span><span class="s2">"attractorB"</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec4</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">)}</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">vec4</span><span class="p">{</span><span class="s2">"attractorC"</span><span class="p">,</span><span class="w"> </span><span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec4</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">)}</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">threads</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">:</span><span class="nv">compute</span>
+<span class="w">    </span><span class="s">[[</span>
+<span class="s">        // Get the current instance to work on</span>
+<span class="s">        uint i = gl_GlobalInvocationID.x;</span>
+
+<span class="s">        // Prevent going over the end of the buffer</span>
+<span class="s">        if (i &lt; instanceCount)</span>
+<span class="s">        {</span>
+<span class="s">            vec2 pos = instances[i].position.xy;</span>
+<span class="s">            vec2 vel = instances[i].position.zw;</span>
+
+
+<span class="s">            // Sample two curl-noise fields that scroll in different directions and rates</span>
+<span class="s">            vec2 curl1 = SimplexPerlin2D_Deriv(pos * 0.01 + vec2(u_time.x, -u_time.x) * 0.5).yz;</span>
+<span class="s">            curl1 = vec2(-curl1.y, curl1.x) * 0.75;</span>
+
+<span class="s">            vec2 curl2 = SimplexPerlin2D_Deriv(pos * 0.05 + vec2(0, u_time.x) * 5.0).yz;</span>
+<span class="s">            curl2 = vec2(-curl2.y, curl2.x) * 0.5;</span>
+
+<span class="s">            // Apply curl noise velocity field</span>
+<span class="s">            vel += (curl1 + curl2) * u_time.y;</span>
+
+<span class="s">            vec4 attractors[3] =</span>
+<span class="s">            {</span>
+<span class="s">                attractorA,</span>
+<span class="s">                attractorB,</span>
+<span class="s">                attractorC,</span>
+<span class="s">            };</span>
+
+<span class="s">            for (int i = 0; i &lt; 3; i++)</span>
+<span class="s">            {</span>
+<span class="s">                vec4 attractor = attractors[i];</span>
+<span class="s">                vec2 force = (attractor.xy - pos);</span>
+<span class="s">                float dist = length(force);</span>
+<span class="s">                force = force / max(dist, 0.0001) * (1 - min(dist / max(attractor.z, 0.0001), 1));</span>
+<span class="s">                vel += force * attractor.w;</span>
+<span class="s">            }</span>
+
+<span class="s">            // Apply some damping</span>
+<span class="s">            vel -= vel * 0.8 * u_time.y;</span>
+
+<span class="s">            // Add velocity to position * delta time</span>
+<span class="s">            pos += vel * 30.0 * u_time.y;</span>
+
+<span class="s">            // Bounce instances to screen bounds</span>
+<span class="s">            if (pos.x &lt; 0.0)</span>
+<span class="s">            {</span>
+<span class="s">                vel.x *= -2.0; pos.x = 0.0;</span>
+<span class="s">            }</span>
+<span class="s">            else if (pos.x &gt; screenSize.x)</span>
+<span class="s">            {</span>
+<span class="s">                vel.x *= -2.0; pos.x = screenSize.x;</span>
+<span class="s">            }</span>
+<span class="s">            if (pos.y &lt; 0.0)</span>
+<span class="s">            {</span>
+<span class="s">                vel.y *= -2.0; pos.y = 0.0;</span>
+<span class="s">            }</span>
+<span class="s">            else if (pos.y &gt; screenSize.y)</span>
+<span class="s">            {</span>
+<span class="s">                vel.y *= -2.0; pos.y = screenSize.y;</span>
+<span class="s">            }</span>
+
+<span class="s">            instances[i].position = vec4(pos, vel);</span>
+<span class="s">        }</span>
+<span class="s">    ]]</span>
+<span class="w">    </span><span class="p">:</span><span class="nf">build</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Create a buffer to match the shader buffer (syntax is a bit ugly right now)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span><span class="p">.</span><span class="py">bufferLayout</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">shader</span><span class="p">.</span><span class="py">position</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nv">shader</span><span class="p">.</span><span class="py">float</span><span class="p">}</span><span class="w"> </span><span class="c1">-- vec4</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">-- Create buffer to hold instance data</span>
+<span class="w">    </span><span class="nv">instancesBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">shader</span><span class="p">.</span><span class="nf">buffer</span><span class="p">(</span><span class="nv">layout</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Create initial instances by appending data to buffer</span>
+<span class="w">    </span><span class="c1">-- Change this number to adjust the total particles being created</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nv">instancesBuffer</span><span class="p">:</span><span class="nf">append</span><span class="p">(</span><span class="nv">shader</span><span class="p">.</span><span class="py">position</span><span class="p">,</span><span class="w"> </span><span class="nf">vec4</span><span class="p">(</span><span class="nb">math.random</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="p">),</span><span class="w"> </span><span class="nb">math.random</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="p">),</span>
+<span class="w">        </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="c1">--math.random() * 0.5 - 0.5, math.random() * 0.5 - 0.5))</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="nv">updatePositions</span><span class="p">:</span><span class="nf">setBuffer</span><span class="p">(</span><span class="s2">"instancesBuffer"</span><span class="p">,</span><span class="w"> </span><span class="nv">instancesBuffer</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">updatePositions</span><span class="p">.</span><span class="py">instanceCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">instancesBuffer</span><span class="p">.</span><span class="py">size</span>
+
+<span class="w">    </span><span class="nv">instancing</span><span class="p">:</span><span class="nf">setBuffer</span><span class="p">(</span><span class="s2">"instancesBuffer"</span><span class="p">,</span><span class="w"> </span><span class="nv">instancesBuffer</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Make one tiny little quad for our sprites</span>
+<span class="w">    </span><span class="nv">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mesh</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">m</span><span class="p">:</span><span class="nf">addRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">m</span><span class="p">.</span><span class="py">shader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">instancing</span>
+
+<span class="w">    </span><span class="nv">attractors</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"attractorA"</span><span class="p">,</span><span class="w"> </span><span class="nv">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec4</span><span class="p">()},</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"attractorB"</span><span class="p">,</span><span class="w"> </span><span class="nv">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec4</span><span class="p">()},</span>
+<span class="w">        </span><span class="p">{</span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"attractorC"</span><span class="p">,</span><span class="w"> </span><span class="nv">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec4</span><span class="p">()}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">integer</span><span class="p">(</span><span class="s2">"Attractor"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">number</span><span class="p">(</span><span class="s2">"AttractorRadius"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="nv">updateAttractor</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">number</span><span class="p">(</span><span class="s2">"AttractorStrength"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nv">updateAttractor</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Camera effects are documented separately; this demo focuses on GPU buffers.</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">updateAttractor</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">attractors</span><span class="p">[</span><span class="nv">Attractor</span><span class="p">]</span>
+<span class="w">    </span><span class="nv">a</span><span class="p">.</span><span class="py">params</span><span class="p">.</span><span class="py">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">AttractorRadius</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">300</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">a</span><span class="p">.</span><span class="py">params</span><span class="p">.</span><span class="py">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">AttractorStrength</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="nv">updatePositions</span><span class="p">[</span><span class="nv">a</span><span class="p">.</span><span class="py">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">a</span><span class="p">.</span><span class="py">params</span>
+<span class="kr">end</span>
+
+<span class="c1">-- This function gets called once every frame</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- This sets a dark background color</span>
+
+<span class="w">    </span><span class="nv">updatePositions</span><span class="p">.</span><span class="py">screenSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="nv">WIDTH</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">wx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">updatePositions</span><span class="p">:</span><span class="nf">workgroupSize</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">updatePositions</span><span class="p">:</span><span class="nf">dispatch</span><span class="p">(</span><span class="nb">math.ceil</span><span class="p">(</span><span class="nv">instancesBuffer</span><span class="p">.</span><span class="py">size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">wx</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">--b:push()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">noStroke</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">k</span><span class="p">,</span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">attractors</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">v</span><span class="p">.</span><span class="py">params</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">v</span><span class="p">.</span><span class="py">params</span><span class="p">.</span><span class="py">y</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">m</span><span class="p">:</span><span class="nf">draw</span><span class="p">(</span><span class="nv">instancesBuffer</span><span class="p">.</span><span class="py">size</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">--b:pop()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">attractors</span><span class="p">[</span><span class="nv">Attractor</span><span class="p">]</span>
+<span class="w">    </span><span class="nv">a</span><span class="p">.</span><span class="py">params</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span>
+<span class="w">    </span><span class="nv">a</span><span class="p">.</span><span class="py">params</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span>
+<span class="w">    </span><span class="nf">updateAttractor</span><span class="p">()</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
 
 <dl class="lua method">
 <dt class="sig sig-object lua" id="shader.dispatchIndirect">

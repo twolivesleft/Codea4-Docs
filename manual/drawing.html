@@ -161,6 +161,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="codea.html">How Codea Works</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
@@ -169,6 +178,10 @@
 <li class="toctree-l1"><a class="reference internal" href="input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vectors.html">Using Vectors</a></li>
@@ -176,10 +189,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/matrix.html">matrix</a></li>
@@ -261,6 +275,29 @@ update the contents of the screen</p>
 <p>Codea uses an hybrid-immediate mode drawing system, where various built-in functions can be used to paint objects to the screen when called, such as <code class="code highlight lua docutils literal highlight-lua"><span class="nf">line</span><span class="p">()</span></code>, <code class="code highlight lua docutils literal highlight-lua"><span class="nf">sprite</span><span class="p">()</span></code> and <code class="code highlight lua docutils literal highlight-lua"><span class="nf">rect</span><span class="p">()</span></code></p>
 <p>These functions use the current render state, defined by the current style and matrix in use, which effects things like fill color and stroke color / width</p>
 </section>
+<section id="try-it-an-animated-circle">
+<h2>Try it: an animated circle<a class="headerlink" href="#try-it-an-animated-circle" title="Link to this heading">¶</a></h2>
+<p>This complete project draws using the modern style API. Run it, then close the
+example to return to the reference. The circle follows elapsed time; its size
+and position adapt to the current view.</p>
+<div class="docutils container" id="id1">
+<p><span class="caption-text">Animated circle</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="mi">38</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">).</span><span class="nf">noStroke</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">WIDTH</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">0.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.25</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">math.sin</span><span class="p">(</span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="p">))</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<div class="docutils container">
+<video autoplay muted loop playsinline preload="metadata" style="max-width:100%" aria-label="A mint circle moving horizontally on a dark background" src="../_reference_media/videos/animated-circle.mp4"></video><p>The animated circle example running. Press Run Example above to run it yourself.</p>
+</div>
+</section>
 <section id="style">
 <h2>Style<a class="headerlink" href="#style" title="Link to this heading">¶</a></h2>
 <p>The style module contains functions that set the current drawing state</p>
@@ -335,7 +372,7 @@ update the contents of the screen</p>
 <span class="nf">background</span><span class="p">(</span><span class="nv">color</span><span class="p">.</span><span class="py">white</span><span class="p">)</span><span class="w">    </span><span class="c1">-- using a color object</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="../api/graphics.html"><span class="doc">graphics commands</span></a> for full documentation</p>
+<p>See <a class="reference internal" href="../api/graphics.html"><span class="doc">Drawing Commands</span></a> for full documentation</p>
 </section>
 <section id="vector-drawing">
 <h2>Vector Drawing<a class="headerlink" href="#vector-drawing" title="Link to this heading">¶</a></h2>
@@ -357,7 +394,7 @@ update the contents of the screen</p>
 <span class="nv">style</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="../api/graphics.html"><span class="doc">graphics commands</span></a> for a complete list of vector drawing functions</p>
+<p>See <a class="reference internal" href="../api/graphics.html"><span class="doc">Drawing Commands</span></a> for a complete list of vector drawing functions</p>
 </section>
 <section id="text">
 <h2>Text<a class="headerlink" href="#text" title="Link to this heading">¶</a></h2>
@@ -493,7 +530,7 @@ Atlas text does not support color emoji, so keep emoji labels on native renderin
 <code class="docutils literal notranslate"><span class="pre">style.push()</span></code> and <code class="docutils literal notranslate"><span class="pre">style.pop()</span></code> are useful for keeping each label’s settings
 local. Remember that your style and renderer choices apply to <code class="docutils literal notranslate"><span class="pre">textSize</span></code>, so measure and draw with the same
 settings.</p>
-<p>See <a class="reference internal" href="../api/style.html"><span class="doc">style</span></a> for individual text settings and <a class="reference internal" href="../api/graphics.html"><span class="doc">graphics commands</span></a> for
+<p>See <a class="reference internal" href="../api/style.html"><span class="doc">style</span></a> for individual text settings and <a class="reference internal" href="../api/graphics.html"><span class="doc">Drawing Commands</span></a> for
 drawing, measurement, and custom effects.</p>
 </section>
 <section id="images-and-sprites">
@@ -709,6 +746,408 @@ drawing, measurement, and custom effects.</p>
 </pre></div>
 </div>
 </details></section>
+<section id="drawing-shapes-and-changing-style">
+<h2>Drawing shapes and changing style<a class="headerlink" href="#drawing-shapes-and-changing-style" title="Link to this heading">¶</a></h2>
+<p>Compare the columns: default drawing, a colored fill, and a fill with a white outline. Each row draws a different shape. style.reset() restores defaults, while rectMode(CENTER) makes the rectangles use the same placement convention as ellipses. Try changing the last four rectangle arguments to round each corner differently.</p>
+<div class="docutils container" id="id2">
+<p><span class="caption-text">Drawing shapes and changing style</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Learn to Codea</span>
+<span class="c1">-- Drawn in Code</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="c1">-- Codea calls the draw() function every frame to redraw the screen</span>
+<span class="c1">-- This could be as much as 60 or 120 times per second, or less if</span>
+<span class="c1">-- you demand too much from the CPU/GPU</span>
+
+<span class="c1">-- Put drawing commands in here to draw the various doodads you want</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Some background on the background(r,g,b,a) command</span>
+<span class="w">    </span><span class="c1">-- This command clears the screen with the specified color. The parameters</span>
+<span class="w">    </span><span class="c1">-- represent the amount of each primary color component to use (i.e. red, green, blue)</span>
+<span class="w">    </span><span class="c1">-- When called all previous things drawn on the screen will be cleared with the color used</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- 2D Vector Drawing</span>
+
+<span class="w">    </span><span class="c1">-- For based 2D drawing jobs we can use the following commands:</span>
+<span class="w">    </span><span class="c1">-- ellipse(x, y, w, h)</span>
+<span class="w">    </span><span class="c1">-- rect(x, y, w, h)</span>
+<span class="w">    </span><span class="c1">-- rect(x, y, w, h, radius)</span>
+<span class="w">    </span><span class="c1">-- line(x1, y1, x2, y2)</span>
+<span class="w">    </span><span class="c1">-- polygon(p1, p2, p3, p4...)</span>
+<span class="w">    </span><span class="c1">-- shape(x, y, closed, func)</span>
+
+<span class="w">    </span><span class="c1">-- ellipse() draws an ellipse (no kidding?) at the specified x, y location</span>
+<span class="w">    </span><span class="c1">-- The x, y values are euclidian coordinates (i.e. horizontal and vertical) with the</span>
+<span class="w">    </span><span class="c1">-- origin starting at 0, 0 (bottom left of the screen)</span>
+<span class="w">    </span><span class="c1">-- Lets draw one:</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- You may have noticed the all-caps constant WIDTH and HEIGHT</span>
+<span class="w">    </span><span class="c1">-- These handily give us the current resolution of the screen in sort-of pixels</span>
+<span class="w">    </span><span class="c1">-- (this is a retina screen thing, don't worry for now)</span>
+<span class="w">    </span><span class="c1">-- By using WIDTH/2 and HEIGHT/2 I get the exact center of the screen regardless of how</span>
+<span class="w">    </span><span class="c1">-- big it happens to be</span>
+
+<span class="w">    </span><span class="c1">-- Style</span>
+
+<span class="w">    </span><span class="c1">-- To control the things like colors and strokes for shapes we use Codea's style commands</span>
+<span class="w">    </span><span class="c1">-- You can just do:</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">-- make shapes fill with red</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Make shapes have a white stroke with 5 pixel width</span>
+<span class="w">    </span><span class="c1">-- We can also chain together multiple style commands</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- We can also reset the style to it's default state</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">reset</span><span class="p">().</span><span class="nf">rectMode</span><span class="p">(</span><span class="nv">CENTER</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- We can also draw a rectangle</span>
+<span class="w">    </span><span class="c1">-- rectMode(CENTER) makes these positions the centers of the rectangles</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+
+
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">reset</span><span class="p">().</span><span class="nf">rectMode</span><span class="p">(</span><span class="nv">CENTER</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Rounded rectangles are possible too!</span>
+<span class="w">    </span><span class="c1">-- Extra 1 parameter to round all corners</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Extra 4 parameters to vary how much each corner is rounded</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="building-an-orbit-with-nested-transforms">
+<h2>Building an orbit with nested transforms<a class="headerlink" href="#building-an-orbit-with-nested-transforms" title="Link to this heading">¶</a></h2>
+<p>This project uses one moving origin for the center, another for each satellite, and a third for its moons. Each matrix.push() is paired with matrix.pop(), so moving one moon does not displace the next satellite. Rotation uses time.elapsed rather than a frame counter. Try changing the two loop counts or orbit radii.</p>
+<div class="docutils container" id="id3">
+<p><span class="caption-text">Building an orbit with nested transforms</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Learn to Codea</span>
+<span class="c1">-- The Matrix</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">15</span>
+
+<span class="w">    </span><span class="c1">-- The matrix module gives you control over positioning of drawing commands</span>
+
+<span class="w">    </span><span class="c1">-- By changing the current matrix, this changes where drawing occurs</span>
+
+<span class="w">    </span><span class="c1">-- The easiest way to think of this is that the current matrix represents</span>
+<span class="w">    </span><span class="c1">-- the origin of the screen</span>
+<span class="w">    </span><span class="c1">-- matrix.translate(WIDTH/2, HEIGHT/2) - move drawing to the middle of the screen</span>
+
+<span class="w">    </span><span class="c1">-- You can also rotate and scale drawing</span>
+<span class="w">    </span><span class="c1">-- Transforming the matrix combines with any previous transformation</span>
+<span class="w">    </span><span class="c1">-- i.e. matrix.translate(WIDTH/2, HEIGHT/2).translate(100, 100)</span>
+<span class="w">    </span><span class="c1">-- Drawing will now originate 100 pixels up and to the right of the middle of the screen</span>
+
+<span class="w">    </span><span class="c1">-- You can also use matrix.push()/pop() to save and load the current matrix transform</span>
+<span class="w">    </span><span class="c1">-- similar to how style.push()/pop() is used</span>
+
+<span class="w">    </span><span class="c1">-- matrix.transform2d()/transform3d() allows you to apply full transformations in one</span>
+<span class="w">    </span><span class="c1">-- command for convenience</span>
+
+<span class="w">    </span><span class="c1">-- If you need to clear all current transformations you can use matrix.reset()</span>
+
+<span class="w">    </span><span class="c1">-- You can also create a mat4 (4x4 matrix) type and use this with matrix.get()/set()</span>
+
+<span class="w">    </span><span class="c1">-- There are additional commands for adjusting view and projection matrices</span>
+<span class="w">    </span><span class="c1">-- matrix.ortho() - use orthographic (2D) projection</span>
+<span class="w">    </span><span class="c1">-- matrix.perspective() - use perspective (3D) projection</span>
+<span class="w">    </span><span class="c1">-- matrix.projection(m) - use a custom projection matrix</span>
+<span class="w">    </span><span class="c1">-- matrix.view(m) - use a custom view matrix</span>
+
+<span class="w">    </span><span class="c1">-- Move the origin to the center of the screen and rotate over time</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">transform2d</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">r</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Draw 6 satellites that orbit and rotate the center</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="c1">-- Accumulate rotations</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">-- Use additional push and transform to create a recursive hierarchy</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">transform2d</span><span class="p">(</span><span class="nb">math.min</span><span class="p">(</span><span class="nv">WIDTH</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.28</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.25</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">-- Additional mini satellites that orbit the current origin</span>
+<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">            </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">transform2d</span><span class="p">(</span><span class="nb">math.min</span><span class="p">(</span><span class="nv">WIDTH</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.075</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">        </span><span class="kr">end</span>
+
+<span class="w">        </span><span class="c1">-- Pop here is crucial to let the next satellite transform relative to its parent</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="comparing-blend-modes">
+<h2>Comparing blend modes<a class="headerlink" href="#comparing-blend-modes" title="Link to this heading">¶</a></h2>
+<p>Tap <strong>Controls</strong> and choose a blend mode or change either color. The overlapping circles show how source and destination colors combine; the two bundled images below demonstrate a maximum blend equation. Drawing order matters: the second circle is blended over the first.</p>
+<div class="docutils container" id="id4">
+<p><span class="caption-text">Comparing blend modes</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">color</span><span class="p">(</span><span class="s2">"ColorA"</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">225</span><span class="p">,</span><span class="w"> </span><span class="mi">138</span><span class="p">,</span><span class="w"> </span><span class="mi">130</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">color</span><span class="p">(</span><span class="s2">"ColorB"</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">169</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">129</span><span class="p">))</span>
+
+<span class="w">    </span><span class="nv">blendModes</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"NORMAL"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ADDITIVE"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"MULTIPLY"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"SCREEN"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"LIGHTEN"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"LINEAR_BURN"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"PREMULTIPLIED"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"DISABLED"</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">enumerated</span><span class="p">(</span><span class="s2">"Blend"</span><span class="p">,</span><span class="w"> </span><span class="nv">blendModes</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">alpha1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">Alpha1</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">alpha2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">asset</span><span class="p">.</span><span class="py">Alpha2</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">translate</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">130</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">reset</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">blend</span><span class="p">(</span><span class="nb">_G</span><span class="p">[</span><span class="nv">blendModes</span><span class="p">[</span><span class="nv">Blend</span><span class="p">]])</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="nv">ColorA</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="nv">ColorB</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">220</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">reset</span><span class="p">().</span><span class="nf">blendFunc</span><span class="p">(</span><span class="nv">EQUATION_MAX</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">alpha1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">sprite</span><span class="p">(</span><span class="nv">alpha2</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="saving-and-restoring-styles">
+<h2>Saving and restoring styles<a class="headerlink" href="#saving-and-restoring-styles" title="Link to this heading">¶</a></h2>
+<p>The swatches reuse three saved styles: foreground, background, and label. style.get() captures the settings and style.set() restores them before each drawing operation. The grid adapts to the viewer width. Try replacing a named color with color(r, g, b, a), or changing one saved style to update every swatch.</p>
+<div class="docutils container" id="id5">
+<p><span class="caption-text">Saving and restoring styles</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Here are some built-in colors that come with codea!</span>
+<span class="w">    </span><span class="nv">colors</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">black</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">white</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">clear</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">cyan</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">gray</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">red</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">green</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">blue</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">magenta</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">color</span><span class="p">.</span><span class="py">yellow</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nv">swatchFG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">style</span><span class="p">.</span><span class="nf">reset</span><span class="p">().</span><span class="nf">rectMode</span><span class="p">(</span><span class="nv">CENTER</span><span class="p">).</span><span class="nf">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">strokeWidth</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="nf">get</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">swatchBG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">style</span><span class="p">.</span><span class="nf">reset</span><span class="p">().</span><span class="nf">rectMode</span><span class="p">(</span><span class="nv">CENTER</span><span class="p">).</span><span class="nf">noStroke</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">90</span><span class="p">).</span><span class="nf">get</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">style</span><span class="p">.</span><span class="nf">reset</span><span class="p">().</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">14</span><span class="p">).</span><span class="nf">textAlign</span><span class="p">(</span><span class="nv">CENTER</span><span class="p">).</span><span class="nf">fill</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nf">get</span><span class="p">()</span>
+
+<span class="kr">end</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">colorNames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s2">"black"</span><span class="p">,</span><span class="w"> </span><span class="s2">"white"</span><span class="p">,</span><span class="w"> </span><span class="s2">"clear"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cyan"</span><span class="p">,</span><span class="w"> </span><span class="s2">"gray"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="s2">"green"</span><span class="p">,</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"magenta"</span><span class="p">,</span><span class="w"> </span><span class="s2">"yellow"</span><span class="p">}</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">SWATCH_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">SWATCH_SPACING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">swatch</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">swatchBG</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nv">SWATCH_SIZE</span><span class="p">,</span><span class="w"> </span><span class="nv">SWATCH_SIZE</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">swatchFG</span><span class="p">).</span><span class="nf">fill</span><span class="p">(...)</span>
+<span class="w">    </span><span class="nf">rect</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">SWATCH_SIZE</span><span class="p">,</span><span class="w"> </span><span class="nv">SWATCH_SIZE</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">(</span><span class="nv">WIDTH</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nv">SWATCH_SIZE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">SWATCH_SPACING</span><span class="p">)))</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.ceil</span><span class="p">(</span><span class="o">#</span><span class="nv">colors</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">columns</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">k</span><span class="p">,</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">colors</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">column</span><span class="p">,</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nv">columns</span><span class="p">,</span><span class="w"> </span><span class="nb">math.floor</span><span class="p">((</span><span class="nv">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">columns</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">translate</span><span class="p">((</span><span class="nv">column</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">WIDTH</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">columns</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nv">rows</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">150</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">swatch</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">v</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">style</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">label</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">text</span><span class="p">(</span><span class="nv">colorNames</span><span class="p">[</span><span class="nv">k</span><span class="p">],</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="nv">SWATCH_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="interpolating-vertex-colors">
+<h2>Interpolating vertex colors<a class="headerlink" href="#interpolating-vertex-colors" title="Link to this heading">¶</a></h2>
+<p>Three vertices define a triangle and three colors define its corners. The renderer interpolates those colors across its surface. The project rebuilds vertices as the size parameter changes and rotates the drawing matrix over time. Use vertices to create sequential indices automatically; positions alone does not create a drawable triangle.</p>
+<div class="docutils container" id="id6">
+<p><span class="caption-text">Interpolating vertex colors</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Mesh Example</span>
+<span class="c1">-- Author: John Millard</span>
+
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Hello Mesh!"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Here we create a mesh, just a single triangle</span>
+<span class="w">    </span><span class="nv">parameter</span><span class="p">.</span><span class="nf">integer</span><span class="p">(</span><span class="s2">"triSize"</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Create a new empty mesh</span>
+<span class="w">    </span><span class="nv">triMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mesh</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- This is an array of colours we'll assign to the triMesh vertices</span>
+<span class="w">    </span><span class="nv">triCol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="nf">color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="nf">color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">)}</span>
+
+<span class="w">    </span><span class="c1">-- Assign colors to the mesh, there must be the same number of colours as vertices</span>
+<span class="w">    </span><span class="nv">triMesh</span><span class="p">.</span><span class="py">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">triCol</span>
+<span class="kr">end</span>
+
+<span class="c1">-- This function gets called once every frame</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- Dark background color</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Save the current transform (translation, rotation and scale)</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Translate coordinates to the middle of the screen</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">translate</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Rotate the transform at 100 degrees per second</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Construct equilateral triangle points, this could be any 3 points</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="nb">math.cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">math.pi</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span><span class="w"> </span><span class="nb">math.sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">math.pi</span><span class="o">/</span><span class="mi">6</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">top</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">triSize</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="nb">math.cos</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="nb">math.pi</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span><span class="w"> </span><span class="nb">math.sin</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="nb">math.pi</span><span class="o">/</span><span class="mi">6</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">triSize</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">vec2</span><span class="p">(</span><span class="nb">math.cos</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="nb">math.pi</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span><span class="w"> </span><span class="nb">math.sin</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="nb">math.pi</span><span class="o">/</span><span class="mi">6</span><span class="p">))</span>
+<span class="w">    </span><span class="nv">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">right</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">triSize</span>
+
+<span class="w">    </span><span class="c1">-- Set points on mesh, every 3 points constructs a new triangle</span>
+<span class="w">    </span><span class="nv">triMesh</span><span class="p">.</span><span class="py">vertices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">top</span><span class="p">,</span>
+<span class="w">                         </span><span class="nv">left</span><span class="p">,</span>
+<span class="w">                         </span><span class="nv">right</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">-- Draw the mesh that we setup</span>
+<span class="w">    </span><span class="nv">triMesh</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- Restore the previous transform</span>
+<span class="w">    </span><span class="c1">-- This is useful if you need to position multiple objects differently</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="turning-a-polygon-into-triangles">
+<h2>Turning a polygon into triangles<a class="headerlink" href="#turning-a-polygon-into-triangles" title="Link to this heading">¶</a></h2>
+<p>Tap around the outline of a simple polygon, in boundary order. mesh.triangulate() returns the indices used to draw its triangles. The project keeps the original points for drawing handles and assigns a color to each new point. Avoid crossing edges: a list of arbitrary scattered points is not a polygon boundary.</p>
+<div class="docutils container" id="id7">
+<p><span class="caption-text">Turning a polygon into triangles</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Mesh 2 - Triangulate Example</span>
+<span class="c1">-- Author: John Millard</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Hello Triangulate!"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nv">msh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mesh</span><span class="p">()</span>
+<span class="w">    </span><span class="nv">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="nv">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">updateMesh</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="o">#</span><span class="nv">points</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nv">msh</span><span class="p">.</span><span class="py">positions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">points</span>
+<span class="w">        </span><span class="nv">msh</span><span class="p">.</span><span class="py">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">colors</span>
+<span class="w">        </span><span class="nv">msh</span><span class="p">.</span><span class="py">indices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">mesh</span><span class="p">.</span><span class="nf">triangulate</span><span class="p">(</span><span class="nv">points</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="c1">-- This function gets called once every frame</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">-- Dark background color</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">msh</span><span class="p">:</span><span class="nf">draw</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">noStroke</span><span class="p">().</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">k</span><span class="p">,</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">points</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="nv">v</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">ENDED</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">tapCount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">points</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">pos</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">table.insert</span><span class="p">(</span><span class="nv">colors</span><span class="p">,</span><span class="w"> </span><span class="nf">color</span><span class="p">(</span><span class="nv">touch</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">WIDTH</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="nv">touch</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">))</span>
+<span class="w">        </span><span class="nf">updateMesh</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</section>
 </section>
 
         </article>
@@ -768,6 +1207,7 @@ drawing, measurement, and custom effects.</p>
             <ul>
 <li><a class="reference internal" href="#">Drawing</a><ul>
 <li><a class="reference internal" href="#drawing-in-codea">Drawing in Codea</a></li>
+<li><a class="reference internal" href="#try-it-an-animated-circle">Try it: an animated circle</a></li>
 <li><a class="reference internal" href="#style">Style</a></li>
 <li><a class="reference internal" href="#matrix">Matrix</a></li>
 <li><a class="reference internal" href="#d-drawing">3D Drawing</a></li>
@@ -779,6 +1219,12 @@ drawing, measurement, and custom effects.</p>
 <li><a class="reference internal" href="#meshes">Meshes</a></li>
 <li><a class="reference internal" href="#shaders-and-materials">Shaders and Materials</a></li>
 <li><a class="reference internal" href="#lighting">Lighting</a></li>
+<li><a class="reference internal" href="#drawing-shapes-and-changing-style">Drawing shapes and changing style</a></li>
+<li><a class="reference internal" href="#building-an-orbit-with-nested-transforms">Building an orbit with nested transforms</a></li>
+<li><a class="reference internal" href="#comparing-blend-modes">Comparing blend modes</a></li>
+<li><a class="reference internal" href="#saving-and-restoring-styles">Saving and restoring styles</a></li>
+<li><a class="reference internal" href="#interpolating-vertex-colors">Interpolating vertex colors</a></li>
+<li><a class="reference internal" href="#turning-a-polygon-into-triangles">Turning a polygon into triangles</a></li>
 </ul>
 </li>
 </ul>

@@ -288,3 +288,19 @@ Each button has ``pressing``, which is true while it is held, ``pressed`` and ``
        style.fill(255)
        ellipse(pos.x, pos.y, 60, 60)
    end
+
+Controlling a scene with parameters
+-----------------------------------
+
+Tap **Controls** to rename, move, recolor, or deactivate the sphere. The action control starts a squash-and-stretch tween. Text callbacks update the entity, number callbacks change its position, and color callbacks update its material. The expression field accepts a Lua expression for the label height, such as 1.5 + math.sin(time.elapsed).
+
+.. codea-example:: Controlling a scene with parameters
+   :project: code/Modern/Basics 04 - Parameters.codea
+
+Tracking more than one finger
+-----------------------------
+
+The original branch contains a touch callback skeleton; this completed example stores positions by touch ID. Drag several fingers to move their circles independently. Ending or cancelling a touch removes its entry, so interrupted gestures do not leave stuck circles.
+
+.. codea-example:: Tracking more than one finger
+   :project: code/Modern/Basics 06 - Touches.codea

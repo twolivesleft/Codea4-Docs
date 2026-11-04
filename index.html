@@ -161,6 +161,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/sound.html">Sound</a></li>
@@ -169,6 +178,10 @@
 <li class="toctree-l1"><a class="reference internal" href="manual/input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/vectors.html">Using Vectors</a></li>
@@ -176,10 +189,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/matrix.html">matrix</a></li>
@@ -267,15 +281,77 @@
 <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/project_browser.html">The project browser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/project_browser.html#find-your-way-around">Find your way around</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/project_browser.html#start-with-an-example">Start with an example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/project_browser.html#finding-and-organizing-work">Finding and organizing work</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/projects.html">Creating and customizing projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/projects.html#create-a-project">Create a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/projects.html#duplicate-a-project">Duplicate a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/projects.html#rename-a-project">Rename a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/projects.html#set-a-custom-tint">Set a custom tint</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/collections.html">Organizing project collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/collections.html#create-a-collection">Create a collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/collections.html#reorder-collections">Reorder collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/collections.html#expand-and-collapse-the-grid">Expand and collapse the grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/collections.html#move-projects-between-collections">Move projects between collections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/sharing.html">Sharing and exporting projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/sharing.html#share-a-playable-link">Share a playable link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/sharing.html#send-editable-source">Send editable source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/sharing.html#export-an-xcode-project">Export an Xcode project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/sharing.html#export-an-android-project">Export an Android project</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/cloud.html">Local, iCloud, and collaboration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/cloud.html#choose-where-to-keep-a-project">Choose where to keep a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/cloud.html#move-between-locations">Move between locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/cloud.html#collaborate-through-icloud">Collaborate through iCloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/files.html">Accessing projects in Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/files.html#find-local-projects">Find local projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/files.html#find-icloud-projects">Find iCloud projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/files.html#work-with-project-documents">Work with project documents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/air_code.html">Air Code: work from your computer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/air_code.html#open-air-code-in-codea">Open Air Code in Codea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/air_code.html#connect-visual-studio-code">Connect Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/air_code.html#command-line-and-agent-tools">Command-line and agent tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/air_code.html#further-reading">Further reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/tools.html">Reference, Assets, and Shader Lab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/tools.html#reference">Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/tools.html#assets">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/tools.html#shader-lab">Shader Lab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/settings.html">Useful settings and backups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/settings.html#editor">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/settings.html#projects">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/settings.html#air-code">Air Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/settings.html#windowing">Windowing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/using_codea/settings.html#subscription-controls">Subscription controls</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="manual/codea.html">How Codea Works</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual/codea.html#setup">setup()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/codea.html#draw">draw()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/codea.html#touched-touch">touched(touch)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/codea.html#additional-events">Additional Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/codea.html#learning-lua-by-changing-a-program">Learning Lua by changing a program</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/drawing.html">Drawing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#drawing-in-codea">Drawing in Codea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#try-it-an-animated-circle">Try it: an animated circle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#style">Style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#matrix">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#d-drawing">3D Drawing</a></li>
@@ -287,6 +363,12 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#meshes">Meshes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#shaders-and-materials">Shaders and Materials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#lighting">Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#drawing-shapes-and-changing-style">Drawing shapes and changing style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#building-an-orbit-with-nested-transforms">Building an orbit with nested transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#comparing-blend-modes">Comparing blend modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#saving-and-restoring-styles">Saving and restoring styles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#interpolating-vertex-colors">Interpolating vertex colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/drawing.html#turning-a-polygon-into-triangles">Turning a polygon into triangles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/sound.html">Sound</a><ul>
@@ -303,6 +385,7 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/assets.html#loading-and-saving-assets">Loading and Saving Assets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/assets.html#working-with-asset-packs">Working with Asset Packs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/assets.html#bookmarks-references">Bookmarks (References)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/assets.html#drawing-many-sprites-from-one-image">Drawing many sprites from one image</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/file_operations.html">File Operations</a><ul>
@@ -323,6 +406,8 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/input.html#on-screen-keyboard">On-Screen Keyboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/input.html#mouse-and-trackpad">Mouse and Trackpad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/input.html#gamepads">Gamepads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/input.html#controlling-a-scene-with-parameters">Controlling a scene with parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/input.html#tracking-more-than-one-finger">Tracking more than one finger</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box2D)</a><ul>
@@ -333,6 +418,8 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#collision-callbacks">Collision Callbacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#sensors">Sensors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#forces-and-impulses">Forces and Impulses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#stepping-a-physics-world-yourself">Stepping a physics world yourself</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/physics2d.html#combining-bodies-joints-and-scene-callbacks">Combining bodies, joints, and scene callbacks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics3d.html">3D Physics (Bullet 3D)</a><ul>
@@ -342,6 +429,25 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/physics3d.html#collision-shapes">Collision Shapes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics3d.html#collision-callbacks">Collision Callbacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/physics3d.html#forces-and-impulses">Forces and Impulses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/camera_effects.html">Camera Effects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/camera_effects.html#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/camera_effects.html#tilt-shift-and-custom-effects">Tilt shift and custom effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/camera_effects.html#compositing-and-performance">Compositing and performance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/display.html">Display and Interaction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/display.html#choose-a-coordinate-system">Choose a coordinate system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/display.html#debug-before-designing-controls">Debug before designing controls</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/animation.html">Animating Values</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/animation.html#a-typical-tween">A typical tween</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual/native.html">Using Native APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual/native.html#start-small">Start small</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/scenes.html">Scenes</a><ul>
@@ -361,6 +467,11 @@
 <li class="toctree-l2"><a class="reference internal" href="manual/shaders.html#shader-definitions">Shader Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/shaders.html#materials">Materials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual/shaders.html#the-standard-shader">The Standard Shader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/shaders.html#simulating-a-grid-with-compute-shaders">Simulating a grid with compute shaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/shaders.html#composing-reusable-shader-chunks">Composing reusable shader chunks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/shaders.html#updating-neighboring-pixels-safely">Updating neighboring pixels safely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/shaders.html#sharing-a-gpu-buffer-between-compute-and-drawing">Sharing a GPU buffer between compute and drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual/shaders.html#animating-instanced-grass-on-terrain">Animating instanced grass on terrain</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/vectors.html">Using Vectors</a><ul>
@@ -379,6 +490,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/legacy.html">Legacy Compatibility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/legacy.html#migrating-a-project">Migrating a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/legacy.html#aliases">Aliases</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/lua.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/lua.html#language">Language</a></li>
@@ -400,12 +516,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="api/graphics.html">Drawing Commands</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#background">Background</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#vector-graphics">Vector Graphics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#sprites">Sprites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#text">Text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/graphics.html#module-gizmos">Gizmos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/graphics.html#gizmos">Gizmos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#color-space">Color Space</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/graphics.html#contexts">Contexts</a></li>
 </ul>

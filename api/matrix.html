@@ -161,6 +161,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
@@ -169,6 +178,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
@@ -176,10 +189,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">matrix</a></li>
@@ -249,12 +263,11 @@
           </label>
         </div>
         <article role="main">
-          <section id="matrix">
-<h1>matrix<a class="headerlink" href="#matrix" title="Link to this heading">¶</a></h1>
-<p><em>(module)</em></p>
+          <section id="module-matrix">
+<span id="matrix"></span><h1>matrix<a class="headerlink" href="#module-matrix" title="Link to this heading">¶</a></h1>
 <p>A module for setting the current matrices used with various graphics functions in Codea</p>
 <section id="general">
-<span id="module-matrix"></span><h2>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h2>
+<h2>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h2>
 <dl class="lua function">
 <dt class="sig sig-object lua" id="matrix.push">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.push" title="Link to this definition">¶</a></dt>
@@ -315,7 +328,83 @@
 <dl class="lua function">
 <dt class="sig sig-object lua" id="matrix.transform2d">
 <em class="property"> </em><span class="sig-prename descclassname"><span class="pre">matrix.</span></span><span class="sig-name descname"><span class="pre">transform2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">x</span></em>, <em class="sig-param"><span class="pre">y</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">sx</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">sy</span> <span class="pre">=</span> <span class="pre">1</span></em>, <em class="sig-param"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">0</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#matrix.transform2d" title="Link to this definition">¶</a></dt>
-<dd><p>Apply a generic 2D transform to the model matrix</p>
+<dd><p>Combine translation, scale, and rotation relative to the current matrix. Save it before entering a child orbit and restore it afterwards so sibling objects remain independent.</p>
+<div class="docutils container" id="id1">
+<p><span class="caption-text">Nested orbits</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Learn to Codea</span>
+<span class="c1">-- The Matrix</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">time</span><span class="p">.</span><span class="py">elapsed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">15</span>
+
+<span class="w">    </span><span class="c1">-- The matrix module gives you control over positioning of drawing commands</span>
+
+<span class="w">    </span><span class="c1">-- By changing the current matrix, this changes where drawing occurs</span>
+
+<span class="w">    </span><span class="c1">-- The easiest way to think of this is that the current matrix represents</span>
+<span class="w">    </span><span class="c1">-- the origin of the screen</span>
+<span class="w">    </span><span class="c1">-- matrix.translate(WIDTH/2, HEIGHT/2) - move drawing to the middle of the screen</span>
+
+<span class="w">    </span><span class="c1">-- You can also rotate and scale drawing</span>
+<span class="w">    </span><span class="c1">-- Transforming the matrix combines with any previous transformation</span>
+<span class="w">    </span><span class="c1">-- i.e. matrix.translate(WIDTH/2, HEIGHT/2).translate(100, 100)</span>
+<span class="w">    </span><span class="c1">-- Drawing will now originate 100 pixels up and to the right of the middle of the screen</span>
+
+<span class="w">    </span><span class="c1">-- You can also use matrix.push()/pop() to save and load the current matrix transform</span>
+<span class="w">    </span><span class="c1">-- similar to how style.push()/pop() is used</span>
+
+<span class="w">    </span><span class="c1">-- matrix.transform2d()/transform3d() allows you to apply full transformations in one</span>
+<span class="w">    </span><span class="c1">-- command for convenience</span>
+
+<span class="w">    </span><span class="c1">-- If you need to clear all current transformations you can use matrix.reset()</span>
+
+<span class="w">    </span><span class="c1">-- You can also create a mat4 (4x4 matrix) type and use this with matrix.get()/set()</span>
+
+<span class="w">    </span><span class="c1">-- There are additional commands for adjusting view and projection matrices</span>
+<span class="w">    </span><span class="c1">-- matrix.ortho() - use orthographic (2D) projection</span>
+<span class="w">    </span><span class="c1">-- matrix.perspective() - use perspective (3D) projection</span>
+<span class="w">    </span><span class="c1">-- matrix.projection(m) - use a custom projection matrix</span>
+<span class="w">    </span><span class="c1">-- matrix.view(m) - use a custom view matrix</span>
+
+<span class="w">    </span><span class="c1">-- Move the origin to the center of the screen and rotate over time</span>
+<span class="w">    </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">transform2d</span><span class="p">(</span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">r</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Draw 6 satellites that orbit and rotate the center</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="c1">-- Accumulate rotations</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">-- Use additional push and transform to create a recursive hierarchy</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">transform2d</span><span class="p">(</span><span class="nb">math.min</span><span class="p">(</span><span class="nv">WIDTH</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.28</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.25</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">-- Additional mini satellites that orbit the current origin</span>
+<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">            </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">push</span><span class="p">().</span><span class="nf">transform2d</span><span class="p">(</span><span class="nb">math.min</span><span class="p">(</span><span class="nv">WIDTH</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.075</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="nf">ellipse</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span>
+<span class="w">            </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">        </span><span class="kr">end</span>
+
+<span class="w">        </span><span class="c1">-- Pop here is crucial to let the next satellite transform relative to its parent</span>
+<span class="w">        </span><span class="nv">matrix</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<p>Apply a generic 2D transform to the model matrix</p>
 </dd></dl>
 
 <dl class="lua function">

@@ -159,6 +159,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/codea.html">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/sound.html">Sound</a></li>
@@ -167,6 +176,10 @@
 <li class="toctree-l1"><a class="reference internal" href="manual/input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual/native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual/vectors.html">Using Vectors</a></li>
@@ -174,10 +187,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/matrix.html">matrix</a></li>
@@ -273,6 +287,8 @@
           <li><a href="api/voxel.html#voxel.blocks.add">(voxel.blocks method)</a>
 </li>
         </ul></li>
+        <li><a href="api/camera.html#camera.addEffect">addEffect() (camera method)</a>, <a href="api/camera.html#camera.addEffect">[1]</a>
+</li>
         <li><a href="api/mesh.html#mesh.addElement">addElement() (mesh method)</a>
 </li>
         <li><a href="api/style.html#ADDITIVE">ADDITIVE (attribute)</a>
@@ -371,6 +387,8 @@
 </li>
         <li><a href="api/style.html#style.blendFunc">blendFunc() (in module style)</a>, <a href="api/style.html#style.blendFunc">[1]</a>, <a href="api/style.html#style.blendFunc">[2]</a>
 </li>
+        <li><a href="api/legacy.html#blendMode">blendMode() (built-in function)</a>
+</li>
         <li><a href="api/voxel.html#voxel.block">block (class in voxel)</a>
 </li>
         <li><a href="api/voxel.html#voxel.blocks">blocks (class in voxel)</a>
@@ -459,17 +477,29 @@
   <h2>C</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/legacy.html#CAMERA">CAMERA (attribute)</a>
+</li>
         <li><a href="api/camera.html#camera">camera (built-in class)</a>
 </li>
         <li><a href="api/camera.html#camera.aspect">camera.aspect (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.bloom">camera.bloom (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.bloom.strength">camera.bloom.strength (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.bloom.threshold">camera.bloom.threshold (attribute)</a>
 </li>
         <li><a href="api/camera.html#camera.clearColor">camera.clearColor (attribute)</a>
 </li>
         <li><a href="api/camera.html#camera.clearMode">camera.clearMode (attribute)</a>
 </li>
+        <li><a href="api/camera.html#camera.effectsEnabled">camera.effectsEnabled (attribute)</a>
+</li>
         <li><a href="api/camera.html#camera.farPlane">camera.farPlane (attribute)</a>
 </li>
         <li><a href="api/camera.html#camera.fieldOfView">camera.fieldOfView (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.grain">camera.grain (attribute)</a>
 </li>
         <li><a href="api/camera.html#camera.isOrtho">camera.isOrtho (attribute)</a>
 </li>
@@ -481,9 +511,27 @@
 </li>
         <li><a href="api/camera.html#camera.projection">camera.projection (attribute)</a>
 </li>
+        <li><a href="api/camera.html#camera.saturation">camera.saturation (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.tiltShift">camera.tiltShift (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.tiltShift.blur">camera.tiltShift.blur (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.tiltShift.falloff">camera.tiltShift.falloff (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.tiltShift.focus">camera.tiltShift.focus (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.tiltShift.range">camera.tiltShift.range (attribute)</a>
+</li>
         <li><a href="api/camera.html#camera.view">camera.view (attribute)</a>
 </li>
         <li><a href="api/camera.html#camera.viewport">camera.viewport (attribute)</a>
+</li>
+        <li><a href="api/camera.html#camera.vignette">camera.vignette (attribute)</a>
+</li>
+        <li><a href="api/legacy.html#CAMERA_DEPTH">CAMERA_DEPTH (attribute)</a>
+</li>
+        <li><a href="api/legacy.html#cameraSource">cameraSource() (built-in function)</a>
 </li>
         <li><a href="api/input.html#touch.cancel">cancel() (touch method)</a>
 
@@ -541,6 +589,14 @@
           <li><a href="api/voxel.html#voxel.world.clear">(voxel.world method)</a>
 </li>
         </ul></li>
+        <li><a href="api/camera.html#camera.clearEffects">clearEffects() (camera method)</a>
+</li>
+        <li><a href="api/legacy.html#clearLocalData">clearLocalData() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#clearProjectData">clearProjectData() (built-in function)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/style.html#style.clip">clip() (in module style)</a>
 </li>
         <li><a href="api/viewer.html#viewer.close">close() (in module viewer)</a>
@@ -561,8 +617,6 @@
           <li><a href="api/mesh.html#mesh.color">(mesh method)</a>, <a href="api/mesh.html#mesh.color">[1]</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/color.html#color.a">color.a (attribute)</a>
 </li>
         <li><a href="api/color.html#color.b">color.b (attribute)</a>
@@ -659,6 +713,8 @@
 </li>
         <li><a href="api/style.html#CULL_FACE_NONE">CULL_FACE_NONE (attribute)</a>
 </li>
+        <li><a href="api/legacy.html#CurrentTouch">CurrentTouch (attribute)</a>
+</li>
         <li><a href="api/physics3d.html#physics3d.cylinder">cylinder (class in physics3d)</a>
 </li>
         <li><a href="api/mesh.html#mesh.cylinder">cylinder() (mesh static method)</a>
@@ -678,6 +734,8 @@
         <li><a href="api/objc.html#objc.delegate">delegate() (in module objc)</a>
 </li>
         <li><a href="api/storage.html#storage.delete">delete() (in module storage)</a>
+</li>
+        <li><a href="api/legacy.html#DeltaTime">DeltaTime (attribute)</a>
 </li>
         <li><a href="api/style.html#style.depth">depth() (in module style)</a>, <a href="api/style.html#style.depth">[1]</a>
 </li>
@@ -827,7 +885,11 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/tween.html#tween.ease">ease() (tween method)</a>
 </li>
+        <li><a href="api/legacy.html#ElapsedTime">ElapsedTime (attribute)</a>
+</li>
         <li><a href="api/graphics.html#ellipse">ellipse() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#ellipseMode">ellipseMode() (built-in function)</a>
 </li>
         <li><a href="api/input.html#ENDED">ENDED (attribute)</a>
 </li>
@@ -893,10 +955,10 @@
 </li>
         <li><a href="api/entity.html#entity.joints2d">entity.joints2d (attribute)</a>
 </li>
-        <li><a href="api/entity.html#entity.joints3d">entity.joints3d (attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/entity.html#entity.joints3d">entity.joints3d (attribute)</a>
+</li>
         <li><a href="api/entity.html#entity.material">entity.material (attribute)</a>
 </li>
         <li><a href="api/entity.html#entity.mesh">entity.mesh (attribute)</a>
@@ -1010,6 +1072,8 @@
         <li><a href="api/font.html#font.font.private.metrics.underlineThickness">font.font.private.metrics.underlineThickness (attribute)</a>
 </li>
         <li><a href="api/font.html#font.font.private.metrics.xHeight">font.font.private.metrics.xHeight (attribute)</a>
+</li>
+        <li><a href="api/legacy.html#fontMetrics">fontMetrics() (built-in function)</a>
 </li>
         <li><a href="api/style.html#style.fontSize">fontSize() (in module style)</a>, <a href="api/style.html#style.fontSize">[1]</a>
 </li>
@@ -1627,7 +1691,15 @@
 </li>
         <li><a href="api/style.html#style.lineCap">lineCap() (in module style)</a>, <a href="api/style.html#style.lineCap">[1]</a>
 </li>
+        <li><a href="api/legacy.html#lineCapMode">lineCapMode() (built-in function)</a>
+</li>
         <li><a href="api/style.html#style.lineJoin">lineJoin() (in module style)</a>, <a href="api/style.html#style.lineJoin">[1]</a>
+</li>
+        <li><a href="api/legacy.html#listGlobalData">listGlobalData() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#listLocalData">listLocalData() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#listProjectData">listProjectData() (built-in function)</a>
 </li>
         <li><a href="api/material.html#material.lit">lit() (material static method)</a>
 </li>
@@ -1781,10 +1853,10 @@
 </li>
         <li><a href="api/mesh.html#mesh.positions">mesh.positions (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.root">mesh.root (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/mesh.html#mesh.shader">mesh.shader (attribute)</a>
 </li>
         <li><a href="api/mesh.html#mesh.submeshCount">mesh.submeshCount (attribute)</a>
@@ -1828,6 +1900,8 @@
         <li><a href="api/voxel.html#voxel.model">model (class in voxel)</a>
 </li>
         <li><a href="api/matrix.html#matrix.model">model() (in module matrix)</a>, <a href="api/matrix.html#matrix.model">[1]</a>
+</li>
+        <li><a href="api/legacy.html#modelMatrix">modelMatrix() (built-in function)</a>
 </li>
         <li><a href="api/viewer.html#MODERN">MODERN (attribute)</a>
 </li>
@@ -1947,6 +2021,8 @@
           <li><a href="api/math_types.html#vec4.normalized">(vec4 method)</a>
 </li>
         </ul></li>
+        <li><a href="api/legacy.html#noSmooth">noSmooth() (built-in function)</a>
+</li>
         <li><a href="api/style.html#style.noStroke">noStroke() (in module style)</a>
 </li>
         <li><a href="api/style.html#style.noTextShadow">noTextShadow() (in module style)</a>
@@ -1955,6 +2031,8 @@
           <li><a href="api/graphics.html#textFormatting.noTextShadow">(textFormatting method)</a>
 </li>
         </ul></li>
+        <li><a href="api/legacy.html#noTint">noTint() (built-in function)</a>
+</li>
         <li><a href="api/graphics.html#textTag.number">number() (textTag method)</a>
 </li>
     </ul></td>
@@ -2085,6 +2163,8 @@
         </ul></li>
         <li><a href="api/pick.html#pick.photo">photo() (pick static method)</a>
 </li>
+        <li><a href="api/legacy.html#physics">physics (attribute)</a>
+</li>
         <li><a href="api/physics2d.html#module-physics2d">physics2d (module)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.body.angularDamping">physics2d.physics2d.body.angularDamping (attribute)</a>
@@ -2211,12 +2291,12 @@
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.anchorB">physics2d.physics2d.joint.anchorB (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.collideConnected">physics2d.physics2d.joint.collideConnected (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.destroyed">physics2d.physics2d.joint.destroyed (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.enabled">physics2d.physics2d.joint.enabled (attribute)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.physics2d.joint.localAnchorA">physics2d.physics2d.joint.localAnchorA (attribute)</a>
@@ -2365,6 +2445,10 @@
           <li><a href="api/light.html#light.pop">(light static method)</a>
 </li>
         </ul></li>
+        <li><a href="api/legacy.html#popMatrix">popMatrix() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#popStyle">popStyle() (built-in function)</a>
+</li>
         <li><a href="api/mesh.html#mesh.position">position() (mesh method)</a>, <a href="api/mesh.html#mesh.position">[1]</a>
 </li>
         <li><a href="api/style.html#PREMULTIPLIED">PREMULTIPLIED (attribute)</a>
@@ -2399,6 +2483,10 @@
           <li><a href="api/light.html#light.push">(light static method)</a>
 </li>
         </ul></li>
+        <li><a href="api/legacy.html#pushMatrix">pushMatrix() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#pushStyle">pushStyle() (built-in function)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -2471,6 +2559,14 @@
         </ul></li>
         <li><a href="api/image.html#image.readback">readback() (image method)</a>
 </li>
+        <li><a href="api/legacy.html#readGlobalData">readGlobalData() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#readImage">readImage() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#readLocalData">readLocalData() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#readProjectData">readProjectData() (built-in function)</a>
+</li>
         <li><a href="api/graphics.html#rect">rect() (built-in function)</a>, <a href="api/graphics.html#rect">[1]</a>
 
         <ul>
@@ -2479,6 +2575,8 @@
           <li><a href="api/objc.html#objc.rect">(in module objc)</a>
 </li>
         </ul></li>
+        <li><a href="api/legacy.html#rectMode">rectMode() (built-in function)</a>
+</li>
         <li><a href="api/math_types.html#vec2.reflect">reflect() (vec2 method)</a>
 
         <ul>
@@ -2505,6 +2603,8 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/camera.html#camera.removeEffect">removeEffect() (camera method)</a>
+</li>
         <li><a href="api/file.html#file.rename">rename() (in module file)</a>
 </li>
         <li><a href="api/require.html#require">require (built-in class)</a>
@@ -2519,6 +2619,10 @@
           <li><a href="api/style.html#style.reset">(in module style)</a>
 </li>
         </ul></li>
+        <li><a href="api/legacy.html#resetMatrix">resetMatrix() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#resetStyle">resetStyle() (built-in function)</a>
+</li>
         <li><a href="api/shader.html#buffer.resize">resize() (buffer method)</a>
 
         <ul>
@@ -2605,6 +2709,14 @@
           <li><a href="api/voxel.html#voxel.world.save">(voxel.world method)</a>
 </li>
         </ul></li>
+        <li><a href="api/legacy.html#saveGlobalData">saveGlobalData() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#saveImage">saveImage() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#saveLocalData">saveLocalData() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#saveProjectData">saveProjectData() (built-in function)</a>
+</li>
         <li><a href="api/matrix.html#matrix.scale">scale() (in module matrix)</a>
 </li>
         <li><a href="api/scene.html#scene">scene (built-in class)</a>
@@ -2659,7 +2771,13 @@
           <li><a href="api/voxel.html#voxel.world.set">(voxel.world method)</a>
 </li>
         </ul></li>
+        <li><a href="api/shader.html#shader.setBuffer">setBuffer() (shader method)</a>
+</li>
+        <li><a href="api/legacy.html#setContext">setContext() (built-in function)</a>
+</li>
         <li><a href="api/image.html#image.setForEach">setForEach() (image method)</a>
+</li>
+        <li><a href="api/shader.html#shader.setImage">setImage() (shader method)</a>
 </li>
         <li><a href="api/shader.html#shader.setOption">setOption() (shader method)</a>
 </li>
@@ -2721,6 +2839,8 @@
         </ul></li>
         <li><a href="api/physics2d.html#physics2d.body.slider">slider() (physics2d.body method)</a>
 </li>
+        <li><a href="api/legacy.html#smooth">smooth() (built-in function)</a>
+</li>
         <li><a href="api/viewer.html#viewer.snapshot">snapshot() (in module viewer)</a>
 </li>
         <li><a href="api/style.html#style.sortOrder">sortOrder() (in module style)</a>
@@ -2733,14 +2853,14 @@
 </li>
         <li><a href="api/sound.html#sound.sound.instance.paused">sound.sound.instance.paused (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/sound.html#sound.sound.instance.pitch">sound.sound.instance.pitch (attribute)</a>
 </li>
         <li><a href="api/sound.html#sound.sound.instance.time">sound.sound.instance.time (attribute)</a>
 </li>
         <li><a href="api/sound.html#sound.sound.instance.volume">sound.sound.instance.volume (attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/sound.html#sound.sound.source.length">sound.sound.source.length (attribute)</a>
 </li>
         <li><a href="api/sound.html#sound.sound.source.loop">sound.sound.source.loop (attribute)</a>
@@ -2761,6 +2881,8 @@
 </li>
         <li><a href="api/sound.html#SOUND_POWERUP">SOUND_POWERUP (attribute)</a>
 </li>
+        <li><a href="api/legacy.html#soundBufferSize">soundBufferSize() (built-in function)</a>
+</li>
         <li><a href="api/sound.html#sound.source">source (class in sound)</a>
 </li>
         <li><a href="api/physics3d.html#physics3d.sphere">sphere (class in physics3d)</a>
@@ -2780,6 +2902,10 @@
         <li><a href="api/light.html#light.spot">spot() (light static method)</a>
 </li>
         <li><a href="api/graphics.html#sprite">sprite() (built-in function)</a>, <a href="api/graphics.html#sprite">[1]</a>
+</li>
+        <li><a href="api/legacy.html#spriteMode">spriteMode() (built-in function)</a>
+</li>
+        <li><a href="api/legacy.html#spriteSize">spriteSize() (built-in function)</a>
 </li>
         <li><a href="api/style.html#SQUARE">SQUARE (attribute)</a>
 </li>
@@ -3015,10 +3141,10 @@
 </li>
         <li><a href="api/input.html#touch">touch (built-in class)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#touch.altitude">touch.altitude (attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/input.html#touch.azimuth">touch.azimuth (attribute)</a>
 </li>
         <li><a href="api/input.html#touch.began">touch.began (attribute)</a>
@@ -3105,6 +3231,12 @@
           <li><a href="api/math_types.html#mat3.transpose">(mat3 method)</a>
 </li>
           <li><a href="api/math_types.html#mat4.transpose">(mat4 method)</a>
+</li>
+        </ul></li>
+        <li><a href="api/legacy.html#triangulate">triangulate() (built-in function)</a>
+
+        <ul>
+          <li><a href="api/mesh.html#mesh.triangulate">(mesh static method)</a>
 </li>
         </ul></li>
         <li><a href="api/tween.html#tween">tween (built-in class)</a>
@@ -3354,6 +3486,8 @@
 </li>
         </ul></li>
         <li><a href="api/objc.html#objc.withoutBridging">withoutBridging() (in module objc)</a>
+</li>
+        <li><a href="api/shader.html#shader.workgroupSize">workgroupSize() (shader method)</a>
 </li>
         <li><a href="api/physics2d.html#physics2d.world">world (class in physics2d)</a>
 

@@ -1,7 +1,16 @@
 Images Overview
 ===============
 
-Made of pixels and used by codea for drawing to the screen and texturing meshes
+Load images once in ``setup()`` and draw them with ``sprite()`` each frame.
+The same image can texture a mesh or serve as an offscreen drawing target.
+Use ``image.read(assetKey)`` for an existing asset and ``image(width, height)``
+for an empty target. Pair ``context.push(image)`` with ``context.pop()`` when
+drawing into an image, then draw that image on screen.
+
+Choose the image format and mipmap settings when creating a target. Mipmaps
+help when a texture is viewed at smaller sizes; floating-point formats preserve
+values outside the usual color range for lighting and effects. The format and
+sampler sections below explain those choices.
 
 .. code-block:: lua
    :caption: Loading and drawing an image
@@ -21,9 +30,9 @@ Image
 
 .. lua:class:: image
 
-   .. lua:staticmethod:: image(width, height, [hasMips = false, numLayers = 1, format = image.rgba, depthFormat = none])
+   .. lua:staticmethod:: image(width, height, [hasMips = false, numLayers = 1, format = image.rgba8, depthFormat = none])
 
-      Create a blank 2D image (default format is `rgba`)
+      Create a blank 2D image in logical points (default format is `rgba8`). The backing texture is allocated at the display scale. Use image.pixel() when dimensions must match physical texels, such as a compute simulation grid.
 
       The size is in points, like ``WIDTH`` and ``HEIGHT``, so the image has
       as many pixels per point as the screen: ``image(100, 100)`` is 300 by 300
@@ -45,7 +54,7 @@ Image
       :param depthFormat: The image depth format
       :type depthFormat: depth format
 
-   .. lua:staticmethod:: image.pixel(width, height, [hasMips = false, numLayers = 1, format = image.rgba, depthFormat = none])
+   .. lua:staticmethod:: image.pixel(width, height[, hasMips = false, numLayers = 1, format = image.rgba8, depthFormat = none])
 
       Create a blank 2D image of exactly ``width`` by ``height`` pixels,
       whatever the display scale. Takes the same parameters as
@@ -82,6 +91,16 @@ Image
              sprite(screen, WIDTH/2, HEIGHT/2, 160 * 2, 144 * 2)
          end
 
+      For compute data, use a floating-point format when needed and dispatch
+      using the image dimensions and shader workgroup size.
+
+      .. code-block:: lua
+
+         state = image.pixel(256, 192, false, 1, image.rgba32f)
+         simulation:setImage("imageOut", state)
+         local wx, wy = simulation:workgroupSize()
+         simulation:dispatch(math.ceil(state.width / wx), math.ceil(state.height / wy), 1)
+
    .. lua:staticmethod:: image.cube(size)
 
       Create a blank cube image (6 faces with equal sized dimensions)
@@ -89,7 +108,7 @@ Image
       :param size: The size of the image cube
       :type size: integer
 
-      .. helptext:: create a blank cube image
+      .. helptext:: create a cube image from dimensions or source images
 
    .. lua:staticmethod:: image.cube(equirect)
 
@@ -98,13 +117,13 @@ Image
       :param equirect: The source equirect image
       :type equirect: image
 
-      .. helptext:: create a cube image from an equirect image
+      .. helptext:: create a cube image from dimensions or source images
 
    .. lua:staticmethod:: image.cube(imageNX, imagePX, imageNY, imagePY, imageNZ, imagePZ)
 
       Creates a cube image from six source images, one for each cube face
 
-      .. helptext:: create a cube image from six face images
+      .. helptext:: create a cube image from dimensions or source images
 
    .. lua:staticmethod:: image.volume(width, height, depth, format)
 
@@ -257,17 +276,15 @@ Image
 
    .. lua:attribute:: width: integer
 
-      The width of the image in points. For an image made with
-      :lua:func:`image.pixel`, points and pixels are the same
+      The logical width of the image in points. For image.pixel(), points and physical texels are identical.
 
-      .. helptext:: get the width of this image in points
+      .. helptext:: get the logical width of this image
 
    .. lua:attribute:: height: integer
 
-      The height of the image in points. For an image made with
-      :lua:func:`image.pixel`, points and pixels are the same
+      The logical height of the image in points. For image.pixel(), points and physical texels are identical.
 
-      .. helptext:: get the height of this image in points
+      .. helptext:: get the logical height of this image
 
    .. lua:attribute:: depth: integer
 

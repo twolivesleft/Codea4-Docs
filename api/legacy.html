@@ -1,0 +1,744 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="lua" href="lua.html" /><link rel="prev" title="Introduction" href="../api.html" />
+
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
+        <title>Legacy Compatibility - Codea 4.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Codea 4.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/icon.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Codea 4.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/using_codea/settings.html">Useful settings and backups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/codea.html">How Codea Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/drawing.html">Drawing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/assets.html">Assets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/file_operations.html">File Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/input.html">Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics2d.html">2D Physics (Box2D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/native.html">Using Native APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/scenes.html">Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/shaders.html">Shaders and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual/vectors.html">Using Vectors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Legacy Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lua.html">lua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_types.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="color.html">color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">Drawing Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style.html">style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="font.html">font</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html">matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Images Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html#image">Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shader.html">shader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_noise_lib.html">GPU Noise Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material.html">material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mic.html">Microphone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="light.html">light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tween.html">tween</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#device-orientation">Device Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion.html#magnetic-field-data">Magnetic Field Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="require.html">require</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objc.html">objc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pasteboard.html">Pasteboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file.html">file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics2d.html">physics2d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics3d.html">physics3d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="voxel.html">voxel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pick.html">pick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viewer.html">viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hinge.html">hinge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspector.html">inspector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage.html">storage</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="legacy-compatibility">
+<h1>Legacy Compatibility<a class="headerlink" href="#legacy-compatibility" title="Link to this heading">¶</a></h1>
+<p>The modern renderer supplies compatibility globals from <code class="docutils literal notranslate"><span class="pre">codea/legacy.lua</span></code>
+so older projects can migrate gradually. These are migration helpers, not the
+preferred API for new code. The wrappers do not restore the legacy renderer or
+all of its behavior. Use the corresponding modern modules when updating a project.</p>
+<section id="migrating-a-project">
+<h2>Migrating a project<a class="headerlink" href="#migrating-a-project" title="Link to this heading">¶</a></h2>
+<p>Replace drawing-state globals with <code class="docutils literal notranslate"><span class="pre">style</span></code> and transforms with <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.
+Use <code class="docutils literal notranslate"><span class="pre">image.read</span></code> and <code class="docutils literal notranslate"><span class="pre">image.save</span></code> for assets, <code class="docutils literal notranslate"><span class="pre">storage</span></code> for persistent data,
+and <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">touch</span></code> for current frame state. Keep paired push/pop calls
+balanced. Test text alignment and image filtering: the compatibility layer
+translates old conventions rather than simply renaming every call.</p>
+<p>The old <code class="docutils literal notranslate"><span class="pre">physics</span></code> global is a compatibility facade over <code class="docutils literal notranslate"><span class="pre">physics2d</span></code>. It
+translates numeric body/joint constants and legacy collision callbacks; new
+projects should use the world, body, collider and joint APIs directly.
+<code class="docutils literal notranslate"><span class="pre">CAMERA</span></code> and <code class="docutils literal notranslate"><span class="pre">CAMERA_DEPTH</span></code> follow sensor images (or a placeholder until a
+frame arrives). <code class="docutils literal notranslate"><span class="pre">cameraSource</span></code> reads or changes the sensor camera selection.</p>
+</section>
+<section id="aliases">
+<h2>Aliases<a class="headerlink" href="#aliases" title="Link to this heading">¶</a></h2>
+<dl class="lua function">
+<dt class="sig sig-object lua" id="pushStyle">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">pushStyle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pushStyle" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.push()</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.push()</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="popStyle">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">popStyle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#popStyle" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.pop()</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.pop()</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="resetStyle">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">resetStyle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resetStyle" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.reset()</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.reset()</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="blendMode">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">blendMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#blendMode" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.blend(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.blend(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="noTint">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">noTint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noTint" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.tint(255,</span> <span class="pre">255,</span> <span class="pre">255,</span> <span class="pre">255)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.tint(255,</span> <span class="pre">255,</span> <span class="pre">255,</span> <span class="pre">255)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="spriteMode">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">spriteMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#spriteMode" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.spriteMode(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.spriteMode(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="spriteSize">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">spriteSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#spriteSize" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">image.read(assetKey).width</span> <span class="pre">and</span> <span class="pre">.height</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">image.read(assetKey).width</span> <span class="pre">and</span> <span class="pre">.height</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="rectMode">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">rectMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rectMode" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.rectMode(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.rectMode(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="ellipseMode">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">ellipseMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ellipseMode" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.ellipseMode(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.ellipseMode(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="lineCapMode">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">lineCapMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lineCapMode" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.lineCap(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.lineCap(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="noSmooth">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">noSmooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#noSmooth" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.noSmooth()</span> <span class="pre">and</span> <span class="pre">style.filter(image.filter.point)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.noSmooth()</span> <span class="pre">and</span> <span class="pre">style.filter(image.filter.point)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="smooth">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#smooth" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">style.smooth()</span> <span class="pre">and</span> <span class="pre">style.filter(image.filter.linear)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">style.smooth()</span> <span class="pre">and</span> <span class="pre">style.filter(image.filter.linear)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="pushMatrix">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">pushMatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pushMatrix" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">matrix.push()</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">matrix.push()</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="popMatrix">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">popMatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#popMatrix" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">matrix.pop()</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">matrix.pop()</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="resetMatrix">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">resetMatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resetMatrix" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">matrix.reset()</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">matrix.reset()</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="modelMatrix">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">modelMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#modelMatrix" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">matrix.model(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">matrix.model(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="fontMetrics">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">fontMetrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fontMetrics" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">font.metrics(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">font.metrics(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="readImage">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">readImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#readImage" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">image.read(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">image.read(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="saveImage">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">saveImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#saveImage" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">image.save(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">image.save(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="triangulate">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">triangulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#triangulate" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">mesh.triangulate(...)</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">mesh.triangulate(...)</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="setContext">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">setContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#setContext" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper for <code class="docutils literal notranslate"><span class="pre">context.push(image)</span> <span class="pre">and</span> <span class="pre">context.pop()</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">context.push(image)</span> <span class="pre">and</span> <span class="pre">context.pop()</span></code> in modern projects.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="soundBufferSize">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">soundBufferSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">...</span></em><span class="sig-paren">)</span><a class="headerlink" href="#soundBufferSize" title="Link to this definition">¶</a></dt>
+<dd><p>Unsupported compatibility stub. Returns <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">0</span></code>; it does not configure audio.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use the modern <code class="docutils literal notranslate"><span class="pre">sound</span></code> module; there is no buffer-size equivalent.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span><code class="xref lua lua-class docutils literal notranslate"><span class="pre">number,</span> <span class="pre">number</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="readLocalData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">readLocalData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">defaultValue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#readLocalData" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility storage operation using <code class="docutils literal notranslate"><span class="pre">storage.global:namespace(&quot;__legacy.local.&quot;</span> <span class="pre">..</span> <span class="pre">asset.name):get(tostring(key),</span> <span class="pre">defaultValue)</span></code>.
+Saving <code class="docutils literal notranslate"><span class="pre">nil</span></code> deletes a key. Local data uses a namespace based on the project name.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.global:namespace(&quot;__legacy.local.&quot;</span> <span class="pre">..</span> <span class="pre">asset.name):get(tostring(key),</span> <span class="pre">defaultValue)</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="saveLocalData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">saveLocalData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#saveLocalData" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility storage operation using <code class="docutils literal notranslate"><span class="pre">storage.global:namespace(&quot;__legacy.local.&quot;</span> <span class="pre">..</span> <span class="pre">asset.name):set(tostring(key),</span> <span class="pre">value)</span></code>.
+Saving <code class="docutils literal notranslate"><span class="pre">nil</span></code> deletes a key. Local data uses a namespace based on the project name.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.global:namespace(&quot;__legacy.local.&quot;</span> <span class="pre">..</span> <span class="pre">asset.name):set(tostring(key),</span> <span class="pre">value)</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="listLocalData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">listLocalData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#listLocalData" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility storage operation using <code class="docutils literal notranslate"><span class="pre">storage.global:namespace(&quot;__legacy.local.&quot;</span> <span class="pre">..</span> <span class="pre">asset.name):keys()</span></code>.
+Saving <code class="docutils literal notranslate"><span class="pre">nil</span></code> deletes a key. Local data uses a namespace based on the project name.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.global:namespace(&quot;__legacy.local.&quot;</span> <span class="pre">..</span> <span class="pre">asset.name):keys()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="clearLocalData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clearLocalData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#clearLocalData" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility storage operation using <code class="docutils literal notranslate"><span class="pre">storage.global:namespace(&quot;__legacy.local.&quot;</span> <span class="pre">..</span> <span class="pre">asset.name):clear()</span></code>.
+Saving <code class="docutils literal notranslate"><span class="pre">nil</span></code> deletes a key. Local data uses a namespace based on the project name.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.global:namespace(&quot;__legacy.local.&quot;</span> <span class="pre">..</span> <span class="pre">asset.name):clear()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="readProjectData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">readProjectData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">defaultValue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#readProjectData" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility storage operation using <code class="docutils literal notranslate"><span class="pre">storage.project:get(&quot;__legacy.project.&quot;</span> <span class="pre">..</span> <span class="pre">tostring(key),</span> <span class="pre">defaultValue)</span></code>.
+Saving <code class="docutils literal notranslate"><span class="pre">nil</span></code> deletes a key. Local data uses a namespace based on the project name.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.project:get(&quot;__legacy.project.&quot;</span> <span class="pre">..</span> <span class="pre">tostring(key),</span> <span class="pre">defaultValue)</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="saveProjectData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">saveProjectData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#saveProjectData" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility storage operation using <code class="docutils literal notranslate"><span class="pre">storage.project:set(&quot;__legacy.project.&quot;</span> <span class="pre">..</span> <span class="pre">tostring(key),</span> <span class="pre">value)</span></code>.
+Saving <code class="docutils literal notranslate"><span class="pre">nil</span></code> deletes a key. Local data uses a namespace based on the project name.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.project:set(&quot;__legacy.project.&quot;</span> <span class="pre">..</span> <span class="pre">tostring(key),</span> <span class="pre">value)</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="listProjectData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">listProjectData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#listProjectData" title="Link to this definition">¶</a></dt>
+<dd><p>Returns sorted keys from <code class="docutils literal notranslate"><span class="pre">storage.project</span></code> beginning with <code class="docutils literal notranslate"><span class="pre">__legacy.project.</span></code>,
+with that prefix removed. Other modern storage keys are excluded.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.project:keys()</span></code> and filter the legacy prefix when migrating existing data.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="clearProjectData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">clearProjectData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#clearProjectData" title="Link to this definition">¶</a></dt>
+<dd><p>Deletes only <code class="docutils literal notranslate"><span class="pre">storage.project</span></code> keys beginning with <code class="docutils literal notranslate"><span class="pre">__legacy.project.</span></code>.
+Other modern project data is retained.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.project:set(key,</span> <span class="pre">nil)</span></code> for each legacy-prefixed key. Clearing
+the entire modern store would also delete unrelated data.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="readGlobalData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">readGlobalData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">defaultValue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#readGlobalData" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility storage operation using <code class="docutils literal notranslate"><span class="pre">storage.global:get(&quot;__legacy.global.&quot;</span> <span class="pre">..</span> <span class="pre">tostring(key),</span> <span class="pre">defaultValue)</span></code>.
+Saving <code class="docutils literal notranslate"><span class="pre">nil</span></code> deletes a key. Local data uses a namespace based on the project name.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.global:get(&quot;__legacy.global.&quot;</span> <span class="pre">..</span> <span class="pre">tostring(key),</span> <span class="pre">defaultValue)</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="saveGlobalData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">saveGlobalData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#saveGlobalData" title="Link to this definition">¶</a></dt>
+<dd><p>Compatibility storage operation using <code class="docutils literal notranslate"><span class="pre">storage.global:set(&quot;__legacy.global.&quot;</span> <span class="pre">..</span> <span class="pre">tostring(key),</span> <span class="pre">value)</span></code>.
+Saving <code class="docutils literal notranslate"><span class="pre">nil</span></code> deletes a key. Local data uses a namespace based on the project name.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.global:set(&quot;__legacy.global.&quot;</span> <span class="pre">..</span> <span class="pre">tostring(key),</span> <span class="pre">value)</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="listGlobalData">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">listGlobalData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#listGlobalData" title="Link to this definition">¶</a></dt>
+<dd><p>Returns sorted keys from <code class="docutils literal notranslate"><span class="pre">storage.global</span></code> beginning with <code class="docutils literal notranslate"><span class="pre">__legacy.global.</span></code>,
+with that prefix removed. Other modern storage keys are excluded.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">storage.global:keys()</span></code> and filter the legacy prefix when migrating existing data.</p>
+</div>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="DeltaTime">
+<span class="sig-name descname"><span class="pre">DeltaTime</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#DeltaTime" title="Link to this definition">¶</a></dt>
+<dd><p>Legacy compatibility value.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">time.delta</span> <span class="pre">(or</span> <span class="pre">time.fixedDelta</span> <span class="pre">in</span> <span class="pre">fixedUpdate)</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="ElapsedTime">
+<span class="sig-name descname"><span class="pre">ElapsedTime</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">number</span><a class="headerlink" href="#ElapsedTime" title="Link to this definition">¶</a></dt>
+<dd><p>Legacy compatibility value.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">time.elapsed</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="CurrentTouch">
+<span class="sig-name descname"><span class="pre">CurrentTouch</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">touch</span><a class="headerlink" href="#CurrentTouch" title="Link to this definition">¶</a></dt>
+<dd><p>Legacy compatibility value.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">touch.current</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="CAMERA">
+<span class="sig-name descname"><span class="pre">CAMERA</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">image</span><a class="headerlink" href="#CAMERA" title="Link to this definition">¶</a></dt>
+<dd><p>Legacy compatibility value.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">sensor.cameraColor</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="CAMERA_DEPTH">
+<span class="sig-name descname"><span class="pre">CAMERA_DEPTH</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">image</span><a class="headerlink" href="#CAMERA_DEPTH" title="Link to this definition">¶</a></dt>
+<dd><p>Legacy compatibility value.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">sensor.cameraDepth</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua attribute">
+<dt class="sig sig-object lua" id="physics">
+<span class="sig-name descname"><span class="pre">physics</span></span><em class="property"><span class="pre">:</span> </em><span class="pre">table</span><a class="headerlink" href="#physics" title="Link to this definition">¶</a></dt>
+<dd><p>Legacy compatibility value.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Use <code class="docutils literal notranslate"><span class="pre">physics2d</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="lua function">
+<dt class="sig sig-object lua" id="cameraSource">
+<em class="property"> </em><span class="sig-name descname"><span class="pre">cameraSource</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">source</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#cameraSource" title="Link to this definition">¶</a></dt>
+<dd><p>With no argument, returns <code class="docutils literal notranslate"><span class="pre">sensor.cameraSource</span></code>. With an argument, sets
+<code class="docutils literal notranslate"><span class="pre">sensor.cameraSource</span></code> and ensures the legacy camera image placeholder exists.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 4.0: </span>Read or assign <code class="docutils literal notranslate"><span class="pre">sensor.cameraSource</span></code> directly.</p>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="lua.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">lua</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../api.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Introduction</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021, John Millard
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Legacy Compatibility</a><ul>
+<li><a class="reference internal" href="#migrating-a-project">Migrating a project</a></li>
+<li><a class="reference internal" href="#aliases">Aliases</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=9f5556dd"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

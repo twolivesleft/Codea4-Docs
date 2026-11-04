@@ -62,6 +62,20 @@ mesh
 
       .. helptext:: create a new mesh
 
+   .. lua:staticmethod:: mesh.triangulate(points)
+
+      Convert a simple polygon outline into triangle indices. Supply vec2 points in boundary order without crossing edges. Assign the same points to mesh.positions and the returned one-based indices to mesh.indices.
+
+      :param points: Polygon boundary vertices
+      :type points: table<vec2>
+      :return: Triangle indices into the supplied points
+      :rtype: table<integer>
+
+      .. helptext:: triangulate a polygon outline
+
+      .. codea-example:: Tap to build a polygon
+         :project: code/Modern/Mesh 02 - Triangulate.codea
+
    .. lua:staticmethod:: mesh.read(key)
 
       Loads a mesh from a file

@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Drawing" href="drawing.html" /><link rel="prev" title="Introduction" href="../manual.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Drawing" href="drawing.html" /><link rel="prev" title="Useful settings and backups" href="using_codea/settings.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.01.29 -->
         <title>How Codea Works - Codea 4.0 documentation</title>
@@ -161,6 +161,15 @@
   <p class="caption" role="heading"><span class="caption-text">Manual:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/project_browser.html">The project browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/projects.html">Creating and customizing projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/collections.html">Organizing project collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/sharing.html">Sharing and exporting projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/cloud.html">Local, iCloud, and collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/files.html">Accessing projects in Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/air_code.html">Air Code: work from your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/tools.html">Reference, Assets, and Shader Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_codea/settings.html">Useful settings and backups</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">How Codea Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="drawing.html">Drawing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sound.html">Sound</a></li>
@@ -169,6 +178,10 @@
 <li class="toctree-l1"><a class="reference internal" href="input.html">Input</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics2d.html">2D Physics (Box2D)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics3d.html">3D Physics (Bullet 3D)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera_effects.html">Camera Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="display.html">Display and Interaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animating Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="native.html">Using Native APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scenes.html">Scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shaders.html">Shaders and Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vectors.html">Using Vectors</a></li>
@@ -176,10 +189,11 @@
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/legacy.html">Legacy Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/lua.html">lua</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/math_types.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/color.html">color</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">graphics commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/graphics.html">Drawing Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/style.html">style</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/font.html">font</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/matrix.html">matrix</a></li>
@@ -251,10 +265,14 @@
         <article role="main">
           <section id="how-codea-works">
 <h1>How Codea Works<a class="headerlink" href="#how-codea-works" title="Link to this heading">¶</a></h1>
-<p>Codea is primarily designed as a realtime graphical engine that uses callbacks to draw and update the screen</p>
+<p>Codea is primarily designed as a realtime graphical engine that uses callbacks to draw and update the screen.</p>
+<p>In this reference, <strong>Run Example</strong> opens a complete project in a dismissible viewer.
+Use <strong>Show code</strong> to inspect longer examples. Projects with adjustable parameters
+show a <strong>Controls</strong> button; changes there update the running project. Close the
+controls to return to the canvas, then use <strong>Done</strong> to return to the documentation.</p>
 <p>When you create a project you are given a basic template in <code class="docutils literal notranslate"><span class="pre">Main.lua</span></code> that
 contains some global functions:</p>
-<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Called once at the beggining</span>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Called once at the beginning</span>
 <span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
 <span class="w">   </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span>
 <span class="w">   </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span>
@@ -347,6 +365,104 @@ every time the screen is about to be redrawn</p>
 </div>
 </section>
 </section>
+<section id="learning-lua-by-changing-a-program">
+<h2>Learning Lua by changing a program<a class="headerlink" href="#learning-lua-by-changing-a-program" title="Link to this heading">¶</a></h2>
+<p>Start with setup(), which runs once, and draw(), which runs every frame. The commented project walks through strings, local and global variables, nil, and if/elseif/else. Its print output appears in Codea’s console; this viewer also displays a greeting on the canvas. Try changing foo to choose a different branch.</p>
+<div class="docutils container" id="id1">
+<p><span class="caption-text">Learning Lua by changing a program</span></p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- How to Codea</span>
+<span class="c1">-- Hello World and Lua</span>
+
+<span class="c1">-- This is a comment. Anything beginning with '--' will be ignored by the</span>
+<span class="c1">-- compiler</span>
+
+<span class="c1">-- Functions</span>
+
+<span class="c1">-- This is a function in Lua, everything from 'function' until the matching 'end' keyword</span>
+<span class="c1">-- is run together. Codea calls the setup() function when your program begins</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">-- There are special built-in functions that you can call yourself</span>
+<span class="w">    </span><span class="c1">-- Start with the name of the function ('print' in this example) followed by brackets '()'</span>
+<span class="w">    </span><span class="c1">-- In this case print takes one 'argument' which is a string (which contains a series of letters)</span>
+<span class="w">    </span><span class="c1">-- Strings are contained within quotation marks, Lua supports both single and double quotation marks</span>
+<span class="w">    </span><span class="c1">-- but you need to make sure that the begin and end quote match or you will get an error</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- You can change the argument to whatever string you want and Codea will print</span>
+<span class="w">    </span><span class="c1">-- it in the output panel for you</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Hello Codea!"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Locals and Global variables</span>
+
+<span class="w">    </span><span class="c1">-- You can create variables to store data for you and use that to control your program</span>
+<span class="w">    </span><span class="c1">-- Lua supports local and global variables. A local variable exists only in the scope</span>
+<span class="w">    </span><span class="c1">-- where you create it. A function is a type of scope. We'll cover scopes more later</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hello Local Variable!"</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- The above code creates a local variable (named: x) and uses it as an argument for the print</span>
+<span class="w">    </span><span class="c1">-- function. This variable is local and therefore only exists in the scope of this function</span>
+
+<span class="w">    </span><span class="nv">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hello Global Variable!"</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">g</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- The above code creates a global variable (named: g) and does the same thing. The only</span>
+<span class="w">    </span><span class="c1">-- difference is that now g exists everywhere in the program, and will continue to exist</span>
+<span class="w">    </span><span class="c1">-- outside the scope of this function</span>
+
+<span class="w">    </span><span class="c1">-- Using nil</span>
+
+<span class="w">    </span><span class="c1">-- In Lua whenever trying to access a variable that does not exist, the value nil will</span>
+<span class="w">    </span><span class="c1">-- be returned. Nil represents nothing and is useful in many ways. You can also assign</span>
+<span class="w">    </span><span class="c1">-- nil to a variable to destroy it</span>
+
+<span class="w">    </span><span class="nv">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="c1">-- destroy g</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">g</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">-- Flow Control</span>
+
+<span class="w">    </span><span class="c1">-- In order to make a program do what we want, we need to compare variables and execute</span>
+<span class="w">    </span><span class="c1">-- code. This is called flow control and is a key cornerstone of programming</span>
+
+<span class="w">    </span><span class="c1">-- To conditionally execute some code we use an 'if' statement. The 'if' keyword is</span>
+<span class="w">    </span><span class="c1">-- followed by a condition, which evaluates the logical truth of something.</span>
+<span class="w">    </span><span class="c1">-- In this case we use 'foo == 1', which mean check if the variable named 'foo' is equal</span>
+<span class="w">    </span><span class="c1">-- to the value 1. This is always followed by 'then' and subsequently ended with the 'end'</span>
+<span class="w">    </span><span class="c1">-- keyword. Everything between 'then' and 'end' is executed if the condition is true</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span>
+
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Foo is equal to 42!"</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="w">    </span><span class="c1">-- We can also chain together multiple branches, including 'else' and 'elseif' which execute</span>
+<span class="w">    </span><span class="c1">-- when the condition is false, or some other condition is true when the previous one isn't</span>
+
+<span class="w">    </span><span class="nv">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span>
+
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Foo is equal to 42!"</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">elseif</span><span class="w"> </span><span class="nv">foo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Foo is equal to 21!"</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">else</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">"Foo is equal to something else?!?"</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">end</span>
+
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">background</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">style</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">).</span><span class="nf">fontSize</span><span class="p">(</span><span class="mi">24</span><span class="p">).</span><span class="nf">textAlign</span><span class="p">(</span><span class="nv">CENTER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">MIDDLE</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">text</span><span class="p">(</span><span class="s2">"Hello Lua! Explore the commented source."</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">HEIGHT</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nv">WIDTH</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nf">touched</span><span class="p">(</span><span class="nv">touch</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+</section>
 </section>
 
         </article>
@@ -363,14 +479,14 @@ every time the screen is about to be redrawn</p>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../manual.html">
+          <a class="prev-page" href="using_codea/settings.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Introduction</div>
+                <div class="title">Useful settings and backups</div>
                 
               </div>
             </a>
@@ -417,6 +533,7 @@ every time the screen is about to be redrawn</p>
 <li><a class="reference internal" href="#hover-gesture">hover(gesture)</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#learning-lua-by-changing-a-program">Learning Lua by changing a program</a></li>
 </ul>
 </li>
 </ul>
