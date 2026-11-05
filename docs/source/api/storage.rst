@@ -1,31 +1,62 @@
-storage
+:reference-overview: Saving Project Data
+
+Storage
 =======
 
-Simple key/value storage.
+Use ``storage`` to keep settings, high scores, and progress between runs. Read and write values by name, such as ``storage.highScore``. Values belong to the current project by default; ``storage.project`` refers to the same store.
 
-Saving happens in the background, so your project can keep running smoothly. If you need to make sure your changes are saved right away (for example, before quitting or switching levels), call storage:flush().
+**Load a default, then save when something changes**
 
-Storage uses string keys (like "highScore"), and the value you save must be either boolean, number, string, or a table containing only those kinds of values. If you store nil for a given key, then that key/value pair will be removed from storage.
-
-You can read and write values directly using property-style access (``storage.highScore = 100`` and ``print(storage.highScore)``).
-
-The default storage is per-project. A device-wide store is available under ``storage.global``.
-
-.. lua:module:: storage
-
-**Basic Usage**
+Read saved values in ``setup()``, choosing a default if nothing is saved yet. Save when a value changes. Here, ``recordScore(score)`` saves the high score at the end of a game:
 
 .. code-block:: lua
 
-   -- Default project storage
-   storage.highScore = 9001
-   print(storage.highScore or 0)
+   function setup()
+       highScore = storage.highScore or 0
+   end
 
-   -- Missing key uses default
-   print(storage.missing or 42)
+   function recordScore(score)
+       highScore = math.max(highScore, score)
+       storage.highScore = highScore
+   end
 
-   -- Remove a key
-   storage.temp = nil
+**Group related values with namespaces**
+
+A namespace groups related keys in the same store. Here, ``prefs.musicEnabled`` uses the key ``"prefs.musicEnabled"``. Check for ``nil`` when choosing a default so a saved ``false`` value is kept:
+
+.. code-block:: lua
+
+   local prefs = storage:namespace("prefs")
+   if prefs.musicEnabled == nil then
+       prefs.musicEnabled = true -- default only on first use
+   end
+
+   local stats = storage:namespace("stats")
+   -- Call this when a game finishes, not every frame.
+   function recordGamePlayed()
+       stats.gamesPlayed = (stats.gamesPlayed or 0) + 1
+   end
+
+**Choose project-local or shared data**
+
+Use the default store for one project’s progress. Use ``storage.global`` to share values across projects on the same device. These values do not sync between devices:
+
+.. code-block:: lua
+
+   -- Private to this project
+   storage.level = 3
+
+   -- Shared by projects using this namespace on this device
+   local sharedPrefs = storage.global:namespace("myGames")
+   sharedPrefs.theme = "dark"
+
+**Supported values and saving**
+
+Values can be booleans, numbers, strings, or tables containing those kinds of values. Assign ``nil`` to delete a key, for example ``storage.temp = nil``. Use assets and files for images or other file contents.
+
+Writes are saved in the background. Call ``storage:flush()`` when you need pending changes written before continuing. For a different store, flush that store, such as ``storage.global:flush()``; there is no need to flush every frame.
+
+.. lua:module:: storage
 
 .. lua:function:: has(key)
 
@@ -176,27 +207,3 @@ The default storage is per-project. A device-wide store is available under ``sto
 
       local settings = storage("settings")
       local globalPrefs = storage("prefs", "global")
-
-**Usage Patterns**
-
-.. code-block:: lua
-
-   -- Separate storage for different systems
-   local prefs = storage:namespace("prefs")
-   local stats = storage:namespace("stats")
-
-   prefs.musicEnabled = true
-   stats.gamesPlayed = 12
-
-   -- Project vs global
-   local projectStore = storage.project
-   local globalStore = storage.global
-
-   projectStore.level = 3
-   globalStore.unlocked = { "sword", "shield" }
-
-**Notes**
-
-* Keys must be strings
-* Values must be (``nil``, ``boolean``, ``number``, ``string``, ``table``)
-* Storage saves in the background, call storage:flush() if you need to write storage immediately (for example, before quitting)

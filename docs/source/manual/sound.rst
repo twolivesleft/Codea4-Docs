@@ -4,7 +4,7 @@ Sound
 Sound in Codea
 --------------
 
-Codea's :lua:mod:`sound` module lets you play audio files, synthesise sound effects procedurally, and control playback.
+Use :lua:mod:`sound` to play music and audio files or create your own sound effects.
 
 Playing Audio Files
 -------------------
@@ -53,12 +53,12 @@ For sounds you play frequently (like a gun shot), load the source once in ``setu
        end
    end
 
-Using ``sound.load`` is more efficient than calling ``sound.play`` every frame because the audio data is decoded once.
+Loading once avoids decoding the same audio each time you play it.
 
 Procedural Sound
 ----------------
 
-Generate synthesised sounds at runtime without any audio file using ``sound.synthesize``:
+Create a sound effect without an audio file using ``sound.synthesize``:
 
 .. code-block:: lua
 

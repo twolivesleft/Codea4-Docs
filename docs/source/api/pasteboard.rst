@@ -1,12 +1,13 @@
+:reference-overview: Copying and Pasting
+
 Pasteboard
 ==========
       
 Copy and paste strings, images, colors and URLs.
 
-To minimize unnecessary notifications when accessing pasteboard data from other applications,
-first call ``hasStrings``, ``hasImages``, ``hasColors`` or ``hasURLs`` to check if the desired
-data type is available before retrieving it. This prevents a notification when the requested
-type is not present, but a notification may still appear if data is accessed.
+Check ``hasStrings``, ``hasImages``, ``hasColors`` or ``hasURLs`` before reading
+the corresponding values. Reading data copied from another app may show a
+system notification; checking whether it is available does not.
 
 .. lua:module:: pasteboard
 

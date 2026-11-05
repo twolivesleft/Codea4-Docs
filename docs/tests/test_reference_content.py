@@ -81,6 +81,27 @@ class ReferenceContentTests(unittest.TestCase):
         self.assertEqual({entry['name'] for entry in input_entries if entry.get('module') == 'keyboard'},
                          {'show', 'hide', 'visible', 'text'})
 
+    def test_reference_titles_are_editorial_and_mesh_examples_are_runnable(self):
+        def check(entry):
+            group = entry.get('group')
+            if group:
+                self.assertFalse(group[0].islower(), group)
+            if entry.get('kind') == 'overview':
+                self.assertTrue(entry.get('name'), entry)
+                self.assertNotEqual(entry['name'], group)
+            for member in entry.get('members', []):
+                check(member)
+        for path in (ROOT / 'build/luadoc/api').glob('*.json'):
+            for entry in json.loads(path.read_text()):
+                check(entry)
+        mesh = json.loads((ROOT / 'build/luadoc/api/mesh.json').read_text())
+        overview = next(entry for entry in mesh if entry.get('kind') == 'overview')
+        self.assertEqual((overview['group'], overview['name']), ('Mesh', 'Using Meshes'))
+        examples = [part['content'] for part in overview['content'] if part['type'] == 'example']
+        self.assertEqual(len(examples), 3)
+        self.assertTrue(all(example['runnable'] for example in examples))
+        self.assertTrue(any(entry.get('kind') == 'class' and entry.get('name') == 'mesh' for entry in mesh))
+
     def test_placeholder_overviews_are_not_emitted(self):
         for path in (ROOT / 'build/luadoc/api').glob('*.json'):
             for entry in json.loads(path.read_text()):

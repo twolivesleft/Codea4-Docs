@@ -4,9 +4,9 @@ Scenes
 Scenes in Codea
 ---------------
 
-The :lua:class:`scene` system is the modern, high-level way to build 3D (and 2D) experiences in Codea. A scene manages a hierarchy of :lua:class:`entity` objects, each of which can have components — meshes, physics bodies, cameras, lights, custom Lua classes — attached to them.
+A :lua:class:`scene` holds the objects in a 2D or 3D world. Each object is an :lua:class:`entity`; add components such as a mesh, camera, light, or physics body to give it an appearance or behavior.
 
-Unlike the immediate-mode drawing API (``sprite``, ``rect``, etc.), scenes automatically handle the update loop, render pass, and physics simulation for you.
+Codea draws and updates the scene for you, including its physics simulation.
 
 .. code-block:: lua
 
@@ -30,7 +30,7 @@ Unlike the immediate-mode drawing API (``sprite``, ``rect``, etc.), scenes autom
 Creating Scenes
 ---------------
 
-Create a new scene by calling :lua:class:`scene` as a constructor. Assign it to ``scene.main`` to start rendering it each frame.
+Create a scene with ``scene()`` and assign it to ``scene.main`` to draw and update it each frame.
 
 .. code-block:: lua
 
@@ -115,7 +115,7 @@ Use ``camera.rigs.orbit`` to add an interactive orbit controller that works with
 Lifecycle Callbacks
 -------------------
 
-Entities respond to lifecycle callbacks that mirror Codea's global callbacks. Define them as properties or override them in Lua component classes:
+Give an entity an ``update()`` function to move it each frame, or a ``touched()`` function to respond to touches. You can also define these functions in a Lua component:
 
 .. code-block:: lua
 

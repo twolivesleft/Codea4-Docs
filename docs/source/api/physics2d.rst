@@ -1,4 +1,4 @@
-physics2d
+Physics 2D
 ==========
 
 .. lua:module:: physics2d

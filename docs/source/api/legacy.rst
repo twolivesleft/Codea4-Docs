@@ -1,3 +1,5 @@
+:reference-overview: Using Legacy Compatibility
+
 Legacy Compatibility
 ====================
 

@@ -1,5 +1,5 @@
-material
-========
+Materials
+=========
 
 .. lua:class:: material
 

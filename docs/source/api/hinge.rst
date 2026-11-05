@@ -1,9 +1,11 @@
-hinge
+:reference-overview: Responding to Hinge Changes
+
+Hinge
 =====
 
-The ``hinge`` table allows you to get the hinge angle on foldable devices. You can read the current angle, or define the function ``hingeChanged`` to receive changes when the device folds.
+Read ``hinge.angle`` to get the fold angle on supported devices, or define ``hingeChanged`` to respond as the device folds.
 
-The angle is ``nil`` when no reading is available or the device is not supported. Make sure you check for ``nil`` before using it in calculations, for example: ``local angle = hinge.angle or 0``.
+The angle is ``nil`` when no reading is available. Choose a fallback before using it in calculations, such as ``local angle = hinge.angle or 0``.
 
 .. lua:module:: hinge
 

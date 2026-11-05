@@ -1,7 +1,9 @@
-string
-======
+:reference-overview: Reading and Writing Text Files
 
-Used to interact with text files.
+Text Files
+==========
+
+Read a text file with ``string.read()`` or save text with ``string.save()``. Use an asset key to choose the file.
 
 .. code-block:: lua
    :caption: Reading and saving text files

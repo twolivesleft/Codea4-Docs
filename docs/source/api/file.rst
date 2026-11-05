@@ -1,7 +1,9 @@
-file
-====
+:reference-overview: Working with Files
 
-File operations module for working with assets and the file system. All file operations return two values: a success boolean and an error message string. On success, returns ``true, nil``. On failure, returns ``false, "error message"``.
+Files
+=====
+
+Copy, move, rename, and delete files or create folders using asset keys. These operations return ``true, nil`` on success, or ``false`` and an error message on failure.
 
 .. lua:module:: file
 
@@ -155,7 +157,8 @@ File operations module for working with assets and the file system. All file ope
           print("Screenshots folder exists")
       end
 
-**Common Error Messages**
+File Errors and Usage Patterns
+------------------------------
 
 The file operations return specific error messages for different failure conditions:
 

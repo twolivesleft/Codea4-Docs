@@ -1,9 +1,9 @@
+:reference-overview: Reading Device Motion
+
 Motion
 ======
       
-Exposes Core Motion functionalities such as accessing the device's accelerometer, gyroscope, and magnetometer data.
-
-Tracking of motion metrics can impact performance and battery drain. Use this feature judiciously to avoid negatively affecting the user experience.
+Read the device’s acceleration, rotation, and orientation to respond to tilts and movement. Motion tracking uses battery power; call ``motion.stop()`` when you no longer need it.
 
 .. lua:module:: motion
 

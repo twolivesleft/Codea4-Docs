@@ -1,7 +1,9 @@
-light
-=====
+:reference-overview: Lighting a Scene
 
-Casts a light source onto the 3D environment. Can be used with basic immediate mode rendering or as an entity component in scenes
+Lights
+======
+
+Add lights to show the shape and surface of 3D objects. Attach a light to an entity in a scene, or use ``light.push()`` and ``light.pop()`` when drawing meshes yourself.
 
 .. code-block:: lua
    :caption: Using a light as a component in a scene
@@ -91,7 +93,7 @@ Casts a light source onto the 3D environment. Can be used with basic immediate m
 
    .. lua:staticmethod:: light.push(light)
 
-      Pushes a light source onto the immediate mode rendering stack.
+      Adds a light for meshes drawn after this call. Pair it with ``light.pop()`` when finished.
 
       This applies basic lighting to 3D objects with lit materials for all subsequent draw calls until ``light.pop()`` is called. Immediate mode lighting does not support advanced features such as shadows — use scene-based lights for those.
 

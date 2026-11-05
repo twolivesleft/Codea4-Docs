@@ -1,8 +1,10 @@
-style
+:reference-overview: Setting Drawing Styles
+
+Style
 =====
 
 
-A module for setting the current drawing style used with various graphics functions in Codea, such as :lua:func:`line`
+Set the colors, outlines, and other styles used by drawing functions such as :lua:func:`line`. You can chain style commands together.
 
 General
 #######
@@ -304,7 +306,7 @@ Constants - Shape Mode
 
 .. lua:function:: depth(enabled)
 
-   Sets whether 2D drawing uses depth testing. When enabled, shapes, sprites and meshes drawn with the default 2D shader test against and write to the depth buffer, so they can be hidden behind or hide 3D geometry drawn in immediate mode. Defaults to ``false``, which draws 2D content in call order over anything already drawn. Has no effect on drawing inside a scene
+   Sets whether 2D drawing uses depth testing. When enabled, shapes, sprites and meshes drawn with the default 2D shader test against and write to the depth buffer, so they can be hidden behind or hide 3D meshes drawn directly. Defaults to ``false``, which draws 2D content in call order over anything already drawn. Has no effect on drawing inside a scene
 
    :returns: The style table, for chaining.
    :rtype: style
@@ -1170,8 +1172,8 @@ Constants - Render Queues
 
    .. helptext:: overlay pass type constant
 
-Constants - Color Mask
-######################
+Color Write Masks
+#################
 
 Used by shaders to control which color components are written to color buffers (i.e. images and the main context)
 
@@ -1210,8 +1212,8 @@ Used by shaders to control which color components are written to color buffers (
    .. helptext:: all color channels mask constant
 
 
-Constants - Culling
-###################
+Face Culling
+############
 
 Used by shaders / meshes to control which triangles are culled (based on winding order)
 
@@ -1229,7 +1231,7 @@ Used by shaders / meshes to control which triangles are culled (based on winding
 
    .. helptext:: back face culling constant
 
-Constants - Depth
+Depth Comparisons
 #################
 
 Used by shaders to control depth rejection for opaque and translucent fragments

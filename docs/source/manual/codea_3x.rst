@@ -1,12 +1,12 @@
 Migration from Codea 3.x
 ========================
 
-Codea 4.x represents a significant change from all previous major versions, introducing powerful new features but also some API changes/improvements that break some backwards compatibility. I'll attempt to list them all here but no doubt there will be a few things that we've missed. Let us know via https://codea.io/talk or Discord if you spot something!
+Codea 4 adds new features and changes some function names and behavior. Use this guide when updating an older project. See :doc:`/api/legacy` for compatibility functions that help you migrate gradually.
 
-OpenGL ES 3 -> Metal
---------------------
+Drawing with Metal
+------------------
 
-No doubt you may have heard that Apple has deprecated OpenGL ES on iOS. What this means for us is that eventually Apple may (however unlikely) drop support for it all together. This would be bad for Codea to say the least, so several years ago we began working on a new runtime to solve this. Because of the nature of the old runtime, it's not as easy as just replace all OpenGL calls with equivalent Metal ones. This was a huge change and touches almost every part of the engine. Which is why we decided to start from scratch with 4 (code-named Carbide). This, understandably, has taken some time...
+Codea 4 uses Metal instead of OpenGL ES. Most drawing commands are familiar, but styles, materials, and other settings have changed as described below.
 
 Drawing Commands
 ----------------
@@ -55,9 +55,9 @@ This means that there is no longer a ``craft.model`` type, but instead all funct
 
 The practical upshot of this, is that you can use load meshes directly from a file and draw them to the screen using :lua:meth:`mesh.draw`
 
-Part of the new streamlined API design is that almost all features that were restricted to craft scenes can be used directly in the immediate mode drawing API. We now have lighting which can be used with :lua:meth:`mesh.draw` and materials can be used directly with meshes as well.
+You can now use lights and materials when drawing meshes directly with :lua:meth:`mesh.draw`, as well as in scenes.
 
-Lights are pushed/popped onto a rendering stack using :lua:func:`light.push` and :lua:func:`light.pop` as static functions (not methods). Currently only directional lights are supported in immediate mode:
+Use :lua:func:`light.push` before drawing a mesh and :lua:func:`light.pop` afterwards. Only directional lights are currently supported when drawing meshes directly:
 
 .. code-block:: lua
 
@@ -116,7 +116,7 @@ Physics
 Fluent API (style, matrix, etc...)
 ----------------------------------
 
-In 4.x we've changed style calls to a fluent/chaining syntax, where the namespace ``style`` is used to access all style related commands, where each one returns a reference to the style table so they can be chained one after the other
+In Codea 4, drawing styles use the ``style`` module. You can chain commands together:
 
 So the following code:
 

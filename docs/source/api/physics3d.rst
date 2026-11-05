@@ -1,5 +1,5 @@
-physics3d
-=========
+Physics 3D
+==========
 
 .. lua:module:: physics3d
 

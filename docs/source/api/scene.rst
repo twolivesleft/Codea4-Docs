@@ -1,9 +1,9 @@
-scene
+Scene
 =====
 
 .. lua:class:: scene
 
-   A high level scene structure used that integrates object hierarchy, rendering, input, physics and serialisation to simplify and streamline games and simulations
+   Holds the entities in a 2D or 3D world and handles their drawing, input, and physics. Set ``scene.main`` to draw and update a scene automatically.
 
    .. lua:classattribute:: main: scene
       

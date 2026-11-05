@@ -1,7 +1,9 @@
-device
+:reference-overview: Reading Device Information
+
+Device
 ======
       
-Exposes the device properties.
+Use ``device`` to read the model, operating system, and device name. For screen layout, use ``WIDTH`` and ``HEIGHT``: a window’s size can change.
 
 .. lua:module:: device
 

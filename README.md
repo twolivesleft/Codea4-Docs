@@ -1,14 +1,5 @@
 # Codea Docs
 
-> **Source of truth:** documentation is maintained in the Codea app repository at
-> `Probe/Probe/Data/Carbide`. Make documentation changes there, then sync them
-> into this repository for web publication. This repository is a publishing mirror.
->
-> This snapshot comes from Codea commit `ab381ac86fdf2f1111cd8b476c87fa6c0d0617c1`.
-> Generated app JSON is not committed here; the web workflow builds HTML from
-> `docs/source`. Pushing a branch builds an artifact; merging into `main` deploys
-> the website.
-
 **Codea** is a Lua-based engine and IDE for making games and simulations on iOS and macOS.
 
 The authoritative API reference and usage guides for Codea 4 live in the Codea
@@ -30,6 +21,21 @@ make html
 ```
 
 The output lands in `docs/build/html/`.
+
+## Documentation style
+
+Lead with what someone can draw, build, or change. Use short, direct explanations
+and the legacy reference as a guide to tone. Introduce technical terms when they
+help explain a task: matrices, shader stages, and coordinate systems belong where
+the reader needs them. Avoid implementation labels such as “modern renderer” or
+“fluent API” in general introductions; retain version distinctions in migration
+instructions and where they affect behavior.
+
+Introduce an example by saying what it does and suggesting a useful change to try.
+Keep reference-navigation instructions in the guide to using the reference.
+Preserve code formatting, examples, parameter details, and practical limitations.
+Remove repeated explanations, development history, and empty placeholder sections.
+Editorial notes are instructions for the author, not published content.
 
 ## API Authoring Requirements
 
@@ -427,6 +433,26 @@ The project browser
 ===================
 ```
 
+API document headings are reader-facing section labels: use `Mesh`, `User
+Interface`, or `Objective-C`, while retaining exact lowercase API names inside
+Lua declarations. Name the opening overview independently with document metadata:
+
+```rst
+:reference-overview: Using Meshes
+
+Mesh
+====
+```
+
+Give later overview passages real subsection headings (for example, **Storage
+Patterns**) so they do not repeat the opening overview's name. Regression tests
+reject lowercase section labels and unnamed or same-as-section API overviews.
+When an introduction belongs to a module, the browser shows that content on the
+module page only. Its editorial overview title does not create a duplicate list
+item. Separate reading guides and standalone overviews (such as Using Meshes)
+remain visible. The navigation audit compares rendered overview and module
+content across every chapter to prevent identical pages from returning.
+
 Keep a guide as one readable page, with task-oriented subheadings. Add its path
 in both `index.rst` and the appropriate `chapters_config.json` entry. Using Codea
 is the first chapter, with three guides each in Project Browser, Sharing &
@@ -440,18 +466,18 @@ pages), rather than raw RST headings:
 | Chapter | Sections | Entries |
 | --- | ---: | ---: |
 | Using Codea | 3 | 9 |
-| Graphics | 35 | 304 |
+| Graphics | 34 | 304 |
 | Scenes & Entities | 20 | 219 |
 | Shaders & Meshes | 5 | 93 |
 | Physics 2D | 4 | 133 |
 | Physics 3D | 2 | 61 |
 | Input & Motion | 14 | 263 |
 | Sound | 3 | 34 |
-| Storage & Assets | 8 | 43 |
+| Storage & Assets | 8 | 42 |
 | Vector Math | 13 | 136 |
 | Display & Viewer | 6 | 65 |
 | Animation | 2 | 25 |
-| Lua | 12 | 138 |
+| Lua | 13 | 138 |
 | Objective-C | 2 | 26 |
 
 The former single-page Getting Started chapter is removed; **How Codea Works**

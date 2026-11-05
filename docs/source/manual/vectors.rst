@@ -1,12 +1,12 @@
 Using Vectors
 =============
 
-Vectors represent positions, directions, and velocities in 2D and 3D space. This guide walks through the most common vector patterns in game development, each with a complete runnable example.
+Vectors describe positions, directions, and velocities. Use them to move objects, aim at a target, or measure the distance between points.
 
 Moving Along a Vector
 #####################
 
-The most fundamental vector operation in games is movement: add a velocity vector to a position each frame, and an object moves. Because velocity has both **direction** and **magnitude** (speed), you can fire a bullet toward any point on screen with just a subtraction, a normalization, and a scale.
+Add a velocity vector to a position to move an object. Velocity has both a direction and a speed; the example below uses it to fire bullets toward a touch.
 
 **Shooting bullets toward a touch**
 
@@ -163,7 +163,7 @@ Smooth Following with Lerp
 
 ``:lerp(target, t)`` blends between two vectors. Calling it every frame with a small ``t`` (proportional to ``DeltaTime``) makes an object ease toward its target — the further away it is, the faster it moves, gradually slowing as it closes in.
 
-This pattern appears everywhere: cameras, enemy AI homing, UI elements sliding into place, and health bars draining smoothly.
+Use this for a following camera, a homing enemy, or a smoothly changing health bar.
 
 **Camera that lags behind the player**
 
@@ -210,7 +210,7 @@ The factor ``4 * DeltaTime`` controls lag — increase it to snap the camera clo
 Reflecting Vectors — Bouncing Ball
 ###################################
 
-``:reflect(normal)`` flips a direction vector about a surface normal. It is the correct and efficient way to handle elastic collisions with flat surfaces.
+``:reflect(normal)`` changes a direction as if it had bounced off a surface. Use it to make a ball bounce off walls.
 
 The normal always points *away from* the surface: ``vec2(1, 0)`` for a left wall, ``vec2(0, 1)`` for a floor, and so on.
 
@@ -261,7 +261,7 @@ The same pattern works for angled surfaces — just use the surface's perpendicu
 Proximity Detection
 ###################
 
-``:distance()`` measures the straight-line gap between two positions. Comparing it against a threshold radius is the simplest possible collision or pickup test.
+``:distance()`` measures the distance between two positions. Compare it with a radius to check whether a player is close enough to pick up a coin.
 
 **Collecting coins**
 

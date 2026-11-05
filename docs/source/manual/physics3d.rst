@@ -4,14 +4,14 @@
 3D Physics in Codea
 -------------------
 
-Codea's 3D physics system is built on the Bullet physics engine. It provides rigid body dynamics with support for forces, impulses, joints, and collision events.
+Use 3D physics to make objects fall, roll, and collide in a 3D world. Codea uses the Bullet physics engine to simulate their motion.
 
-3D physics can be used in two ways: standalone with ``physics3d.world``, or integrated with the scene system via entity components.
+Add physics bodies to a scene for automatic simulation, or create a ``physics3d.world`` and advance it yourself.
 
 Creating Physics Worlds
 -----------------------
 
-A standalone physics world manages its own simulation loop:
+Create a world, add bodies, and advance it with ``world:step()``:
 
 .. code-block:: lua
 

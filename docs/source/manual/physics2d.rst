@@ -4,14 +4,14 @@
 2D Physics in Codea
 -------------------
 
-Codea's 2D physics system is built on Box2D. It simulates rigid body dynamics with forces, joints, sensors, and collision callbacks in the XY plane.
+Use 2D physics to make objects fall, bounce, collide, and swing from joints. Codea uses Box2D to simulate their motion.
 
-2D physics can be used standalone with ``physics2d.world``, or integrated with the scene system using entity components.
+Add physics bodies to a scene for automatic simulation, or create a ``physics2d.world`` and advance it yourself.
 
 Creating Physics Worlds
 -----------------------
 
-A standalone 2D physics world lets you manage the simulation and draw using the immediate mode API:
+Create a world, add bodies, and advance it with ``world:step()``:
 
 .. code-block:: lua
 
@@ -103,7 +103,7 @@ React to collisions through entity callbacks:
 Sensors
 -------
 
-Sensors detect overlaps without generating collision responses:
+Sensors detect when objects overlap without pushing them apart. Use them for pickup areas or goal zones:
 
 .. code-block:: lua
 
@@ -137,7 +137,7 @@ Control dynamic bodies with forces and impulses:
 Stepping a physics world yourself
 ---------------------------------
 
-Watch a box and a circle fall onto a static floor, then tap to add boxes. fixedUpdate(dt) steps the simulation at a fixed rate. The orthographic camera maps physics units to screen coordinates, and screenToWorld() maps taps back into those units. world:draw() is a debug visualization; replace it with your own drawing when building a game.
+Tap to drop boxes onto a floor. ``fixedUpdate(dt)`` advances the simulation, and ``screenToWorld()`` converts each tap to a position in the world. ``world:draw()`` shows the collision shapes; replace it with your own drawing for a game.
 
 .. codea-example:: Stepping a physics world yourself
    :project: code/Modern/Physics 01 - Basics.codea
@@ -145,7 +145,7 @@ Watch a box and a circle fall onto a static floor, then tap to add boxes. fixedU
 Combining bodies, joints, and scene callbacks
 ---------------------------------------------
 
-The pink character combines a circular body, hinged legs, and eyes attached with distance joints. Touch either side to drive the legs; drag a body to pull it with the grabber component. collisionBegan2d() changes the expression and plays a sound. scene.main advances this scene automatically, so do not also step its world manually. Grabber.lua is bundled with the project.
+Touch either side to move the character’s hinged legs, or drag a body to pull it. Collisions change its expression and play a sound. ``scene.main`` advances the simulation automatically; you do not need to call ``world:step()``.
 
 .. codea-example:: Combining bodies, joints, and scene callbacks
    :project: code/Modern/Physics 02 - Scene.codea
