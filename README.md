@@ -12,6 +12,13 @@ The November 2026 transition reconciled the web repository through `7d59279`
 into the app, preserving its newer image, input, and keyboard coverage alongside
 the app's guides, runnable examples, and media.
 
+## Published reference
+
+The public reference lives at https://codea.io/reference/. GitHub Pages publishes
+only the `redirect/` directory, including a fallback for old documentation URLs.
+Sphinx still builds the source as a downloadable CI artifact. Documentation is
+authored in the app repository and synced here for review and archival access.
+
 ## Building the Docs
 
 ```bash
