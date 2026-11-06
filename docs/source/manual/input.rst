@@ -4,7 +4,7 @@ Input
 Input in Codea
 --------------
 
-Codea delivers input in two ways. Callbacks such as ``touched(touch)`` and ``keyPressed(press)`` are global functions that Codea calls when something happens. State such as ``key.pressing(key.space)``, ``mouse.x`` and ``gamepad.current`` can be read at any time, so you can also poll input from ``draw()``.
+Respond to touches and key presses with functions such as ``touched(touch)`` and ``keyPressed(press)``. You can also check what is happening in ``draw()``: ``key.pressing(key.space)`` tells you whether Space is held, and ``mouse.x`` gives the pointer position.
 
 Touch and keyboard events are delivered before ``draw()`` runs, so the state you read in ``draw()`` is up to date for that frame.
 
@@ -292,7 +292,7 @@ Each button has ``pressing``, which is true while it is held, ``pressed`` and ``
 Controlling a scene with parameters
 -----------------------------------
 
-Tap **Controls** to rename, move, recolor, or deactivate the sphere. The action control starts a squash-and-stretch tween. Text callbacks update the entity, number callbacks change its position, and color callbacks update its material. The expression field accepts a Lua expression for the label height, such as 1.5 + math.sin(time.elapsed).
+Use **Controls** to rename, move, recolor, or hide the sphere, or make it squash and stretch. Try ``1.5 + math.sin(time.elapsed)`` in the expression field to make its label move up and down.
 
 .. codea-example:: Controlling a scene with parameters
    :project: code/Modern/Basics 04 - Parameters.codea
@@ -300,7 +300,7 @@ Tap **Controls** to rename, move, recolor, or deactivate the sphere. The action 
 Tracking more than one finger
 -----------------------------
 
-The original branch contains a touch callback skeleton; this completed example stores positions by touch ID. Drag several fingers to move their circles independently. Ending or cancelling a touch removes its entry, so interrupted gestures do not leave stuck circles.
+Drag several fingers to move their circles independently. Each position is stored using ``touch.id`` and removed when the touch ends or is cancelled.
 
 .. codea-example:: Tracking more than one finger
    :project: code/Modern/Basics 06 - Touches.codea

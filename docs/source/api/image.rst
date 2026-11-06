@@ -1,5 +1,7 @@
-Images Overview
-===============
+:reference-overview: Using Images
+
+Image
+=====
 
 Load images once in ``setup()`` and draw them with ``sprite()`` each frame.
 The same image can texture a mesh or serve as an offscreen drawing target.
@@ -858,9 +860,9 @@ Slices and Atlases
 
 .. lua:class:: image.slice
 
-   A configurable slice of an image. Use with ``sprite()`` for drawing a portion of an sprite sheet image for more efficient 2D rendering (as opposed to a large number of independ images)
+   A portion of an image that you can draw with ``sprite()``. Use slices to keep several sprites in one image.
 
-   Create slices using an existing image via the ``image.slice`` property. Slices can be configured using a fluent syntax, allowing for rotation, flipping and 9-patch stretching among other things
+   Create a slice with ``image.slice``, then chain commands to rotate, flip, or stretch it. A 9-patch slice lets a button or panel stretch while keeping its corners the same size.
 
    .. code-block:: lua
       :caption: Creating slices

@@ -1,19 +1,53 @@
-mesh
+:reference-overview: Using Meshes
+
+Mesh
 ====
 
-.. code-block:: lua
-   :caption: Creating and drawing a basic mesh
+A mesh draws a shape made of triangles. Use one for custom shapes, pictures mapped onto surfaces, or 3D models. Create it in ``setup()`` and draw it each frame.
+
+**Choose a starting point**
+
+* For a custom 2D shape, assign ``vertices`` and draw with ``mesh:draw()``. Each consecutive group of three vertices makes a triangle.
+* To share vertices between triangles, assign ``positions`` and one-based ``indices``. Keep colors and texture coordinates aligned with the vertex list.
+* For a polygon outline, use ``mesh.triangulate(points)`` to generate indices.
+* For 3D objects, attach ``mesh.box()``, ``mesh.sphere()``, or a loaded mesh to an entity and give it a material. Let the scene's camera handle projection.
+
+**Draw a colored triangle**
+
+This triangle rotates with a different color at each corner. Codea blends the colors across its surface. Open **Controls** to change its size.
+
+.. codea-example:: A Rotating Colored Triangle
+   :project: code/Modern/Mesh 01 - Triangle.codea
+
+**Build a polygon from touches**
+
+Tap points around a simple outline to turn it into a filled mesh. Add points in boundary order without crossing edges. This is useful for drawing tools, irregular buttons, and generated 2D scenery.
+
+.. codea-example:: Build a Polygon from Touches
+   :project: code/Modern/Mesh 02 - Triangulate.codea
+
+**Put a mesh in a 3D scene**
+
+This cube rotates in a lit scene. Try replacing ``mesh.box()`` with ``mesh.sphere()`` or changing its material color.
+
+.. codea-example:: A Rotating 3D Shape
 
    function setup()
-      -- create a sphere mesh
-      msh = mesh.sphere()
+       local scn = scene.default3d()
+       scn.camera.z = -6
+       local shape = scn:entity("shape")
+       shape:add(mesh.box())
+       shape.material = material.lit()
+       shape.material.color = color(100, 220, 200)
+       function shape:update(dt)
+           self.ry = self.ry + dt * 35
+       end
+       scene.main = scn
    end
 
-   function draw()
-      background(64)
-      -- draw the mesh every frame
-      msh:draw()
-   end
+**Common next steps**
+
+Load models with ``mesh.read(assetKey)``. Use ``uvs`` to place a texture on the surface, and a ``material`` or ``shader`` to change its appearance. Submeshes let different parts use different materials. Add a physics body if the object needs to collide or respond to scene hit testing.
 
 .. lua:class:: mesh
 
@@ -37,8 +71,6 @@ mesh
 
    A triangle mesh is drawn using its vertices which are connected using triangles primitives. Every group of consecutive three indices make up an individual triangle
 
-   There are plans to add more primitive types such as ``points``, ``lines``, ``triangle fans`` and ``triangle strips``
-
    *Shaders and Materials*
    
    Both shaders and materials can be applied to a mesh. Setting a shader/material will override any previous shaders/materials on the mesh
@@ -49,9 +81,9 @@ mesh
 
    A mesh consists of one or more sub-meshes, each of which can have a distinct shader/material. The ``submeshIndex`` property can be used to switch between the current active submeshes for mesh editing purposes
 
-   *Bones*
-   
-   ``TODO``
+   *Skinned Models*
+
+   Loaded meshes can expose a hierarchy through ``root`` and animation data through ``animations``. See those entries when working with animated model assets.
 
    .. lua:staticmethod:: mesh([submeshCount])
 

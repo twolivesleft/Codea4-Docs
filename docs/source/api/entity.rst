@@ -1,4 +1,4 @@
-entity
+Entity
 ======
 
 .. lua:class:: entity

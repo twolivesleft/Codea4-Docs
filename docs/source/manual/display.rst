@@ -1,27 +1,23 @@
 Display and Interaction
 =======================
 
-Build the content first, then decide how people control it. Use ``viewer`` for
-presentation and display settings, ``inspector`` for development controls, and
-``ui`` for controls that belong to a scene. Device properties and hinge state
-help adapt the experience to the current screen and pose.
+Use ``viewer`` to change how your project appears on screen, ``inspector`` to
+adjust values while it runs, and ``ui`` to add menus and controls to a scene.
 
-Choose a coordinate system
---------------------------
+Fit the screen
+--------------
 
-Use ``WIDTH`` and ``HEIGHT`` each frame rather than saving launch dimensions.
-Leave room for safe areas when placing controls near screen edges. A scene UI
-can move with its parent entity; screen overlays should use the viewer's current
-size. Test resizing and rotation as well as the initial layout.
+Read ``WIDTH`` and ``HEIGHT`` when positioning your drawings. These values can
+change when the device rotates or the window is resized. Leave space around
+screen edges so controls stay clear of rounded corners and system gestures.
 
-Debug before designing controls
--------------------------------
+Adjust values while running
+---------------------------
 
-Expose values through the inspector while tuning a project. Once the interaction
-works, replace development-only controls with scene UI or input callbacks.
-Keep the state in your project and let controls edit that state; drawing should
-read it rather than recreate controls every frame.
+Use the inspector to try different colors, sizes, or speeds without restarting
+the project. Add objects when you create them; changes in the inspector update
+the same objects your drawing code uses.
 
-Read ``viewer`` for display and presentation APIs, ``ui`` for scene controls,
-``inspector`` for development controls, and ``device`` and ``hinge`` for the
-current hardware context.
+See :doc:`/api/viewer` for display settings, :doc:`/api/ui` for scene controls,
+and :doc:`/api/inspector` for inspecting objects. Use :doc:`/api/device` and
+:doc:`/api/hinge` to read device information and the fold angle on supported devices.

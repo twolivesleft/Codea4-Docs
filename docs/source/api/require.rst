@@ -1,25 +1,27 @@
-require
-=======
+:reference-overview: Importing Lua Code
 
-The require API allows importing Lua files from the specified asset key.
+Importing Code
+==============
 
-Codea Project
--------------
+Use ``require()`` with an asset key to reuse Lua code from another file or project.
+
+Importing a Codea Project
+-------------------------
 
 For Codea project asset keys, all Lua files except Main.lua are imported by default, including the global variables and functions.
 
-`require.option.loadMain` can be used to import Main.lua.
-`require.option.noImport` can be used to prevent importing global variables and functions.
+``require.option.loadMain`` can be used to import Main.lua.
+``require.option.noImport`` can be used to prevent importing global variables and functions.
 
-Single Lua File
----------------
+Importing a Lua File
+--------------------
 
 For single Lua file asset keys, only the specified file is imported, including its global variables and functions by default.
 
-`require.option.noImport` can be used to prevent importing global variables and functions.
+``require.option.noImport`` can be used to prevent importing global variables and functions.
 
-require
--------
+Import Functions
+----------------
 
 .. lua:function:: require(assetKey, ...)
 

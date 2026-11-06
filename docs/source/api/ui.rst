@@ -1,7 +1,9 @@
-ui
-==
+:reference-overview: Building Scene Interfaces
 
-A module for creating basic UI elements in scenes
+User Interface
+==============
+
+Add menus, labels, and controls to a scene with ``ui.canvas``. Use anchors and pivots to position them relative to their container, and set their size in canvas units.
 
 .. lua:module:: ui
 

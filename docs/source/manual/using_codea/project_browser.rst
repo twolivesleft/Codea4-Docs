@@ -23,11 +23,11 @@ Start with an example
 
 Open an example to read its code, or choose **Play** from its menu to run it. To experiment without changing the supplied version, choose **Duplicate**, give the copy a useful name, and save it in your own collection. Built-in examples do not offer all of the same actions as your own projects.
 
-A useful first workflow is to duplicate a drawing example, change one color or number, run it, and compare the result. The programming guide **How Codea Works** is in the **Lua** chapter; it explains setup(), draw(), and input callbacks.
+Try duplicating a drawing example, changing a color, and running it again. See **How Codea Works** in the **Lua** chapter to learn about ``setup()``, ``draw()``, and responding to input.
 
 Finding and organizing work
 ---------------------------
 
-Use **Filter projects** to narrow the grid by project name; clear the field to see everything again. Collections keep related projects together. Collapse collections you are not using, and use **Settings > Projects** to sort projects by **Recent** or **Name**. Moving a collection in the left sidebar changes collection order; it does not set a custom order for individual projects.
+Use **Filter projects** to find a project by name. Keep related projects in collections and collapse the ones you are not using. Choose **Recent** or **Name** in **Settings > Projects** to sort the grid.
 
-The following pages cover creating projects, organizing collections, sharing, storage, and the tools available from this screen. Features marked **Pro** in the app require Codea Pro.
+Features marked **Pro** require Codea Pro.

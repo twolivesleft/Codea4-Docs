@@ -3,23 +3,21 @@
 Reference, Assets, and Shader Lab
 =================================
 
-The left sidebar's **Tools** section opens utilities without requiring you to create a project first.
+Open the left sidebar to find **Reference**, **Assets**, and **Shader Lab**.
 
 Reference
 ---------
 
-Open **Reference** to browse documentation by chapter or search for an API name. The modern reference describes Carbide; legacy API documentation covers older projects. Match the reference to the project's renderer when a familiar function behaves differently.
+Open **Reference** to browse by chapter or search for a function. Choose **Modern** or **Legacy** to match your project.
 
-In the modern reference, guides explain common workflows and API entries describe individual functions and properties. **Show code** expands a long sample. **Run Example** opens a runnable sample in a sheet, with **Controls** when the project defines adjustable parameters. **Done** returns to the documentation.
+Guides explain how to get started; reference entries describe individual functions and properties. Use **Run Example** to try a project and **Controls** to adjust its parameters. **Show code** expands a long sample.
 
 Assets
 ------
 
-Open **Assets** to browse the asset library, including images, sounds, and models. When writing a project, use its asset picker to insert an asset reference into code. A project asset travels with that project; an asset elsewhere in your library may need to be included when sharing or exporting.
+Open **Assets** to browse images, sounds, and models. Use the asset picker while writing code to insert an asset key. Keep assets in your project when you want them included as you share or export it.
 
 Shader Lab
 ----------
 
-Open **Shader Lab** (Codea Pro) to experiment with shader code and see its preview. It is useful for understanding how vertex and fragment shaders change a surface before integrating the result into a project. Choose or edit a shader, inspect the rendered result, and use any reported compiler errors to locate mistakes.
-
-Shader Lab and a project's renderer are distinct contexts. For modern shader builders, materials, and compute examples, also see the **Shaders & Meshes** chapter and run its examples. A successful preview is a starting point; test the shader in the project where you will use it.
+Open **Shader Lab** (Codea Pro) to edit shaders and preview the result. Compiler errors help you find mistakes in the code. See **Shaders & Meshes** for materials, shader builders, and compute examples, and test your shader in the project where you plan to use it.

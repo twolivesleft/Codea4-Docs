@@ -1,17 +1,17 @@
-lua
+Lua
 ===
 
 .. symbol:: lua-api
 
-Overview
---------
+Language Basics
+---------------
 
-For Loops Overview
-~~~~~~~~~~~~~~~~~~
+Iterating with For Loops
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use **for loops** in Lua to iterate over arrays and tables, performing tasks for each element.
+Use a **for loop** to repeat code for a range of numbers or each item in a table.
 
-This example simply iterates i over the values 1 to 10
+This loop prints the numbers 1 to 10:
 
 .. code-block:: lua
 
@@ -21,7 +21,7 @@ This example simply iterates i over the values 1 to 10
    end
    
 
-This example uses the `ipairs` function to sequentially iterate over a table. Note that ipairs only works on tables that have sequential elements beginning at 1.
+Use ``ipairs`` to visit numbered items in order, starting at 1. It stops at the first missing item:
 
 .. code-block:: lua
 
@@ -38,7 +38,7 @@ This example uses the `ipairs` function to sequentially iterate over a table. No
    --  arr[3] = 1
    
 
-This example uses `pairs` to iterate over all the key/value pairs in a table, unlike `ipairs` the keys do not have to be integral values, and can be anything.
+Use ``pairs`` to visit every key and value, including named keys. The order is not guaranteed:
 
 .. code-block:: lua
 
@@ -54,10 +54,10 @@ This example uses `pairs` to iterate over all the key/value pairs in a table, un
    --  tab.x = 3
    --  tab.z = 1
 
-Conditionals Overview
-~~~~~~~~~~~~~~~~~~~~~
+Making Decisions with Conditionals
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use **conditionals** to test for a particular circumstance and then branch your code appropriately. See the examples below.
+Use ``if``, ``elseif``, and ``else`` to choose which code runs based on a condition:
 
 .. code-block:: lua
 
@@ -84,10 +84,10 @@ Use **conditionals** to test for a particular circumstance and then branch your 
      print( "x is "..x.." and y is "..y )
    end
 
-While Loops Overview
-~~~~~~~~~~~~~~~~~~~~
+Repeating with While Loops
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use while and repeat loops to repeat code until a condition is true. While loops are used when you can't predict the number of times a loop will iterate, such as when reading input from a file or testing for a key press.
+A ``while`` loop runs while its condition is true. A ``repeat`` loop runs until its condition becomes true, checking after each repetition. Use them when you do not know in advance how many repetitions you need.
 
 .. code-block:: lua
 
@@ -112,12 +112,12 @@ Use while and repeat loops to repeat code until a condition is true. While loops
      end
    end
 
-Annotations Overview
-~~~~~~~~~~~~~~~~~~~~
+Adding Type Annotations
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Annotations can be used to indicate the type of a variable to Codea, giving you better auto-completion support.
+Type annotations tell Codea what a variable contains so it can offer better code completions.
 
-To write a code annotation, start a comment with three dashes (`---`). Codea will look at the next line of code to try and auto-complete your comment if it is an assignement or function definition. You can also manually write annotations anywhere in your code following the format `--- variableName: variableType`.
+Start a comment with three dashes (``---``). Codea suggests an annotation for the assignment or function on the next line. You can also write ``--- variableName: variableType`` yourself.
 
 When using annotations for Objective-C types, this will add Objective-C properties and methods auto-completion to your variables.
 
@@ -613,8 +613,8 @@ Strings
          string.unpack( fmt, s )
          string.unpack( fmt, s, pos )
 
-Patterns Overview
-~~~~~~~~~~~~~~~~~
+Matching String Patterns
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Patterns in Lua are described by regular strings, which are interpreted as patterns by the
 pattern-matching functions `string.find`, `string.gmatch`, `string.gsub`, and `string.match`.

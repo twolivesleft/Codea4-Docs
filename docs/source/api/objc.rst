@@ -1,7 +1,9 @@
-objc
-====
+:reference-overview: Using Objective-C
 
-Exposes native Objective-C classes.
+Objective-C
+===========
+
+Use Objective-C classes and system features from Lua.
 
 **Native Classes**
 
@@ -795,7 +797,8 @@ switched off for the rest of the session.
         
                 affineTransform = objc.affineTransform(1, 0, 0, 1, 100, 200)
 
-**Frameworks**
+Loading Frameworks
+------------------
 
 Here are some of the frameworks included with the Codea runtime.
 

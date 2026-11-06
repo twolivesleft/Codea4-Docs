@@ -1,7 +1,9 @@
-tween
-=====
+:reference-overview: Animating with Tweens
 
-Procedurally animate values over time, otherwise known as tweening
+Tweening
+========
+
+A tween changes values over time. Use it to move an object, fade a color, or animate a menu.
 
 .. code-block:: lua
    :caption: Tweening a value
@@ -22,13 +24,9 @@ Procedurally animate values over time, otherwise known as tweening
 
    .. lua:staticmethod:: tween(target)
 
-      Create a new tween for a given target
+      Create a tween for a table or object. Call ``to{}`` with the values you want to reach, then chain commands to set the duration, easing, or looping.
 
-      Tweens are constructed using a fluent syntax via the ``to{}`` method
-
-      Each call to ``to{}`` will construct a tween segment, which can be customised (duration, easing function, callbacks, looping, etc...)
-
-      The tween can also be paused, resumed, restarted, cancelled and destroyed
+      Each ``to{}`` adds a new part to the animation. Keep the tween to pause, resume, restart, or cancel it.
 
       :param target: The target to tween
       :type target: table | usertype

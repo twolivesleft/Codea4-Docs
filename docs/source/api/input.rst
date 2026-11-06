@@ -1,8 +1,10 @@
-input
+:reference-overview: Handling Input
+
+Input
 =====
 
 
-Module for accessing input devices such as touches, keyboard, mouse and gamepads
+Read touches, key presses, mouse movement, and gamepad controls.
 
 Touches
 #######
@@ -540,8 +542,8 @@ Functions and constants for reading a hardware keyboard. Key events also call th
 
       .. helptext:: get the text typed by this key press
 
-Constants - Modifiers
-*********************
+Keyboard Modifier Masks
+***********************
 
 These are bit masks for :lua:func:`key.modifiers`, :lua:func:`key.modifiersPressed` and ``press.modifierFlags``. Each one covers both the left and right key. They are not key codes, so use ``key.leftAlt`` and similar with :lua:func:`key.pressing`
 

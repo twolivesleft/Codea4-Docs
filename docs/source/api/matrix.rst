@@ -1,8 +1,10 @@
-matrix
+:reference-overview: Transforming Drawings
+
+Matrix
 ======
 
 
-A module for setting the current matrices used with various graphics functions in Codea
+Move, rotate, and scale drawings, or change the camera view and projection. Use ``matrix.push()`` to save the current matrices and ``matrix.pop()`` to restore them.
 
 .. lua:module:: matrix
 

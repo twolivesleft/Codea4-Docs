@@ -1,7 +1,9 @@
-viewer
+:reference-overview: Configuring the Viewer
+
+Viewer
 ======
 
-Controls the Codea viewer and exposes display mode, runtime, presentation, and screen layout state.
+Control the window where your project runs, including its display mode and layout.
 
 .. lua:module:: viewer
 

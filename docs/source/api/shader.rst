@@ -1,8 +1,12 @@
-shader
-======
+:reference-overview: Writing Shaders
+
+Shaders
+========
+
+A shader controls how geometry is transformed and how pixels are colored. Start with a material builder for surface effects; use vertex and fragment shader source when you need direct control over both stages. The checkerboard below uses texture coordinates to alternate two colors across a sprite.
 
 .. code-block:: lua
-   :caption: Checkers Shader :3
+   :caption: Drawing a Checkerboard Shader
 
    function setup()
       solid = shader([[
@@ -128,7 +132,7 @@ shader
 
    .. lua:class:: builder
 
-      Shader Builder is a fluent syntax built on top of the surface shaders system for quick and convenient shader experimentation
+      Build a surface shader by chaining commands to choose lighting, define properties, and add shader code.
 
       .. code-block:: lua
 

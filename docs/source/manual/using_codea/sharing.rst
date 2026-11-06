@@ -13,7 +13,7 @@ Share a playable link
 3. Choose **Create Link** and wait for the upload to finish.
 4. Choose **Share Link** to send or copy the result using the system share sheet.
 
-A playable link lets someone play the project on an iOS device. It is separate from iCloud collaboration. Anyone with the link can play the uploaded project, so share a project you intend to distribute. Links expire 30 days after creation or an update.
+Anyone with the link can play your uploaded project on an iOS device. Links expire 30 days after creation or an update.
 
 After changing the project, return to this screen and choose **Update Shared Project…** to publish the latest version at the same link. Local edits do not automatically update the uploaded version.
 
@@ -30,11 +30,11 @@ Export an Xcode project
 3. Save or transfer the generated archive to your Mac, then extract and open the generated project in Xcode.
 4. Configure the app's signing and destination in Xcode, then build and test it there.
 
-Export produces a development project; it does not submit an app to the App Store. Xcode export requires Codea Pro.
+Xcode export requires Codea Pro. Build and test the exported app before submitting it to the App Store.
 
 Export an Android project
 -------------------------
 
 For a **modern** project, choose **Export > Android Project**. This option is marked **Beta** and requires Codea Pro; it is not offered for the legacy renderer. Complete the export settings, save the archive, then extract it on your computer and open the generated Gradle project in Android Studio.
 
-Test the exported app on its target platform, especially when using platform-specific features. Exporting the project and publishing it to an app store are separate steps.
+Test the exported app on Android, especially any platform-specific features.

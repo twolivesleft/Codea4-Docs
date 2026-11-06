@@ -1,12 +1,12 @@
-pick
-====
+Asset Picking
+=============
 
 Picking Assets
 ##############
 
-The pick API allows bringing up the native document (or photo) picker to pick assets from the files or photo library.
+Let the user choose a file or photo with the system picker.
 
-By default, documents are always copied to your project's assets unless pick.option.reference is used.
+Documents are copied into your project by default. Use ``pick.option.reference`` to keep a reference to the original file instead.
 
 Images are always copied to the project's assets and cannot be loaded as references.
 
@@ -288,8 +288,8 @@ Image Playground needs a device with Apple Intelligence turned on. Check ``pick.
 
     .. helptext:: whether Image Playground edits or replaces the source
 
-Concepts
-########
+Describing Generated Images
+###########################
 
 A concept can be a short string, a longer piece of text, or an image.
 

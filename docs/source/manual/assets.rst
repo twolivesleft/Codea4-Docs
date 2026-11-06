@@ -4,7 +4,7 @@ Assets
 Assets in Codea
 ---------------
 
-Assets are files — images, sounds, 3D models, text, JSON — stored in your project or in Codea's built-in libraries. You access them through *asset keys*, which are Lua values that represent a path within a specific asset library.
+Assets are files such as images, sounds, and 3D models. Use an *asset key* to tell Codea which file to load:
 
 .. code-block:: lua
 
@@ -17,7 +17,7 @@ Assets are files — images, sounds, 3D models, text, JSON — stored in your pr
 Asset Keys
 ----------
 
-An asset key is a pointer to a file in a specific asset library. Asset keys look like table fields but are resolved by Codea into full file paths at runtime.
+An asset key identifies a file or folder. For example, ``asset.myImage`` refers to an image in your project.
 
 The main asset libraries are:
 
@@ -98,7 +98,7 @@ Remove bookmarks when they're no longer needed with ``assets.removeBookmark("myC
 Drawing many sprites from one image
 -----------------------------------
 
-Create the image once in setup(), then draw it repeatedly at animated positions. This self-contained version generates its ring image with context.push()/pop(), so it works without an installed asset pack. Replace the generated image with image.read(asset.myImage) in your own project. A width without a height preserves the image aspect ratio.
+Create a ring image once in ``setup()``, then draw it in many moving positions. Try using ``image.read(asset.myImage)`` to draw your own picture instead. Passing a width without a height keeps the image proportions.
 
 .. codea-example:: Drawing many sprites from one image
    :project: code/Modern/Basics 05 - Sprites.codea

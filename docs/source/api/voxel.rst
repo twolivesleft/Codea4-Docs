@@ -1,5 +1,7 @@
-voxel
-=====
+:reference-overview: Building Voxel Worlds
+
+Voxels
+======
 
 Build worlds out of blocks. A voxel world is a component, add it to an entity and fill it with blocks such as grass, stone, water and glass
 

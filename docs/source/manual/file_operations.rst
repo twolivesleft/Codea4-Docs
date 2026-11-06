@@ -4,14 +4,12 @@ File Operations
 Working with Files in Codea
 ----------------------------
 
-Codea provides a comprehensive file operations API through the :lua:mod:`file` module that allows you to manage assets, create directories, and organize your project files. Unlike traditional file APIs, Codea's file operations are designed around the asset system and return status values rather than throwing exceptions.
+Use :lua:mod:`file` to copy, move, rename, and delete files, or create folders. Give each operation an asset key for the file or folder you want to work with.
 
-All file operations return two values: a success boolean and an error message string. On success, operations return ``true, nil``. On failure, they return ``false, "error message"``. This pattern allows for robust error handling and makes it easy to build reliable applications.
+These operations return ``true, nil`` on success, or ``false`` and an error message on failure.
 
 Basic File Operations
 ---------------------
-
-The file module provides five core operations: copying, moving, removing, creating directories, and renaming files. These operations work with both individual files and entire folders.
 
 **Copying Files**
 
@@ -67,10 +65,10 @@ The :lua:func:`file.remove` function deletes both files and directories:
    -- Remove a directory and all its contents
    file.remove(asset.documents .. "TempFolder")
 
-Asset System Integration
-------------------------
+Choosing a location
+-------------------
 
-Codea's file operations are tightly integrated with the asset system, allowing you to work with files across different asset locations:
+Use these asset keys to choose where to read or write files:
 
 - **asset** - Your current project files
 - **asset.documents** - User documents folder
@@ -86,14 +84,10 @@ Codea's file operations are tightly integrated with the asset system, allowing y
    file.mkdir(asset .. "Images")
    file.move(asset .. "Heart.png", asset .. "Images/Heart.png")
 
-The asset system automatically handles path resolution and ensures operations work correctly across different storage locations.
+Checking for errors
+-------------------
 
-Error Handling Patterns
-------------------------
-
-Robust applications should always check the return values from file operations. Here are some common patterns:
-
-**Simple Error Checking**
+Check the result before using a file you have copied or a folder you have created:
 
 .. code-block:: lua
 
@@ -104,23 +98,7 @@ Robust applications should always check the return values from file operations. 
    end
    -- Continue with success case
 
-**Helper Function Pattern**
-
-.. code-block:: lua
-
-   local function safeFileOp(operation, ...)
-       local ok, err = operation(...)
-       if not ok then
-           error("File operation failed: " .. tostring(err))
-       end
-       return true
-   end
-
-   -- Usage
-   safeFileOp(file.copy, asset.Main, asset.documents .. "Backup.lua")
-   safeFileOp(file.mkdir, asset.documents .. "NewFolder")
-
-**Conditional Operations**
+Use ``file.exists()`` when an operation depends on whether a file or folder is already there:
 
 .. code-block:: lua
 
@@ -140,7 +118,7 @@ Robust applications should always check the return values from file operations. 
 Working with Folders
 ---------------------
 
-File operations can work with entire folders, making it easy to organize and restructure your project assets:
+Copy or move a folder to include all its files and subfolders:
 
 .. code-block:: lua
 
@@ -158,14 +136,8 @@ File operations can work with entire folders, making it easy to organize and res
        end
    end
 
-When copying folders, the entire directory structure is preserved, including all subdirectories and files.
-
-Security and Limitations
--------------------------
-
-The file system has built-in protections to prevent accidental damage to system files:
-
-**Protected Locations**
+Protected locations
+-------------------
 
 - Top-level asset packs (``asset``, ``asset.builtin``, ``asset.documents``, ``asset.icloud``) cannot be removed
 - Built-in assets are read-only and cannot be modified
@@ -178,12 +150,7 @@ The file system has built-in protections to prevent accidental damage to system 
 - ``"Cannot remove built-in or top-level asset packs."`` - Protected location
 - ``"Parent folder does not exist."`` - Directory structure issue
 
-**Best Practices**
-
-- Always check if files exist before operating on them with :lua:func:`file.exists`
-- Use descriptive error messages when operations fail
-- Clean up temporary files and directories when done
-- Test file operations during development to ensure they work as expected
+Remove temporary files when you have finished with them:
 
 .. code-block:: lua
 
@@ -216,4 +183,4 @@ The file system has built-in protections to prevent accidental damage to system 
        return true
    end
 
-See :doc:`/api/file` for the complete API reference with detailed function descriptions and parameters.
+See :doc:`/api/file` for the complete reference.

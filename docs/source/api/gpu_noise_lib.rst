@@ -1,9 +1,11 @@
+:reference-overview: Using GPU Noise
+
 GPU Noise Library
 =================
 
-Codea includes the GPU noise library written by Brian Sharpe (http://briansharpe.wordpress.com), all credit goes to the original author
+Use Brian Sharpe’s GPU noise library (http://briansharpe.wordpress.com) to create patterns and natural-looking variation in shaders.
 
-The library can be inclued via ``#include <codea/noise/noise.glsl>`` within any GLSL source
+Include it in GLSL with ``#include <codea/noise/noise.glsl>``.
 
 An example using this library can be found `here`_
 
@@ -28,8 +30,8 @@ An example using this library can be found `here`_
     //	https://github.com/BrianSharpe
     //
 
-Value Noises
-------------
+Value Noise
+-----------
 
 .. image:: https://briansharpe.files.wordpress.com/2011/11/valuesample1.jpg
     :width: 200
@@ -130,8 +132,8 @@ Value Noises
     //
     float Cubist3D( vec3 P, vec2 range_clamp )	// range_clamp.x = low, range_clamp.y = 1.0/(high-low).  suggest value low=-2.0  high=1.0
 
-Cellular Noises
----------------
+Cellular Noise
+--------------
 
 .. image:: https://briansharpe.files.wordpress.com/2011/12/cellularsample.jpg
     :width: 200
@@ -213,8 +215,8 @@ Cellular Noises
                     float max_dimness,					//	the maximal dimness of a star ( 0.0->1.0   0.0 = all stars bright,  1.0 = maximum variation )
                     float two_over_radius )				//	fixed radius for the stars.  radius range is 0.0->1.0  shader requires 2.0/radius as input.
 
-Simplex Noises
---------------
+Simplex Noise
+-------------
 
 .. image:: https://briansharpe.files.wordpress.com/2012/01/simplexperlinsample.jpg
     :width: 200
@@ -293,8 +295,8 @@ Simplex Noises
                                 float radius, 		//	radius range is 0.0->1.0
                                 float max_dimness )	//	the maximal dimness of a dot ( 0.0->1.0   0.0 = all dots bright,  1.0 = maximum variation )
 
-Hermite Noises
---------------
+Hermite Noise
+-------------
 
 .. image:: https://briansharpe.files.wordpress.com/2012/01/hermitesample.jpg
     :width: 200
@@ -343,7 +345,7 @@ Hermite Noises
                         float normalization_val )	//	normalization_val = ( 1.0 / ( MAXVALUE + MAXGRADIENT * 0.3125 * 3.0 ) )    
 
 
-Derivative Noises
+Noise Derivatives
 -----------------
 
 .. code-block:: glsl

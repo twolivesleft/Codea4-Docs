@@ -47,6 +47,11 @@ class LuaJSONBuilder(Builder):
                     entry['group'] = self.env.metadata.get(docname, {}).get('reference-section', 'Guides')
                 combined.append(entry)
             data = combined
+        else:
+            overview_title = self.env.metadata.get(docname, {}).get('reference-overview')
+            for entry in data:
+                if entry['kind'] == 'overview' and not entry.get('name') and overview_title:
+                    entry['name'] = overview_title
         self.prepare_resources(data, docname)
         path = os.path.join(self.outdir, f"{docname}.json")
         print(f"Writing to path {path}")

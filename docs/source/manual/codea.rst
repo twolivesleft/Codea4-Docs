@@ -1,15 +1,9 @@
 How Codea Works
 ===============
 
-Codea is primarily designed as a realtime graphical engine that uses callbacks to draw and update the screen.
+Codea calls functions in your project to draw the screen and respond to touches, keys, and other events.
 
-In this reference, **Run Example** opens a complete project in a dismissible viewer.
-Use **Show code** to inspect longer examples. Projects with adjustable parameters
-show a **Controls** button; changes there update the running project. Close the
-controls to return to the canvas, then use **Done** to return to the documentation.
-
-When you create a project you are given a basic template in ``Main.lua`` that
-contains some global functions:
+A new project starts with a ``Main.lua`` tab containing these functions:
 
 .. code-block:: lua
 
@@ -34,27 +28,22 @@ contains some global functions:
       end
    end
 
-Each of these functions are called by Codea in response to specific events, such as
-``setup()`` being called when the project begins running, while ``draw()`` is called
-every time the screen is about to be redrawn
-
-The ``touched(touch)`` callback is called in reponse to the screen being touched
-(on iOS) or a mouse press (on MacOS)
+Press Play to run the project. Codea calls ``setup()`` once, then ``draw()`` each frame. It calls ``touched(touch)`` as touches begin, move, and end, including mouse clicks and drags.
 
 setup()
 -------
 
-This function is called exactly once, right before the first frame is about to be drawn and is an ideal spot to put your initialisation code, setting everything up for when ``draw()`` will be called!
+Use ``setup()`` to load images, create objects, and set starting values before the first frame.
 
 draw()
 ------
 
-This is the meat and potatoes of any Codea app, where you will do the majority of your update and drawing logic
+Use ``draw()`` to draw the screen and move objects each frame.
 
 touched(touch)
 --------------
 
-This is your primary source of interaction with users
+Use ``touched(touch)`` to respond to taps and drags. The ``touch`` value tells you the position and whether the touch began, moved, or ended.
 
 Additional Events
 -----------------
@@ -62,12 +51,12 @@ Additional Events
 update(dt)
 ##########
 
-As an alternative to doing your update logic in ``draw()`` you can also use ``update(dt)``, where ``dt`` is the amount of delta time since last frame (also available in time.delta)
+Use ``update(dt)`` to keep movement and game logic separate from drawing. ``dt`` is the time in seconds since the last frame, also available as ``time.delta``.
 
 fixedUpdate(dt)
 ###############
 
-A special update function that is called a fixed number of times per second regardless of the current framerate, ideal for physics calculations and simulations that require a stable stepping rate. The delta time value passed in is the same as :lua:`time.fixedDelta`
+Use ``fixedUpdate(dt)`` for physics or other simulations that need evenly spaced time steps. Codea calls it a fixed number of times per second, independently of drawing. ``dt`` is the same as :lua:`time.fixedDelta`.
 
 keyPressed(keyPress)
 ####################
@@ -123,7 +112,7 @@ Called when a mouse or trackpad pointer moves over the viewer with no button hel
 Learning Lua by changing a program
 ----------------------------------
 
-Start with setup(), which runs once, and draw(), which runs every frame. The commented project walks through strings, local and global variables, nil, and if/elseif/else. Its print output appears in Codea's console; this viewer also displays a greeting on the canvas. Try changing foo to choose a different branch.
+This project introduces strings, variables, ``nil``, and ``if/elseif/else``. Read the comments and watch the console output. Try changing ``foo`` to choose a different branch.
 
 .. codea-example:: Learning Lua by changing a program
    :project: code/Modern/Basics 01 - Hello Lua.codea

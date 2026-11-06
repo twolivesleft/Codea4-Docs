@@ -1,11 +1,9 @@
 Shaders and Materials
 =====================
 
-Shaders are programs that run on the GPU. Use a material shader to change how a surface looks, or a compute shader to update an image or many particle positions in parallel. The projects below move from reusable material chunks to complete GPU simulations.
+Shaders run on the graphics processor (GPU). Use them to change a surface’s color, texture, or shape, or to update many pixels or particles at once.
 
-Codea shaders are written in GLSL (GL shading language)
-
-In Codea shaders can be used in various places to customise rendering including meshes, entities, sprites, backgrounds and post processing effects
+Codea shaders are written in GLSL. You can use them with meshes, sprites, backgrounds, and camera effects.
 
 .. code-block:: lua
 
@@ -21,29 +19,27 @@ In Codea shaders can be used in various places to customise rendering including 
 
    background(myShader)
 
-Start with shader.builder() for materials. Use an explicit shader definition when you need a compute pass or control over vertex and fragment stages.
+Start with ``shader.builder()`` to create a material. Use a shader definition when you need a compute shader or direct control over vertex and fragment shaders.
 
 Graphics Pipeline
 -----------------
 
-A mesh supplies vertices and indices. The vertex shader transforms each vertex, then the GPU assembles triangles and interpolates values across them. The fragment shader produces a color for each covered pixel. Materials combine these shader programs with values such as colors and textures. Compute shaders run separately and can prepare images or buffers that later drawing commands consume.
+Drawing a mesh has two main stages: a vertex shader positions its vertices, and a fragment shader colors the pixels covered by its triangles.
 
 Vertex Shaders
 --------------
 
-Each vertex within a mesh is passed to the GPU via the vertex processing stage, where various calculations can be performed to control the final appearance
+A vertex shader sets each vertex’s position on screen. Change it to bend grass, ripple a surface, or move particles. It can also pass values such as colors and texture coordinates to the fragment shader.
 
 Fragment Shaders
 ----------------
 
-After the vertex processing stage, the fragment processing stage begins. Primitives assembled from vertices, such as triangles, are drawn on to the framebuffer in a process known as rasterization.
-
-The fragment shader is able to calculate the final output of this stage (typically the color and/or depth of the fragment)
+The GPU fills in the triangles between vertices and blends the values passed from their corners. A fragment shader uses these values to calculate each covered pixel’s color and, optionally, its depth.
 
 Compute Shaders
 ---------------
 
-Compute shaders bypass the normal rasterisation stage, useful for more general purpose computations
+Compute shaders update data without drawing triangles. Use them for image effects, particle motion, or simulations.
 
 More info: https://www.khronos.org/opengl/wiki/Compute_Shader
 
@@ -71,25 +67,25 @@ Workgroups
 Dispatch
 """"""""
 
-Call shader:workgroupSize() to read the local thread dimensions, then divide your image dimensions or buffer length by those sizes and round up. shader:dispatch() takes the number of workgroups. Test gl_GlobalInvocationID against the actual data dimensions inside the shader so extra invocations do not access past the end.
+``shader:dispatch()`` runs a given number of workgroups. Divide the image dimensions or buffer length by ``shader:workgroupSize()`` and round up. Check ``gl_GlobalInvocationID`` against the data size in your shader, since the last group may contain extra threads.
 
 Image Properties
 ^^^^^^^^^^^^^^^^
 
-Declare an image2D property and bind an image with shader:setImage(). Use image.pixel(width, height, ...) for a simulation grid: image() uses display-scaled dimensions, whereas compute invocation IDs address physical texels. The GLSL layout format must match the image format, such as rgba16f. Use readonly for a previous state and writeonly for a next state. A simulation that reads neighbors needs two images: swap them after each dispatch, as in Reaction Diffusion below.
+Declare an ``image2D`` property and attach an image with ``shader:setImage()``. Use ``image.pixel(width, height, ...)`` for a simulation grid so its size is in pixels rather than display points. The GLSL format, such as ``rgba16f``, must match the image.
+
+When a simulation reads neighboring pixels, read from one image and write to another, then swap them. Mark them ``readonly`` and ``writeonly`` in the shader. The reaction-diffusion example below shows this.
 
 Buffers
 ^^^^^^^
 
-Also known as SSBOs (Shader Storage Buffer Objects)
-
-A shader.buffer holds structured data shared by compute and drawing shaders. Define a matching bufferLayout on the Lua side and a struct in GLSL. The Particles project stores one vec4 per instance: position in xy and velocity in zw. Its compute shader updates the data and its vertex shader reads it using gl_InstanceID.
+A ``shader.buffer`` holds data that compute and drawing shaders can share. Define a matching ``bufferLayout`` in Lua and ``struct`` in GLSL. The particle example stores position in ``xy`` and velocity in ``zw`` of a ``vec4``. Its compute shader updates these values; its vertex shader reads them using ``gl_InstanceID``.
 
 
 Shader Definitions
 ------------------
 
-Shader definitions are Lua tables that define all the settings of a shader. These can be used for fine-grained control over shader behaviour
+A shader definition is a Lua table containing its code and settings.
 
 Anatomy of a Shader Definition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,7 +135,7 @@ Each property is a Lua table with the following form:
 
 ``{<name>, <type>, <value>, ...}``
 
-``<name>`` a string identifier for the property, this should be treated like a lua identifier (starts with an underscore or letter, followed by a sequence of alphanumeric characters and underscores and no spaces or funny symbols)
+``<name>`` names the property. Start with a letter or underscore, followed by letters, digits, or underscores.
 
 The property name directly links to a shader uniform in one or more passes
 
@@ -175,41 +171,35 @@ Additional property settings are available, such as
 Options
 """""""
 
-Options let you conditionally enable/disable chunks of shader code via the shader macro preprocessor (i.e. ``#if`` and ``#ifdef``). This is useful when creating optional features and uber shaders where expensive operations can be skipped if not currently in use
+Options turn parts of a shader on or off using ``#if`` and ``#ifdef``. Use them for features that you want to skip when they are not needed.
 
 ``<name> = {<default>, ...}``
 
-Options can be linked to specific properties or based complex conditions
-
-A mesh supplies vertices and indices. The vertex shader transforms each vertex, then the GPU assembles triangles and interpolates values across them. The fragment shader produces a color for each covered pixel. Materials combine these shader programs with values such as colors and textures. Compute shaders run separately and can prepare images or buffers that later drawing commands consume.
+Options can also depend on properties or conditions.
 
 Passes
 """"""
 
-A mesh supplies vertices and indices. The vertex shader transforms each vertex, then the GPU assembles triangles and interpolates values across them. The fragment shader produces a color for each covered pixel. Materials combine these shader programs with values such as colors and textures. Compute shaders run separately and can prepare images or buffers that later drawing commands consume.
+Each pass contains shader code and its drawing settings. Use ``pass`` for a single pass or ``passes`` for a list of passes.
 
 Materials
 ---------
 
-Shaders can be re-used in multiple meshes/entities but will retain their current state globally. Setting properties on a shader in one place will effect rendering on all objects they are attached to
-
-This is where materials come in. Placing a shader within a material isntance and passing that to various objects will allow for the same shader to be used with different state (properties) as many times are needed
+Objects that share a shader also share its property values. Give each object a separate material to use the same shader with different colors, textures, or other settings.
 
 The Standard Shader
 -------------------
 
-For convenience there is a built-in uber-shader, called the standard shader which contains a large number of shading options
+Use the built-in standard shader for common surface effects, including lighting and textures.
 
 For more details see: :lua:func:`material.unlit` and :lua:func:`material.lit`
 
 Surface Shaders
 ^^^^^^^^^^^^^^^
 
-Surface shaders provide support for advanced shading models, where only the surface attributes need to be specified
+Surface shaders let you describe a surface’s color, roughness, and other properties while Codea handles the lighting. Set ``shadingModel`` in the shader definition, then provide ``vertex`` and ``material`` functions to change its shape and appearance.
 
-Our shading models are derived from Google's amazing Filament: https://google.github.io/filament/Materials.html
-
-Surface shaders are created using a shader definition with a ``shadingModel`` set. A vertex and material function can then be spefified to customise the surface appearance
+The shading models are based on Google’s Filament: https://google.github.io/filament/Materials.html
 
 .. code-block:: lua
 
@@ -346,13 +336,10 @@ Some are only available in specific lighting models and expect values to be with
      - Lit
      -
 
-Shade Pro Integration
-^^^^^^^^^^^^^^^^^^^^^
-
-A mesh supplies vertices and indices. The vertex shader transforms each vertex, then the GPU assembles triangles and interpolates values across them. The fragment shader produces a color for each covered pixel. Materials combine these shader programs with values such as colors and textures. Compute shaders run separately and can prepare images or buffers that later drawing commands consume.
-
 Shader Builder
 ^^^^^^^^^^^^^^
+
+Use ``shader.builder()`` to assemble a shader by chaining commands. Package reusable pieces with ``shader.chunk()`` and combine them with ``add()``. See :doc:`/api/shader` for the builder commands and the example below for shader chunks.
 
 Simulating a grid with compute shaders
 --------------------------------------
@@ -365,7 +352,7 @@ Drag across the grid to paint. The **Controls** panel selects the material, brus
 Composing reusable shader chunks
 --------------------------------
 
-Orbit the sphere to inspect its raymarched marble and animated rim highlight. The ground combines a checkerboard, normal map, and moving cloud shadow. shader.chunk() packages reusable declarations and GLSL; shader.builder():add() combines them into a material. Start with the checkerboard chunk before experimenting with the more involved marble function.
+Drag to orbit a marble sphere with a glowing rim. The ground combines a checkerboard, a normal map, and a moving cloud shadow. Each effect is a reusable shader chunk; try changing the checkerboard colors first.
 
 .. codea-example:: Composing reusable shader chunks
    :project: code/Modern/Shader 07 - Materials.codea
@@ -373,7 +360,7 @@ Orbit the sphere to inspect its raymarched marble and animated rim highlight. Th
 Updating neighboring pixels safely
 ----------------------------------
 
-Touch the image to seed a reaction-diffusion pattern. Each compute dispatch reads the previous texture and writes a separate next texture, then swaps them. Neighbor reads clamp to the image boundary. The two-tab project separates input and display from the simulation class. Try changing feed and kill rates in ReactionDiffusion.lua to explore different patterns.
+Touch to start a reaction-diffusion pattern. Each step reads one image and writes to another, then swaps them, so neighboring pixels are read before they change. Try changing the feed and kill rates in ``ReactionDiffusion.lua`` to explore different patterns.
 
 .. codea-example:: Updating neighboring pixels safely
    :project: code/Modern/Shader 08 - Reaction Diffusion.codea
@@ -385,7 +372,7 @@ Touch the image to seed a reaction-diffusion pattern. Each compute dispatch read
 Sharing a GPU buffer between compute and drawing
 ------------------------------------------------
 
-Ten thousand particles share one instance buffer. A compute shader changes position and velocity, then an instanced mesh reads that same buffer to draw every particle. Touch to move the selected attractor and use the parameters to adjust its range and strength. The compute shader checks instanceCount because the last workgroup can contain unused threads.
+Touch to attract ten thousand particles. A compute shader updates their positions and velocities in a shared buffer, which a mesh reads to draw them. Adjust the attraction range and strength in **Controls**. The shader checks ``instanceCount`` to skip unused threads in the last workgroup.
 
 .. codea-example:: Sharing a GPU buffer between compute and drawing
    :project: code/Modern/Shader 09 - Particles.codea
@@ -393,7 +380,7 @@ Ten thousand particles share one instance buffer. A compute shader changes posit
 Animating instanced grass on terrain
 ------------------------------------
 
-Orbit the terrain and use the parameters to change wind, blade shape, and colors. Terrain.lua creates a height map; Grass.lua uses it to place instances and bends their vertices using wind noise. Increase density gradually: doubling density creates four times as many blades. The project bundles the grass mesh and textures, and does not require the camera sensor.
+Drag to orbit the terrain and use **Controls** to change the wind, grass shape, and colors. ``Terrain.lua`` creates a height map; ``Grass.lua`` places and bends the grass. Increase density gradually: doubling it creates four times as many blades.
 
 .. codea-example:: Animating instanced grass on terrain
    :project: code/Modern/Shader 10 - Grass.codea

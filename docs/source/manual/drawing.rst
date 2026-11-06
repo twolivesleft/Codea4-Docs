@@ -4,24 +4,21 @@ Drawing
 Drawing in Codea
 ----------------
 
-Codea comes with an immediate mode drawing API that forms the basis of
-rendering both 2D and 3D graphics
+Codea can draw 2D and 3D graphics.
 
-The user-defined global :lua:`draw()` function is called once per frame to
-update the contents of the screen
+The :lua:`draw()` function is called once per frame to draw the contents of the screen.
 
-The :lua:`background(r,g,b,a)` function is used to clear the background with a given color. When this isn't called the contents of the background will stay the same as the previous frame
+The :lua:`background(r,g,b,a)` function clears the background with a given color. You typically call this once at the start of ``draw()``. When it isn't called, the contents of the background stay the same as the previous frame.
 
-Codea uses an hybrid-immediate mode drawing system, where various built-in functions can be used to paint objects to the screen when called, such as :lua:`line()`, :lua:`sprite()` and :lua:`rect()`
+Draw other elements with functions such as :lua:`line()`, :lua:`sprite()` and :lua:`rect()`.
 
-These functions use the current render state, defined by the current style and matrix in use, which effects things like fill color and stroke color / width
+These functions use the current drawing style, which affects things like fill color, stroke color, and stroke width.
 
 Try it: an animated circle
 --------------------------
 
-This complete project draws using the modern style API. Run it, then close the
-example to return to the reference. The circle follows elapsed time; its size
-and position adapt to the current view.
+This project draws a circle that moves back and forth across the screen. We use
+elapsed time to calculate the position of the circle.
 
 .. codea-example:: Animated circle
 
@@ -45,9 +42,9 @@ and position adapt to the current view.
 Style
 -----
 
-The style module contains functions that set the current drawing state
+The ``style`` module contains functions that set the drawing state.
 
-This module uses a fluent syntax, so any call that does not return a value, will instead return the style module itself, allowing multiple style commands to be chained together:
+You can chain multiple style commands together:
 
 .. code-block:: lua
 
@@ -56,9 +53,9 @@ This module uses a fluent syntax, so any call that does not return a value, will
    ellipse(WIDTH/2, HEIGHT/2, 100, 100)
    style.pop()
 
-See :doc:`/api/style` for a complete reference of all functionality
+See :doc:`Style </api/style>` for the complete reference.
 
-Anywhere ``<color>`` is used as a parameter, the following forms can be used:
+Anywhere a color is used as a parameter, you can use the following forms:
 
 .. code-block:: lua
 
@@ -71,11 +68,9 @@ Anywhere ``<color>`` is used as a parameter, the following forms can be used:
 Matrix
 ------
 
-The matrix module is used to manipulate the current immediate mode transform, view and projection matrices, which can be thought of as object pose, camera pose and perspective
+Use ``matrix`` to move, rotate, and scale your drawings. Its view and projection matrices control where the camera looks and how a 3D scene appears on screen. You can also use a :lua:class:`camera` to manage these settings.
 
-By combining different matrix commands, any 2D or 3D drawing setup can be achieved, and there is also the :lua:class:`camera` class which can be used on its own or part of a :lua:class:`scene` for a higher level abstraction
-
-The matrix module also uses a fluent syntax, so calls can be chained:
+Matrix commands can be chained too. Use ``push()`` to save the current matrices and ``pop()`` to restore them after drawing:
 
 .. code-block:: lua
 
@@ -139,7 +134,7 @@ See :doc:`/api/graphics` for full documentation
 Vector Drawing
 --------------
 
-A set of 2D drawing functions are available in the global namespace. They all respect the current :doc:`/api/style` settings:
+Draw lines and shapes using the current :doc:`/api/style` settings:
 
 .. code-block:: lua
 
@@ -219,7 +214,7 @@ To center your text at a point, set both horizontal and vertical alignment:
    style.textAlign(CENTER | MIDDLE)
    text("Level complete!\nTap to continue", WIDTH/2, HEIGHT/2)
 
-You can use ``\n`` to start a new line. For a longer message, set the wrap width with `textWrapWidth` to wrap the text:
+Use ``\n`` to start a new line. For a longer message, pass a width to ``text()`` to wrap it:
 
 .. code-block:: lua
 
@@ -376,7 +371,7 @@ The context module lets you draw into an image instead of the screen, using :lua
 Meshes
 ------
 
-The :lua:class:`mesh` class is the primary way to draw custom 3D geometry. You can either use the built-in mesh generators or build geometry manually.
+Use a :lua:class:`mesh` to draw 3D objects or custom 2D shapes. Start with a built-in shape or define your own vertices.
 
 **Built-in mesh generators**
 
@@ -408,13 +403,13 @@ The :lua:class:`mesh` class is the primary way to draw custom 3D geometry. You c
        matrix.pop()
    end
 
-**Building a mesh manually — use** ``vertices`` **not** ``positions``
+**Building a mesh from vertices**
 
-When setting mesh geometry by hand, use the :lua:attr:`mesh.vertices` property. It sets positions **and** automatically creates a sequential index buffer so the mesh draws immediately. :lua:attr:`mesh.positions` only updates positions without touching the index buffer — useful for deforming an existing mesh, but on a fresh empty mesh it will leave the indices empty and nothing will be drawn:
+Set :lua:attr:`mesh.vertices` to draw a triangle for each group of three vertices. This also creates the indices that connect them. Use :lua:attr:`mesh.positions` when changing an existing shape while keeping its triangle connections:
 
 .. code-block:: lua
 
-   -- CORRECT: vertices sets positions AND indices automatically
+   -- Each group of three vertices forms a triangle
    m = mesh()
    m.vertices = { vec3(0,0,0), vec3(1,0,0), vec3(0.5,1,0) }  -- one triangle
    m.colors   = { color(255,0,0), color(0,255,0), color(0,0,255) }
@@ -475,7 +470,7 @@ Codea supports dynamic lighting via :doc:`/api/light`. Generated meshes (``mesh.
 
 .. note::
 
-   Only ``light.directional()`` is currently supported for immediate-mode rendering. ``light.point()`` and ``light.spot()`` are defined but not yet implemented by the renderer.
+   When drawing meshes directly, only ``light.directional()`` is supported. Point and spot lights are not supported for this kind of drawing.
 
 .. collapse:: Full sphere example
 
@@ -485,7 +480,7 @@ Codea supports dynamic lighting via :doc:`/api/light`. Generated meshes (``mesh.
 Drawing shapes and changing style
 ---------------------------------
 
-Compare the columns: default drawing, a colored fill, and a fill with a white outline. Each row draws a different shape. style.reset() restores defaults, while rectMode(CENTER) makes the rectangles use the same placement convention as ellipses. Try changing the last four rectangle arguments to round each corner differently.
+Each row draws a shape with its default style, a colored fill, and a white outline. ``style.reset()`` restores the defaults. Try changing the last four ``rect()`` arguments to round each corner differently.
 
 .. codea-example:: Drawing shapes and changing style
    :project: code/Modern/Basics 02 - Shapes.codea
@@ -493,7 +488,7 @@ Compare the columns: default drawing, a colored fill, and a fill with a white ou
 Building an orbit with nested transforms
 ----------------------------------------
 
-This project uses one moving origin for the center, another for each satellite, and a third for its moons. Each matrix.push() is paired with matrix.pop(), so moving one moon does not displace the next satellite. Rotation uses time.elapsed rather than a frame counter. Try changing the two loop counts or orbit radii.
+Satellites orbit a moving center while moons orbit each satellite. Each ``matrix.push()`` is paired with ``matrix.pop()``, so moving one moon does not move the next satellite. Try changing the orbit radii or the number of moons.
 
 .. codea-example:: Building an orbit with nested transforms
    :project: code/Modern/Basics 03 - Matrix.codea
@@ -501,7 +496,7 @@ This project uses one moving origin for the center, another for each satellite, 
 Comparing blend modes
 ---------------------
 
-Tap **Controls** and choose a blend mode or change either color. The overlapping circles show how source and destination colors combine; the two bundled images below demonstrate a maximum blend equation. Drawing order matters: the second circle is blended over the first.
+Choose a blend mode or change either color in **Controls** to see how overlapping colors combine. Drawing order matters: the second circle blends over the first. The images below the circles show how blending works with pictures.
 
 .. codea-example:: Comparing blend modes
    :project: code/Modern/Basics 07 - Blending.codea
@@ -509,7 +504,7 @@ Tap **Controls** and choose a blend mode or change either color. The overlapping
 Saving and restoring styles
 ---------------------------
 
-The swatches reuse three saved styles: foreground, background, and label. style.get() captures the settings and style.set() restores them before each drawing operation. The grid adapts to the viewer width. Try replacing a named color with color(r, g, b, a), or changing one saved style to update every swatch.
+These swatches share three saved styles: foreground, background, and label. ``style.get()`` saves the settings and ``style.set()`` restores them. Change one saved style to update every swatch.
 
 .. codea-example:: Saving and restoring styles
    :project: code/Modern/Basics 09 - Colors.codea
@@ -517,7 +512,7 @@ The swatches reuse three saved styles: foreground, background, and label. style.
 Interpolating vertex colors
 ---------------------------
 
-Three vertices define a triangle and three colors define its corners. The renderer interpolates those colors across its surface. The project rebuilds vertices as the size parameter changes and rotates the drawing matrix over time. Use vertices to create sequential indices automatically; positions alone does not create a drawable triangle.
+Three vertices define a triangle, with a color at each corner. Codea blends these colors across its surface. Change its size in **Controls** and watch it rotate.
 
 .. codea-example:: Interpolating vertex colors
    :project: code/Modern/Mesh 01 - Triangle.codea
@@ -525,7 +520,7 @@ Three vertices define a triangle and three colors define its corners. The render
 Turning a polygon into triangles
 --------------------------------
 
-Tap around the outline of a simple polygon, in boundary order. mesh.triangulate() returns the indices used to draw its triangles. The project keeps the original points for drawing handles and assigns a color to each new point. Avoid crossing edges: a list of arbitrary scattered points is not a polygon boundary.
+Tap around an outline without crossing its edges. ``mesh.triangulate()`` divides the polygon into triangles so it can be drawn as a filled shape.
 
 .. codea-example:: Turning a polygon into triangles
    :project: code/Modern/Mesh 02 - Triangulate.codea

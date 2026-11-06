@@ -1,5 +1,7 @@
-font
-====
+:reference-overview: Choosing Fonts
+
+Fonts
+=====
 
 Choose a font with ``font("Helvetica")`` and set its size with
 ``style.fontSize(32)``. Use ``font.metrics()`` when arranging text along a
