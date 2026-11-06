@@ -69,9 +69,103 @@ The sound module provides a way to play and manage sound effects and background 
 
    :rtype: sound.source
    
-.. lua:staticmethod:: generator(table)      
+.. lua:staticmethod:: generator(table)
 
    .. helptext:: create a procedural sound generator
+
+.. lua:staticmethod:: stream([options])
+
+   Creates a stream. ``options`` is a table with any of these fields
+
+   - ``sampleRate`` - samples per second of each channel, from 8000 to 192000 (default 48000)
+   - ``channels`` - 1 for mono or 2 for stereo (default 1)
+   - ``capacity`` - seconds of audio the stream can hold, up to 10 (default 0.25)
+
+   .. helptext:: create a sound stream
+
+   :param options: sample rate, channel count and capacity
+   :type options: table
+   :rtype: sound.stream
+
+.. lua:class:: stream
+
+   A sound source that plays samples pushed to it from Lua, for synthesizers, music players and emulators
+
+   Create one with ``sound.stream{ sampleRate, channels, capacity }`` and play it with ``sound.play`` like any other ``sound.source``. Push more samples every frame to keep it playing. Audio is heard a short time after it is pushed: the frames already queued, plus the audio output, which holds two buffers of 2048 frames at 44.1 kHz on iOS (46 ms each) and two of 4096 frames on Android (93 ms each). Audio is taken a whole output buffer at a time, so keep enough queued to cover one buffer and a slow frame: around 200 ms, or ``underruns`` will grow
+
+   Playing a stream again stops the instance already playing it
+
+   .. code-block:: lua
+
+      function setup()
+          out = sound.stream{ sampleRate = 48000, channels = 1 }
+          sound.play(out)
+          samples, phase = {}, 0
+      end
+
+      function draw()
+          -- Keep about 200 ms of a 440 Hz tone queued
+          local frames = math.max(0, 9600 - out.queued)
+          for i = 1, frames do
+              samples[i] = 0.3 * math.sin(phase)
+              phase = phase + 2 * math.pi * 440 / 48000
+          end
+          out:push(samples, frames)
+      end
+
+   .. helptext:: play samples pushed from Lua
+
+   .. lua:method:: push(samples[, count])
+
+      Adds samples to the end of the stream and returns the number of frames taken. A frame is one sample for each channel, and stereo samples alternate left and right
+
+      ``samples`` is either a table of numbers from -1 to 1, of which the first ``count`` are taken (default ``#samples``), or a string of signed 16-bit little-endian samples, as made by ``string.pack("<i2", sample)``. Reusing one table every frame is the fastest way to push many samples
+
+      When the stream is full, only what fits is taken, so compare the result with the frames you pushed
+
+      .. helptext:: add samples to play
+
+      :param samples: samples to add
+      :type samples: table or string
+      :param count: number of samples to take from a table
+      :type count: number
+      :rtype: number
+
+   .. lua:method:: clear()
+
+      Removes every sample waiting to be played
+
+      .. helptext:: drop queued samples
+
+   .. lua:attribute:: queued: number [readonly]
+
+      The number of frames pushed and not played yet
+
+      .. helptext:: frames waiting to play
+
+   .. lua:attribute:: capacity: number [readonly]
+
+      The number of frames the stream can hold
+
+      .. helptext:: most frames the stream holds
+
+   .. lua:attribute:: underruns: number [readonly]
+
+      The number of times playback has run out of samples. Each gap counts once, and playback resumes as soon as more samples are pushed
+
+      .. helptext:: times the stream ran dry
+
+   .. lua:attribute:: sampleRate: number [readonly]
+
+      The sample rate the stream was created with
+
+      .. helptext:: samples per second
+
+   .. lua:attribute:: channels: number [readonly]
+
+      The number of channels the stream was created with
+
+      .. helptext:: 1 for mono, 2 for stereo
 
 .. lua:class:: source
 
